@@ -6,9 +6,10 @@
 veracidade, e a maior parte dos datasets públicos existe para servir a essa
 formulação.
 
-**Decisão.** O produto não emite veredito como saída principal. Ele expõe
-proveniência, afirmações checáveis, cobertura independente e enquadramento, e
-devolve a conclusão ao usuário.
+**Decisão.** O produto não emite veredito **nu**. O veredito é permitido e vem
+primeiro, mas nunca sozinho: junto dele vão a proveniência, as afirmações
+checáveis, a cobertura independente e o enquadramento, e o caminho até a fonte
+fica aberto para que o usuário possa discordar do que leu.
 
 **Consequências.**
 - A métrica primária deixa de ser acurácia de modelo e passa a ser ganho de
@@ -19,8 +20,18 @@ devolve a conclusão ao usuário.
   ser o núcleo do portfólio.
 
 **Alternativa descartada.** Classificador com camada de explicabilidade (XAI)
-sobre a predição. Descartada porque a explicação, nesse desenho, justifica um
-veredito já emitido — o usuário continua recebendo a conclusão pronta.
+sobre a predição. Descartada não por emitir veredito, mas porque a explicação,
+nesse desenho, é racionalização posterior de uma predição: justifica o rótulo em
+vez de apresentar a evidência que o sustenta. Falha na auditabilidade até a
+fonte, que é o que a Big Idea exige ao falar de *apoiar a investigação*.
+
+**Nota de revisão — 10/09/2026.** Até esta data a decisão dizia "o produto não
+emite veredito como saída principal". O andaime cognitivo continua sendo a
+decisão desta fase; o que mudou é o mecanismo. Segurar a conclusão não era
+exigência do challenge — era derivação do grupo, e contrariava a própria Big
+Idea, cujo problema declarado é excesso de informação. As duas exigências que
+sobrevivem, e que este change herda como inegociáveis, são auditabilidade até a
+fonte e transferência como métrica primária. Ver `openspec/project.md`.
 
 ## Decisão 2: recorte em saúde pública
 
@@ -46,6 +57,19 @@ Enquanto o projeto estiver em Engage e Investigate, cada capability corresponde
 a um artefato entregável (ficha de caso, matriz, backlog de GQs), com critérios
 de aceitação verificáveis. Isso mantém o SDD útil sem exigir que o grupo invente
 comportamento de sistema antes de ter feito a pesquisa.
+
+## Decisão 4: teto de 12 guiding questions
+
+O board produziu cerca de 40 candidatas. O spec admite backlog de 8 a 12; o teto
+de **12** foi escolhido em 10/09/2026, em vez do corte mais agressivo em 8.
+
+**Motivo.** A classificação por fonte de resposta separa as GQs em trilhas que
+não competem entre si — `literatura` não consome tempo de coleta, `fechada` não
+consome tempo nenhum. Cortar em 8 obrigaria a descartar pergunta boa só por
+volume, quando o custo real depende da classe, não da contagem.
+
+**Consequência.** Aproximadamente 28 candidatas serão fundidas ou descartadas
+com motivo registrado, como o requirement de qualidade já exige.
 
 ## Riscos registrados
 

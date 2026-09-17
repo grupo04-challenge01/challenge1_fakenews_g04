@@ -1,32 +1,43 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  Projeto: Challenge 1 (desinformação em saúde pública) da residência em IA,
+  grupo ClearColors, sob metodologia CBL. Contexto completo em
+  openspec/project.md — leia antes de gerar qualquer artefato.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Idioma dos artefatos: português. Palavras-chave normativas (SHALL, MUST,
+  MUST NOT, WHEN, THEN, AND, GIVEN) permanecem em inglês para que
+  `openspec validate --strict` funcione.
 
-# Per-operation guidance (optional)
-# Add advisory guidance for how apply and archive work should be conducted.
-# This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+  Enquanto o projeto estiver em fase de pesquisa (Engage/Investigate),
+  capability = artefato entregável, não módulo de código.
+
+  Restrição arquitetural inviolável: nenhuma capability emite veredito
+  automático verdadeiro/falso como saída principal. O sistema apresenta
+  evidência e proveniência; a conclusão é do usuário. Datasets de rótulo
+  binário servem como banco de estímulos, nunca como alvo de treino de
+  classificador de veredito.
+
+  Um change por fase do CBL. Specs só migram de changes/ para specs/ quando a
+  fase encerra e o entregável existe de fato.
+
+rules:
+  proposal:
+    - Inclua sempre uma seção "Out of Scope"
+    - Declare em "Impact" quais entregáveis finais do desafio o change atinge
+    - Aponte a fase do CBL a que o change pertence
+  specs:
+    - Cada requirement precisa de pelo menos um cenário GIVEN/WHEN/THEN
+    - Critérios de aceitação devem ser verificáveis por inspeção do artefato
+  tasks:
+    - Tarefas com granularidade máxima de meio dia de trabalho
+    - Inclua uma tarefa final de `openspec validate <change> --strict`
+
+operations:
+  apply:
+    guidance:
+      - Marque o checkbox da task somente após o artefato existir no repositório
+      - Não invente resultado de pesquisa; se o dado não foi coletado, pare e diga
+  archive:
+    guidance:
+      - Só arquive com tasks 100% marcadas e validate --strict limpo

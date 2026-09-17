@@ -8,8 +8,8 @@ Vigência: 08/09 a 11/09.
       cobrindo pelo menos 3 tipos distintos de manipulação
 - [ ] 1.2 Criar o template da ficha de caso conforme
       `specs/pesquisa-investigativa/spec.md`
-- [ ] 1.3 Preparar o board do Miro com os quadros Problema, Público, Sucesso e
-      Solução, mais um frame adicional "Sinais & Viabilidade"
+- [ ] 1.3 Preparar o board com os cinco quadros efetivamente usados: Problema,
+      Público, Específicas, Solução e Sucesso
 
 ## 2. Investigação forense
 
@@ -36,9 +36,11 @@ Vigência: 08/09 a 11/09.
 
 ## 5. Guiding questions
 
-- [ ] 5.1 Derivar uma GQ por agrupamento de notas dos quadros
-- [ ] 5.2 Aplicar o critério de qualidade e descartar as que não passam
-- [ ] 5.3 Priorizar e marcar as 3 que abrem a fase Investigate
+- [x] 5.1 Derivar uma GQ por agrupamento de notas dos quadros
+- [x] 5.2 Aplicar o critério de qualidade e descartar as que não passam
+- [x] 5.2b Classificar cada GQ em `dados` / `literatura` / `usuario` /
+      `fechada` / `descartada`, nomeando o arquivo derivado nas de `dados`
+- [x] 5.3 Priorizar e marcar as 3 que abrem a fase Investigate
 
 ## 6. Exploração de datasets
 
