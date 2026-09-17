@@ -23,3 +23,6 @@ datasets/01_nucleo_metodologico/fakehealth/reviews/
 datasets/01_nucleo_metodologico/fakehealth/engagements/
 datasets/03_banco_estimulos/fakerecogna/
 datasets-desinformacao.tar.gz
+
+# Artefatos de build do RTK (Rust) - nao versionados
+rtk_build/

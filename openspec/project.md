@@ -17,6 +17,9 @@ especificadas em changes próprios.
   evidências e opiniões.
 - **Essential Question:** como sistemas de IA podem ajudar as pessoas a avaliar a
   confiabilidade de informações **sem substituir seu pensamento crítico**.
+- **Competências nomeadas no enunciado:** investigar evidências, identificar
+  vieses, construir critérios de confiança. As três precisam ter cobertura
+  rastreável em capability; nenhuma é opcional.
 - **Recorte adotado:** desinformação em saúde pública.
 - **Sub-recorte:** em aberto. Candidatos: vacinação, doença crônica,
   suplementos e produtos naturais. Decisão prevista para a fase Investigate.
@@ -26,14 +29,37 @@ especificadas em changes próprios.
 A Essential Question exclui explicitamente a substituição do julgamento humano.
 Em consequência, para qualquer capability proposta neste projeto:
 
-- O sistema **não emite veredito** de verdadeiro/falso como saída principal.
-- O sistema apresenta **evidência e proveniência**; a conclusão é do usuário.
+- O sistema **pode** emitir veredito, nunca como saída única: todo veredito vem
+  acompanhado do critério que o sustenta e é auditável até a fonte. Veredito nu —
+  sem raciocínio nem proveniência — é que substitui julgamento.
+- O sistema apresenta **evidência e proveniência**; o usuário precisa poder
+  discordar do veredito com base no que lhe foi mostrado.
 - Métrica primária de sucesso é ganho de discernimento do usuário, incluindo
   **transferência** (desempenho sem a ferramenta), não acurácia de classificador.
 - Toda saída assistiva precisa ser auditável pelo usuário até a fonte.
 
 Datasets de rótulo binário são admitidos apenas como banco de estímulos para
 teste com usuários, nunca como alvo de treino de classificador de veredito.
+
+### Nota de revisão — 10/09/2026
+
+Até esta data o primeiro bullet dizia "o sistema **não emite veredito** de
+verdadeiro/falso como saída principal". Essa regra era derivação nossa, não
+texto do challenge.
+
+A Big Idea fala em **apoiar a investigação** da confiabilidade, "fortalecendo o
+pensamento crítico em vez de substituí-lo"; a Essential Question pergunta como a
+IA ajuda a avaliar confiabilidade "sem substituir seu pensamento crítico".
+Nenhuma das duas proíbe conclusão. A regra antiga confundia *não substituir o
+julgamento do usuário* com *não oferecer um julgamento* — coisas diferentes.
+
+Havia ainda contradição com a própria Big Idea, cujo problema declarado é
+**excesso** de informação: segurar a conclusão adiciona atrito a um problema de
+atrito.
+
+O que a premissa exige de fato está preservado nos bullets de auditabilidade e
+de transferência, que não foram alterados e que continuam sendo o teste real de
+qualquer capability. Ver `changes/mvp-copiloto-verificacao/design.md`, decisão 1.
 
 ## Cronograma
 

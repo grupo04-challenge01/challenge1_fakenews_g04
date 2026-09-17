@@ -1,0 +1,22 @@
+{
+  "mcp": {
+    "servers": {
+      "context7": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@context7/mcp-server"
+        ],
+        "env": {}
+      },
+      "token-cache": {
+        "command": "node",
+        "args": [
+          "c:\\Users\\vitor\\.vscode\\extensions\\ai-token-optimizer.ai-token-optimizer-0.1.0\\dist\\cache-server.js",
+          "c:\\Users\\vitor\\Desktop\\UnB\\Residencia\\Micro_FakeNews"
+        ],
+        "type": "stdio"
+      }
+    }
+  }
+}

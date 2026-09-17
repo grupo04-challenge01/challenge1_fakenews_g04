@@ -33,8 +33,9 @@ classificação para o mesmo caso.
 A matriz MUST NOT produzir uma pontuação única, nota agregada ou selo consolidado
 de confiabilidade. A saída da matriz é um conjunto de evidências por dimensão.
 
-Esta restrição decorre do princípio arquitetural do projeto: um score único
-colapsa em veredito e substitui o julgamento do usuário.
+Esta restrição decorre dos princípios de auditabilidade e de transferência: um
+score único não é auditável, porque esconde qual dimensão pesou, e não ensina
+critério nenhum, porque não sobra nada de observável para a próxima mensagem.
 
 #### Scenario: Tentativa de consolidação em nota
 
