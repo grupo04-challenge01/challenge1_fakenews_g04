@@ -7,7 +7,8 @@ change. O que importa aqui é o estado do pacote e as restrições que moldam a
 abordagem.
 
 O pacote de 08/09/2026 tem três camadas: núcleo metodológico, comparação de
-exagero e banco de estímulos. O corpus PT-BR citável são 4.063 checagens do
+exagero e banco de estímulos. Este change abre a quarta, acervo de circulação —
+ver decisão 8. O corpus PT-BR citável são 4.063 checagens do
 FactCenter, janela 2013–2021, com texto integral — é essa integralidade que
 sustenta citação e RAG. A FakeRecogna v1 ocupa o banco de estímulos, com licença
 não declarada e viés de sumarização conhecido nos itens verdadeiros.
@@ -31,6 +32,8 @@ Três restrições, em ordem de força:
 - Deixar a substituição de base auditável por terceiro, e não apenas correta.
 - Trazer para o projeto o primeiro material em português com veredito de
   especialista clínico e discordância medida.
+- Trazer o primeiro material que mede **difusão**, e mantê-lo categoricamente
+  separado de evidência sobre o fato.
 
 **Non-Goals:**
 
@@ -38,6 +41,8 @@ Três restrições, em ordem de força:
   atribui, não cita. Tentar aproximá-los é o que produziria a raspagem.
 - Cobertura completa por agência. O índice alcança quem publica ClaimReview.
 - Reprodutibilidade da amostra de estímulos da v1. Ver decisão 3.
+- Detecção de campanha, rede ou coordenação no corpus de Telegram. É pesquisa de
+  outro tipo e não cabe em três semanas.
 
 ## Decisions
 
@@ -144,6 +149,58 @@ janela, concentração e termos ausentes por medição; este mantém o padrão. 
 de `frescor-corpus` exige janela medida sobre o arquivo baixado, e caveat quando
 divergir do que a fonte anuncia.
 
+### 8. Acervo de circulação é um nível próprio, não um quarto corpus citável
+
+O texto do corpus de Telegram é **íntegro e não transformado**, o que pela regra
+da decisão 4 o colocaria no nível citável. Isso seria erro de categoria.
+
+A distinção que faltava não é sobre o estado do texto, é sobre **do que o texto é
+evidência**. Uma checagem da Lupa é evidência sobre o fato. Um post de Telegram é
+evidência sobre *o que alguém publicou* — informativo sobre difusão, mudo sobre a
+verdade da alegação. Citá-lo a um usuário como fonte confundiria as duas coisas
+justamente no produto cuja premissa é auditabilidade até a fonte.
+
+Daí o quarto nível em `frescor-corpus`: **acervo de circulação**. Conta para
+janela temporal, responde "isso circulou, desde quando e em que canal", e
+MUST NOT aparecer como fonte de trecho citado sobre o mérito.
+
+*Alternativa considerada — pôr em `03_banco_estimulos`.* Rejeitada pelo mesmo
+critério de função da decisão 5: estímulo é item que se apresenta ao participante
+esperando julgamento de veracidade, e um post sem rótulo não serve para isso.
+
+### 9. O risco central desta base é veredito por proxy de canal
+
+A base é *de canais antivacina*. A inferência "apareceu aqui, logo é falso" é
+fácil de fazer e está errada: canal antivacina também reproduz notícia
+verdadeira, e a inferência inversa condenaria o usuário a julgar pela origem em
+vez de pela evidência — exatamente o oposto da Essential Question.
+
+Vale o mesmo para o campo `is_vaccine_related`: é rótulo **derivado por modelo**
+(Sabiá-3, F1 0,90 medido sobre 600 posts anotados), não anotação humana. F1 0,90
+significa aproximadamente um em dez errado, e ele é filtro de recorte, nunca
+fato sobre o item.
+
+`acervo-circulacao` proíbe as duas inferências normativamente. É o requisito que
+justifica a capability existir em vez de a base entrar só com um caveat no
+`FONTES.md`.
+
+### 10. Agregados versionados, texto de post nunca
+
+A CC BY-NC 4.0 permitiria redistribuir os posts. Não vamos.
+
+São mensagens de pessoas reais. Os autores pseudonimizaram (`user_id` em SHA-256,
+PII por Presidio), o que reduz o risco e não o elimina: texto livre em corpus
+grande é re-identificável por combinação, e o próprio depósito registra que o STF
+mandou remover mensagens por ilegalidade. Um repositório público de trabalho de
+residência não é o lugar para reespalhar isso.
+
+O que entra versionado são **derivados agregados** — contagem por mês, por canal,
+frequência de termo de pauta — mais o script que os produz e o checksum do bruto.
+O `.jsonl` de 3,6 GB fica fora do git como os demais brutos.
+
+Custo aceito: quem quiser reproduzir baixa do REDU. É o mesmo contrato dos outros
+brutos do pacote, e aqui há razão adicional para ele.
+
 ## Risks / Trade-offs
 
 - **Volume do índice em `pt` para saúde é desconhecido** → Portão de medição na
@@ -168,8 +225,22 @@ divergir do que a fonte anuncia.
   central deste change. Mitigado por proibição normativa explícita na spec e por
   task de verificação no fechamento.
 - **Este change não fecha 2024–2026 com texto citável** → Assumido e nomeado. O
-  acervo citável recua até onde a FakeRecogna 2.0 alcançar; daí em diante existe
-  referência, não citação.
+  acervo citável recua até onde a FakeRecogna 2.0 alcançar; daí em diante existem
+  referência e circulação, não citação.
+- **3,6 GB de `.jsonl` não abrem em planilha nem cabem em memória de notebook
+  modesto** → O contrato de leitura de `add-tratamento-datasets-ptbr` precisa
+  cobrir leitura em streaming por linha. É task de reconciliação, não risco
+  aberto.
+- **O recorte da base é antivacina, e a amostra é enviesada por construção** →
+  Viés não é defeito aqui, é o objeto: a base descreve um ecossistema
+  específico, não a população. O caveat MUST proibir leitura de prevalência.
+  Registrado em `acervo-circulacao`.
+- **Fixar o sub-recorte em vacinação estreita o teste com usuário** → Assumido em
+  `project.md`. A mitigação é que o protótipo não fica restrito ao tema; só a
+  curadoria de casos e a medição de cobertura ficam.
+- **Quatro níveis de cobertura podem virar taxonomia decorativa** → Cada nível só
+  se justifica por mudar uma resposta do sistema. A task de fechamento verifica
+  isso caso a caso; nível que não mudar resposta alguma sai.
 
 ## Migration Plan
 

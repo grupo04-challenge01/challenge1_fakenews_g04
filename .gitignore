@@ -26,3 +26,10 @@ datasets-desinformacao.tar.gz
 
 # Artefatos de build do RTK (Rust) - nao versionados
 rtk_build/
+
+# Índice da prova de conceito de recuperação (prototipo/rag).
+# Reconstituível por `python -m prototipo.rag construir` a partir do corpus.
+# O manifesto é a declaração auditável do índice e fica versionado.
+prototipo/indice/*.jsonl
+prototipo/indice/*.npy
+!prototipo/indice/manifesto.json

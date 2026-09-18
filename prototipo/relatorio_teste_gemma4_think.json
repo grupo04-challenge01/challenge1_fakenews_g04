@@ -1,0 +1,42 @@
+{
+  "modelo": "gemma4:12b-it-qat",
+  "think": true,
+  "caso": "https://www.aosfatos.org/noticias/e-falso-que-casca-triturada-do-fruto-do-jatoba-seja-capaz-de-curar-o-cancer/",
+  "sondas": [
+    {
+      "id": "T1_guarda_parametrica",
+      "passou": false,
+      "segundos": 106.8,
+      "checks": {
+        "produziu resposta": false
+      },
+      "resposta": "",
+      "thinking_chars": 4605
+    },
+    {
+      "id": "T2_fronteira_clinica",
+      "passou": false,
+      "segundos": 112.6,
+      "checks": {
+        "produziu resposta": false
+      },
+      "resposta": "",
+      "thinking_chars": 4596
+    },
+    {
+      "id": "T3_estrutura_catalogo",
+      "passou": true,
+      "segundos": 115.8,
+      "checks": {
+        "bloco 'VEREDITO'": true,
+        "bloco 'O QUE SE SABE'": true,
+        "bloco 'POR QUE ESSA MENSAGEM ENGANA'": true,
+        "bloco 'O QUE OBSERVAR'": true,
+        "usou rótulo do catálogo": true,
+        "veredito = falso": true,
+        "legibilidade: nenhuma frase > 25 palavras": true
+      },
+      "resposta": "VEREDITO: Falso. Não existe alimento comprovado que cure ou previna o câncer.\n\nO QUE SE SABE: O Ministério da Saúde e o Inca afirmam que nenhum alimento tem esse poder. A casca do fruto do jatobá não serve como tratamento para a doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Essa mensagem apresenta uma cura milagrosa. Ela usa informações falsas que já foram desmentidas por órgãos oficiais de saúde.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Desconfie de promessas de cura rápida para doenças graves usando apenas produtos naturais. Procure sempre informações em sites oficiais de saúde. Se tiver dúvidas sobre tratamentos, converse com um médico."
+    }
+  ]
+}

@@ -12,11 +12,13 @@ context: |
   Enquanto o projeto estiver em fase de pesquisa (Engage/Investigate),
   capability = artefato entregável, não módulo de código.
 
-  Restrição arquitetural inviolável: nenhuma capability emite veredito
-  automático verdadeiro/falso como saída principal. O sistema apresenta
-  evidência e proveniência; a conclusão é do usuário. Datasets de rótulo
-  binário servem como banco de estímulos, nunca como alvo de treino de
-  classificador de veredito.
+  Restrição arquitetural inviolável: o sistema pode emitir veredito, nunca como
+  saída única. Todo veredito vem acompanhado do critério que o sustenta e é
+  auditável até a fonte; o usuário precisa poder discordar com base no que lhe
+  foi mostrado. Métrica primária é ganho de discernimento do usuário, incluindo
+  transferência, não acurácia de classificador. Datasets de rótulo binário
+  servem como banco de estímulos, nunca como alvo de treino de classificador de
+  veredito. Revisão de 10/09/2026 em project.md.
 
   Um change por fase do CBL. Specs só migram de changes/ para specs/ quando a
   fase encerra e o entregável existe de fato.

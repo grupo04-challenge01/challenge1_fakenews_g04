@@ -23,7 +23,16 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 
 ## 3. Integridade textual
 
-- [ ] 3.1 Verificador de perda de caractere por classe, rodando por arquivo
+- [ ] 3.1 Verificador de perda de caractere por classe, rodando por arquivo.
+      Critério: ausência total **não** basta. `factcenter_subset_saude.csv` tem
+      zero `Ü` em 21,5 milhões de caracteres porque o trema foi abolido em 1990,
+      não por corrupção — e o `ü` minúsculo aparece 57 vezes. O que separa os
+      dois casos é a maiúscula com zero ocorrências **e** minúscula frequente:
+      em `factckbr_normalizado.csv` sete letras batem nisso (`ã` 3.625 contra
+      `Ã` 0), aqui nenhuma. Sem essa precisão o verificador reprova corpus
+      íntegro e bloqueia o índice. Implementação de referência em
+      `prototipo/rag/corpus.py`, e a capability `integridade-textual` precisa
+      absorver a precisão no texto do requirement.
 - [ ] 3.2 Rodar em todos os derivados PT-BR e registrar o resultado por arquivo
 - [ ] 3.3 Reprovar `factckbr_normalizado.csv` para citação e registrar o caveat
 - [ ] 3.4 Corrigir a allowlist do `re_char()` em `update_factckbr.py`, ou

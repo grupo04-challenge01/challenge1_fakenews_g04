@@ -21,8 +21,26 @@ especificadas em changes próprios.
   vieses, construir critérios de confiança. As três precisam ter cobertura
   rastreável em capability; nenhuma é opcional.
 - **Recorte adotado:** desinformação em saúde pública.
-- **Sub-recorte:** em aberto. Candidatos: vacinação, doença crônica,
-  suplementos e produtos naturais. Decisão prevista para a fase Investigate.
+- **Sub-recorte:** **vacinação**. Decidido em 17/09/2026 — ver nota abaixo.
+  Descartados como recorte: doença crônica, suplementos e produtos naturais.
+
+### Nota de decisão — 17/09/2026: sub-recorte
+
+O sub-recorte estava em aberto desde o Engage, bloqueando a curadoria dos casos
+de `avaliacao-instrumento`. Foi fechado em **vacinação** ao avaliar a entrada do
+corpus de Telegram antivacina (`add-ampliacao-corpus-ptbr`), que cobre
+jan/2020 a jun/2025 em português.
+
+O que pesou não foi o tamanho da base, e sim o fato de ela ser o único material
+disponível ao projeto que mostra **o que circulou, em que canal e quando** —
+insumo que nenhuma das bases de checagem fornece, porque agência publica o
+desmentido, não a difusão. Vacinação é também o único dos três candidatos em que
+o projeto passa a ter, ao mesmo tempo, checagem com texto integral
+(FactCenter), veredito de especialista clínico (WhaVax) e circulação medida.
+
+Os outros dois candidatos não estão proibidos como conteúdo: uma alegação sobre
+suplemento continua verificável pelo protótipo. O que a decisão fixa é onde a
+curadoria de casos, a medição de cobertura e o teste com usuário se concentram.
 
 ## Princípio arquitetural que restringe todas as soluções
 
@@ -96,6 +114,7 @@ Observação: 07/09 é feriado; a semana operacional do Engage começa em 08/09.
 | Change | Fase | Estado |
 | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | ativo |
-| `add-instrumento-avaliacao-ptbr` | Investigate | não iniciado |
-| `add-copiloto-leitura-lateral` | Act | não iniciado |
-| `add-rag-evidencia-primaria` | Act | não iniciado |
+| `add-tratamento-datasets-ptbr` | Investigate | proposto |
+| `add-ampliacao-corpus-ptbr` | Investigate | proposto |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | proposto |
+| `mvp-copiloto-verificacao` | Act | proposto |
