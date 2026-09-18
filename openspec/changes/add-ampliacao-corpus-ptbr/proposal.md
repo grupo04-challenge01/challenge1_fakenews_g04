@@ -23,9 +23,27 @@ Existe material publicado que recua essa fronteira e não estava no pacote de
   profissionais médicos, com concordância medida (Fleiss κ = 0,621) e faixa de
   empate declarada (~8,8%). **CC BY 4.0**. Nenhuma base nossa tem veredito
   emitido por especialista clínico em português.
+- **Telegram antivacina BR (2020–2025)** — 3.998.633 posts de 119 canais
+  brasileiros, jan/2020 a jun/2025, em `.jsonl`. **CC BY-NC 4.0**, DOI
+  `10.25824/redu/5JIVDT` (REDU/Unicamp). Único material do projeto que mostra
+  **o que circulou, em que canal e quando**; nenhuma base de checagem fornece
+  isso, porque agência publica o desmentido, não a difusão.
 - **Google Fact Check Tools API** — única rota verificada até a data corrente.
   Devolve markup ClaimReview: alegação, veredito textual, agência, data e URL.
   **Não devolve o texto do artigo de checagem.**
+
+### Correção de escopo — 17/09/2026
+
+Até esta data o corpus de Telegram constava em Out of Scope como *"5,5 TB sem
+rótulo de veracidade"*. A primeira metade é falsa: os 5,5 TB são a **mídia**, que
+exige termo assinado; o **texto é um único `.jsonl` de 3,6 GB, aberto**,
+conferido na API do Dataverse do REDU (`restricted: false`,
+`fileAccessRequest: false`). A segunda metade é verdadeira e deixou de
+desqualificar: o `project.md` já só admite rótulo binário como estímulo, e o que
+falta ao acervo aqui é narrativa, não veredito.
+
+A entrada desta base fechou o sub-recorte do projeto em **vacinação**
+(`project.md`, nota de 17/09/2026).
 
 ## What Changes
 
@@ -43,6 +61,10 @@ Existe material publicado que recua essa fronteira e não estava no pacote de
 - Entrada do WhaVax em `01_nucleo_metodologico/`, não em `03_banco_estimulos/`.
   O critério é função, não formato: com anotação clínica e concordância medida,
   é referência metodológica, não estímulo bruto.
+- Entrada do corpus de Telegram em camada nova, `04_acervo_circulacao/`, como
+  **acervo de circulação**: texto íntegro, mas evidência sobre *difusão*, não
+  sobre o fato. **Nenhum texto de post é versionado** — só derivados agregados
+  (contagem por mês, por canal, frequência de termo) e o script que os gera.
 - Índice de checagens recentes por `claims:search`, em nível de alegação,
   **sem raspagem** do texto das agências.
 - **BREAKING** para `frescor-corpus`: a janela deixa de ser a constante
@@ -63,13 +85,18 @@ pacote anterior vieram de contagem, e estes também virão.
   pacote por versão nova sem quebrar a auditoria da coleta.
 - `indice-checagens-recentes`: localização e atribuição de checagem publicada
   fora da janela do acervo, sem citação de texto de terceiro.
+- `acervo-circulacao`: o que o projeto pode e não pode afirmar a partir de
+  conteúdo de usuário sem rótulo de veracidade — incluindo rótulo derivado por
+  modelo, pseudonimização e a proibição de veredito por proxy de canal.
 
 ### Modified Capabilities
 
 - `frescor-corpus`: a cobertura deixa de ser janela única e fixa e passa a
-  declaração de dois níveis — acervo com texto integral, que serve para citação,
-  e índice de localização, que não serve. A política de lacuna é preservada e
-  reescrita para distinguir três casos, não dois.
+  declaração de **quatro** níveis — acervo com texto integral, que serve para
+  citação; acervo com texto transformado, que serve como estímulo; acervo de
+  circulação, que atesta difusão e não o fato; e índice de localização, que só
+  localiza. A política de lacuna é preservada e reescrita para distinguir três
+  casos, não dois.
 
 ## Impact
 
@@ -83,6 +110,12 @@ Entregáveis finais do desafio atingidos:
 - **Solução/protótipo com suporte de IA** — o índice muda o pior caso da
   resposta de lacuna: de "não sei" para "não tenho o texto, mas existe checagem
   publicada, e é esta".
+- **Estrutura de avaliação de confiança**, segunda contribuição — o acervo de
+  circulação é o que permite à `matriz-confianca` tratar *procedência e alcance*
+  com dado medido em vez de suposição, e é o primeiro material do projeto que
+  toca a competência "identificar vieses", hoje sem cobertura (`docs/estado.md`).
+- **Sub-recorte fechado em vacinação**, destravando a curadoria de casos de
+  `avaliacao-instrumento`.
 
 Dependências e restrições:
 
@@ -105,8 +138,32 @@ Dependências e restrições:
 - **Raspagem do texto integral das checagens.** O texto é das agências. A
   Central de Fatos é redistribuível por vir sob CC BY; uma raspagem nossa não
   seria. O repositório é público e já carrega uma pendência de licença.
-- Dataset de Telegram anti-vacina (2020–2025): 5,5 TB sem rótulo de veracidade.
+- **Mídia** do corpus de Telegram (1.440.498 itens, os 5,5 TB): exige termo
+  assinado e é multimodal. Só o `.jsonl` de texto entra.
+- **Derivado com texto de post individual.** A licença permitiria; a ética não.
+  Os posts são de pessoas reais, pseudonimizadas mas não anônimas. Versionamos
+  agregados, nunca o texto.
 - Med-MMHL e MM Health: teste de estresse multimodal permanece condicional.
+
+### Bases avaliadas e recusadas em 17/09/2026
+
+- **FakeCovid** (Shahi & Nandini, arXiv:2006.11343), via o espelho
+  `thedevastator/fakecovid-fact-checked-news-dataset` no Kaggle. Medido sobre o
+  CSV dos autores: 7.623 linhas, **481 em português**, janela 2020/01/24 a
+  2020/07/01. Cruzando `article_source` contra `derivados/factcenter_subset_saude.csv`,
+  **330 das 481 (69%) já estão no pacote** — e a comparação é só contra o subset
+  de saúde, 4.063 de 11.647 checagens, de modo que a sobreposição real é maior.
+  Não recua fronteira alguma: o FactCenter já tem 2.188 itens de 2020. Somam-se
+  dois impedimentos: o Kaggle declara **CC0** enquanto o original é **CC BY-NC 4.0**,
+  o erro de proveniência que `procedencia-substituicao` existe para barrar; e
+  `content_text` é o corpo raspado do artigo da agência, vedado acima.
+- **`fabioselau/fakes-news-portuguese`** no Kaggle. Licença **"Unknown"** no
+  próprio metadado, versão única de 12/09/2022, sem artigo, sem URL de origem
+  por item e sem método descrito — é o TCC do autor. Reprova em
+  `procedencia-substituicao` antes do download, porque não há fonte primária a
+  conferir. O desbalanceamento (20k falsas contra 2k verdadeiras) agravaria,
+  ainda por cima, a carência de itens `verdadeiro` da task 2.8 de
+  `add-tratamento-datasets-ptbr`.
 - Treino de qualquer classificador. Vale integralmente para a anotação clínica
   do WhaVax, que é referência de calibração, nunca alvo.
 - Curadoria dos 20 a 30 casos e construção das armadilhas: são de

@@ -30,8 +30,11 @@ declarar qualquer coisa pronta, use `superpowers:verification-before-completion`
   `openspec/project.md`.
 - **Specs só migram para `openspec/specs/`** quando a fase encerra e o
   entregável existe de fato.
-- **Restrição de produto herdada:** nenhuma capability emite veredito automático
-  de verdadeiro/falso como saída principal. Ver `openspec/project.md`.
+- **Restrição de produto herdada:** veredito é permitido, nunca nu — todo veredito
+  vem acompanhado do critério que o sustenta e é auditável até a fonte. Métrica
+  primária é ganho de discernimento do usuário, não acurácia de classificador.
+  Dataset de rótulo binário é banco de estímulos, nunca alvo de treino de
+  classificador de veredito. Ver `openspec/project.md`, revisão de 10/09/2026.
 - **Idioma:** artefatos em português; palavras-chave normativas (`SHALL`,
   `MUST`, `MUST NOT`, `WHEN`, `THEN`, `AND`, `GIVEN`) em inglês, para
   `openspec validate --strict`.

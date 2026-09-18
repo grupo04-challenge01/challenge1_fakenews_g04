@@ -8,7 +8,7 @@ Este delta reescreve dois requirements introduzidos por
 
 ### Requirement: Cobertura declarada e verificável
 
-O corpus SHALL ter cobertura declarada e versionada em **dois níveis
+O corpus SHALL ter cobertura declarada e versionada em **quatro níveis
 distintos**, nomeados como tais:
 
 - **acervo com texto integral** — material cujo texto o projeto possui
@@ -18,21 +18,27 @@ distintos**, nomeados como tais:
 - **acervo com texto transformado** — material cujo texto foi sumarizado,
   truncado ou reescrito na origem. Conta para cobertura temporal e serve como
   estímulo, e MUST NOT ser contado no nível citável;
+- **acervo de circulação** — conteúdo publicado por usuários, com texto íntegro
+  mas sem rótulo de veracidade. Atesta que um conteúdo circulou, por qual canal
+  e quando. Conta para cobertura temporal, e MUST NOT ser contado no nível
+  citável nem oferecido como fonte de trecho sobre o mérito. Ver
+  `acervo-circulacao`;
 - **índice de localização** — material do qual o projeto possui apenas
   referência, com data de corte e agências alcançadas.
 
 A declaração MUST ser verificável por reexecução da medição, e MUST NOT
-apresentar os três níveis como cobertura equivalente. Nenhuma janela SHALL ser
+apresentar os quatro níveis como cobertura equivalente. Nenhuma janela SHALL ser
 declarada antes de medida: base recém-incorporada entra na declaração com a
 janela contada, não com a janela anunciada pela fonte.
 
 #### Scenario: Inspeção da declaração de cobertura
 
 - **WHEN** a declaração de cobertura é inspecionada
-- **THEN** os três níveis constam nomeados e separados
+- **THEN** os quatro níveis constam nomeados e separados
 - **AND** para cada base do acervo constam a janela medida e a concentração por
   ano
-- **AND** consta, por base, se o texto é integral ou transformado
+- **AND** consta, por base, se o texto é integral, transformado ou de circulação
+- **AND** consta, por base, do que o texto é evidência: do fato ou da difusão
 - **AND** consta a lista de termos de pauta verificados por busca, com a
   contagem obtida por termo
 - **AND** para o índice consta a data de corte
@@ -59,6 +65,17 @@ janela contada, não com a janela anunciada pela fonte.
 - **AND** ampliar a janela por meio dela MUST NOT ser apresentado como ampliar o
   acervo citável
 
+#### Scenario: Acervo de circulação não promovido a citável
+
+- **GIVEN** uma base de conteúdo de usuário com texto íntegro e sem rótulo de
+  veracidade
+- **WHEN** a cobertura é declarada
+- **THEN** a base conta para a janela temporal
+- **AND** consta no nível de circulação, não no nível citável, embora o texto
+  seja íntegro
+- **AND** a declaração nomeia que o critério do nível é do que o texto é
+  evidência, não o estado do texto
+
 ### Requirement: Lacuna de cobertura distinguida de ausência de evidência
 
 WHEN a alegação trata de pauta que o acervo com texto integral não alcança, o
@@ -69,8 +86,13 @@ sistema SHALL distinguir **três** situações, e MUST NOT colapsá-las em
    possui o texto, apresenta a referência e encaminha à fonte;
 2. **sem correspondência no acervo consultado** — não há item no índice: o
    sistema informa o alcance da busca e sua data de corte;
-3. **fora da janela declarada** — a pauta é posterior à data de corte de ambos
+3. **fora da janela declarada** — a pauta é posterior à data de corte de todos
    os níveis: o sistema informa que a lacuna é do acervo, não do mundo.
+
+Correspondência no acervo de circulação MUST NOT resolver nenhuma das três: ela
+informa que o conteúdo circulou e não substitui checagem. WHEN houver
+correspondência apenas ali, a situação continua sendo 2 ou 3, com a circulação
+declarada à parte.
 
 Em nenhuma das três o sistema MUST apresentar a lacuna como ausência de checagem
 publicada.
@@ -89,9 +111,20 @@ publicada.
 - **GIVEN** uma alegação sobre pauta de surto posterior à data de corte
 - **WHEN** o usuário envia a alegação
 - **THEN** o sistema informa que a lacuna é de cobertura do acervo
-- **AND** nomeia a data de corte do acervo e a do índice
+- **AND** nomeia a data de corte de cada nível do acervo e a do índice
 - **AND** distingue isso de não haver checagem publicada
 - **AND** indica onde a pessoa pode procurar checagem recente
+
+#### Scenario: Pauta coberta apenas pelo acervo de circulação
+
+- **GIVEN** uma pauta sem checagem no acervo com texto integral e sem item no
+  índice
+- **AND** com conteúdo correspondente no acervo de circulação
+- **WHEN** o usuário envia a alegação
+- **THEN** o sistema declara a lacuna de checagem conforme a situação 2
+- **AND** PODE informar, separadamente, que conteúdo semelhante circulou e desde
+  quando
+- **AND** MUST NOT apresentar a circulação como checagem nem como veredito
 
 #### Scenario: Lacuna não apresentada como veredito
 

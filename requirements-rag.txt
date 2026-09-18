@@ -1,0 +1,9 @@
+# Pilha da prova de conceito de recuperação (change add-selecao-modelos-arquitetura-rag).
+# Separada de requirements.txt, que serve ao MkDocs.
+# Python fixado em 3.14.6 — conferido em 18/09/2026: torch 2.14.0 tem wheel para cp314.
+
+numpy>=2.0
+pandas>=2.2
+rank-bm25>=0.2.2          # busca léxica (decisão 4 do design)
+sentence-transformers>=3.0 # embeddings; traz torch
+ollama>=0.4                # cliente do gerador local (Gemma 4 12B QAT)

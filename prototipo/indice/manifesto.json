@@ -1,0 +1,55 @@
+{
+  "registros_lidos": 4063,
+  "unidades_indexadas": 5090,
+  "fragmentos_indexados": 22464,
+  "registros_em_quarentena": 88,
+  "disposicoes": {
+    "unica": 3476,
+    "quarentena_misto": 88,
+    "nao_segmentada": 278,
+    "segmentada": 221
+  },
+  "busca": "exata, sem índice aproximado e sem banco vetorial (design.md, decisão 3)",
+  "condicao_de_reabertura": "crescimento do corpus em uma ordem de grandeza (dezenas de milhares de unidades)",
+  "fragmento_caracteres": 1100,
+  "fragmento_sobreposicao": 150,
+  "integridade_textual": {
+    "arquivo": "factcenter_subset_saude.csv",
+    "caracteres": 21559001,
+    "ausentes": [
+      "Ü"
+    ],
+    "corrompidos": [],
+    "aprovado": true,
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 1675,
+      "À": 225,
+      "Â": 123,
+      "Ã": 3539,
+      "É": 5246,
+      "Ê": 287,
+      "Í": 3693,
+      "Ó": 466,
+      "Ô": 180,
+      "Õ": 313,
+      "Ú": 686,
+      "Ü": 0,
+      "Ç": 3239
+    }
+  },
+  "modelo_embedding": "intfloat/multilingual-e5-base",
+  "dimensao": 768,
+  "custo_indexacao_s": {
+    "lexico": 2.13,
+    "denso": 883.42,
+    "total": 886.57
+  },
+  "fusao_padrao": {
+    "forma": "combinação convexa de scores realçados contra o fundo da própria consulta",
+    "alfa": 0.5,
+    "percentil_fundo": 50,
+    "percentil_topo": 99,
+    "provisorio": "alfa é fixado por medição na task 3.1; o limiar de evidência insuficiente, na 3.5"
+  }
+}

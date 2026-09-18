@@ -1,16 +1,34 @@
 # Estado do projeto
 
-Atualizado em **10/09/2026**.
+Atualizado em **18/09/2026**.
 
-## Os três changes
+## Os cinco changes
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | 0 de 33 |
+| `add-ampliacao-corpus-ptbr` | Investigate | completo | 0 de 55 |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **12 de 33** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
+
+## O que foi entregue em 18/09/2026
+
+Primeiro código executável do projeto, em `prototipo/` — prova de conceito, não
+componente do MVP.
+
+| Entregue | Onde |
+| --- | --- |
+| Sonda do gerador local (Gemma 4 12B QAT), 1 de 3 aprovações | [Sonda do gerador](investigate/sonda-gerador.md) |
+| Índice de recuperação: 5.090 unidades, 22.464 fragmentos | [Índice híbrido](investigate/indice-hibrido.md) |
+| Busca léxica (BM25), densa exata e fusão das duas | `prototipo/rag/` |
+
+Dois defeitos encontrados por medição, ambos invisíveis sem ela: o gerador não
+sustenta a fronteira clínica por prompt, e a primeira versão da fusão estava
+**anulando o braço denso** — somava um cosseno que varia 0,06 a um BM25 que
+varia 0 a 35, e a ordem final saía inteira do léxico.
 
 ## Capabilities
 
@@ -28,8 +46,16 @@ Todos passam `openspec validate --strict`.
 | --- | --- |
 | `normalizacao-rotulos` | contrato de leitura, parser de veredito, mapa por agência |
 | `integridade-textual` | fidelidade do trecho citado e reparo de acentuação |
-| `frescor-corpus` | cobertura declarada e resposta para pauta fora dela |
+| `frescor-corpus` | cobertura declarada em quatro níveis e resposta para pauta fora dela |
 | `adaptacao-criterios-en` | travessia dos instrumentos em inglês |
+| `anotacao-especialista-ptbr` | o que se afirma a partir de rótulo clínico, e a faixa de empate |
+| `procedencia-substituicao` | condições para trocar uma base sem quebrar a auditoria |
+| `indice-checagens-recentes` | localizar checagem fora da janela, sem citar texto de terceiro |
+| `acervo-circulacao` | o que se afirma a partir de conteúdo de usuário sem rótulo de veracidade |
+| `selecao-modelo` | três papéis de modelo, critério por papel, descarte do MedGemma com motivo |
+| `arquitetura-recuperacao` | híbrido como linha de base, índice à escala real, unidade com proveniência |
+| `fronteira-treino-recuperacao` | o que mora em peso e o que MUST vir de trecho recuperado |
+| `uso-analise-sentimento` | emoção é explicativa e descritiva, nunca evidenciária |
 
 ### Act
 
@@ -57,11 +83,24 @@ O tratamento dos datasets **bloqueia** as tasks 1.1 a 1.6 do MVP. Indexar antes
 de normalizar propaga o problema de rótulo para dentro do índice, onde ele fica
 caro de tirar.
 
+O índice de 18/09/2026 não viola isso, e a forma como não viola importa: ele
+guarda o veredito **com a grafia original da agência** e uma chave normalizada
+só por caixa e acento. Nenhum rótulo foi mapeado para os quatro de
+`verificacao-alegacao` — esse mapa é a task 2.3 do tratamento de datasets, e
+atribuí-lo por semelhança de string é vedado em texto expresso. O índice está
+pronto para receber o mapa quando ele existir, sem reindexar.
+
 ## Pendências conhecidas
 
 ### Lacuna de escopo
 
-**"Identificar vieses" não tem cobertura.** É uma das três competências nomeadas
+**"Identificar vieses" tem cobertura parcial desde 17/09/2026.** A capability
+`acervo-circulacao` endereça procedência e alcance com dado medido, que é uma
+face do problema. As outras duas seguem descobertas — conflito de interesse da
+fonte e viés de confirmação de quem lê. O texto abaixo permanece como registro
+do diagnóstico original.
+
+**"Identificar vieses" não tinha cobertura.** É uma das três competências nomeadas
 na Essential Question, e nenhuma das quatorze capabilities a endereça. O
 catálogo de técnicas trata de técnica retórica do texto (`cura milagrosa`,
 `manchete exagerada`), o que é diferente de viés: quem publicou e o que ganha
@@ -76,14 +115,28 @@ justificativa escrita.
 | --- | --- | --- |
 | Canal de entrega (WhatsApp vs. web) | `mvp-copiloto-verificacao` | arquitetura, e a GQ sobre momento da jornada |
 | Composição do catálogo de técnicas | `mvp-copiloto-verificacao` | `resposta-formativa` |
-| Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | calibragem |
+| Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | calibragem — **medido em 18/09: não sai de similaridade bruta** |
+| Estrutura de quatro blocos sob `evidência insuficiente` | `add-selecao-modelos-arquitetura-rag`, decisão 10 | task 3.2 do MVP; precisa de change de correção |
+| Necessidade de reranker | `add-selecao-modelos-arquitetura-rag` | depende da aferição da task 3.1 |
 | Qual conjunto de critérios do FakeHealth | `add-tratamento-datasets-ptbr` | `matriz-confianca` |
 | Origem dos itens verdadeiros | `add-tratamento-datasets-ptbr` | teste com usuário |
-| Sub-recorte dentro de saúde | `openspec/project.md` | curadoria dos casos |
+| ~~Sub-recorte dentro de saúde~~ | **resolvido em 17/09/2026: vacinação** | — |
+| ~~Local ou API para geração~~ | **resolvido em 17/09/2026: local, Gemma 4 12B QAT** | — |
+| ~~Provisionamento do ambiente~~ | **resolvido em 18/09/2026: Python 3.14.6, torch com MPS** | — |
 
 ## Próximo trabalho na fila
 
-1. Forense de casos e matriz de confiança — resto do Engage.
-2. Registro de licença e caveat por dataset (tasks 6.1 a 6.3 do Engage).
-3. Decisão sobre "identificar vieses".
-4. Tratamento dos datasets, que destrava o MVP.
+1. **Conjunto de 20 consultas de aferição** com o documento correto conhecido
+   (task 2.6). Sem ele, o índice funciona mas não está medido — a comparação de
+   35% de sobreposição entre os braços é sanidade, não aferição.
+2. **Medir recall das três configurações** — só léxica, só densa, híbrida — e
+   registrar o resultado mesmo se ele contrariar a decisão de usar híbrido
+   (tasks 3.1 e 3.2).
+3. **Calibrar o limiar de `evidência insuficiente`** sobre o score fundido,
+   incluindo o caso Qdenga, de pauta ausente do corpus (task 3.5).
+4. **Change de correção** para a estrutura de quatro blocos sob `evidência
+   insuficiente`, defeito de spec exposto pela sonda (task 2.1b).
+5. Tratamento dos datasets, que destrava o MVP — em especial o mapa de
+   vocabulário de veredito, que o índice já espera.
+6. Forense de casos e matriz de confiança — resto do Engage.
+7. Decisão sobre "identificar vieses".
