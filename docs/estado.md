@@ -204,6 +204,9 @@ pronto para receber o mapa quando ele existir, sem reindexar.
 
 ## Pendências conhecidas
 
+A lista completa de tasks pendentes, separada por fase do CBL, está em
+[Tasks pendentes](pendencias.md).
+
 ### Lacuna de escopo
 
 **"Identificar vieses" tem cobertura parcial desde 17/09/2026.** A capability

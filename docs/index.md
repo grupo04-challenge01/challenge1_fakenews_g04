@@ -1,6 +1,6 @@
 # Challenge 1 — Desinformação em Saúde
 
-Portfólio de pesquisa do **grupo ClearColors (G04)**, residência em IA do
+Portfólio de pesquisa do **grupo 04**, residência em IA do
 Instituto Eldorado.
 
 ## O que estamos construindo

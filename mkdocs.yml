@@ -1,5 +1,5 @@
 site_name: Challenge 1 — Desinformação em Saúde
-site_description: "Portfólio de pesquisa do grupo ClearColors (G04) — Challenge 1 da residência em IA"
+site_description: "Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA"
 
 repo_name: "challenge1_fakenews_g04"
 repo_url: "https://github.com/samarawwleticia/challenge1_fakenews_g04"
@@ -52,6 +52,7 @@ nav:
       - Aferição da recuperação: investigate/afericao-recuperacao.md
       - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Estado do projeto: estado.md
+  - Tasks pendentes: pendencias.md
 
 markdown_extensions:
   - attr_list

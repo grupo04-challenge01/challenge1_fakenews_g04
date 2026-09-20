@@ -1,9 +1,9 @@
-# Contexto do Projeto — ClearColors / Challenge 1
+# Contexto do Projeto — Grupo 04 / Challenge 1
 
 ## O que é este repositório
 
 Documentação spec-driven do Challenge 1 (Fake News / Desinformação) da residência
-em IA, conduzido pelo grupo ClearColors sob a metodologia CBL
+em IA, conduzido pelo grupo 04 sob a metodologia CBL
 (Challenge Based Learning).
 
 As specs aqui descrevem **artefatos de pesquisa e critérios de aceitação de
