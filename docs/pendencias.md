@@ -38,8 +38,8 @@ fazer o quê.
 
 ## Engage — 21 pendentes
 
-**Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 08/09 a
-11/09 · **Status real:** vencida e incompleta.
+**Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
+11/09 · **Status real:** vencida há 9 dias, e incompleta.
 
 Esta é a dívida mais antiga do projeto e a menos visível, porque o Investigate
 avançou por cima dela. As guiding questions ficaram prontas (bloco 5); o resto
@@ -312,6 +312,65 @@ Precisa ser aberto antes da semana 6, e a proposta natural é que ele cubra:
   não como epílogo.
 
 ---
+
+## Onde estamos no cronograma
+
+Datas derivadas da proposta do challenge em 20/09/2026 — ver
+`openspec/project.md`.
+
+| Semana | Fase | Datas | Situação |
+| --- | --- | --- | --- |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 4 de 25 tasks |
+| 2 | Investigate | 14/09 a 18/09 | encerrada |
+| **3** | **Investigate** | **21/09 a 25/09** | **começa amanhã — é a última** |
+| 4 | Act | 28/09 a 02/10 | não começou |
+| 5 | Act | 05/10 a 09/10 | não começou |
+| 6 | Showcase | 12/10 a 16/10 | sem change |
+
+**Hoje é domingo, 20/09.** O Investigate tem **cinco dias úteis** e encerra na
+sexta, 25/09. O Act começa na segunda seguinte, 28/09.
+
+### O que isso muda na leitura
+
+**O Investigate não está atrasado.** Está em 115 de 121, com 6 pendentes, e as
+4 do RAG são um comando na máquina com MPS. Fechar a fase no prazo é
+plausível — depende de rodar a aferição densa esta semana.
+
+**O Engage está.** Nove dias vencido, e agora com a agravante de que o bloco 4
+(matriz de confiança) virou pré-requisito de coisa já construída. Pela própria
+proposta, a entrega do Engage é «processo investigativo + guiding questions»:
+metade está pronta desde 11/09, a outra metade não começou.
+
+### O caminho crítico é o comitê de ética
+
+A cadeia é esta, e ela não tem folga:
+
+```text
+6.4 submeter ao CEP  →  6.6 piloto com 2 participantes  →  teste com usuário
+                                                        →  métrica primária
+```
+
+O Act encerra em **09/10** e o Showcase é de **12 a 16/10**. Da data de hoje até
+o fim do Act são **19 dias**. Toda a avaliação com usuário — que é de onde sai a
+métrica primária de sucesso do projeto, ganho de discernimento — está depois da
+aprovação do CEP nessa cadeia.
+
+O grupo sabe o prazo real do CEP da instituição; eu não. Mas a estrutura da
+dependência é essa, e a janela é essa. **Se houver uma única coisa a iniciar
+nesta segunda, é a submissão** — ela é a única pendência cujo prazo não depende
+de ninguém do grupo.
+
+### Sugestão de ordem para a semana 3
+
+1. **Segunda:** submissão ao CEP (6.4) e aferição densa na máquina com MPS
+   (3.1 a 3.4 do RAG, fecha o change).
+2. **Segunda ou terça:** workshop da confiança — bloco 4 do Engage. É
+   pré-requisito da rubrica já entregue e da task 8.1 do Act.
+3. **Meio da semana:** forense (bloco 2 do Engage), que é a outra metade da
+   entrega declarada da fase 1.
+4. **Quando der:** as cinco decisões abaixo, que são reunião e não execução.
+5. **Antes de 28/09:** abrir o change de Showcase e resolver o
+   `add-instrumento-avaliacao-ptbr`.
 
 ## A ordem das fases foi invertida, e isso tem custo
 
