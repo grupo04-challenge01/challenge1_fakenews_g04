@@ -20,16 +20,18 @@ antivacina). Blocos 6 a 10 foram renumerados.
 Este bloco vem antes da aquisição de propósito: se o índice não se sustentar,
 cai aqui, antes de qualquer trabalho de integração.
 
-- [ ] 1.1 Obter chave da Fact Check Tools API e confirmar acesso ao
+- [x] 1.1 Obter chave da Fact Check Tools API e confirmar acesso ao
       `claims:search`, verificando retorno não vazio para uma consulta de
       controle com `languageCode=pt`
-- [ ] 1.2 Medir o retorno para saúde em `pt`: contagem por ano e por agência
+- [x] 1.2 Medir o retorno para saúde em `pt`: contagem por ano e por agência
       sobre um conjunto de termos de pauta, verificando que a contagem está
       registrada em arquivo e não apenas em saída de terminal
-- [ ] 1.3 Decidir manter ou descartar `indice-checagens-recentes` contra o
+- [x] 1.3 Decidir manter ou descartar `indice-checagens-recentes` contra o
       limiar da Open Question do design; verificar que a decisão e o motivo
       estão registrados, e que o descarte, se houver, remove a capability da
-      proposal e das specs
+      proposal e das specs — **mantida** em 19/09/2026, decisão 11 do
+      `design.md`: 928 checagens, 525 posteriores a 2021, e a Qdenga tem 8 no
+      índice contra zero no corpus
 
 ## 2. Aquisição e conferência de licença
 

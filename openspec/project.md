@@ -114,7 +114,8 @@ Observação: 07/09 é feriado; a semana operacional do Engage começa em 08/09.
 | Change | Fase | Estado |
 | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | ativo |
-| `add-tratamento-datasets-ptbr` | Investigate | proposto |
-| `add-ampliacao-corpus-ptbr` | Investigate | proposto |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | proposto |
+| `add-tratamento-datasets-ptbr` | Investigate | ativo |
+| `add-ampliacao-corpus-ptbr` | Investigate | ativo |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | ativo |
+| `fix-resposta-sem-evidencia` | Investigate → Act | proposto |
 | `mvp-copiloto-verificacao` | Act | proposto |

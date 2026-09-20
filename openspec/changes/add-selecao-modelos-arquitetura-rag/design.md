@@ -445,6 +445,235 @@ com a grafia original e chave canônica. Não são veredito de checagem de alega
 e devem receber `nao_mapeavel` no mapa de vocabulário, não rótulo por
 semelhança.
 
+### 12. Fronteira treino/recuperação em linguagem operacional — 19/09/2026
+
+A decisão 6 fixa o princípio; as tasks 4.1 a 4.3 pedem a forma operacional, que
+é o que alguém consegue aplicar sem reabrir a discussão.
+
+#### A regra, em uma frase
+
+**Peso carrega forma; trecho carrega fato.** Se a afirmação pode ficar falsa
+amanhã sem que ninguém treine nada, ela vem de trecho recuperado.
+
+O teste prático, aplicável a qualquer proposta de treino: *o que esta proposta
+ensina ao modelo muda quando o mundo muda?* Se muda, é recuperação. Se não muda,
+é comportamento, e pode ir para peso.
+
+#### Os dois casos vedados, nomeados
+
+| Caso vedado | Como costuma ser proposto | Por que cai |
+| --- | --- | --- |
+| **Treinar fato** | "fine-tuning com pares alegação → veredito melhora a acurácia" | destrói a auditabilidade até a fonte, princípio inviolável de `openspec/project.md`. O ganho de acurácia MUST NOT ser aceito como compensação |
+| **Treinar classificador de veredito** | "temos 12 mil itens rotulados no PUBHEALTH, dá para treinar" | os datasets de rótulo binário são banco de estímulos, nunca alvo de treino de veredito, em texto expresso de `project.md` |
+
+Um terceiro caso, mais escorregadio, cai pela mesma regra sem estar nomeado nas
+duas linhas: **adotar modelo cuja especialização de domínio permita responder
+sem recuperar**. É o que fecha o descarte do MedGemma na decisão 2 — a
+capacidade de responder sem recuperar é registrada como risco, não como
+vantagem.
+
+#### Procedimento de auditoria de afirmação sem trecho de origem (task 4.2)
+
+A auditoria roda sobre resposta já emitida, percorre camada visível e camada de
+detalhe, e é de passo único por afirmação:
+
+1. **Segmentar** a resposta em afirmações. Afirmação é toda sentença que possa
+   ser verdadeira ou falsa sobre o mundo. Instrução ao leitor, pergunta e nome
+   de técnica do catálogo não são afirmações factuais e saem da conta.
+2. **Casar** cada afirmação com o `fragmento_id` que a sustenta. O vínculo é
+   registrado pelo sistema no momento da geração, não reconstruído depois — e
+   reconstruir depois MUST NOT ser aceito como prova, porque a reconstrução
+   encontra um trecho plausível mesmo quando a geração não usou nenhum.
+3. **Conferir literalidade** do trecho contra o corpus, com
+   `tratamento.integridade.trecho_e_fiel`. Trecho que não é subcadeia exata do
+   texto de origem reprova junto com a afirmação.
+4. **Classificar o que sobrou.** Afirmação sem `fragmento_id` é **defeito**, não
+   estilo. Sai da resposta. Não é reescrita para soar mais vaga, não é movida
+   para a camada de detalhe, não recebe ressalva — é removida.
+5. **Registrar** a contagem: afirmações auditadas, com trecho, sem trecho e com
+   trecho infiel. A taxa de afirmação sem trecho é métrica de guarda, e sobe
+   antes de qualquer outra coisa quebrar.
+
+O passo 2 é o que distingue esta auditoria de uma inspeção de plausibilidade. O
+sistema precisa **já saber** de onde tirou cada frase; se precisa procurar, a
+fronteira já foi cruzada.
+
+#### Sequência adotada e o critério que autoriza o primeiro treino (task 4.3)
+
+1. **RAG puro, sem nenhum fine-tuning** — estado atual. A sonda de 18/09 e a
+   aferição de 19/09 são a linha de base exigida por
+   `fronteira-treino-recuperacao`.
+2. **Prompt medido** para cada classificador auxiliar do papel 3. Medir por
+   prompt antes é obrigatório: sem isso não existe o número contra o qual o
+   treino se justifica.
+3. **Primeiro treino autorizado** quando, e só quando, as quatro condições
+   valerem juntas:
+   - o alvo é **comportamento** (forma de resposta, vocabulário do catálogo,
+     recusa de conduta clínica, nível de leitura) — nunca valor de verdade;
+   - existe linha de base por prompt **medida e registrada**, com o conjunto de
+     avaliação versionado;
+   - a falha do prompt é **reprodutível**, não anedótica — a sonda de 18/09 é o
+     formato: três tentativas, resultado por tentativa, caso a caso;
+   - o ganho esperado é maior que o custo de perder a reexecutabilidade do
+     experimento em outra máquina.
+
+O detector de pedido de conduta clínica da task 4.1 de `mvp-copiloto-verificacao`
+é o **único candidato hoje**, e já tem meio caminho andado: a sonda mediu que o
+Gemma 4 não sustenta a fronteira clínica por prompt (decisão 10). Falta a
+condição 2 — conjunto de avaliação versionado — antes de o treino ser
+autorizado.
+
+### 13. Emoção nomeada: rótulos, ferramentas e o teste cruzado — 19/09/2026
+
+A decisão 7 estabeleceu que polaridade não entra no veredito e que a
+granularidade adotada é emoção discreta. As tasks 5.2 a 5.4 pedem o que vem
+depois disso.
+
+#### Rótulos candidatos ao catálogo de técnicas (task 5.2)
+
+O catálogo de `resposta-formativa` é **fechado, de 6 a 8 rótulos**, e já está
+ocupado por técnicas não emocionais — `cura milagrosa` e `manchete exagerada`
+constam em texto expresso da spec. O orçamento não comporta uma família
+emocional inteira, então a proposta é de **dois rótulos**, escolhidos por serem
+os mais frequentes no corpus e os mais ensináveis:
+
+| Rótulo proposto | O sinal, em linguagem cotidiana | Por que este |
+| --- | --- | --- |
+| `urgência fabricada` | manda repassar agora, antes que apaguem, antes que seja tarde | é a emoção que produz o encaminhamento, que é o comportamento que o produto quer interromper |
+| `medo de dano oculto` | afirma que algo que você já usa esconde um perigo grave | é o formato dominante da desinformação antivacina, que é o sub-recorte do projeto |
+
+Descartados como rótulo próprio, com motivo: `indignação` (frequente, mas o
+sinal se confunde com crítica política legítima, e nomear isso como técnica
+arrisca o sistema parecer partidário); `apelo à autoridade emocional` ("médico
+chorando no vídeo"), que cai melhor dentro do critério de conflito de interesse
+da rubrica; `esperança milagrosa`, já coberto por `cura milagrosa`.
+
+A composição final do catálogo continua sendo questão em aberto de
+`mvp-copiloto-verificacao`; o que esta task entrega é a proposta com o motivo,
+para consumo da task 3.1 daquele change.
+
+#### Ferramentas de emoção em PT-BR, com licença (task 5.3)
+
+| Ferramenta | O que faz | Licença | Serve a quê aqui |
+| --- | --- | --- | --- |
+| **LeIA** (`rafjaa/LeIA`) | fork do VADER adaptado ao português, léxico, com emoji e negação | **MIT** | **só polaridade** (`pos`/`neg`/`neu`/`compound`), não emoção nomeada — não serve ao uso formativo, e o uso a que serviria é o vedado pela decisão 7 |
+| **pysentimiento** | toolkit multilíngue com emoção, ódio e ironia; PT entre os idiomas suportados | código aberto, mas **os modelos herdam licença de datasets de terceiro, vários não comerciais** | candidato real para o uso descritivo; licença a conferir modelo a modelo antes de entrar em entregável |
+| **BERTimbau ajustado para emoção** | transformer PT-BR ajustado sobre GoEmotions traduzido ou sobre as oito emoções de Plutchik | base `neuralmind/bert-base-portuguese-cased` é **MIT**; o ajuste herda a licença do dataset de treino | encaixa no papel 3 da decisão 1, coerente com o achado do MTEB-BR de que o BERTimbau é forte em classificação e fraco em recuperação |
+| **EmoAtlas** (léxico) | detecção interpretável por léxico, oito emoções de Plutchik | conferir na fonte | alternativa barata; o benchmark de 2025 em PT-BR o põe abaixo dos transformers em acurácia, com custo computacional até 40× menor |
+
+Nenhuma é adotada nesta fase. O que a task entrega é o levantamento com a
+restrição de licença visível, e uma conclusão: **a única ferramenta PT-BR madura
+e de licença limpa (LeIA, MIT) faz justamente o que a decisão 7 proibiu usar**,
+o que reforça que a via de emoção nomeada é trabalho de prompt sobre o gerador
+local, não de biblioteca pronta.
+
+Fontes conferidas em 19/09/2026: repositório do LeIA (licença MIT, saída de
+polaridade), README do pysentimiento (idiomas suportados e a ressalva de que os
+modelos herdam licença de dataset de terceiro), e o benchmark de detecção de
+emoção em português de 2025 que compara léxico, BERTimbau e LLM.
+
+#### O teste dos dois casos cruzados (task 5.4)
+
+O teste existe para provar que o sistema **não** usa carga emocional como
+indício de falsidade. São dois casos, e os dois precisam passar:
+
+| Caso | Entrada | O que DEVE acontecer | O que reprova |
+| --- | --- | --- | --- |
+| **C1 — verdadeiro com carga emocional alta** | alerta real de surto, em caixa alta, com pedido de repasse e apelo ao medo | o veredito acompanha o trecho recuperado e sai `verdadeiro`; a técnica `urgência fabricada` pode ser nomeada no bloco formativo | qualquer rebaixamento do veredito por causa do tom |
+| **C2 — falso em tom neutro** | texto antivacina calmo, pseudo-técnico, com citação de estudo inexistente | o veredito sai `falso` ou `evidência insuficiente` conforme o trecho, sem que a ausência de emoção pese a favor | o tom sóbrio elevar a confiança atribuída |
+
+C2 é o caso que importa: é o formato predominante do corpus de Telegram de
+`acervo-circulacao`, e é exatamente onde um classificador de polaridade erraria.
+Os dois casos entram como itens-armadilha de `avaliacao-instrumento`, e a
+construção dos estímulos depende da curadoria dos 20 a 30 casos daquele change.
+
+### 14. Candidatos por papel, licenças e a Prohibited Use Policy — 19/09/2026
+
+Tasks 1.3 a 1.5 e 1.7. A decisão 1 fixou os três papéis e a decisão 5 fixou o
+critério de seleção do papel de recuperação; falta a lista de candidatos com o
+que cada um custa em tamanho e obriga em licença.
+
+#### Papel 1 — recuperação (task 1.3)
+
+| Candidato | Parâmetros | Dimensão | Janela | Licença | Prefixo assimétrico |
+| --- | --- | --- | --- | --- | --- |
+| `intfloat/multilingual-e5-small` | ~118 M | 384 | 512 | MIT | `query:` / `passage:` |
+| **`intfloat/multilingual-e5-base`** (adotado) | ~278 M | 768 | 512 | MIT | `query:` / `passage:` |
+| `intfloat/multilingual-e5-large` | ~560 M | 1024 | 512 | MIT | `query:` / `passage:` |
+| `BAAI/bge-m3` | ~568 M | 1024 | **8192** | MIT | não exige |
+| `neuralmind/bert-base-portuguese-cased` (BERTimbau) | ~110 M | 768 | 512 | MIT | não se aplica |
+
+**Sobre a coluna de score.** A decisão 5 já registra o que o MTEB-BR mostra no
+agregado: 0,331 de média em recuperação para os 16 modelos específicos de
+português contra 0,517 dos multilíngues (p = 0,003), BERTimbau em 0,258, e a
+diferença desaparecendo entre variantes ajustadas para recuperação (0,516 contra
+0,517, p = 0,99). **O score por modelo não foi transcrito para esta tabela**
+porque não foi possível extrair a tabela do artigo em texto conferível — e
+número de benchmark copiado de segunda mão é exatamente o tipo de afirmação que
+este projeto não aceita sobre dado de terceiro.
+
+O que substitui isso, e é mais forte para a decisão: a medição própria da task
+3.3, sobre o conjunto de aferição de 20 consultas do nosso corpus. Benchmark
+público mede tarefa genérica; a aferição mede a tarefa que o produto faz.
+
+**Restrições que a tabela impõe.** A janela de 512 tokens do e5 é o que ditou o
+fragmento de 1.100 caracteres da decisão 11 — o `bge-m3`, com 8.192, dispensaria
+a fragmentação, e é a razão pela qual ele permanece candidato apesar do custo.
+Trocar o modelo obriga a **reindexar**: usar modelos diferentes na indexação e
+na consulta quebra o espaço vetorial, e isso não é negociável.
+
+#### Papel 2 — geração (task 1.4)
+
+| Via | Candidato | Licença | Por que entra ou sai |
+| --- | --- | --- | --- |
+| **local** | **Gemma 4 12B QAT q4_0** (adotado) | termos da Gemma, com Prohibited Use Policy | decisão 8; o dado não sai da máquina, o que retira a questão do TCLE em vez de mitigá-la |
+| local | Gemma 3 12B QAT | termos da Gemma, com Prohibited Use Policy | contingência da decisão 8, se o ferramental da geração 4 falhar |
+| local | Qwen 3 14B | Apache 2.0 | licença mais limpa; não adotado por não ter sido sondado, e sondar custa o mesmo que já foi gasto no Gemma 4 |
+| API | Gemini, GPT, Claude | termos de serviço do provedor | **descartada em 17/09/2026**: mensagem de participante de teste sairia para terceiro durante a sessão, o que entra no TCLE e amplia a submissão ao CEP |
+| local | MedGemma | Health AI Developer Foundations | **descartado** — decisão 2 |
+
+#### Licenças dos modelos adotados, pelo nome (task 1.5)
+
+| Modelo adotado | Papel | Licença | Restrição que importa aqui |
+| --- | --- | --- | --- |
+| `intfloat/multilingual-e5-base` | recuperação | MIT | nenhuma restrição de uso; exige atribuição da licença |
+| Gemma 4 12B QAT | geração | termos da Gemma + Prohibited Use Policy | ver a seção seguinte |
+| BERTimbau (se usado no papel 3) | classificação auxiliar | MIT (modelo base) | o ajuste herda a licença do dataset de treino, que precisa ser conferida separadamente |
+
+#### A Prohibited Use Policy contra `fronteira-orientacao-saude` (task 1.7)
+
+Conferida em 19/09/2026. A política é a mesma para Gemma 3 e Gemma 4, então a
+conferência vale também para a contingência.
+
+Três cláusulas tocam este projeto:
+
+1. **Prática não licenciada de profissão**, incluindo explicitamente
+   medicina/saúde. Proíbe o sistema exercer medicina sem licença.
+2. **Alegação enganosa de perícia ou capacidade**, "particularmente em áreas
+   sensíveis (por exemplo, saúde, finanças, serviços de governo ou jurídico)".
+   Proíbe o sistema se apresentar como fonte clínica.
+3. **Decisão automatizada de alto risco** em domínios que afetam direitos ou
+   bem-estar individual, saúde incluída.
+
+**Resultado da conferência: não há conflito. Há convergência.** A política proíbe
+exatamente o que `fronteira-orientacao-saude` já obriga o sistema a recusar —
+conduta clínica individual. As três cláusulas são mais restritivas que a nossa
+spec em nenhum ponto e coincidentes nela em todos.
+
+Duas consequências práticas, ambas já ancoradas:
+
+- A cláusula 3 reforça que o veredito **não pode** ser saída única e
+  automatizada sobre conduta: o princípio arquitetural de `openspec/project.md`
+  já exige critério e proveniência junto, e a política torna isso também uma
+  obrigação de licença.
+- A falha da sonda T2 (decisão 10), em que o modelo abriu com `VEREDITO: Falso`
+  para quem perguntou se podia parar a quimioterapia, é uma aproximação da
+  cláusula 1. O classificador de pedido de conduta da task 4.1 do MVP passa a
+  ter, além da razão de produto, uma razão de conformidade de licença.
+
+A contingência do Gemma 3 fica **autorizada quanto à política**; o que restaria
+conferir, se acionada, são os termos de uso da versão específica, não a PUP.
+
 ## Questões em aberto
 
 - ~~Local ou API para o papel de geração.~~ **Fechada em 17/09/2026** — ver

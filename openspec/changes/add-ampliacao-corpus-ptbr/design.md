@@ -201,6 +201,74 @@ O `.jsonl` de 3,6 GB fica fora do git como os demais brutos.
 Custo aceito: quem quiser reproduzir baixa do REDU. É o mesmo contrato dos outros
 brutos do pacote, e aqui há razão adicional para ele.
 
+### 11. Portão de medição do índice: mantido, e por uma margem grande — 19/09/2026
+
+Tasks 1.1 a 1.3. A Open Question deixou o limiar de volume em aberto porque não
+havia medição. Agora há: `datasets/scripts/sondar_factcheck_api.py`, resultado
+versionado em `datasets/derivados/sonda_factcheck_api.json`.
+
+#### O que a API devolve para saúde em `pt`
+
+| Termo de pauta | Checagens | Posteriores a 2021 |
+| --- | --- | --- |
+| `vacina` | 404 | 239 |
+| `covid` | 306 | 136 |
+| `gripe` | 80 | 44 |
+| `dengue` | 76 | 55 |
+| `mpox` | 39 | 36 |
+| `qdenga` | 8 | 7 |
+| `febre amarela` | 8 | 5 |
+| `hpv` | 5 | 3 |
+| `sarampo` | 2 | 0 |
+| `oropouche` | **0** | 0 |
+| `semaglutida` | **0** | 0 |
+| **total** | **928** | **525** |
+
+O termo de controle (`vacina`) devolveu 404 checagens, o que é o que autoriza
+ler os zeros como ausência de pauta e não como consulta quebrada.
+
+#### A decisão: manter
+
+O critério não é volume absoluto — é se o índice muda a resposta no caso em que
+o acervo falha. Muda, e exatamente ali:
+
+- **Qdenga**, que tem **zero ocorrência** no corpus e é o caso de teste da
+  lacuna de acervo, tem **8 checagens no índice**, distribuídas em 2023, 2024 e
+  2026, por AFP Checamos, Aos Fatos, Estadão, Folha e UOL.
+- **Mpox**, também zero no corpus, tem **39**, quase todas de 2024 em diante.
+- 525 das 928 checagens são posteriores ao fim do acervo. O índice não duplica o
+  corpus; ele começa onde o corpus termina.
+
+#### Ganho lateral não previsto: agências que o acervo não tem
+
+O índice alcança **11 editores**, contra as seis agências do corpus:
+
+```
+Estadão 183 · AFP Checamos 178 · Aos Fatos 174 · Observador 158 ·
+UOL Notícias 142 · Projeto Comprova 67 · Folha 11 · BOL 8 ·
+Nexo 3 · O Globo 2 · Agência Pública 2
+```
+
+AFP Checamos, Observador, UOL, Folha, Nexo, O Globo e Agência Pública **não
+estão no corpus**. Isso amplia a cobertura por fonte, não só por data — e o
+Observador é português, não brasileiro, o que precisa entrar como caveat na
+declaração de cobertura: checagem de Portugal responde sobre pauta europeia com
+vocabulário próximo, e atribuí-la como se fosse brasileira seria erro de
+proveniência.
+
+#### O que a medição não resolve
+
+`oropouche` e `semaglutida` continuam em **zero mesmo no índice**. As duas
+pautas que o corpus não cobre também não têm checagem indexada em português —
+logo, para elas, a resposta correta continua sendo lacuna de acervo **sem**
+ponteiro, e a task 8.2 precisa de um terceiro caso de teste: pauta ausente dos
+dois níveis. Isso não derruba o índice; delimita o que ele promete.
+
+#### Consequência para as tasks
+
+A capability `indice-checagens-recentes` **permanece na proposal e nas specs**.
+O bloco 7 (construção do índice) fica autorizado a executar.
+
 ## Risks / Trade-offs
 
 - **Volume do índice em `pt` para saúde é desconhecido** → Portão de medição na
