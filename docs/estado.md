@@ -9,7 +9,7 @@ Atualizado em **19/09/2026**.
 | `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **3 de 55** |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **27 de 33** |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **29 de 33** |
 | `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 12** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
@@ -26,6 +26,20 @@ Todos passam `openspec validate --strict`.
 | Candidatos por papel com tamanho e licença; PUP da Gemma conferida | decisão 14 |
 | Conjunto de aferição: 20 consultas reais, duas famílias, fora do covid | `prototipo/rag/consultas_afericao.json` |
 | Aferidor de recall e calibração de limiar | `prototipo/rag/afericao.py` |
+| Primeira aferição medida (braço léxico) e calibração do limiar | [Aferição da recuperação](investigate/afericao-recuperacao.md) |
+
+Dois achados da aferição, ambos contra suposição do projeto:
+
+1. **O limiar de `evidência insuficiente` não sai do score fundido**, e o motivo
+   é estrutural, não de calibragem: o realce é relativo à própria consulta, e
+   `como declarar imposto de renda atrasado` pontua 0,853, acima de 11 dos 20
+   alvos reais. Sobre o BM25 bruto existe curva — 27,2 rejeita 100% do ruído e
+   custa 40% dos positivos.
+2. **Os oito positivos perdidos por esse limiar são todos `reformulada`.**
+   Nenhum `verbatim` cai. O braço léxico só tem confiança calibrável quando o
+   usuário cola a mensagem; quando ele reformula, o BM25 não distingue a própria
+   ignorância de um acerto fraco. É a formulação precisa do que o híbrido tem de
+   resolver, e vira previsão testável para a medição do braço denso.
 
 Achado da decisão 13: a única ferramenta de emoção em PT-BR madura e de licença
 limpa (LeIA, MIT) faz **só polaridade** — exatamente o uso que a decisão 7
@@ -188,7 +202,7 @@ justificativa escrita.
 | --- | --- | --- |
 | Canal de entrega (WhatsApp vs. web) | `mvp-copiloto-verificacao` | arquitetura, e a GQ sobre momento da jornada |
 | Composição do catálogo de técnicas | `mvp-copiloto-verificacao` | `resposta-formativa` |
-| Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | calibragem — **medido em 18/09: não sai de similaridade bruta** |
+| Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | **medido em 19/09: não sai do score fundido, por motivo estrutural; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos** |
 | Estrutura de quatro blocos sob `evidência insuficiente` | `add-selecao-modelos-arquitetura-rag`, decisão 10 | task 3.2 do MVP; precisa de change de correção |
 | Necessidade de reranker | `add-selecao-modelos-arquitetura-rag` | depende da aferição da task 3.1 |
 | ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
@@ -201,16 +215,14 @@ justificativa escrita.
 
 ## Próximo trabalho na fila
 
-1. **Conjunto de 20 consultas de aferição** com o documento correto conhecido
-   (task 2.6). Sem ele, o índice funciona mas não está medido — a comparação de
-   35% de sobreposição entre os braços é sanidade, não aferição.
-2. **Medir recall das três configurações** — só léxica, só densa, híbrida — e
-   registrar o resultado mesmo se ele contrariar a decisão de usar híbrido
-   (tasks 3.1 e 3.2).
-3. **Calibrar o limiar de `evidência insuficiente`** sobre o score fundido,
-   incluindo o caso Qdenga, de pauta ausente do corpus (task 3.5).
-4. **Change de correção** para a estrutura de quatro blocos sob `evidência
-   insuficiente`, defeito de spec exposto pela sonda (task 2.1b).
+1. **Terminar a aferição do braço denso e do híbrido** (tasks 3.1 a 3.4). O
+   conjunto, o aferidor e a calibração existem; falta a matriz densa, que em
+   CPU não fecha em tempo de sessão. Rodar na máquina com MPS:
+   `python -m prototipo.rag aferir`.
+2. **Comparar dois modelos de embedding** sob o mesmo conjunto (task 3.3), com
+   a latência separada entre indexação e consulta (task 3.4).
+3. **Decidir o destino de `enganoso` e `impreciso`** no mapa de veredito — 218 e
+   64 ocorrências, marcadas como «a confirmar pelo grupo».
 5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
    que o índice esperava existe, versionado, e o índice pode recebê-lo sem
    reindexar.

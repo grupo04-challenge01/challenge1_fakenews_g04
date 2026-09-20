@@ -48,16 +48,29 @@
 
 ## 3. Medição e calibração
 - [ ] 3.1 Medir recall das três configurações — só léxica, só densa, híbrida —
-      sobre as 20 consultas de aferição
+      sobre as 20 consultas de aferição. **Parcial em 19/09/2026:** braço
+      léxico medido — recall@3 de 1,00 em `verbatim` e 0,70 em `reformulada`,
+      MRR 0,725, latência mediana de 187 ms. Densa e híbrida pendentes da
+      matriz, que nesta máquina (CPU, sem MPS) não terminou dentro da sessão.
+      Aferidor pronto: `python -m prototipo.rag aferir`
 - [ ] 3.2 Registrar o resultado como evidência da decisão 4 de `design.md`,
       inclusive se ele contrariar a decisão
 - [ ] 3.3 Comparar ao menos dois modelos de embedding sob o mesmo conjunto de
       aferição
 - [ ] 3.4 Medir a latência de consulta de cada modelo comparado, separando custo
       de indexação de custo de consulta
-- [ ] 3.5 Calibrar o limiar de `evidência insuficiente` sobre o score fundido,
-      incluindo casos de pauta ausente do corpus
-- [ ] 3.6 Documentar o conjunto de aferição e a calibração de forma reproduzível
+- [x] 3.5 Calibrar o limiar de `evidência insuficiente` sobre o score fundido,
+      incluindo casos de pauta ausente do corpus — **feito, e o objeto da task
+      está errado.** Sobre o score fundido não existe limiar que separe: o
+      realce é relativo à própria consulta, então `como declarar imposto de
+      renda atrasado` pontua 0,853, acima de 11 dos 20 alvos reais. Sobre o
+      BM25 **bruto** há curva: 27,2 rejeita 100% do ruído e custa 40% dos
+      positivos — e os oito positivos perdidos são **todos** da família
+      `reformulada`. Ver `docs/investigate/afericao-recuperacao.md`
+- [x] 3.6 Documentar o conjunto de aferição e a calibração de forma reproduzível
+      — `prototipo/rag/consultas_afericao.json` versionado, `prototipo/rag/
+      afericao.py` e a página `docs/investigate/afericao-recuperacao.md`, com o
+      comando de reexecução e os limites da medição declarados
 
 ## 4. Fronteira entre treino e recuperação
 - [x] 4.1 Redigir a regra de fronteira em linguagem operacional, com os dois
