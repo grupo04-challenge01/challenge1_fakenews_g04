@@ -81,8 +81,14 @@ nova que o último ciclo de atualização.
 
 ## Questões em aberto
 
-1. Qual dos dois conjuntos de critérios do FakeHealth adotar, ou se vale o
-   mapeamento manual entre eles.
+1. ~~Qual dos dois conjuntos de critérios do FakeHealth adotar~~ — **resolvido
+   em 19/09/2026: `HealthStory` como base**, com as duas perguntas próprias de
+   `HealthRelease` mapeadas para dentro dele. O que chega ao usuário deste
+   projeto é mensagem que circulou, não comunicado institucional. A pergunta
+   sobre financiador entra como nível do critério de conflito de interesse; a de
+   linguagem sensacionalista é preservada inteira, por endereçar direto o
+   catálogo de técnicas de `resposta-formativa`. Cinco perguntas saíram da
+   rubrica, com motivo por escrito.
 2. Se os registros multi-alegação entram no índice do RAG separados por alegação
    ou se ficam fora do índice e só no conjunto de teste.
 3. Qual a periodicidade aceitável de atualização, o que depende da decisão de

@@ -20,10 +20,18 @@ ser tratada como erro de leitura, nunca corrigida por normalização posterior.
 
 - **WHEN** `factcenter_subset_saude.csv` é lido com o delimitador default e sem
   tratamento de newline interno
-- **THEN** a contagem obtida é 42.197 linhas físicas contra 4.063 registros
-  declarados
+- **THEN** a leitura falha com erro de parser, contra 4.063 registros declarados
+  em 48.392 linhas físicas
 - **AND** a leitura é rejeitada como inválida
 - **AND** nenhum derivado é gerado a partir dela
+
+#### Scenario: Leitura que descarta linha defeituosa em silêncio
+
+- **WHEN** a leitura é feita com descarte de linha defeituosa, de modo que não
+  levante erro
+- **THEN** a contagem obtida é 25.670 registros de uma única coluna
+- **AND** a leitura é rejeitada como inválida
+- **AND** a divergência MUST NOT ser corrigida por normalização posterior
 
 ### Requirement: Interpretação do campo de veredito
 
@@ -45,6 +53,12 @@ MUST existir mapa versionado que associe cada valor de veredito observado a um
 dos quatro rótulos de `verificacao-alegacao` ou a `nao_mapeavel`. Valor ausente
 do mapa MUST interromper o processamento e exigir decisão registrada; MUST NOT
 receber rótulo por semelhança de string.
+
+A contagem que o mapa precisa cobrir é a de **valores de veredito**, não a de
+strings do campo. Medido no corpus: 285 strings serializadas distintas, que se
+resolvem em 26 grafias e 19 chaves canônicas sob dobra de caixa e acento. O mapa
+SHALL ser indexado pela chave canônica, e a grafia original MUST permanecer
+recuperável ao lado dela.
 
 O valor `boato`, que responde por 43% dos registros, MUST NOT ser mapeado para
 `falso` sem registro explícito de que a agência de origem publica apenas rumor e
@@ -70,6 +84,11 @@ como alegação única. Registro com vereditos divergentes entre si SHALL ser
 marcado como `misto` e reservado como caso de teste da decomposição fato,
 evidência e opinião.
 
+Divergência SHALL ser avaliada sobre o rótulo de destino, não sobre a grafia:
+dois vereditos de grafia diferente que caem no mesmo rótulo não tornam o
+registro misto. Medido sob o mapa versão 1.0.0: 587 registros multi-alegação,
+dos quais 245 são mistos.
+
 #### Scenario: Vereditos divergentes no mesmo registro
 
 - **WHEN** o registro traz `['FALSO', 'SUBESTIMADO', 'VERDADEIRO', 'VERDADEIRO']`
@@ -86,8 +105,9 @@ evidência e opinião.
 
 ### Requirement: Ausência de itens verdadeiros no corpus
 
-O corpus MUST NOT ser usado como fonte de itens de veredito `verdadeiro`: existem
-21 registros com veredito verdadeiro ou verdadeiro com ressalva em 4.063. A
+O corpus MUST NOT ser usado como fonte de itens de veredito `verdadeiro`: 21
+registros consolidam em `verdadeiro` e 22 têm chave única `verdadeiro` ou
+`verdadeiro, mas`, em 4.063. A
 carência SHALL constar dos caveats do dataset, e a coleta desses itens SHALL ser
 tratada como trabalho manual à parte.
 

@@ -1,18 +1,52 @@
 # Estado do projeto
 
-Atualizado em **18/09/2026**.
+Atualizado em **19/09/2026**.
 
 ## Os cinco changes
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
-| `add-tratamento-datasets-ptbr` | Investigate | completo | 0 de 33 |
+| `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | 0 de 55 |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **12 de 33** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
+
+## O que foi entregue em 19/09/2026
+
+Tratamento dos datasets — o change que bloqueava as tasks 1.1 a 1.6 do MVP.
+Pacote `tratamento/`, 53 testes, cinco artefatos reexecutáveis por
+`python -m tratamento tudo`.
+
+| Entregue | Onde |
+| --- | --- |
+| Contrato de leitura dos nove derivados, com formato medido | `tratamento/leitura.py` |
+| Mapa de veredito versionado 1.0.0, 19 chaves canônicas | `tratamento/mapa_vereditos.json` |
+| Verificador de integridade textual definitivo, por arquivo | `tratamento/integridade.py` |
+| Declaração de cobertura e resposta de lacuna de acervo | `tratamento/frescor.py` |
+| Rubrica PT-BR de seis critérios e pool de few-shot | `tratamento/criterios.py` |
+| Reparo do `update_factckbr.py` (três defeitos) | `datasets/01_nucleo_metodologico/factckbr/` |
+| Registro completo | [Tratamento dos datasets](investigate/tratamento-datasets.md) |
+
+Quatro números do portfólio foram desmentidos pela medição e corrigidos nas
+specs: 42.197 linhas físicas (são 48.392), 285 valores de veredito (são 285
+strings, 26 grafias, 19 chaves), 250 registros mistos (são 245) e nove letras
+perdidas no FACTCK.BR (são onze ausentes, sete com evidência de corrupção).
+
+Três achados novos, nenhum previsto no change:
+
+1. **A perda de caractere do FACTCK.BR é irreversível.** Está na fonte
+   distribuída, não no nosso derivado. A task 3.5 pedia o impossível e foi
+   reescrita como recoleta.
+2. **Os derivados da FakeRecogna reprovam no mesmo portão, pela razão oposta** —
+   texto lematizado na origem, não perda de caractere. O laudo passou a nomear
+   a causa, para não acusar a base errada no portfólio.
+3. **O proxy de validação da rubrica foi medido e reprovado.** Sob qualquer piso
+   único ele removeria `alarme` e `linguagem`, os dois critérios mais relevantes
+   para desinformação. As remoções se sustentam no argumento de unidade de
+   análise; a validação empírica segue pendente de anotação humana.
 
 ## O que foi entregue em 18/09/2026
 
@@ -118,7 +152,9 @@ justificativa escrita.
 | Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | calibragem — **medido em 18/09: não sai de similaridade bruta** |
 | Estrutura de quatro blocos sob `evidência insuficiente` | `add-selecao-modelos-arquitetura-rag`, decisão 10 | task 3.2 do MVP; precisa de change de correção |
 | Necessidade de reranker | `add-selecao-modelos-arquitetura-rag` | depende da aferição da task 3.1 |
-| Qual conjunto de critérios do FakeHealth | `add-tratamento-datasets-ptbr` | `matriz-confianca` |
+| ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
+| Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | `tratamento/mapa_vereditos.json` | confirmação do grupo |
+| Validação empírica da rubrica de seis critérios | `add-tratamento-datasets-ptbr`, task 5.4 | `avaliacao-instrumento` |
 | Origem dos itens verdadeiros | `add-tratamento-datasets-ptbr` | teste com usuário |
 | ~~Sub-recorte dentro de saúde~~ | **resolvido em 17/09/2026: vacinação** | — |
 | ~~Local ou API para geração~~ | **resolvido em 17/09/2026: local, Gemma 4 12B QAT** | — |
@@ -136,7 +172,8 @@ justificativa escrita.
    incluindo o caso Qdenga, de pauta ausente do corpus (task 3.5).
 4. **Change de correção** para a estrutura de quatro blocos sob `evidência
    insuficiente`, defeito de spec exposto pela sonda (task 2.1b).
-5. Tratamento dos datasets, que destrava o MVP — em especial o mapa de
-   vocabulário de veredito, que o índice já espera.
+5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
+   que o índice esperava existe, versionado, e o índice pode recebê-lo sem
+   reindexar.
 6. Forense de casos e matriz de confiança — resto do Engage.
 7. Decisão sobre "identificar vieses".

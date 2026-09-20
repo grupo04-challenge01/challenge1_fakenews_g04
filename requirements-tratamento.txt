@@ -1,0 +1,9 @@
+# Pilha do tratamento dos datasets (change add-tratamento-datasets-ptbr).
+# Separada de requirements.txt (MkDocs) e de requirements-rag.txt (recuperação).
+# Conferido em 19/09/2026 com Python 3.14.2, pandas 3.0.5.
+
+pandas>=2.2                # contrato de leitura e derivados
+pytest>=8.0                # 53 testes em tratamento/tests
+
+# `tratamento.integridade.verificar_fidelidade_dos_trechos` importa
+# `prototipo.rag.unidades`, que não exige torch — só a pilha acima.

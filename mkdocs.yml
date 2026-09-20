@@ -48,6 +48,7 @@ nav:
   - Fase Investigate:
       - Sonda do gerador: investigate/sonda-gerador.md
       - Índice híbrido: investigate/indice-hibrido.md
+      - Tratamento dos datasets: investigate/tratamento-datasets.md
   - Estado do projeto: estado.md
 
 markdown_extensions:

@@ -33,3 +33,8 @@ rtk_build/
 prototipo/indice/*.jsonl
 prototipo/indice/*.npy
 !prototipo/indice/manifesto.json
+
+# Segredos. A chave da Fact Check Tools API mora em .env, nunca no repositorio.
+.env
+*.env
+!*.env.example

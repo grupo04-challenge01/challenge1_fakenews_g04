@@ -127,3 +127,31 @@ O portfólio pede 20 a 30 casos curados, e nenhum dataset aqui resolve dois peda
 
 O `factcenter_subset_saude.csv` é o ponto de partida natural para os itens falsos: 4.063 casos com texto
 integral da checagem, o que dá para escolher por plausibilidade cultural em vez de por sorteio.
+
+## Caveats do tratamento (19/09/2026)
+
+Registrados pelo change `add-tratamento-datasets-ptbr`. Todos reexecutáveis por
+`python -m tratamento tudo`; detalhe em `docs/investigate/tratamento-datasets.md`.
+
+| Base | Caveat |
+| --- | --- |
+| FactCenter | 43% do corpus é `boato`, rótulo que não gradua; a classe `falso` está inflada por construção |
+| FactCenter | 21 registros consolidam em `verdadeiro` em 4.063 — **não** é fonte de itens verdadeiros |
+| FactCenter | janela 2013-07-08 a 2021-05-19, 54% em 2020; `qdenga`, `mpox`, `oropouche` e `semaglutida` com zero ocorrência |
+| FactCenter | 245 registros mistos e 11 compilados, fora do banco de estímulos |
+| FactCenter | 48.392 linhas físicas para 4.063 registros; separador `;` |
+| FACTCK.BR | **reprovado para citação.** Onze maiúsculas acentuadas ausentes, sete com evidência de corrupção. A perda está na fonte distribuída e é irreversível |
+| FakeRecogna | **reprovada para citação** por texto transformado na origem (coluna `Noticia` lematizada e sem caixa), não por corrupção |
+| PUBHEALTH | classe majoritária é `true` (~52% do treino), não "maioria falsa"; o derivado tem aspas escapadas em excesso na origem |
+| FakeHealth | 20 perguntas em dois conjuntos de 10. O nome `fakehealth_matriz_10_criterios.csv` está errado e foi mantido por estabilidade de referência |
+
+### Derivados gerados pelo tratamento
+
+| Arquivo | O que é |
+| --- | --- |
+| `factcenter_vereditos_normalizados.csv` | cada registro com chaves, rótulos, `misto` e exclusão |
+| `relatorio_vereditos.json` | contagens por agência, grafia e chave |
+| `relatorio_integridade.json` | laudo por arquivo, com causa provável |
+| `declaracao_cobertura.json` | janela, ano a ano, termos de pauta, caminho de atualização |
+| `rubrica_criterios_ptbr.json` | rubrica de seis critérios, removidos com motivo, força da afirmação |
+| `fewshot_ptbr_pool.csv` | 15 exemplares PT-BR, 5 por rótulo, semente 42 |

@@ -1,12 +1,56 @@
 # Auto Upload Fact-Check Dataset
-# Runing at Python 3.5.6
 # Feeds:
 # https://aosfatos.org/noticias/feed/
 # https://apublica.org/feed/
 # https://piaui.folha.uol.com.br/lupa/feed/
+#
+# ---------------------------------------------------------------------------
+# REPARO — change `add-tratamento-datasets-ptbr`, tasks 3.4 e 4.5 (19/09/2026)
+#
+# Código de terceiro (licença MIT, ver LICENSE). Três defeitos corrigidos, todos
+# exigidos em texto expresso pelas capabilities do change:
+#
+# 1. `re_char()` filtrava por allowlist que continha apenas as acentuadas
+#    MINÚSCULAS. Toda maiúscula acentuada e o `ü` eram descartados em silêncio —
+#    é a causa raiz do `Sistema nico de Saúde` em `factckbr_normalizado.csv`.
+#    Substituída por normalização Unicode que não descarta caractere de texto:
+#    só caracteres de controle saem. (`integridade-textual`, requirement
+#    "Correção da causa a montante".)
+#
+# 2. `text_pre_proc()` aplicava a mesma allowlist ao bloco JSON-LD antes de
+#    `ast.literal_eval`. Além de mutilar o texto, `literal_eval` não é parser de
+#    JSON: `true`, `false` e `null` quebram. Passou a usar `json.loads`.
+#
+# 3. `update_dataset()` usava `DataFrame.append`, removido no pandas 2.0.
+#    Substituído por `pd.concat`. (`frescor-corpus`, requirement "Caminho de
+#    atualização com cobertura declarada": o script MUST ser reparado antes do uso.)
+#
+# ATENÇÃO — o reparo vale para coleta FUTURA. O `FACTCKBR.tsv` distribuído já
+# vem com as maiúsculas acentuadas perdidas na origem, e nenhuma reexecução
+# deste script recupera o que não está no arquivo. Ver `docs/investigate/
+# tratamento-datasets.md`, seção "O que não dá para reparar".
+#
+# COBERTURA — três feeds (Aos Fatos, Agência Pública/Truco, Lupa) contra as seis
+# agências do corpus principal. Não é atualização do corpus completo.
+# ---------------------------------------------------------------------------
+
+import ast  # noqa: F401  (mantido: parte da API original do script)
+import json
+import re  # noqa: F401  (mantido: parte da API original do script)
+import unicodedata
+import xml.sax.saxutils as saxutils
+
+import pandas as pd
+
+# Caracteres de controle que não são quebra de linha nem tabulação. Nada mais
+# é descartado: acento, cedilha, trema e maiúscula acentuada são texto.
+CONTROLE_PRESERVADO = {"\n", "\r", "\t"}
+
 
 # Get links list from websites feed
 def get_articles_url(url):
+    import feedparser
+
     d = feedparser.parse(url)
     linksList = []
     for post in d.entries: linksList.append(post.link)
@@ -14,7 +58,7 @@ def get_articles_url(url):
 
 # Save dataset to tsv file
 def save_tsv_pandas(data, file_name):
-    data.to_csv("./" + file_name + ".tsv", sep='\t',index=True)
+    data.to_csv("./" + file_name + ".tsv", sep='\t', index=True, encoding='utf-8')
 
 # Load dataset from tsv file
 def load_tsv_pandas(file_name):
@@ -22,23 +66,35 @@ def load_tsv_pandas(file_name):
 
 # Update dataset. URL is primary key.
 def update_dataset(dataset, new_entries):
-    temp_df = dataset.append(new_entries)
-    temp_df = temp_df.drop_duplicates()
+    temp_df = pd.concat([dataset, new_entries])
+    temp_df = temp_df[~temp_df.index.duplicated(keep='first')]
     return temp_df
 
 def re_char(str):
-    return re.sub('[^A-Za-z0-9 \!\@\#\$\%\&\*\:\,\.\;\:\-\_\"\'\]\[\}\{\+\á\à\é\è\í\ì\ó\ò\ú\ù\ã\õ\â\ê\ô\ç\|]+', '',str)
+    """Normaliza sem descartar caractere de texto.
+
+    A allowlist original removia toda maiúscula acentuada. Aqui só saem os
+    caracteres de controle, e a forma composta (NFC) é fixada para que `ç` e
+    `Ç` tenham uma única representação no arquivo.
+    """
+    normalizado = unicodedata.normalize('NFC', str)
+    return ''.join(c for c in normalizado
+                   if c in CONTROLE_PRESERVADO
+                   or unicodedata.category(c) not in ('Cc', 'Cf', 'Co', 'Cs'))
 
 # Text Preprocessing
 def text_pre_proc(str):
     aux = saxutils.unescape(str.replace('&quot;', ''))
-    #remove not allowed characters
-    aux = re.sub('[^A-Za-z0-9 \!\@\#\$\%\&\*\:\,\.\;\:\-\_\"\'\]\[\}\{\+\á\à\é\è\í\ì\ó\ò\ú\ù\ã\õ\â\ê\ô\ç\|]+', '',aux)
-    my_dict = ast.literal_eval(aux)
-    return my_dict
+    aux = re_char(aux)
+    # JSON-LD é JSON, não literal Python: `true`/`false`/`null` quebram
+    # `ast.literal_eval`, que era o que o script original usava aqui.
+    return json.loads(aux)
 
 # Get ClaimReview
 def get_claimReview(url):
+    from bs4 import BeautifulSoup
+    import requests
+
     response = requests.get(url, timeout=30)
     content = BeautifulSoup(response.content, "html.parser")
     claimList = []
@@ -62,21 +118,12 @@ def get_claimReview(url):
             linha.append(my_dict['reviewRating']['alternateName'])
             linha.append(my_dict['itemReviewed']['@type'])
             claimList.append(linha)
-        except:
+        except Exception:
             pass
     return claimList
 
 # Main Function
 def main():
-    import pandas as pd
-    import feedparser
-    # To text preprocessing
-    import xml.sax.saxutils as saxutils
-    import ast
-    import re
-    # To get claimReview
-    from bs4 import BeautifulSoup
-    import requests
     websites = ["https://aosfatos.org/noticias/feed/", "https://apublica.org/tag/truco/feed/", "https://piaui.folha.uol.com.br/lupa/feed/"]
     toprow = ['URL', 'Author', 'datePublished', 'claimReviewed', 'reviewBody', 'title', 'ratingValue', 'bestRating', 'alternativeName', 'contentType']
     # Step 1 - Get links list of the last articles
@@ -98,3 +145,7 @@ def main():
     dataset = load_tsv_pandas('factCkBr')
     factCkBr = update_dataset(dataset, new_entries)
     save_tsv_pandas(factCkBr, 'new_factCkBR')
+
+
+if __name__ == "__main__":
+    main()

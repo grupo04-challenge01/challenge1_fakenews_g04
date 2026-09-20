@@ -93,12 +93,19 @@ Big Idea pede para o sistema saber fazer: texto único em que parte é fato, par
 ## Achado 5: dois defeitos de forma
 
 **O arquivo do corpus é `;`-separado com newlines dentro do texto.** São 4.063
-registros em 42.197 linhas físicas. Carregado no padrão do `read_csv`, produz
-lixo silenciosamente.
+registros em 48.392 linhas físicas.
+
+!!! note "Corrigido em 19/09/2026"
+    Esta seção dizia 42.197 linhas físicas e "produz lixo silenciosamente".
+    Medido: são **48.392** linhas, e no padrão do `read_csv` a leitura falha
+    ruidosamente com `ParserError`. O caminho silencioso é outro — com
+    `on_bad_lines="skip"` saem 25.670 registros de uma coluna só. Ver
+    [Tratamento dos datasets](../investigate/tratamento-datasets.md).
 
 **O FACTCK.BR perdeu todas as maiúsculas acentuadas.** Está gravado
-`Sistema nico de Saúde` — o `Ú` foi deletado, não mal-codificado. Nove letras
-acentuadas maiúsculas têm zero ocorrência no arquivo. A causa está no filtro de
+`Sistema nico de Saúde` — o `Ú` foi deletado, não mal-codificado. Onze letras
+acentuadas maiúsculas têm zero ocorrência no arquivo, sete delas com a minúscula
+correspondente frequente o bastante para sustentar a acusação. A causa está no filtro de
 caracteres do script de atualização, cuja lista de permitidos só inclui
 acentuadas minúsculas. Como o produto cita trechos literais, isso apareceria na
 tela do usuário.
@@ -110,6 +117,12 @@ tela do usuário.
 | PUBHEALTH | A classe majoritária é `true` (~52% do treino), não "maioria falsa" |
 | FakeHealth | São **20** perguntas em dois conjuntos distintos, não 10 |
 | FactCenter | Todos os achados acima entram como caveats |
+| FactCenter | 285 é a contagem de strings serializadas; o vocabulário real tem 26 grafias e 19 chaves canônicas |
+| FACTCK.BR | a perda de caractere está na **fonte** distribuída, não no nosso derivado — é irreversível |
+| FakeRecogna | reprovada para citação por **texto transformado na origem**, não por corrupção |
+
+Todas conferidas e reexecutáveis em
+[Tratamento dos datasets](../investigate/tratamento-datasets.md).
 
 ## O que ainda falta coletar
 
