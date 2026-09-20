@@ -313,6 +313,48 @@ Precisa ser aberto antes da semana 6, e a proposta natural é que ele cubra:
 
 ---
 
+## A ordem das fases foi invertida, e isso tem custo
+
+O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
+existe é o contrário: **Engage em 4 de 25, Investigate em 115 de 121**.
+
+**Por que aconteceu.** As 21 pendentes do Engage são quase todas trabalho de
+grupo presencial — forense com um caso por pessoa, sessão de brainstorming de
+90 minutos, card sorting da matriz. Nada disso se faz individualmente. O que
+avançou foi o que dava para avançar sozinho.
+
+**O que custou.** A ordem de dependência declarada em [Estado do
+projeto](estado.md) tem três cadeias, e elas não foram afetadas igualmente:
+
+| Cadeia | Respeitada? | Consequência |
+| --- | --- | --- |
+| `guiding q.` → `frescor-corpus` | **sim** | o bloco 5 do Engage estava pronto |
+| `forense` → `normalizacao-rotulos` | não, sem dano | a normalização de rótulo não precisava das fichas de caso |
+| `matriz` → `adaptacao-criterios-en` | **não, com dívida** | ver abaixo |
+
+### A dívida da terceira cadeia
+
+A spec de `adaptacao-criterios-en` exige, em texto expresso, que a rubrica seja
+**«de três níveis compatível com a capability `matriz-confianca`»**.
+
+A rubrica de seis critérios foi entregue com três níveis cada. A compatibilidade
+com `matriz-confianca` **não foi verificada contra nada**, porque a matriz não
+existe — o bloco 4 do Engage está em 0 de 4.
+
+A task 5.3 está marcada corretamente: ela pede a adaptação, e a adaptação foi
+feita. Mas o requirement da capability só se cumpre quando a matriz existir e a
+compatibilidade for conferida. **Quando o bloco 4 do Engage fechar, a rubrica
+precisa ser reconferida contra a matriz**, e pode exigir ajuste.
+
+A mesma dependência alcança a task 8.1 do Act, que manda conferir a consistência
+do catálogo de técnicas com as dimensões da matriz.
+
+### O que isso implica para a ordem de trabalho
+
+O bloco 4 do Engage — card sorting, dimensões, rubrica, teste contra os casos —
+deixou de ser dívida histórica e passou a ser **pré-requisito de duas coisas já
+construídas**. Ele sobe na fila, junto com a submissão ao comitê de ética.
+
 ## Decisões que travam execução
 
 Cinco, e nenhuma é trabalho — são escolhas. Cada uma destrava tasks.
