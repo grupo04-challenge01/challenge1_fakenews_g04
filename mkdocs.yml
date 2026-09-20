@@ -50,6 +50,7 @@ nav:
       - Índice híbrido: investigate/indice-hibrido.md
       - Tratamento dos datasets: investigate/tratamento-datasets.md
       - Aferição da recuperação: investigate/afericao-recuperacao.md
+      - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Estado do projeto: estado.md
 
 markdown_extensions:

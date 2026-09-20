@@ -143,75 +143,76 @@
       "ç": 2312
     }
   },
-  "fakerecogna_subset_saude_ciencia.csv": {
-    "arquivo": "fakerecogna_subset_saude_ciencia.csv",
-    "caracteres": 4983644,
+  "fakerecogna2_subset_saude_ciencia.csv": {
+    "arquivo": "fakerecogna2_subset_saude_ciencia.csv",
+    "caracteres": 23648777,
     "ausentes": [
+      "Ê",
       "Õ",
-      "Ü",
-      "Ç"
+      "Ü"
     ],
     "corrompidos": [
+      {
+        "maiuscula": "Ê",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ê",
+        "ocorrencias_minuscula": 27036,
+        "ocorrencias_esperadas": 284.1
+      },
       {
         "maiuscula": "Õ",
         "ocorrencias_maiuscula": 0,
         "minuscula": "õ",
-        "ocorrencias_minuscula": 1940,
-        "ocorrencias_esperadas": 20.7
-      },
-      {
-        "maiuscula": "Ç",
-        "ocorrencias_maiuscula": 0,
-        "minuscula": "ç",
-        "ocorrencias_minuscula": 27450,
-        "ocorrencias_esperadas": 292.8
+        "ocorrencias_minuscula": 24423,
+        "ocorrencias_esperadas": 256.6
       }
     ],
     "aprovado": false,
-    "razao_de_caixa": 0.0107,
+    "razao_de_caixa": 0.0105,
     "causa_provavel": "texto transformado na origem",
     "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
     "contagem_por_letra": {
-      "Á": 73,
-      "À": 7,
-      "Â": 1,
-      "Ã": 5,
-      "É": 376,
-      "Ê": 1,
-      "Í": 64,
-      "Ó": 4,
-      "Ô": 1,
+      "Á": 282,
+      "À": 26,
+      "Â": 4,
+      "Ã": 7,
+      "É": 1793,
+      "Ê": 0,
+      "Í": 398,
+      "Ó": 28,
+      "Ô": 105,
       "Õ": 0,
-      "Ú": 19,
+      "Ú": 69,
       "Ü": 0,
-      "Ç": 0
+      "Ç": 4
     },
     "contagem_por_letra_minuscula": {
-      "á": 13128,
-      "à": 778,
-      "â": 1700,
-      "ã": 29135,
-      "é": 10094,
-      "ê": 6249,
-      "í": 19497,
-      "ó": 6104,
-      "ô": 1331,
-      "õ": 1940,
-      "ú": 8499,
-      "ü": 18,
-      "ç": 27450
+      "á": 68981,
+      "à": 15959,
+      "â": 7213,
+      "ã": 127670,
+      "é": 64618,
+      "ê": 27036,
+      "í": 72679,
+      "ó": 29825,
+      "ô": 5000,
+      "õ": 24423,
+      "ú": 47470,
+      "ü": 80,
+      "ç": 102356
     }
   },
-  "fakerecogna_amostra_estimulos_300.csv": {
-    "arquivo": "fakerecogna_amostra_estimulos_300.csv",
-    "caracteres": 286977,
+  "fakerecogna2_amostra_estimulos_300.csv": {
+    "arquivo": "fakerecogna2_amostra_estimulos_300.csv",
+    "caracteres": 284006,
     "ausentes": [
+      "À",
       "Â",
       "Ã",
       "Ê",
-      "Ó",
       "Ô",
       "Õ",
+      "Ú",
       "Ü",
       "Ç"
     ],
@@ -220,50 +221,50 @@
         "maiuscula": "Ã",
         "ocorrencias_maiuscula": 0,
         "minuscula": "ã",
-        "ocorrencias_minuscula": 1632,
-        "ocorrencias_esperadas": 22.4
+        "ocorrencias_minuscula": 1521,
+        "ocorrencias_esperadas": 18.7
       },
       {
         "maiuscula": "Ç",
         "ocorrencias_maiuscula": 0,
         "minuscula": "ç",
-        "ocorrencias_minuscula": 1473,
-        "ocorrencias_esperadas": 20.2
+        "ocorrencias_minuscula": 1208,
+        "ocorrencias_esperadas": 14.8
       }
     ],
     "aprovado": false,
-    "razao_de_caixa": 0.0137,
+    "razao_de_caixa": 0.0123,
     "causa_provavel": "texto transformado na origem",
     "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
     "contagem_por_letra": {
-      "Á": 3,
-      "À": 3,
+      "Á": 5,
+      "À": 0,
       "Â": 0,
       "Ã": 0,
-      "É": 33,
+      "É": 28,
       "Ê": 0,
-      "Í": 5,
-      "Ó": 0,
+      "Í": 15,
+      "Ó": 1,
       "Ô": 0,
       "Õ": 0,
-      "Ú": 2,
+      "Ú": 0,
       "Ü": 0,
       "Ç": 0
     },
     "contagem_por_letra_minuscula": {
-      "á": 756,
-      "à": 50,
-      "â": 88,
-      "ã": 1632,
-      "é": 496,
-      "ê": 316,
-      "í": 1098,
-      "ó": 349,
-      "ô": 68,
-      "õ": 98,
-      "ú": 355,
-      "ü": 2,
-      "ç": 1473
+      "á": 888,
+      "à": 198,
+      "â": 96,
+      "ã": 1521,
+      "é": 813,
+      "ê": 343,
+      "í": 900,
+      "ó": 385,
+      "ô": 54,
+      "õ": 274,
+      "ú": 488,
+      "ü": 1,
+      "ç": 1208
     }
   }
 }

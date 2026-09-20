@@ -1,0 +1,162 @@
+{
+  "gerado_em": "2026-09-20",
+  "change": "add-ampliacao-corpus-ptbr, bloco 8",
+  "niveis": {
+    "1_texto_integral": {
+      "bases": [
+        "FactCenter — factcenter_subset_saude.csv"
+      ],
+      "janela_medida": {
+        "inicio": "2013-07-08",
+        "fim": "2021-05-19"
+      },
+      "itens": 4063,
+      "do_que_o_texto_e_evidencia": "do que a agência de checagem publicou sobre a alegação. É o único nível citável.",
+      "citavel": true
+    },
+    "2_texto_transformado": {
+      "bases": [
+        "FakeRecogna 2.0 extrativa",
+        "(descartado) FACTCK.BR"
+      ],
+      "janela_medida": {
+        "inicio": "2002",
+        "fim": "2023",
+        "concentracao": "2020 e 2021 somam 33.728 dos 52.800"
+      },
+      "itens": 26436,
+      "do_que_o_texto_e_evidencia": "de que o item foi coletado e rotulado como real ou falso. O texto da classe real foi sumarizado na origem e NÃO é o que a fonte publicou.",
+      "citavel": false,
+      "motivo_de_nao_ser_citavel": "um classificador que não lê nenhuma palavra, só conta caracteres, acerta 80,6% nesta base balanceada. A separação entre as classes é em boa parte artefato da sumarização assimétrica, não sinal de desinformação. Nenhuma acurácia medida sobre esta base sustenta afirmação sobre detecção."
+    },
+    "3_circulacao": {
+      "bases": [
+        "Telegram antivacina — 04_acervo_circulacao"
+      ],
+      "janela_medida": {
+        "inicio": "2020-01",
+        "fim": "2025-06"
+      },
+      "itens": 3998633,
+      "do_que_o_texto_e_evidencia": "de que aquilo circulou, naquele canal, naquela data. NÃO é evidência sobre o mérito da alegação: a base não tem veredito.",
+      "citavel": false
+    },
+    "4_indice_de_localizacao": {
+      "bases": [
+        "Fact Check Tools API"
+      ],
+      "data_de_corte": "2026-09-19T22:26:56",
+      "itens": 928,
+      "posteriores_a_2021": 525,
+      "editores": 11,
+      "do_que_o_texto_e_evidencia": "de que existe checagem publicada, por quem e quando. Guarda alegação e veredito da agência, nunca o texto do artigo.",
+      "citavel": false
+    },
+    "anexo_veredito_clinico": {
+      "bases": [
+        "WhaVax"
+      ],
+      "itens": 950,
+      "janela_medida": {
+        "inicio": "2020-03-02 11:17:02",
+        "fim": "2023-11-07 15:15:56"
+      },
+      "do_que_o_texto_e_evidencia": "de como quatro médicos avaliaram a mensagem na data. 84 empates isolados. Rótulo tem prazo de validade.",
+      "citavel": false
+    }
+  },
+  "termos_de_pauta_por_nivel": {
+    "qdenga": {
+      "1_texto_integral": 0,
+      "2_texto_transformado": null,
+      "3_circulacao": 166,
+      "4_indice": 8
+    },
+    "mpox": {
+      "1_texto_integral": 0,
+      "2_texto_transformado": null,
+      "3_circulacao": 1259,
+      "4_indice": 39
+    },
+    "oropouche": {
+      "1_texto_integral": 0,
+      "2_texto_transformado": null,
+      "3_circulacao": 122,
+      "4_indice": 0
+    },
+    "semaglutida": {
+      "1_texto_integral": 0,
+      "2_texto_transformado": null,
+      "3_circulacao": 56,
+      "4_indice": 0
+    },
+    "dengue": {
+      "1_texto_integral": 60,
+      "2_texto_transformado": null,
+      "3_circulacao": 5401,
+      "4_indice": 76
+    },
+    "sarampo": {
+      "1_texto_integral": 0,
+      "2_texto_transformado": null,
+      "3_circulacao": 2043,
+      "4_indice": 2
+    },
+    "covid": {
+      "1_texto_integral": 2280,
+      "2_texto_transformado": null,
+      "3_circulacao": 129542,
+      "4_indice": 306
+    },
+    "vacina": {
+      "1_texto_integral": 811,
+      "2_texto_transformado": null,
+      "3_circulacao": 121447,
+      "4_indice": 404
+    }
+  },
+  "tres_respostas_de_lacuna": {
+    "pauta_com_checagem_so_no_indice": {
+      "exemplo_medido": "qdenga — 0 no acervo, 8 no índice, 166 posts de circulação",
+      "resposta": "lacuna de acervo COM ponteiro: agência, data, veredito da agência e endereço"
+    },
+    "pauta_sem_correspondencia_em_nenhum_nivel": {
+      "exemplo_medido": "oropouche — 0 no acervo, 0 no índice, 122 posts de circulação",
+      "resposta": "lacuna de acervo SEM ponteiro. Declara que não há checagem localizada em português, e MUST NOT afirmar que não existe checagem no mundo. A presença na circulação é conhecimento do projeto, não afirmação ao usuário."
+    },
+    "pauta_posterior_as_duas_datas_de_corte": {
+      "exemplo": "pauta surgida depois de 2026-09-19T22:26:56",
+      "resposta": "lacuna de acervo sem ponteiro, com a data de corte do índice declarada"
+    },
+    "nenhuma_colapsa_em_evidencia_insuficiente": true
+  },
+  "achado": "oropouche (122 posts) e semaglutida (56 posts) circularam e NÃO têm checagem publicada em português — zero no acervo e zero no índice. É o caso que prova que o terceiro estado de resposta precisa existir.",
+  "cada_nivel_muda_uma_resposta": {
+    "criterio": "task 8.6 — nível que não muda nenhuma resposta do sistema sai da declaração, com o motivo",
+    "1_texto_integral": {
+      "muda": true,
+      "caso": "«cloroquina cura covid» → veredito com trecho citado e proveniência até a agência",
+      "sem_este_nivel": "o sistema não teria o que citar; nenhuma resposta de verificação existiria"
+    },
+    "4_indice_de_localizacao": {
+      "muda": true,
+      "caso": "«Qdenga causa a própria dengue» → lacuna de acervo COM ponteiro (8 checagens, AFP/Aos Fatos/Estadão/Folha/UOL, 2023-2026)",
+      "sem_este_nivel": "a mesma pauta cairia em lacuna sem ponteiro, e a pessoa sairia sem próximo passo"
+    },
+    "2_texto_transformado": {
+      "muda": false,
+      "motivo": "não é citável, não é fonte de veredito e não entra no índice de recuperação. Seu papel é banco de estímulos para teste com usuário e janela temporal de referência — os dois fora do caminho da resposta.",
+      "consequencia": "pelo critério da task 8.6, sai da DECLARAÇÃO DE COBERTURA e permanece como ativo de avaliação. A declaração passa a ter três níveis de cobertura mais dois anexos de avaliação."
+    },
+    "3_circulacao": {
+      "muda": false,
+      "motivo": "a task 8.5 já determina que correspondência apenas neste nível não resolve nenhuma das três respostas de lacuna. Medido: oropouche tem 122 posts de circulação e zero checagem — e mesmo assim a resposta ao usuário continua sendo lacuna SEM ponteiro, porque dizer «isso circulou em canal antivacina» é procedência, não evidência, e veredito por proxy de canal é vedado.",
+      "o_que_ele_muda": "decisão de projeto, não resposta de sistema: fechou o sub-recorte em vacinação em 17/09, e alimenta a curadoria de casos de `avaliacao-instrumento`.",
+      "consequencia": "mesma da linha acima — sai da declaração de cobertura, fica como ativo de pesquisa."
+    },
+    "tensao_registrada": {
+      "descricao": "as tasks 8.5 e 8.6 se cruzam: a 8.5 manda verificar que a circulação NÃO resolve nenhuma resposta de lacuna, e a 8.6 manda tirar da declaração o nível que não muda nenhuma resposta. Aplicadas juntas, a circulação sai da declaração por construção.",
+      "decisao_do_grupo_pendente": "ou a declaração de cobertura passa a ter dois níveis (integral e índice) mais três anexos, ou o critério da 8.6 é afrouxado para «muda ao menos uma decisão do projeto». A segunda leitura preserva os quatro níveis; a primeira é mais honesta sobre o que o usuário vê."
+    }
+  }
+}

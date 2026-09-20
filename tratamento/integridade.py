@@ -48,8 +48,8 @@ PISO_EVIDENCIA_MINUSCULA = 500
 ARQUIVOS_PT_BR: tuple[str, ...] = (
     "factcenter_subset_saude.csv",
     "factckbr_normalizado.csv",
-    "fakerecogna_subset_saude_ciencia.csv",
-    "fakerecogna_amostra_estimulos_300.csv",
+    "fakerecogna2_subset_saude_ciencia.csv",
+    "fakerecogna2_amostra_estimulos_300.csv",
 )
 
 

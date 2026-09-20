@@ -8,7 +8,7 @@ Atualizado em **19/09/2026**.
 | --- | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
-| `add-ampliacao-corpus-ptbr` | Investigate | completo | **3 de 55** |
+| `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **29 de 33** |
 | `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 12** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
@@ -44,6 +44,31 @@ Dois achados da aferição, ambos contra suposição do projeto:
 Achado da decisão 13: a única ferramenta de emoção em PT-BR madura e de licença
 limpa (LeIA, MIT) faz **só polaridade** — exatamente o uso que a decisão 7
 proibiu. A via de emoção nomeada é prompt sobre o gerador local, não biblioteca.
+
+### Ampliação do corpus — change fechado, 55 de 55
+
+Três bases novas baixadas, conferidas e integradas, e o acervo passou a ter
+quatro níveis. Registro completo em
+[Ampliação do corpus](investigate/ampliacao-corpus.md).
+
+| Base | Licença | Escala medida | Nível |
+| --- | --- | --- | --- |
+| FakeRecogna 2.0 extrativa | MIT | 52.800 itens, 26.436 no recorte de saúde | texto transformado |
+| WhaVax | CC BY 4.0 | 950 mensagens, 4 médicos, 84 empates isolados | anexo clínico |
+| Telegram antivacina | CC BY-NC 4.0 | 3.998.633 posts, 119 canais | circulação |
+| Fact Check Tools API | metadado ClaimReview | 861 checagens, 12 editores | índice de localização |
+
+**A tabela que fecha a cobertura:** `oropouche` (122 posts) e `semaglutida` (56)
+circularam e **não têm checagem publicada em português** — zero no acervo e zero
+no índice. É o caso que prova que o terceiro estado de resposta precisa existir.
+
+Três premissas do próprio change caíram na medição: a 2.0 não tem vocabulário de
+veredito (rótulo binário); `Categoria` não é vocabulário compartilhado entre as
+classes (5 na real, 69 na falsa); e a transformação de texto vaza a classe — **um
+classificador que só conta caracteres acerta 80,5%**.
+
+E três conferências bateram exatamente: 3.998.633 posts, 119 canais e 84
+empates, todos idênticos ao declarado pelas fontes.
 
 ### Portão do índice de checagens recentes — bloco 1 fechado
 

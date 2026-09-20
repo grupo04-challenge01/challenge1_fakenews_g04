@@ -76,7 +76,7 @@ def test_laudo_separa_perda_de_caractere_de_texto_transformado():
     põe no portfólio a acusação errada contra a base errada.
     """
     factckbr = integridade.verificar("factckbr_normalizado.csv")
-    fakerecogna = integridade.verificar("fakerecogna_subset_saude_ciencia.csv")
+    fakerecogna = integridade.verificar("fakerecogna2_subset_saude_ciencia.csv")
 
     assert factckbr["causa_provavel"] == "perda seletiva de caractere"
     assert fakerecogna["causa_provavel"] == "texto transformado na origem"

@@ -15,7 +15,7 @@ datasets-desinformacao/
 ├── 02_comparacao_exagero/
 │   └── scientific_exaggeration/  # insciout train/test (JSONL + CSV)
 ├── 03_banco_estimulos/
-│   ├── fakerecogna/            # FakeRecogna.csv
+│   ├── fakerecogna2/           # fakerecogna_extrativo.csv (2.0, substitui a v1)
 │   └── med_mmhl/               # só docs + script (dados não baixados, ver abaixo)
 ├── derivados/                  # tabelas já prontas para uso no projeto
 └── relatorio.json              # contagens e distribuições de rótulo de tudo
@@ -113,8 +113,12 @@ pronto, mais o apêndice do artigo e a licença (CC BY-NC 4.0 — não comercial
 | `factcenter_subset_saude.csv` | **4.063** checagens PT-BR filtradas por termos de saúde/ciência — é este o corpus para o RAG e para os itens falsos do dataset local |
 | `factckbr_normalizado.csv` | FACTCK.BR com coluna `rotulo_norm` (rótulos em minúsculas, resolve o "Falso"/"falso" duplicado) |
 | `exagero_pares_abstract_vs_release.csv` | Os 663 pares InSciOut num CSV único |
-| `fakerecogna_subset_saude_ciencia.csv` | 5.058 itens (1.321 falsos, 3.737 verdadeiros) das categorias saúde e ciência |
-| `fakerecogna_amostra_estimulos_300.csv` | Amostra estratificada de 300 itens (`random_state=42`), ponto de partida para os estímulos do teste |
+| `fakerecogna2_subset_saude_ciencia.csv` | 26.436 itens (7.652 falsos, 18.784 reais) da 2.0, por **termo de saúde no texto** — o filtro por categoria da v1 não vale na 2.0 |
+| `fakerecogna2_amostra_estimulos_300.csv` | Amostra estratificada de 300 itens (`random_state=42`) sobre o subset da 2.0 |
+| `fakerecogna2_transformacao.json` | Declaração da transformação de texto por classe e o vazamento medido (80,5% só pelo comprimento) |
+| `whavax_agregados.json` | 950 mensagens anotadas por quatro médicos, com a faixa de 84 empates isolada |
+| `telegram_agregados.json` | 3.998.633 posts de 119 canais, só contagens — sem texto e sem autor |
+| `sonda_factcheck_api.json` | 928 checagens em `pt` pela Fact Check Tools API, 525 posteriores a 2021 |
 
 ## O que ainda falta para a fase Investigate
 

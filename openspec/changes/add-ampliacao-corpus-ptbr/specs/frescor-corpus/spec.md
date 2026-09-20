@@ -97,6 +97,14 @@ declarada à parte.
 Em nenhuma das três o sistema MUST apresentar a lacuna como ausência de checagem
 publicada.
 
+#### Scenario: Alegação sobre pauta posterior ao corpus
+
+- **GIVEN** um corpus cuja janela termina em 2021
+- **WHEN** o usuário envia alegação sobre a vacina Qdenga
+- **THEN** o sistema informa que o acervo não cobre o período da alegação
+- **AND** distingue isso de não haver checagem publicada
+- **AND** indica onde a pessoa pode procurar checagem recente
+
 #### Scenario: Alegação com checagem apenas no índice
 
 - **GIVEN** uma alegação posterior à janela do acervo com texto integral

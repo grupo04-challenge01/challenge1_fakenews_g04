@@ -83,26 +83,28 @@ CATALOGO: dict[str, FormatoDerivado] = {
         colunas=("dataset", "news_id", "rating", "title", "original_title",
                  "news_source", "source_link", "review_link"),
     ),
-    "fakerecogna_subset_saude_ciencia.csv": FormatoDerivado(
+    "fakerecogna2_subset_saude_ciencia.csv": FormatoDerivado(
         separador=",",
-        registros_declarados=5058,
+        registros_declarados=26436,
         colunas=("Titulo", "Subtitulo", "Noticia", "Categoria", "Data", "Autor",
-                 "URL", "Classe"),
-        colunas_com_newline_interno=("Titulo", "Noticia", "Autor"),
+                 "URL", "Label"),
+        colunas_com_newline_interno=("Noticia",),
         texto_transformado_na_origem=True,
-        observacao="A coluna `Noticia` não é texto corrido: vem lematizada e "
-                   "sem stopwords na origem. Serve a contagem e a estímulo "
-                   "declarado, nunca a trecho citado.",
+        observacao="FakeRecogna 2.0 extrativa, filtrada por termo de saúde "
+                   "sobre o texto — o filtro por `Categoria` da v1 não vale "
+                   "aqui, porque a classe real tem cinco categorias e a falsa "
+                   "tem 69. A notícia real vem sumarizada na origem e a falsa "
+                   "vem crua: só o comprimento do texto classifica 80,5%.",
     ),
-    "fakerecogna_amostra_estimulos_300.csv": FormatoDerivado(
+    "fakerecogna2_amostra_estimulos_300.csv": FormatoDerivado(
         separador=",",
         registros_declarados=300,
         colunas=("Titulo", "Subtitulo", "Noticia", "Categoria", "Data", "Autor",
-                 "URL"),
-        colunas_com_newline_interno=("Titulo", "Autor"),
+                 "URL", "Label"),
+        colunas_com_newline_interno=("Noticia",),
         texto_transformado_na_origem=True,
-        observacao="Amostra estratificada com random_state=42 sobre o subset. "
-                   "Herda a transformação de texto da coluna `Noticia`.",
+        observacao="Amostra estratificada com random_state=42 sobre o subset "
+                   "da 2.0. Substitui a amostra da v1, que saiu em 19/09/2026.",
     ),
     "exagero_pares_abstract_vs_release.csv": FormatoDerivado(
         separador=",",
@@ -178,3 +180,44 @@ def ler_derivado(nome: str, caminho: pathlib.Path | None = None,
 def ler_corpus():
     """Atalho para o corpus de checagens PT-BR, que sustenta a recuperação."""
     return ler_derivado("factcenter_subset_saude.csv")
+
+
+# --------------------------------------------------------------------------
+# Leitura em streaming — task 9.5 de `add-ampliacao-corpus-ptbr`.
+#
+# O acervo de circulação tem 3,6 GB e 3.998.633 linhas. Carregá-lo inteiro não
+# é opção, e o contrato de leitura precisa valer igual: linha ilegível
+# interrompe, e a contagem obtida é conferida contra a declarada.
+# --------------------------------------------------------------------------
+
+def ler_jsonl(caminho: pathlib.Path, registros_declarados: int | None = None):
+    """Gera um registro por linha de um `.jsonl`, sem carregar o arquivo.
+
+    Linha em branco é ignorada; linha ilegível interrompe com o número da
+    linha, porque num arquivo de milhões de registros «falhou em algum lugar»
+    não é diagnóstico. A conferência de contagem só acontece ao fim do arquivo,
+    e só se `registros_declarados` for informado.
+    """
+    import json
+
+    lidos = 0
+    with open(caminho, encoding="utf-8") as arquivo:
+        for numero, linha in enumerate(arquivo, start=1):
+            linha = linha.strip()
+            if not linha:
+                continue
+            try:
+                registro = json.loads(linha)
+            except ValueError as erro:
+                raise ErroDeLeitura(
+                    f"{pathlib.Path(caminho).name}: linha {numero} ilegível "
+                    f"— {erro}. Nenhum derivado é gerado a partir desta "
+                    "leitura.") from None
+            lidos += 1
+            yield registro
+
+    if registros_declarados is not None and lidos != registros_declarados:
+        raise ErroDeLeitura(
+            f"{pathlib.Path(caminho).name}: {lidos} registros lidos contra "
+            f"{registros_declarados} declarados. Divergência é erro de "
+            "leitura, nunca corrigida por normalização posterior.")

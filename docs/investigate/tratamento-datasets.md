@@ -122,8 +122,8 @@ correspondente frequente**.
 | --- | --- | --- |
 | `factcenter_subset_saude.csv` | sim | — |
 | `factckbr_normalizado.csv` | **não** | perda seletiva de caractere |
-| `fakerecogna_subset_saude_ciencia.csv` | **não** | texto transformado na origem |
-| `fakerecogna_amostra_estimulos_300.csv` | **não** | texto transformado na origem |
+| `fakerecogna2_subset_saude_ciencia.csv` | **não** | texto transformado na origem |
+| `fakerecogna2_amostra_estimulos_300.csv` | **não** | texto transformado na origem |
 
 ### Achado: reprovar não basta, o laudo precisa dizer por quê
 

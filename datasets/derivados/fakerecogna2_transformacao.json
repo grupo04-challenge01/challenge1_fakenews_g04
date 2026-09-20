@@ -1,0 +1,117 @@
+{
+  "_licenca": "MIT — declarada pelos autores no cartão da FakeRecogna 2.0.",
+  "_atribuicao": "Garcia et al., PROPOR 2024. aclanthology.org/2024.propor-1.9",
+  "base": "FakeRecogna 2.0, variante extrativa",
+  "metodo_declarado_pelos_autores": "sumarização de texto aplicada à notícia real, porque o texto genuíno é muito maior que o conteúdo falso produzido",
+  "variante": "extrativa — o resumo reusa sentenças do original, sem reescrita generativa",
+  "classe_transformada": "real (Label 0)",
+  "classe_nao_transformada": "falsa (Label 1)",
+  "consulta_que_identifica_os_itens_transformados": "Label == '0'",
+  "por_classe": {
+    "real": {
+      "label": "0",
+      "itens": 26400,
+      "caracteres_mediana": 684,
+      "caracteres_media": 664.0,
+      "caracteres_maximo": 1493
+    },
+    "falsa": {
+      "label": "1",
+      "itens": 26400,
+      "caracteres_mediana": 294,
+      "caracteres_media": 413.9,
+      "caracteres_maximo": 12904
+    }
+  },
+  "teto_da_classe_real": 1493,
+  "itens_da_classe_falsa_acima_do_teto": 778,
+  "vazamento_medido": {
+    "acuracia_so_pelo_comprimento": 0.8055,
+    "corte_em_caracteres": 500,
+    "linha_de_base": 0.5,
+    "leitura": "um classificador que não lê nenhuma palavra, só conta caracteres, acerta 80,6% nesta base balanceada. A separação entre as classes é em boa parte artefato da sumarização assimétrica, não sinal de desinformação. Nenhuma acurácia medida sobre esta base sustenta afirmação sobre detecção."
+  },
+  "consequencia": "a base entra como banco de estímulos com a transformação declarada, e MUST NOT aparecer em nenhuma lista de fonte de trecho citado — o texto da classe real não é o que a fonte publicou.",
+  "subset_tematico": {
+    "criterio": "termo de saúde ou ciência no texto (título, subtítulo e notícia), normalizado por caixa e acento, aplicado igual às duas classes",
+    "termos": [
+      "vacina",
+      "vacinacao",
+      "imuniza",
+      "covid",
+      "coronavirus",
+      "pandemia",
+      "virus",
+      "bacteria",
+      "doenca",
+      "sintoma",
+      "contagio",
+      "epidemia",
+      "surto",
+      "remedio",
+      "medicamento",
+      "farmaco",
+      "dose",
+      "bula",
+      "anvisa",
+      "sus",
+      "ministerio da saude",
+      "oms",
+      "medico",
+      "medica",
+      "hospital",
+      "enfermeir",
+      "cancer",
+      "diabetes",
+      "hipertens",
+      "alzheimer",
+      "autismo",
+      "hiv",
+      "aids",
+      "dengue",
+      "zika",
+      "chikungunya",
+      "sarampo",
+      "gripe",
+      "h1n1",
+      "influenza",
+      "febre amarela",
+      "meningite",
+      "tuberculose",
+      "hepatite",
+      "hpv",
+      "mpox",
+      "qdenga",
+      "oropouche",
+      "semaglutida",
+      "cloroquina",
+      "ivermectina",
+      "tratamento",
+      "cura",
+      "estudo clinico",
+      "pesquisa medica",
+      "saude",
+      "cientista",
+      "cientific"
+    ],
+    "itens": 26436,
+    "por_classe": {
+      "0": 18784,
+      "1": 7652
+    }
+  },
+  "criterio_de_categoria_descartado": {
+    "motivo": "`Categoria` não é vocabulário compartilhado entre as classes: a real tem cinco valores, a falsa tem 69, das quais 64 não existem na real, incluindo 6.870 itens de categoria vazia e nomes de editoria de agência. O filtro por categoria seleciona notícia real por construção.",
+    "resultado_se_aplicado": {
+      "itens": 16037,
+      "por_classe": {
+        "0": 14434,
+        "1": 1603
+      }
+    }
+  },
+  "amostra": {
+    "semente": 42,
+    "itens_por_classe": 150
+  }
+}

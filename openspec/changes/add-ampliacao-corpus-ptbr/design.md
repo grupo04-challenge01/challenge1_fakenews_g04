@@ -378,7 +378,7 @@ Conferido no depósito do REDU (Unicamp), não no arXiv, como a task exige.
 | --- | --- |
 | DOI | `10.25824/redu/5JIVDT` |
 | Licença | **CC BY-NC 4.0** — confirmada no registro |
-| `telegram-vaccine-info-disorder-dataset-2020-2025.jsonl` | **3,4 GB**, acesso **público** |
+| `telegram-vaccine-info-disorder-dataset-2020-2025.jsonl` | **3,608 GB** (3,36 GiB), acesso **público** |
 | `readme.pdf` | 35 KB, acesso público |
 | Mídia (imagem, vídeo, áudio) | **5,5 TB**, acesso **restrito**, exige assinatura de acordo específico |
 | Escala | 3.998.633 mensagens, 119 canais, 1,44 milhão de itens de mídia |
@@ -390,9 +390,10 @@ texto é aberto, a mídia é restrita. A task 2.6 manda baixar só o `.jsonl` e 
 `readme.pdf`, e essa separação agora tem respaldo no registro — baixar mídia
 exigiria acordo assinado, que o projeto não tem nem precisa.
 
-**Correção de número:** a task 2.6 diz 3,6 GB; o registro declara **3,4 GB**. A
-verificação de checksum e contagem de linhas continua sendo o que decide, mas o
-tamanho esperado passa a ser o do registro.
+**Sobre o tamanho.** A página web do REDU mostra «3.4 GB» e a task diz 3,6 GB.
+Não há divergência: a API do depósito declara 3.608.168.366 bytes, que são
+3,608 GB decimais e 3,36 GiB. A página exibe GiB com rótulo de GB. O arquivo
+baixado em 19/09/2026 tem exatamente esse tamanho em bytes.
 
 #### Convergência entre as três fontes
 
