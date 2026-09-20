@@ -8,13 +8,52 @@ Atualizado em **19/09/2026**.
 | --- | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
-| `add-ampliacao-corpus-ptbr` | Investigate | completo | 0 de 55 |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **12 de 33** |
+| `add-ampliacao-corpus-ptbr` | Investigate | completo | **3 de 55** |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **27 de 33** |
+| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 12** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
 
 ## O que foi entregue em 19/09/2026
+
+### Seleção de modelos e arquitetura RAG — de 12 para 27 tasks
+
+| Entregue | Onde |
+| --- | --- |
+| Fronteira treino/recuperação operacional, com auditoria em cinco passos | decisão 12 do `design.md` |
+| Rótulos de emoção propostos, ferramentas PT-BR com licença, teste cruzado | decisão 13 |
+| Candidatos por papel com tamanho e licença; PUP da Gemma conferida | decisão 14 |
+| Conjunto de aferição: 20 consultas reais, duas famílias, fora do covid | `prototipo/rag/consultas_afericao.json` |
+| Aferidor de recall e calibração de limiar | `prototipo/rag/afericao.py` |
+
+Achado da decisão 13: a única ferramenta de emoção em PT-BR madura e de licença
+limpa (LeIA, MIT) faz **só polaridade** — exatamente o uso que a decisão 7
+proibiu. A via de emoção nomeada é prompt sobre o gerador local, não biblioteca.
+
+### Portão do índice de checagens recentes — bloco 1 fechado
+
+A Fact Check Tools API foi sondada com chave própria e o resultado está
+versionado em `datasets/derivados/sonda_factcheck_api.json`: **928 checagens em
+`pt`, 525 posteriores a 2021, 11 editores** contra as seis agências do corpus.
+
+A decisão é **manter** `indice-checagens-recentes`, e o que decidiu foi o caso
+de borda: a **Qdenga tem 8 checagens no índice contra zero no corpus**, e mpox
+tem 39. O índice começa onde o acervo termina.
+
+Achado que delimita a promessa: `oropouche` e `semaglutida` continuam em zero
+**no índice também**. Isso obriga um terceiro caso de teste de lacuna — pauta
+ausente dos dois níveis — que a task 8.2 ainda não previa.
+
+### Change de correção aberto — `fix-resposta-sem-evidencia`
+
+O defeito de spec que a sonda T1 expôs em 18/09 virou change próprio.
+`resposta-formativa` exigia nomear técnica do catálogo mesmo sob `evidência
+insuficiente`, onde não há mensagem comprovadamente enganosa cuja técnica
+nomear. Adotada a **forma própria** para o caso sem evidência, com três estados
+distintos: evidência insuficiente, lacuna de acervo com ponteiro, e lacuna sem
+ponteiro.
+
 
 Tratamento dos datasets — o change que bloqueava as tasks 1.1 a 1.6 do MVP.
 Pacote `tratamento/`, 53 testes, cinco artefatos reexecutáveis por

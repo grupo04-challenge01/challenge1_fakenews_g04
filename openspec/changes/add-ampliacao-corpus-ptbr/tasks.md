@@ -35,21 +35,31 @@ cai aqui, antes de qualquer trabalho de integração.
 
 ## 2. Aquisição e conferência de licença
 
-- [ ] 2.1 Conferir a licença da FakeRecogna 2.0 na fonte primária dos autores,
+- [x] 2.1 Conferir a licença da FakeRecogna 2.0 na fonte primária dos autores,
       não no cartão do HuggingFace; verificar que a fonte conferida está citada
-      e que divergência com o agregador, se houver, virou caveat
+      e que divergência com o agregador, se houver, virou caveat — feito em
+      19/09/2026, decisão 12 do `design.md`. Ressalva registrada: `recogna-nlp`
+      no HuggingFace **é** a organização dos autores, não agregador; a
+      divergência real é entre o repositório da v1, sem licença, e o cartão da
+      2.0, com MIT
 - [ ] 2.2 Conferir a licença do WhaVax no registro do Zenodo; verificar que o
-      texto da licença está versionado junto da base
+      texto da licença está versionado junto da base — **licença conferida em
+      19/09/2026**: Zenodo `18190030`, CC BY 4.0, decisão 13 do `design.md`. O
+      versionamento do texto junto da base depende do download
 - [ ] 2.3 Baixar a variante **extrativa** da FakeRecogna 2.0 e gerar checksum;
       verificar que a contagem de itens bate com a declarada pela fonte, e
       registrar divergência se não bater
 - [ ] 2.4 Baixar o WhaVax e gerar checksum; verificar que os campos de anotação
       por anotador estão presentes, e não apenas o rótulo agregado
-- [ ] 2.5 Conferir a licença do corpus de Telegram no depósito do REDU, não no
+- [x] 2.5 Conferir a licença do corpus de Telegram no depósito do REDU, não no
       arXiv; verificar que o registro declara CC BY-NC 4.0 e que a condição de
-      acesso do `.jsonl` de texto é aberta, distinta da da mídia
+      acesso do `.jsonl` de texto é aberta, distinta da da mídia — feito em
+      19/09/2026, DOI `10.25824/redu/5JIVDT`: CC BY-NC 4.0 confirmada, `.jsonl`
+      de 3,4 GB com acesso público, 5,5 TB de mídia com acesso restrito por
+      acordo assinado. Decisão 13 do `design.md`
 - [ ] 2.6 Baixar apenas `telegram-vaccine-info-disorder-dataset-2020-2025.jsonl`
-      (3,6 GB) e o `readme.pdf` do depósito, e gerar checksum; verificar que
+      (**3,4 GB** conforme o registro do REDU; o valor de 3,6 GB desta task era
+      estimativa) e o `readme.pdf` do depósito, e gerar checksum; verificar que
       nenhum arquivo de mídia foi baixado e que a contagem de linhas bate com os
       3.998.633 posts declarados, registrando divergência se não bater
 - [ ] 2.7 Atualizar `.gitignore` para os brutos novos, incluindo o `.jsonl` de
@@ -113,7 +123,11 @@ cai aqui, antes de qualquer trabalho de integração.
       qualificação, regra de agregação e concordância medida; verificar que
       consta no pacote, e não apenas por referência ao artigo
 - [ ] 5.3 Isolar a faixa de empate como classe própria, recuperável por consulta;
-      verificar que a contagem de empates bate com a declarada pelos autores
+      verificar que a contagem de empates bate com a declarada pelos autores —
+      **em risco:** os autores declaram 84 empates (8,8%) rotulados como
+      não-desinformação por estratégia conservadora. Se o pacote publicar só o
+      rótulo agregado, o empate é irrecuperável e esta task cai. A task 2.4
+      decide
 - [ ] 5.4 Registrar o uso vedado (treino de classificador de veredito) e os usos
       permitidos; verificar por inspeção do README da base
 - [ ] 5.5 Registrar o caveat de viés de amostra declarado pelos autores e o
@@ -186,9 +200,13 @@ Executar apenas se a task 1.3 decidiu manter a capability.
 
 ## 9. Reconciliação com `add-tratamento-datasets-ptbr`
 
-- [ ] 9.1 Absorver os três vocabulários de agência novos da 2.0 no mapa de
-      rótulos daquele change; verificar que os nove vocabulários têm destino
-      definido e que nenhum cai em rótulo padrão silencioso
+- [ ] 9.1 **Reescrita necessária — premissa derrubada em 19/09/2026.** A 2.0
+      não traz vocabulário de veredito: o rótulo é binário (`Label` 0/1), e as
+      oito colunas não incluem campo de veredito textual. Não há três
+      vocabulários a absorver; há três **agências** novas (AFP Checamos,
+      E-farsas, UOL Confere) sem texto de veredito. O que resta fazer é
+      registrar que a 2.0 entra como banco de estímulos e nunca como fonte de
+      veredito graduado. Ver decisão 12 do `design.md`
 - [ ] 9.2 Atualizar as tasks 4.1 a 4.4 daquele change, que este desloca;
       verificar que o texto atualizado não afirma a janela 2013–2021 como
       corrente

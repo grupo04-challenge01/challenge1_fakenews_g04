@@ -112,6 +112,7 @@ def aferir(args) -> None:
                               alfa=args.alfa)
 
     resultado = afericao.aferir_tudo(recuperador)
+    resultado["calibracao_do_limiar"] = afericao.calibrar_limiar(recuperador)
     destino = SAIDA / f"afericao_{args.modelo.split('/')[-1]}.json"
     destino.write_text(
         json.dumps(resultado, ensure_ascii=False, indent=2) + "\n",

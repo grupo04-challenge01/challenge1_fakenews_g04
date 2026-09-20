@@ -192,5 +192,50 @@
       "ano": "2019",
       "tema": "gripe"
     }
-  ]
+  ],
+  "consultas_sem_alvo": {
+    "proposito": "Calibração do limiar de `evidência insuficiente` (task 3.5). Pautas medidas com ZERO ocorrência no corpus pela declaração de cobertura de 19/09/2026, mais duas fora do domínio de saúde. Nenhuma tem documento correto: o score do topo aqui é o ruído contra o qual o limiar precisa separar.",
+    "consultas": [
+      {
+        "id": "n01",
+        "consulta": "Qdenga causa a própria dengue em quem toma",
+        "motivo": "pauta posterior ao acervo; zero ocorrência medida"
+      },
+      {
+        "id": "n02",
+        "consulta": "a vacina contra mpox foi aprovada sem teste",
+        "motivo": "pauta posterior ao acervo; zero ocorrência medida"
+      },
+      {
+        "id": "n03",
+        "consulta": "o vírus oropouche foi criado em laboratório",
+        "motivo": "zero ocorrência no acervo E no índice da API"
+      },
+      {
+        "id": "n04",
+        "consulta": "semaglutida faz o estômago parar de funcionar",
+        "motivo": "zero ocorrência no acervo E no índice da API"
+      },
+      {
+        "id": "n05",
+        "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
+        "motivo": "pauta posterior; combina termo ausente com termo presente"
+      },
+      {
+        "id": "n06",
+        "consulta": "qual o melhor tênis para corrida de rua",
+        "motivo": "fora do domínio; piso absoluto de ruído"
+      },
+      {
+        "id": "n07",
+        "consulta": "como declarar imposto de renda atrasado",
+        "motivo": "fora do domínio; piso absoluto de ruído"
+      },
+      {
+        "id": "n08",
+        "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
+        "motivo": "pauta inexistente, com vocabulário de saúde plausível"
+      }
+    ]
+  }
 }

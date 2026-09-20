@@ -121,3 +121,72 @@ def aferir_tudo(recuperador, consultas_json: dict | None = None,
         "melhor_por_recall_em_5": melhor,
         "contraria_a_decisao_4": melhor != "hibrida",
     }
+
+
+def calibrar_limiar(recuperador, dados: dict | None = None,
+                    modo: str = "hibrida") -> dict:
+    """Task 3.5 — o limiar de `evidência insuficiente` sobre o score fundido.
+
+    Compara duas distribuições sobre o mesmo índice:
+
+    - **positivas**: o score do documento correto, nas 20 consultas de aferição
+      cujo alvo é conhecido;
+    - **sem alvo**: o score do topo, nas consultas de pauta ausente do corpus.
+
+    Se as duas se sobrepõem, não existe limiar sobre score bruto que separe — e
+    o registro precisa dizer isso, porque é o caso que a sonda de 18/09 já
+    sugeria e a decisão 4 do `design.md` depende de saber.
+    """
+    dados = dados or carregar_consultas()
+
+    positivas = []
+    for consulta in dados["consultas"]:
+        resultados = recuperador.buscar(consulta["consulta"], k=max(CORTES),
+                                        modo=modo)
+        alvo = next((r for r in resultados
+                     if _registro_de(r) == consulta["registro_id"]), None)
+        positivas.append({
+            "id": consulta["id"],
+            "familia": consulta["familia"],
+            "score_do_alvo": round(alvo["score"], 4) if alvo else None,
+            "score_do_topo": round(resultados[0]["score"], 4) if resultados else None,
+        })
+
+    sem_alvo = []
+    for consulta in dados["consultas_sem_alvo"]["consultas"]:
+        resultados = recuperador.buscar(consulta["consulta"], k=max(CORTES),
+                                        modo=modo)
+        sem_alvo.append({
+            "id": consulta["id"],
+            "consulta": consulta["consulta"],
+            "score_do_topo": round(resultados[0]["score"], 4) if resultados else None,
+            "topo_recuperado": resultados[0]["alegacao"][:90] if resultados else "",
+        })
+
+    alvos = [p["score_do_alvo"] for p in positivas if p["score_do_alvo"] is not None]
+    ruidos = [n["score_do_topo"] for n in sem_alvo if n["score_do_topo"] is not None]
+
+    separa = bool(alvos) and bool(ruidos) and min(alvos) > max(ruidos)
+
+    return {
+        "modo": modo,
+        "positivas": positivas,
+        "sem_alvo": sem_alvo,
+        "faixa_do_alvo": {"minimo": min(alvos), "mediana": statistics.median(alvos),
+                          "maximo": max(alvos)} if alvos else {},
+        "faixa_do_ruido": {"minimo": min(ruidos), "mediana": statistics.median(ruidos),
+                           "maximo": max(ruidos)} if ruidos else {},
+        "score_bruto_separa": separa,
+        "limiar_sugerido": (round((min(alvos) + max(ruidos)) / 2, 4)
+                            if separa else None),
+        "leitura": (
+            "as duas distribuições não se cruzam; um limiar sobre o score "
+            "fundido separa recuperação útil de ruído"
+            if separa else
+            "as distribuições se sobrepõem: NÃO existe limiar sobre score "
+            "bruto que separe. `evidência insuficiente` precisa de outro sinal "
+            "— confirma o achado de 18/09 e obriga a decisão 4 a registrar o "
+            "limite. A resposta de lacuna de acervo de `frescor-corpus`, que "
+            "decide pela janela do acervo e não pelo score, continua valendo e "
+            "fica sendo o único mecanismo medido que funciona hoje."),
+    }
