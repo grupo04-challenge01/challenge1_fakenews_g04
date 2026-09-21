@@ -6,7 +6,7 @@ Atualizado em **19/09/2026**.
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | **11 de 25** |
+| `add-engage-desinformacao-saude` | Engage | completo | **12 de 25** |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **29 de 33** |
@@ -23,9 +23,9 @@ A proposta do challenge confirmou o cronograma. As datas derivadas mostram que
 o **Investigate encerra em 25/09** e o **Act começa em 28/09** — ver
 [Tasks pendentes](pendencias.md).
 
-### Engage: de 4 para 11 de 25
+### Engage: de 4 para 12 de 25
 
-Fecharam as sete tasks que não exigiam o grupo presente. As 14 restantes
+Fecharam as oito tasks que não exigiam o grupo presente. As 13 restantes
 exigem, sem exceção.
 
 | Entregue | Serve a |

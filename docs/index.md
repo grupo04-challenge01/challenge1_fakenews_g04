@@ -3,6 +3,10 @@
 Portfólio de pesquisa do **grupo 04**, residência em IA do
 Instituto Eldorado.
 
+A proposta original do challenge, de onde saem a Big Idea, a Essential Question
+e o cronograma das seis semanas, está em [CBL_Challenge1.pdf](CBL_Challenge1.pdf).
+
+
 ## O que estamos construindo
 
 Um copiloto de verificação de informação de saúde: a pessoa manda a mensagem

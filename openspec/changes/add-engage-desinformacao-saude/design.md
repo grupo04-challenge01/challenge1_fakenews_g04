@@ -95,3 +95,40 @@ com motivo registrado, como o requirement de qualidade já exige.
 
 Nenhuma dessas questões é decidida neste change. Todas entram no backlog de
 `guiding-questions`.
+
+## Decisão de 20/09/2026: `add-instrumento-avaliacao-ptbr` não será aberto
+
+A task 7.4 previa abrir um change próprio para a construção do instrumento de
+avaliação em PT-BR, na fase Investigate. **O change não será aberto**, e a
+responsabilidade fica com a capability `avaliacao-instrumento` de
+`mvp-copiloto-verificacao`.
+
+### Por que
+
+**A capability já cobre o escopo inteiro.** Os quatro requirements de
+`avaliacao-instrumento` são conjunto local de avaliação, itens-armadilha para
+medir aceitação cega, métricas de resultado e de guarda, e protocolo ético.
+Não sobra nada que o change novo fosse cobrir — ele duplicaria a spec em vez de
+acrescentar.
+
+**O material já existe, e veio do Investigate.** A ampliação do corpus entregou
+o que o instrumento precisa como estímulo: 950 mensagens do WhaVax com veredito
+de quatro médicos, das quais **84 são empates 2-2** — casos difíceis já
+identificados por especialista —, 300 itens estratificados da FakeRecogna 2.0, e
+os 245 registros `misto` do corpus de checagem, reservados como conjunto de
+teste da decomposição. Abrir um change para coletar o que já está coletado não
+tem objeto.
+
+**O calendário fechou a janela.** O Investigate encerra em 25/09 e o Act começa
+em 28/09. Abrir um change de Investigate a cinco dias do fim da fase criaria
+uma dívida de processo maior que a que resolve — o change nasceria e seria
+arquivado sem execução.
+
+### O que isso obriga
+
+A ausência do change **não** reduz o escopo. As seis tasks do bloco 6 de
+`mvp-copiloto-verificacao` continuam valendo integralmente, e a mais crítica
+delas — a submissão ao comitê de ética — não muda de dono nem de prazo.
+
+O que muda é apenas onde o trabalho é rastreado: em `avaliacao-instrumento`, e
+não em change próprio.

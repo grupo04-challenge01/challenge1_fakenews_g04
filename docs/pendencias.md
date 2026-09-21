@@ -8,14 +8,14 @@ esta página conta o que falta.
 
 | Fase | Change | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | **11** | **14** |
+| **Engage** | `add-engage-desinformacao-saude` | **12** | **13** |
 | **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
 | **Investigate** | `add-selecao-modelos-arquitetura-rag` | 29 | **4** |
 | **Investigate → Act** | `fix-resposta-sem-evidencia` | 6 | **7** |
 | **Act** | `mvp-copiloto-verificacao` | 0 | **31** |
 | **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **132** | **58** |
+| | **total** | **133** | **57** |
 
 A distribuição engana se lida rápido. As 4 pendentes do RAG são **um comando**
 na máquina certa; as 21 do Engage são **trabalho de grupo presencial** que nunca
@@ -30,20 +30,20 @@ fazer o quê.
 | --- | --- | --- |
 | **Máquina** — precisa do ambiente com MPS | 4 | quem tem o Mac |
 | **Trabalho de grupo** — sessão presencial, card sorting, forense | 11 | o grupo inteiro |
-| **Decisão de grupo** — não é execução, é escolha | 5 | reunião |
+| **Decisão de grupo** — não é execução, é escolha | 4 | reunião |
 | **Processo externo** — CEP, coleta de rede | 3 | prazo de terceiro |
 | **Implementação** — código e prompt, destravados | 35 | quem estiver codando |
 
 ---
 
-## Engage — 14 pendentes
+## Engage — 13 pendentes
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 11 de 25, vencida há 9 dias.
+11/09 · **Status:** 12 de 25, vencida há 9 dias.
 
-Em 20/09 fecharam sete tasks — todo o bloco 1, todo o bloco 6 e a validação do
-bloco 7. **O que restou é, sem exceção, trabalho que exige as pessoas
-presentes:** forense com um caso por pessoa e tempo cronometrado, sessão de
+Em 20/09 fecharam oito tasks — todo o bloco 1, todo o bloco 6, a validação do
+bloco 7 e a decisão sobre o change de instrumento. **O que restou é, sem
+exceção, trabalho que exige as pessoas presentes:** forense com um caso por pessoa e tempo cronometrado, sessão de
 brainstorming com etapa privada, e card sorting dos sinais que cada integrante
 usa na prática. Nada disso pode ser escrito por alguém no lugar do grupo.
 
@@ -94,22 +94,22 @@ essa compatibilidade nunca foi verificada, porque a matriz não existe. A task
 A 4.4 amarra o bloco 4 ao bloco 2 — sem fichas preenchidas, a validação da
 matriz não tem contra o que rodar. **A forense vem antes.**
 
-### Bloco 7 — Fechamento (3)
+### Bloco 7 — Fechamento (2)
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
 | 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | depende dos blocos 2 a 4 |
 | 7.2 | Consolidar a matriz de confiança versão 1 | depende do bloco 4 |
-| 7.4 | Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate | **decisão de grupo** |
 
 A parte «datasets» da 7.1 já está pronta — é o que o bloco 6 entregou. Falta a
 parte «fichas + método», que sai da forense.
 
-> **A 7.4 é uma lacuna de estrutura, e o relógio a tornou mais difícil.** O
-> change nunca foi aberto e o Investigate encerra em 25/09. Abrir um change de
-> Investigate a cinco dias do fim é discutível; o caminho mais limpo é registrar
-> por escrito que a capability `avaliacao-instrumento` de
-> `mvp-copiloto-verificacao` o absorveu. Decisão do grupo.
+> **A 7.4 foi resolvida em 20/09/2026.** O change
+> `add-instrumento-avaliacao-ptbr` **não será aberto**: a capability
+> `avaliacao-instrumento` de `mvp-copiloto-verificacao` já cobre o escopo nos
+> seus quatro requirements, e o material de estímulo já veio do Investigate.
+> Escopo preservado, rastreamento realocado. Motivo registrado no `design.md`
+> do change do Engage.
 
 ## Investigate — 6 pendentes
 
@@ -301,7 +301,7 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 11 de 25 tasks |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 12 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
 | **3** | **Investigate** | **21/09 a 25/09** | **começa amanhã — é a última** |
 | 4 | Act | 28/09 a 02/10 | não começou |
@@ -353,8 +353,8 @@ de ninguém do grupo.
    rubrica já entregue e da task 8.1 do Act. Kit pronto em
    [Kit do workshop](engage/kit-matriz-confianca.md).
 4. **Quando der:** as cinco decisões abaixo, que são reunião e não execução.
-5. **Antes de 28/09:** abrir o change de Showcase e resolver o
-   `add-instrumento-avaliacao-ptbr`.
+5. **Antes de 28/09:** abrir o change de Showcase, que é a lacuna de estrutura
+   que sobrou.
 
 ## A ordem das fases foi invertida, e isso tem custo
 
@@ -416,8 +416,10 @@ endereça quem publicou e o que ganha com isso. Falta o **viés de confirmação
 quem lê** — e essa é a face que mais se aproxima da métrica primária do projeto,
 que é ganho de discernimento do usuário.
 
-## Duas lacunas de estrutura
+## Uma lacuna de estrutura
 
-1. **`add-instrumento-avaliacao-ptbr` nunca foi aberto** (task 7.4 do Engage).
-   Abrir ou registrar a absorção por `avaliacao-instrumento`.
-2. **Não existe change de Showcase.** Abrir antes da semana 6.
+**Não existe change de Showcase.** Abrir antes da semana 6 (12 a 16/10).
+
+A outra lacuna — `add-instrumento-avaliacao-ptbr` — **foi fechada em
+20/09/2026**: o change não será aberto, e a capability `avaliacao-instrumento`
+de `mvp-copiloto-verificacao` responde pelo escopo.

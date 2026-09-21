@@ -72,4 +72,9 @@ Vigência: 08/09 a 11/09.
 - [ ] 7.1 Consolidar o portfólio de pesquisa (fichas + método + datasets)
 - [ ] 7.2 Consolidar a matriz de confiança versão 1
 - [x] 7.3 Rodar `openspec validate add-engage-desinformacao-saude --strict` — limpo em 20/09/2026
-- [ ] 7.4 Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate
+- [x] 7.4 ~~Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate~~ —
+      **decidido em 20/09/2026: o change não será aberto.** A capability
+      `avaliacao-instrumento` de `mvp-copiloto-verificacao` já cobre o escopo
+      inteiro nos seus quatro requirements, e o material de estímulo já foi
+      entregue pelo Investigate. Escopo preservado, rastreamento realocado —
+      ver a nota de decisão no `design.md`
