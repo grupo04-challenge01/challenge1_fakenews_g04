@@ -16,6 +16,7 @@ datasets-desinformacao/
 │   └── scientific_exaggeration/  # insciout train/test (JSONL + CSV)
 ├── 03_banco_estimulos/
 │   ├── fakerecogna2/           # fakerecogna_extrativo.csv (2.0, substitui a v1)
+│   └── med_mmhl/               # só docs, licença e script (não baixado)
 │   └── med_mmhl/               # só docs + script (dados não baixados, ver abaixo)
 ├── derivados/                  # tabelas já prontas para uso no projeto
 └── relatorio.json              # contagens e distribuições de rótulo de tudo
@@ -72,6 +73,16 @@ para a estrutura — o texto das checagens continua sendo das agências, como o 
 Rótulos: falso 943 · verdadeiro 120 · exagerado 91 · distorcido 54 · sem contexto 42 · impossível provar 20 · outros.
 Só 3 agências, contra 6 do FactCenter — confirma o papel de fonte auxiliar.
 
+### WhaVax — 950 mensagens anotadas (português)
+Mensagens de grupos públicos de WhatsApp sobre vacinação, anotadas por **quatro médicos**, maioria de 3 em 4,
+Fleiss' Kappa 0,621, janela 2020–2023. Licença CC BY 4.0.
+
+Entra no núcleo metodológico porque traz **veredito de especialista clínico**, que nenhuma outra base do
+pacote tem. A faixa de **84 empates 2-2** está isolada e é o material mais valioso: são as mensagens em que
+quatro médicos olharam e não concordaram.
+
+Caveat: os 84.640 do artigo são o corpus filtrado; o conjunto anotado tem 950. Não são o mesmo número.
+
 ## 2. Comparação: detecção de exagero
 
 ### Scientific Exaggeration (InSciOut) — 663 pares
@@ -86,21 +97,34 @@ que precisamos para o prompt do RAG. Deixei fora o `unlabelled_pet.jsonl` (18 MB
 
 ## 3. Banco de estímulos
 
-### FakeRecogna — 11.903 itens (português)
-`Classe 0` = falso (boatos.org, e-farsas, AFP Checamos) · `Classe 1` = verdadeiro (UOL, G1). Perfeitamente
-balanceado, 5.951 de cada — o que por si só já denuncia curadoria artificial.
+### FakeRecogna 2.0 — 52.800 itens (português)
+**Substituiu a v1 em 19/09/2026.** `Label 0` = real · `Label 1` = falso, 26.400 de cada, de **nove**
+agências de checagem. Licença MIT declarada pelos autores.
 
-Categorias: saúde 4.456 · política 3.951 · entretenimento 1.409 · brasil 904 · ciência 602.
+O viés de sumarização apontado no portfólio se confirma, e agora está **medido**: a notícia real vem
+sumarizada na origem (mediana 684 caracteres, teto 1.493) e a falsa vem crua (mediana 294). Um classificador
+que só conta caracteres acerta **80,5%** nesta base balanceada. O uso é amostragem de estímulo, nunca treino
+de veredito — e os itens reais precisam de revisão manual antes do teste com usuário, senão o participante
+acerta pelo comprimento do texto.
 
-O viés de sumarização apontado no portfólio se confirma na inspeção: as notícias verdadeiras vêm de portais
-grandes e estão encurtadas. Como aqui o uso é só amostragem de estímulo para a interface, não treino, isso
-não invalida o uso — mas os itens verdadeiros precisam de revisão manual antes de ir para o teste com usuário,
-senão o participante pode acertar pelo estilo do texto.
+Detalhe e critério do subset temático em [Ampliação do corpus](../docs/investigate/ampliacao-corpus.md).
 
 ### Med-MMHL — **não baixado**
 Os dados não estão no GitHub: ficam num Dropbox de **4,0 GB** (o volume é quase todo imagem). Como o uso
 previsto é teste de estresse condicional, deixei em `03_banco_estimulos/med_mmhl/baixar_med_mmhl.sh` o comando
 pronto, mais o apêndice do artigo e a licença (CC BY-NC 4.0 — não comercial, compatível com o uso acadêmico).
+
+## 4. Acervo de circulação
+
+Camada criada em 19/09/2026. **Função nova**, que não estava na classificação da fase Engage
+(raciocínio · comparação fonte-manchete · banco de estímulos): aqui o dado não serve a nenhuma das três —
+serve a medir **o que circulou, em que canal e quando**, que é insumo que nenhuma base de checagem fornece,
+porque agência publica o desmentido e não a difusão.
+
+### Telegram antivacina brasileiro — 3.998.633 posts
+119 canais, janeiro/2020 a junho/2025, licença CC BY-NC 4.0. **Não é citável e não tem veredito.**
+Leitura de prevalência é vedada — a amostra é de comunidade antivacina por construção.
+Usos permitidos e vedados em `04_acervo_circulacao/telegram_antivacina_br/README.md`.
 
 ## Derivados (`derivados/`)
 

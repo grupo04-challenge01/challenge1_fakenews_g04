@@ -6,7 +6,7 @@ Atualizado em **19/09/2026**.
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | 4 de 25 |
+| `add-engage-desinformacao-saude` | Engage | completo | **11 de 25** |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **29 de 33** |
@@ -14,6 +14,37 @@ Atualizado em **19/09/2026**.
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
+
+## O que foi entregue em 20/09/2026
+
+### Calendário derivado, e o Investigate com cinco dias
+
+A proposta do challenge confirmou o cronograma. As datas derivadas mostram que
+o **Investigate encerra em 25/09** e o **Act começa em 28/09** — ver
+[Tasks pendentes](pendencias.md).
+
+### Engage: de 4 para 11 de 25
+
+Fecharam as sete tasks que não exigiam o grupo presente. As 14 restantes
+exigem, sem exceção.
+
+| Entregue | Serve a |
+| --- | --- |
+| [Casos da forense](engage/casos-forense.md) — seis casos, quatro tipos | bloco 2 |
+| [Ficha de caso](engage/ficha-de-caso.md) — oito campos e checklist | bloco 2 |
+| [Board do brainstorming](engage/board-brainstorming.md) — cinco quadros | bloco 3 |
+| [Kit do workshop](engage/kit-matriz-confianca.md) — protocolo e cartões-semente | bloco 4 |
+
+Dois achados na conferência de datasets, que estava dada como pronta:
+
+1. **FakeHealth não tinha licença registrada.** Conferida: CC BY 4.0, no
+   registro do Zenodo (`10.5281/zenodo.3606757`), não no GitHub, que não declara.
+2. **O InSciOut não declara licença** no repositório dos autores. Entrou nas
+   pendências junto do PUBHEALTH — são duas agora, não uma.
+
+E um achado de taxonomia: as três funções de dataset nomeadas na task 6.2
+(raciocínio, comparação fonte-manchete, banco de estímulos) **não bastam**. O
+acervo de circulação não cabe em nenhuma, e virou a quarta.
 
 ## O que foi entregue em 19/09/2026
 

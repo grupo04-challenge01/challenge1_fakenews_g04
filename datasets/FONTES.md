@@ -51,8 +51,15 @@ baixe de cada fonte primária abaixo e confira contra os checksums da última se
   Fake Health News with a Comprehensive Data Repository.* arXiv:2002.00837.
 - **Origem:** repositório dos autores, `EnyanDai/FakeHealth`. Conferido contra o
   ZIP do Zenodo, **DOI 10.5281/zenodo.3606757** — mesmo snapshot.
+- **Licença: CC BY 4.0** — conferida em 20/09/2026 no registro do Zenodo
+  (`10.5281/zenodo.3606757`, acesso aberto), não no repositório do GitHub, que
+  não declara licença. Atribuição é condição de uso.
 - **Nota do dataset:** os `engagements/` trazem apenas IDs de tweets, por política
   de privacidade do Twitter/X; o conteúdo não é redistribuível.
+- **Caveat:** são **20** perguntas em dois conjuntos de 10 (HealthStory e
+  HealthRelease), não 10. O nome do derivado
+  `fakehealth_matriz_10_criterios.csv` está errado e foi mantido por
+  estabilidade de referência.
 - **Derivados versionados:** `derivados/fakehealth_criterios_long.csv`,
   `fakehealth_matriz_10_criterios.csv`, `fakehealth_reviews_indice.csv`.
 
@@ -66,6 +73,8 @@ baixe de cada fonte primária abaixo e confira contra os checksums da última se
 - **Derivado versionado:** `derivados/factcenter_subset_saude.csv` — 4.063
   checagens filtradas por termos de saúde e ciência.
 
+- **Caveats medidos:** ver a seção «Caveats do tratamento» em [`README.md`](README.md).
+
 ### FACTCK.BR
 
 - **Licença: MIT** (© 2019 jghm-f) para a estrutura do dataset. O **texto das
@@ -74,6 +83,8 @@ baixe de cada fonte primária abaixo e confira contra os checksums da última se
 - **Origem:** `thiagorainmaker77/FACTCK.BR`, espelho do original `jghm-f/FACTCK.BR`.
 - **Composição:** 1.313 alegações em português, coletadas via schema ClaimReview.
 - **Versionado por inteiro** (721 KB), com `LICENSE` e o script `update_factckbr.py`.
+
+- **Caveats medidos:** ver a seção «Caveats do tratamento» em [`README.md`](README.md).
 
 ### Scientific Exaggeration (InSciOut)
 
@@ -87,6 +98,14 @@ baixe de cada fonte primária abaixo e confira contra os checksums da última se
   e o *strength* dos dois lados.
 - **Versionado por inteiro.** Fora ficou só o `unlabelled_pet.jsonl` (18 MB), que
   serve apenas para treinar PET.
+- **Licença: não declarada.** Conferido em 20/09/2026 na fonte primária, o
+  repositório `copenlu/scientific-exaggeration-detection`, que **não traz
+  arquivo de licença** — a API do GitHub devolve licença nula. O artigo é
+  EMNLP 2021, Wright & Augenstein. **Verificar com os autores antes de
+  qualquer redistribuição** — ver "Pendências" abaixo.
+- **Caveat:** atravessa como **instrumento**, não como conteúdo. Nenhum texto
+  em inglês do par comunicado/abstract é exibido ao usuário; o que cruza a
+  fronteira de idioma é a escala de força da afirmação, renomeada em português.
 
 ### FakeRecogna 2.0 — substitui a v1 em 19/09/2026
 
@@ -198,15 +217,18 @@ contagem e a estímulo declarado, nunca a trecho citado.
 
 ## Pendências de licença
 
-**Uma** base tem derivado versionado neste repositório público sem licença
-declarada no pacote de coleta:
+**Duas** bases têm derivado versionado neste repositório público sem licença
+declarada na fonte:
 
 1. **PUBHEALTH** — `derivados/pubhealth_pool_fewshot.csv`
+2. **InSciOut / Scientific Exaggeration** — `derivados/exagero_pares_abstract_vs_release.csv`
+   e os quatro arquivos em `02_comparacao_exagero/`
 
 A pendência da **FakeRecogna foi baixada em 19/09/2026**: a 2.0 declara MIT no
-cartão dos próprios autores, e a v1 saiu do repositório.
+cartão dos próprios autores, e a v1 saiu do repositório. A do **FakeHealth foi
+baixada em 20/09/2026**: CC BY 4.0 no registro do Zenodo.
 
-Antes da entrega, conferir a licença do PUBHEALTH na fonte primária. Se a
+Antes da entrega, conferir a licença das duas na fonte primária. Se a
 redistribuição não for permitida, mover o arquivo para o `.gitignore` e deixar
 apenas o script que o reconstrói. Nenhum uso interno do grupo fica bloqueado por
 isso — a pendência é sobre publicar, não sobre usar.

@@ -8,14 +8,14 @@ esta página conta o que falta.
 
 | Fase | Change | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | 4 | **21** |
+| **Engage** | `add-engage-desinformacao-saude` | **11** | **14** |
 | **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
 | **Investigate** | `add-selecao-modelos-arquitetura-rag` | 29 | **4** |
 | **Investigate → Act** | `fix-resposta-sem-evidencia` | 6 | **7** |
 | **Act** | `mvp-copiloto-verificacao` | 0 | **31** |
 | **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **125** | **65** |
+| | **total** | **132** | **58** |
 
 A distribuição engana se lida rápido. As 4 pendentes do RAG são **um comando**
 na máquina certa; as 21 do Engage são **trabalho de grupo presencial** que nunca
@@ -29,35 +29,32 @@ fazer o quê.
 | Bloqueio | Tasks | Quem resolve |
 | --- | --- | --- |
 | **Máquina** — precisa do ambiente com MPS | 4 | quem tem o Mac |
-| **Trabalho de grupo** — sessão presencial, card sorting, forense | 15 | o grupo inteiro |
+| **Trabalho de grupo** — sessão presencial, card sorting, forense | 11 | o grupo inteiro |
 | **Decisão de grupo** — não é execução, é escolha | 5 | reunião |
 | **Processo externo** — CEP, coleta de rede | 3 | prazo de terceiro |
-| **Implementação** — código e prompt, destravados | 38 | quem estiver codando |
+| **Implementação** — código e prompt, destravados | 35 | quem estiver codando |
 
 ---
 
-## Engage — 21 pendentes
+## Engage — 14 pendentes
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status real:** vencida há 9 dias, e incompleta.
+11/09 · **Status:** 11 de 25, vencida há 9 dias.
 
-Esta é a dívida mais antiga do projeto e a menos visível, porque o Investigate
-avançou por cima dela. As guiding questions ficaram prontas (bloco 5); o resto
-não.
+Em 20/09 fecharam sete tasks — todo o bloco 1, todo o bloco 6 e a validação do
+bloco 7. **O que restou é, sem exceção, trabalho que exige as pessoas
+presentes:** forense com um caso por pessoa e tempo cronometrado, sessão de
+brainstorming com etapa privada, e card sorting dos sinais que cada integrante
+usa na prática. Nada disso pode ser escrito por alguém no lugar do grupo.
 
-### Bloco 1 — Preparação (3)
+### O que ficou pronto para a sessão
 
-| # | Task | Bloqueio |
+| Artefato | Serve a | Onde |
 | --- | --- | --- |
-| 1.1 | Selecionar 4 a 6 casos brasileiros, cobrindo ao menos 3 tipos de manipulação | grupo |
-| 1.2 | Criar o template da ficha de caso conforme `pesquisa-investigativa` | implementação |
-| 1.3 | Preparar o board com os cinco quadros: Problema, Público, Específicas, Solução, Sucesso | grupo |
-
-> **Nota.** A seleção de casos da 1.1 agora tem material que não existia em
-> setembro: 20 casos reais já curados em `prototipo/rag/consultas_afericao.json`,
-> fora do recorte covid e com o documento de checagem conhecido para cada um.
-> Serve de ponto de partida, não de substituto — a forense exige caso analisado
-> por pessoa.
+| Seis casos selecionados, quatro tipos de manipulação | bloco 2 | [Casos da forense](engage/casos-forense.md) |
+| Template da ficha, oito campos e checklist | bloco 2 | [Ficha de caso](engage/ficha-de-caso.md) |
+| Board dos cinco quadros, com as três regras de condução | bloco 3 | [Board do brainstorming](engage/board-brainstorming.md) |
+| Protocolo do card sorting e doze cartões-semente | bloco 4 | [Kit do workshop](engage/kit-matriz-confianca.md) |
 
 ### Bloco 2 — Investigação forense (4)
 
@@ -68,14 +65,15 @@ não.
 | 2.3 | Preencher uma ficha por caso, com fontes rastreáveis | grupo |
 | 2.4 | Consolidar os tempos medidos como evidência para o quadro Problema | grupo |
 
-O tempo medido da 2.2 não é burocracia: é a evidência que sustenta o quadro
-Problema, e sem ele o argumento do projeto vira opinião.
+Os seis casos já estão escolhidos e classificados por tipo. O tempo medido da
+2.2 não é burocracia: é a evidência que sustenta o quadro Problema, e sem ele o
+argumento do projeto vira opinião.
 
 ### Bloco 3 — Sessão de brainstorming, ~90 min (3)
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 3.1 | Rodar Problema, Público e Sucesso em modo privado antes de abrir a discussão | grupo |
+| 3.1 | Rodar Problema, Público e Sucesso em modo privado antes de abrir | grupo |
 | 3.2 | Preencher o quadro Solução **apenas como hipóteses**, sem decidir | grupo |
 | 3.3 | Plotar guiding questions na matriz impacto × incerteza | grupo |
 
@@ -84,51 +82,34 @@ Problema, e sem ele o argumento do projeto vira opinião.
 | # | Task | Bloqueio |
 | --- | --- | --- |
 | 4.1 | Card sorting dos sinais que cada integrante usa na prática | grupo |
-| 4.2 | Consolidar em dimensões, cada uma com sinal observável, papel da IA e limite | grupo |
-| 4.3 | Escrever a rubrica de três níveis por dimensão | implementação |
-| 4.4 | Testar a matriz contra os casos da forense e remover o que não discrimina | grupo |
+| 4.2 | Consolidar em dimensões, com sinal observável, papel da IA e **limite** | grupo |
+| 4.3 | Escrever a rubrica de três níveis por dimensão | depende de 4.2 |
+| 4.4 | Testar a matriz contra os casos da forense e remover o que não discrimina | **depende do bloco 2** |
 
-> **Atalho disponível.** A rubrica de seis critérios adaptada do FakeHealth já
-> existe, com três níveis cada, em
-> `datasets/derivados/rubrica_criterios_ptbr.json`. Ela **não é** a matriz de
-> confiança — é o instrumento de qualidade de cobertura —, mas o formato de
-> rubrica está resolvido e a 4.3 pode reusá-lo.
+**Este bloco subiu de prioridade.** Deixou de ser dívida histórica: a spec de
+`adaptacao-criterios-en` exige rubrica «compatível com `matriz-confianca`», e
+essa compatibilidade nunca foi verificada, porque a matriz não existe. A task
+8.1 do Act depende dela também.
 
-### Bloco 6 — Exploração de datasets (3)
+A 4.4 amarra o bloco 4 ao bloco 2 — sem fichas preenchidas, a validação da
+matriz não tem contra o que rodar. **A forense vem antes.**
 
-| # | Task | Situação |
-| --- | --- | --- |
-| 6.1 | Verificar disponibilidade e licença de cada dataset candidato, com link conferido | **aparentemente satisfeita** |
-| 6.2 | Classificar cada dataset por função: raciocínio, comparação fonte-manchete, banco de estímulos | **aparentemente satisfeita** |
-| 6.3 | Registrar caveats por dataset, incluindo descartados com motivo | **aparentemente satisfeita** |
-
-As três parecem cumpridas pelo trabalho de 19/09: `datasets/FONTES.md` traz
-licença conferida na fonte primária de cada base, a estrutura de diretórios
-(`01_nucleo_metodologico`, `02_comparacao_exagero`, `03_banco_estimulos`,
-`04_acervo_circulacao`) é a classificação por função, e os caveats estão em
-`datasets/README.md` e em
-[Tratamento dos datasets](investigate/tratamento-datasets.md).
-
-**Não foram marcadas de propósito.** O trabalho foi feito sob outros changes, e
-marcar task de um change a partir de entrega de outro é o tipo de atalho que a
-metodologia existe para impedir. Cabe ao grupo conferir e marcar — ou registrar
-o que ainda falta.
-
-### Bloco 7 — Fechamento (4)
+### Bloco 7 — Fechamento (3)
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | depende dos blocos 1 a 4 |
+| 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | depende dos blocos 2 a 4 |
 | 7.2 | Consolidar a matriz de confiança versão 1 | depende do bloco 4 |
-| 7.3 | `openspec validate add-engage-desinformacao-saude --strict` | **já passa limpo** |
-| 7.4 | Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate | decisão de grupo |
+| 7.4 | Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate | **decisão de grupo** |
 
-> **A 7.4 é uma lacuna de estrutura.** O change `add-instrumento-avaliacao-ptbr`
-> **nunca foi aberto**, e a fase Investigate está encerrando sem ele. Ou ele é
-> aberto agora, ou o grupo registra por escrito que a capability
-> `avaliacao-instrumento` de `mvp-copiloto-verificacao` o absorveu.
+A parte «datasets» da 7.1 já está pronta — é o que o bloco 6 entregou. Falta a
+parte «fichas + método», que sai da forense.
 
----
+> **A 7.4 é uma lacuna de estrutura, e o relógio a tornou mais difícil.** O
+> change nunca foi aberto e o Investigate encerra em 25/09. Abrir um change de
+> Investigate a cinco dias do fim é discutível; o caminho mais limpo é registrar
+> por escrito que a capability `avaliacao-instrumento` de
+> `mvp-copiloto-verificacao` o absorveu. Decisão do grupo.
 
 ## Investigate — 6 pendentes
 
@@ -320,7 +301,7 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 4 de 25 tasks |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 11 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
 | **3** | **Investigate** | **21/09 a 25/09** | **começa amanhã — é a última** |
 | 4 | Act | 28/09 a 02/10 | não começou |
@@ -336,10 +317,11 @@ sexta, 25/09. O Act começa na segunda seguinte, 28/09.
 4 do RAG são um comando na máquina com MPS. Fechar a fase no prazo é
 plausível — depende de rodar a aferição densa esta semana.
 
-**O Engage está.** Nove dias vencido, e agora com a agravante de que o bloco 4
-(matriz de confiança) virou pré-requisito de coisa já construída. Pela própria
-proposta, a entrega do Engage é «processo investigativo + guiding questions»:
-metade está pronta desde 11/09, a outra metade não começou.
+**O Engage está.** Nove dias vencido. Em 20/09 fecharam sete tasks, todas as que
+não exigiam o grupo presente — restam 14, e **as 14 exigem**. Pela própria
+proposta, a entrega do Engage é «processo investigativo + guiding questions»: as
+guiding questions estão prontas desde 11/09, e o processo investigativo agora
+tem casos, ficha e protocolo prontos, faltando ser **executado**.
 
 ### O caminho crítico é o comitê de ética
 
@@ -364,10 +346,12 @@ de ninguém do grupo.
 
 1. **Segunda:** submissão ao CEP (6.4) e aferição densa na máquina com MPS
    (3.1 a 3.4 do RAG, fecha o change).
-2. **Segunda ou terça:** workshop da confiança — bloco 4 do Engage. É
-   pré-requisito da rubrica já entregue e da task 8.1 do Act.
-3. **Meio da semana:** forense (bloco 2 do Engage), que é a outra metade da
-   entrega declarada da fase 1.
+2. **Segunda ou terça:** forense — bloco 2 do Engage. Vem **antes** do workshop,
+   porque a task 4.4 valida a matriz contra os casos analisados. Casos, ficha e
+   protocolo já estão prontos; falta cronometrar e preencher.
+3. **Meio da semana:** workshop da confiança — bloco 4. É pré-requisito da
+   rubrica já entregue e da task 8.1 do Act. Kit pronto em
+   [Kit do workshop](engage/kit-matriz-confianca.md).
 4. **Quando der:** as cinco decisões abaixo, que são reunião e não execução.
 5. **Antes de 28/09:** abrir o change de Showcase e resolver o
    `add-instrumento-avaliacao-ptbr`.
