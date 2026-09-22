@@ -30,8 +30,8 @@ exigem, sem exceção.
 
 | Entregue | Serve a |
 | --- | --- |
-| [Casos da forense](engage/casos-forense.md) — seis casos, quatro tipos | bloco 2 |
-| [Ficha de caso](engage/ficha-de-caso.md) — oito campos e checklist | bloco 2 |
+| [Casos da forense](forense/casos-forense.md) — seis casos, quatro tipos | bloco 2 |
+| [Ficha de caso](forense/ficha-de-caso.md) — oito campos e checklist | bloco 2 |
 | [Board do brainstorming](engage/board-brainstorming.md) — cinco quadros | bloco 3 |
 | [Kit do workshop](engage/kit-matriz-confianca.md) — protocolo e cartões-semente | bloco 4 |
 
