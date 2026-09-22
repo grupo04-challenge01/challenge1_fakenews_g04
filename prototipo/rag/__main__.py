@@ -3,6 +3,8 @@
     python -m prototipo.rag construir [--modelo NOME]
     python -m prototipo.rag buscar "consulta" [--modo lexica|densa|hibrida]
                                               [--fusao score|rrf] [--k 10]
+    python -m prototipo.rag aferir [--modelo NOME] [--alfa 0.9]
+    python -m prototipo.rag varrer-alfa [--modelo NOME]
 """
 from __future__ import annotations
 
@@ -93,23 +95,61 @@ def buscar(args) -> None:
         print(f'    {achado["url"]}')
 
 
+def _recuperador_de(modelo: str, alfa: float = ALFA_PADRAO) -> Recuperador:
+    """Monta o recuperador, construindo a matriz densa só se ela faltar.
+
+    A matriz é o custo caro (883 s para o `e5-base`) e não depende do conjunto
+    de aferição. Reconstruí-la a cada medição desperdiçaria a única parte que
+    já está paga.
+    """
+    matriz = _matriz_de(modelo)
+    fragmentos = _ler_jsonl(SAIDA / "fragmentos.jsonl")
+    if not matriz.exists():
+        print(f"matriz de {modelo} ausente — construindo", flush=True)
+        marca = time.perf_counter()
+        IndiceDenso.construir(fragmentos, modelo).gravar(matriz)
+        print(f"indexação: {time.perf_counter() - marca:.1f} s", flush=True)
+
+    unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
+    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
+                       IndiceDenso.carregar(matriz, modelo), alfa=alfa)
+
+
+def varrer_alfa(args) -> None:
+    """Task 3.1 — varre o peso do braço denso e valida o ótimo.
+
+    Separado de `aferir` porque responde outra pergunta. `aferir` compara três
+    arquiteturas num alfa; esta compara alfas numa arquitetura, e é ela que diz
+    se o alfa fixado em `hibrida.py` se sustenta neste modelo.
+    """
+    from . import afericao
+
+    recuperador = _recuperador_de(args.modelo)
+    resultado = afericao.varrer_alfa(recuperador)
+
+    destino = SAIDA / f"varredura_alfa_{args.modelo.split('/')[-1]}.json"
+    destino.write_text(
+        json.dumps(resultado, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8")
+
+    for alfa in resultado["alfas"]:
+        medida = resultado["por_alfa"][str(alfa)]
+        print(f"alfa={alfa:<5} recall@5={medida['recall']['@5']:<5} "
+              f"mrr={medida['mrr']:<6} perdidos={medida['nao_encontrados']}")
+    loo = resultado["leave_one_out"]
+    print(f"\nmelhor alfa: {resultado['melhor_alfa']} | "
+          f"platô dentro de 0,01: {resultado['dentro_de_0_01_do_topo']}")
+    print(f"leave-one-out: híbrida {loo['mrr_validado']} vs "
+          f"densa pura {loo['mrr_densa_pura']}")
+    print(resultado["leitura"])
+    print(f"gravado em {destino}")
+
+
 def aferir(args) -> None:
     """Mede recall das três configurações sobre o conjunto da task 2.6."""
     from . import afericao
 
-    matriz = _matriz_de(args.modelo)
-    if not matriz.exists():
-        fragmentos = _ler_jsonl(SAIDA / "fragmentos.jsonl")
-        print(f"matriz de {args.modelo} ausente — construindo", flush=True)
-        marca = time.perf_counter()
-        IndiceDenso.construir(fragmentos, args.modelo).gravar(matriz)
-        print(f"indexação: {time.perf_counter() - marca:.1f} s", flush=True)
-
-    fragmentos = _ler_jsonl(SAIDA / "fragmentos.jsonl")
-    unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
-    recuperador = Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
-                              IndiceDenso.carregar(matriz, args.modelo),
-                              alfa=args.alfa)
+    recuperador = _recuperador_de(args.modelo, args.alfa)
 
     resultado = afericao.aferir_tudo(recuperador)
     resultado["calibracao_do_limiar"] = afericao.calibrar_limiar(recuperador)
@@ -149,6 +189,11 @@ def main() -> None:
     a.add_argument("--modelo", default=MODELO_PADRAO)
     a.add_argument("--alfa", type=float, default=ALFA_PADRAO)
     a.set_defaults(func=aferir)
+
+    v = sub.add_parser("varrer-alfa",
+                       help="varre o peso do braço denso e valida o ótimo (task 3.1)")
+    v.add_argument("--modelo", default=MODELO_PADRAO)
+    v.set_defaults(func=varrer_alfa)
 
     args = analisador.parse_args()
     args.func(args)

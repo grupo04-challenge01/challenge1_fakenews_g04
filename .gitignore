@@ -32,7 +32,13 @@ rtk_build/
 # O manifesto é a declaração auditável do índice e fica versionado.
 prototipo/indice/*.jsonl
 prototipo/indice/*.npy
+prototipo/indice/vocabulario.json
 !prototipo/indice/manifesto.json
+# As medicoes ficam versionadas: sao a evidencia das tasks 3.1 a 3.4, e o
+# arquivo e pequeno. Reconstituivel por `aferir` e `varrer-alfa`, mas o ponto
+# de versionar e poder comparar com o que foi medido antes.
+!prototipo/indice/afericao_*.json
+!prototipo/indice/varredura_alfa_*.json
 
 # Segredos. A chave da Fact Check Tools API mora em .env, nunca no repositorio.
 .env
