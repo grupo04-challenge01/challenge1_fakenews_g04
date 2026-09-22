@@ -41,7 +41,7 @@ fazer o quê.
 ## Engage — 13 pendentes
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 12 de 25, vencida há 9 dias.
+11/09 · **Status:** 12 de 25, vencida há 11 dias.
 
 Em 20/09 fecharam oito tasks — todo o bloco 1, todo o bloco 6, a validação do
 bloco 7 e a decisão sobre o change de instrumento. **O que restou é, sem
@@ -311,7 +311,7 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 12 de 25 tasks |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 11 dias**, 12 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
 | **3** | **Investigate** | **21/09 a 25/09** | **em curso — é a última; 119 de 121** |
 | 4 | Act | 28/09 a 02/10 | não começou |
@@ -329,8 +329,8 @@ change em 33 de 33. Sobram a recoleta do FACTCK.BR (3.5), que depende de rede,
 e a validação da rubrica (5.4), que depende de anotação humana — **nenhuma das
 duas é código**.
 
-**O Engage está.** Nove dias vencido. Em 20/09 fecharam sete tasks, todas as que
-não exigiam o grupo presente — restam 14, e **as 14 exigem**. Pela própria
+**O Engage está.** Onze dias vencido. Em 20/09 fecharam oito tasks, todas as que
+não exigiam o grupo presente — restam 13, e **as 13 exigem**. Pela própria
 proposta, a entrega do Engage é «processo investigativo + guiding questions»: as
 guiding questions estão prontas desde 11/09, e o processo investigativo agora
 tem casos, ficha e protocolo prontos, faltando ser **executado**.
@@ -345,24 +345,24 @@ A cadeia é esta, e ela não tem folga:
 ```
 
 O Act encerra em **09/10** e o Showcase é de **12 a 16/10**. Da data de hoje até
-o fim do Act são **19 dias**. Toda a avaliação com usuário — que é de onde sai a
+o fim do Act são **17 dias**. Toda a avaliação com usuário — que é de onde sai a
 métrica primária de sucesso do projeto, ganho de discernimento — está depois da
 aprovação do CEP nessa cadeia.
 
 O grupo sabe o prazo real do CEP da instituição; eu não. Mas a estrutura da
 dependência é essa, e a janela é essa. **Se houver uma única coisa a iniciar
-nesta segunda, é a submissão** — ela é a única pendência cujo prazo não depende
-de ninguém do grupo.
+hoje, é a submissão** — ela é a única pendência cujo prazo não depende de
+ninguém do grupo, e cada dia de atraso sai inteiro da janela do Act.
 
 ### Sugestão de ordem para a semana 3
 
 1. ~~Aferição densa na máquina com MPS (3.1 a 3.4 do RAG)~~ — **feita em
    22/09, change fechado em 33 de 33.** Resta a submissão ao CEP (6.4), que
    continua sendo a coisa mais urgente da semana.
-2. **Segunda ou terça:** forense — bloco 2 do Engage. Vem **antes** do workshop,
+2. **Hoje ou amanhã:** forense — bloco 2 do Engage. Vem **antes** do workshop,
    porque a task 4.4 valida a matriz contra os casos analisados. Casos, ficha e
    protocolo já estão prontos; falta cronometrar e preencher.
-3. **Meio da semana:** workshop da confiança — bloco 4. É pré-requisito da
+3. **Quinta:** workshop da confiança — bloco 4. É pré-requisito da
    rubrica já entregue e da task 8.1 do Act. Kit pronto em
    [Kit do workshop](engage/kit-matriz-confianca.md).
 4. **Quando der:** as cinco decisões abaixo, que são reunião e não execução.
@@ -374,7 +374,7 @@ de ninguém do grupo.
 O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
 existe é o contrário: **Engage em 12 de 25, Investigate em 119 de 121**.
 
-**Por que aconteceu.** As 21 pendentes do Engage são quase todas trabalho de
+**Por que aconteceu.** As 13 pendentes do Engage são quase todas trabalho de
 grupo presencial — forense com um caso por pessoa, sessão de brainstorming de
 90 minutos, card sorting da matriz. Nada disso se faz individualmente. O que
 avançou foi o que dava para avançar sozinho.

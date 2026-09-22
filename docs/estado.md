@@ -1,8 +1,8 @@
 # Estado do projeto
 
-Atualizado em **19/09/2026**.
+Atualizado em **22/09/2026**.
 
-## Os cinco changes
+## Os seis changes
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ Atualizado em **19/09/2026**.
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
-| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 12** |
+| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 13** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
