@@ -123,6 +123,114 @@ def aferir_tudo(recuperador, consultas_json: dict | None = None,
     }
 
 
+ALFAS_VARREDURA = tuple(round(0.70 + 0.02 * i, 2) for i in range(16))
+
+
+def _reciproco(posicao: int | None) -> float:
+    return 1.0 / posicao if posicao else 0.0
+
+
+def _mrr_de(posicoes: dict, ids: list[str]) -> float:
+    return sum(_reciproco(posicoes[i]) for i in ids) / len(ids)
+
+
+def _recall_de(posicoes: dict, ids: list[str], corte: int) -> float:
+    acertos = sum(1 for i in ids
+                  if posicoes[i] is not None and posicoes[i] <= corte)
+    return acertos / len(ids)
+
+
+def varrer_alfa(recuperador, dados: dict | None = None,
+                alfas=ALFAS_VARREDURA, k: int = max(CORTES)) -> dict:
+    """Task 3.1 — o peso do braço denso na fusão por score.
+
+    `hibrida.py` declara `alfa` provisório e parâmetro explícito «para que a
+    task 3.1 possa varrê-lo». `aferir_tudo` mede um alfa só, e medir um alfa só
+    não compara arquiteturas: compara uma calibração. A primeira medição com
+    alfa em 0,5 concluiu que a híbrida perde da densa pura, e a varredura
+    mostrou que o que perdia era o 0,5.
+
+    Duas guardas contra ler ruído de 20 consultas como achado:
+
+    - **forma da curva.** Um ótimo isolado entre vizinhos piores é indistinguível
+      de sorte. `dentro_de_0_01_do_topo` diz a largura do platô, e um platô
+      largo é o que autoriza fixar o padrão.
+    - **leave-one-out.** Escolher alfa e avaliar no mesmo conjunto superestima.
+      O campo `leave_one_out` escolhe alfa em n-1 consultas, avalia na que
+      ficou de fora, e compara com a densa pura. Se a híbrida não ganhar aqui,
+      **ela não ganha** — foi o que aconteceu com o `e5-small`.
+    """
+    dados = dados or carregar_consultas()
+    consultas = dados["consultas"]
+    ids = [c["id"] for c in consultas]
+    alfa_original = recuperador.alfa
+
+    por_alfa = {}
+    try:
+        for alfa in alfas:
+            recuperador.alfa = alfa
+            por_alfa[alfa] = aferir_modo(recuperador, consultas, "hibrida", k)
+    finally:
+        recuperador.alfa = alfa_original
+
+    posicoes = {a: por_alfa[a]["posicoes"] for a in alfas}
+    chave = lambda a, sub: (_recall_de(posicoes[a], sub, 5),  # noqa: E731
+                            _mrr_de(posicoes[a], sub))
+
+    melhor = max(alfas, key=lambda a: chave(a, ids))
+    teto = chave(melhor, ids)
+    proximos = [a for a in alfas
+                if _recall_de(posicoes[a], ids, 5) == teto[0]
+                and _mrr_de(posicoes[a], ids) >= teto[1] - 0.01]
+
+    # Leave-one-out: o alfa é escolhido sem ver a consulta em que é avaliado.
+    validacao = []
+    for fora in ids:
+        dentro = [i for i in ids if i != fora]
+        escolhido = max(alfas, key=lambda a: chave(a, dentro))
+        validacao.append({
+            "consulta": fora,
+            "alfa_escolhido": escolhido,
+            "reciproco_hibrida": round(_reciproco(posicoes[escolhido][fora]), 4),
+            "reciproco_densa_pura": round(_reciproco(posicoes[1.0][fora]), 4)
+            if 1.0 in posicoes else None,
+        })
+
+    mrr_validado = sum(v["reciproco_hibrida"] for v in validacao) / len(validacao)
+    densos = [v["reciproco_densa_pura"] for v in validacao
+              if v["reciproco_densa_pura"] is not None]
+    mrr_densa = sum(densos) / len(densos) if densos else None
+    ganha = mrr_densa is not None and mrr_validado > mrr_densa
+
+    return {
+        "conjunto": {"versao": dados["versao"], "n": dados["n"]},
+        "modelo_embedding": recuperador.denso.modelo_nome,
+        "fusao": "score",
+        "alfas": list(alfas),
+        "por_alfa": {str(a): {"recall": por_alfa[a]["recall"],
+                              "mrr": por_alfa[a]["mrr"],
+                              "nao_encontrados": por_alfa[a]["nao_encontrados"],
+                              "posicoes": por_alfa[a]["posicoes"]}
+                     for a in alfas},
+        "melhor_alfa": melhor,
+        "dentro_de_0_01_do_topo": proximos,
+        "leave_one_out": {
+            "por_consulta": validacao,
+            "mrr_validado": round(mrr_validado, 4),
+            "mrr_densa_pura": round(mrr_densa, 4) if mrr_densa is not None else None,
+            "alfas_escolhidos": sorted({v["alfa_escolhido"] for v in validacao}),
+            "hibrida_ganha_fora_da_amostra": ganha,
+        },
+        "leitura": (
+            f"o platô de recall@5 máximo cobre {len(proximos)} "
+            f"{'valor' if len(proximos) == 1 else 'valores'} de alfa "
+            f"({min(proximos)} a {max(proximos)}), e a híbrida "
+            f"{'supera' if ganha else 'NÃO supera'} a densa pura sob "
+            f"leave-one-out. Fixar o padrão "
+            f"{'é' if ganha else 'NÃO é'} justificado para este modelo."),
+    }
+
+
 def calibrar_limiar(recuperador, dados: dict | None = None,
                     modo: str = "hibrida") -> dict:
     """Task 3.5 — o limiar de `evidência insuficiente` sobre o score fundido.

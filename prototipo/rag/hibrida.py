@@ -45,11 +45,39 @@ de 0,826 contra 0,893 de uma consulta perfeitamente atendida. O realce reduz a
 distorção, não a elimina. Fixar o limiar de `evidência insuficiente` é a task
 3.5, e a medição acima já diz que ela não sai de similaridade bruta.
 
-`alfa` é provisório e é parâmetro explícito para que a task 3.1 possa varrê-lo.
+`alfa` foi varrido na task 3.1 e deixou de ser provisório. O 0,5 inicial era
+um chute, e a medição o reprovou: em 0,5 a fusão perde `a14`, `a16` e `a20` —
+os três documentos que o braço denso sozinho recupera nas posições 5, 3 e 1. O
+ruído léxico os empurrava para fora do top-10.
+
+O padrão passa a ser **0,9**, e o que o autoriza não é o ótimo, é a forma da
+curva e a validação:
+
+| alfa | recall@5 | MRR |
+| --- | --- | --- |
+| 0,50 | 0,85 | 0,825 |
+| 0,84 | 0,95 | 0,856 |
+| **0,90** | **1,00** | **0,897** |
+| 0,98 | 1,00 | 0,902 |
+| 1,00 (só denso) | 1,00 | 0,877 |
+
+Cinco valores, de 0,90 a 0,98, ficam dentro de 0,01 do topo com recall@5 de
+1,00: é platô, não pico, e um erro de ±0,08 na calibração não muda o resultado.
+Sob leave-one-out — alfa escolhido em 19 consultas, avaliado na vigésima — a
+híbrida dá MRR de 0,8975 contra 0,8767 da densa pura. O ganho sobrevive a não
+ver a consulta em que é medido.
+
+**O resultado é do `e5-base`, e não se transfere.** No `e5-small` o melhor alfa
+é 1,00 e a híbrida *perde* sob leave-one-out (0,8500 contra 0,8625), com a
+escolha de alfa oscilando entre 0,74 e 1,00. A leitura que a medição sustenta é
+«0,9 com `e5-base`», não «híbrida supera densa»: o braço léxico só corrige na
+margem quando o braço denso já é bom. Trocar o modelo de embedding obriga a
+revarrer — `python -m prototipo.rag varrer-alfa --modelo NOME`.
 """
 from __future__ import annotations
 
-ALFA_PADRAO = 0.5        # peso do denso; 1.0 = só denso, 0.0 = só léxico
+ALFA_PADRAO = 0.9        # peso do denso; 1.0 = só denso, 0.0 = só léxico
+                         # medido na task 3.1 para intfloat/multilingual-e5-base
 PERCENTIL_FUNDO = 50     # o que o braço devolve para qualquer coisa
 PERCENTIL_TOPO = 99      # escala em que o braço separa
 K_RRF = 60

@@ -674,6 +674,85 @@ Duas consequências práticas, ambas já ancoradas:
 A contingência do Gemma 3 fica **autorizada quanto à política**; o que restaria
 conferir, se acionada, são os termos de uso da versão específica, não a PUP.
 
+### 15. A aferição fechou a task 3.1, e o defeito era `alfa` — 22/09/2026
+
+A decisão 4 previu que o híbrido seria linha de base, não otimização, e a
+medição parcial de 19/09 deixou a previsão por escrito: **se a densa não
+melhorar `reformulada`, a decisão 4 perde o sustento e o híbrido vira custo sem
+retorno.** A matriz densa fechou em 22/09 e a previsão foi testada.
+
+**A decisão 4 se sustenta.** Sobre as 20 consultas de aferição, com
+`intfloat/multilingual-e5-base`:
+
+| configuração | recall@3 | recall@5 | MRR | latência mediana |
+| --- | --- | --- | --- | --- |
+| só léxica | 0,85 | 0,85 | 0,725 | 22 ms |
+| só densa | **0,95** | 1,00 | 0,877 | **13 ms** |
+| híbrida (score, α=0,9) | 0,90 | **1,00** | **0,897** | 38 ms |
+| híbrida (RRF) | 0,85 | 0,85 | 0,850 | 44 ms |
+
+O braço denso leva `reformulada` de 0,70 para 1,00 de recall@5 e recupera `a14`,
+`a16` e `a20`, as três consultas em que o usuário não repetiu nenhum termo raro.
+É exatamente o buraco que a decisão 4 dizia que o denso existia para tapar.
+
+**E a task 3.2 obriga a registrar o que contraria.** A primeira execução mediu
+em `ALFA_PADRAO = 0,5` e concluiu que a híbrida perdia da densa pura — os
+arquivos de aferição chegaram a gravar `contraria_a_decisao_4: true`. A
+conclusão estava errada. O que perdia era o 0,5, que estava fixado desde 18/09
+**sem nenhuma medição por trás**: em α=0,5 o ruído léxico empurrava para fora do
+top-10 os três documentos que o denso achava nas posições 5, 3 e 1.
+
+| α | recall@5 | MRR | perdidos |
+| --- | --- | --- | --- |
+| 0,50 | 0,85 | 0,825 | `a14`, `a16`, `a20` |
+| 0,80 | 0,90 | 0,850 | — |
+| **0,90** | **1,00** | **0,897** | — |
+| 0,98 | 1,00 | 0,902 | — |
+| 1,00 (só denso) | 1,00 | 0,877 | — |
+
+`ALFA_PADRAO` passa a 0,9. O que autoriza fixar não é o ótimo — é o mesmo tipo
+de número que autorizou o 0,5. São duas guardas, e as duas viraram código em
+`afericao.varrer_alfa`, exposto como `python -m prototipo.rag varrer-alfa`:
+
+- **forma da curva.** Cinco valores de α, de 0,90 a 0,98, ficam dentro de 0,01
+  do topo com recall@5 máximo. É platô, não pico, e um erro de ±0,08 na
+  calibração não muda o resultado;
+- **leave-one-out.** α escolhido em 19 consultas e avaliado na vigésima, vinte
+  vezes: MRR de **0,8975** contra 0,8767 da densa pura, com só dois α escolhidos
+  ao longo das rodadas (0,9 e 0,98). O ganho sobrevive a não ver a consulta em
+  que é medido.
+
+**O resultado é do `e5-base` e não se transfere.** No `e5-small` o melhor α é
+1,00 e a híbrida *perde* sob leave-one-out — 0,8500 contra 0,8625 —, com a
+escolha de α oscilando entre 0,74 e 1,00. A afirmação que a medição sustenta é
+**«α=0,9 com `e5-base`»**, não «híbrida supera densa». O braço léxico corrige na
+margem, e só há margem quando o braço denso já é bom. Trocar o modelo de
+embedding obriga a revarrer, e o subcomando existe para isso.
+
+**Escolha de modelo (task 3.3).** O `e5-small` indexa em 227,4 s contra 883,4 s,
+ocupa 32,9 MB contra 65,8 MB, consulta em 9 ms contra 13 ms e é melhor em
+`verbatim` (MRR 1,00 contra 0,95). Perde onde a decisão 5 dizia que importava:
+em `reformulada` deixa `a14` e `a16` para trás, **as mesmas que o braço léxico
+perde**. Um braço denso que falha junto com o léxico não cumpre a função dele.
+`e5-base` fica.
+
+**RRF continua descartada, agora com medição.** Ela não recupera as três
+consultas perdidas: o score por posição não deixa o braço denso puxar um
+documento que o léxico não viu. O argumento de calibração da decisão 4 ganhou
+um argumento de recall.
+
+**Limite que fica registrado.** A vantagem da híbrida sobre a densa pura é de
+uma consulta: a diferença de MRR em `reformulada`, 0,845 contra 0,803 sobre 10
+consultas, equivale a um alvo subindo da posição 2 para a 1. O robusto é que
+α=0,5 perdia três documentos que α≥0,8 recupera. O frágil é a margem sobre a
+densa pura, e o leave-one-out a sustenta sem ampliá-la. Não existe conjunto
+reservado: α foi escolhido e validado nas mesmas 20 consultas, e o
+leave-one-out é o substituto honesto disponível, não um conjunto novo.
+
+Evidência versionada em `prototipo/indice/afericao_<modelo>.json` e
+`prototipo/indice/varredura_alfa_<modelo>.json`, para os dois modelos. Página do
+portfólio: `docs/investigate/afericao-recuperacao.md`.
+
 ## Questões em aberto
 
 - ~~Local ou API para o papel de geração.~~ **Fechada em 17/09/2026** — ver
@@ -683,18 +762,21 @@ conferir, se acionada, são os termos de uso da versão específica, não a PUP.
   projeto, a alternativa de contingência é o Gemma 3 12B QAT, aceitando a
   licença própria e conferindo a Prohibited Use Policy contra
   `fronteira-orientacao-saude`. A contingência MUST ser registrada se acionada.
-- **Necessidade de reranker.** O híbrido está de pé desde 18/09/2026, então a
-  questão deixou de ser adiada por impossibilidade e passou a depender da
-  medição da task 3.1: o ganho de um cross-encoder sobre o top-20 só compensa se
-  a aferição mostrar o documento correto aparecendo no top-20 e fora do top-3.
-- **Tamanho do modelo de embedding.** A assimetria está medida para o `e5-base`:
-  13,2 minutos para indexar 22.464 fragmentos contra 14 a 18 ms por consulta. O
-  custo de indexação é lote único e cabe com folga; o de consulta é que compete
-  com os 17 a 23 segundos do gerador, e nesse orçamento ele é ruído. Um modelo
-  quatro vezes maior ainda caberia na consulta, e a questão passa a ser de
-  qualidade, não de latência — o que a task 3.3 mede e a 3.4 confirma. Usar
-  modelos diferentes nas duas pontas continua fora de questão: quebra o espaço
-  vetorial.
+- ~~Necessidade de reranker.~~ **Fechada em 22/09/2026 — não compensa hoje.** O
+  critério declarado era o documento correto aparecer no top-20 e fora do
+  top-3. Medido em α=0,9: **2 das 20 consultas**, `a14` na posição 5 e `a16` na
+  4. Todas as outras 18 estão no top-2. Um cross-encoder sobre o top-20
+  disputaria dois casos e custaria latência em vinte, num orçamento onde a
+  recuperação inteira já é ruído diante dos 17 a 23 s do gerador. A questão
+  reabre se o corpus crescer ou se o conjunto de aferição for ampliado.
+- ~~Tamanho do modelo de embedding.~~ **Fechada em 22/09/2026 — ver decisão
+  15.** A previsão se confirmou: a questão era de qualidade, não de latência. O
+  `e5-small` ganha em todos os custos — 227,4 s contra 883,4 s de indexação,
+  32,9 MB contra 65,8 MB, 9 ms contra 13 ms — e perde em `reformulada`, que é a
+  única coisa que o braço denso existe para resolver. `e5-base` fica. Descer de
+  tamanho é que não compensa; **subir** continua em aberto e não foi medido.
+  Usar modelos diferentes nas duas pontas continua fora de questão: quebra o
+  espaço vetorial.
 - ~~Provisionamento do ambiente.~~ **Fechada em 18/09/2026.** Python 3.14.6,
   `requirements-rag.lock.txt`, `torch` 2.14.0 com MPS ativo e CLI `openspec`
   disponível. O índice foi construído nesse ambiente.

@@ -1,0 +1,573 @@
+{
+  "conjunto": {
+    "versao": "1.0.0",
+    "n": 20
+  },
+  "modelo_embedding": "intfloat/multilingual-e5-small",
+  "alfa": 0.9,
+  "k": 10,
+  "por_modo": {
+    "lexica": {
+      "modo": "lexica",
+      "fusao": "",
+      "consultas": 20,
+      "recall": {
+        "@1": 0.6,
+        "@3": 0.85,
+        "@5": 0.85,
+        "@10": 0.85
+      },
+      "mrr": 0.725,
+      "nao_encontrados": [
+        "a14",
+        "a16",
+        "a20"
+      ],
+      "latencia_s": {
+        "mediana": 0.02,
+        "media": 0.021,
+        "maxima": 0.031
+      },
+      "posicoes": {
+        "a01": 1,
+        "a02": 2,
+        "a03": 1,
+        "a04": 1,
+        "a05": 1,
+        "a06": 1,
+        "a07": 2,
+        "a08": 1,
+        "a09": 1,
+        "a10": 1,
+        "a11": 1,
+        "a12": 2,
+        "a13": 1,
+        "a14": null,
+        "a15": 2,
+        "a16": null,
+        "a17": 1,
+        "a18": 2,
+        "a19": 1,
+        "a20": null
+      }
+    },
+    "densa": {
+      "modo": "densa",
+      "fusao": "",
+      "consultas": 20,
+      "recall": {
+        "@1": 0.85,
+        "@3": 0.85,
+        "@5": 0.9,
+        "@10": 0.9
+      },
+      "mrr": 0.863,
+      "nao_encontrados": [
+        "a14",
+        "a16"
+      ],
+      "latencia_s": {
+        "mediana": 0.01,
+        "media": 0.412,
+        "maxima": 8.06
+      },
+      "posicoes": {
+        "a01": 1,
+        "a02": 1,
+        "a03": 1,
+        "a04": 1,
+        "a05": 1,
+        "a06": 1,
+        "a07": 1,
+        "a08": 1,
+        "a09": 1,
+        "a10": 1,
+        "a11": 1,
+        "a12": 1,
+        "a13": 1,
+        "a14": null,
+        "a15": 1,
+        "a16": null,
+        "a17": 1,
+        "a18": 1,
+        "a19": 1,
+        "a20": 4
+      }
+    },
+    "hibrida": {
+      "modo": "hibrida",
+      "fusao": "score",
+      "consultas": 20,
+      "recall": {
+        "@1": 0.85,
+        "@3": 0.85,
+        "@5": 0.85,
+        "@10": 0.9
+      },
+      "mrr": 0.857,
+      "nao_encontrados": [
+        "a16",
+        "a20"
+      ],
+      "latencia_s": {
+        "mediana": 0.032,
+        "media": 0.033,
+        "maxima": 0.045
+      },
+      "posicoes": {
+        "a01": 1,
+        "a02": 1,
+        "a03": 1,
+        "a04": 1,
+        "a05": 1,
+        "a06": 1,
+        "a07": 1,
+        "a08": 1,
+        "a09": 1,
+        "a10": 1,
+        "a11": 1,
+        "a12": 1,
+        "a13": 1,
+        "a14": 7,
+        "a15": 1,
+        "a16": null,
+        "a17": 1,
+        "a18": 1,
+        "a19": 1,
+        "a20": null
+      }
+    },
+    "hibrida_rrf": {
+      "modo": "hibrida",
+      "fusao": "rrf",
+      "consultas": 20,
+      "recall": {
+        "@1": 0.85,
+        "@3": 0.85,
+        "@5": 0.85,
+        "@10": 0.85
+      },
+      "mrr": 0.85,
+      "nao_encontrados": [
+        "a14",
+        "a16",
+        "a20"
+      ],
+      "latencia_s": {
+        "mediana": 0.035,
+        "media": 0.035,
+        "maxima": 0.046
+      },
+      "posicoes": {
+        "a01": 1,
+        "a02": 1,
+        "a03": 1,
+        "a04": 1,
+        "a05": 1,
+        "a06": 1,
+        "a07": 1,
+        "a08": 1,
+        "a09": 1,
+        "a10": 1,
+        "a11": 1,
+        "a12": 1,
+        "a13": 1,
+        "a14": null,
+        "a15": 1,
+        "a16": null,
+        "a17": 1,
+        "a18": 1,
+        "a19": 1,
+        "a20": null
+      }
+    }
+  },
+  "por_familia": {
+    "lexica": {
+      "reformulada": {
+        "modo": "lexica",
+        "fusao": "",
+        "consultas": 10,
+        "recall": {
+          "@1": 0.4,
+          "@3": 0.7,
+          "@5": 0.7,
+          "@10": 0.7
+        },
+        "mrr": 0.55,
+        "nao_encontrados": [
+          "a14",
+          "a16",
+          "a20"
+        ],
+        "latencia_s": {
+          "mediana": 0.021,
+          "media": 0.022,
+          "maxima": 0.031
+        },
+        "posicoes": {
+          "a11": 1,
+          "a12": 2,
+          "a13": 1,
+          "a14": null,
+          "a15": 2,
+          "a16": null,
+          "a17": 1,
+          "a18": 2,
+          "a19": 1,
+          "a20": null
+        }
+      },
+      "verbatim": {
+        "modo": "lexica",
+        "fusao": "",
+        "consultas": 10,
+        "recall": {
+          "@1": 0.8,
+          "@3": 1.0,
+          "@5": 1.0,
+          "@10": 1.0
+        },
+        "mrr": 0.9,
+        "nao_encontrados": [],
+        "latencia_s": {
+          "mediana": 0.02,
+          "media": 0.019,
+          "maxima": 0.026
+        },
+        "posicoes": {
+          "a01": 1,
+          "a02": 2,
+          "a03": 1,
+          "a04": 1,
+          "a05": 1,
+          "a06": 1,
+          "a07": 2,
+          "a08": 1,
+          "a09": 1,
+          "a10": 1
+        }
+      }
+    },
+    "densa": {
+      "reformulada": {
+        "modo": "densa",
+        "fusao": "",
+        "consultas": 10,
+        "recall": {
+          "@1": 0.7,
+          "@3": 0.7,
+          "@5": 0.8,
+          "@10": 0.8
+        },
+        "mrr": 0.725,
+        "nao_encontrados": [
+          "a14",
+          "a16"
+        ],
+        "latencia_s": {
+          "mediana": 0.008,
+          "media": 0.01,
+          "maxima": 0.019
+        },
+        "posicoes": {
+          "a11": 1,
+          "a12": 1,
+          "a13": 1,
+          "a14": null,
+          "a15": 1,
+          "a16": null,
+          "a17": 1,
+          "a18": 1,
+          "a19": 1,
+          "a20": 4
+        }
+      },
+      "verbatim": {
+        "modo": "densa",
+        "fusao": "",
+        "consultas": 10,
+        "recall": {
+          "@1": 1.0,
+          "@3": 1.0,
+          "@5": 1.0,
+          "@10": 1.0
+        },
+        "mrr": 1.0,
+        "nao_encontrados": [],
+        "latencia_s": {
+          "mediana": 0.008,
+          "media": 0.008,
+          "maxima": 0.009
+        },
+        "posicoes": {
+          "a01": 1,
+          "a02": 1,
+          "a03": 1,
+          "a04": 1,
+          "a05": 1,
+          "a06": 1,
+          "a07": 1,
+          "a08": 1,
+          "a09": 1,
+          "a10": 1
+        }
+      }
+    },
+    "hibrida": {
+      "reformulada": {
+        "modo": "hibrida",
+        "fusao": "score",
+        "consultas": 10,
+        "recall": {
+          "@1": 0.7,
+          "@3": 0.7,
+          "@5": 0.7,
+          "@10": 0.8
+        },
+        "mrr": 0.714,
+        "nao_encontrados": [
+          "a16",
+          "a20"
+        ],
+        "latencia_s": {
+          "mediana": 0.034,
+          "media": 0.035,
+          "maxima": 0.045
+        },
+        "posicoes": {
+          "a11": 1,
+          "a12": 1,
+          "a13": 1,
+          "a14": 7,
+          "a15": 1,
+          "a16": null,
+          "a17": 1,
+          "a18": 1,
+          "a19": 1,
+          "a20": null
+        }
+      },
+      "verbatim": {
+        "modo": "hibrida",
+        "fusao": "score",
+        "consultas": 10,
+        "recall": {
+          "@1": 1.0,
+          "@3": 1.0,
+          "@5": 1.0,
+          "@10": 1.0
+        },
+        "mrr": 1.0,
+        "nao_encontrados": [],
+        "latencia_s": {
+          "mediana": 0.031,
+          "media": 0.031,
+          "maxima": 0.038
+        },
+        "posicoes": {
+          "a01": 1,
+          "a02": 1,
+          "a03": 1,
+          "a04": 1,
+          "a05": 1,
+          "a06": 1,
+          "a07": 1,
+          "a08": 1,
+          "a09": 1,
+          "a10": 1
+        }
+      }
+    }
+  },
+  "melhor_por_recall_em_5": "densa",
+  "contraria_a_decisao_4": true,
+  "calibracao_do_limiar": {
+    "modo": "hibrida",
+    "positivas": [
+      {
+        "id": "a01",
+        "familia": "verbatim",
+        "score_do_alvo": 0.6861,
+        "score_do_topo": 0.6861
+      },
+      {
+        "id": "a02",
+        "familia": "verbatim",
+        "score_do_alvo": 0.6911,
+        "score_do_topo": 0.6911
+      },
+      {
+        "id": "a03",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7191,
+        "score_do_topo": 0.7191
+      },
+      {
+        "id": "a04",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7238,
+        "score_do_topo": 0.7238
+      },
+      {
+        "id": "a05",
+        "familia": "verbatim",
+        "score_do_alvo": 0.6862,
+        "score_do_topo": 0.6862
+      },
+      {
+        "id": "a06",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7075,
+        "score_do_topo": 0.7075
+      },
+      {
+        "id": "a07",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7015,
+        "score_do_topo": 0.7015
+      },
+      {
+        "id": "a08",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7413,
+        "score_do_topo": 0.7413
+      },
+      {
+        "id": "a09",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7469,
+        "score_do_topo": 0.7469
+      },
+      {
+        "id": "a10",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7787,
+        "score_do_topo": 0.7787
+      },
+      {
+        "id": "a11",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6669,
+        "score_do_topo": 0.6669
+      },
+      {
+        "id": "a12",
+        "familia": "reformulada",
+        "score_do_alvo": 0.628,
+        "score_do_topo": 0.628
+      },
+      {
+        "id": "a13",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6942,
+        "score_do_topo": 0.6942
+      },
+      {
+        "id": "a14",
+        "familia": "reformulada",
+        "score_do_alvo": 0.5767,
+        "score_do_topo": 0.6199
+      },
+      {
+        "id": "a15",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6565,
+        "score_do_topo": 0.6565
+      },
+      {
+        "id": "a16",
+        "familia": "reformulada",
+        "score_do_alvo": null,
+        "score_do_topo": 0.5981
+      },
+      {
+        "id": "a17",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6923,
+        "score_do_topo": 0.6923
+      },
+      {
+        "id": "a18",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6175,
+        "score_do_topo": 0.6175
+      },
+      {
+        "id": "a19",
+        "familia": "reformulada",
+        "score_do_alvo": 0.7283,
+        "score_do_topo": 0.7283
+      },
+      {
+        "id": "a20",
+        "familia": "reformulada",
+        "score_do_alvo": null,
+        "score_do_topo": 0.5891
+      }
+    ],
+    "sem_alvo": [
+      {
+        "id": "n01",
+        "consulta": "Qdenga causa a própria dengue em quem toma",
+        "score_do_topo": 0.5997,
+        "topo_recuperado": "Médica antivacina espalha tese improvável sobre efeitos adversos de imunizantes contra cov"
+      },
+      {
+        "id": "n02",
+        "consulta": "a vacina contra mpox foi aprovada sem teste",
+        "score_do_topo": 0.5882,
+        "topo_recuperado": "Médico denuncia que vacina chinesa será aplicada como um teste nos brasileiros #boato"
+      },
+      {
+        "id": "n03",
+        "consulta": "o vírus oropouche foi criado em laboratório",
+        "score_do_topo": 0.6088,
+        "topo_recuperado": "Dilma não disse que vacina chinesa vai funcionar porque pandemia começou na China"
+      },
+      {
+        "id": "n04",
+        "consulta": "semaglutida faz o estômago parar de funcionar",
+        "score_do_topo": 0.6013,
+        "topo_recuperado": "Beber água morna cura câncer; água gelada causa infarto #boato"
+      },
+      {
+        "id": "n05",
+        "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
+        "score_do_topo": 0.5776,
+        "topo_recuperado": "Projeto de lei não prevê prisão para quem se recusar a tomar vacina contra a covid-19"
+      },
+      {
+        "id": "n06",
+        "consulta": "qual o melhor tênis para corrida de rua",
+        "score_do_topo": 0.6686,
+        "topo_recuperado": "Vídeo mostra Maradona “muito gordo” chutando bola de tênis na quarentena #boato"
+      },
+      {
+        "id": "n07",
+        "consulta": "como declarar imposto de renda atrasado",
+        "score_do_topo": 0.6495,
+        "topo_recuperado": "Celso de Mello se aposentou por invalidez no STF para não pagar Imposto de Renda #boato"
+      },
+      {
+        "id": "n08",
+        "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
+        "score_do_topo": 0.5793,
+        "topo_recuperado": "Tuíte engana ao afirmar que vacinas usam células de fetos abortados"
+      }
+    ],
+    "faixa_do_alvo": {
+      "minimo": 0.5767,
+      "mediana": 0.69325,
+      "maximo": 0.7787
+    },
+    "faixa_do_ruido": {
+      "minimo": 0.5776,
+      "mediana": 0.6005,
+      "maximo": 0.6686
+    },
+    "score_bruto_separa": false,
+    "limiar_sugerido": null,
+    "leitura": "as distribuições se sobrepõem: NÃO existe limiar sobre score bruto que separe. `evidência insuficiente` precisa de outro sinal — confirma o achado de 18/09 e obriga a decisão 4 a registrar o limite. A resposta de lacuna de acervo de `frescor-corpus`, que decide pela janela do acervo e não pelo score, continua valendo e fica sendo o único mecanismo medido que funciona hoje."
+  }
+}
