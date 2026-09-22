@@ -53,8 +53,8 @@ usa na prática. Nada disso pode ser escrito por alguém no lugar do grupo.
 
 | Artefato | Serve a | Onde |
 | --- | --- | --- |
-| Seis casos selecionados, quatro tipos de manipulação | bloco 2 | [Casos da forense](engage/casos-forense.md) |
-| Template da ficha, oito campos e checklist | bloco 2 | [Ficha de caso](engage/ficha-de-caso.md) |
+| Seis casos selecionados, quatro tipos de manipulação | bloco 2 | [Casos da forense](forense/casos-forense.md) |
+| Template da ficha, oito campos e checklist | bloco 2 | [Ficha de caso](forense/ficha-de-caso.md) |
 | Board dos cinco quadros, com as três regras de condução | bloco 3 | [Board do brainstorming](engage/board-brainstorming.md) |
 | Protocolo do card sorting e doze cartões-semente | bloco 4 | [Kit do workshop](engage/kit-matriz-confianca.md) |
 

@@ -45,10 +45,12 @@ nav:
   - Fase Engage:
       - Guiding Questions: engage/guiding-questions.md
       - Datasets e achados: engage/datasets.md
-      - Casos da forense: engage/casos-forense.md
-      - Ficha de caso: engage/ficha-de-caso.md
       - Board do brainstorming: engage/board-brainstorming.md
       - Kit do workshop da confiança: engage/kit-matriz-confianca.md
+  - Investigação forense:
+      - Casos selecionados: forense/casos-forense.md
+      - Ficha de caso: forense/ficha-de-caso.md
+      - Caso 03 — vídeo de 2018: forense/caso3.md
   - Fase Investigate:
       - Sonda do gerador: investigate/sonda-gerador.md
       - Índice híbrido: investigate/indice-hibrido.md
