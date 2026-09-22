@@ -63,6 +63,7 @@ nav:
       - Tratamento dos datasets: investigate/tratamento-datasets.md
       - Aferição da recuperação: investigate/afericao-recuperacao.md
       - Ampliação do corpus: investigate/ampliacao-corpus.md
+  - Requisitos: requisitos.md
   - Estado do projeto: estado.md
   - Tasks pendentes: pendencias.md
 
