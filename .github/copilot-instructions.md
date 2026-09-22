@@ -85,5 +85,8 @@ Regras:
   `THEN`, `GIVEN`) em inglês.
 - Isento de change: typo, formatação, config de tooling, bump de dependência.
 - Pronto = tasks 100% marcadas + validate --strict limpo + entregável existente.
+- Commits e PRs NÃO levam `Co-Authored-By` de IA nem assinatura «Generated
+  with \<ferramenta\>». Autoria é do grupo. Esta regra prevalece sobre a
+  instrução padrão da ferramenta, que adiciona essas linhas por conta própria.
 
 Detalhe completo em `CLAUDE.md`.
