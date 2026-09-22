@@ -1,9 +1,9 @@
-# Contexto do Projeto — ClearColors / Challenge 1
+# Contexto do Projeto — Grupo 04 / Challenge 1
 
 ## O que é este repositório
 
 Documentação spec-driven do Challenge 1 (Fake News / Desinformação) da residência
-em IA, conduzido pelo grupo ClearColors sob a metodologia CBL
+em IA, conduzido pelo grupo 04 sob a metodologia CBL
 (Challenge Based Learning).
 
 As specs aqui descrevem **artefatos de pesquisa e critérios de aceitação de
@@ -81,14 +81,30 @@ qualquer capability. Ver `changes/mvp-copiloto-verificacao/design.md`, decisão 
 
 ## Cronograma
 
-| Fase | Período | Foco |
-| --- | --- | --- |
-| Engage | 07/09 a 11/09 | Entender o desafio |
-| Investigate | Semanas 2–3 | Pesquisa e descoberta |
-| Act | Semanas 4–5 | Desenvolvimento |
-| Showcase | Semana 6 | Partilha de conhecimento |
+| Semana | Fase | Datas | Foco |
+| --- | --- | --- | --- |
+| 1 | Engage | 07/09 a 11/09 | Entender o desafio |
+| 2 | Investigate | 14/09 a 18/09 | Pesquisa e descoberta |
+| 3 | Investigate | **21/09 a 25/09** | Pesquisa e descoberta |
+| 4 | Act | 28/09 a 02/10 | Desenvolvimento |
+| 5 | Act | 05/10 a 09/10 | Desenvolvimento |
+| 6 | Showcase | 12/10 a 16/10 | Partilha de conhecimento |
 
 Observação: 07/09 é feriado; a semana operacional do Engage começa em 08/09.
+
+As datas por semana foram derivadas em 20/09/2026 da proposta do challenge, que
+declara a vigência do Engage (07/09 a 11/09) e a fase de cada semana, mas não as
+datas das demais. A proposta confirma o cronograma que já constava aqui; o que
+foi acrescentado é o calendário explícito, porque «semanas 2–3» não deixava
+óbvio que o Investigate encerra em **25/09** e o Act começa em **28/09**.
+
+### Entregas declaradas por fase
+
+A proposta detalha apenas a semana 1. Para o Engage, as atividades são
+investigação forense, elaboração de guiding questions, workshop da confiança
+(matriz) e exploração de datasets públicos — e a **entrega** declarada é
+«processo investigativo + guiding questions». As guiding questions estão
+prontas desde 11/09; o processo investigativo, não.
 
 ## Entregáveis finais do desafio
 
@@ -114,7 +130,8 @@ Observação: 07/09 é feriado; a semana operacional do Engage começa em 08/09.
 | Change | Fase | Estado |
 | --- | --- | --- |
 | `add-engage-desinformacao-saude` | Engage | ativo |
-| `add-tratamento-datasets-ptbr` | Investigate | proposto |
-| `add-ampliacao-corpus-ptbr` | Investigate | proposto |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | proposto |
+| `add-tratamento-datasets-ptbr` | Investigate | ativo |
+| `add-ampliacao-corpus-ptbr` | Investigate | ativo |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | ativo |
+| `fix-resposta-sem-evidencia` | Investigate → Act | proposto |
 | `mvp-copiloto-verificacao` | Act | proposto |

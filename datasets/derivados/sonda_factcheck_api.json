@@ -1,0 +1,228 @@
+{
+  "gerado_em": "2026-09-19T22:26:56",
+  "endpoint": "https://factchecktools.googleapis.com/v1alpha1/claims:search",
+  "parametros": {
+    "languageCode": "pt",
+    "pageSize": 50,
+    "paginas_maximas": 10
+  },
+  "controle": {
+    "termo": "vacina",
+    "checagens": 400
+  },
+  "por_termo": {
+    "vacina": {
+      "checagens": 404,
+      "por_ano": {
+        "2019": 1,
+        "2020": 47,
+        "2021": 104,
+        "2022": 53,
+        "2023": 82,
+        "2024": 56,
+        "2025": 34,
+        "2026": 14
+      },
+      "por_agencia": {
+        "Estadão": 79,
+        "AFP Checamos": 79,
+        "Aos Fatos": 75,
+        "Observador": 73,
+        "UOL Notícias": 57,
+        "Projeto Comprova": 34,
+        "Folha - UOL": 3,
+        "BOL - UOL": 2,
+        "O GLOBO": 2
+      },
+      "sem_data": 13,
+      "posteriores_a_2021": 239
+    },
+    "covid": {
+      "checagens": 306,
+      "por_ano": {
+        "2020": 80,
+        "2021": 81,
+        "2022": 22,
+        "2023": 36,
+        "2024": 38,
+        "2025": 26,
+        "2026": 14
+      },
+      "por_agencia": {
+        "AFP Checamos": 60,
+        "Aos Fatos": 58,
+        "Observador": 56,
+        "Estadão": 56,
+        "UOL Notícias": 48,
+        "Projeto Comprova": 22,
+        "BOL - UOL": 4,
+        "Folha - UOL": 2
+      },
+      "sem_data": 9,
+      "posteriores_a_2021": 136
+    },
+    "dengue": {
+      "checagens": 76,
+      "por_ano": {
+        "2018": 2,
+        "2020": 1,
+        "2021": 2,
+        "2023": 5,
+        "2024": 43,
+        "2025": 4,
+        "2026": 3
+      },
+      "por_agencia": {
+        "Aos Fatos": 21,
+        "Estadão": 19,
+        "UOL Notícias": 16,
+        "AFP Checamos": 10,
+        "Observador": 4,
+        "Folha - UOL": 2,
+        "Projeto Comprova": 2,
+        "Agência Pública": 2
+      },
+      "sem_data": 16,
+      "posteriores_a_2021": 55
+    },
+    "qdenga": {
+      "checagens": 8,
+      "por_ano": {
+        "2023": 1,
+        "2024": 5,
+        "2026": 1
+      },
+      "por_agencia": {
+        "AFP Checamos": 2,
+        "Aos Fatos": 2,
+        "Estadão": 2,
+        "Folha - UOL": 1,
+        "UOL Notícias": 1
+      },
+      "sem_data": 1,
+      "posteriores_a_2021": 7
+    },
+    "mpox": {
+      "checagens": 39,
+      "por_ano": {
+        "2022": 2,
+        "2024": 29,
+        "2025": 1,
+        "2026": 4
+      },
+      "por_agencia": {
+        "Aos Fatos": 10,
+        "AFP Checamos": 10,
+        "Observador": 8,
+        "Estadão": 5,
+        "UOL Notícias": 3,
+        "Nexo Jornal": 3
+      },
+      "sem_data": 3,
+      "posteriores_a_2021": 36
+    },
+    "oropouche": {
+      "checagens": 0,
+      "por_ano": {},
+      "por_agencia": {},
+      "sem_data": 0,
+      "posteriores_a_2021": 0
+    },
+    "semaglutida": {
+      "checagens": 0,
+      "por_ano": {},
+      "por_agencia": {},
+      "sem_data": 0,
+      "posteriores_a_2021": 0
+    },
+    "sarampo": {
+      "checagens": 2,
+      "por_ano": {
+        "2020": 1,
+        "2021": 1
+      },
+      "por_agencia": {
+        "Projeto Comprova": 1,
+        "Aos Fatos": 1
+      },
+      "sem_data": 0,
+      "posteriores_a_2021": 0
+    },
+    "gripe": {
+      "checagens": 80,
+      "por_ano": {
+        "2018": 2,
+        "2019": 2,
+        "2020": 17,
+        "2021": 9,
+        "2022": 7,
+        "2023": 11,
+        "2024": 11,
+        "2025": 10,
+        "2026": 5
+      },
+      "por_agencia": {
+        "Estadão": 19,
+        "Observador": 17,
+        "AFP Checamos": 15,
+        "UOL Notícias": 14,
+        "Projeto Comprova": 6,
+        "Aos Fatos": 5,
+        "Folha - UOL": 2,
+        "BOL - UOL": 2
+      },
+      "sem_data": 6,
+      "posteriores_a_2021": 44
+    },
+    "hpv": {
+      "checagens": 5,
+      "por_ano": {
+        "2017": 1,
+        "2024": 1,
+        "2025": 2
+      },
+      "por_agencia": {
+        "Estadão": 2,
+        "UOL Notícias": 2,
+        "Projeto Comprova": 1
+      },
+      "sem_data": 1,
+      "posteriores_a_2021": 3
+    },
+    "febre amarela": {
+      "checagens": 8,
+      "por_ano": {
+        "2018": 1,
+        "2021": 1,
+        "2022": 1,
+        "2023": 3,
+        "2024": 1
+      },
+      "por_agencia": {
+        "AFP Checamos": 2,
+        "Aos Fatos": 2,
+        "Folha - UOL": 1,
+        "UOL Notícias": 1,
+        "Estadão": 1,
+        "Projeto Comprova": 1
+      },
+      "sem_data": 1,
+      "posteriores_a_2021": 5
+    }
+  },
+  "agencias_alcancadas": {
+    "Estadão": 183,
+    "AFP Checamos": 178,
+    "Aos Fatos": 174,
+    "Observador": 158,
+    "UOL Notícias": 142,
+    "Projeto Comprova": 67,
+    "Folha - UOL": 11,
+    "BOL - UOL": 8,
+    "Nexo Jornal": 3,
+    "O GLOBO": 2,
+    "Agência Pública": 2
+  },
+  "total_checagens": 928,
+  "total_posteriores_a_2021": 525
+}

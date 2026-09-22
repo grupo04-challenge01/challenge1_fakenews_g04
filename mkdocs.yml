@@ -1,5 +1,5 @@
 site_name: Challenge 1 — Desinformação em Saúde
-site_description: "Portfólio de pesquisa do grupo ClearColors (G04) — Challenge 1 da residência em IA"
+site_description: "Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA"
 
 repo_name: "challenge1_fakenews_g04"
 repo_url: "https://github.com/samarawwleticia/challenge1_fakenews_g04"
@@ -45,10 +45,18 @@ nav:
   - Fase Engage:
       - Guiding Questions: engage/guiding-questions.md
       - Datasets e achados: engage/datasets.md
+      - Casos da forense: engage/casos-forense.md
+      - Ficha de caso: engage/ficha-de-caso.md
+      - Board do brainstorming: engage/board-brainstorming.md
+      - Kit do workshop da confiança: engage/kit-matriz-confianca.md
   - Fase Investigate:
       - Sonda do gerador: investigate/sonda-gerador.md
       - Índice híbrido: investigate/indice-hibrido.md
+      - Tratamento dos datasets: investigate/tratamento-datasets.md
+      - Aferição da recuperação: investigate/afericao-recuperacao.md
+      - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Estado do projeto: estado.md
+  - Tasks pendentes: pendencias.md
 
 markdown_extensions:
   - attr_list

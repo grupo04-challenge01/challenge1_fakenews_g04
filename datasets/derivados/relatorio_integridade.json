@@ -1,0 +1,270 @@
+{
+  "factcenter_subset_saude.csv": {
+    "arquivo": "factcenter_subset_saude.csv",
+    "caracteres": 21559001,
+    "ausentes": [
+      "Ü"
+    ],
+    "corrompidos": [],
+    "aprovado": true,
+    "razao_de_caixa": 0.0564,
+    "causa_provavel": "sem perda detectada",
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 1675,
+      "À": 225,
+      "Â": 123,
+      "Ã": 3539,
+      "É": 5246,
+      "Ê": 287,
+      "Í": 3693,
+      "Ó": 466,
+      "Ô": 180,
+      "Õ": 313,
+      "Ú": 686,
+      "Ü": 0,
+      "Ç": 3239
+    },
+    "contagem_por_letra_minuscula": {
+      "á": 69394,
+      "à": 9760,
+      "â": 6461,
+      "ã": 139108,
+      "é": 82198,
+      "ê": 26673,
+      "í": 68461,
+      "ó": 33365,
+      "ô": 3367,
+      "õ": 21025,
+      "ú": 27906,
+      "ü": 57,
+      "ç": 100361
+    }
+  },
+  "factckbr_normalizado.csv": {
+    "arquivo": "factckbr_normalizado.csv",
+    "caracteres": 719266,
+    "ausentes": [
+      "À",
+      "Â",
+      "Ã",
+      "Ê",
+      "Í",
+      "Ó",
+      "Ô",
+      "Õ",
+      "Ú",
+      "Ü",
+      "Ç"
+    ],
+    "corrompidos": [
+      {
+        "maiuscula": "Ã",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ã",
+        "ocorrencias_minuscula": 3625,
+        "ocorrencias_esperadas": 176.2
+      },
+      {
+        "maiuscula": "Ê",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ê",
+        "ocorrencias_minuscula": 1024,
+        "ocorrencias_esperadas": 49.8
+      },
+      {
+        "maiuscula": "Í",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "í",
+        "ocorrencias_minuscula": 1521,
+        "ocorrencias_esperadas": 74.0
+      },
+      {
+        "maiuscula": "Ó",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ó",
+        "ocorrencias_minuscula": 622,
+        "ocorrencias_esperadas": 30.2
+      },
+      {
+        "maiuscula": "Õ",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "õ",
+        "ocorrencias_minuscula": 700,
+        "ocorrencias_esperadas": 34.0
+      },
+      {
+        "maiuscula": "Ú",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ú",
+        "ocorrencias_minuscula": 973,
+        "ocorrencias_esperadas": 47.3
+      },
+      {
+        "maiuscula": "Ç",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ç",
+        "ocorrencias_minuscula": 2312,
+        "ocorrencias_esperadas": 112.4
+      }
+    ],
+    "aprovado": false,
+    "razao_de_caixa": 0.0486,
+    "causa_provavel": "perda seletiva de caractere",
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 3,
+      "À": 0,
+      "Â": 0,
+      "Ã": 0,
+      "É": 60,
+      "Ê": 0,
+      "Í": 0,
+      "Ó": 0,
+      "Ô": 0,
+      "Õ": 0,
+      "Ú": 0,
+      "Ü": 0,
+      "Ç": 0
+    },
+    "contagem_por_letra_minuscula": {
+      "á": 1524,
+      "à": 271,
+      "â": 186,
+      "ã": 3625,
+      "é": 1857,
+      "ê": 1024,
+      "í": 1521,
+      "ó": 622,
+      "ô": 131,
+      "õ": 700,
+      "ú": 973,
+      "ü": 0,
+      "ç": 2312
+    }
+  },
+  "fakerecogna2_subset_saude_ciencia.csv": {
+    "arquivo": "fakerecogna2_subset_saude_ciencia.csv",
+    "caracteres": 23648777,
+    "ausentes": [
+      "Ê",
+      "Õ",
+      "Ü"
+    ],
+    "corrompidos": [
+      {
+        "maiuscula": "Ê",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ê",
+        "ocorrencias_minuscula": 27036,
+        "ocorrencias_esperadas": 284.1
+      },
+      {
+        "maiuscula": "Õ",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "õ",
+        "ocorrencias_minuscula": 24423,
+        "ocorrencias_esperadas": 256.6
+      }
+    ],
+    "aprovado": false,
+    "razao_de_caixa": 0.0105,
+    "causa_provavel": "texto transformado na origem",
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 282,
+      "À": 26,
+      "Â": 4,
+      "Ã": 7,
+      "É": 1793,
+      "Ê": 0,
+      "Í": 398,
+      "Ó": 28,
+      "Ô": 105,
+      "Õ": 0,
+      "Ú": 69,
+      "Ü": 0,
+      "Ç": 4
+    },
+    "contagem_por_letra_minuscula": {
+      "á": 68981,
+      "à": 15959,
+      "â": 7213,
+      "ã": 127670,
+      "é": 64618,
+      "ê": 27036,
+      "í": 72679,
+      "ó": 29825,
+      "ô": 5000,
+      "õ": 24423,
+      "ú": 47470,
+      "ü": 80,
+      "ç": 102356
+    }
+  },
+  "fakerecogna2_amostra_estimulos_300.csv": {
+    "arquivo": "fakerecogna2_amostra_estimulos_300.csv",
+    "caracteres": 284006,
+    "ausentes": [
+      "À",
+      "Â",
+      "Ã",
+      "Ê",
+      "Ô",
+      "Õ",
+      "Ú",
+      "Ü",
+      "Ç"
+    ],
+    "corrompidos": [
+      {
+        "maiuscula": "Ã",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ã",
+        "ocorrencias_minuscula": 1521,
+        "ocorrencias_esperadas": 18.7
+      },
+      {
+        "maiuscula": "Ç",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ç",
+        "ocorrencias_minuscula": 1208,
+        "ocorrencias_esperadas": 14.8
+      }
+    ],
+    "aprovado": false,
+    "razao_de_caixa": 0.0123,
+    "causa_provavel": "texto transformado na origem",
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 5,
+      "À": 0,
+      "Â": 0,
+      "Ã": 0,
+      "É": 28,
+      "Ê": 0,
+      "Í": 15,
+      "Ó": 1,
+      "Ô": 0,
+      "Õ": 0,
+      "Ú": 0,
+      "Ü": 0,
+      "Ç": 0
+    },
+    "contagem_por_letra_minuscula": {
+      "á": 888,
+      "à": 198,
+      "â": 96,
+      "ã": 1521,
+      "é": 813,
+      "ê": 343,
+      "í": 900,
+      "ó": 385,
+      "ô": 54,
+      "õ": 274,
+      "ú": 488,
+      "ü": 1,
+      "ç": 1208
+    }
+  }
+}

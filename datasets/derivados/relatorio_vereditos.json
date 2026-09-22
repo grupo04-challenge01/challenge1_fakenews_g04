@@ -1,0 +1,131 @@
+{
+  "mapa_versao": "1.0.0",
+  "registros": 4063,
+  "strings_brutas_distintas": 285,
+  "grafias_distintas": 26,
+  "chaves_canonicas_distintas": 19,
+  "registros_multi_alegacao": 587,
+  "registros_mistos": 245,
+  "registros_compilados_excluidos": 11,
+  "registros_verdadeiro_unico": 22,
+  "por_rotulo_consolidado": {
+    "falso": 3419,
+    "verdadeiro fora de contexto ou exagerado": 363,
+    "verdadeiro": 21,
+    "nao_mapeavel": 15
+  },
+  "grafias": {
+    "boato": 1744,
+    "FALSO": 1352,
+    "falso": 980,
+    "fake": 415,
+    "VERDADEIRO": 414,
+    "EXAGERADO": 234,
+    "VERDADEIRO, MAS": 206,
+    "Enganoso": 124,
+    "verdadeiro": 106,
+    "Falso": 94,
+    "ENGANOSO": 94,
+    "FORA DE CONTEXTO": 65,
+    "impreciso": 64,
+    "DE OLHO": 60,
+    "fato": 59,
+    "nao e bem assim": 51,
+    "distorcido": 45,
+    "exagerado": 42,
+    "SUBESTIMADO": 34,
+    "CONTRADITÓRIO": 33,
+    "AINDA É CEDO PARA DIZER": 32,
+    "INSUSTENTÁVEL": 29,
+    "insustentável": 25,
+    "contraditório": 21,
+    "Comprovado": 5,
+    "Evidência comprovada": 1
+  },
+  "chaves_canonicas": {
+    "falso": 2426,
+    "boato": 1744,
+    "verdadeiro": 520,
+    "fake": 415,
+    "exagerado": 276,
+    "enganoso": 218,
+    "verdadeiro, mas": 206,
+    "fora de contexto": 65,
+    "impreciso": 64,
+    "de olho": 60,
+    "fato": 59,
+    "contraditorio": 54,
+    "insustentavel": 54,
+    "nao e bem assim": 51,
+    "distorcido": 45,
+    "subestimado": 34,
+    "ainda e cedo para dizer": 32,
+    "comprovado": 5,
+    "evidencia comprovada": 1
+  },
+  "por_agencia": {
+    "COMPROVA": {
+      "registros": 224,
+      "grafias": {
+        "Enganoso": 124,
+        "Falso": 94,
+        "Comprovado": 5,
+        "Evidência comprovada": 1
+      },
+      "grafias_distintas": 4
+    },
+    "ESTADAO_VERIFICA": {
+      "registros": 331,
+      "grafias": {
+        "FALSO": 172,
+        "ENGANOSO": 94,
+        "FORA DE CONTEXTO": 65
+      },
+      "grafias_distintas": 3
+    },
+    "fato-ou-fake": {
+      "registros": 396,
+      "grafias": {
+        "fake": 415,
+        "fato": 59,
+        "nao e bem assim": 51
+      },
+      "grafias_distintas": 3
+    },
+    "boatos": {
+      "registros": 1744,
+      "grafias": {
+        "boato": 1744
+      },
+      "grafias_distintas": 1
+    },
+    "aos fatos": {
+      "registros": 536,
+      "grafias": {
+        "falso": 980,
+        "verdadeiro": 106,
+        "impreciso": 64,
+        "distorcido": 45,
+        "exagerado": 42,
+        "insustentável": 25,
+        "contraditório": 21
+      },
+      "grafias_distintas": 7
+    },
+    "lupa": {
+      "registros": 832,
+      "grafias": {
+        "FALSO": 1180,
+        "VERDADEIRO": 414,
+        "EXAGERADO": 234,
+        "VERDADEIRO, MAS": 206,
+        "DE OLHO": 60,
+        "SUBESTIMADO": 34,
+        "CONTRADITÓRIO": 33,
+        "AINDA É CEDO PARA DIZER": 32,
+        "INSUSTENTÁVEL": 29
+      },
+      "grafias_distintas": 9
+    }
+  }
+}

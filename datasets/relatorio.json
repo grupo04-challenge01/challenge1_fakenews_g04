@@ -88,22 +88,47 @@
       }
     }
   },
-  "FakeRecogna": {
-    "linhas": 11903,
-    "classes": {
-      "0": 5951,
-      "1": 5951
-    },
-    "categorias_top": {
-      "saúde": 4456,
-      "política": 3951,
-      "entretenimento": 1409,
-      "brasil": 904,
-      "ciência": 602,
-      "mundo": 580
-    }
-  },
   "Med-MMHL": {
     "status": "nao baixado - 4,0 GB no Dropbox (script incluso)"
-  }
+  },
+  "FakeRecogna 2.0": {
+    "substitui": "FakeRecogna v1, removida em 19/09/2026",
+    "variante": "extrativa",
+    "total": 52800,
+    "por_classe": {
+      "real": 26400,
+      "falsa": 26400
+    },
+    "agencias_de_origem": 9,
+    "subset_saude_ciencia": 26436,
+    "subset_por_classe": {
+      "0": 18784,
+      "1": 7652
+    },
+    "vazamento_por_comprimento": 0.8055,
+    "licenca": "MIT"
+  },
+  "WhaVax": {
+    "mensagens_anotadas": 950,
+    "anotadores": 4,
+    "empates_2_2": 84,
+    "janela": {
+      "inicio": "2020-03-02 11:17:02",
+      "fim": "2023-11-07 15:15:56"
+    },
+    "fleiss_kappa": 0.621,
+    "licenca": "CC BY 4.0"
+  },
+  "Acervo de circulacao (Telegram)": {
+    "posts": 3998633,
+    "canais": 119,
+    "janela": {
+      "inicio": "2020-01",
+      "fim": "2025-06"
+    },
+    "vacina_related": 407723,
+    "licenca": "CC BY-NC 4.0",
+    "nivel": "circulacao, nunca citavel"
+  },
+  "_atualizado_em": "2026-09-19"
 }

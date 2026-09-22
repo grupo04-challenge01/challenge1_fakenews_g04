@@ -1,0 +1,66 @@
+{
+  "gerado_em": "2026-09-19",
+  "arquivo": "datasets/derivados/factcenter_subset_saude.csv",
+  "registros": 4063,
+  "janela": {
+    "inicio": "2013-07-08",
+    "fim": "2021-05-19"
+  },
+  "por_ano": {
+    "2013": 29,
+    "2014": 47,
+    "2015": 70,
+    "2016": 182,
+    "2017": 212,
+    "2018": 318,
+    "2019": 291,
+    "2020": 2188,
+    "2021": 726
+  },
+  "concentracao_maxima": {
+    "ano": "2020",
+    "registros": 2188,
+    "proporcao": 0.5385183362047749
+  },
+  "termos_de_pauta": {
+    "qdenga": 0,
+    "mpox": 0,
+    "oropouche": 0,
+    "semaglutida": 0,
+    "covid": 2280,
+    "dengue": 60,
+    "vacina": 811,
+    "cloroquina": 293
+  },
+  "termos_com_zero_ocorrencia": [
+    "mpox",
+    "oropouche",
+    "qdenga",
+    "semaglutida"
+  ],
+  "agencias": {
+    "boatos": 1744,
+    "lupa": 832,
+    "aos fatos": 536,
+    "fato-ou-fake": 396,
+    "ESTADAO_VERIFICA": 331,
+    "COMPROVA": 224
+  },
+  "reexecutar": "python -m tratamento frescor",
+  "caminho_de_atualizacao": {
+    "script": "datasets/01_nucleo_metodologico/factckbr/update_factckbr.py",
+    "agencias_alcancadas": [
+      "aos fatos",
+      "lupa",
+      "agência pública (truco)"
+    ],
+    "agencias_nao_alcancadas": [
+      "boatos",
+      "fato-ou-fake",
+      "COMPROVA"
+    ],
+    "cobertura": "três feeds contra as seis agências do corpus principal. Não é atualização do corpus completo.",
+    "pre_requisito_de_reparo": "reparado em 19/09/2026 pelas tasks 3.4 e 4.5: allowlist de caractere substituída por normalização Unicode, `DataFrame.append` substituído por `pd.concat`, JSON-LD lido por `json.loads`.",
+    "limite_conhecido": "o feed devolve apenas os artigos recentes de cada agência; o caminho serve a incremento, não a recomposição do acervo."
+  }
+}

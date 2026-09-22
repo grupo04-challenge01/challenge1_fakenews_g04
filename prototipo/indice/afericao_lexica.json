@@ -1,0 +1,301 @@
+{
+  "modo": "lexica",
+  "geral": {
+    "modo": "lexica",
+    "fusao": "",
+    "consultas": 20,
+    "recall": {
+      "@1": 0.6,
+      "@3": 0.85,
+      "@5": 0.85,
+      "@10": 0.85
+    },
+    "mrr": 0.725,
+    "nao_encontrados": [
+      "a14",
+      "a16",
+      "a20"
+    ],
+    "latencia_s": {
+      "mediana": 0.187,
+      "media": 0.198,
+      "maxima": 0.308
+    },
+    "posicoes": {
+      "a01": 1,
+      "a02": 2,
+      "a03": 1,
+      "a04": 1,
+      "a05": 1,
+      "a06": 1,
+      "a07": 2,
+      "a08": 1,
+      "a09": 1,
+      "a10": 1,
+      "a11": 1,
+      "a12": 2,
+      "a13": 1,
+      "a14": null,
+      "a15": 2,
+      "a16": null,
+      "a17": 1,
+      "a18": 2,
+      "a19": 1,
+      "a20": null
+    }
+  },
+  "por_familia": {
+    "reformulada": {
+      "modo": "lexica",
+      "fusao": "",
+      "consultas": 10,
+      "recall": {
+        "@1": 0.4,
+        "@3": 0.7,
+        "@5": 0.7,
+        "@10": 0.7
+      },
+      "mrr": 0.55,
+      "nao_encontrados": [
+        "a14",
+        "a16",
+        "a20"
+      ],
+      "latencia_s": {
+        "mediana": 0.204,
+        "media": 0.22,
+        "maxima": 0.293
+      },
+      "posicoes": {
+        "a11": 1,
+        "a12": 2,
+        "a13": 1,
+        "a14": null,
+        "a15": 2,
+        "a16": null,
+        "a17": 1,
+        "a18": 2,
+        "a19": 1,
+        "a20": null
+      }
+    },
+    "verbatim": {
+      "modo": "lexica",
+      "fusao": "",
+      "consultas": 10,
+      "recall": {
+        "@1": 0.8,
+        "@3": 1.0,
+        "@5": 1.0,
+        "@10": 1.0
+      },
+      "mrr": 0.9,
+      "nao_encontrados": [],
+      "latencia_s": {
+        "mediana": 0.204,
+        "media": 0.188,
+        "maxima": 0.278
+      },
+      "posicoes": {
+        "a01": 1,
+        "a02": 2,
+        "a03": 1,
+        "a04": 1,
+        "a05": 1,
+        "a06": 1,
+        "a07": 2,
+        "a08": 1,
+        "a09": 1,
+        "a10": 1
+      }
+    }
+  },
+  "calibracao": {
+    "modo": "lexica",
+    "positivas": [
+      {
+        "id": "a01",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8459,
+        "score_do_topo": 0.8459
+      },
+      {
+        "id": "a02",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7984,
+        "score_do_topo": 0.8062
+      },
+      {
+        "id": "a03",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8197,
+        "score_do_topo": 0.8197
+      },
+      {
+        "id": "a04",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8494,
+        "score_do_topo": 0.8494
+      },
+      {
+        "id": "a05",
+        "familia": "verbatim",
+        "score_do_alvo": 0.7993,
+        "score_do_topo": 0.7993
+      },
+      {
+        "id": "a06",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8539,
+        "score_do_topo": 0.8539
+      },
+      {
+        "id": "a07",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8135,
+        "score_do_topo": 0.8148
+      },
+      {
+        "id": "a08",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8486,
+        "score_do_topo": 0.8486
+      },
+      {
+        "id": "a09",
+        "familia": "verbatim",
+        "score_do_alvo": 0.9165,
+        "score_do_topo": 0.9165
+      },
+      {
+        "id": "a10",
+        "familia": "verbatim",
+        "score_do_alvo": 0.8868,
+        "score_do_topo": 0.8868
+      },
+      {
+        "id": "a11",
+        "familia": "reformulada",
+        "score_do_alvo": 0.719,
+        "score_do_topo": 0.719
+      },
+      {
+        "id": "a12",
+        "familia": "reformulada",
+        "score_do_alvo": 0.7577,
+        "score_do_topo": 0.7847
+      },
+      {
+        "id": "a13",
+        "familia": "reformulada",
+        "score_do_alvo": 0.7802,
+        "score_do_topo": 0.7802
+      },
+      {
+        "id": "a14",
+        "familia": "reformulada",
+        "score_do_alvo": null,
+        "score_do_topo": 0.6884
+      },
+      {
+        "id": "a15",
+        "familia": "reformulada",
+        "score_do_alvo": 0.6582,
+        "score_do_topo": 0.6667
+      },
+      {
+        "id": "a16",
+        "familia": "reformulada",
+        "score_do_alvo": null,
+        "score_do_topo": 0.6728
+      },
+      {
+        "id": "a17",
+        "familia": "reformulada",
+        "score_do_alvo": 0.7873,
+        "score_do_topo": 0.7873
+      },
+      {
+        "id": "a18",
+        "familia": "reformulada",
+        "score_do_alvo": 0.7518,
+        "score_do_topo": 0.7663
+      },
+      {
+        "id": "a19",
+        "familia": "reformulada",
+        "score_do_alvo": 0.8158,
+        "score_do_topo": 0.8158
+      },
+      {
+        "id": "a20",
+        "familia": "reformulada",
+        "score_do_alvo": null,
+        "score_do_topo": 0.6842
+      }
+    ],
+    "sem_alvo": [
+      {
+        "id": "n01",
+        "consulta": "Qdenga causa a própria dengue em quem toma",
+        "score_do_topo": 0.7077,
+        "topo_recuperado": "Tomar paracetamol causa morte em pacientes com dengue #boato"
+      },
+      {
+        "id": "n02",
+        "consulta": "a vacina contra mpox foi aprovada sem teste",
+        "score_do_topo": 0.7113,
+        "topo_recuperado": "Médico denuncia que vacina chinesa será aplicada como um teste nos brasileiros #boato"
+      },
+      {
+        "id": "n03",
+        "consulta": "o vírus oropouche foi criado em laboratório",
+        "score_do_topo": 0.7206,
+        "topo_recuperado": "Reportagem de TV italiana sobre vírus criado em laboratório chinês não tem relação com a c"
+      },
+      {
+        "id": "n04",
+        "consulta": "semaglutida faz o estômago parar de funcionar",
+        "score_do_topo": 0.7236,
+        "topo_recuperado": "Beber água com o estomago vazio cura doenças #boato"
+      },
+      {
+        "id": "n05",
+        "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
+        "score_do_topo": 0.6672,
+        "topo_recuperado": "Lei assinada por Bolsonaro em fevereiro prevê vacinação compulsória, diferentemente do que"
+      },
+      {
+        "id": "n06",
+        "consulta": "qual o melhor tênis para corrida de rua",
+        "score_do_topo": 0.7514,
+        "topo_recuperado": "Não, Nike não tem relação com produção de ‘tênis de Satanás’"
+      },
+      {
+        "id": "n07",
+        "consulta": "como declarar imposto de renda atrasado",
+        "score_do_topo": 0.8533,
+        "topo_recuperado": "Celso de Mello se aposentou por invalidez no STF para não pagar Imposto de Renda #boato"
+      },
+      {
+        "id": "n08",
+        "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
+        "score_do_topo": 0.6317,
+        "topo_recuperado": "É enganoso que Coronavac foi proibida nos EUA e na Europa"
+      }
+    ],
+    "faixa_do_alvo": {
+      "minimo": 0.6582,
+      "mediana": 0.8135,
+      "maximo": 0.9165
+    },
+    "faixa_do_ruido": {
+      "minimo": 0.6317,
+      "mediana": 0.7159500000000001,
+      "maximo": 0.8533
+    },
+    "score_bruto_separa": false,
+    "limiar_sugerido": null,
+    "leitura": "as distribuições se sobrepõem: NÃO existe limiar sobre score bruto que separe. `evidência insuficiente` precisa de outro sinal — confirma o achado de 18/09 e obriga a decisão 4 a registrar o limite. A resposta de lacuna de acervo de `frescor-corpus`, que decide pela janela do acervo e não pelo score, continua valendo e fica sendo o único mecanismo medido que funciona hoje."
+  }
+}

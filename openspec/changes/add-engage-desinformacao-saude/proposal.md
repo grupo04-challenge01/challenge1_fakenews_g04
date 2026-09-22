@@ -61,6 +61,9 @@ Fora deste change, por serem prematuros no dia 1:
 
 - Arquitetura do protótipo, escolha de modelo, pipeline de RAG.
 - Sub-recorte definitivo dentro de saúde (vacinação, crônicas, suplementos).
-- Construção do instrumento de avaliação em PT-BR — vai para
-  `add-instrumento-avaliacao-ptbr`, na fase Investigate.
+- Construção do instrumento de avaliação em PT-BR — ~~vai para
+  `add-instrumento-avaliacao-ptbr`, na fase Investigate~~. **Revisto em
+  20/09/2026:** o change não será aberto; a responsabilidade fica com a
+  capability `avaliacao-instrumento` de `mvp-copiloto-verificacao`, que já
+  cobre o escopo inteiro. Ver a nota de decisão no `design.md`.
 - Qualquer treino de modelo.

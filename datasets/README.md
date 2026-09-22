@@ -15,7 +15,8 @@ datasets-desinformacao/
 ├── 02_comparacao_exagero/
 │   └── scientific_exaggeration/  # insciout train/test (JSONL + CSV)
 ├── 03_banco_estimulos/
-│   ├── fakerecogna/            # FakeRecogna.csv
+│   ├── fakerecogna2/           # fakerecogna_extrativo.csv (2.0, substitui a v1)
+│   └── med_mmhl/               # só docs, licença e script (não baixado)
 │   └── med_mmhl/               # só docs + script (dados não baixados, ver abaixo)
 ├── derivados/                  # tabelas já prontas para uso no projeto
 └── relatorio.json              # contagens e distribuições de rótulo de tudo
@@ -72,6 +73,16 @@ para a estrutura — o texto das checagens continua sendo das agências, como o 
 Rótulos: falso 943 · verdadeiro 120 · exagerado 91 · distorcido 54 · sem contexto 42 · impossível provar 20 · outros.
 Só 3 agências, contra 6 do FactCenter — confirma o papel de fonte auxiliar.
 
+### WhaVax — 950 mensagens anotadas (português)
+Mensagens de grupos públicos de WhatsApp sobre vacinação, anotadas por **quatro médicos**, maioria de 3 em 4,
+Fleiss' Kappa 0,621, janela 2020–2023. Licença CC BY 4.0.
+
+Entra no núcleo metodológico porque traz **veredito de especialista clínico**, que nenhuma outra base do
+pacote tem. A faixa de **84 empates 2-2** está isolada e é o material mais valioso: são as mensagens em que
+quatro médicos olharam e não concordaram.
+
+Caveat: os 84.640 do artigo são o corpus filtrado; o conjunto anotado tem 950. Não são o mesmo número.
+
 ## 2. Comparação: detecção de exagero
 
 ### Scientific Exaggeration (InSciOut) — 663 pares
@@ -86,21 +97,34 @@ que precisamos para o prompt do RAG. Deixei fora o `unlabelled_pet.jsonl` (18 MB
 
 ## 3. Banco de estímulos
 
-### FakeRecogna — 11.903 itens (português)
-`Classe 0` = falso (boatos.org, e-farsas, AFP Checamos) · `Classe 1` = verdadeiro (UOL, G1). Perfeitamente
-balanceado, 5.951 de cada — o que por si só já denuncia curadoria artificial.
+### FakeRecogna 2.0 — 52.800 itens (português)
+**Substituiu a v1 em 19/09/2026.** `Label 0` = real · `Label 1` = falso, 26.400 de cada, de **nove**
+agências de checagem. Licença MIT declarada pelos autores.
 
-Categorias: saúde 4.456 · política 3.951 · entretenimento 1.409 · brasil 904 · ciência 602.
+O viés de sumarização apontado no portfólio se confirma, e agora está **medido**: a notícia real vem
+sumarizada na origem (mediana 684 caracteres, teto 1.493) e a falsa vem crua (mediana 294). Um classificador
+que só conta caracteres acerta **80,5%** nesta base balanceada. O uso é amostragem de estímulo, nunca treino
+de veredito — e os itens reais precisam de revisão manual antes do teste com usuário, senão o participante
+acerta pelo comprimento do texto.
 
-O viés de sumarização apontado no portfólio se confirma na inspeção: as notícias verdadeiras vêm de portais
-grandes e estão encurtadas. Como aqui o uso é só amostragem de estímulo para a interface, não treino, isso
-não invalida o uso — mas os itens verdadeiros precisam de revisão manual antes de ir para o teste com usuário,
-senão o participante pode acertar pelo estilo do texto.
+Detalhe e critério do subset temático em [Ampliação do corpus](../docs/investigate/ampliacao-corpus.md).
 
 ### Med-MMHL — **não baixado**
 Os dados não estão no GitHub: ficam num Dropbox de **4,0 GB** (o volume é quase todo imagem). Como o uso
 previsto é teste de estresse condicional, deixei em `03_banco_estimulos/med_mmhl/baixar_med_mmhl.sh` o comando
 pronto, mais o apêndice do artigo e a licença (CC BY-NC 4.0 — não comercial, compatível com o uso acadêmico).
+
+## 4. Acervo de circulação
+
+Camada criada em 19/09/2026. **Função nova**, que não estava na classificação da fase Engage
+(raciocínio · comparação fonte-manchete · banco de estímulos): aqui o dado não serve a nenhuma das três —
+serve a medir **o que circulou, em que canal e quando**, que é insumo que nenhuma base de checagem fornece,
+porque agência publica o desmentido e não a difusão.
+
+### Telegram antivacina brasileiro — 3.998.633 posts
+119 canais, janeiro/2020 a junho/2025, licença CC BY-NC 4.0. **Não é citável e não tem veredito.**
+Leitura de prevalência é vedada — a amostra é de comunidade antivacina por construção.
+Usos permitidos e vedados em `04_acervo_circulacao/telegram_antivacina_br/README.md`.
 
 ## Derivados (`derivados/`)
 
@@ -113,8 +137,12 @@ pronto, mais o apêndice do artigo e a licença (CC BY-NC 4.0 — não comercial
 | `factcenter_subset_saude.csv` | **4.063** checagens PT-BR filtradas por termos de saúde/ciência — é este o corpus para o RAG e para os itens falsos do dataset local |
 | `factckbr_normalizado.csv` | FACTCK.BR com coluna `rotulo_norm` (rótulos em minúsculas, resolve o "Falso"/"falso" duplicado) |
 | `exagero_pares_abstract_vs_release.csv` | Os 663 pares InSciOut num CSV único |
-| `fakerecogna_subset_saude_ciencia.csv` | 5.058 itens (1.321 falsos, 3.737 verdadeiros) das categorias saúde e ciência |
-| `fakerecogna_amostra_estimulos_300.csv` | Amostra estratificada de 300 itens (`random_state=42`), ponto de partida para os estímulos do teste |
+| `fakerecogna2_subset_saude_ciencia.csv` | 26.436 itens (7.652 falsos, 18.784 reais) da 2.0, por **termo de saúde no texto** — o filtro por categoria da v1 não vale na 2.0 |
+| `fakerecogna2_amostra_estimulos_300.csv` | Amostra estratificada de 300 itens (`random_state=42`) sobre o subset da 2.0 |
+| `fakerecogna2_transformacao.json` | Declaração da transformação de texto por classe e o vazamento medido (80,5% só pelo comprimento) |
+| `whavax_agregados.json` | 950 mensagens anotadas por quatro médicos, com a faixa de 84 empates isolada |
+| `telegram_agregados.json` | 3.998.633 posts de 119 canais, só contagens — sem texto e sem autor |
+| `sonda_factcheck_api.json` | 928 checagens em `pt` pela Fact Check Tools API, 525 posteriores a 2021 |
 
 ## O que ainda falta para a fase Investigate
 
@@ -127,3 +155,31 @@ O portfólio pede 20 a 30 casos curados, e nenhum dataset aqui resolve dois peda
 
 O `factcenter_subset_saude.csv` é o ponto de partida natural para os itens falsos: 4.063 casos com texto
 integral da checagem, o que dá para escolher por plausibilidade cultural em vez de por sorteio.
+
+## Caveats do tratamento (19/09/2026)
+
+Registrados pelo change `add-tratamento-datasets-ptbr`. Todos reexecutáveis por
+`python -m tratamento tudo`; detalhe em `docs/investigate/tratamento-datasets.md`.
+
+| Base | Caveat |
+| --- | --- |
+| FactCenter | 43% do corpus é `boato`, rótulo que não gradua; a classe `falso` está inflada por construção |
+| FactCenter | 21 registros consolidam em `verdadeiro` em 4.063 — **não** é fonte de itens verdadeiros |
+| FactCenter | janela 2013-07-08 a 2021-05-19, 54% em 2020; `qdenga`, `mpox`, `oropouche` e `semaglutida` com zero ocorrência |
+| FactCenter | 245 registros mistos e 11 compilados, fora do banco de estímulos |
+| FactCenter | 48.392 linhas físicas para 4.063 registros; separador `;` |
+| FACTCK.BR | **reprovado para citação.** Onze maiúsculas acentuadas ausentes, sete com evidência de corrupção. A perda está na fonte distribuída e é irreversível |
+| FakeRecogna | **reprovada para citação** por texto transformado na origem (coluna `Noticia` lematizada e sem caixa), não por corrupção |
+| PUBHEALTH | classe majoritária é `true` (~52% do treino), não "maioria falsa"; o derivado tem aspas escapadas em excesso na origem |
+| FakeHealth | 20 perguntas em dois conjuntos de 10. O nome `fakehealth_matriz_10_criterios.csv` está errado e foi mantido por estabilidade de referência |
+
+### Derivados gerados pelo tratamento
+
+| Arquivo | O que é |
+| --- | --- |
+| `factcenter_vereditos_normalizados.csv` | cada registro com chaves, rótulos, `misto` e exclusão |
+| `relatorio_vereditos.json` | contagens por agência, grafia e chave |
+| `relatorio_integridade.json` | laudo por arquivo, com causa provável |
+| `declaracao_cobertura.json` | janela, ano a ano, termos de pauta, caminho de atualização |
+| `rubrica_criterios_ptbr.json` | rubrica de seis critérios, removidos com motivo, força da afirmação |
+| `fewshot_ptbr_pool.csv` | 15 exemplares PT-BR, 5 por rótulo, semente 42 |

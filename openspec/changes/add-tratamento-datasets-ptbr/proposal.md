@@ -15,19 +15,25 @@ checagens de saúde em PT-BR):
   `oropouche`, `semaglutida` — nenhuma ocorrência. Os casos que o grupo está
   curando hoje cairiam em `evidência insuficiente`.
 - **O campo `rating` não é um rótulo**: é uma lista Python serializada
-  (`"['boato']"`, `"['FALSO', 'VERDADEIRO, MAS']"`), com 285 valores distintos e
-  seis vocabulários de agência conviventes, mais variação de caixa.
+  (`"['boato']"`, `"['FALSO', 'VERDADEIRO, MAS']"`), com 285 strings distintas
+  que se resolvem em 26 grafias de veredito e 19 chaves canônicas, sobre seis
+  vocabulários de agência conviventes.
 - **43% do corpus é `['boato']`**, rótulo que não gradua nada, porque a agência
-  de origem publica apenas rumor. Só 21 registros em 4.063 são `verdadeiro` ou
-  `verdadeiro, mas`.
-- **587 registros cobrem mais de uma alegação** (um deles com 101 rótulos) e 250
-  têm rótulos divergentes entre si. Um registro não equivale a uma alegação.
+  de origem publica apenas rumor. Só 21 registros em 4.063 consolidam em
+  `verdadeiro`, e 22 têm chave única `verdadeiro` ou `verdadeiro, mas`.
+- **587 registros cobrem mais de uma alegação** (um deles com 101 rótulos) e 245
+  têm rótulos divergentes entre si, medido sob o mapa versionado. Um registro não
+  equivale a uma alegação.
 - O arquivo é `;`-separado com newlines dentro de `text_news`: 4.063 registros
-  em 42.197 linhas físicas. Carregado no default de `read_csv`, produz lixo.
+  em 48.392 linhas físicas. No default de `read_csv` a leitura falha com
+  `ParserError`; com descarte de linha defeituosa produz 25.670 registros de uma
+  coluna só, em silêncio.
 - Em `derivados/factckbr_normalizado.csv`, **todas as maiúsculas acentuadas
-  foram perdidas** — está gravado `Sistema nico de Saúde`. Causa raiz no
+  foram perdidas** — está gravado `Sistema nico de Saúde`. Onze letras têm zero
+  ocorrência, sete delas com a minúscula correspondente frequente. Causa raiz no
   `re_char()` de `01_nucleo_metodologico/factckbr/update_factckbr.py`, cuja
-  allowlist inclui apenas acentuadas minúsculas.
+  allowlist inclui apenas acentuadas minúsculas — e a perda já vem assim no
+  `FACTCKBR.tsv` distribuído, o que a torna irreversível neste acervo.
 
 A leitura inicial do problema de idioma era que os datasets em inglês precisavam
 de tradução. A inspeção inverte isso: os três datasets em inglês são

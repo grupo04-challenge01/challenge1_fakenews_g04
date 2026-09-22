@@ -1,0 +1,356 @@
+{
+  "conjunto_adotado": "HealthStory, com duas perguntas de HealthRelease mapeadas para dentro dele",
+  "perguntas_do_fakehealth": {
+    "HealthRelease": [
+      "Does the news release adequately discuss the costs of the intervention?",
+      "Does the news release adequately explain/quantify the harms of the intervention?",
+      "Does the news release adequately quantify the benefits of the treatment/test/product/procedure?",
+      "Does the news release commit disease-mongering?",
+      "Does the news release compare the new approach with existing alternatives?",
+      "Does the news release establish the availability of the treatment/test/product/procedure?",
+      "Does the news release establish the true novelty of the approach?",
+      "Does the news release identify funding sources & disclose conflicts of interest?",
+      "Does the news release include unjustifiable, sensational language, including in the quotes of researchers?",
+      "Does the news release seem to grasp the quality of the evidence?"
+    ],
+    "HealthStory": [
+      "Does the story adequately discuss the costs of the intervention?",
+      "Does the story adequately explain/quantify the harms of the intervention?",
+      "Does the story adequately quantify the benefits of the treatment/test/product/procedure?",
+      "Does the story appear to rely solely or largely on a news release?",
+      "Does the story commit disease-mongering?",
+      "Does the story compare the new approach with existing alternatives?",
+      "Does the story establish the availability of the treatment/test/product/procedure?",
+      "Does the story establish the true novelty of the approach?",
+      "Does the story seem to grasp the quality of the evidence?",
+      "Does the story use independent sources and identify conflicts of interest?"
+    ]
+  },
+  "rubrica": [
+    {
+      "id": "evidencia",
+      "pergunta_en": "Does the story seem to grasp the quality of the evidence?",
+      "pergunta_pt": "A mensagem diz de onde veio a informação e que tipo de estudo ou fonte a sustenta?",
+      "conjunto_de_origem": "ambos",
+      "niveis": {
+        "atende": "nomeia a fonte e o tipo de estudo, e a fonte é localizável por quem lê",
+        "atende em parte": "menciona estudo, médico ou instituição sem nome, data ou link que permita conferir",
+        "nao atende": "afirma sem qualquer origem, ou apela a «comprovado cientificamente» sem nada mais"
+      },
+      "sinais": [
+        "estudo",
+        "pesquisa",
+        "cientista",
+        "revista",
+        "universidade",
+        "artigo",
+        "laboratorio",
+        "oms",
+        "anvisa",
+        "ministerio"
+      ],
+      "nota": ""
+    },
+    {
+      "id": "beneficio",
+      "pergunta_en": "Does the story adequately quantify the benefits of the treatment/test/product/procedure?",
+      "pergunta_pt": "O benefício prometido vem com número, ou só com adjetivo?",
+      "conjunto_de_origem": "ambos",
+      "niveis": {
+        "atende": "dá a magnitude do efeito e sobre quantas pessoas foi observado",
+        "atende em parte": "dá número solto, sem base de comparação nem tamanho do grupo",
+        "nao atende": "só adjetivo — «poderoso», «eficaz», «cura»"
+      },
+      "sinais": [
+        "cura",
+        "trata",
+        "previne",
+        "eficaz",
+        "elimina",
+        "combate",
+        "%",
+        "por cento",
+        "vezes mais",
+        "reduz"
+      ],
+      "nota": ""
+    },
+    {
+      "id": "dano",
+      "pergunta_en": "Does the story adequately explain/quantify the harms of the intervention?",
+      "pergunta_pt": "A mensagem diz o que pode dar errado, ou só o que pode dar certo?",
+      "conjunto_de_origem": "ambos",
+      "niveis": {
+        "atende": "nomeia efeitos adversos e com que frequência ocorrem",
+        "atende em parte": "menciona risco sem dizer qual nem quão comum",
+        "nao atende": "não menciona risco algum, ou afirma que não há"
+      },
+      "sinais": [
+        "efeito colateral",
+        "risco",
+        "reacao",
+        "adverso",
+        "perigo",
+        "seguro",
+        "contraindicacao",
+        "morte",
+        "morreu",
+        "sequela"
+      ],
+      "nota": ""
+    },
+    {
+      "id": "alarme",
+      "pergunta_en": "Does the story commit disease-mongering?",
+      "pergunta_pt": "A mensagem aumenta o tamanho do problema para justificar a solução que oferece?",
+      "conjunto_de_origem": "ambos",
+      "niveis": {
+        "atende": "descreve a gravidade e a frequência do problema como a fonte descreve",
+        "atende em parte": "usa caso extremo como se fosse o caso comum",
+        "nao atende": "inventa epidemia, urgência ou conspiração para empurrar a conclusão"
+      },
+      "sinais": [
+        "urgente",
+        "epidemia",
+        "surto",
+        "todos estao",
+        "esconderam",
+        "a industria",
+        "nao querem que voce saiba",
+        "alerta",
+        "compartilhe",
+        "repasse"
+      ],
+      "nota": ""
+    },
+    {
+      "id": "conflito_de_interesse",
+      "pergunta_en": "Does the story use independent sources and identify conflicts of interest?",
+      "pergunta_pt": "Dá para saber quem publicou e o que essa pessoa ganha se você acreditar?",
+      "conjunto_de_origem": "HealthStory",
+      "niveis": {
+        "atende": "autor e financiador identificáveis, e o interesse declarado quando existe",
+        "atende em parte": "autor identificável, interesse não declarado",
+        "nao atende": "autoria anônima, ou fonte que vende o que indica"
+      },
+      "sinais": [
+        "vende",
+        "compre",
+        "link na bio",
+        "whatsapp",
+        "dr",
+        "dra",
+        "medico",
+        "empresa",
+        "patrocin",
+        "fabricante",
+        "laboratorio"
+      ],
+      "nota": "Absorve a pergunta de financiador do conjunto HealthRelease. É também a única cobertura direta da competência «identificar vieses» hoje — ver a lacuna registrada em docs/estado.md."
+    },
+    {
+      "id": "linguagem",
+      "pergunta_en": "Does the news release include unjustifiable, sensational language, including in the quotes of researchers?",
+      "pergunta_pt": "O texto precisa de letra maiúscula, ponto de exclamação ou pedido de repasse para se sustentar?",
+      "conjunto_de_origem": "HealthRelease",
+      "niveis": {
+        "atende": "tom informativo, sem apelo emocional para convencer",
+        "atende em parte": "tom exaltado em parte do texto",
+        "nao atende": "caixa alta, exclamação em série, pedido de compartilhamento urgente"
+      },
+      "sinais": [
+        "!",
+        "urgente",
+        "chocante",
+        "inacreditavel",
+        "compartilhe",
+        "repasse",
+        "atencao",
+        "cuidado",
+        "voce precisa saber"
+      ],
+      "nota": "Preservada do conjunto HealthRelease por não ter correspondente em HealthStory e por endereçar direto o catálogo de técnicas de `resposta-formativa`."
+    }
+  ],
+  "removidos": [
+    {
+      "id": "custo",
+      "pergunta_en": "Does the story adequately discuss the costs of the intervention?",
+      "conjunto_de_origem": "ambos",
+      "motivo_da_remocao": "Pergunta escrita para jornalismo sobre tecnologia médica nova, onde preço é dado noticiável. A mensagem que circula em saúde no Brasil não discute preço: propõe chá, alho, vitamina ou recusa de vacina. A pergunta não tem objeto, e critério sem objeto não gradua nada.",
+      "sinais": [
+        "custo",
+        "preco",
+        "r$",
+        "reais",
+        "caro",
+        "barato",
+        "gratuito"
+      ]
+    },
+    {
+      "id": "disponibilidade",
+      "pergunta_en": "Does the story establish the availability of the treatment/test/product/procedure?",
+      "conjunto_de_origem": "ambos",
+      "motivo_da_remocao": "Mesmo motivo do custo. Disponibilidade é dimensão de reportagem sobre lançamento; a alegação viral não promete acesso futuro, promete efeito imediato.",
+      "sinais": [
+        "disponivel",
+        "farmacia",
+        "sus",
+        "receita medica",
+        "a venda"
+      ]
+    },
+    {
+      "id": "alternativas",
+      "pergunta_en": "Does the story compare the new approach with existing alternatives?",
+      "conjunto_de_origem": "ambos",
+      "motivo_da_remocao": "Exige que o texto apresente um tratamento comparado a outro. A desinformação em saúde faz o oposto: apresenta a alternativa isolada, muitas vezes contra o tratamento estabelecido. O que importa desse conceito já é capturado por `beneficio` e `evidencia`.",
+      "sinais": [
+        "em vez de",
+        "alternativa",
+        "comparado",
+        "melhor que",
+        "substitui"
+      ]
+    },
+    {
+      "id": "novidade",
+      "pergunta_en": "Does the story establish the true novelty of the approach?",
+      "conjunto_de_origem": "ambos",
+      "motivo_da_remocao": "Pergunta sobre ineditismo de achado científico. Não discrimina mensagem viral, que costuma reciclar alegação antiga sem qualquer pretensão de novidade — e quando o faz, o sinal já cai em `alarme`.",
+      "sinais": [
+        "novo",
+        "inedito",
+        "pela primeira vez",
+        "descoberta",
+        "lancamento"
+      ]
+    },
+    {
+      "id": "release",
+      "pergunta_en": "Does the story appear to rely solely or largely on a news release?",
+      "conjunto_de_origem": "HealthStory",
+      "motivo_da_remocao": "Pergunta sobre prática de redação jornalística: se o repórter copiou o comunicado da assessoria. Não tem objeto quando a unidade analisada é a mensagem recebida pelo usuário.",
+      "sinais": [
+        "comunicado",
+        "assessoria",
+        "nota a imprensa",
+        "press release"
+      ]
+    }
+  ],
+  "forca_da_afirmacao": {
+    "0": "sem afirmação de relação",
+    "1": "associação observada",
+    "2": "relação condicional",
+    "3": "relação causal afirmada"
+  },
+  "comparacao_de_forca": {
+    "same": {
+      "rotulo_pt": "mesma força",
+      "tecnica": "",
+      "explicacao": "a manchete afirma o que o estudo conclui"
+    },
+    "exaggerates": {
+      "rotulo_pt": "afirma mais que o estudo",
+      "tecnica": "manchete exagerada",
+      "explicacao": "o estudo observou associação e a manchete afirma causa"
+    },
+    "downplays": {
+      "rotulo_pt": "afirma menos que o estudo",
+      "tecnica": "",
+      "explicacao": "a manchete enfraquece o que o estudo concluiu; não é desinformação de promessa, mas distorce igual"
+    }
+  },
+  "validacao": {
+    "registros_avaliados": 4063,
+    "objeto_medido": "title + subtitle (a alegação checada)",
+    "piso_de_discriminacao": 0.05,
+    "metodo": "cobertura de vocabulário sobre a alegação; proxy reprodutível, não anotação humana",
+    "por_criterio": {
+      "evidencia": {
+        "pergunta_pt": "A mensagem diz de onde veio a informação e que tipo de estudo ou fonte a sustenta?",
+        "conjunto_de_origem": "ambos",
+        "casos_com_sinal": 433,
+        "proporcao": 0.10657149889244401,
+        "acima_do_piso": true
+      },
+      "beneficio": {
+        "pergunta_pt": "O benefício prometido vem com número, ou só com adjetivo?",
+        "conjunto_de_origem": "ambos",
+        "casos_com_sinal": 572,
+        "proporcao": 0.1407826729017967,
+        "acima_do_piso": true
+      },
+      "dano": {
+        "pergunta_pt": "A mensagem diz o que pode dar errado, ou só o que pode dar certo?",
+        "conjunto_de_origem": "ambos",
+        "casos_com_sinal": 405,
+        "proporcao": 0.09968003937976865,
+        "acima_do_piso": true
+      },
+      "alarme": {
+        "pergunta_pt": "A mensagem aumenta o tamanho do problema para justificar a solução que oferece?",
+        "conjunto_de_origem": "ambos",
+        "casos_com_sinal": 159,
+        "proporcao": 0.0391336450898351,
+        "acima_do_piso": false
+      },
+      "conflito_de_interesse": {
+        "pergunta_pt": "Dá para saber quem publicou e o que essa pessoa ganha se você acreditar?",
+        "conjunto_de_origem": "HealthStory",
+        "casos_com_sinal": 786,
+        "proporcao": 0.1934531134629584,
+        "acima_do_piso": true
+      },
+      "linguagem": {
+        "pergunta_pt": "O texto precisa de letra maiúscula, ponto de exclamação ou pedido de repasse para se sustentar?",
+        "conjunto_de_origem": "HealthRelease",
+        "casos_com_sinal": 117,
+        "proporcao": 0.02879645582082205,
+        "acima_do_piso": false
+      }
+    },
+    "removidos_medidos": {
+      "custo": {
+        "pergunta_en": "Does the story adequately discuss the costs of the intervention?",
+        "conjunto_de_origem": "ambos",
+        "motivo": "Pergunta escrita para jornalismo sobre tecnologia médica nova, onde preço é dado noticiável. A mensagem que circula em saúde no Brasil não discute preço: propõe chá, alho, vitamina ou recusa de vacina. A pergunta não tem objeto, e critério sem objeto não gradua nada.",
+        "casos_com_sinal": 208,
+        "proporcao": 0.051193699237016985
+      },
+      "disponibilidade": {
+        "pergunta_en": "Does the story establish the availability of the treatment/test/product/procedure?",
+        "conjunto_de_origem": "ambos",
+        "motivo": "Mesmo motivo do custo. Disponibilidade é dimensão de reportagem sobre lançamento; a alegação viral não promete acesso futuro, promete efeito imediato.",
+        "casos_com_sinal": 110,
+        "proporcao": 0.02707359094265321
+      },
+      "alternativas": {
+        "pergunta_en": "Does the story compare the new approach with existing alternatives?",
+        "conjunto_de_origem": "ambos",
+        "motivo": "Exige que o texto apresente um tratamento comparado a outro. A desinformação em saúde faz o oposto: apresenta a alternativa isolada, muitas vezes contra o tratamento estabelecido. O que importa desse conceito já é capturado por `beneficio` e `evidencia`.",
+        "casos_com_sinal": 16,
+        "proporcao": 0.0039379768643859215
+      },
+      "novidade": {
+        "pergunta_en": "Does the story establish the true novelty of the approach?",
+        "conjunto_de_origem": "ambos",
+        "motivo": "Pergunta sobre ineditismo de achado científico. Não discrimina mensagem viral, que costuma reciclar alegação antiga sem qualquer pretensão de novidade — e quando o faz, o sinal já cai em `alarme`.",
+        "casos_com_sinal": 254,
+        "proporcao": 0.0625153827221265
+      },
+      "release": {
+        "pergunta_en": "Does the story appear to rely solely or largely on a news release?",
+        "conjunto_de_origem": "HealthStory",
+        "motivo": "Pergunta sobre prática de redação jornalística: se o repórter copiou o comunicado da assessoria. Não tem objeto quando a unidade analisada é a mensagem recebida pelo usuário.",
+        "casos_com_sinal": 13,
+        "proporcao": 0.0031996062023135615
+      }
+    },
+    "proxy_valido_como_regra": false,
+    "leitura_do_resultado": "o proxy NÃO separa: o menor mantido (0.029) está abaixo do maior removido (0.063). As remoções se sustentam no argumento de unidade de análise, registrado em `REMOVIDOS`, e a validação empírica da rubrica fica pendente de anotação humana em `avaliacao-instrumento`.",
+    "base_da_decisao": "unidade de análise, não a medição de vocabulário"
+  }
+}

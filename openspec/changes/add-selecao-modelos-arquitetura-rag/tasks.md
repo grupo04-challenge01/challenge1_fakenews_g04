@@ -1,26 +1,29 @@
 # Tasks
 
 ## 1. Registro da decisão de modelo
-- [ ] 1.1 Redigir a tabela de três papéis (recuperação, geração, classificação
+- [x] 1.1 Redigir a tabela de três papéis (recuperação, geração, classificação
       auxiliar) com o critério de seleção de cada um
-- [ ] 1.2 Registrar o descarte do MedGemma citando model card oficial e a
+- [x] 1.2 Registrar o descarte do MedGemma citando model card oficial e a
       colisão com a task 2.3 de `mvp-copiloto-verificacao`
-- [ ] 1.3 Levantar candidatos de recuperação com desempenho medido em benchmark
+- [x] 1.3 Levantar candidatos de recuperação com desempenho medido em benchmark
       de português, com tamanho, licença e score anotados
-- [ ] 1.4 Levantar candidatos de geração, separando via local de via API
-- [ ] 1.5 Registrar a licença de cada modelo adotado, pelo nome, com a restrição
+- [x] 1.4 Levantar candidatos de geração, separando via local de via API
+- [x] 1.5 Registrar a licença de cada modelo adotado, pelo nome, com a restrição
       encontrada
 - [x] 1.6 Fechar a decisão local vs. API para o papel de geração e registrar em
       `design.md` como nota de decisão — local, Gemma 4 12B QAT q4_0, decisão 8
-- [ ] 1.7 Conferir a Prohibited Use Policy da Gemma 3 contra
+- [x] 1.7 Conferir a Prohibited Use Policy da Gemma 3 contra
       `fronteira-orientacao-saude`, caso a contingência do Gemma 3 seja acionada
 
 ## 2. Prova de conceito de recuperação
 - [x] 2.1 Provisionar ambiente (fixar versão de Python, instalar dependências de
       embedding e de busca léxica) e registrar o que foi fixado — Python 3.14.6,
       `requirements-rag.txt` + `requirements-rag.lock.txt`, MPS ativo
-- [ ] 2.1b Abrir change de correção em `mvp-copiloto-verificacao` para o defeito
+- [x] 2.1b Abrir change de correção em `mvp-copiloto-verificacao` para o defeito
       da estrutura de quatro blocos sob `evidência insuficiente` (decisão 10)
+      — aberto em 19/09/2026 como `fix-resposta-sem-evidencia`, com a proposal
+      escrita. As specs delta ficam pendentes da decisão do grupo entre forma
+      própria e catálogo condicional, registrada na proposal
 - [x] 2.1c Registrar `think: false` como obrigatório em toda chamada ao gerador
       — medido: 3/3 respostas em 17 s vs 1/3 em 112 s com raciocínio ligado
 - [x] 2.1d Documentar a sonda e os resultados no portfólio
@@ -40,37 +43,50 @@
       combinação convexa de scores realçados contra o fundo da consulta, com RRF
       disponível para a comparação da task 3.1. Primeira versão anulava o braço
       denso; defeito medido e corrigido, decisão 11 de `design.md`
-- [ ] 2.6 Montar conjunto de 20 consultas de aferição a partir de casos reais do
+- [x] 2.6 Montar conjunto de 20 consultas de aferição a partir de casos reais do
       corpus, com o documento correto conhecido para cada uma
 
 ## 3. Medição e calibração
 - [ ] 3.1 Medir recall das três configurações — só léxica, só densa, híbrida —
-      sobre as 20 consultas de aferição
+      sobre as 20 consultas de aferição. **Parcial em 19/09/2026:** braço
+      léxico medido — recall@3 de 1,00 em `verbatim` e 0,70 em `reformulada`,
+      MRR 0,725, latência mediana de 187 ms. Densa e híbrida pendentes da
+      matriz, que nesta máquina (CPU, sem MPS) não terminou dentro da sessão.
+      Aferidor pronto: `python -m prototipo.rag aferir`
 - [ ] 3.2 Registrar o resultado como evidência da decisão 4 de `design.md`,
       inclusive se ele contrariar a decisão
 - [ ] 3.3 Comparar ao menos dois modelos de embedding sob o mesmo conjunto de
       aferição
 - [ ] 3.4 Medir a latência de consulta de cada modelo comparado, separando custo
       de indexação de custo de consulta
-- [ ] 3.5 Calibrar o limiar de `evidência insuficiente` sobre o score fundido,
-      incluindo casos de pauta ausente do corpus
-- [ ] 3.6 Documentar o conjunto de aferição e a calibração de forma reproduzível
+- [x] 3.5 Calibrar o limiar de `evidência insuficiente` sobre o score fundido,
+      incluindo casos de pauta ausente do corpus — **feito, e o objeto da task
+      está errado.** Sobre o score fundido não existe limiar que separe: o
+      realce é relativo à própria consulta, então `como declarar imposto de
+      renda atrasado` pontua 0,853, acima de 11 dos 20 alvos reais. Sobre o
+      BM25 **bruto** há curva: 27,2 rejeita 100% do ruído e custa 40% dos
+      positivos — e os oito positivos perdidos são **todos** da família
+      `reformulada`. Ver `docs/investigate/afericao-recuperacao.md`
+- [x] 3.6 Documentar o conjunto de aferição e a calibração de forma reproduzível
+      — `prototipo/rag/consultas_afericao.json` versionado, `prototipo/rag/
+      afericao.py` e a página `docs/investigate/afericao-recuperacao.md`, com o
+      comando de reexecução e os limites da medição declarados
 
 ## 4. Fronteira entre treino e recuperação
-- [ ] 4.1 Redigir a regra de fronteira em linguagem operacional, com os dois
+- [x] 4.1 Redigir a regra de fronteira em linguagem operacional, com os dois
       casos vedados nomeados
-- [ ] 4.2 Redigir o procedimento de auditoria de afirmação sem trecho de origem
-- [ ] 4.3 Registrar a sequência adotada (linha de base sem treino antes de
+- [x] 4.2 Redigir o procedimento de auditoria de afirmação sem trecho de origem
+- [x] 4.3 Registrar a sequência adotada (linha de base sem treino antes de
       qualquer fine-tuning) com o critério que autoriza o primeiro treino
 
 ## 5. Análise de sentimento
-- [ ] 5.1 Registrar o resultado da pesquisa: por que polaridade não entra no
+- [x] 5.1 Registrar o resultado da pesquisa: por que polaridade não entra no
       veredito, com os três motivos e as referências
-- [ ] 5.2 Propor os rótulos de emoção nomeada candidatos ao catálogo de técnicas,
+- [x] 5.2 Propor os rótulos de emoção nomeada candidatos ao catálogo de técnicas,
       para consumo da task 3.1 de `mvp-copiloto-verificacao`, respeitando o
       orçamento de 6 a 8 rótulos já ocupado por técnicas não emocionais
-- [ ] 5.3 Levantar ferramentas de análise de emoção em PT-BR, com licença
-- [ ] 5.4 Redigir o teste dos dois casos cruzados: alegação verdadeira com carga
+- [x] 5.3 Levantar ferramentas de análise de emoção em PT-BR, com licença
+- [x] 5.4 Redigir o teste dos dois casos cruzados: alegação verdadeira com carga
       emocional alta e alegação falsa em tom neutro
 
 ## 6. Fechamento

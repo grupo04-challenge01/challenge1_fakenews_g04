@@ -1,0 +1,241 @@
+{
+  "versao": "1.0.0",
+  "data": "2026-09-19",
+  "change": "add-selecao-modelos-arquitetura-rag",
+  "task": "2.6",
+  "corpus": "datasets/derivados/factcenter_subset_saude.csv",
+  "n": 20,
+  "metodo": {
+    "selecao": "20 registros reais do corpus, de alegação única e rótulo consolidado, com pelo menos 700 caracteres de texto, escolhidos deliberadamente FORA do recorte covid — exigência do design.md do change add-tratamento-datasets-ptbr, decisão 4, para que o produto não pareça funcionar em teste e falhe na pauta real.",
+    "documento_correto": "o registro de origem, identificado por `registro_id` = sha1(url)[:10], que é a mesma chave que `prototipo/rag/unidades.py` usa. Um acerto é a recuperação trazer qualquer unidade desse registro dentro do corte medido.",
+    "duas_familias": "10 consultas `verbatim`, no formato em que a mensagem circula (o usuário cola o que recebeu), e 10 `reformulada`, escritas com as palavras de quem pergunta, evitando o termo raro que identifica o documento. A separação existe porque medir só com verbatim favorece a busca léxica por construção, e só com reformulada favorece a densa.",
+    "limite_conhecido": "o recorte não-covid do corpus é dominado pela agência `boatos` (11 das 20). Não é amostra balanceada por agência, e a medição não sustenta comparação entre agências."
+  },
+  "consultas": [
+    {
+      "id": "a01",
+      "familia": "verbatim",
+      "consulta": "O vírus da febre amarela sofreu uma mutação e a vacina não protege mais",
+      "registro_id": "5db9f418f0",
+      "agencia": "boatos",
+      "ano": "2018",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a02",
+      "familia": "verbatim",
+      "consulta": "A vacina da gripe é um veneno mortal",
+      "registro_id": "1b1b726241",
+      "agencia": "boatos",
+      "ano": "2016",
+      "tema": "gripe"
+    },
+    {
+      "id": "a03",
+      "familia": "verbatim",
+      "consulta": "Vacina contra H1N1 causa narcolepsia",
+      "registro_id": "e999fca84c",
+      "agencia": "boatos",
+      "ano": "2016",
+      "tema": "gripe"
+    },
+    {
+      "id": "a04",
+      "familia": "verbatim",
+      "consulta": "Adultos têm que tomar a vacina contra o sarampo mesmo tendo se vacinado na infância",
+      "registro_id": "1afa60a7a8",
+      "agencia": "boatos",
+      "ano": "2018",
+      "tema": "sarampo"
+    },
+    {
+      "id": "a05",
+      "familia": "verbatim",
+      "consulta": "A vacina contra febre amarela mata em 50% dos casos",
+      "registro_id": "4ebed93208",
+      "agencia": "boatos",
+      "ano": "2017",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a06",
+      "familia": "verbatim",
+      "consulta": "Vacina contra febre amarela causa perda de visão e cegueira",
+      "registro_id": "f92716b056",
+      "agencia": "boatos",
+      "ano": "2017",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a07",
+      "familia": "verbatim",
+      "consulta": "A vacina contra a gripe tem nível de mercúrio letal",
+      "registro_id": "f253e5fa61",
+      "agencia": "boatos",
+      "ano": "2015",
+      "tema": "gripe"
+    },
+    {
+      "id": "a08",
+      "familia": "verbatim",
+      "consulta": "MPF proíbe a vacina contra o HPV em todo o Brasil",
+      "registro_id": "1526a493ca",
+      "agencia": "boatos",
+      "ano": "2017",
+      "tema": "HPV"
+    },
+    {
+      "id": "a09",
+      "familia": "verbatim",
+      "consulta": "Larvicida pyriproxyfen causou a microcefalia, o Zika é uma farsa",
+      "registro_id": "503d53ca8f",
+      "agencia": "boatos",
+      "ano": "2016",
+      "tema": "zika"
+    },
+    {
+      "id": "a10",
+      "familia": "verbatim",
+      "consulta": "Chá de erva-doce cura a gripe H1N1 e é a fórmula do Tamiflu",
+      "registro_id": "1958051c4b",
+      "agencia": "boatos",
+      "ano": "2018",
+      "tema": "gripe"
+    },
+    {
+      "id": "a11",
+      "familia": "reformulada",
+      "consulta": "é verdade que quem tomou a vacina amarela pode ficar com problema no fígado?",
+      "registro_id": "ad3b65d166",
+      "agencia": "boatos",
+      "ano": "2018",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a12",
+      "familia": "reformulada",
+      "consulta": "o governo inventou a doença para vender vacina?",
+      "registro_id": "b8cae08b9d",
+      "agencia": "boatos",
+      "ano": "2018",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a13",
+      "familia": "reformulada",
+      "consulta": "a bula da vacina admite que ela pode causar autismo em criança?",
+      "registro_id": "b103a02dd7",
+      "agencia": "lupa",
+      "ano": "2019",
+      "tema": "autismo"
+    },
+    {
+      "id": "a14",
+      "familia": "reformulada",
+      "consulta": "o supremo liberou estrangeiro de se vacinar para entrar no país?",
+      "registro_id": "098a5bf95c",
+      "agencia": "lupa",
+      "ano": "2020",
+      "tema": "sarampo"
+    },
+    {
+      "id": "a15",
+      "familia": "reformulada",
+      "consulta": "de quanto em quanto tempo preciso repetir a dose da vacina amarela?",
+      "registro_id": "90a10d4848",
+      "agencia": "lupa",
+      "ano": "2017",
+      "tema": "febre amarela"
+    },
+    {
+      "id": "a16",
+      "familia": "reformulada",
+      "consulta": "um ex-presidente barrou a compra de vacina para uma doença do cérebro?",
+      "registro_id": "4e9d4c251e",
+      "agencia": "aos fatos",
+      "ano": "2019",
+      "tema": "meningite"
+    },
+    {
+      "id": "a17",
+      "familia": "reformulada",
+      "consulta": "uma família rica registrou a patente do vírus para lucrar com a vacina?",
+      "registro_id": "1f90a7a2fe",
+      "agencia": "aos fatos",
+      "ano": "2018",
+      "tema": "zika"
+    },
+    {
+      "id": "a18",
+      "familia": "reformulada",
+      "consulta": "sem-terra atearam fogo no laboratório onde faziam a vacina?",
+      "registro_id": "69765ef1a5",
+      "agencia": "boatos",
+      "ano": "2019",
+      "tema": "meningite"
+    },
+    {
+      "id": "a19",
+      "familia": "reformulada",
+      "consulta": "aquele suco de raiz que a universidade estudou corta a doença do mosquito em quatro horas?",
+      "registro_id": "c5d4b94adb",
+      "agencia": "fato-ou-fake",
+      "ano": "2020",
+      "tema": "dengue"
+    },
+    {
+      "id": "a20",
+      "familia": "reformulada",
+      "consulta": "tomar a vacina todo ano acaba derrubando a defesa do corpo e pode dar tumor?",
+      "registro_id": "874cf3bda9",
+      "agencia": "boatos",
+      "ano": "2019",
+      "tema": "gripe"
+    }
+  ],
+  "consultas_sem_alvo": {
+    "proposito": "Calibração do limiar de `evidência insuficiente` (task 3.5). Pautas medidas com ZERO ocorrência no corpus pela declaração de cobertura de 19/09/2026, mais duas fora do domínio de saúde. Nenhuma tem documento correto: o score do topo aqui é o ruído contra o qual o limiar precisa separar.",
+    "consultas": [
+      {
+        "id": "n01",
+        "consulta": "Qdenga causa a própria dengue em quem toma",
+        "motivo": "pauta posterior ao acervo; zero ocorrência medida"
+      },
+      {
+        "id": "n02",
+        "consulta": "a vacina contra mpox foi aprovada sem teste",
+        "motivo": "pauta posterior ao acervo; zero ocorrência medida"
+      },
+      {
+        "id": "n03",
+        "consulta": "o vírus oropouche foi criado em laboratório",
+        "motivo": "zero ocorrência no acervo E no índice da API"
+      },
+      {
+        "id": "n04",
+        "consulta": "semaglutida faz o estômago parar de funcionar",
+        "motivo": "zero ocorrência no acervo E no índice da API"
+      },
+      {
+        "id": "n05",
+        "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
+        "motivo": "pauta posterior; combina termo ausente com termo presente"
+      },
+      {
+        "id": "n06",
+        "consulta": "qual o melhor tênis para corrida de rua",
+        "motivo": "fora do domínio; piso absoluto de ruído"
+      },
+      {
+        "id": "n07",
+        "consulta": "como declarar imposto de renda atrasado",
+        "motivo": "fora do domínio; piso absoluto de ruído"
+      },
+      {
+        "id": "n08",
+        "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
+        "motivo": "pauta inexistente, com vocabulário de saúde plausível"
+      }
+    ]
+  }
+}

@@ -32,7 +32,7 @@ Critérios aplicados, conforme a capability `guiding-questions` do change
 
 - Quadro: Problema
 - Fonte: `derivados/factcenter_subset_saude.csv` (campos `categories`, `tags`,
-  `rating`) e `derivados/fakerecogna_subset_saude_ciencia.csv` (5.058 itens)
+  `rating`) e `derivados/fakerecogna2_subset_saude_ciencia.csv` (26.436 itens)
 - Impacto alto · incerteza média
 - Caveat: a distribuição do corpus é enviesada para 2020 e covid (54% dos
   registros em 2020, 56% mencionam covid). A frequência medida é a frequência

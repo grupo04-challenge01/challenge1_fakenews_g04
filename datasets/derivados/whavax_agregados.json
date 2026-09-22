@@ -1,0 +1,52 @@
+{
+  "_licenca": "CC BY 4.0 — herdada da base de origem, atribuição obrigatória.",
+  "_atribuicao": "WhatsApp Vaccine Discourse (WhaVax). ICWSM 2026. arXiv:2605.12510. Zenodo 18190030.",
+  "_vedado": "treino de classificador de veredito; apresentar o rótulo como verdade clínica corrente",
+  "arquivo": "WhaVax_dataset.csv",
+  "registros": 950,
+  "janela": {
+    "inicio": "2020-03-02 11:17:02",
+    "fim": "2023-11-07 15:15:56"
+  },
+  "por_ano": {
+    "2020": 156,
+    "2021": 475,
+    "2022": 210,
+    "2023": 109
+  },
+  "periodo_declarado_pelos_autores": "2020 a 2023, com analise ate inicio de 2024",
+  "anotadores": 4,
+  "regra_de_agregacao": "maioria de ao menos 3 em 4",
+  "concordancia_fleiss_kappa_declarada": 0.621,
+  "distribuicao_de_votos": {
+    "0": 442,
+    "1": 138,
+    "2": 84,
+    "3": 82,
+    "4": 204
+  },
+  "desinformacao_maioria": 286,
+  "nao_desinformacao_maioria": 580,
+  "empates_2_2": 84,
+  "empates_proporcao": 0.0884,
+  "empates_declarados_pelos_autores": 84,
+  "empate_recuperavel_por_consulta": true,
+  "colunas_por_anotador": [
+    "av1_desinfo",
+    "av2_desinfo",
+    "av3_desinfo",
+    "av4_desinfo"
+  ],
+  "usuarios_distintos": 746,
+  "grupos_distintos": 398,
+  "termos_de_pauta": {
+    "qdenga": 0,
+    "mpox": 0,
+    "oropouche": 0,
+    "semaglutida": 0,
+    "covid": 228,
+    "vacina": 497,
+    "dengue": 3,
+    "sarampo": 3
+  }
+}

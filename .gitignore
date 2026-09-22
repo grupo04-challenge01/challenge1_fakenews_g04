@@ -33,3 +33,19 @@ rtk_build/
 prototipo/indice/*.jsonl
 prototipo/indice/*.npy
 !prototipo/indice/manifesto.json
+
+# Segredos. A chave da Fact Check Tools API mora em .env, nunca no repositorio.
+.env
+*.env
+!*.env.example
+
+# Bases novas de 19/09/2026 (change add-ampliacao-corpus-ptbr).
+# Brutos nao versionados, pelo mesmo motivo dos demais: tamanho, licenca de
+# terceiro e -- nas duas de conteudo de usuario -- texto de mensagem e
+# identificador pseudonimizado, que `acervo-circulacao` veda versionar.
+# Licenca, citacao, README e derivados agregados ficam versionados.
+datasets/01_nucleo_metodologico/whavax/WhaVax_dataset.csv
+datasets/01_nucleo_metodologico/whavax/*.ipynb
+datasets/01_nucleo_metodologico/whavax/*.py
+datasets/04_acervo_circulacao/telegram_antivacina_br/*.jsonl
+datasets/03_banco_estimulos/fakerecogna2/

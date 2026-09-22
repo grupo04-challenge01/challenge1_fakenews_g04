@@ -1,0 +1,155 @@
+{
+  "versao": "1.0.0",
+  "data": "2026-09-19",
+  "change": "add-tratamento-datasets-ptbr",
+  "corpus": "datasets/derivados/factcenter_subset_saude.csv",
+  "medicao": {
+    "registros": 4063,
+    "strings_brutas_distintas_no_campo_rating": 285,
+    "grafias_distintas_de_veredito": 26,
+    "chaves_canonicas_distintas": 19,
+    "agencias": 6
+  },
+  "rotulos_de_destino": [
+    "falso",
+    "verdadeiro",
+    "verdadeiro fora de contexto ou exagerado",
+    "nao_mapeavel"
+  ],
+  "regra": "Chave canônica = grafia original dobrada por caixa e acento, nada mais. Valor ausente deste mapa interrompe o processamento e exige decisão registrada; MUST NOT receber rótulo por semelhança de string. `evidência insuficiente` não é destino de mapeamento: é estado do sistema quando a recuperação não devolve fonte, não veredito de agência.",
+  "entradas": {
+    "falso": {
+      "rotulo": "falso",
+      "agencias": ["aos fatos", "lupa", "ESTADAO_VERIFICA", "COMPROVA"],
+      "grafias": ["falso", "FALSO", "Falso"],
+      "ocorrencias": 2426,
+      "nota": ""
+    },
+    "fake": {
+      "rotulo": "falso",
+      "agencias": ["fato-ou-fake"],
+      "grafias": ["fake"],
+      "ocorrencias": 415,
+      "nota": "Vocabulário do G1. Equivalente declarado de `falso` no par fato/fake da própria agência."
+    },
+    "boato": {
+      "rotulo": "falso",
+      "agencias": ["boatos"],
+      "grafias": ["boato"],
+      "ocorrencias": 1744,
+      "nota": "A agência de origem publica apenas rumor: `boato` é o único valor que ela emite, em 1.744 de 1.744 registros. O rótulo não gradua intensidade e não distingue falso de exagerado — ele apenas diz que o item foi selecionado para desmentido. Equiparar a `falso` perde a informação de que a gradação nunca existiu naquela fonte, e infla a classe `falso` do corpus em 43%."
+    },
+    "verdadeiro": {
+      "rotulo": "verdadeiro",
+      "agencias": ["aos fatos", "lupa"],
+      "grafias": ["verdadeiro", "VERDADEIRO"],
+      "ocorrencias": 520,
+      "nota": ""
+    },
+    "fato": {
+      "rotulo": "verdadeiro",
+      "agencias": ["fato-ou-fake"],
+      "grafias": ["fato"],
+      "ocorrencias": 59,
+      "nota": "Vocabulário do G1, par declarado de `fake`."
+    },
+    "comprovado": {
+      "rotulo": "verdadeiro",
+      "agencias": ["COMPROVA"],
+      "grafias": ["Comprovado"],
+      "ocorrencias": 5,
+      "nota": ""
+    },
+    "evidencia comprovada": {
+      "rotulo": "verdadeiro",
+      "agencias": ["COMPROVA"],
+      "grafias": ["Evidência comprovada"],
+      "ocorrencias": 1,
+      "nota": "Ocorrência única. Variante de redação de `Comprovado` na mesma agência, não etiqueta própria do manual da Comprova."
+    },
+    "verdadeiro, mas": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["lupa"],
+      "grafias": ["VERDADEIRO, MAS"],
+      "ocorrencias": 206,
+      "nota": "Etiqueta da Lupa para conteúdo correto cuja leitura direta induz a erro — o caso central do rótulo de destino."
+    },
+    "exagerado": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["lupa", "aos fatos"],
+      "grafias": ["EXAGERADO", "exagerado"],
+      "ocorrencias": 276,
+      "nota": ""
+    },
+    "subestimado": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["lupa"],
+      "grafias": ["SUBESTIMADO"],
+      "ocorrencias": 34,
+      "nota": "Distorção de magnitude para baixo. O rótulo de destino nomeia só o exagero; a direção da distorção se perde e precisa ser recuperada pela grafia original."
+    },
+    "fora de contexto": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["ESTADAO_VERIFICA"],
+      "grafias": ["FORA DE CONTEXTO"],
+      "ocorrencias": 65,
+      "nota": ""
+    },
+    "impreciso": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["aos fatos"],
+      "grafias": ["impreciso"],
+      "ocorrencias": 64,
+      "nota": "Decisão a confirmar pelo grupo. `impreciso` e `exagerado` são etiquetas distintas na mesma agência, e o design proíbe tratá-las como equivalentes por semelhança; o que autoriza o destino comum é o manual do Aos Fatos, que define impreciso como dado correto apresentado de forma que induz a erro."
+    },
+    "distorcido": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["aos fatos"],
+      "grafias": ["distorcido"],
+      "ocorrencias": 45,
+      "nota": ""
+    },
+    "enganoso": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["COMPROVA", "ESTADAO_VERIFICA"],
+      "grafias": ["Enganoso", "ENGANOSO"],
+      "ocorrencias": 218,
+      "nota": "Decisão a confirmar pelo grupo. A Comprova define enganoso como conteúdo que confunde, com ou sem intenção, incluindo dado verdadeiro usado fora do contexto. Fica no rótulo intermediário e não em `falso` porque o conteúdo enganoso frequentemente parte de fato verificável — mas 218 ocorrências é a segunda maior massa do mapa, e um erro aqui desloca boa parte do corpus."
+    },
+    "nao e bem assim": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["fato-ou-fake"],
+      "grafias": ["nao e bem assim"],
+      "ocorrencias": 51,
+      "nota": "A grafia chega ao corpus sem acento, ao contrário das demais etiquetas do mesmo arquivo. É normalização feita a montante na coleta, não perda de caractere: o verificador de integridade textual não acusa a classe. A grafia publicada pela agência é `Não é bem assim`."
+    },
+    "contraditorio": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["lupa", "aos fatos"],
+      "grafias": ["CONTRADITÓRIO", "contraditório"],
+      "ocorrencias": 54,
+      "nota": "Etiqueta relacional: marca que a afirmação contradiz outra do mesmo autor. Não gradua veracidade e não tem destino entre os quatro rótulos."
+    },
+    "insustentavel": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["lupa", "aos fatos"],
+      "grafias": ["INSUSTENTÁVEL", "insustentável"],
+      "ocorrencias": 54,
+      "nota": "Diz que não há dado público que sustente a afirmação. Parece `evidência insuficiente`, e é justamente por isso que fica fora: aquele rótulo é estado da recuperação do sistema, e importar um veredito de agência para dentro dele faria o sistema atribuir a si mesmo uma lacuna que é do mundo."
+    },
+    "ainda e cedo para dizer": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["lupa"],
+      "grafias": ["AINDA É CEDO PARA DIZER"],
+      "ocorrencias": 32,
+      "nota": "Etiqueta temporal, válida na data da publicação. Mapeá-la congela um juízo que a própria agência declarou provisório."
+    },
+    "de olho": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["lupa"],
+      "grafias": ["DE OLHO"],
+      "ocorrencias": 60,
+      "nota": "Marcação de acompanhamento da Lupa, não veredito sobre a alegação."
+    }
+  }
+}
