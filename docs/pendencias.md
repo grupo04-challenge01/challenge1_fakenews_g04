@@ -1,6 +1,7 @@
 # Tasks pendentes, por fase
 
-**Levantado em 20/09/2026**, a partir dos `tasks.md` dos seis changes ativos.
+**Levantado em 20/09/2026, atualizado em 22/09/2026**, a partir dos `tasks.md`
+dos seis changes ativos.
 Companheiro de [Estado do projeto](estado.md), que conta o que já foi entregue;
 esta página conta o que falta.
 
@@ -11,15 +12,16 @@ esta página conta o que falta.
 | **Engage** | `add-engage-desinformacao-saude` | **12** | **13** |
 | **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
-| **Investigate** | `add-selecao-modelos-arquitetura-rag` | 29 | **4** |
+| **Investigate** | `add-selecao-modelos-arquitetura-rag` | 33 | **0** ✅ |
 | **Investigate → Act** | `fix-resposta-sem-evidencia` | 6 | **7** |
 | **Act** | `mvp-copiloto-verificacao` | 0 | **31** |
 | **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **133** | **57** |
+| | **total** | **137** | **53** |
 
-A distribuição engana se lida rápido. As 4 pendentes do RAG são **um comando**
-na máquina certa; as 21 do Engage são **trabalho de grupo presencial** que nunca
-foi feito; e as 31 do Act são a maior parte do produto.
+A distribuição engana se lida rápido. As 4 pendentes do RAG eram **um comando**
+na máquina certa, e em 22/09 o comando rodou; as 13 do Engage são **trabalho de
+grupo presencial** que nunca foi feito; e as 31 do Act são a maior parte do
+produto.
 
 ## O que bloqueia o quê
 
@@ -28,7 +30,7 @@ fazer o quê.
 
 | Bloqueio | Tasks | Quem resolve |
 | --- | --- | --- |
-| **Máquina** — precisa do ambiente com MPS | 4 | quem tem o Mac |
+| ~~**Máquina**~~ — precisava do ambiente com MPS | ~~4~~ **0** | feito em 22/09 |
 | **Trabalho de grupo** — sessão presencial, card sorting, forense | 11 | o grupo inteiro |
 | **Decisão de grupo** — não é execução, é escolha | 4 | reunião |
 | **Processo externo** — CEP, coleta de rede | 3 | prazo de terceiro |
@@ -111,7 +113,7 @@ parte «fichas + método», que sai da forense.
 > Escopo preservado, rastreamento realocado. Motivo registrado no `design.md`
 > do change do Engage.
 
-## Investigate — 6 pendentes
+## Investigate — 2 pendentes
 
 ### `add-tratamento-datasets-ptbr` — 2 de 33
 
@@ -133,31 +135,39 @@ empírica, que exige anotação humana dos casos — e o proxy automático que
 tentamos foi **medido e reprovado**: sob qualquer piso único ele removeria
 `alarme` e `linguagem`, os dois critérios mais relevantes para desinformação.
 
-### `add-selecao-modelos-arquitetura-rag` — 4 de 33
+### `add-selecao-modelos-arquitetura-rag` — 0 de 33 ✅
 
-As quatro dependem da **mesma matriz densa**, e fecham juntas.
+**Fechado em 22/09/2026.** As quatro dependiam da mesma matriz densa e fecharam
+juntas, como previsto. O que não estava previsto é o que a medição encontrou.
 
-| # | Task |
-| --- | --- |
-| 3.1 | Medir recall das três configurações — só léxica, só densa, híbrida |
-| 3.2 | Registrar o resultado como evidência da decisão 4, **inclusive se contrariar a decisão** |
-| 3.3 | Comparar ao menos dois modelos de embedding sob o mesmo conjunto |
-| 3.4 | Medir a latência de consulta de cada modelo, separando custo de indexação de custo de consulta |
+| # | Task | Resultado |
+| --- | --- | --- |
+| 3.1 | Recall das três configurações | léxica 0,85 / densa 1,00 / **híbrida 1,00** de recall@5; MRR 0,725, 0,877 e **0,897** |
+| 3.2 | Registrar contra a decisão 4 | decisão 4 **se sustenta**, com duas correções — decisão 15 do `design.md` |
+| 3.3 | Comparar dois modelos | `e5-base` mantido; `e5-small` é mais barato em tudo e perde em `reformulada` |
+| 3.4 | Latência, indexação vs. consulta | 883,4 s contra 227,4 s de indexação; 13 ms contra 9 ms de consulta densa |
 
-**Bloqueio: máquina.** A indexação densa roda a ~0,8 fragmentos/s em CPU e não
-fecha em sessão; no ambiente com MPS levou 13 minutos. O conjunto de aferição,
-o aferidor e a calibração já existem e estão versionados.
+**A previsão do levantamento de 20/09 se confirmou.** Estava escrito aqui que
+*se a densa não melhorar `reformulada`, a decisão 4 perde o sustento*. A densa
+levou `reformulada` de 0,70 para 1,00 de recall@5 e recuperou `a14`, `a16` e
+`a20`, as três consultas que o BM25 nunca achava.
 
-```bash
-python -m prototipo.rag construir     # se a matriz não existir
-python -m prototipo.rag aferir        # fecha 3.1, 3.2 e 3.4
-python -m prototipo.rag aferir --modelo intfloat/multilingual-e5-small   # 3.3
-```
+**O achado que não estava previsto.** A primeira execução concluiu que a híbrida
+perdia da densa pura, e a conclusão estava errada: o `ALFA_PADRAO` era 0,5,
+fixado em 18/09 sem medição por trás. Em 0,5 o ruído léxico empurrava para fora
+do top-10 os três documentos que o braço denso achava nas posições 5, 3 e 1. O
+padrão passou a 0,9, validado por platô (cinco valores de α dentro de 0,01 do
+topo) e por leave-one-out (MRR 0,8975 contra 0,8767 da densa pura). A varredura
+virou subcomando versionado: `python -m prototipo.rag varrer-alfa`.
 
-O braço léxico já está medido: recall@3 de **1,00** em `verbatim` e **0,70** em
-`reformulada`. A previsão a testar é direta — **se a densa não melhorar
-`reformulada`, a decisão 4 perde o sustento e o híbrido vira custo sem
-retorno**. A task 3.2 obriga a registrar isso se acontecer.
+**O que não se transfere.** No `e5-small` o melhor α é 1,00 e a híbrida perde
+sob leave-one-out. A afirmação defensável é «α=0,9 com `e5-base`», não «híbrida
+supera densa». Trocar o modelo de embedding obriga a revarrer.
+
+Duas questões em aberto do change fecharam junto: **reranker** (só 2 das 20
+consultas caem fora do top-3, então um cross-encoder disputaria dois casos e
+custaria latência em vinte) e **tamanho do modelo de embedding** (descer não
+compensa; subir continua não medido).
 
 ---
 
@@ -303,19 +313,21 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 | --- | --- | --- | --- |
 | 1 | Engage | 07/09 a 11/09 | **vencida há 9 dias**, 12 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
-| **3** | **Investigate** | **21/09 a 25/09** | **começa amanhã — é a última** |
+| **3** | **Investigate** | **21/09 a 25/09** | **em curso — é a última; 119 de 121** |
 | 4 | Act | 28/09 a 02/10 | não começou |
 | 5 | Act | 05/10 a 09/10 | não começou |
 | 6 | Showcase | 12/10 a 16/10 | sem change |
 
-**Hoje é domingo, 20/09.** O Investigate tem **cinco dias úteis** e encerra na
-sexta, 25/09. O Act começa na segunda seguinte, 28/09.
+**Hoje é terça, 22/09.** O Investigate encerra na sexta, 25/09 — restam **três
+dias úteis**. O Act começa na segunda seguinte, 28/09.
 
 ### O que isso muda na leitura
 
-**O Investigate não está atrasado.** Está em 115 de 121, com 6 pendentes, e as
-4 do RAG são um comando na máquina com MPS. Fechar a fase no prazo é
-plausível — depende de rodar a aferição densa esta semana.
+**O Investigate não está atrasado.** Está em **119 de 121**, com 2 pendentes.
+As 4 do RAG eram um comando na máquina com MPS e rodaram em 22/09, fechando o
+change em 33 de 33. Sobram a recoleta do FACTCK.BR (3.5), que depende de rede,
+e a validação da rubrica (5.4), que depende de anotação humana — **nenhuma das
+duas é código**.
 
 **O Engage está.** Nove dias vencido. Em 20/09 fecharam sete tasks, todas as que
 não exigiam o grupo presente — restam 14, e **as 14 exigem**. Pela própria
@@ -344,8 +356,9 @@ de ninguém do grupo.
 
 ### Sugestão de ordem para a semana 3
 
-1. **Segunda:** submissão ao CEP (6.4) e aferição densa na máquina com MPS
-   (3.1 a 3.4 do RAG, fecha o change).
+1. ~~Aferição densa na máquina com MPS (3.1 a 3.4 do RAG)~~ — **feita em
+   22/09, change fechado em 33 de 33.** Resta a submissão ao CEP (6.4), que
+   continua sendo a coisa mais urgente da semana.
 2. **Segunda ou terça:** forense — bloco 2 do Engage. Vem **antes** do workshop,
    porque a task 4.4 valida a matriz contra os casos analisados. Casos, ficha e
    protocolo já estão prontos; falta cronometrar e preencher.
@@ -359,7 +372,7 @@ de ninguém do grupo.
 ## A ordem das fases foi invertida, e isso tem custo
 
 O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
-existe é o contrário: **Engage em 4 de 25, Investigate em 115 de 121**.
+existe é o contrário: **Engage em 12 de 25, Investigate em 119 de 121**.
 
 **Por que aconteceu.** As 21 pendentes do Engage são quase todas trabalho de
 grupo presencial — forense com um caso por pessoa, sessão de brainstorming de

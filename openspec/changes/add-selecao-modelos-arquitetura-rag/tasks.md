@@ -47,18 +47,32 @@
       corpus, com o documento correto conhecido para cada uma
 
 ## 3. Medição e calibração
-- [ ] 3.1 Medir recall das três configurações — só léxica, só densa, híbrida —
-      sobre as 20 consultas de aferição. **Parcial em 19/09/2026:** braço
-      léxico medido — recall@3 de 1,00 em `verbatim` e 0,70 em `reformulada`,
-      MRR 0,725, latência mediana de 187 ms. Densa e híbrida pendentes da
-      matriz, que nesta máquina (CPU, sem MPS) não terminou dentro da sessão.
-      Aferidor pronto: `python -m prototipo.rag aferir`
-- [ ] 3.2 Registrar o resultado como evidência da decisão 4 de `design.md`,
-      inclusive se ele contrariar a decisão
-- [ ] 3.3 Comparar ao menos dois modelos de embedding sob o mesmo conjunto de
-      aferição
-- [ ] 3.4 Medir a latência de consulta de cada modelo comparado, separando custo
-      de indexação de custo de consulta
+- [x] 3.1 Medir recall das três configurações — só léxica, só densa, híbrida —
+      sobre as 20 consultas de aferição — **fechada em 22/09/2026.** Léxica
+      recall@5 0,85 / MRR 0,725; densa 1,00 / 0,877; híbrida em α=0,9 1,00 /
+      **0,897**; RRF 0,85 / 0,850. A densa leva `reformulada` de 0,70 para 1,00
+      e recupera `a14`, `a16` e `a20`. **O achado não estava previsto:** a
+      primeira execução, em α=0,5, concluiu que a híbrida perdia da densa pura,
+      e o que perdia era a calibração. Varredura de α versionada como
+      subcomando; decisão 15 de `design.md`
+- [x] 3.2 Registrar o resultado como evidência da decisão 4 de `design.md`,
+      inclusive se ele contrariar a decisão — **feito na decisão 15.** A
+      decisão 4 se sustenta, com duas correções registradas: `ALFA_PADRAO`
+      passa de 0,5 para 0,9, e a afirmação defensável é «0,9 com `e5-base`»,
+      não «híbrida supera densa» — no `e5-small` a híbrida perde sob
+      leave-one-out. Os arquivos de evidência gravam
+      `contraria_a_decisao_4` por modelo: `false` no base, `true` no small
+- [x] 3.3 Comparar ao menos dois modelos de embedding sob o mesmo conjunto de
+      aferição — `e5-base` contra `e5-small`. O small indexa 3,9x mais rápido,
+      ocupa metade e é melhor em `verbatim` (MRR 1,00), mas perde `a14` e
+      `a16` em `reformulada` — **as mesmas que o léxico perde**, que é a
+      função que o braço denso existe para cumprir. `e5-base` mantido
+- [x] 3.4 Medir a latência de consulta de cada modelo comparado, separando custo
+      de indexação de custo de consulta — indexação de 883,4 s (`base`) contra
+      227,4 s (`small`), lote único; consulta de 13 ms contra 9 ms na densa e
+      38 ms contra 32 ms na híbrida. **A latência léxica de 187 ms registrada
+      em 19/09 estava contaminada** por contenção com a indexação densa: na
+      máquina livre são 22 ms
 - [x] 3.5 Calibrar o limiar de `evidência insuficiente` sobre o score fundido,
       incluindo casos de pauta ausente do corpus — **feito, e o objeto da task
       está errado.** Sobre o score fundido não existe limiar que separe: o

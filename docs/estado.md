@@ -9,7 +9,7 @@ Atualizado em **19/09/2026**.
 | `add-engage-desinformacao-saude` | Engage | completo | **12 de 25** |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **29 de 33** |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
 | `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 12** |
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
@@ -263,7 +263,7 @@ justificativa escrita.
 | Composição do catálogo de técnicas | `mvp-copiloto-verificacao` | `resposta-formativa` |
 | Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | **medido em 19/09: não sai do score fundido, por motivo estrutural; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos** |
 | Estrutura de quatro blocos sob `evidência insuficiente` | `add-selecao-modelos-arquitetura-rag`, decisão 10 | task 3.2 do MVP; precisa de change de correção |
-| Necessidade de reranker | `add-selecao-modelos-arquitetura-rag` | depende da aferição da task 3.1 |
+| ~~Necessidade de reranker~~ | **resolvido em 22/09/2026: não compensa.** Só 2 das 20 consultas caem fora do top-3 (posições 4 e 5); as outras 18 estão no top-2 | — |
 | ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
 | Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | `tratamento/mapa_vereditos.json` | confirmação do grupo |
 | Validação empírica da rubrica de seis critérios | `add-tratamento-datasets-ptbr`, task 5.4 | `avaliacao-instrumento` |
@@ -274,13 +274,11 @@ justificativa escrita.
 
 ## Próximo trabalho na fila
 
-1. **Terminar a aferição do braço denso e do híbrido** (tasks 3.1 a 3.4). O
-   conjunto, o aferidor e a calibração existem; falta a matriz densa, que em
-   CPU não fecha em tempo de sessão. Rodar na máquina com MPS:
-   `python -m prototipo.rag aferir`.
-2. **Comparar dois modelos de embedding** sob o mesmo conjunto (task 3.3), com
-   a latência separada entre indexação e consulta (task 3.4).
-3. **Decidir o destino de `enganoso` e `impreciso`** no mapa de veredito — 218 e
+1. ~~Aferição do braço denso e do híbrido~~ (tasks 3.1 a 3.4) — **feita em
+   22/09/2026**, e ela fechou o change em 33 de 33. A híbrida em α=0,9 dá
+   recall@5 de 1,00 e MRR de 0,897. O defeito não era a arquitetura: era o
+   `ALFA_PADRAO` de 0,5, fixado sem medição. Ver decisão 15 do `design.md`.
+2. **Decidir o destino de `enganoso` e `impreciso`** no mapa de veredito — 218 e
    64 ocorrências, marcadas como «a confirmar pelo grupo».
 5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
    que o índice esperava existe, versionado, e o índice pode recebê-lo sem
