@@ -1,6 +1,6 @@
 # Tasks pendentes, por fase
 
-**Levantado em 20/09/2026, atualizado em 22/09/2026**, a partir dos `tasks.md`
+**Levantado em 20/09/2026, atualizado em 24/09/2026**, a partir dos `tasks.md`
 dos seis changes ativos.
 Companheiro de [Estado do projeto](estado.md), que conta o que já foi entregue;
 esta página conta o que falta.
@@ -9,19 +9,19 @@ esta página conta o que falta.
 
 | Fase | Change | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | **12** | **13** |
+| **Engage** | `add-engage-desinformacao-saude` | **18** | **7** |
 | **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
 | **Investigate** | `add-selecao-modelos-arquitetura-rag` | 33 | **0** ✅ |
 | **Investigate → Act** | `fix-resposta-sem-evidencia` | 6 | **7** |
 | **Act** | `mvp-copiloto-verificacao` | 0 | **31** |
 | **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **137** | **53** |
+| | **total** | **143** | **47** |
 
 A distribuição engana se lida rápido. As 4 pendentes do RAG eram **um comando**
-na máquina certa, e em 22/09 o comando rodou; as 13 do Engage são **trabalho de
-grupo presencial** que nunca foi feito; e as 31 do Act são a maior parte do
-produto.
+na máquina certa, e em 22/09 o comando rodou; o trabalho de grupo presencial do
+Engage saiu em 24/09 e derrubou as pendentes de 13 para 7; e as 31 do Act são a
+maior parte do produto.
 
 ## O que bloqueia o quê
 
@@ -38,46 +38,54 @@ fazer o quê.
 
 ---
 
-## Engage — 13 pendentes
+## Engage — 7 pendentes
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 12 de 25, vencida há 11 dias.
+11/09 · **Status:** 18 de 25, vencida há 13 dias.
 
 Em 20/09 fecharam oito tasks — todo o bloco 1, todo o bloco 6, a validação do
-bloco 7 e a decisão sobre o change de instrumento. **O que restou é, sem
-exceção, trabalho que exige as pessoas presentes:** forense com um caso por pessoa e tempo cronometrado, sessão de
-brainstorming com etapa privada, e card sorting dos sinais que cada integrante
-usa na prática. Nada disso pode ser escrito por alguém no lugar do grupo.
+bloco 7 e a decisão sobre o change de instrumento. O que restou exigia as
+pessoas presentes, e **em 24/09 o grupo entregou a maior parte disso**: a
+forense com um caso por pessoa e tempo cronometrado (2.1 a 2.3) e a sessão de
+brainstorming com etapa privada (bloco 3 inteiro).
+
+**O que resta ainda exige o grupo:** o card sorting dos sinais que cada
+integrante usa na prática, e a consolidação que depende dele.
 
 ### O que ficou pronto para a sessão
 
 | Artefato | Serve a | Onde |
 | --- | --- | --- |
-| Seis casos selecionados, quatro tipos de manipulação | bloco 2 | [Casos da forense](forense/casos-forense.md) |
+| Seis casos selecionados, três tipos de manipulação | bloco 2 | [Casos da forense](forense/casos-forense.md) |
 | Template da ficha, oito campos e checklist | bloco 2 | [Ficha de caso](forense/ficha-de-caso.md) |
 | Board dos cinco quadros, com as três regras de condução | bloco 3 | [Board do brainstorming](engage/board-brainstorming.md) |
 | Protocolo do card sorting e doze cartões-semente | bloco 4 | [Kit do workshop](engage/kit-matriz-confianca.md) |
 
-### Bloco 2 — Investigação forense (4)
+### Bloco 2 — Investigação forense (1)
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 2.1 | Distribuir os casos, um por pessoa no mínimo | grupo |
-| 2.2 | Analisar cada caso com leitura lateral, **registrando o tempo gasto** | grupo |
-| 2.3 | Preencher uma ficha por caso, com fontes rastreáveis | grupo |
-| 2.4 | Consolidar os tempos medidos como evidência para o quadro Problema | grupo |
+| 2.4 | Consolidar os tempos medidos como evidência para o quadro Problema | redação |
 
-Os seis casos já estão escolhidos e classificados por tipo. O tempo medido da
-2.2 não é burocracia: é a evidência que sustenta o quadro Problema, e sem ele o
-argumento do projeto vira opinião.
+**As tasks 2.1, 2.2 e 2.3 fecharam em 24/09.** Seis fichas, uma por caso, em
+`docs/forense/`, distribuídas entre cinco integrantes — Breno ficou com dois
+casos. Cada ficha tem os oito campos, cita a checagem externa consultada e
+registra o tempo medido.
 
-### Bloco 3 — Sessão de brainstorming, ~90 min (3)
+**Os números já existem:** mínimo de 10 min, mediana de 22 min, máximo de
+43 min, sobre seis verificações. A 2.4 é só levá-los para o quadro Problema do
+[board](engage/board-brainstorming.md) — não depende mais do grupo reunido.
 
-| # | Task | Bloqueio |
-| --- | --- | --- |
-| 3.1 | Rodar Problema, Público e Sucesso em modo privado antes de abrir | grupo |
-| 3.2 | Preencher o quadro Solução **apenas como hipóteses**, sem decidir | grupo |
-| 3.3 | Plotar guiding questions na matriz impacto × incerteza | grupo |
+Um achado do bloco: a ficha do caso 05 desmentiu a classificação da seleção. O
+vídeo do presidente da Anvisa foi **recortado**, não sintetizado, e virou
+recontextualização. O portfólio caiu de quatro tipos para três — exatamente o
+mínimo da spec, sem margem.
+
+### Bloco 3 — Sessão de brainstorming, ~90 min (0) ✅
+
+**Fechado em 24/09.** As três tasks saíram na sessão: quadros Problema e
+Público em modo privado, quadro Solução só como hipóteses, e as guiding
+questions plotadas na matriz impacto × incerteza.
 
 ### Bloco 4 — Matriz de confiança (4)
 
@@ -94,7 +102,8 @@ essa compatibilidade nunca foi verificada, porque a matriz não existe. A task
 8.1 do Act depende dela também.
 
 A 4.4 amarra o bloco 4 ao bloco 2 — sem fichas preenchidas, a validação da
-matriz não tem contra o que rodar. **A forense vem antes.**
+matriz não tem contra o que rodar. **Esse bloqueio caiu em 24/09:** as seis
+fichas existem, então a 4.4 tem contra o que rodar assim que a matriz sair.
 
 ### Bloco 7 — Fechamento (2)
 
@@ -103,8 +112,8 @@ matriz não tem contra o que rodar. **A forense vem antes.**
 | 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | depende dos blocos 2 a 4 |
 | 7.2 | Consolidar a matriz de confiança versão 1 | depende do bloco 4 |
 
-A parte «datasets» da 7.1 já está pronta — é o que o bloco 6 entregou. Falta a
-parte «fichas + método», que sai da forense.
+A parte «datasets» da 7.1 já está pronta — é o que o bloco 6 entregou, e as
+«fichas» chegaram em 24/09. Falta consolidar o «método» e juntar as três partes.
 
 > **A 7.4 foi resolvida em 20/09/2026.** O change
 > `add-instrumento-avaliacao-ptbr` **não será aberto**: a capability
@@ -311,15 +320,15 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 11 dias**, 12 de 25 tasks |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 13 dias**, 18 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
 | **3** | **Investigate** | **21/09 a 25/09** | **em curso — é a última; 119 de 121** |
 | 4 | Act | 28/09 a 02/10 | não começou |
 | 5 | Act | 05/10 a 09/10 | não começou |
 | 6 | Showcase | 12/10 a 16/10 | sem change |
 
-**Hoje é terça, 22/09.** O Investigate encerra na sexta, 25/09 — restam **três
-dias úteis**. O Act começa na segunda seguinte, 28/09.
+**Hoje é quinta, 24/09.** O Investigate encerra na sexta, 25/09 — resta **um
+dia útil**. O Act começa na segunda seguinte, 28/09.
 
 ### O que isso muda na leitura
 
@@ -329,11 +338,12 @@ change em 33 de 33. Sobram a recoleta do FACTCK.BR (3.5), que depende de rede,
 e a validação da rubrica (5.4), que depende de anotação humana — **nenhuma das
 duas é código**.
 
-**O Engage está.** Onze dias vencido. Em 20/09 fecharam oito tasks, todas as que
-não exigiam o grupo presente — restam 13, e **as 13 exigem**. Pela própria
+**O Engage está.** Treze dias vencido, mas deixou de ser o gargalo que era: em
+24/09 o grupo fechou seis tasks e o change foi de 12 para 18 de 25. Pela própria
 proposta, a entrega do Engage é «processo investigativo + guiding questions»: as
-guiding questions estão prontas desde 11/09, e o processo investigativo agora
-tem casos, ficha e protocolo prontos, faltando ser **executado**.
+guiding questions estão prontas desde 11/09, e o processo investigativo foi
+**executado** — seis fichas, com o custo da verificação medido. O que resta é o
+workshop da matriz (bloco 4) e a consolidação do portfólio.
 
 ### O caminho crítico é o comitê de ética
 
@@ -359,11 +369,11 @@ ninguém do grupo, e cada dia de atraso sai inteiro da janela do Act.
 1. ~~Aferição densa na máquina com MPS (3.1 a 3.4 do RAG)~~ — **feita em
    22/09, change fechado em 33 de 33.** Resta a submissão ao CEP (6.4), que
    continua sendo a coisa mais urgente da semana.
-2. **Hoje ou amanhã:** forense — bloco 2 do Engage. Vem **antes** do workshop,
-   porque a task 4.4 valida a matriz contra os casos analisados. Casos, ficha e
-   protocolo já estão prontos; falta cronometrar e preencher.
-3. **Quinta:** workshop da confiança — bloco 4. É pré-requisito da
-   rubrica já entregue e da task 8.1 do Act. Kit pronto em
+2. ~~Forense — bloco 2 do Engage~~ — **feita em 24/09**, seis fichas. Resta a
+   2.4, que é redação: levar mínimo, mediana e máximo para o quadro Problema.
+3. **O quanto antes:** workshop da confiança — bloco 4, o último bloco de
+   grupo. É pré-requisito da rubrica já entregue e da task 8.1 do Act, e a 4.4
+   já tem as seis fichas contra as quais rodar. Kit pronto em
    [Kit do workshop](engage/kit-matriz-confianca.md).
 4. **Quando der:** as cinco decisões abaixo, que são reunião e não execução.
 5. **Antes de 28/09:** abrir o change de Showcase, que é a lacuna de estrutura
@@ -372,12 +382,13 @@ ninguém do grupo, e cada dia de atraso sai inteiro da janela do Act.
 ## A ordem das fases foi invertida, e isso tem custo
 
 O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
-existe é o contrário: **Engage em 12 de 25, Investigate em 119 de 121**.
+existe é o contrário: **Engage em 18 de 25, Investigate em 119 de 121**.
 
-**Por que aconteceu.** As 13 pendentes do Engage são quase todas trabalho de
+**Por que aconteceu.** As pendentes do Engage eram quase todas trabalho de
 grupo presencial — forense com um caso por pessoa, sessão de brainstorming de
-90 minutos, card sorting da matriz. Nada disso se faz individualmente. O que
-avançou foi o que dava para avançar sozinho.
+90 minutos, card sorting da matriz. Nada disso se faz individualmente, e até
+24/09 o que avançava era só o que dava para avançar sozinho. A forense e o
+brainstorming saíram nesse dia; o card sorting continua pendente.
 
 **O que custou.** A ordem de dependência declarada em [Estado do
 projeto](estado.md) tem três cadeias, e elas não foram afetadas igualmente:
@@ -385,7 +396,7 @@ projeto](estado.md) tem três cadeias, e elas não foram afetadas igualmente:
 | Cadeia | Respeitada? | Consequência |
 | --- | --- | --- |
 | `guiding q.` → `frescor-corpus` | **sim** | o bloco 5 do Engage estava pronto |
-| `forense` → `normalizacao-rotulos` | não, sem dano | a normalização de rótulo não precisava das fichas de caso |
+| `forense` → `normalizacao-rotulos` | fora de ordem, sem dano | a normalização de rótulo não precisava das fichas de caso, que chegaram em 24/09 |
 | `matriz` → `adaptacao-criterios-en` | **não, com dívida** | ver abaixo |
 
 ### A dívida da terceira cadeia
