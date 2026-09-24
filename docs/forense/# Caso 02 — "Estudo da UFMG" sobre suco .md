@@ -25,7 +25,11 @@ Conclusão fundamentada |15:00
 Total	20 min
 
 O tempo foi gasto lendo a notícia do G1, procurando ver se os médicos citados realmente existiam e entendendo os truques que o mentiroso usou no texto do WhatsApp para enganar as pessoas.
+
+
 7. O que uma IA teria adiantado
 Uma ferramenta de Inteligência Artificial seria capaz de realizar buscas em alta velocidade nos repositórios e bibliotecas públicas da UFMG. Em instantes, o sistema confirmaria a ausência de qualquer documento oficial que correlacione os termos "inhame" e "dengue".
+
+
 8. O que uma IA não resolveria
 Um sistema automatizado apresentaria dificuldades em interpretar a intencionalidade discursiva do boato. Ao processar a afirmação de que a pesquisa "ainda não foi divulgada", uma IA poderia interpretar a ausência de dados simplesmente como uma restrição temporária de acesso ao documento. Em contrapartida, a análise humana consegue identificar que essa frase atua estrategicamente como uma blindagem contra a verificação, configurando-se como um recurso retórico intencional projetado para desestimular a busca pela fonte e validar a mentira.
