@@ -1,5 +1,13 @@
 # Tasks — add-tratamento-datasets-ptbr
 
+Donos das tasks em aberto: **Samara** 1 (3.5), **Jhessica** 1 (5.4).
+
+Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
+2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
+R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
+único dela. Task com dois donos é task sem dono.
+
+
 Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 
 ## 1. Contrato de leitura
@@ -37,7 +45,7 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 3.3 Reprovar `factckbr_normalizado.csv` para citação e registrar o caveat
 - [x] 3.4 Corrigir a allowlist do `re_char()` em `update_factckbr.py`, ou
       substituí-la por normalização Unicode sem descarte
-- [ ] 3.5 Recoletar o FACTCK.BR pelos três feeds com o script reparado, e
+- [ ] 3.5 **Samara** Recoletar o FACTCK.BR pelos três feeds com o script reparado, e
       registrar a perda histórica como irreversível. **Reescrita em 19/09/2026.**
       O texto anterior — "regerar o derivado a partir da fonte, com a correção"
       — pedia o impossível: a perda de caractere já está no `FACTCKBR.tsv`
@@ -64,7 +72,7 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 5.1 Extrair as 20 perguntas do FakeHealth separadas pelos dois conjuntos
 - [x] 5.2 Decidir entre adotar um conjunto ou mapear os dois, e registrar
 - [x] 5.3 Adaptar cada critério para PT-BR com rubrica de três níveis
-- [ ] 5.4 Validar a rubrica contra casos brasileiros e remover o que não
+- [ ] 5.4 **Jhessica** Validar a rubrica contra casos brasileiros e remover o que não
       discrimina, com motivo. **Parcial em 19/09/2026:** as cinco remoções estão
       feitas e com motivo registrado, por argumento de unidade de análise. O
       proxy de cobertura de vocabulário foi tentado, medido e **reprovado** — sob

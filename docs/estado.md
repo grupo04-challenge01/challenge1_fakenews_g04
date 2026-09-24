@@ -1,12 +1,12 @@
 # Estado do projeto
 
-Atualizado em **22/09/2026**.
+Atualizado em **24/09/2026**.
 
 ## Os seis changes
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | **12 de 25** |
+| `add-engage-desinformacao-saude` | Engage | completo | **18 de 25** |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
@@ -14,6 +14,38 @@ Atualizado em **22/09/2026**.
 | `mvp-copiloto-verificacao` | Act | completo | 0 de 31 |
 
 Todos passam `openspec validate --strict`.
+
+## O que foi entregue em 24/09/2026
+
+### Engage: de 12 para 18 de 25
+
+Fecharam o bloco 2 quase inteiro e o bloco 3 inteiro. O que destravou foi o
+grupo presente — eram as tasks que dependiam disso.
+
+| Entregue | Tasks |
+| --- | --- |
+| Seis fichas forenses, uma por caso, em `docs/forense/` | 2.1, 2.2, 2.3 |
+| Quadros Problema, Público e Solução, e as GQ na matriz | 3.1, 3.2, 3.3 |
+
+Os seis casos foram distribuídos entre cinco integrantes — Samara Letícia (01),
+Jhessica Evelyn (02), Vitor Gonçalves (03), Wingrid Silva (04) e Breno (05 e
+06). Cada ficha cita a checagem externa consultada e registra o tempo medido.
+
+**Custo da verificação, medido.** Seis verificações: mínimo de 10 min, mediana
+de 22 min, máximo de 43 min. É a evidência quantitativa que o quadro Problema
+pede — falta levá-la para o board, que é a task 2.4, a última do bloco 2.
+
+### O caso 05 estava classificado errado
+
+A seleção de 20/09 marcou o vídeo editado do presidente da Anvisa como **mídia
+sintética**. A ficha do caso mostrou que não há síntese: o material é autêntico
+e o engano vem do corte e da supressão da pergunta da jornalista. Reclassificado
+como **recontextualização de mídia ou dado antigo**.
+
+A consequência é de cobertura, não de conteúdo: o portfólio tem **três tipos**,
+não quatro, e mídia sintética entrou como segunda lacuna ao lado de distorção
+estatística. Três é exatamente o mínimo da capability `pesquisa-investigativa` —
+não há mais margem. Ver [Casos da forense](forense/casos-forense.md).
 
 ## O que foi entregue em 20/09/2026
 
@@ -30,7 +62,7 @@ exigem, sem exceção.
 
 | Entregue | Serve a |
 | --- | --- |
-| [Casos da forense](forense/casos-forense.md) — seis casos, quatro tipos | bloco 2 |
+| [Casos da forense](forense/casos-forense.md) — seis casos, quatro tipos na contagem da época | bloco 2 |
 | [Ficha de caso](forense/ficha-de-caso.md) — oito campos e checklist | bloco 2 |
 | [Board do brainstorming](engage/board-brainstorming.md) — cinco quadros | bloco 3 |
 | [Kit do workshop](engage/kit-matriz-confianca.md) — protocolo e cartões-semente | bloco 4 |
@@ -179,7 +211,7 @@ varia 0 a 35, e a ordem final saía inteira do léxico.
 
 | Capability | Entrega |
 | --- | --- |
-| `pesquisa-investigativa` | protocolo da forense de casos, com ficha e medição de esforço |
+| `pesquisa-investigativa` | protocolo da forense de casos, com ficha e medição de esforço — **seis fichas preenchidas** |
 | `matriz-confianca` | dimensões, sinais, limites e rubrica de três níveis |
 | `guiding-questions` | backlog priorizado — **pronto** |
 
@@ -283,5 +315,7 @@ justificativa escrita.
 5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
    que o índice esperava existe, versionado, e o índice pode recebê-lo sem
    reindexar.
-6. Forense de casos e matriz de confiança — resto do Engage.
-7. Decisão sobre "identificar vieses".
+6. ~~Forense de casos~~ — **feita em 24/09/2026**, seis fichas. Resta a task
+   2.4, levar os tempos medidos para o quadro Problema.
+7. Matriz de confiança — bloco 4 do Engage, e o resto do bloco 7.
+8. Decisão sobre "identificar vieses".

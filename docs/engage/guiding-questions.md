@@ -188,9 +188,19 @@ Investigate.
 
 ## Registro de fusão
 
-Seis candidatas foram absorvidas: duas em GQ-08, três em GQ-09, uma em GQ-11, e
-três em GQ-12. As formulações originais ficam registradas nas entradas
+Seis candidatas foram absorvidas: **uma em GQ-08, duas em GQ-09, uma em GQ-11 e
+duas em GQ-12.** As formulações originais ficam registradas nas entradas
 correspondentes acima, para rastreabilidade.
+
+**Regra de contagem**, porque as duas leituras possíveis dão números
+diferentes: `fundida` conta a nota **absorvida**, não a nota fundida. Uma
+guiding question formada por três notas do board consome três candidatas e
+produz **duas** fundidas, porque uma das três é a que dá origem à pergunta.
+Sob essa regra: 12 mantidas + 6 fundidas + 10 fechadas + 12 descartadas = 40,
+que é o total de notas do board.
+
+Correspondência nota a nota em
+[Board do brainstorming](board-brainstorming.md), coluna *Destino*.
 
 ## Registro de descarte
 
