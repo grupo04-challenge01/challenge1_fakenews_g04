@@ -11,9 +11,12 @@
 
 ## 2. Veículo e data de publicação
 
-<"Não adianta brigar comigo: vacinas causam autismo. Tá na bula”
+.Citação da peça:
+"Não adianta brigar comigo: vacinas causam autismo. Tá na bula"
+.Dados da publicação:
 Imagem publicada no Facebook, com 65 compartilhamentos até o dia 18 de fevereiro de 2019.
-E por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado pela Lupa.>
+.Pedido de checagem:
+Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado pela Lupa.
 
 ## 3. Tipo de manipulação
 
@@ -41,10 +44,17 @@ confiável ou estabelecer uma relação causal [dos efeitos listados] com os com
 Ou seja, a bula não diz que há uma relação direta entre autismo e a vacina em questão.
 
 ## 6. Tempo gasto na verificação
-Comecei a pesquisa às 14:40 e finalizei às 15:23, totalizando 43 minutos de pesquisa. Usei o site 
+
+Aqui está a linha pronta para a tabela:
+
+| Início | Conclusão | Total |
+|--------|-----------|-------|
+| 14:40 | 15:23 | 43 min |
+
+Usei DOIS sites: 
+https://www.agencialupa.org/jornalismo/2019/02/18/verificamos-bula-autismo/, que verifica a notícia falsa de que a vacina causa autismo, deixando claro que era FALSO.
 https://about.fb.com/br/news/2018/05/facebook-lanca-produto-de-verificacao-de-noticias-no-brasil-em-parceria-com-aos-fatos-e-agencia-lupa/, 
-que mostra que o Facebook lançou produto de verificação de notícias no Brasil em parceria com a Aos Fatos e a Agência Lupa, e a própria Lupa 
-já havia verificado a notícia falsa de que a vacina causa autismo, deixando claro que era FALSO.
+que mostra que o Facebook lançou produto de verificação de notícias no Brasil em parceria com a Aos Fatos e a Agência Lupa, e a própria Lupa.
 
 ## 7. O que uma IA teria adiantado
 
