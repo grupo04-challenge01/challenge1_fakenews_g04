@@ -45,7 +45,6 @@ Ou seja, a bula não diz que há uma relação direta entre autismo e a vacina e
 
 ## 6. Tempo gasto na verificação
 
-Aqui está a linha pronta para a tabela:
 
 | Início | Conclusão | Total |
 |--------|-----------|-------|
@@ -54,7 +53,7 @@ Aqui está a linha pronta para a tabela:
 Usei DOIS sites: 
 https://www.agencialupa.org/jornalismo/2019/02/18/verificamos-bula-autismo/, que verifica a notícia falsa de que a vacina causa autismo, deixando claro que era FALSO.
 https://about.fb.com/br/news/2018/05/facebook-lanca-produto-de-verificacao-de-noticias-no-brasil-em-parceria-com-aos-fatos-e-agencia-lupa/, 
-que mostra que o Facebook lançou produto de verificação de notícias no Brasil em parceria com a Aos Fatos e a Agência Lupa, e a própria Lupa.
+que mostra que o Facebook lançou produto de verificação de notícias no Brasil em parceria com a Agência Lupa.
 
 ## 7. O que uma IA teria adiantado
 
