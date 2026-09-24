@@ -19,10 +19,11 @@ Emprega um mecanismo de evasão ao afirmar que o estudo "ainda não foi divulgad
 5. Estudo ou fonte primária de origem
 Não existe nenhuma pesquisa com esse teor. A confirmação foi feita por meio de notas da assessoria de comunicação da UFMG e de publicações da Faculdade de Medicina da universidade, onde especialistas reforçam que não há evidência científica da eficácia do suco contra o vírus da dengue (Disponível em: https://www.medicina.ufmg.br/a-ufmg-nao-tem-estudos-que-relacionem-o-suco-de-inhame-cru-com-a-cura-dos-sintomas-da-dengue/).
 6. Tempo gasto na verificação
-Medida	Valor
-Início da verificação	14:40
-Conclusão fundamentada	15:00
+
+Início da verificação	| 14:40
+Conclusão fundamentada |15:00
 Total	20 min
+
 O tempo foi gasto lendo a notícia do G1, procurando ver se os médicos citados realmente existiam e entendendo os truques que o mentiroso usou no texto do WhatsApp para enganar as pessoas.
 7. O que uma IA teria adiantado
 Uma ferramenta de Inteligência Artificial seria capaz de realizar buscas em alta velocidade nos repositórios e bibliotecas públicas da UFMG. Em instantes, o sistema confirmaria a ausência de qualquer documento oficial que correlacione os termos "inhame" e "dengue".
