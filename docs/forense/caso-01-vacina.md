@@ -40,7 +40,7 @@ Copie o bloco abaixo para um arquivo novo em `docs/engage/fichas/`, nomeado
 
 ## 1. Afirmação central
 
-Vacina contra Febre Amarela mata em 50% dos casos .
+Vacina contra Febre Amarela mata em 50% dos casos.
 
 ## 2. Veículo e data de publicação
 
@@ -73,7 +73,11 @@ Nenhuma fonte primária localizada.
 <Descreva o que consumiu o tempo. Buscas que não deram em nada contam e devem
 ser mencionadas — elas são metade do argumento sobre o custo da verificação.>
 
-Buscar o contexto da frase e também as fontes. 
+1 - Busquei no navegador por 'Vacina amarela - Roberto Canázio, não encontrei o link da entrevista mencionada na notícia.
+2 - Busquei no navegador 'entrevista febre amarela roberto canázio', não encontrei a entrevista mencionada na notícia.
+3 - Busquei no navegador 'vacina da febre amarela mata 50%' encontrei uma resposta falando que a febre amarela mata de 20% a 50% dos indivíduos que desenvolvem a forma grave da doença.
+5 - Durante as buscas acima, encontrei vários sites desmentindo essa notícia, mas não achei as fontes primárias. 
+
 
 ## 7. O que uma IA teria adiantado
 
@@ -88,7 +92,7 @@ Teria localizado a verdadeira porcentagem de óbito da vacina de febre amarela e
 ele alimenta os limites da matriz de confiança e o princípio de que o sistema
 não substitui o julgamento do usuário.>
 
-Não teria conseguido encontrar o link da fonte da notícia.
+Não decidiria se a entrevista aconteceu de fato e o que foi dito na entrevista, ou o nome da dermatologista.
 ```
 
 ---
@@ -107,3 +111,5 @@ Não teria conseguido encontrar o link da fonte da notícia.
 Quando todas as fichas estiverem preenchidas, o portfólio apresenta o tempo
 **mínimo, máximo e mediano** de verificação, e esse dado é referenciado como
 justificativa do problema. É a task 2.4.
+
+ 
