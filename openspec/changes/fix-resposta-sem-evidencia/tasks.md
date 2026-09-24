@@ -1,5 +1,13 @@
 # Tasks — fix-resposta-sem-evidencia
 
+Donos das tasks em aberto: **Wingrid** 4 (2.1, 2.2, 2.3, 3.3), **Vitor** 2 (3.1, 3.2), **Samara** 1 (2.4).
+
+Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
+2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
+R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
+único dela. Task com dois donos é task sem dono.
+
+
 Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
 
 ## 1. Decisão e registro
@@ -17,22 +25,22 @@ Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
 
 ## 2. Conciliação com as capabilities vizinhas
 
-- [ ] 2.1 Conferir a forma sem evidência contra o teto de 120 palavras de
+- [ ] 2.1 **Wingrid** Conferir a forma sem evidência contra o teto de 120 palavras de
       `acessibilidade-leitura`, medindo respostas reais em vez de estimar
-- [ ] 2.2 Conferir contra `recuperacao-evidencia` que nenhum bloco da forma sem
+- [ ] 2.2 **Wingrid** Conferir contra `recuperacao-evidencia` que nenhum bloco da forma sem
       evidência induz afirmação sem trecho de origem
-- [ ] 2.3 Conferir contra `fronteira-orientacao-saude` que a forma sem evidência
+- [ ] 2.3 **Wingrid** Conferir contra `fronteira-orientacao-saude` que a forma sem evidência
       não vira porta de conduta clínica: sem evidência recuperada, pedido de
       conduta continua sendo recusado antes da verificação
-- [ ] 2.4 Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr`, que
+- [ ] 2.4 **Samara** Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr`, que
       prevê três casos de teste de lacuna e precisa deste como o terceiro
 
 ## 3. Verificação
 
-- [ ] 3.1 Sondar o gerador local nos três estados, no formato da sonda de 18/09
+- [ ] 3.1 **Vitor** Sondar o gerador local nos três estados, no formato da sonda de 18/09
       — três tentativas por estado, resultado por tentativa, com `think: false`
-- [ ] 3.2 Confirmar que a sonda T1 deixa de degenerar, que era o defeito que
+- [ ] 3.2 **Vitor** Confirmar que a sonda T1 deixa de degenerar, que era o defeito que
       abriu este change
-- [ ] 3.3 Teste que reprova resposta com técnica nomeada sob `evidência
+- [ ] 3.3 **Wingrid** Teste que reprova resposta com técnica nomeada sob `evidência
       insuficiente`
 - [x] 3.4 `openspec validate fix-resposta-sem-evidencia --strict` limpo

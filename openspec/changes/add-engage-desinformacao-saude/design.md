@@ -132,3 +132,48 @@ delas — a submissão ao comitê de ética — não muda de dono nem de prazo.
 
 O que muda é apenas onde o trabalho é rastreado: em `avaliacao-instrumento`, e
 não em change próprio.
+
+## Decisão de 24/09/2026: o quadro Sucesso não roda como quadro de divergência
+
+A task 3.1 mandava rodar Problema, Público **e** Sucesso em modo privado. Os
+dois primeiros rodaram e estão transcritos em
+`docs/engage/board-brainstorming.md`, com 19 e 5 notas. **O quadro Sucesso não
+recebeu nenhuma nota, e não vai receber.** A task 3.1 passa a nomear apenas
+Problema e Público.
+
+### Por que
+
+**Nenhuma spec exige o quadro Sucesso como fonte de notas.** O único requirement
+que menciona os cinco quadros é «Rastreabilidade até o brainstorming», em
+`specs/guiding-questions/spec.md`, e o que ele exige é que **cada guiding
+question** esteja associada ao quadro que a originou — não que todo quadro
+origine guiding question. As 12 GQ têm quadro declarado. O requirement está
+cumprido.
+
+**O conteúdo do quadro já estava fixado antes da sessão, e não por nós.** A
+restrição de produto de `openspec/project.md` determina que a métrica primária
+é ganho de discernimento do usuário, incluindo transferência, e não acurácia
+de classificador. Rodar divergência sobre «como saberíamos que funcionou»
+convidaria o grupo a propor métricas que a restrição já proíbe.
+
+**As métricas têm dono, e não é esta fase.** Discernimento, transferência,
+tempo até decisão fundamentada, consulta a fonte externa e as quatro métricas
+de guarda foram absorvidas pela capability `avaliacao-instrumento` de
+`mvp-copiloto-verificacao`. Isso já constava do registro do backlog em
+`docs/engage/guiding-questions.md`, seção «Agrupamento que não gerou pergunta
+pesquisável» — a decisão de hoje apenas alinha a task àquele registro, que a
+antecedia.
+
+### O que isso obriga
+
+**As métricas continuam sendo entregável**, e nenhuma sai de escopo. O que muda
+é onde são tratadas: nas tasks 6.1 a 6.6 de `mvp-copiloto-verificacao`, e não
+num quadro de board.
+
+**A regra do modo privado sobrevive onde tem efeito.** Ela existe contra
+ancoragem, e ancoragem só é risco onde há divergência a ancorar. Continua
+valendo para Problema e Público, que é onde rodou.
+
+**Se a restrição de produto mudar, esta decisão reabre.** Métrica primária
+diferente exigiria divergência nova sobre sucesso, e aí o quadro volta.
+
