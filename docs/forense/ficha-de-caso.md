@@ -27,7 +27,7 @@ Se o veículo é desconhecido, a checagem do veículo é parte da análise.
 
 ## Template
 
-Copie o bloco abaixo para um arquivo novo em `docs/engage/fichas/`, nomeado
+Copie o bloco abaixo para um arquivo novo em `docs/forense/`, nomeado
 `caso-NN-palavra-chave.md`.
 
 ```markdown

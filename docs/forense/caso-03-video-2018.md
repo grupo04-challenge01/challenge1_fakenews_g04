@@ -21,14 +21,15 @@ Principalmente **recontextualização de mídia ou dado antigo**.
 ## 4. Sinais de não-confiabilidade observados
 
 - Não há link para fonte confiável.
-- Não cita detalhes, é somente uma notícia solta.
+- Não cita detalhes, data nem local.
 - Cita como fonte um trecho curto de vídeo, sem nenhum contexto.
 
 ## 5. Estudo ou fonte primária de origem
 
 Reportagem jornalística original veiculada em 2018, cobrindo o falecimento de
 uma idosa por causas gerais e gripe comum — período anterior à própria
-existência do vírus SARS-CoV-2 e das respectivas vacinas.
+existência do vírus SARS-CoV-2 e das respectivas vacinas. O link com a notícia falsa no Facebook foi derrubado.
+https://g1.globo.com/go/goias/noticia/idosa-morre-minutos-depois-de-tomar-vacina-contra-h1n1-em-goiania.ghtml
 
 ## 6. Tempo gasto na verificação
 
@@ -40,7 +41,8 @@ existência do vírus SARS-CoV-2 e das respectivas vacinas.
 
 O que consumiu mais tempo foi buscar os sinais de não-confiabilidade da
 "notícia" original veiculada no Facebook, e também estudar a fonte primária de
-origem.
+origem. E também o fato de a maioria das pesquisas levar a sites de verificação clones.
+https://projetocomprova.com.br/publica%C3%A7%C3%B5es/postagem-usa-video-de-2018-para-afirmar-que-idosa-morreu-apos-tomar-vacina/
 
 ## 7. O que uma IA teria adiantado
 

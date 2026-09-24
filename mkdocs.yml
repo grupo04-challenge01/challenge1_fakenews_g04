@@ -50,7 +50,13 @@ nav:
   - Investigação forense:
       - Casos selecionados: forense/casos-forense.md
       - Ficha de caso: forense/ficha-de-caso.md
-      - Caso 03 — vídeo de 2018: forense/caso3.md
+      - Fichas:
+          - Caso 01 — vacina da febre amarela: forense/caso-01-febre-amarela.md
+          - Caso 02 — suco de inhame e dengue: forense/caso-02-inhame.md
+          - Caso 03 — vídeo de 2018: forense/caso-03-video-2018.md
+          - Caso 04 — bula e autismo: forense/caso-04-bula-autismo.md
+          - Caso 05 — vídeo editado da Anvisa: forense/caso-05-video-anvisa.md
+          - Caso 06 — fígado e médico de Sorocaba: forense/caso-06-figado-sorocaba.md
   - Fase Investigate:
       - Sonda do gerador: investigate/sonda-gerador.md
       - Índice híbrido: investigate/indice-hibrido.md

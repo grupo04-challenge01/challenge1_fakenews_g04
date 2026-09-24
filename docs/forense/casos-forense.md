@@ -3,7 +3,7 @@
 Task 1.1 do change `add-engage-desinformacao-saude`. Seleção feita em
 20/09/2026 sobre `datasets/derivados/factcenter_subset_saude.csv`.
 
-**Seis casos, quatro tipos de manipulação.** A capability
+**Seis casos, três tipos de manipulação.** A capability
 `pesquisa-investigativa` exige no mínimo três tipos distintos entre fabricação
 integral, recontextualização de mídia ou dado antigo, exagero de estudo real,
 distorção estatística e mídia sintética.
@@ -110,7 +110,7 @@ ficha.
 
 | | |
 | --- | --- |
-| **Tipo** | **Mídia sintética / manipulação de vídeo** |
+| **Tipo** | **Recontextualização de mídia ou dado antigo** |
 | Agência | COMPROVA · 18/02/2021 |
 | Veredito original | `Falso` |
 | `registro_id` | `eb77180631` |
@@ -123,6 +123,11 @@ vacinas já aprovadas.
 **Por que entra:** autoridade real, fala real, sentido invertido pela edição. É
 o único dos seis em que a verificação exige acesso à gravação original — e é o
 caso que mais expõe o limite do que uma IA de texto resolve.
+
+**Reclassificado em 24/09/2026.** A seleção de 20/09 marcou este caso como mídia
+sintética. A ficha do caso 05 mostrou que não há síntese: o material é autêntico e
+o engano vem do **corte** e da supressão da pergunta da jornalista. É o mesmo
+mecanismo do caso 03, aplicado a um recorte dentro da peça em vez da data.
 
 ### Caso 06 — «Vacina da febre amarela paralisa o fígado, diz médico de Sorocaba»
 
@@ -149,15 +154,20 @@ pública; este vem de mensagem privada encaminhada.
 | Tipo | Casos | Cobertura |
 | --- | --- | --- |
 | Fabricação integral | 01, 02, 06 | ✅ |
-| Recontextualização de mídia ou dado antigo | 03 | ✅ |
+| Recontextualização de mídia ou dado antigo | 03, 05 | ✅ |
 | Exagero de estudo real | 04 | ✅ |
-| Mídia sintética | 05 | ✅ |
+| **Mídia sintética** | — | ❌ **não coberta** |
 | **Distorção estatística** | — | ❌ **não coberta** |
 
-**Quatro tipos contra o mínimo de três da spec.** O cenário «Cobertura
-insuficiente de tipos» não é acionado.
+**Três tipos contra o mínimo de três da spec.** O cenário «Cobertura
+insuficiente de tipos» não é acionado, mas a margem acabou: qualquer
+reclassificação a menos aciona o cenário.
 
-A lacuna registrada é **distorção estatística**: manipulação de dado real e
+São **duas** lacunas registradas. A primeira é **mídia sintética**, que a seleção
+de 20/09 dava por coberta pelo caso 05 e a ficha desse caso desmentiu. Cobri-la
+exige um caso de vídeo ou áudio gerado ou alterado por síntese, não recortado.
+
+A segunda é **distorção estatística**: manipulação de dado real e
 verificável, do tipo «as mortes subiram X% depois da vacinação». O recorte
 não-covid de vacinação do corpus tem poucos casos assim — os que existem são
 quase todos sobre números da pandemia, que o filtro 2 exclui de propósito.
@@ -177,9 +187,13 @@ recorte covid para essa categoria, registrando a exceção. Fica como decisão.
 
 ## Próximo passo
 
-Distribuir os seis entre os integrantes — **um caso por pessoa, no mínimo**
-(task 2.1) — e preencher uma [ficha de caso](ficha-de-caso.md) por caso,
-cronometrando (tasks 2.2 e 2.3).
+As tasks 2.1, 2.2 e 2.3 estão fechadas: os seis casos foram distribuídos entre
+cinco integrantes e as seis [fichas](ficha-de-caso.md) estão preenchidas e
+cronometradas, cada uma citando a checagem externa consultada.
+
+Falta a **task 2.4** — levar os tempos medidos para o quadro Problema do
+brainstorming. Os valores são mínimo de 10 min, mediana de 22 min e máximo de
+43 min, sobre seis verificações.
 
 Os `registro_id` acima permitem recuperar o texto integral da checagem direto do
 corpus, o que **não substitui** a leitura lateral: a checagem da agência é o
