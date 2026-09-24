@@ -36,8 +36,15 @@ Nenhuma fonte primária localizada.
 | Conclusão fundamentada | 15:10 |
 | **Total** | **10 min** |
 
-Buscar o contexto da frase e também as fontes. 
-https://www.boatos.org/saude/vacina-febre-amarela-mata.html
+Buscar o contexto da frase e também as fontes. Buscas feitas, incluindo as que
+não deram em nada:
+
+1 - Busquei no navegador por 'Vacina amarela - Roberto Canázio, não encontrei o link da entrevista mencionada na notícia.
+2 - Busquei no navegador 'entrevista febre amarela roberto canázio', não encontrei a entrevista mencionada na notícia.
+3 - Busquei no navegador 'vacina da febre amarela mata 50%' encontrei uma resposta falando que a febre amarela mata de 20% a 50% dos indivíduos que desenvolvem a forma grave da doença.
+5 - Durante as buscas acima, encontrei vários sites desmentindo essa notícia, mas não achei as fontes primárias.
+
+Checagem consultada: https://www.boatos.org/saude/vacina-febre-amarela-mata.html
 
 ## 7. O que uma IA teria adiantado
 
@@ -45,4 +52,6 @@ Teria localizado a verdadeira porcentagem de óbito da vacina de febre amarela e
 
 ## 8. O que uma IA não resolveria
 
-Não teria conseguido encontrar o link da fonte da notícia.
+Não decidiria se a entrevista aconteceu de fato, o que foi dito nela, nem o
+nome do dermatologista citado. Também não teria encontrado o link da fonte da
+notícia, que não existe em lugar nenhum.
