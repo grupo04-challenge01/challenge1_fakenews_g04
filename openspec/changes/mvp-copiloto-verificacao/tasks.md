@@ -50,7 +50,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta
 
 ## 7. Decisões pendentes
-- [ ] 7.1 **Breno** Definir o canal de entrega e registrar a decisão em `design.md`
+- [x] 7.1 **Breno** Definir o canal de entrega e registrar a decisão em `design.md`
+      — decidido em 25/09/2026: aplicação web (chat responsivo) como canal
+      primário, com extensão para WhatsApp. Decisão 5 do `design.md`
 
 ## 8. Fechamento
 - [ ] 8.1 **Wingrid** Conferir consistência do catálogo de técnicas com as dimensões da

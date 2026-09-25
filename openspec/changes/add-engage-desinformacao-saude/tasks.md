@@ -36,9 +36,9 @@ Vigência: 08/09 a 11/09.
 - [x] 2.3 Preencher uma ficha por caso, com fontes rastreáveis — seis fichas em
       `docs/forense/caso-NN-*.md`, oito campos preenchidos em cada, tipo de
       manipulação dentro das cinco categorias da capability
-- [ ] 2.4 **Breno** Consolidar os tempos medidos como evidência para o quadro Problema
-      — mínimo 10 min, mediana 22 min, máximo 43 min; falta levar os números
-      para o quadro Problema em `docs/engage/board-brainstorming.md`
+- [x] 2.4 **Breno** Consolidar os tempos medidos como evidência para o quadro Problema
+      — mínimo 10 min, mediana 22 min, máximo 43 min; lançados no quadro
+      Problema em `docs/engage/board-brainstorming.md` em 25/09/2026, e no Miro
 
 ## 3. Sessão de brainstorming (~90 min)
 

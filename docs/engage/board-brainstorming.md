@@ -89,8 +89,33 @@ capability exige que esse dado seja referenciado como justificativa do problema.
 | PR-18 | Como o tempo para combater a desinformação ajuda a fazer com que a desinformação se espalhe menos e se torne menos impactante? | descartada |
 | PR-19 | Como esse tema ajuda na ODS 3? | descartada |
 
-A evidência quantitativa exigida acima — os tempos da forense — **ainda não foi
-lançada neste quadro**. É a task 2.4, em aberto.
+### Evidência quantitativa — tempos da investigação forense
+
+Dados consolidados a partir do campo 6 das seis fichas em `docs/forense/`
+(task 2.4 de `add-engage-desinformacao-saude`).
+
+| Caso | Tipo de manipulação | Tempo (min) |
+| --- | --- | ---: |
+| 01 — Febre amarela | Fabricação integral | 10 |
+| 02 — Inhame e dengue | Fabricação integral (atribuição falsa) | 20 |
+| 03 — Vídeo de 2018 | Recontextualização de mídia antiga | 20 |
+| 04 — Bula e autismo | Exagero / distorção de documento real | 24 |
+| 05 — Vídeo Anvisa | Recontextualização de mídia antiga | 33 |
+| 06 — Fígado Sorocaba | Exagero / distorção de documento real | 43 |
+
+| Medida | Valor |
+| --- | ---: |
+| **Mínimo** | **10 min** |
+| **Mediana** | **22 min** |
+| **Máximo** | **43 min** |
+
+**Leitura do dado.** Verificar com rigor custa de 10 a 43 minutos; decidir
+acreditar custa 3 segundos. A assimetria é o problema: o custo de tempo da
+verificação é incompatível com o ritmo de chegada das mensagens. É essa
+assimetria que a ferramenta precisa comprimir — sem eliminar o raciocínio, que é
+o que a Essential Question exige preservar.
+
+Consolidação registrada em 25/09/2026. Os dados também constam no Miro do grupo.
 
 ---
 
