@@ -52,12 +52,30 @@ Permanece fora do escopo, por decisão explícita, quem tem incentivo em acredit
 na desinformação: com amostra pequena, esses participantes medem teimosia, não a
 ferramenta.
 
+### 5. Canal: aplicação web com extensão para WhatsApp
+
+Decidido pelo grupo em 25/09/2026 (task 7.1).
+
+O canal primário é uma **aplicação web (chat responsivo)**. Além dela, o
+produto terá uma **extensão para WhatsApp** que permite ao usuário enviar
+diretamente a mensagem sobre uma notícia recebida pelo WhatsApp, ou o link de
+uma notícia que mandaram para ele.
+
+Motivo: a web permite renderização rica das fontes, camadas progressivas de
+detalhe e interface acessível sem as limitações de layout do WhatsApp. A
+extensão para WhatsApp resolve o problema de travessia de canal — a mensagem
+enganosa chega no WhatsApp e a verificação precisa estar acessível ali mesmo,
+sem exigir que o usuário copie texto e troque de aplicativo.
+
+Alternativa descartada: apenas WhatsApp (bot). Limitaria a experiência de
+revelação progressiva e os requisitos de acessibilidade visual (contraste,
+fonte, camada de detalhe). Alternativa descartada: apenas web, sem extensão
+WhatsApp. Ignoraria o canal onde a desinformação de fato circula.
+
 ## Questões em aberto
 
-- **Canal.** Se a mensagem chega no WhatsApp e a verificação mora em outro app,
-  a maior parte das pessoas não faz a travessia. A decisão de canal precisa ser
-  tomada antes da fase de testes, porque muda a arquitetura, não só a interface.
 - **Composição do catálogo.** Quais 6 a 8 técnicas, e com que nomes. Depende de
   uma passada de leitura no recorte de saúde do FactCenter.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
   insuficiente`.
+
