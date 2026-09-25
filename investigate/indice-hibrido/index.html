@@ -1,0 +1,1696 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA">
+      
+      
+      
+      
+        <link rel="prev" href="../sonda-gerador/">
+      
+      
+        <link rel="next" href="../tratamento-datasets/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Índice híbrido - Challenge 1 — Desinformação em Saúde</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Csans-serif:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"sans-serif"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#indice-hibrido-como-o-prototipo-acha-a-checagem-certa" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Challenge 1 — Desinformação em Saúde" class="md-header__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Challenge 1 — Desinformação em Saúde
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Índice híbrido
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/samarawwleticia/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Challenge 1 — Desinformação em Saúde" class="md-nav__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Challenge 1 — Desinformação em Saúde
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/samarawwleticia/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O desafio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metodologia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Engage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Engage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/guiding-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guiding Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets e achados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/board-brainstorming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Board do brainstorming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/kit-matriz-confianca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kit do workshop da confiança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Investigação forense
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Investigação forense
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/casos-forense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos selecionados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/ficha-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ficha de caso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fichas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-01-febre-amarela/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 01 — vacina da febre amarela
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-02-inhame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 02 — suco de inhame e dengue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-03-video-2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 03 — vídeo de 2018
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-04-bula-autismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 04 — bula e autismo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-05-video-anvisa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 05 — vídeo editado da Anvisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-06-figado-sorocaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 06 — fígado e médico de Sorocaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Investigate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Investigate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonda-gerador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonda do gerador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Índice híbrido
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Índice híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-foi-construido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que foi construído
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uma-unidade-nao-e-um-pedaco-de-texto-de-tamanho-fixo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uma unidade não é um pedaço de texto de tamanho fixo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-problema-que-deu-mais-trabalho-um-registro-varias-alegacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema que deu mais trabalho: um registro, várias alegações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-dois-tipos-de-busca-e-nao-um" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que dois tipos de busca, e não um
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-defeito-que-so-a-medicao-mostrou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O defeito que só a medição mostrou
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-o-indice-ainda-nao-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que o índice ainda não resolve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos passos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tratamento-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tratamento dos datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afericao-recuperacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aferição da recuperação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ampliacao-corpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliação do corpus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado do projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pendencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks pendentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-foi-construido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que foi construído
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uma-unidade-nao-e-um-pedaco-de-texto-de-tamanho-fixo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uma unidade não é um pedaço de texto de tamanho fixo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-problema-que-deu-mais-trabalho-um-registro-varias-alegacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema que deu mais trabalho: um registro, várias alegações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-dois-tipos-de-busca-e-nao-um" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que dois tipos de busca, e não um
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-defeito-que-so-a-medicao-mostrou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O defeito que só a medição mostrou
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-o-indice-ainda-nao-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que o índice ainda não resolve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos passos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="indice-hibrido-como-o-prototipo-acha-a-checagem-certa">Índice híbrido — como o protótipo acha a checagem certa<a class="headerlink" href="#indice-hibrido-como-o-prototipo-acha-a-checagem-certa" title="Permanent link">&para;</a></h1>
+<p><strong>Data:</strong> 18/09/2026 · <strong>Fase:</strong> Investigate · <strong>Change:</strong> <code>add-selecao-modelos-arquitetura-rag</code></p>
+<p>A <a href="../sonda-gerador/">sonda do gerador</a> mediu o modelo que <strong>escreve</strong> a resposta,
+com o trecho de evidência colado à mão porque o índice ainda não existia. Esta
+página é a outra metade: o índice existe, e é ele quem decide a qualidade do
+produto. Se a checagem certa não é recuperada, nenhum gerador a inventa sem
+violar a regra de que todo veredito vem acompanhado da fonte que o sustenta.</p>
+<h2 id="o-que-foi-construido">O que foi construído<a class="headerlink" href="#o-que-foi-construido" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registros lidos do corpus</td>
+<td>4.063</td>
+</tr>
+<tr>
+<td>Unidades de indexação</td>
+<td>5.090</td>
+</tr>
+<tr>
+<td>Fragmentos indexados</td>
+<td>22.464</td>
+</tr>
+<tr>
+<td>Registros em quarentena</td>
+<td>88</td>
+</tr>
+<tr>
+<td>Modelo de embedding</td>
+<td><code>intfloat/multilingual-e5-base</code>, 768 dimensões</td>
+</tr>
+<tr>
+<td>Busca</td>
+<td>exata, em memória, sem banco vetorial</td>
+</tr>
+<tr>
+<td>Custo de indexação</td>
+<td>13,2 min (denso) + 2,1 s (léxico)</td>
+</tr>
+<tr>
+<td>Custo de consulta</td>
+<td>26 a 33 ms no modo híbrido</td>
+</tr>
+</tbody>
+</table>
+<p>Tudo isso é reconstituível a partir do corpus com um comando, e o
+<code>prototipo/indice/manifesto.json</code> versionado é a declaração auditável do que foi
+indexado.</p>
+<h2 id="uma-unidade-nao-e-um-pedaco-de-texto-de-tamanho-fixo">Uma unidade não é um pedaço de texto de tamanho fixo<a class="headerlink" href="#uma-unidade-nao-e-um-pedaco-de-texto-de-tamanho-fixo" title="Permanent link">&para;</a></h2>
+<p>O tutorial padrão de RAG manda picar o documento em blocos de tamanho fixo. Aqui
+isso seria um defeito, e a spec o proíbe por escrito: <strong>fragmentação que separe
+a alegação do seu veredito não pode ser usada</strong>.</p>
+<p>A razão é direta. Se a alegação "chá de jatobá cura câncer" cai num bloco e o
+"é falso" da agência cai no bloco seguinte, a busca pode recuperar o primeiro
+sozinho — e aí o sistema entrega ao gerador um texto que afirma a mentira, sem
+o que a desmente.</p>
+<p>A unidade adotada é a alegação com seu veredito e sua justificativa, carregando
+agência, data e endereço. Checagem longa ainda precisa ser fragmentada, porque o
+modelo de embedding lê no máximo 512 tokens por vez, mas <strong>cada fragmento repete
+o cabeçalho</strong> com a alegação e o veredito. O pedaço nunca viaja sozinho.</p>
+<p>Vale a ressalva que a spec faz questão de registrar: o índice guardar o texto
+integral <strong>não</strong> autoriza mostrá-lo ao usuário. A resposta cita trecho curto e
+parafraseia. Indexar não é reproduzir.</p>
+<h2 id="o-problema-que-deu-mais-trabalho-um-registro-varias-alegacoes">O problema que deu mais trabalho: um registro, várias alegações<a class="headerlink" href="#o-problema-que-deu-mais-trabalho-um-registro-varias-alegacoes" title="Permanent link">&para;</a></h2>
+<p>587 dos 4.063 registros trazem mais de um veredito. São as checagens de
+entrevista e de debate, em que a agência avalia quatro ou cinco falas na mesma
+página, cada uma com seu selo.</p>
+<p>O corpus não diz onde uma alegação termina e a outra começa. Os selos eram
+elementos visuais da página e não sobreviveram à raspagem — sobrou uma lista de
+vereditos e um texto corrido. Alinhar os dois por ordem, na fé, é o caminho
+óbvio e é exatamente o que a spec proíbe: nenhuma unidade pode receber veredito
+de alegação diferente da sua. Um deslocamento de uma posição faz o sistema
+afirmar que a agência chamou de falso algo que ela chamou de verdadeiro.</p>
+<p>O que existe de concreto é um marcador de formato, e só na Lupa: cada alegação
+aparece como linha inteira entre aspas. A regra adotada aceita a segmentação
+<strong>apenas quando o número de trechos entre aspas bate com o número de vereditos
+declarados</strong>. Bater não prova que o alinhamento está certo, mas é a evidência
+disponível, e a checagem falha alto: uma alegação a mais ou a menos derruba o
+registro para a via conservadora.</p>
+<table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>Registros</th>
+<th>O que acontece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Um veredito só</td>
+<td>3.476</td>
+<td>vira uma unidade; o título é a alegação</td>
+</tr>
+<tr>
+<td>Segmentação confere</td>
+<td>221</td>
+<td>uma unidade por alegação, veredito alinhado</td>
+</tr>
+<tr>
+<td>Não confere, vereditos todos iguais</td>
+<td>278</td>
+<td>uma unidade, marcada como grossa</td>
+</tr>
+<tr>
+<td>Não confere, vereditos divergentes</td>
+<td>88</td>
+<td>quarentena</td>
+</tr>
+</tbody>
+</table>
+<p>A terceira linha é um desvio assumido, não um acerto: a unidade cobre mais de
+uma alegação. O que a torna aceitável é que, com todos os vereditos iguais, não
+há veredito alheio a atribuir. Ela sai marcada, para que a citação saia sempre
+do fragmento recuperado e nunca da unidade inteira.</p>
+<p>Os 88 da quarentena são os casos em que o registro mistura verdadeiro com falso.
+Eles ficam fora do índice e viram conjunto de teste — é o mesmo conjunto que o
+tratamento de datasets já reservava para estudar a decomposição entre fato,
+evidência e opinião.</p>
+<h2 id="por-que-dois-tipos-de-busca-e-nao-um">Por que dois tipos de busca, e não um<a class="headerlink" href="#por-que-dois-tipos-de-busca-e-nao-um" title="Permanent link">&para;</a></h2>
+<p>O índice tem dois braços:</p>
+<ul>
+<li><strong>Léxico (BM25).</strong> Conta palavra. Acha <code>timerosal</code> porque a palavra
+  <code>timerosal</code> está lá.</li>
+<li><strong>Denso (embeddings).</strong> Compara sentido. Acha "vacina modifica o código
+  genético" quando se pergunta por "vacina altera o DNA", sem nenhuma palavra em
+  comum além de "vacina".</li>
+</ul>
+<p>A ordem natural de construção seria fazer o denso primeiro e acrescentar o
+léxico se precisar. O projeto inverteu essa ordem por decisão de spec, e o
+domínio explica: checagem de saúde é densa em nome próprio — <code>qdenga</code>,
+<code>oropouche</code>, <code>semaglutida</code>, <code>timerosal</code>, número de lote, dosagem. São exatamente
+os termos pelos quais uma alegação é identificada, e são os que o denso trata
+pior.</p>
+<p>A medição sustentou a decisão. Em 12 consultas, a sobreposição média entre o
+top-10 de cada braço foi de <strong>35%</strong> — as listas são complementares, não
+redundantes. No top-5 do híbrido, 14 das 60 vagas foram ocupadas por unidades que
+só o léxico encontrou e 6 por unidades que só o denso encontrou: <strong>um terço do
+top-5 se perderia ao desligar qualquer um dos dois</strong>. Em <code>hidroxicloroquina
+previne covid-19</code> a interseção foi zero — os dois braços acharam conjuntos
+inteiramente diferentes.</p>
+<h2 id="o-defeito-que-so-a-medicao-mostrou">O defeito que só a medição mostrou<a class="headerlink" href="#o-defeito-que-so-a-medicao-mostrou" title="Permanent link">&para;</a></h2>
+<p>A primeira versão da fusão somava os dois scores direto. Ela rodava, devolvia
+resultado plausível, e estava <strong>desligando o braço denso</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Consulta</th>
+<th>cosseno mediano</th>
+<th>cosseno máximo</th>
+<th>BM25 máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chá da casca do jatobá cura câncer</code></td>
+<td>0,787</td>
+<td>0,893</td>
+<td>35,1</td>
+</tr>
+<tr>
+<td><code>hidroxicloroquina previne covid-19</code></td>
+<td>0,816</td>
+<td>0,903</td>
+<td>11,3</td>
+</tr>
+<tr>
+<td><code>como faço bolo de cenoura</code></td>
+<td>0,762</td>
+<td>0,826</td>
+<td>13,2</td>
+</tr>
+</tbody>
+</table>
+<p>O cosseno do modelo denso não é centrado. Ele devolve cerca de 0,79 para
+qualquer par de textos, e o topo raramente passa de 0,90 — todo o sinal vive numa
+faixa de 0,06, muito longe do zero. Somado a um BM25 que varia de 0 a 35, ele
+vira praticamente uma constante: contribui o mesmo para todo candidato, e a
+ordem final sai inteira do braço léxico.</p>
+<p>O sintoma apareceu em <code>hidroxicloroquina previne covid-19</code>: o braço denso achou
+a checagem certa, o léxico achou <code>dexametasona</code> e <code>própolis</code>, e a fusão premiou
+o léxico. O híbrido estava de pé na forma e desligado no efeito.</p>
+<p>A correção foi normalizar cada braço contra o <strong>fundo da própria consulta</strong>: a
+mediana sobre os 22.464 fragmentos é o que aquele braço devolve para qualquer
+coisa, e a distância até o percentil 99 é a escala em que ele realmente separa.
+Depois da correção, a checagem que só o denso achava voltou ao top-3 do híbrido.</p>
+<p>É a mesma lição da sonda do gerador, em outro lugar: <strong>a primeira versão de uma
+medição costuma confirmar o que se esperava.</strong> Lá, uma checagem frouxa declarou
+3 de 3 aprovações e virou 1 de 3 quando endurecida. Aqui, um híbrido que somava
+dois números e parecia funcionar usava um deles só.</p>
+<h2 id="o-que-o-indice-ainda-nao-resolve">O que o índice ainda não resolve<a class="headerlink" href="#o-que-o-indice-ainda-nao-resolve" title="Permanent link">&para;</a></h2>
+<p>Perguntar <code>Qdenga causa a própria dengue</code> devolve checagens sobre dengue e zika,
+com score alto, e nenhuma sobre Qdenga. O corpus termina em 2021 e a vacina é
+posterior — o sistema não tem o que responder, mas o score não avisa isso.</p>
+<p>Pior: <code>como faço bolo de cenoura</code>, que não tem nada a ver com o corpus, alcança
+cosseno máximo de 0,826 contra 0,893 de uma consulta perfeitamente atendida. A
+normalização contra o fundo reduz a distorção, não a elimina.</p>
+<p>Isso é o problema do limiar de <code>evidência insuficiente</code>, e a medição já diz uma
+coisa útil sobre ele: <strong>ele não vai sair de similaridade bruta</strong>. Calibrá-lo é a
+próxima etapa, e o caso Qdenga é o teste de lacuna de acervo — a resposta certa
+ali não é "não sei", é "meu acervo vai até 2021 e essa pauta é mais nova".</p>
+<h2 id="reproduzir">Reproduzir<a class="headerlink" href="#reproduzir" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">python -m prototipo.rag construir
+python -m prototipo.rag buscar &quot;chá da casca do jatobá cura câncer&quot;
+python -m prototipo.rag buscar &quot;timerosal na vacina causa autismo&quot; --modo lexica
+python -m prototipo.rag buscar &quot;vacina altera o DNA&quot; --modo densa --k 5
+</code></pre>
+<p>Antes de construir qualquer unidade, dois portões rodam sobre o corpus: a
+contagem de registros tem de bater com a declarada (4.063), e o arquivo passa
+por verificação de perda de acentuação. Corpus que falha em qualquer um dos dois
+não gera índice — indexar um corpus defeituoso propaga o defeito para tudo que
+vem depois.</p>
+<p>O portão de acentuação rendeu uma correção de método. O critério original era
+"letra acentuada com zero ocorrência no arquivo é sinal de corrupção", e ele
+reprovaria este corpus por causa do <code>Ü</code>, ausente em 21,5 milhões de caracteres.
+Só que o trema foi abolido do português em 1990 e o corpus cobre 2013 a 2021 — a
+ausência é da língua, não do arquivo. O que de fato distingue corrupção é a
+maiúscula zerada <strong>com</strong> a minúscula frequente: no arquivo do FACTCK.BR, que foi
+reprovado de verdade, <code>ã</code> aparece 3.625 vezes e <code>Ã</code> nenhuma.</p>
+<h2 id="proximos-passos">Próximos passos<a class="headerlink" href="#proximos-passos" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Montar 20 consultas de aferição a partir de casos reais, com o documento
+   correto conhecido para cada uma.</li>
+<li>Medir recall das três configurações — só léxica, só densa, híbrida — e
+   registrar o resultado mesmo se ele contrariar a decisão de usar híbrido.</li>
+<li>Comparar ao menos dois modelos de embedding sob o mesmo conjunto.</li>
+<li>Calibrar o limiar de <code>evidência insuficiente</code> sobre o score fundido,
+   incluindo os casos de pauta ausente.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2443 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA">
+      
+      
+      
+      
+        <link rel="prev" href="../investigate/ampliacao-corpus/">
+      
+      
+        <link rel="next" href="../estado/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Requisitos - Challenge 1 — Desinformação em Saúde</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Csans-serif:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"sans-serif"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requisitos-funcionais-e-nao-funcionais" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Challenge 1 — Desinformação em Saúde" class="md-header__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Challenge 1 — Desinformação em Saúde
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Requisitos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/samarawwleticia/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Challenge 1 — Desinformação em Saúde" class="md-nav__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Challenge 1 — Desinformação em Saúde
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/samarawwleticia/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visao-geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O desafio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metodologia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Engage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Engage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/guiding-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guiding Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets e achados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/board-brainstorming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Board do brainstorming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/kit-matriz-confianca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kit do workshop da confiança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Investigação forense
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Investigação forense
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/casos-forense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos selecionados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/ficha-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ficha de caso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fichas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-01-febre-amarela/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 01 — vacina da febre amarela
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-02-inhame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 02 — suco de inhame e dengue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-03-video-2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 03 — vídeo de 2018
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-04-bula-autismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 04 — bula e autismo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-05-video-anvisa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 05 — vídeo editado da Anvisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-06-figado-sorocaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 06 — fígado e médico de Sorocaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Investigate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Investigate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/sonda-gerador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonda do gerador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/indice-hibrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Índice híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/tratamento-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tratamento dos datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/afericao-recuperacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aferição da recuperação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/ampliacao-corpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliação do corpus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos funcionais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rf01-usar-sem-criar-conta-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF01 — Usar sem criar conta · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf02-achar-a-alegacao-antes-de-procurar-evidencia-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF02 — Achar a alegação antes de procurar evidência · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf03-buscar-em-dois-indices-portugues-primeiro-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF03 — Buscar em dois índices, português primeiro · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf04-responder-so-pelo-que-foi-recuperado-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF04 — Responder só pelo que foi recuperado · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf05-quatro-respostas-possiveis-e-uma-delas-e-nao-sei-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF05 — Quatro respostas possíveis, e uma delas é "não sei" · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf06-nao-temos-e-diferente-de-nao-existe-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF06 — "Não temos" é diferente de "não existe" · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf07-pedido-de-conduta-medica-sai-do-caminho-normal-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF07 — Pedido de conduta médica sai do caminho normal · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf08-desmentir-sem-receitar-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF08 — Desmentir sem receitar · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf09-quatro-blocos-em-dois-formatos-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF09 — Quatro blocos, em dois formatos · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf10-catalogo-fechado-de-tecnicas-de-manipulacao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF10 — Catálogo fechado de técnicas de manipulação · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf11-escolher-o-rotulo-certo-nao-qualquer-rotulo-do-catalogo-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF11 — Escolher o rótulo certo, não qualquer rótulo do catálogo · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf12-fonte-sempre-citada-detalhe-em-segunda-camada-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF12 — Fonte sempre citada, detalhe em segunda camada · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf13-separar-fato-evidencia-e-opiniao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF13 — Separar fato, evidência e opinião · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf14-padronizar-o-vocabulario-de-veredito-antes-de-indexar-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF14 — Padronizar o vocabulário de veredito antes de indexar · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf15-conjunto-de-casos-para-o-teste-com-usuario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF15 — Conjunto de casos para o teste com usuário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-adiados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos adiados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos adiados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rf-a01-cadastro-de-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF-A01 — Cadastro de cliente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf-a02-login-e-historico-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF-A02 — Login e histórico de pesquisa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos não funcionais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos não funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rnf01-texto-curto-e-sem-jargao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF01 — Texto curto e sem jargão · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf02-interface-com-numeros-conferiveis-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF02 — Interface com números conferíveis · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf03-funciona-no-celular-e-no-computador-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF03 — Funciona no celular e no computador · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf04-resposta-em-streaming-porque-a-geracao-demora-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF04 — Resposta em streaming, porque a geração demora · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf05-o-gerador-roda-sempre-com-o-raciocinio-desligado-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF05 — O gerador roda sempre com o raciocínio desligado · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf06-tudo-rastreavel-ate-a-checagem-original-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF06 — Tudo rastreável até a checagem original · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf07-trecho-citado-identico-ao-original-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF07 — Trecho citado idêntico ao original · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf08-nenhum-classificador-de-veredito-treinado-em-rotulo-binario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF08 — Nenhum classificador de veredito treinado em rótulo binário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf09-texto-em-ingles-nao-chega-ao-usuario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF09 — Texto em inglês não chega ao usuário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf10-licenca-respeitada-por-base-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF10 — Licença respeitada por base · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf11-privacidade-e-lgpd-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF11 — Privacidade e LGPD · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf12-so-fonte-oficial-e-agencia-de-checagem-com-ressalvas-declaradas-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF12 — Só fonte oficial e agência de checagem, com ressalvas declaradas · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf13-disponibilidade-de-90-nas-janelas-de-uso-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF13 — Disponibilidade de 90% nas janelas de uso · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf14-protocolo-etico-do-teste-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF14 — Protocolo ético do teste · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendencias-antes-do-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pendências antes do Act
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado do projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pendencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks pendentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos funcionais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rf01-usar-sem-criar-conta-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF01 — Usar sem criar conta · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf02-achar-a-alegacao-antes-de-procurar-evidencia-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF02 — Achar a alegação antes de procurar evidência · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf03-buscar-em-dois-indices-portugues-primeiro-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF03 — Buscar em dois índices, português primeiro · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf04-responder-so-pelo-que-foi-recuperado-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF04 — Responder só pelo que foi recuperado · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf05-quatro-respostas-possiveis-e-uma-delas-e-nao-sei-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF05 — Quatro respostas possíveis, e uma delas é "não sei" · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf06-nao-temos-e-diferente-de-nao-existe-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF06 — "Não temos" é diferente de "não existe" · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf07-pedido-de-conduta-medica-sai-do-caminho-normal-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF07 — Pedido de conduta médica sai do caminho normal · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf08-desmentir-sem-receitar-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF08 — Desmentir sem receitar · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf09-quatro-blocos-em-dois-formatos-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF09 — Quatro blocos, em dois formatos · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf10-catalogo-fechado-de-tecnicas-de-manipulacao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF10 — Catálogo fechado de técnicas de manipulação · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf11-escolher-o-rotulo-certo-nao-qualquer-rotulo-do-catalogo-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF11 — Escolher o rótulo certo, não qualquer rótulo do catálogo · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf12-fonte-sempre-citada-detalhe-em-segunda-camada-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF12 — Fonte sempre citada, detalhe em segunda camada · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf13-separar-fato-evidencia-e-opiniao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF13 — Separar fato, evidência e opinião · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf14-padronizar-o-vocabulario-de-veredito-antes-de-indexar-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF14 — Padronizar o vocabulário de veredito antes de indexar · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf15-conjunto-de-casos-para-o-teste-com-usuario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF15 — Conjunto de casos para o teste com usuário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-adiados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos adiados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos adiados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rf-a01-cadastro-de-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF-A01 — Cadastro de cliente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rf-a02-login-e-historico-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RF-A02 — Login e histórico de pesquisa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos não funcionais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requisitos não funcionais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rnf01-texto-curto-e-sem-jargao-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF01 — Texto curto e sem jargão · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf02-interface-com-numeros-conferiveis-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF02 — Interface com números conferíveis · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf03-funciona-no-celular-e-no-computador-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF03 — Funciona no celular e no computador · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf04-resposta-em-streaming-porque-a-geracao-demora-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF04 — Resposta em streaming, porque a geração demora · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf05-o-gerador-roda-sempre-com-o-raciocinio-desligado-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF05 — O gerador roda sempre com o raciocínio desligado · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf06-tudo-rastreavel-ate-a-checagem-original-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF06 — Tudo rastreável até a checagem original · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf07-trecho-citado-identico-ao-original-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF07 — Trecho citado idêntico ao original · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf08-nenhum-classificador-de-veredito-treinado-em-rotulo-binario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF08 — Nenhum classificador de veredito treinado em rótulo binário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf09-texto-em-ingles-nao-chega-ao-usuario-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF09 — Texto em inglês não chega ao usuário · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf10-licenca-respeitada-por-base-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF10 — Licença respeitada por base · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf11-privacidade-e-lgpd-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF11 — Privacidade e LGPD · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf12-so-fonte-oficial-e-agencia-de-checagem-com-ressalvas-declaradas-medido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF12 — Só fonte oficial e agência de checagem, com ressalvas declaradas · medido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf13-disponibilidade-de-90-nas-janelas-de-uso-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF13 — Disponibilidade de 90% nas janelas de uso · em aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnf14-protocolo-etico-do-teste-especificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNF14 — Protocolo ético do teste · especificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendencias-antes-do-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pendências antes do Act
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="requisitos-funcionais-e-nao-funcionais">Requisitos funcionais e não funcionais<a class="headerlink" href="#requisitos-funcionais-e-nao-funcionais" title="Permanent link">&para;</a></h1>
+<p><strong>Versão 3 — 22/09/2026.</strong> Lista o que o copiloto de verificação precisa fazer e
+como precisa se comportar. Cada requisito aqui está amarrado a uma spec do
+OpenSpec, a uma medição registrada no repositório ou a uma decisão do grupo —
+nenhum é preferência sem lastro.</p>
+<p>Esta página é para leitura humana, então está escrita em linguagem simples. As
+palavras-chave em inglês (<code>SHALL</code>, <code>MUST NOT</code>) continuam existindo, mas só
+dentro dos arquivos de spec em <code>openspec/</code>, onde são exigidas pelo validador.
+Aqui, "precisa" tem o mesmo peso que <code>SHALL</code> e "não pode" tem o mesmo peso que
+<code>MUST NOT</code>.</p>
+<p>Cada requisito traz por que ele existe e em que pé está:</p>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>O que significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>especificado</strong></td>
+<td>já existe spec escrita que cobre o requisito; falta implementar</td>
+</tr>
+<tr>
+<td><strong>medido</strong></td>
+<td>existe medição no repositório que sustenta ou restringe o requisito</td>
+</tr>
+<tr>
+<td><strong>em aberto</strong></td>
+<td>o grupo concorda que é requisito, mas ainda não há spec nem medição</td>
+</tr>
+<tr>
+<td><strong>adiado</strong></td>
+<td>está fora do MVP; para entrar, precisa de um change próprio</td>
+</tr>
+</tbody>
+</table>
+<p>Se esta página divergir de uma spec, a spec vence. A correção é atualizar a
+spec ou o requisito, nunca ajustar o texto ao que já foi feito.</p>
+<hr />
+<h2 id="requisitos-funcionais">Requisitos funcionais<a class="headerlink" href="#requisitos-funcionais" title="Permanent link">&para;</a></h2>
+<p>Requisito funcional é o que o sistema faz — o comportamento que o usuário
+consegue observar.</p>
+<h3 id="rf01-usar-sem-criar-conta-especificado">RF01 — Usar sem criar conta · <em>especificado</em><a class="headerlink" href="#rf01-usar-sem-criar-conta-especificado" title="Permanent link">&para;</a></h3>
+<p>O usuário cola ou encaminha um texto, ou envia um link, e recebe a resposta. O
+sistema não pode pedir cadastro, login nem preenchimento de formulário antes da
+primeira verificação.</p>
+<p><strong>Por quê:</strong> o público-alvo tem baixo letramento textual e recebe a mensagem
+suspeita pelo WhatsApp. Qualquer tela de cadastro entre a dúvida e a resposta é
+motivo de abandono. Vem da spec <code>acessibilidade-leitura</code>.</p>
+<h3 id="rf02-achar-a-alegacao-antes-de-procurar-evidencia-especificado">RF02 — Achar a alegação antes de procurar evidência · <em>especificado</em><a class="headerlink" href="#rf02-achar-a-alegacao-antes-de-procurar-evidencia-especificado" title="Permanent link">&para;</a></h3>
+<p>Antes de buscar qualquer coisa, o sistema identifica qual é a afirmação de saúde
+dentro do texto e mostra ao usuário qual alegação está sendo verificada. Se
+houver mais de uma, verifica a de maior risco e oferece as outras. Se o texto
+for opinião ou desabafo, explica a diferença entre opinião e afirmação
+verificável, e não dá veredito.</p>
+<p><strong>Por quê:</strong> mensagem encaminhada costuma misturar várias coisas. Sem esse passo,
+o sistema busca pelo texto inteiro e recupera evidência sobre o assunto errado.
+Vem da spec <code>verificacao-alegacao</code>.</p>
+<h3 id="rf03-buscar-em-dois-indices-portugues-primeiro-medido">RF03 — Buscar em dois índices, português primeiro · <em>medido</em><a class="headerlink" href="#rf03-buscar-em-dois-indices-portugues-primeiro-medido" title="Permanent link">&para;</a></h3>
+<p>A busca combina um índice que compara palavras (BM25) com um índice que compara
+significado (embeddings). As fontes em português são esgotadas antes de recorrer
+a fontes em inglês.</p>
+<p><strong>Por quê:</strong> medimos as três configurações. Só palavras acerta 85% das consultas
+nos 5 primeiros resultados; a busca por significado e a combinação das duas
+acertam 100%. A combinação é a melhor em ordenação. A regulagem aferida é peso
+0,9 para o lado semântico, com o modelo <code>e5-base</code> — e ela não se transfere para
+outro modelo de embedding. Ver <a href="../investigate/afericao-recuperacao/">Aferição da recuperação</a>.</p>
+<h3 id="rf04-responder-so-pelo-que-foi-recuperado-medido">RF04 — Responder só pelo que foi recuperado · <em>medido</em><a class="headerlink" href="#rf04-responder-so-pelo-que-foi-recuperado-medido" title="Permanent link">&para;</a></h3>
+<p>O sistema responde apenas com base no trecho de evidência que a busca trouxe.
+Não pode dar veredito usando o que o modelo "sabe" de fábrica. Se a resposta
+produzir uma frase que nenhum trecho sustenta, essa frase é retirada.</p>
+<p><strong>Por quê:</strong> é o que separa este projeto de um chute bem escrito. Na sonda T1 o
+modelo recebeu uma pergunta sobre a vacina Qdenga sem trecho que a cobrisse, e
+respondeu "evidência insuficiente" em vez de inventar — o conhecimento estava no
+texto entregue, não no modelo. Vem da spec <code>verificacao-alegacao</code>.</p>
+<h3 id="rf05-quatro-respostas-possiveis-e-uma-delas-e-nao-sei-especificado">RF05 — Quatro respostas possíveis, e uma delas é "não sei" · <em>especificado</em><a class="headerlink" href="#rf05-quatro-respostas-possiveis-e-uma-delas-e-nao-sei-especificado" title="Permanent link">&para;</a></h3>
+<p>O veredito é sempre um entre quatro: <code>falso</code>, <code>verdadeiro</code>, <code>verdadeiro fora de
+contexto ou exagerado</code>, ou <code>evidência insuficiente</code>. Uma alegação que parece
+absurda mas que a evidência sustenta recebe <code>verdadeiro</code> — o sistema não rebaixa
+o veredito só porque a afirmação soa estranha.</p>
+<p><strong>Por quê:</strong> a maior parte da desinformação em saúde não é mentira inteira, é
+verdade fora de contexto. Um sistema com só dois rótulos força essas mensagens
+para um dos extremos. Vem da spec <code>verificacao-alegacao</code>.</p>
+<h3 id="rf06-nao-temos-e-diferente-de-nao-existe-especificado">RF06 — "Não temos" é diferente de "não existe" · <em>especificado</em><a class="headerlink" href="#rf06-nao-temos-e-diferente-de-nao-existe-especificado" title="Permanent link">&para;</a></h3>
+<p>Quando o assunto é mais recente que o acervo, o sistema diz que a lacuna é do
+acervo, informa a data de corte e, se o índice de localização encontrar uma
+checagem publicada, mostra agência, data e endereço. Nunca apresenta a falta de
+material como se ninguém no mundo tivesse checado aquilo.</p>
+<p><strong>Por quê:</strong> o corpus com texto integral termina em maio de 2021. Buscamos e
+confirmamos: <code>qdenga</code>, <code>mpox</code>, <code>oropouche</code> e <code>semaglutida</code> têm zero ocorrência.
+Se o sistema disser só "não encontrei", o usuário entende que a notícia não foi
+desmentida. Vem das specs <code>frescor-corpus</code> e <code>fix-resposta-sem-evidencia</code>.</p>
+<h3 id="rf07-pedido-de-conduta-medica-sai-do-caminho-normal-medido">RF07 — Pedido de conduta médica sai do caminho normal · <em>medido</em><a class="headerlink" href="#rf07-pedido-de-conduta-medica-sai-do-caminho-normal-medido" title="Permanent link">&para;</a></h3>
+<p>Antes da verificação, um classificador separado detecta se a pessoa está pedindo
+conduta clínica para o caso dela: começar, parar ou trocar tratamento, dose,
+diagnóstico, leitura de exame. Nesses casos a mensagem é desviada para
+redirecionamento a profissional de saúde. Sinal de urgência interrompe tudo e
+orienta procurar atendimento.</p>
+<p><strong>Por quê:</strong> na sonda T2 perguntamos se a mãe com câncer podia parar a
+quimioterapia e tomar um chá. O modelo abriu a resposta com "VEREDITO: Falso" e
+só citou procurar médico no último bloco. Quem lê rápido entende o "Falso" como
+resposta à pergunta que fez. A conclusão foi que instrução no prompt não segura
+essa fronteira: precisa de classificador próprio, rodando antes. Vem da spec
+<code>fronteira-orientacao-saude</code>.</p>
+<h3 id="rf08-desmentir-sem-receitar-especificado">RF08 — Desmentir sem receitar · <em>especificado</em><a class="headerlink" href="#rf08-desmentir-sem-receitar-especificado" title="Permanent link">&para;</a></h3>
+<p>Ao derrubar uma alegação sobre tratamento, o sistema explica por que ela não se
+sustenta e para por aí. Não pode sugerir outro tratamento, substância ou conduta
+no lugar.</p>
+<p><strong>Por quê:</strong> indicar substituto é prescrever, e o sistema não é profissional de
+saúde. Vem da spec <code>fronteira-orientacao-saude</code>.</p>
+<h3 id="rf09-quatro-blocos-em-dois-formatos-especificado">RF09 — Quatro blocos, em dois formatos · <em>especificado</em><a class="headerlink" href="#rf09-quatro-blocos-em-dois-formatos-especificado" title="Permanent link">&para;</a></h3>
+<p>Toda resposta tem quatro blocos, mas o formato muda conforme haja evidência ou
+não.</p>
+<p><strong>Com evidência:</strong> (1) o veredito, (2) o que se sabe sobre o assunto, (3) por que
+aquela mensagem engana, (4) o que observar da próxima vez.</p>
+<p><strong>Sem evidência:</strong> (1) o veredito e o que foi procurado, (2) por que não achar não
+é desmentir, (3) o que a pessoa pode conferir por conta própria, (4) onde
+procurar.</p>
+<p>O sistema não pode usar um formato no lugar do outro.</p>
+<p><strong>Por quê:</strong> a primeira redação da spec exigia os mesmos quatro blocos sempre. Quando o
+veredito era "evidência insuficiente", o bloco "por que engana" pedia ao sistema
+que afirmasse sobre a mensagem exatamente aquilo que o veredito acabara de
+declarar desconhecido — e na sonda o modelo degenerou, repetindo "evidência
+insuficiente" dentro do bloco. Corrigido pelo change <code>fix-resposta-sem-evidencia</code>.</p>
+<h3 id="rf10-catalogo-fechado-de-tecnicas-de-manipulacao-especificado">RF10 — Catálogo fechado de técnicas de manipulação · <em>especificado</em><a class="headerlink" href="#rf10-catalogo-fechado-de-tecnicas-de-manipulacao-especificado" title="Permanent link">&para;</a></h3>
+<p>No bloco "por que engana", o sistema nomeia pelo menos uma técnica de uma lista
+fixa de 6 a 8 rótulos, guardada em arquivo versionado, escrita em linguagem do
+dia a dia. Exemplos do catálogo: <code>cura milagrosa</code>, <code>manchete exagerada</code>. Na
+resposta sem evidência essa exigência não vale — nomear técnica ali é defeito,
+e o rótulo é removido, não trocado por outro.</p>
+<p><strong>Por quê:</strong> lista fechada é o que permite testar a saída automaticamente e o que
+impede o modelo de inventar categorias acadêmicas que o usuário não entende.</p>
+<h3 id="rf11-escolher-o-rotulo-certo-nao-qualquer-rotulo-do-catalogo-em-aberto">RF11 — Escolher o rótulo certo, não qualquer rótulo do catálogo · <em>em aberto</em><a class="headerlink" href="#rf11-escolher-o-rotulo-certo-nao-qualquer-rotulo-do-catalogo-em-aberto" title="Permanent link">&para;</a></h3>
+<p>Quando mais de um rótulo do catálogo cabe, o sistema escolhe o mais adequado à
+alegação. A validação automática precisa distinguir duas coisas diferentes: se o
+rótulo <strong>pertence</strong> ao catálogo e se ele <strong>serve</strong> àquele caso.</p>
+<p><strong>Por quê:</strong> na sonda, a mesma alegação de cura do câncer recebeu <code>cura
+milagrosa</code> numa execução e <code>manchete exagerada</code> noutra. Os dois estão no
+catálogo, então a validação prevista aprovaria ambos — mas para uma promessa de
+cura, <code>manchete exagerada</code> é o rótulo errado. Ainda não há spec nem task: é
+decisão de grupo pendente.</p>
+<h3 id="rf12-fonte-sempre-citada-detalhe-em-segunda-camada-especificado">RF12 — Fonte sempre citada, detalhe em segunda camada · <em>especificado</em><a class="headerlink" href="#rf12-fonte-sempre-citada-detalhe-em-segunda-camada-especificado" title="Permanent link">&para;</a></h3>
+<p>O sistema nomeia a agência que fez a checagem e leva ao endereço original. Não
+pode reproduzir a checagem inteira — usa citação curta com paráfrase. Fontes,
+trechos citados, datas e detalhe de método ficam numa camada que o usuário abre
+quando quer, sem bagunçar a resposta principal.</p>
+<p><strong>Por quê:</strong> duas exigências ao mesmo tempo. O usuário precisa poder conferir e
+discordar, e a camada visível precisa caber em 120 palavras. Vem das specs
+<code>recuperacao-evidencia</code> e <code>resposta-formativa</code>.</p>
+<h3 id="rf13-separar-fato-evidencia-e-opiniao-especificado">RF13 — Separar fato, evidência e opinião · <em>especificado</em><a class="headerlink" href="#rf13-separar-fato-evidencia-e-opiniao-especificado" title="Permanent link">&para;</a></h3>
+<p>No bloco 2, o sistema mostra qual parte da mensagem é afirmação verificável,
+qual é a evidência apresentada e com que força, e qual é opinião. Essa separação
+é independente do veredito: ter opinião no texto não torna a mensagem falsa, e
+evidência fraca não vira veredito <code>falso</code>.</p>
+<p><strong>Por quê:</strong> é uma das três competências que o enunciado do challenge exige, e é
+o caso mais comum de mensagem que parte de um fato verdadeiro para concluir algo
+que o fato não sustenta. Vem da spec <code>verificacao-alegacao</code>.</p>
+<h3 id="rf14-padronizar-o-vocabulario-de-veredito-antes-de-indexar-medido">RF14 — Padronizar o vocabulário de veredito antes de indexar · <em>medido</em><a class="headerlink" href="#rf14-padronizar-o-vocabulario-de-veredito-antes-de-indexar-medido" title="Permanent link">&para;</a></h3>
+<p>Os rótulos que cada agência usa são convertidos para um vocabulário único, por
+um mapa versionado, antes de qualquer indexação.</p>
+<p><strong>Por quê:</strong> cada agência escreve o veredito do seu jeito. Medido no FactCenter:
+<strong>26 grafias distintas de veredito</strong> — e não 285, que é a contagem de strings
+serializadas do campo <code>rating</code> e mede outra coisa. O mapa está em <code>tratamento/mapa_vereditos.json</code>, versão 1.0.0, 19 chaves.
+Ver <a href="../investigate/tratamento-datasets/">Tratamento dos datasets</a>.</p>
+<h3 id="rf15-conjunto-de-casos-para-o-teste-com-usuario-especificado">RF15 — Conjunto de casos para o teste com usuário · <em>especificado</em><a class="headerlink" href="#rf15-conjunto-de-casos-para-o-teste-com-usuario-especificado" title="Permanent link">&para;</a></h3>
+<p>O projeto mantém de 20 a 30 casos curados, com pelo menos quatro itens
+verdadeiros contra-intuitivos e de 4 a 6 itens-armadilha, em que a saída da IA
+apresenta evidência ambígua ou dedução errada de propósito. Itens verdadeiros
+não podem vir de agências de checagem.</p>
+<p><strong>Por quê:</strong> os itens-armadilha são o único jeito de medir aceitação cega — se a
+pessoa concorda com a ferramenta mesmo quando ela erra. E itens verdadeiros
+tirados de agência de checagem enviesam o teste, porque agência publica
+principalmente desmentido. Vem da spec <code>avaliacao-instrumento</code>.</p>
+<hr />
+<h2 id="requisitos-adiados">Requisitos adiados<a class="headerlink" href="#requisitos-adiados" title="Permanent link">&para;</a></h2>
+<p>Os dois requisitos abaixo foram levantados pelo grupo e não estão descartados.
+Estão fora do MVP até existir um change que os cubra e resolva o consentimento.</p>
+<h3 id="rf-a01-cadastro-de-cliente">RF-A01 — Cadastro de cliente<a class="headerlink" href="#rf-a01-cadastro-de-cliente" title="Permanent link">&para;</a></h3>
+<p>Conta com e-mail e senha. Conflita com RF01 enquanto for condição para usar.
+Só é admissível como conta <strong>opcional</strong>, oferecida depois da primeira
+verificação.</p>
+<h3 id="rf-a02-login-e-historico-de-pesquisa">RF-A02 — Login e histórico de pesquisa<a class="headerlink" href="#rf-a02-login-e-historico-de-pesquisa" title="Permanent link">&para;</a></h3>
+<p>Mesma restrição do RF-A01, mais o peso da LGPD descrito no RNF11: guardar
+histórico de pesquisa de saúde é guardar dado pessoal sensível.</p>
+<hr />
+<h2 id="requisitos-nao-funcionais">Requisitos não funcionais<a class="headerlink" href="#requisitos-nao-funcionais" title="Permanent link">&para;</a></h2>
+<p>Requisito não funcional é como o sistema precisa se comportar — velocidade,
+segurança, legibilidade, limites de uso dos dados.</p>
+<h3 id="rnf01-texto-curto-e-sem-jargao-especificado">RNF01 — Texto curto e sem jargão · <em>especificado</em><a class="headerlink" href="#rnf01-texto-curto-e-sem-jargao-especificado" title="Permanent link">&para;</a></h3>
+<p>A camada visível tem no máximo <strong>120 palavras</strong>, com frases de até <strong>20
+palavras</strong>. Termo técnico só aparece com a tradução ao lado. Jargão de método —
+"revisão por pares", "evidência preliminar" — não entra sem explicação em
+linguagem cotidiana.</p>
+<p><strong>Por quê:</strong> o público é de baixo letramento textual. Vem da spec
+<code>acessibilidade-leitura</code>.</p>
+<h3 id="rnf02-interface-com-numeros-conferiveis-especificado">RNF02 — Interface com números conferíveis · <em>especificado</em><a class="headerlink" href="#rnf02-interface-com-numeros-conferiveis-especificado" title="Permanent link">&para;</a></h3>
+<p>Contraste mínimo de 4,5:1 no texto, fonte base de pelo menos 18 px que acompanha
+o ajuste de tamanho do sistema, área de toque de pelo menos 44 px e uma única
+ação principal por tela.</p>
+<p><strong>Por quê:</strong> "interface intuitiva" não é testável. Estes quatro números são. Vem
+da spec <code>acessibilidade-leitura</code>.</p>
+<h3 id="rnf03-funciona-no-celular-e-no-computador-especificado">RNF03 — Funciona no celular e no computador · <em>especificado</em><a class="headerlink" href="#rnf03-funciona-no-celular-e-no-computador-especificado" title="Permanent link">&para;</a></h3>
+<p>A interface se adapta a navegador móvel e de desktop. Com a fonte do sistema
+ampliada, o texto não corta, não sobrepõe e não força rolagem lateral.</p>
+<p><strong>Por quê:</strong> a mensagem suspeita chega pelo celular, e o usuário com dificuldade
+de leitura costuma estar com a fonte ampliada.</p>
+<h3 id="rnf04-resposta-em-streaming-porque-a-geracao-demora-medido">RNF04 — Resposta em streaming, porque a geração demora · <em>medido</em><a class="headerlink" href="#rnf04-resposta-em-streaming-porque-a-geracao-demora-medido" title="Permanent link">&para;</a></h3>
+<p>A busca responde em menos de 1 segundo. A escrita da resposta leva de 17 a 23
+segundos e é ela que domina o tempo total — por isso o texto aparece aos poucos,
+em vez de esperar a resposta ficar pronta.</p>
+<p><strong>Por quê:</strong> o alvo inicial do grupo era de 3 segundos no total. É inatingível com
+o gerador escolhido. Medimos: 38 ms de mediana na busca
+combinada, 13 ms na busca por significado — dentro do orçamento, a busca é
+ruído. Vinte segundos de tela parada, porém, é abandono provável no teste com
+usuário. Ver <a href="../investigate/sonda-gerador/">Sonda do gerador</a>.</p>
+<h3 id="rnf05-o-gerador-roda-sempre-com-o-raciocinio-desligado-medido">RNF05 — O gerador roda sempre com o raciocínio desligado · <em>medido</em><a class="headerlink" href="#rnf05-o-gerador-roda-sempre-com-o-raciocinio-desligado-medido" title="Permanent link">&para;</a></h3>
+<p>Toda chamada ao modelo passa <code>think: false</code>.</p>
+<p><strong>Por quê:</strong> com o raciocínio ligado, o tempo sobe para 112 segundos e só 1 das 3
+sondas produziu resposta — as outras duas gastaram todo o orçamento de tokens
+pensando e devolveram texto vazio. Houve um ganho isolado de qualidade de
+rótulo, que não compensa duas respostas perdidas em três.</p>
+<h3 id="rnf06-tudo-rastreavel-ate-a-checagem-original-especificado">RNF06 — Tudo rastreável até a checagem original · <em>especificado</em><a class="headerlink" href="#rnf06-tudo-rastreavel-ate-a-checagem-original-especificado" title="Permanent link">&para;</a></h3>
+<p>Qualquer afirmação do sistema precisa poder ser seguida até a checagem de onde
+veio. O veredito sempre aparece junto do critério que o sustenta; veredito
+sozinho, sem raciocínio nem procedência, é proibido.</p>
+<p><strong>Por quê:</strong> é o princípio que sustenta o projeto inteiro. A pergunta do
+challenge é como a IA ajuda a avaliar confiabilidade <strong>sem substituir o
+pensamento crítico</strong> — e veredito nu é exatamente o que substitui. Está em
+<code>openspec/project.md</code>.</p>
+<h3 id="rnf07-trecho-citado-identico-ao-original-medido">RNF07 — Trecho citado idêntico ao original · <em>medido</em><a class="headerlink" href="#rnf07-trecho-citado-identico-ao-original-medido" title="Permanent link">&para;</a></h3>
+<p>Todo fragmento exibido é conferido contra o texto de origem por igualdade
+literal — sem dobrar acento, sem colapsar espaço. Base que não passa nesse
+portão não fornece trecho para exibição.</p>
+<p><strong>Duas bases não passam, por motivos opostos:</strong></p>
+<ul>
+<li><strong>FACTCK.BR</strong> perdeu caracteres. Onze maiúsculas acentuadas têm zero ocorrência
+  (<code>À Â Ã Ê Í Ó Ô Õ Ú Ü Ç</code>), sendo que sete delas têm minúscula frequente — <code>Ã</code>
+  contra 3.625 <code>ã</code>, <code>Ç</code> contra 2.312 <code>ç</code>. A perda já está no arquivo distribuído
+  pelos autores, então <strong>não tem conserto</strong>: nenhuma reexecução recupera
+  caractere que não existe na fonte. A base entra por contagem de rótulo, não
+  por citação.</li>
+<li><strong>FakeRecogna 2.0</strong> entrega o texto lematizado e sem maiúsculas na origem —
+  <code>o governar equador anunciar preparar cova</code>. O efeito é o mesmo, a acusação
+  não: não é corrupção, é transformação declarada pelos autores.</li>
+</ul>
+<p>Medido sobre 500 registros: 4.968 fragmentos, zero infiéis. Ver
+<a href="../investigate/tratamento-datasets/">Tratamento dos datasets</a>.</p>
+<h3 id="rnf08-nenhum-classificador-de-veredito-treinado-em-rotulo-binario-especificado">RNF08 — Nenhum classificador de veredito treinado em rótulo binário · <em>especificado</em><a class="headerlink" href="#rnf08-nenhum-classificador-de-veredito-treinado-em-rotulo-binario-especificado" title="Permanent link">&para;</a></h3>
+<p>FakeRecogna, PUBHEALTH e Med-MMHL servem como banco de estímulos para o teste
+com usuário, nunca como alvo de treino de um classificador de verdadeiro/falso.
+Treino continua permitido num lugar só: classificadores auxiliares pequenos que
+decidem <strong>comportamento</strong>, como o de RF07.</p>
+<p><strong>Por quê:</strong> um classificador treinado em rótulos devolveria "falso" sem
+conseguir mostrar de onde tirou aquilo, o que derruba o RNF06. Regra registrada
+em <code>openspec/project.md</code>.</p>
+<h3 id="rnf09-texto-em-ingles-nao-chega-ao-usuario-especificado">RNF09 — Texto em inglês não chega ao usuário · <em>especificado</em><a class="headerlink" href="#rnf09-texto-em-ingles-nao-chega-ao-usuario-especificado" title="Permanent link">&para;</a></h3>
+<p>PUBHEALTH, FakeHealth e InSciOut são instrumentos: definem critérios e formato
+interno do prompt, e o texto deles não aparece na tela.</p>
+<p>Evidência recuperada em inglês é outro caso: aparece parafraseada em português
+na camada visível, com o trecho original disponível na camada de detalhe.</p>
+<p><strong>Por quê:</strong> as duas situações são fáceis de confundir, e a distinção muda o que
+aparece na tela. Dataset instrumental nunca vira conteúdo; fonte em inglês pode
+virar, desde que traduzida e auditável.</p>
+<h3 id="rnf10-licenca-respeitada-por-base-medido">RNF10 — Licença respeitada por base · <em>medido</em><a class="headerlink" href="#rnf10-licenca-respeitada-por-base-medido" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>FakeRecogna 2.0: MIT</strong>, declarada pelos autores. A pendência de licença que o
+  inventário registrava era da versão 1 da base, substituída em 19/09/2026.</li>
+<li><strong>Telegram antivacina: CC BY-NC 4.0.</strong> A cláusula de uso não comercial
+  <strong>propaga para todo derivado</strong>, e está no cabeçalho de cada arquivo gerado.
+  Nenhum texto de post e nenhum <code>user_id</code> foi versionado, nem como exemplo em
+  documentação.</li>
+<li><strong>Ainda não conferidas: PUBHEALTH e InSciOut.</strong></li>
+</ul>
+<p>Ver <a href="../engage/datasets/">Inventário de datasets</a> e
+<a href="../investigate/ampliacao-corpus/">Ampliação do corpus</a>.</p>
+<h3 id="rnf11-privacidade-e-lgpd-em-aberto">RNF11 — Privacidade e LGPD · <em>em aberto</em><a class="headerlink" href="#rnf11-privacidade-e-lgpd-em-aberto" title="Permanent link">&para;</a></h3>
+<p>O MVP não coleta nem armazena dado pessoal identificável nem histórico de
+pesquisa. Se RF-A01 e RF-A02 forem admitidos, três condições passam a valer: a
+senha é guardada com algoritmo de hash com fator de custo (bcrypt ou argon2), o
+armazenamento depende de consentimento expresso, e o tratamento segue a LGPD.</p>
+<p><strong>Por quê:</strong> guardar histórico e não guardar dado pessoal são exigências que se
+chocam, e o projeto precisa declarar qual vale. Consulta sobre saúde é dado
+sensível pela LGPD, categoria com exigência mais alta que dado pessoal comum.</p>
+<h3 id="rnf12-so-fonte-oficial-e-agencia-de-checagem-com-ressalvas-declaradas-medido">RNF12 — Só fonte oficial e agência de checagem, com ressalvas declaradas · <em>medido</em><a class="headerlink" href="#rnf12-so-fonte-oficial-e-agencia-de-checagem-com-ressalvas-declaradas-medido" title="Permanent link">&para;</a></h3>
+<p>A base é alimentada apenas por agências de checagem reconhecidas e fontes
+oficiais de saúde. Duas ressalvas acompanham o corpus e precisam estar no
+portfólio:</p>
+<ul>
+<li>43% do FactCenter tem o rótulo <code>boato</code>, que não gradua nada — a classe "falso"
+  está inflada por construção.</li>
+<li>Há <strong>21 registros <code>verdadeiro</code> em 4.063</strong>. O corpus não serve como fonte de
+  itens verdadeiros para o conjunto de avaliação de RF15, e amostrar isso dele é
+  recusado em código.</li>
+</ul>
+<h3 id="rnf13-disponibilidade-de-90-nas-janelas-de-uso-em-aberto">RNF13 — Disponibilidade de 90% nas janelas de uso · <em>em aberto</em><a class="headerlink" href="#rnf13-disponibilidade-de-90-nas-janelas-de-uso-em-aberto" title="Permanent link">&para;</a></h3>
+<p>O alvo vale para as janelas declaradas de uso, especialmente a sessão de teste
+com usuário. O protótipo roda localmente e não tem hospedagem contínua, então
+disponibilidade "do tempo todo" não é uma medida que faça sentido aqui.</p>
+<h3 id="rnf14-protocolo-etico-do-teste-especificado">RNF14 — Protocolo ético do teste · <em>especificado</em><a class="headerlink" href="#rnf14-protocolo-etico-do-teste-especificado" title="Permanent link">&para;</a></h3>
+<p>Toda sessão começa com Termo de Consentimento Livre e Esclarecido e termina com
+debriefing, em que o participante recebe o gabarito de todos os itens falsos a
+que foi exposto. Com participantes idosos, o protocolo vai ao comitê de ética
+antes da coleta.</p>
+<p><strong>Por quê:</strong> os itens-armadilha de RF15 expõem a pessoa, de propósito, a uma
+saída errada da IA. Sem debriefing, o teste sai deixando desinformação para
+trás. Vem da spec <code>avaliacao-instrumento</code>.</p>
+<hr />
+<h2 id="pendencias-antes-do-act">Pendências antes do Act<a class="headerlink" href="#pendencias-antes-do-act" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pendência</th>
+<th>Requisito</th>
+<th>Onde está registrado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementar o classificador de fronteira clínica, fora do prompt do gerador</td>
+<td>RF07</td>
+<td><code>mvp-copiloto-verificacao</code>, bloco 4, task 4.1</td>
+</tr>
+<tr>
+<td>Fechar o catálogo de 6 a 8 técnicas em arquivo versionado</td>
+<td>RF10</td>
+<td><code>mvp-copiloto-verificacao</code>, task 3.1</td>
+</tr>
+<tr>
+<td>Definir como medir adequação de rótulo, e não só pertinência ao catálogo</td>
+<td>RF11</td>
+<td>sem task; <strong>decisão de grupo pendente</strong></td>
+</tr>
+<tr>
+<td>Alinhar a sonda do gerador ao limite de 20 palavras da spec</td>
+<td>RNF01</td>
+<td><code>prototipo/teste_gemma4.py:94</code></td>
+</tr>
+<tr>
+<td>Conferir as licenças de PUBHEALTH e InSciOut</td>
+<td>RNF10</td>
+<td><a href="../estado/">Estado do projeto</a></td>
+</tr>
+<tr>
+<td>Decidir se conta e histórico entram, e abrir change se entrarem</td>
+<td>RF-A01, RF-A02, RNF11</td>
+<td>sem change aberto</td>
+</tr>
+</tbody>
+</table>
+<p>A padronização do vocabulário de veredito (RF14) e a conferência de integridade
+textual (RNF07) <strong>já foram executadas</strong>, no change <code>add-tratamento-datasets-ptbr</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
