@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 10, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
+Donos das tasks em aberto: **Vitor** 8, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -25,9 +25,11 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       misto e do fato verdadeiro que sustenta conclusão que não decorre
 
 ## 3. Resposta formativa
-- [ ] 3.1 **Vitor** Fechar o catálogo de 6 a 8 técnicas, com nome e descrição em linguagem cotidiana
+- [x] 3.1 **Vitor** Fechar o catálogo de 6 a 8 técnicas, com nome e descrição em linguagem cotidiana
+      — sete rótulos e uma vaga reservada, decisão 6 do `design.md`, 28/09/2026
 - [ ] 3.2 **Vitor** Prompt da estrutura de quatro blocos
-- [ ] 3.3 **Vitor** Validação automática: rótulo usado pertence ao catálogo
+- [x] 3.3 **Vitor** Validação automática: rótulo usado pertence ao catálogo
+      — `prototipo/resposta/catalogo.py`, decisão 7 do `design.md`, 28/09/2026
 - [ ] 3.4 **Vitor** Verificação de que a alegação falsa nunca abre a resposta sem marcação
 
 ## 4. Fronteira de saúde
