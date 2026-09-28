@@ -53,6 +53,59 @@ O terceiro é o mais delicado: é onde é mais tentador dizer "não existe checa
 sobre isso", que é afirmação sobre o mundo que o sistema não pode fazer. O
 requirement veda isso em texto expresso.
 
+## Decisão 4: sonda dos três estados — 28/09/2026
+
+Tasks 3.1 e 3.2. Arranjo em `prototipo/sonda_sem_evidencia.py`, resultado por
+tentativa em `prototipo/relatorio_sonda_sem_evidencia.json`. Formato da sonda de
+18/09: Gemma 4 12B QAT, `think: false`, temperatura 0,2, três tentativas por
+estado. O estado da recuperação é injetado à mão, porque o roteamento por janela
+do acervo ainda não está ligado ao gerador. Um prompt só, com as duas formas; a
+forma é escolhida pelo estado que chega na mensagem, como manda o risco 1.
+
+| Sonda | Estado | Passou |
+| --- | --- | --- |
+| E1 | `evidência insuficiente` — chá de goiabeira cura dengue | 3/3 |
+| E2 | lacuna com ponteiro — vacina da dengue "transgênica", Aos Fatos 02/02/2024 | 0/3 |
+| E3 | lacuna sem ponteiro — oropouche, zero no acervo e no índice | 0/3 |
+| T1 | reprise literal da T1 de 18/09, mesma mensagem e mesmo trecho | 0/3 |
+
+**O defeito que abriu o change não se repete.** Nas 12 respostas, o bloco 3
+trouxe um passo que a pessoa pode dar sozinha. Nenhuma repetiu "evidência
+insuficiente" dentro do bloco, e nenhuma nomeou técnica do catálogo. Na T1, que
+em 18/09 degenerou, as três tentativas ficaram na forma sem evidência, com os
+quatro blocos em ordem. A task 3.2 está confirmada.
+
+**As falhas de E2, E3 e T1 têm uma causa só.** Nas 9 respostas de lacuna de
+acervo, o bloco 1 abre com "lacuna de acervo" mas omite a data de corte, que o
+requirement "Lacuna de acervo distinguida na resposta" exige. O prompt pede a
+data em texto expresso, e o modelo a ignora 9 vezes em 9. Não é variação de
+amostra; é instrução que não pega. A data de corte é metadado do acervo, não
+conteúdo gerado. Recomendação para a task 3.2 de `mvp-copiloto-verificacao`: o
+sistema compõe a frase de corte do bloco 1 por modelo fixo, sem depender do
+gerador. É a mesma lição da fronteira clínica na decisão 10 de
+`add-selecao-modelos-arquitetura-rag`: o que a spec exige literalmente não deve
+depender de o prompt pegar.
+
+Falha isolada: uma frase acima de 25 palavras em E2.
+
+**Orçamento de palavras, medido.** As respostas tiveram de 65 a 85 palavras,
+todas abaixo do teto de 120. O ponteiro do bloco 4 custou 11 palavras. A forma
+sem ponteiro fecha o bloco 4 em 6. Sobram ao menos 35 palavras de folga, o que
+responde à segunda questão em aberto abaixo e alimenta a task 2.1.
+
+**Correção de método, registrada.** A primeira avaliação reprovou T1 e E2
+também por "afirmação paramétrica". Era falso positivo: o regex pegava o bloco
+1 repetindo a alegação procurada ("foi procurado se a vacina Qdenga causa a
+própria dengue"). O check passou a olhar só os blocos 2 e 3, e as respostas
+gravadas foram reavaliadas sem nova chamada ao modelo (`--reavaliar`). Antes de
+confiar nos checks, testei-os contra uma resposta sintética correta, que passa,
+e contra a resposta degenerada de 18/09, que reprova em 10 checks.
+
+**Nota de ambiente.** Nesta máquina, com RTX 2060 de 6 GB, o `llama-server` do
+Ollama 0.34.4 cai ao iniciar CUDA (`shared object initialization failed`). A
+sonda rodou só em CPU (`--cpu`, `num_gpu: 0`), com 58 a 157 s por resposta,
+contra 17 s em 18/09. Isso muda a latência, não a resposta esperada.
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
@@ -67,4 +120,12 @@ requirement veda isso em texto expresso.
   explicitamente a análise da mensagem sem veredito. Hoje a spec veda nomear
   técnica sem evidência; o caso do pedido explícito não foi examinado.
 - Quantas palavras sobram para os blocos 2 e 3 depois do ponteiro, o que só se
-  sabe medindo respostas reais.
+  sabe medindo respostas reais. **Medido em 28/09 (decisão 4):** de 65 a 85
+  palavras no total, com o ponteiro custando 11. A task 2.1 confere o teto.
+- **Aberta em 28/09 pela sonda E2:** o que o bloco 2 diz quando há ponteiro. O
+  título do bloco é "por que isso não equivale a dizer que a mensagem é falsa",
+  mas o ponteiro traz uma agência que disse "falso". O modelo resolveu escrevendo
+  "não encontrar uma checagem não significa que seja verdadeira", o que contradiz
+  o próprio bloco 4, onde a checagem aparece. A spec não prevê esse caso. Entra
+  na conciliação da task 2.2, porque é afirmação sobre a mensagem que o trecho
+  não sustenta, nem para um lado nem para o outro.
