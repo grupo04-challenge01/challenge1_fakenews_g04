@@ -1,6 +1,6 @@
 # Tasks — fix-resposta-sem-evidencia
 
-Donos das tasks em aberto: **Wingrid** 4 (2.1, 2.2, 2.3, 3.3), **Vitor** 2 (3.1, 3.2), **Samara** 1 (2.4).
+Donos das tasks em aberto: **Wingrid** 4 (2.1, 2.2, 2.3, 3.3), **Samara** 1 (2.4).
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -37,10 +37,12 @@ Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
 
 ## 3. Verificação
 
-- [ ] 3.1 **Vitor** Sondar o gerador local nos três estados, no formato da sonda de 18/09
+- [x] 3.1 **Vitor** Sondar o gerador local nos três estados, no formato da sonda de 18/09
       — três tentativas por estado, resultado por tentativa, com `think: false`
-- [ ] 3.2 **Vitor** Confirmar que a sonda T1 deixa de degenerar, que era o defeito que
-      abriu este change
+      — decisão 4 do `design.md`, 28/09/2026
+- [x] 3.2 **Vitor** Confirmar que a sonda T1 deixa de degenerar, que era o defeito que
+      abriu este change — 0 de 12 respostas degeneraram; falha restante é outra
+      (data de corte omitida), registrada na decisão 4
 - [ ] 3.3 **Wingrid** Teste que reprova resposta com técnica nomeada sob `evidência
       insuficiente`
 - [x] 3.4 `openspec validate fix-resposta-sem-evidencia --strict` limpo
