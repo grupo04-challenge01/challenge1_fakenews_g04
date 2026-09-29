@@ -131,10 +131,35 @@ A forma sem evidência de `fix-resposta-sem-evidencia` inverte a regra: ali
 qualquer rótulo é defeito. `rotulos_marcados` serve às duas verificações; o
 teste daquele lado é a task 3.3 do fix.
 
+### 8. Fronteira de orientação em saúde: guardrails de tom, recusa e bypass de emergência — 29/09/2026
+
+Task 4.2. Especificação completa em `specs/fronteira-orientacao-saude/spec.md`.
+
+O copiloto de verificação atua exclusivamente na checagem de fatos e desinformação,
+não podendo atuar como consultor clínico nem substituir conduta médica. Para
+preservar a segurança do usuário e a integridade ética do produto:
+
+1. **Pedido de conduta individual:** Recusa explícita e acolhedora, sem emitir
+   juízo afirmativo ou negativo sobre dosagens ou alterações medicamentosas,
+   direcionando à UBS / médico de referência.
+2. **Sinal de risco imediato / urgência médica:** Prioridade absoluta sobre a
+   checagem. Diante de sintomas graves ou agudos (dor torácica, dispneia, desmaio),
+   o pipeline de RAG é **bypassado** para orientar busca imediata por SAMU (192)
+   e UPA / Pronto-Socorro.
+3. **Veredito sem prescrição alternativa:** Ao desmentir boato de cura caseira ou
+   tratamento milagroso, o sistema explica a falta de evidência mas MUST NOT
+   prescrever fármaco ou terapia substituta, orientando os canais SUS (UBS e 136).
+4. **Salvaguarda de saúde mental:** Gatilho protetivo para sofrimento psíquico ou
+   ideação suicida direcionando ao CVV (188).
+5. **Dualidade de canais (Web e WhatsApp):** Fornece variantes de texto adaptadas
+   às convenções de cada canal (markdown padrão para web e microformatação com
+   emojis pontuais e bullet points objetivos para WhatsApp).
+
 ## Questões em aberto
 
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
   insuficiente`.
+
 
