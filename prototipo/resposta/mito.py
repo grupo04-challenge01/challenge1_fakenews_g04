@@ -10,7 +10,7 @@ quando traz pelo menos 60% das palavras de conteúdo dela, e no mínimo duas. A
 comparação usa o começo da palavra, para que "cura" e "cure" contem como a mesma.
 Menção por pronome ("essa informação") não é reconhecida e não precisa ser: ela
 não repete o mito. Paráfrase com outras palavras também escapa. É o limite desta
-verificação, registrado na decisão 13 do design.md.
+verificação, registrado na decisão 14 do design.md.
 """
 import math
 import re

@@ -17,7 +17,7 @@ Duas camadas:
    inválida do modelo deixa só as regras.
 
 A sonda T2 de 18/09 mostrou que o prompt de checagem sozinho não segura a
-fronteira. Por isso esta decisão fica fora dele. Ver decisão 14 do design.md.
+fronteira. Por isso esta decisão fica fora dele. Ver decisão 15 do design.md.
 
 As respostas padrão são lidas da própria spec, para que texto e código não
 divirjam.
