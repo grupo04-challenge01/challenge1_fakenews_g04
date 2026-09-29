@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 4, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 3.
+Donos das tasks em aberto: **Vitor** 2, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 3.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -35,10 +35,12 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 3.2 **Vitor** Prompt da estrutura de quatro blocos
 - [x] 3.3 **Vitor** Validação automática: rótulo usado pertence ao catálogo
       — `prototipo/resposta/catalogo.py`, decisão 7 do `design.md`, 28/09/2026
-- [ ] 3.4 **Vitor** Verificação de que a alegação falsa nunca abre a resposta sem marcação
+- [x] 3.4 **Vitor** Verificação de que a alegação falsa nunca abre a resposta sem marcação
+      — `prototipo/resposta/mito.py`, decisão 14 do `design.md`, 29/09/2026
 
 ## 4. Fronteira de saúde
-- [ ] 4.1 **Vitor** Classificador de pedido de conduta clínica individual
+- [x] 4.1 **Vitor** Classificador de pedido de conduta clínica individual
+      — `prototipo/verificacao/fronteira.py`, sonda 42/42, decisão 15 do `design.md`, 29/09/2026
 - [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
       — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
 - [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
