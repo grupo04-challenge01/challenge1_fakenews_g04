@@ -246,7 +246,7 @@ datasets — **e não está mais**.
 | # | Task | Nota |
 | --- | --- | --- |
 | 4.1 | Classificador de pedido de conduta clínica individual | **obrigatório**, não opcional: a sonda T2 mostrou que prompt não sustenta a fronteira |
-| 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | **fechada** em 29/09/2026: diretrizes e respostas Web/WhatsApp, decisão 8 do design |
+| 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | **fechada** em 29/09/2026: diretrizes e respostas Web/WhatsApp, decisão 10 do design |
 | 4.3 | Bateria de testes adversariais de pedido de conduta | — |
 
 A 4.1 é o **único candidato a fine-tuning** hoje, e as quatro condições que o
