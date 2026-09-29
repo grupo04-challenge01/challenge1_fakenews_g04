@@ -209,6 +209,57 @@ preservar a segurança do usuário e a integridade ética do produto:
    às convenções de cada canal (markdown padrão para web e microformatação com
    emojis pontuais e bullet points objetivos para WhatsApp).
 
+### 11. Classificação: rótulo, trechos citados e critério — 29/09/2026
+
+Task 2.2. Código em `prototipo/verificacao/classificacao.py`, testes em
+`prototipo/verificacao/tests/test_classificacao.py`, sonda em
+`prototipo/sonda_classificacao_guarda.py`.
+
+O modelo recebe a alegação e os trechos recuperados, numerados `T1`, `T2`...,
+com agência, data e o veredito que a agência deu. Ele devolve três coisas: um
+dos quatro rótulos, escrito igual à spec; os identificadores dos trechos que o
+sustentam; e o critério. Veredito sem critério é defeito de forma, porque o
+veredito é permitido, mas nunca nu. O prompt avisa que o veredito da agência
+vale para a alegação que a agência checou, e que o modelo precisa conferir se é
+a mesma antes de usá-lo. O prompt também manda não rebaixar a alegação que soa
+absurda, conforme o cenário Alegação verdadeira contra-intuitiva.
+
+Sonda de 29/09, com Gemma 4 12B QAT, `think: false`, três tentativas por caso e
+fragmentos reais do índice: `falso` (jatobá, Aos Fatos) 3/3; `verdadeiro`
+contra-intuitivo (criança em caixão lacrado que testou negativo, Comprova) 3/3;
+`verdadeiro fora de contexto ou exagerado` (vídeo de abril postado como atual,
+Comprova) 3/3. Nos três casos, o critério cita o que o trecho diz, não o que o
+modelo sabe.
+
+### 12. Guarda paramétrica em código, não só no prompt — 29/09/2026
+
+Task 2.3. Código em `prototipo/verificacao/guarda.py`, testes em
+`prototipo/verificacao/tests/test_guarda.py`, mesma sonda da decisão 11.
+
+A regra da spec não fica a cargo do prompt. Ela vale em três pontos, todos em
+código:
+
+1. **Sem trecho, o modelo não é chamado.** O resultado é `evidência
+   insuficiente` direto, e não há como o modelo responder de memória.
+2. **Limiar como parâmetro.** Trecho com score abaixo de `limiar` conta como
+   não recuperado. O valor é a task 1.5, bloqueada por 1.1 e 1.2. Até lá, o
+   parâmetro não tem valor padrão, e todo trecho recuperado vai ao modelo.
+3. **Veredito tem de citar trecho recuperado.** Veredito sem trecho citado, ou
+   que cita identificador que não foi enviado, cai para `evidência
+   insuficiente`. O que o modelo disse fica em `original`, para auditoria.
+
+Sonda de 29/09, quatro casos com alegação que o modelo conhece: sem trecho
+3/3; trecho de outro assunto 3/3; mesmo remédio, outra alegação (cloroquina)
+3/3; regra parecida para outra doença (jatobá e câncer diante de goiabeira e
+dengue) 3/3. Nos três casos com trecho, quem disse `evidência insuficiente` foi
+o próprio modelo, e o ponto 3 da guarda não precisou agir. Por isso ele fica
+coberto só pelos testes.
+
+**Limite declarado.** A guarda não pega veredito que cita um trecho real que
+não cobre a alegação. Isso depende do prompt, e os casos G3 e G4 medem
+exatamente isso. Pegar esse caso em código exige o limiar da task 1.5 ou a
+ancoragem trecho a afirmação da task 1.6.
+
 ## Questões em aberto
 
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~

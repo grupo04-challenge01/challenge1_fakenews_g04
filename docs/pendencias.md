@@ -222,23 +222,23 @@ datasets — **e não está mais**.
 | 1.5 | Definir e calibrar o limiar de `evidência insuficiente` | **medido:** não sai do score fundido; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos |
 | 1.6 | Ancoragem trecho a afirmação e descarte de afirmação sem trecho | procedimento de auditoria em 5 passos na decisão 12; `tratamento.integridade.trecho_e_fiel` |
 
-### Bloco 2 — Verificação e veredito (5)
+### Bloco 2 — Verificação e veredito (1 aberta, 4 fechadas)
 
 | # | Task | Nota |
 | --- | --- | --- |
-| 2.1 | Prompt de extração de alegação, com seleção quando há várias | — |
-| 2.2 | Prompt de classificação nos quatro rótulos | o mapa de veredito versionado já existe |
-| 2.3 | Guarda contra veredito por conhecimento paramétrico | a sonda de 18/09 já mediu o comportamento base |
+| 2.1 | Prompt de extração de alegação, com seleção quando há várias | **fechada** em 29/09/2026: `prototipo/verificacao/extracao.py`, decisão 8 do design |
+| 2.2 | Prompt de classificação nos quatro rótulos | **fechada** em 29/09/2026: `prototipo/verificacao/classificacao.py`, decisão 11 do design |
+| 2.3 | Guarda contra veredito por conhecimento paramétrico | **fechada** em 29/09/2026: `prototipo/verificacao/guarda.py`, decisão 12 do design; valor do limiar pela 1.5 |
 | 2.4 | Teste de regressão com itens verdadeiros contra-intuitivos | **sem material:** 21 itens `verdadeiro` em 4.063, e a FakeRecogna 2.0 não resolve |
-| 2.5 | Prompt de decomposição fato / evidência / opinião | 245 registros `misto` reservados como conjunto de teste |
+| 2.5 | Prompt de decomposição fato / evidência / opinião | **fechada** em 29/09/2026: `prototipo/verificacao/decomposicao.py`, decisão 9 do design; os 245 registros `misto` seguem reservados para teste |
 
-### Bloco 3 — Resposta formativa (4)
+### Bloco 3 — Resposta formativa (2 abertas, 2 fechadas)
 
 | # | Task | Nota |
 | --- | --- | --- |
-| 3.1 | Fechar o catálogo de 6 a 8 técnicas | dois rótulos de emoção propostos com motivo na decisão 13 do RAG |
+| 3.1 | Fechar o catálogo de 6 a 8 técnicas | **fechada** em 28/09/2026: sete rótulos e uma vaga, decisão 6 do design |
 | 3.2 | Prompt da estrutura de quatro blocos | **bloqueado** por `fix-resposta-sem-evidencia` |
-| 3.3 | Validação automática: rótulo usado pertence ao catálogo | a sonda alertou: pertinência não é adequação |
+| 3.3 | Validação automática: rótulo usado pertence ao catálogo | **fechada** em 28/09/2026: `prototipo/resposta/catalogo.py`, decisão 7 do design; confere pertinência, não adequação |
 | 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | — |
 
 ### Bloco 4 — Fronteira de saúde (2 abertas, 1 fechada)

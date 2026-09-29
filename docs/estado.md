@@ -11,7 +11,7 @@ Atualizado em **24/09/2026**.
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
 | `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 13** |
-| `mvp-copiloto-verificacao` | Act | completo | **6 de 31** |
+| `mvp-copiloto-verificacao` | Act | completo | **8 de 31** |
 
 Todos passam `openspec validate --strict`.
 
