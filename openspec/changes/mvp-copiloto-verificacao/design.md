@@ -131,10 +131,69 @@ A forma sem evidência de `fix-resposta-sem-evidencia` inverte a regra: ali
 qualquer rótulo é defeito. `rotulos_marcados` serve às duas verificações; o
 teste daquele lado é a task 3.3 do fix.
 
+### 8. Extração: o modelo lista e gradua, o código seleciona — 29/09/2026
+
+Task 2.1. Prompt e leitura em `prototipo/verificacao/extracao.py`, testes em
+`prototipo/verificacao/tests/test_extracao.py`, sonda em
+`prototipo/sonda_extracao_decomposicao.py`.
+
+O modelo devolve JSON com todas as alegações da mensagem, e cada uma traz
+`saude` (sim ou não) e `risco` (`alto`, `medio` ou `baixo`). O risco `alto` é o
+que leva a agir sobre o corpo: tomar, parar ou recusar remédio, vacina ou
+tratamento, ou demorar para procurar atendimento. Quem escolhe a alegação
+verificada é o código: a de saúde com maior risco, e no empate a primeira da
+mensagem. Assim a regra de desempate fica fixa e testável, e a escolha não muda
+de uma tentativa para outra por causa da ordem em que o modelo escreve. As
+demais alegações seguem na ordem da mensagem, para o cenário que oferece
+verificá-las. Sem alegação de saúde, a mensagem não é verificável, e a opinião
+copiada vai para a explicação do cenário Texto sem alegação verificável.
+
+Sonda de 29/09, com Gemma 4 12B QAT, `think: false` e três tentativas por caso:
+uma alegação (caso 02 da forense) 3/3, várias alegações 3/3, só opinião 3/3.
+Dois achados:
+
+- O modelo parte a mensagem em mais alegações do que há. Por exemplo, "Estudo
+  da UFMG" sai como alegação separada. A seleção por risco absorve isso.
+- Relato pessoal sai como alegação de risco `alto`: "minha tia parou o remédio
+  e melhorou" empata com "o chá de boldo cura hepatite". Nesta mensagem o
+  desempate por ordem acerta, mas com o relato antes da alegação o código
+  escolheria o relato. Ver Questões em aberto.
+
+### 9. Decomposição: força da evidência separada do salto — 29/09/2026
+
+Task 2.5. Código em `prototipo/verificacao/decomposicao.py`, testes em
+`prototipo/verificacao/tests/test_decomposicao.py`, mesma sonda da decisão 8.
+
+A saída tem `fatos`, `evidencias` (cada uma com `forca`: `forte`, `fraca` ou
+`ausente`), `opinioes` e `conclusao` (com `decorre` e `salto`). A força diz só
+se dá para localizar a evidência. Se ela sustenta a conclusão, quem responde é
+o `salto`. Na primeira versão do prompt, "documento real usado para afirmar
+mais do que diz" contava como evidência fraca, e o modelo classificou a bula
+como `forte` nas três tentativas. Isso estava coerente com a outra metade da
+definição, porque a bula existe e dá para localizar. Separar as duas perguntas
+tirou a contradição do prompt e deixou o caso 04 onde ele pertence: o fato
+confere, e o problema está no salto até a conclusão.
+
+A decomposição não emite veredito. `defeitos` reprova "é falso", "é
+verdadeiro", "mentira", "boato" e "fake" em qualquer campo, mas aceita a
+palavra solta dentro da alegação ("o verdadeiro remédio é..."). Também reprova
+opinião repetida como fato.
+
+Sonda de 29/09: caso misto 3/3 e fato verdadeiro com conclusão que não decorre
+3/3. Na primeira rodada o caso misto deu 2/3, porque a tentativa 2 pôs "remédio
+de farmácia só faz mal" também em `fatos`. O prompt passou a dizer que cada
+frase vai para um lugar só e que "eu acho" marca opinião. A rodada gravada no
+relatório é a segunda.
+
 ## Questões em aberto
 
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
   insuficiente`.
+- **Relato pessoal como alegação.** A extração gradua "minha tia parou o remédio
+  e melhorou" como alegação de risco `alto` (decisão 8). A spec não diz se relato
+  pessoal é alegação a verificar ou evidência fraca da alegação ao lado. Da
+  resposta depende o desempate por ordem. Cabe à curadoria da task 6.1 trazer
+  casos com relato antes da alegação.
 
