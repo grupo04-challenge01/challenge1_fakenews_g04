@@ -7,7 +7,7 @@ defeito: o veredito é permitido, nunca nu.
 
 Aqui só se confere a forma da saída. A regra de que veredito sem trecho não vale
 fica na guarda (`guarda.py`, task 2.3), que não confia no prompt para isso.
-Ver decisão 10 do design.md.
+Ver decisão 11 do design.md.
 """
 import re
 from dataclasses import dataclass

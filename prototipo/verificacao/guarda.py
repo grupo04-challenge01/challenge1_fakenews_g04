@@ -12,7 +12,7 @@ guarda não depende dele. Ela vale em três pontos, todos em código:
    cai para `evidência insuficiente`, e o que o modelo disse fica registrado.
 
 O que a guarda não pega: veredito que cita um trecho real que não cobre a
-alegação. Isso depende do prompt e é o que a sonda mede. Ver decisão 11 do
+alegação. Isso depende do prompt e é o que a sonda mede. Ver decisão 12 do
 design.md.
 """
 from dataclasses import dataclass, field
