@@ -1,0 +1,56 @@
+{
+  "versao": "1",
+  "data": "2026-09-28",
+  "change": "mvp-copiloto-verificacao, task 3.1",
+  "regra": "Rótulo escrito exatamente como em `rotulo`. Nenhum rótulo fora desta lista. Só na forma com evidência de resposta-formativa.",
+  "marcador_no_bloco_3": "Técnica:",
+  "tecnicas": [
+    {
+      "rotulo": "cura milagrosa",
+      "sinal": "Promete curar ou prevenir doença séria com algo simples, rápido ou caseiro, sem estudo que mostre isso.",
+      "limite": "Remédio caseiro que alivia sintoma leve não é cura milagrosa. O sinal é a promessa de curar doença séria.",
+      "origem": ["spec resposta-formativa, cenário Promessa de cura", "forense caso 02"]
+    },
+    {
+      "rotulo": "manchete exagerada",
+      "sinal": "Existe um estudo ou documento de verdade, mas a mensagem diz mais do que ele diz.",
+      "limite": "Resumir um estudo não é exagerar. O sinal é afirmar o que o estudo ou o documento não afirma.",
+      "origem": ["spec resposta-formativa, cenário Estudo real com manchete inflada", "forense caso 04", "cartão-semente: documento real afirma menos do que a mensagem diz"]
+    },
+    {
+      "rotulo": "fora de contexto",
+      "sinal": "Vídeo, foto ou número verdadeiro, mas de outra época ou cortado, usado para contar outra história.",
+      "limite": "Material antigo pode ser usado de forma honesta quando a mensagem diz de quando ele é. O sinal é esconder a data ou o corte.",
+      "origem": ["forense casos 03 e 05", "cartões-semente: data da mídia não bate; corte de vídeo muda o sentido"]
+    },
+    {
+      "rotulo": "fonte sem nome",
+      "sinal": "Diz que “um médico” ou “um especialista” falou, sem dizer quem é, ou conta o que alguém ouviu de outra pessoa.",
+      "limite": "Fonte com nome também pode errar. O sinal é não dar como conferir quem falou.",
+      "origem": ["forense casos 01 e 06", "cartões-semente: fala atribuída a médico sem nome; autoridade de segunda mão"]
+    },
+    {
+      "rotulo": "estudo inventado",
+      "sinal": "Cita uma universidade ou um instituto de verdade, mas o estudo não existe ou a instituição não disse aquilo.",
+      "limite": "Estudo difícil de achar não é estudo inventado. O sinal é a instituição negar ou não haver registro do estudo.",
+      "origem": ["forense caso 02", "cartões-semente: instituição real com estudo inexistente; antecipa a objeção"]
+    },
+    {
+      "rotulo": "urgência fabricada",
+      "sinal": "Manda repassar agora, antes que apaguem ou antes que seja tarde.",
+      "limite": "Alerta verdadeiro também pode ser urgente. O sinal é a pressa servir para você repassar sem conferir, não o tom.",
+      "origem": ["decisão 13 de add-selecao-modelos-arquitetura-rag", "forense caso 06", "cartão-semente: pede repasse urgente"]
+    },
+    {
+      "rotulo": "medo de dano oculto",
+      "sinal": "Diz que algo que você já usa, como uma vacina ou um remédio, esconde um perigo grave.",
+      "limite": "Efeito colateral real existe e aparece na bula. O sinal é o perigo grave sem fonte que o mostre.",
+      "origem": ["decisão 13 de add-selecao-modelos-arquitetura-rag", "forense casos 01, 03, 04 e 06"]
+    }
+  ],
+  "vaga_reservada": {
+    "candidato": "conspiração",
+    "sinal": "Diz que uma autoridade sabe da verdade e esconde de propósito, ou quer fazer mal à população.",
+    "por_que_reservada": "Aparece nos casos 01 e 06 e como cartão-semente, mas se confunde com crítica legítima a governo, o mesmo risco que tirou `indignação` na decisão 13. Fica para a matriz de confiança decidir (tasks 4.x de add-engage-desinformacao-saude); a conciliação é a task 8.1."
+  }
+}
