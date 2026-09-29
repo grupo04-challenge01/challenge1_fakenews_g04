@@ -260,6 +260,16 @@ não cobre a alegação. Isso depende do prompt, e os casos G3 e G4 medem
 exatamente isso. Pegar esse caso em código exige o limiar da task 1.5 ou a
 ancoragem trecho a afirmação da task 1.6.
 
+### 13. Protocolo ético: TCLE e debriefing operacional — 29/09/2026
+
+Task 6.3. Documento em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`.
+
+O teste do copiloto com usuários (prioritariamente idosos) e o uso de 4 a 6 itens-armadilha para medir aceitação cega exigem conformidade estrita com o Conep/CEP (Resoluções CNS 510/2016 e 466/2012):
+
+1. **TCLE com linguagem acessível e consentimento sobre itens-armadilha:** O participante é previamente esclarecido de que o sistema contém simulações de testes com deduções intencionalmente incorretas para aferir confiabilidade, sem adiantar quais são os itens.
+2. **Debriefing supervisionado obrigatório:** Imediatamente após a sessão, o pesquisador abre o gabarito oficial com a verdade científica baseada em fontes do SUS (MS, Fiocruz, Anvisa), neutralizando qualquer risco de fixação de desinformação.
+3. **Privacidade e proteção de dados:** Processamento local e anonimização estrita, sem exposição de dados do usuário a APIs comerciais externas (consistente com Decisão 8 do RAG).
+
 ## Questões em aberto
 
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
