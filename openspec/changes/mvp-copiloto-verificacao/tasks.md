@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 4, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 4.
+Donos das tasks em aberto: **Vitor** 4, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 3.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -52,7 +52,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 ## 6. Avaliação
 - [ ] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
 - [ ] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
-- [ ] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
+- [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
+      — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
 - [ ] 6.4 **Breno** Submeter protocolo ao comitê de ética
 - [ ] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
 - [ ] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta

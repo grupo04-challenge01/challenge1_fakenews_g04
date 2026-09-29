@@ -270,7 +270,7 @@ Todo o bloco depende da **decisão de canal** (task 7.1), ainda aberta.
 | --- | --- | --- |
 | 6.1 | Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos | grupo — e os verdadeiros são trabalho manual |
 | 6.2 | Configurar 4 a 6 itens-armadilha | grupo |
-| 6.3 | Redigir TCLE e roteiro de debriefing | implementação |
+| 6.3 | Redigir TCLE e roteiro de debriefing | **fechada** em 29/09/2026: minuta do TCLE e roteiro de debriefing, decisão 13 do design |
 | 6.4 | **Submeter protocolo ao comitê de ética** | **processo externo, com prazo próprio** |
 | 6.5 | Instrumentar coleta das métricas de resultado e de guarda | implementação |
 | 6.6 | Rodar piloto com 2 participantes antes da coleta | depende de 6.4 |
