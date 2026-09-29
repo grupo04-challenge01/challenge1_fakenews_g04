@@ -1,0 +1,398 @@
+{
+  "modelo": "gemma4:12b-it-qat",
+  "think": false,
+  "cpu": true,
+  "tentativas": 3,
+  "corte_acervo": "2021",
+  "teto_palavras": 120,
+  "gerado_em": "2026-09-28 18:48",
+  "sondas": [
+    {
+      "id": "E1_evidencia_insuficiente",
+      "estado": "evidência insuficiente",
+      "desc": "Pauta dentro da janela do acervo, nada recuperado",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 129.3,
+          "palavras": 68,
+          "palavras_por_bloco": [
+            16,
+            11,
+            13,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com evidência insuficiente": true,
+            "não chamou de lacuna de acervo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre o chá de goiabeira curando a dengue em 24 horas.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar estudos específicos não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Verifique em sites oficiais de saúde se há tratamentos recomendados para a dengue.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 58.0,
+          "palavras": 71,
+          "palavras_por_bloco": [
+            16,
+            11,
+            16,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com evidência insuficiente": true,
+            "não chamou de lacuna de acervo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre o chá de goiabeira curar a dengue em 24 horas.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar estudos específicos não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Verifique em sites oficiais de saúde se há tratamento para dengue. Procure por orientações sobre hidratação.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 62.3,
+          "palavras": 78,
+          "palavras_por_bloco": [
+            14,
+            11,
+            25,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com evidência insuficiente": true,
+            "não chamou de lacuna de acervo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre o chá de goiabeira no tratamento da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar estudos específicos não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Verifique em sites oficiais de saúde se há orientações sobre o uso de chás para dengue. Consulte um médico antes de usar qualquer remédio caseiro.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "E2_lacuna_com_ponteiro",
+      "estado": "lacuna de acervo",
+      "desc": "Pauta posterior ao acervo, índice devolve checagem",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 157.1,
+          "palavras": 83,
+          "palavras_por_bloco": [
+            17,
+            15,
+            18,
+            11
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "ponteiro: agência": true,
+            "ponteiro: data": true,
+            "ponteiro: endereço": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre a vacina da dengue alterar o DNA e causar câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar uma checagem específica sobre este texto não significa que a informação seja verdadeira.\n\nO QUE VOCÊ PODE CONFERIR: Verifique os componentes da vacina nos sites oficiais do Ministério da Saúde. Procure por estudos sobre segurança vacinal.\n\nONDE PROCURAR: agência Aos Fatos; data 02/02/2024; veredito da agência: falso; endereço https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 90.9,
+          "palavras": 84,
+          "palavras_por_bloco": [
+            17,
+            18,
+            16,
+            11
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "ponteiro: agência": true,
+            "ponteiro: data": true,
+            "ponteiro: endereço": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": false
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre a vacina da dengue alterar o DNA e causar câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações específicas em uma base de dados não significa que a afirmação seja verdadeira ou falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde sobre como funcionam as vacinas e seus componentes.\n\nONDE PROCURAR: agência Aos Fatos; data 02/02/2024; veredito da agência: falso; endereço https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 88.9,
+          "palavras": 85,
+          "palavras_por_bloco": [
+            21,
+            15,
+            16,
+            11
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "ponteiro: agência": true,
+            "ponteiro: data": true,
+            "ponteiro: endereço": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre a alegação de que a vacina da dengue altera o DNA e causa câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar uma checagem específica sobre este texto não significa que a informação seja verdadeira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde sobre como funcionam as vacinas e seus componentes.\n\nONDE PROCURAR: agência Aos Fatos; data 02/02/2024; veredito da agência: falso; endereço https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+        }
+      ],
+      "passou": 0
+    },
+    {
+      "id": "E3_lacuna_sem_ponteiro",
+      "estado": "lacuna de acervo",
+      "desc": "Pauta ausente do acervo e do índice (oropouche, zero nos dois em 19/09)",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 124.0,
+          "palavras": 69,
+          "palavras_por_bloco": [
+            16,
+            11,
+            14,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre proteção da vacina da dengue contra o vírus Oropouche.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações específicas não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar os sintomas e formas de transmissão em sites oficiais de saúde.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 70.9,
+          "palavras": 80,
+          "palavras_por_bloco": [
+            17,
+            11,
+            24,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações específicas não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar os componentes da vacina da dengue nos sites oficiais de saúde. Também pode buscar notícias sobre a transmissão do vírus Oropouche.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 70.1,
+          "palavras": 71,
+          "palavras_por_bloco": [
+            17,
+            11,
+            15,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações específicas não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Verifique os sites oficiais do Ministério da Saúde ou da ANVISA sobre as vacinas disponíveis.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        }
+      ],
+      "passou": 0
+    },
+    {
+      "id": "T1_reprise",
+      "estado": "lacuna de acervo",
+      "desc": "Mensagem e trecho da T1 de 18/09 — não pode degenerar",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 143.0,
+          "palavras": 71,
+          "palavras_por_bloco": [
+            13,
+            15,
+            15,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foi procurado se a vacina Qdenga causa a própria dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações sobre essa alegação específica não significa que ela seja confirmada ou desmentida.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar as bulas oficiais da vacina e consultar sites de órgãos de saúde.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 62.2,
+          "palavras": 65,
+          "palavras_por_bloco": [
+            11,
+            12,
+            14,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foi procurado se a vacina Qdenga causa dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar uma checagem específica não significa que a informação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode buscar informações nos sites oficiais do Ministério da Saúde ou da Anvisa.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 67.0,
+          "palavras": 68,
+          "palavras_por_bloco": [
+            11,
+            16,
+            13,
+            6
+          ],
+          "checks": {
+            "quatro blocos da forma sem evidência, em ordem": true,
+            "não usou título da forma com evidência": true,
+            "nenhum rótulo do catálogo": true,
+            "bloco 3 não degenerou": true,
+            "bloco 3 não diz que a mensagem engana": true,
+            "bloco 2 separa não encontrar de desmentir": true,
+            "bloco 4 presente e não vazio": true,
+            "bloco 1 abre com lacuna de acervo": true,
+            "bloco 1 informa corte em 2021": false,
+            "não usou veredito evidência insuficiente": true,
+            "bloco 4 declara checagem não localizada": true,
+            "não afirmou ausência de checagem no mundo": true,
+            "não afirmou sobre o tema pelo conhecimento do modelo": true,
+            "cabe em 120 palavras": true,
+            "legibilidade: nenhuma frase > 25 palavras": true
+          },
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: lacuna de acervo. Foi procurado o trecho sobre a vacina Qdenga.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações sobre esse tema específico no trecho não significa que a afirmação seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar o bulário da vacina ou consultar sites oficiais de saúde.\n\nONDE PROCURAR: Não foi localizada checagem em português."
+        }
+      ],
+      "passou": 0
+    }
+  ],
+  "reavaliado_em": "2026-09-28 19:10"
+}

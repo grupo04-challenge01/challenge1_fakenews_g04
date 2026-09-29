@@ -52,12 +52,89 @@ Permanece fora do escopo, por decisão explícita, quem tem incentivo em acredit
 na desinformação: com amostra pequena, esses participantes medem teimosia, não a
 ferramenta.
 
+### 5. Canal: aplicação web com extensão para WhatsApp
+
+Decidido pelo grupo em 25/09/2026 (task 7.1).
+
+O canal primário é uma **aplicação web (chat responsivo)**. Além dela, o
+produto terá uma **extensão para WhatsApp** que permite ao usuário enviar
+diretamente a mensagem sobre uma notícia recebida pelo WhatsApp, ou o link de
+uma notícia que mandaram para ele.
+
+Motivo: a web permite renderização rica das fontes, camadas progressivas de
+detalhe e interface acessível sem as limitações de layout do WhatsApp. A
+extensão para WhatsApp resolve o problema de travessia de canal — a mensagem
+enganosa chega no WhatsApp e a verificação precisa estar acessível ali mesmo,
+sem exigir que o usuário copie texto e troque de aplicativo.
+
+Alternativa descartada: apenas WhatsApp (bot). Limitaria a experiência de
+revelação progressiva e os requisitos de acessibilidade visual (contraste,
+fonte, camada de detalhe). Alternativa descartada: apenas web, sem extensão
+WhatsApp. Ignoraria o canal onde a desinformação de fato circula.
+
+### 6. Catálogo de técnicas, versão 1: sete rótulos e uma vaga — 28/09/2026
+
+Task 3.1. Arquivo versionado em `prototipo/resposta/catalogo_tecnicas.json`,
+com sinal em linguagem cotidiana, limite e origem de cada rótulo.
+
+| Rótulo | Casos da forense | De onde veio |
+| --- | --- | --- |
+| `cura milagrosa` | 02 | spec, cenário Promessa de cura |
+| `manchete exagerada` | 04 | spec, cenário Estudo real com manchete inflada |
+| `fora de contexto` | 03, 05 | cartões-semente de data e de corte |
+| `fonte sem nome` | 01, 06 | cartões-semente de autoridade sem nome |
+| `estudo inventado` | 02 | cartão-semente de instituição real com estudo inexistente |
+| `urgência fabricada` | 06 | decisão 13 de `add-selecao-modelos-arquitetura-rag` |
+| `medo de dano oculto` | 01, 03, 04, 06 | decisão 13 de `add-selecao-modelos-arquitetura-rag` |
+
+Todos os seis casos da forense recebem ao menos um rótulo. Cada rótulo tem
+**limite** declarado, no formato que o kit da matriz de confiança exige das
+dimensões: o que o sinal não determina. Por exemplo, alerta verdadeiro também
+pode ser urgente. É o que impede o catálogo de virar detector de falsidade.
+
+**Vaga reservada, não preenchida: `conspiração`.** Aparece nos casos 01 e 06 e
+como cartão-semente, mas se confunde com crítica legítima a governo, o mesmo
+risco que tirou `indignação` na decisão 13. A decisão fica para a matriz de
+confiança (tasks 4.x de `add-engage-desinformacao-saude`), para o catálogo não
+virar vocabulário paralelo ao dela, como a `proposal.md` proíbe. A conciliação é
+a task 8.1.
+
+**Prevalência no corpus: medida e descartada como critério.** Foram contados
+marcadores léxicos nas 4.063 checagens de saúde do FactCenter. Por amostra, a
+precisão deles foi baixa: cerca de 1 acerto em 5 para conspiração, 2 em 5 para
+urgência e 3 em 5 para medo. "Urgente" aparece mais em manchete política do que
+em corrente, e "esconde" aparece no texto do próprio checador. Contagem assim
+não sustenta escolha de rótulo. O catálogo se apoia no que foi verificado caso a
+caso na forense. Medir prevalência de verdade exige anotação, e cabe na
+curadoria da task 6.1.
+
+### 7. Validação do rótulo: marcador explícito, pertinência e não adequação — 28/09/2026
+
+Task 3.3. Código em `prototipo/resposta/catalogo.py`, testes em
+`prototipo/resposta/tests/test_catalogo.py`.
+
+O bloco 3 declara a técnica depois do marcador `Técnica:`, e a validação lê só o
+que vem depois dele. Sem marcador não há como separar o rótulo do uso comum das
+mesmas palavras. "Isso é uma cura milagrosa" pode ser rótulo ou só frase, e a
+validação não adivinha. Resposta sem marcador é defeito. O marcador é, portanto,
+contrato com o prompt da task 3.2, que MUST exigi-lo. As respostas da sonda de
+18/09, anteriores ao contrato, reprovam as três por falta de marcador.
+
+A validação confere **pertinência** ao catálogo, não **adequação** ao caso:
+`manchete exagerada` numa promessa de cura passa. A decisão 10 de
+`add-selecao-modelos-arquitetura-rag` mediu exatamente essa instabilidade, e o
+segundo critério depende de casos rotulados à mão, o que é a curadoria da task
+6.1. Fica registrado para que ninguém leia o verde desta validação como rótulo
+certo.
+
+A forma sem evidência de `fix-resposta-sem-evidencia` inverte a regra: ali
+qualquer rótulo é defeito. `rotulos_marcados` serve às duas verificações; o
+teste daquele lado é a task 3.3 do fix.
+
 ## Questões em aberto
 
-- **Canal.** Se a mensagem chega no WhatsApp e a verificação mora em outro app,
-  a maior parte das pessoas não faz a travessia. A decisão de canal precisa ser
-  tomada antes da fase de testes, porque muda a arquitetura, não só a interface.
-- **Composição do catálogo.** Quais 6 a 8 técnicas, e com que nomes. Depende de
-  uma passada de leitura no recorte de saúde do FactCenter.
+- **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
+  Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
   insuficiente`.
+
