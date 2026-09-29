@@ -232,20 +232,20 @@ datasets — **e não está mais**.
 | 2.4 | Teste de regressão com itens verdadeiros contra-intuitivos | **sem material:** 21 itens `verdadeiro` em 4.063, e a FakeRecogna 2.0 não resolve |
 | 2.5 | Prompt de decomposição fato / evidência / opinião | **fechada** em 29/09/2026: `prototipo/verificacao/decomposicao.py`, decisão 9 do design; os 245 registros `misto` seguem reservados para teste |
 
-### Bloco 3 — Resposta formativa (2 abertas, 2 fechadas)
+### Bloco 3 — Resposta formativa (1 aberta, 3 fechadas)
 
 | # | Task | Nota |
 | --- | --- | --- |
 | 3.1 | Fechar o catálogo de 6 a 8 técnicas | **fechada** em 28/09/2026: sete rótulos e uma vaga, decisão 6 do design |
 | 3.2 | Prompt da estrutura de quatro blocos | **bloqueado** por `fix-resposta-sem-evidencia` |
 | 3.3 | Validação automática: rótulo usado pertence ao catálogo | **fechada** em 28/09/2026: `prototipo/resposta/catalogo.py`, decisão 7 do design; confere pertinência, não adequação |
-| 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | — |
+| 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | **fechada** em 29/09/2026: `prototipo/resposta/mito.py`, decisão 14 do design; contrato com o prompt da 3.2 |
 
-### Bloco 4 — Fronteira de saúde (2 abertas, 1 fechada)
+### Bloco 4 — Fronteira de saúde (1 aberta, 2 fechadas)
 
 | # | Task | Nota |
 | --- | --- | --- |
-| 4.1 | Classificador de pedido de conduta clínica individual | **obrigatório**, não opcional: a sonda T2 mostrou que prompt não sustenta a fronteira |
+| 4.1 | Classificador de pedido de conduta clínica individual | **fechada** em 29/09/2026: `prototipo/verificacao/fronteira.py`, regras e modelo, decisão 15 do design; acerto fora da sonda é medido pela 4.3 |
 | 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | **fechada** em 29/09/2026: diretrizes e respostas Web/WhatsApp, decisão 10 do design |
 | 4.3 | Bateria de testes adversariais de pedido de conduta | — |
 
