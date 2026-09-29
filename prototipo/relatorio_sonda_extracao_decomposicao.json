@@ -1,0 +1,253 @@
+{
+  "modelo": "gemma4:12b-it-qat",
+  "think": false,
+  "cpu": false,
+  "tentativas": 3,
+  "gerado_em": "2026-09-29 09:19",
+  "sondas": [
+    {
+      "id": "X1_uma_alegacao",
+      "prompt": "extracao",
+      "texto": "Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas. O estudo ainda não foi divulgado. Compartilhem urgente!",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 18.7,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "selecionou a do inhame": true,
+            "risco alto (promete tratar doença)": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 16.3,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "selecionou a do inhame": true,
+            "risco alto (promete tratar doença)": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 15.1,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "selecionou a do inhame": true,
+            "risco alto (promete tratar doença)": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": \"Compartilhem urgente!\"\n}"
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "X2_varias_alegacoes",
+      "prompt": "extracao",
+      "texto": "O hospital de Sorocaba ficou lotado ontem. O prefeito gastou 2 milhões numa praça. E o chá de boldo cura hepatite, minha tia parou o remédio e melhorou.",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 26.4,
+          "checks": {
+            "saída bem formada": true,
+            "selecionou a do boldo (maior risco)": true,
+            "ofereceu a do hospital": true,
+            "ofereceu a do prefeito": true,
+            "prefeito marcado fora de saúde": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 22.2,
+          "checks": {
+            "saída bem formada": true,
+            "selecionou a do boldo (maior risco)": true,
+            "ofereceu a do hospital": true,
+            "ofereceu a do prefeito": true,
+            "prefeito marcado fora de saúde": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 20.6,
+          "checks": {
+            "saída bem formada": true,
+            "selecionou a do boldo (maior risco)": true,
+            "ofereceu a do hospital": true,
+            "ofereceu a do prefeito": true,
+            "prefeito marcado fora de saúde": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "X3_so_opiniao",
+      "prompt": "extracao",
+      "texto": "Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 8.9,
+          "checks": {
+            "saída bem formada": true,
+            "não verificável": true,
+            "copiou a opinião": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [], \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 4.4,
+          "checks": {
+            "saída bem formada": true,
+            "não verificável": true,
+            "copiou a opinião": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [], \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 4.3,
+          "checks": {
+            "saída bem formada": true,
+            "não verificável": true,
+            "copiou a opinião": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [], \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"}"
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "D1_caso_misto",
+      "prompt": "decomposicao",
+      "texto": "Um médico no YouTube explicou que o jejum de três dias limpa o fígado. Eu acho que remédio de farmácia só faz mal.",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 21.3,
+          "checks": {
+            "saída bem formada": true,
+            "fato: jejum e fígado": true,
+            "evidência fraca: médico do YouTube": true,
+            "opinião: remédio de farmácia": true,
+            "opinião fora dos fatos": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"O jejum de três dias limpa o fígado.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico no YouTube explicou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Eu acho que remédio de farmácia só faz mal.\"\n  ],\n  \"conclusao\": null\n}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 12.1,
+          "checks": {
+            "saída bem formada": true,
+            "fato: jejum e fígado": true,
+            "evidência fraca: médico do YouTube": true,
+            "opinião: remédio de farmácia": true,
+            "opinião fora dos fatos": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"O jejum de três dias limpa o fígado.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico no YouTube explicou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Eu acho que remédio de farmácia só faz mal.\"\n  ],\n  \"conclusao\": null\n}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 12.1,
+          "checks": {
+            "saída bem formada": true,
+            "fato: jejum e fígado": true,
+            "evidência fraca: médico do YouTube": true,
+            "opinião: remédio de farmácia": true,
+            "opinião fora dos fatos": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"O jejum de três dias limpa o fígado.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico no YouTube explicou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Eu acho que remédio de farmácia só faz mal.\"\n  ],\n  \"conclusao\": null\n}"
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "D2_salto_fato_conclusao",
+      "prompt": "decomposicao",
+      "texto": "A bula da vacina Tripedia cita relatos de autismo depois da vacina. Então está provado: vacina causa autismo. Não adianta brigar comigo.",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 27.0,
+          "checks": {
+            "saída bem formada": true,
+            "fato: bula cita relatos": true,
+            "conclusão: vacina causa autismo": true,
+            "conclusão não decorre": true,
+            "salto explicado": true,
+            "conclusão não listada como fato": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade direta e definitiva entre a vacina e o autismo.\"\n  }\n}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 19.0,
+          "checks": {
+            "saída bem formada": true,
+            "fato: bula cita relatos": true,
+            "conclusão: vacina causa autismo": true,
+            "conclusão não decorre": true,
+            "salto explicado": true,
+            "conclusão não listada como fato": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade direta e comprovada entre as duas variáveis.\"\n  }\n}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 20.5,
+          "checks": {
+            "saída bem formada": true,
+            "fato: bula cita relatos": true,
+            "conclusão: vacina causa autismo": true,
+            "conclusão não decorre": true,
+            "salto explicado": true,
+            "conclusão não listada como fato": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece um nexo causal direto entre a vacina e o desenvolvimento do autismo.\"\n  }\n}"
+        }
+      ],
+      "passou": 3
+    }
+  ]
+}

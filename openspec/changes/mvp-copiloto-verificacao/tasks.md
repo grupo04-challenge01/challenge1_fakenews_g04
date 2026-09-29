@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 8, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
+Donos das tasks em aberto: **Vitor** 6, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -17,12 +17,14 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
 
 ## 2. Verificação e veredito
-- [ ] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
+- [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
+      — `prototipo/verificacao/extracao.py`, sonda 9/9, decisão 8 do `design.md`, 29/09/2026
 - [ ] 2.2 **Vitor** Prompt de classificação nos quatro rótulos
 - [ ] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
 - [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
-- [ ] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
+- [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
+      — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026
 
 ## 3. Resposta formativa
 - [x] 3.1 **Vitor** Fechar o catálogo de 6 a 8 técnicas, com nome e descrição em linguagem cotidiana
