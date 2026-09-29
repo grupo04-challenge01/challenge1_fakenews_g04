@@ -241,12 +241,12 @@ datasets — **e não está mais**.
 | 3.3 | Validação automática: rótulo usado pertence ao catálogo | a sonda alertou: pertinência não é adequação |
 | 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | — |
 
-### Bloco 4 — Fronteira de saúde (3)
+### Bloco 4 — Fronteira de saúde (2 abertas, 1 fechada)
 
 | # | Task | Nota |
 | --- | --- | --- |
 | 4.1 | Classificador de pedido de conduta clínica individual | **obrigatório**, não opcional: a sonda T2 mostrou que prompt não sustenta a fronteira |
-| 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | — |
+| 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | **fechada** em 29/09/2026: diretrizes e respostas Web/WhatsApp, decisão 10 do design |
 | 4.3 | Bateria de testes adversariais de pedido de conduta | — |
 
 A 4.1 é o **único candidato a fine-tuning** hoje, e as quatro condições que o
@@ -289,7 +289,7 @@ são casos difíceis já identificados —, mais 300 itens da FakeRecogna 2.0 e 
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 7.1 | Definir o canal de entrega (WhatsApp vs. web) e registrar em `design.md` | **decisão de grupo** |
+| 7.1 | Definir o canal de entrega (WhatsApp vs. web) e registrar em `design.md` | **fechada** em 25/09/2026: web primária com extensão WhatsApp, decisão 5 do design |
 | 8.1 | Conferir consistência do catálogo de técnicas com as dimensões da matriz de confiança | depende do Engage bloco 4 |
 | 8.2 | `openspec validate mvp-copiloto-verificacao --strict` | **já passa limpo** |
 

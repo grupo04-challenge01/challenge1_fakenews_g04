@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 6, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
+Donos das tasks em aberto: **Vitor** 6, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 4.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -36,7 +36,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 
 ## 4. Fronteira de saúde
 - [ ] 4.1 **Vitor** Classificador de pedido de conduta clínica individual
-- [ ] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
+- [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
+      — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
 - [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
 
 ## 5. Interface
