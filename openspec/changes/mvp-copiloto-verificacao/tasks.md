@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 6, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
+Donos das tasks em aberto: **Vitor** 4, **Jhessica** 6, **Samara** 5, **Wingrid** 5, **Breno** 5.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -19,8 +19,11 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
       — `prototipo/verificacao/extracao.py`, sonda 9/9, decisão 8 do `design.md`, 29/09/2026
-- [ ] 2.2 **Vitor** Prompt de classificação nos quatro rótulos
-- [ ] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
+- [x] 2.2 **Vitor** Prompt de classificação nos quatro rótulos
+      — `prototipo/verificacao/classificacao.py`, sonda 9/9, decisão 10 do `design.md`, 29/09/2026
+- [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
+      — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 11 do `design.md`, 29/09/2026;
+        limiar como parâmetro, valor pela 1.5
 - [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
