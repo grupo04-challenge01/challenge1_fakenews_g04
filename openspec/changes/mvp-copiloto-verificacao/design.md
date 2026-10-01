@@ -432,6 +432,117 @@ antiga desalinha fragmento e vetor. `construir` agora avisa cada etapa em stderr
 regenerado no ambiente fixado (Python 3.14.6, M4), que não é o desta
 verificação.
 
+### 17. FACTCK.BR indexado como fonte auxiliar, esquema 1.1.0 — 01/10/2026
+
+Task 1.2. Construtor em `prototipo/rag/unidades.py` (`construir_factckbr` e
+`construir_indice`), leitura e portão em `prototipo/rag/corpus.py`, testes em
+`prototipo/rag/tests/test_factckbr.py`, laudo em
+`prototipo/indice/validacao_esquema.json`. Reexecução: `python -m
+prototipo.rag.esquema` (sem braço denso) e `python -m prototipo.rag construir
+--estender` (índice completo).
+
+**Três decisões do grupo, tomadas antes do código** (Samara e Vitor, 01/10/2026):
+
+1. **Contradição entre specs, resolvida a favor da recuperação.**
+   `integridade-textual` vedava o arquivo reprovado também para recuperação, e
+   `recuperacao-evidencia` manda indexar o FACTCK.BR. As duas não cabiam juntas.
+   O requirement de `integridade-textual` foi revisado em
+   `add-tratamento-datasets-ptbr`: o arquivo reprovado não serve a citação, mas
+   pode entrar no índice com todo registro em `apto_citacao=false`, e o texto
+   dele MUST NOT chegar ao usuário. Serve para nomear a agência, ligar para a
+   checagem e contar rótulo. A alternativa, o FACTCK.BR só para contagem, foi
+   descartada porque deixaria fora da busca 898 checagens que o FactCenter não
+   tem.
+2. **Mapa de vereditos 1.1.0.** Quatro chaves do FACTCK.BR não constavam do mapa
+   e, por `normalizacao-rotulos`, interrompiam o processamento (75 linhas):
+   `sem contexto` (Truco, 42) → `verdadeiro fora de contexto ou exagerado`, como
+   `fora de contexto` do Estadão; `impossivel provar` (Truco, 20),
+   `discutivel` (Truco, 12) e `outros` (Aos Fatos, 1) → `nao_mapeavel`. O rótulo
+   de destino continua fora do índice (decisão 16); o portão só garante que toda
+   `veredito_chave` indexada tem decisão registrada.
+3. **Sem filtro de tema.** O FACTCK.BR cobre política e outros temas. Um filtro
+   por termo foi medido e reprovado: pegou 243 linhas com falso positivo
+   evidente (STF, eleição) e perderia alegação de saúde dentro de pauta política
+   (insulina no SUS, Mais Médicos, febre amarela). O corpus entra inteiro, e a
+   aferição das 20 consultas confere se a busca piora.
+
+**Achado: a contagem declarada no esquema 1.0.0 reprovaria qualquer
+construção.** `registros_declarados` era 1.313, o número de linhas, mas a I12
+conta registros por URL, e são 984. O esquema 1.1.0 declara 984 registros e
+1.313 linhas (`linhas_declaradas`, conferida na leitura). Campo novo em
+`x-corpora`, versão menor.
+
+**Como o TSV vira unidade.** Registro é a URL. Cada linha já é uma alegação com
+seu veredito: URL de uma linha é `unica`, de várias é `segmentada` com origem
+`claim_review`. `indice_alegacao` é a ordem da linha na URL e preserva a lacuna
+quando uma irmã vai para a quarentena. A data da Lupa perde a hora. O cabeçalho
+dos fragmentos usa o nome exibível da agência, porque a grafia do corpus é um
+pedaço de URL (`https:apublica.org`) que só poluiria os braços léxico e denso. No
+FactCenter o cabeçalho não mudou.
+
+**Números, conferidos pelo validador.**
+
+| | FactCenter | FACTCK.BR |
+| --- | --- | --- |
+| registros declarados | 4.063 | 984 (1.313 linhas) |
+| com unidade | 3.975 | 898 (813 `unica`, 85 `segmentada`) |
+| em quarentena inteira | 88 | 86 (74 `duplicata_factcenter`, 12 `campo_vazio`) |
+| unidades | 5.089 | 1.190 |
+| unidades em quarentena | 1 | 5 (`campo_vazio`) |
+| fragmentos | 22.463 | 1.192 |
+
+As 74 URLs duplicadas estão todas indexadas no FactCenter, e a I10 dá a
+checagem ao corpus apto a citação. Índice total: 6.279 unidades, 23.655
+fragmentos, esquema 1.1.0 aprovado sem violação.
+
+**Aferição sem filtro de tema: a busca não piorou.** `python -m prototipo.rag
+aferir` com `multilingual-e5-base`, no ambiente fixado, 01/10/2026, sobre as 20
+consultas de `consultas_afericao.json`, contra a aferição da decisão 16:
+
+| modo | recall@1 | recall@5 | MRR antes | MRR depois |
+| --- | --- | --- | --- | --- |
+| léxica | 0,60 | 0,85 | 0,725 | 0,725 |
+| densa | 0,80 | 1,00 | 0,877 | 0,877 |
+| híbrida, score (padrão) | 0,85 | 1,00 | 0,897 | 0,897 |
+| híbrida, RRF | 0,85 | 0,85 | 0,850 | 0,855 |
+
+Nos três primeiros modos a posição do alvo é a mesma em todas as 20 consultas.
+No RRF, a16 passou de não encontrada para a décima posição (recall@10 de 0,85
+para 0,90). Nas oito consultas sem alvo da calibração do limiar, o primeiro
+recuperado é o mesmo de antes e nenhum é do FACTCK.BR. Os scores mudam na
+terceira casa decimal porque o fundo de cada consulta (percentis 50 e 99) agora
+inclui 1.192 fragmentos a mais. As faixas continuam sobrepostas: alvo de 0,5785
+a 0,7831, ruído de 0,5739 a 0,69. A conclusão da task 1.5 não muda: não há
+limiar sobre score bruto. No braço léxico, nenhum fragmento do FACTCK.BR ficou
+entre os cinco primeiros de nenhuma consulta. O conjunto de aferição só tem
+alvos no FactCenter, então mede que o FACTCK.BR não atrapalha, e não que ele
+ajuda.
+
+**A matriz densa é estendida, não refeita.** O FactCenter fica à frente e
+idêntico, e o teste `test_factcenter_continua_identico_e_na_frente` garante isso
+por id e texto. `construir --estender` reaproveita as 22.463 linhas gravadas
+depois de conferir que os fragmentos em disco são prefixo exato dos novos, e
+calcula só os 1.192 vetores do FACTCK.BR (20 s no M4, contra 2.454 s da
+reconstrução inteira). Qualquer divergência recusa a extensão. Matriz final:
+23.655 × 768, uma linha por fragmento.
+
+**Portão de integridade invertido.** Para o FACTCK.BR, o portão não exige
+aprovação: exige que o laudo concorde com `apto_citacao` do esquema
+(`verificar_integridade_auxiliar`). Se a recoleta da task 3.5 de
+`add-tratamento-datasets-ptbr` um dia aprovar o arquivo, a construção para, e
+alguém troca o esquema de propósito.
+
+**Correção colateral.** `verificar_fidelidade_dos_trechos`, de
+`tratamento/integridade.py`, construía o índice sobre uma amostra de 500
+registros com o esquema ligado, e a I12 o reprovava desde a decisão 16. O
+teste ficava vermelho na `main`. A verificação de fidelidade agora constrói sem
+validar o esquema, porque a I12 só vale para o corpus inteiro.
+
+**Fica para a 1.6.** A busca (`hibrida.py`) ainda não lê `apto_citacao`. Até a
+ancoragem trecho a afirmação existir, nada no código impede que um trecho do
+FACTCK.BR seja exibido. A 1.6 MUST descartar como âncora todo fragmento com
+`apto_citacao=false` e usar dele só agência, link e veredito.
+
 ### 18. Quatro blocos: o modelo escreve o conteúdo, o código a forma — 01/10/2026
 
 Task 3.2. Código em `prototipo/resposta/estrutura.py`, testes em
@@ -524,7 +635,6 @@ defeitos, e cada um virou regra:
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
   bloco 3 da forma com evidência nomear técnica, sem exceção. O cenário Alegação
   verdadeira, e a decisão 18, dizem que não. A spec precisa dizer qual vale.
-
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência

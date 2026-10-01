@@ -1,14 +1,14 @@
 {
   "esquema": {
     "arquivo": "prototipo/indice/esquema_indexacao.json",
-    "versao": "1.0.0",
+    "versao": "1.1.0",
     "aprovado": true
   },
-  "registros_lidos": 4063,
-  "unidades_indexadas": 5089,
-  "fragmentos_indexados": 22463,
-  "registros_em_quarentena": 88,
-  "unidades_em_quarentena": 1,
+  "registros_lidos": 5047,
+  "unidades_indexadas": 6279,
+  "fragmentos_indexados": 23655,
+  "registros_em_quarentena": 174,
+  "unidades_em_quarentena": 6,
   "disposicoes": {
     "unica": 3476,
     "quarentena_misto": 88,
@@ -19,6 +19,34 @@
   "condicao_de_reabertura": "crescimento do corpus em uma ordem de grandeza (dezenas de milhares de unidades)",
   "fragmento_caracteres": 1100,
   "fragmento_sobreposicao": 150,
+  "por_corpus": {
+    "factcenter_saude": {
+      "registros_lidos": 4063,
+      "unidades": 5089,
+      "fragmentos": 22463,
+      "disposicoes": {
+        "unica": 3476,
+        "quarentena_misto": 88,
+        "nao_segmentada": 278,
+        "segmentada": 221
+      }
+    },
+    "factckbr": {
+      "linhas_lidas": 1313,
+      "registros_lidos": 984,
+      "unidades": 1190,
+      "fragmentos": 1192,
+      "disposicoes": {
+        "quarentena_duplicata_factcenter": 74,
+        "unica": 813,
+        "quarentena_campo_vazio": 12,
+        "segmentada": 85,
+        "unidade_em_quarentena": 5
+      },
+      "apto_citacao": false
+    }
+  },
+  "matriz_densa": "estendida por `python -m prototipo.rag construir --estender` em 01/10/2026: 22463 linhas do FactCenter reaproveitadas após conferência de id e texto na mesma ordem, e 1192 linhas novas do FACTCK.BR — decisão 17 de mvp-copiloto-verificacao",
   "integridade_textual": {
     "arquivo": "factcenter_subset_saude.csv",
     "caracteres": 21559001,
@@ -44,12 +72,114 @@
       "Ç": 3239
     }
   },
+  "integridade_textual_factckbr": {
+    "arquivo": "FACTCKBR.tsv",
+    "caracteres": 706445,
+    "ausentes": [
+      "À",
+      "Â",
+      "Ã",
+      "Ê",
+      "Í",
+      "Ó",
+      "Ô",
+      "Õ",
+      "Ú",
+      "Ü",
+      "Ç"
+    ],
+    "corrompidos": [
+      {
+        "maiuscula": "Ã",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ã",
+        "ocorrencias_minuscula": 3625,
+        "ocorrencias_esperadas": 179.2
+      },
+      {
+        "maiuscula": "Ê",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ê",
+        "ocorrencias_minuscula": 1024,
+        "ocorrencias_esperadas": 50.6
+      },
+      {
+        "maiuscula": "Í",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "í",
+        "ocorrencias_minuscula": 1489,
+        "ocorrencias_esperadas": 73.6
+      },
+      {
+        "maiuscula": "Ó",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ó",
+        "ocorrencias_minuscula": 622,
+        "ocorrencias_esperadas": 30.8
+      },
+      {
+        "maiuscula": "Õ",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "õ",
+        "ocorrencias_minuscula": 700,
+        "ocorrencias_esperadas": 34.6
+      },
+      {
+        "maiuscula": "Ú",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ú",
+        "ocorrencias_minuscula": 973,
+        "ocorrencias_esperadas": 48.1
+      },
+      {
+        "maiuscula": "Ç",
+        "ocorrencias_maiuscula": 0,
+        "minuscula": "ç",
+        "ocorrencias_minuscula": 2312,
+        "ocorrencias_esperadas": 114.3
+      }
+    ],
+    "aprovado": false,
+    "razao_de_caixa": 0.0494,
+    "causa_provavel": "perda seletiva de caractere",
+    "criterio": "maiúscula com zero ocorrências e minúscula correspondente com pelo menos 500 ocorrências",
+    "contagem_por_letra": {
+      "Á": 3,
+      "À": 0,
+      "Â": 0,
+      "Ã": 0,
+      "É": 60,
+      "Ê": 0,
+      "Í": 0,
+      "Ó": 0,
+      "Ô": 0,
+      "Õ": 0,
+      "Ú": 0,
+      "Ü": 0,
+      "Ç": 0
+    },
+    "contagem_por_letra_minuscula": {
+      "á": 1519,
+      "à": 271,
+      "â": 186,
+      "ã": 3625,
+      "é": 1851,
+      "ê": 1024,
+      "í": 1489,
+      "ó": 622,
+      "ô": 131,
+      "õ": 700,
+      "ú": 973,
+      "ü": 0,
+      "ç": 2312
+    }
+  },
   "modelo_embedding": "intfloat/multilingual-e5-base",
   "dimensao": 768,
   "custo_indexacao_s": {
-    "lexico": 2.22,
-    "denso": 2453.76,
-    "total": 2469.85
+    "lexico": 2.25,
+    "denso": 19.72,
+    "total": 28.19
   },
   "fusao_padrao": {
     "forma": "combinação convexa de scores realçados contra o fundo da própria consulta",
@@ -57,6 +187,5 @@
     "percentil_fundo": 50,
     "percentil_topo": 99,
     "provisorio": "alfa é fixado por medição na task 3.1; o limiar de evidência insuficiente, na 3.5"
-  },
-  "matriz_densa": "construída por `python -m prototipo.rag construir` em 29/09/2026 sobre 22.464 fragmentos, antes do esquema; a linha do fragmento 4ce7e4777f-04-00 (alegação sem justificativa, quarentena) foi removida e as 22.463 restantes conferidas por texto e id, na mesma ordem — decisão 16 de mvp-copiloto-verificacao"
+  }
 }

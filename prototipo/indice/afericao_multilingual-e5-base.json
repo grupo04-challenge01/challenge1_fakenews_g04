@@ -24,9 +24,9 @@
         "a20"
       ],
       "latencia_s": {
-        "mediana": 0.022,
-        "media": 0.022,
-        "maxima": 0.032
+        "mediana": 0.023,
+        "media": 0.023,
+        "maxima": 0.033
       },
       "posicoes": {
         "a01": 1,
@@ -65,8 +65,8 @@
       "nao_encontrados": [],
       "latencia_s": {
         "mediana": 0.013,
-        "media": 0.412,
-        "maxima": 7.987
+        "media": 0.447,
+        "maxima": 8.686
       },
       "posicoes": {
         "a01": 1,
@@ -104,9 +104,9 @@
       "mrr": 0.897,
       "nao_encontrados": [],
       "latencia_s": {
-        "mediana": 0.038,
-        "media": 0.039,
-        "maxima": 0.06
+        "mediana": 0.042,
+        "media": 0.041,
+        "maxima": 0.058
       },
       "posicoes": {
         "a01": 1,
@@ -139,18 +139,17 @@
         "@1": 0.85,
         "@3": 0.85,
         "@5": 0.85,
-        "@10": 0.85
+        "@10": 0.9
       },
-      "mrr": 0.85,
+      "mrr": 0.855,
       "nao_encontrados": [
         "a14",
-        "a16",
         "a20"
       ],
       "latencia_s": {
-        "mediana": 0.044,
+        "mediana": 0.04,
         "media": 0.042,
-        "maxima": 0.051
+        "maxima": 0.059
       },
       "posicoes": {
         "a01": 1,
@@ -168,7 +167,7 @@
         "a13": 1,
         "a14": null,
         "a15": 1,
-        "a16": null,
+        "a16": 10,
         "a17": 1,
         "a18": 1,
         "a19": 1,
@@ -195,8 +194,8 @@
           "a20"
         ],
         "latencia_s": {
-          "mediana": 0.022,
-          "media": 0.023,
+          "mediana": 0.023,
+          "media": 0.025,
           "maxima": 0.033
         },
         "posicoes": {
@@ -227,7 +226,7 @@
         "latencia_s": {
           "mediana": 0.022,
           "media": 0.021,
-          "maxima": 0.027
+          "maxima": 0.029
         },
         "posicoes": {
           "a01": 1,
@@ -259,7 +258,7 @@
         "latencia_s": {
           "mediana": 0.012,
           "media": 0.013,
-          "maxima": 0.022
+          "maxima": 0.024
         },
         "posicoes": {
           "a11": 1,
@@ -320,8 +319,8 @@
         "nao_encontrados": [],
         "latencia_s": {
           "mediana": 0.041,
-          "media": 0.04,
-          "maxima": 0.054
+          "media": 0.042,
+          "maxima": 0.056
         },
         "posicoes": {
           "a11": 1,
@@ -349,9 +348,9 @@
         "mrr": 0.95,
         "nao_encontrados": [],
         "latencia_s": {
-          "mediana": 0.036,
-          "media": 0.036,
-          "maxima": 0.05
+          "mediana": 0.038,
+          "media": 0.037,
+          "maxima": 0.045
         },
         "posicoes": {
           "a01": 1,
@@ -376,183 +375,183 @@
       {
         "id": "a01",
         "familia": "verbatim",
-        "score_do_alvo": 0.7119,
-        "score_do_topo": 0.7119
+        "score_do_alvo": 0.7104,
+        "score_do_topo": 0.7104
       },
       {
         "id": "a02",
         "familia": "verbatim",
-        "score_do_alvo": 0.6671,
-        "score_do_topo": 0.677
+        "score_do_alvo": 0.6672,
+        "score_do_topo": 0.6771
       },
       {
         "id": "a03",
         "familia": "verbatim",
-        "score_do_alvo": 0.7401,
-        "score_do_topo": 0.7401
+        "score_do_alvo": 0.7399,
+        "score_do_topo": 0.7399
       },
       {
         "id": "a04",
         "familia": "verbatim",
-        "score_do_alvo": 0.7304,
-        "score_do_topo": 0.7304
+        "score_do_alvo": 0.7302,
+        "score_do_topo": 0.7302
       },
       {
         "id": "a05",
         "familia": "verbatim",
-        "score_do_alvo": 0.7237,
-        "score_do_topo": 0.7237
+        "score_do_alvo": 0.722,
+        "score_do_topo": 0.722
       },
       {
         "id": "a06",
         "familia": "verbatim",
-        "score_do_alvo": 0.7586,
-        "score_do_topo": 0.7586
+        "score_do_alvo": 0.7579,
+        "score_do_topo": 0.7579
       },
       {
         "id": "a07",
         "familia": "verbatim",
-        "score_do_alvo": 0.7367,
-        "score_do_topo": 0.7367
+        "score_do_alvo": 0.7356,
+        "score_do_topo": 0.7356
       },
       {
         "id": "a08",
         "familia": "verbatim",
-        "score_do_alvo": 0.7684,
-        "score_do_topo": 0.7684
+        "score_do_alvo": 0.7682,
+        "score_do_topo": 0.7682
       },
       {
         "id": "a09",
         "familia": "verbatim",
-        "score_do_alvo": 0.7834,
-        "score_do_topo": 0.7834
+        "score_do_alvo": 0.7831,
+        "score_do_topo": 0.7831
       },
       {
         "id": "a10",
         "familia": "verbatim",
-        "score_do_alvo": 0.78,
-        "score_do_topo": 0.78
+        "score_do_alvo": 0.7804,
+        "score_do_topo": 0.7804
       },
       {
         "id": "a11",
         "familia": "reformulada",
-        "score_do_alvo": 0.6757,
-        "score_do_topo": 0.6757
+        "score_do_alvo": 0.6743,
+        "score_do_topo": 0.6743
       },
       {
         "id": "a12",
         "familia": "reformulada",
-        "score_do_alvo": 0.6336,
-        "score_do_topo": 0.6336
+        "score_do_alvo": 0.6327,
+        "score_do_topo": 0.6327
       },
       {
         "id": "a13",
         "familia": "reformulada",
-        "score_do_alvo": 0.6853,
-        "score_do_topo": 0.6853
+        "score_do_alvo": 0.685,
+        "score_do_topo": 0.685
       },
       {
         "id": "a14",
         "familia": "reformulada",
-        "score_do_alvo": 0.601,
-        "score_do_topo": 0.6284
+        "score_do_alvo": 0.6016,
+        "score_do_topo": 0.6289
       },
       {
         "id": "a15",
         "familia": "reformulada",
-        "score_do_alvo": 0.6764,
-        "score_do_topo": 0.6764
+        "score_do_alvo": 0.6756,
+        "score_do_topo": 0.6756
       },
       {
         "id": "a16",
         "familia": "reformulada",
-        "score_do_alvo": 0.5893,
-        "score_do_topo": 0.6025
+        "score_do_alvo": 0.5907,
+        "score_do_topo": 0.6035
       },
       {
         "id": "a17",
         "familia": "reformulada",
-        "score_do_alvo": 0.6953,
-        "score_do_topo": 0.6953
+        "score_do_alvo": 0.6937,
+        "score_do_topo": 0.6937
       },
       {
         "id": "a18",
         "familia": "reformulada",
-        "score_do_alvo": 0.6008,
-        "score_do_topo": 0.6008
+        "score_do_alvo": 0.6011,
+        "score_do_topo": 0.6011
       },
       {
         "id": "a19",
         "familia": "reformulada",
-        "score_do_alvo": 0.6938,
-        "score_do_topo": 0.6938
+        "score_do_alvo": 0.6932,
+        "score_do_topo": 0.6932
       },
       {
         "id": "a20",
         "familia": "reformulada",
-        "score_do_alvo": 0.5779,
-        "score_do_topo": 0.5779
+        "score_do_alvo": 0.5785,
+        "score_do_topo": 0.5785
       }
     ],
     "sem_alvo": [
       {
         "id": "n01",
         "consulta": "Qdenga causa a própria dengue em quem toma",
-        "score_do_topo": 0.6402,
+        "score_do_topo": 0.641,
         "topo_recuperado": "Tomar paracetamol causa morte em pacientes com dengue #boato"
       },
       {
         "id": "n02",
         "consulta": "a vacina contra mpox foi aprovada sem teste",
-        "score_do_topo": 0.5731,
+        "score_do_topo": 0.5739,
         "topo_recuperado": "(…) [CoronaVac é] uma vacina chinesa que não tem comprovação nenhuma"
       },
       {
         "id": "n03",
         "consulta": "o vírus oropouche foi criado em laboratório",
-        "score_do_topo": 0.6232,
+        "score_do_topo": 0.6234,
         "topo_recuperado": "É falso que TV italiana noticiou em 2015 que novo coronavírus foi criado em laboratório"
       },
       {
         "id": "n04",
         "consulta": "semaglutida faz o estômago parar de funcionar",
-        "score_do_topo": 0.5969,
+        "score_do_topo": 0.5974,
         "topo_recuperado": "Beber água morna cura câncer; água gelada causa infarto #boato"
       },
       {
         "id": "n05",
         "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
-        "score_do_topo": 0.593,
+        "score_do_topo": 0.5932,
         "topo_recuperado": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
       },
       {
         "id": "n06",
         "consulta": "qual o melhor tênis para corrida de rua",
-        "score_do_topo": 0.6924,
+        "score_do_topo": 0.69,
         "topo_recuperado": "Não, Nike não tem relação com produção de ‘tênis de Satanás’"
       },
       {
         "id": "n07",
         "consulta": "como declarar imposto de renda atrasado",
-        "score_do_topo": 0.6774,
+        "score_do_topo": 0.6642,
         "topo_recuperado": "Celso de Mello se aposentou por invalidez no STF para não pagar Imposto de Renda #boato"
       },
       {
         "id": "n08",
         "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
-        "score_do_topo": 0.6018,
+        "score_do_topo": 0.6023,
         "topo_recuperado": "Robert F. Kennedy Jr. escreve texto que aponta que vacina mRNA contra Covid-19 altera o DN"
       }
     ],
     "faixa_do_alvo": {
-      "minimo": 0.5779,
-      "mediana": 0.69455,
-      "maximo": 0.7834
+      "minimo": 0.5785,
+      "mediana": 0.69345,
+      "maximo": 0.7831
     },
     "faixa_do_ruido": {
-      "minimo": 0.5731,
-      "mediana": 0.6125,
-      "maximo": 0.6924
+      "minimo": 0.5739,
+      "mediana": 0.6128499999999999,
+      "maximo": 0.69
     },
     "score_bruto_separa": false,
     "limiar_sugerido": null,
