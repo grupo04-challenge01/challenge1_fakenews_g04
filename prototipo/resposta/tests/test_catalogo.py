@@ -3,7 +3,12 @@ import json
 
 import pytest
 
-from prototipo.resposta.catalogo import carregar_catalogo, rotulos_marcados, validar_rotulos
+from prototipo.resposta.catalogo import (
+    carregar_catalogo,
+    rotulos_marcados,
+    validar_rotulos,
+    validar_sem_evidencia,
+)
 
 
 @pytest.fixture(scope="module")
@@ -67,3 +72,44 @@ def test_sem_marcador_e_defeito(catalogo):
     # O rótulo aparece no texto, mas sem o marcador não há como separar rótulo
     # de uso comum da palavra; a validação não adivinha.
     assert validar_rotulos("Isso é uma cura milagrosa.", catalogo) == ["nenhum rótulo marcado"]
+
+
+# --- Task 3.3 de fix-resposta-sem-evidencia: sob evidência insuficiente, técnica é defeito ---
+
+
+def test_forma_sem_evidencia_sem_tecnica_passa(catalogo):
+    texto = (
+        "VEREDITO E O QUE FOI PROCURADO: evidência insuficiente.\n"
+        "POR QUE ISSO NÃO QUER DIZER QUE É FALSO: não encontrar não é desmentir.\n"
+        "O QUE VOCÊ PODE CONFERIR: consulte o portal da Anvisa e fontes oficiais.\n"
+        "ONDE PROCURAR: https://www.gov.br/anvisa"
+    )
+    assert validar_sem_evidencia(texto, catalogo) == []
+
+
+def test_forma_sem_evidencia_com_tecnica_marcada_e_reprovada(catalogo):
+    texto = "VEREDITO: evidência insuficiente. Técnica: cura milagrosa."
+    defeitos = validar_sem_evidencia(texto, catalogo)
+    assert defeitos == ["técnica nomeada sob evidência insuficiente: cura milagrosa"]
+
+
+def test_forma_sem_evidencia_com_dois_rotulos_reprova_ambos(catalogo):
+    texto = "VEREDITO: evidência insuficiente. Técnica: fonte sem nome e manchete exagerada."
+    defeitos = validar_sem_evidencia(texto, catalogo)
+    assert defeitos == [
+        "técnica nomeada sob evidência insuficiente: fonte sem nome",
+        "técnica nomeada sob evidência insuficiente: manchete exagerada",
+    ]
+
+
+def test_forma_sem_evidencia_com_rotulo_inventado_tambem_e_reprovada():
+    texto = "VEREDITO: evidência insuficiente. Técnica: apelo ao medo."
+    defeitos = validar_sem_evidencia(texto)
+    assert defeitos == ["técnica nomeada sob evidência insuficiente: apelo ao medo"]
+
+
+def test_forma_sem_evidencia_com_mencao_a_tecnica_do_catalogo_e_reprovada(catalogo):
+    texto = "VEREDITO: evidência insuficiente. A mensagem aponta cura milagrosa para o sintoma."
+    defeitos = validar_sem_evidencia(texto, catalogo)
+    assert defeitos == ["técnica do catálogo mencionada sob evidência insuficiente: cura milagrosa"]
+

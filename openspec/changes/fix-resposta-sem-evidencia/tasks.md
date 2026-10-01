@@ -1,6 +1,6 @@
 # Tasks — fix-resposta-sem-evidencia
 
-Donos das tasks em aberto: **Wingrid** 4 (2.1, 2.2, 2.3, 3.3), **Samara** 1 (2.4).
+Donos das tasks em aberto: **Samara** 1 (2.4).
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -25,13 +25,24 @@ Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
 
 ## 2. Conciliação com as capabilities vizinhas
 
-- [ ] 2.1 **Wingrid** Conferir a forma sem evidência contra o teto de 120 palavras de
-      `acessibilidade-leitura`, medindo respostas reais em vez de estimar
-- [ ] 2.2 **Wingrid** Conferir contra `recuperacao-evidencia` que nenhum bloco da forma sem
-      evidência induz afirmação sem trecho de origem
-- [ ] 2.3 **Wingrid** Conferir contra `fronteira-orientacao-saude` que a forma sem evidência
+- [x] 2.1 **Wingrid** Conferir a forma sem evidência contra o teto de 120 palavras de
+      `acessibilidade-leitura`, medindo respostas reais em vez de estimar —
+      conferido em `prototipo/relatorio_sonda_sem_evidencia.json` (decisão 4 do
+      `design.md`, 28/09/2026): 12 de 12 respostas reais entre 65 e 85 palavras,
+      todas abaixo do teto de 120 (folga mínima de 35 palavras); bloco 4 consome
+      11 palavras com ponteiro e 6 sem
+- [x] 2.2 **Wingrid** Conferir contra `recuperacao-evidencia` que nenhum bloco da forma sem
+      evidência induz afirmação sem trecho de origem — conferido na sonda de 28/09
+      (decisão 4) e conciliado na decisão 5 do `design.md` (01/10/2026): o check de
+      guarda paramétrica passou nas 12 respostas reais; sob lacuna com ponteiro (E2),
+      o bloco 2 atém-se à limitação do acervo interno e o veredito fica
+      circunscrito ao ponteiro do bloco 4
+- [x] 2.3 **Wingrid** Conferir contra `fronteira-orientacao-saude` que a forma sem evidência
       não vira porta de conduta clínica: sem evidência recuperada, pedido de
-      conduta continua sendo recusado antes da verificação
+      conduta continua sendo recusado antes da verificação — conferido na decisão 5 do
+      `design.md` (01/10/2026): os guardrails de conduta clínica e emergência atuam
+      na entrada (pré-RAG) com recusa e bypass imediato para UBS/SAMU 192, nunca
+      alcançando a geração; ademais, o bloco 3 veda prescrição alternativa
 - [ ] 2.4 **Samara** Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr`, que
       prevê três casos de teste de lacuna e precisa deste como o terceiro
 
@@ -43,6 +54,9 @@ Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
 - [x] 3.2 **Vitor** Confirmar que a sonda T1 deixa de degenerar, que era o defeito que
       abriu este change — 0 de 12 respostas degeneraram; falha restante é outra
       (data de corte omitida), registrada na decisão 4
-- [ ] 3.3 **Wingrid** Teste que reprova resposta com técnica nomeada sob `evidência
-      insuficiente`
+- [x] 3.3 **Wingrid** Teste que reprova resposta com técnica nomeada sob `evidência
+      insuficiente` — implementado em `prototipo/resposta/catalogo.py`
+      (`validar_sem_evidencia`) e aprovado em `prototipo/resposta/tests/test_catalogo.py`
+      (5 testes cobrindo rótulos marcados, múltiplos rótulos, inventados e menção direta)
 - [x] 3.4 `openspec validate fix-resposta-sem-evidencia --strict` limpo
+
