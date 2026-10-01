@@ -91,6 +91,11 @@ Responda só com JSON, neste formato:
 
 ID_TRECHO = re.compile(r"\bT[1-9]\d*\b")
 ENGANA = re.compile(r"\b(engana|enganos[ao]|é fals[ao]|mentira)\b", re.IGNORECASE)
+# Decisão 5 de fix-resposta-sem-evidencia: com ponteiro, o bloco 2 fala só do
+# acervo consultado e não julga a alegação. Sai do código porque, na sonda, o
+# modelo escreveu "não significa que seja falsa" 3 vezes em 3 (decisão 18).
+BLOCO_2_COM_PONTEIRO = ("O acervo consultado aqui não cobre esta mensagem. Não achar "
+                        "nele não confirma nem desmente nada.")
 
 
 @dataclass
@@ -218,6 +223,7 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     if veredito.rotulo == "verdadeiro" and com:
         titulos[2] = TITULO_3_VERDADEIRO
 
+    ponteiro = bool(lacuna and lacuna.get("ponteiro"))
     bruto = chat(SISTEMA, mensagem(texto, alegacao, veredito, estado, decomposicao))
     dados = ler_json(bruto)
     gerados = [str((dados or {}).get(f"bloco{n}") or "").strip() for n in range(1, 5)]
@@ -226,12 +232,14 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     blocos[0] = f"{_abertura(veredito, estado, lacuna)} {gerados[0]}".strip()
     if estado == LACUNA:
         blocos[3] = _ponteiro(lacuna)
+    if ponteiro:
+        blocos[1] = BLOCO_2_COM_PONTEIRO
     r = Resposta("com evidência" if com else "sem evidência", titulos, blocos, _detalhe(veredito))
 
     if dados is None:
         r.defeitos = ["saída não é JSON"]
         return r
-    obrigatorios = (2, 3, 4) if estado != LACUNA else (2, 3)
+    obrigatorios = (2, 3, 4) if estado != LACUNA else (3,) if ponteiro else (2, 3)
     r.defeitos = [f"bloco{n} vazio" for n in obrigatorios if not gerados[n - 1]]
     if com:
         r.defeitos += _defeitos_com(r, veredito, alegacao, decomposicao, catalogo)

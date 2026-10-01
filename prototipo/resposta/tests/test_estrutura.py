@@ -271,3 +271,40 @@ def test_opiniao_da_mensagem_tem_de_aparecer_no_bloco_2():
     ok = _com(bloco2=BLOCOS_FALSO["bloco2"] + " Que os médicos escondem isso é opinião.")
     assert responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao,
                      chat=_chat(ok)).defeitos == []
+
+
+# ---- lacuna com ponteiro: decisão 5 de fix-resposta-sem-evidencia ----------
+
+PONTEIRO = {"agencia": "Aos Fatos", "data": "02/02/2024", "veredito": "falso",
+            "endereco": "https://www.aosfatos.org/dengue"}
+COM_PONTEIRO = {"corte": "2021", "ponteiro": PONTEIRO}
+
+
+def test_veredito_do_ponteiro_nao_vai_ao_modelo():
+    chat = _chat(_sem(bloco4=""))
+    responder(MENSAGEM, ALEGACAO, SEM_TRECHO, lacuna=COM_PONTEIRO, chat=chat)
+    assert PONTEIRO["endereco"] not in chat.chamadas[0][1]
+
+
+def test_bloco_2_com_ponteiro_sai_do_codigo_sem_julgar_a_alegacao():
+    # Na sonda, o modelo escreveu "não significa que seja falsa" 3 vezes em 3,
+    # ao lado de um ponteiro com veredito falso (decisão 18).
+    blocos = _sem(bloco2="Não encontrar dados não significa que a informação seja falsa.",
+                  bloco4="")
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, lacuna=COM_PONTEIRO, chat=_chat(blocos))
+    assert r.blocos[1] == estrutura.BLOCO_2_COM_PONTEIRO
+    assert "fals" not in r.blocos[1].lower() and "verdadeir" not in r.blocos[1].lower()
+    assert "acervo" in r.blocos[1].lower()
+    assert r.defeitos == []
+
+
+def test_com_ponteiro_o_modelo_pode_deixar_o_bloco_2_vazio():
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, lacuna=COM_PONTEIRO,
+                  chat=_chat(_sem(bloco2="", bloco4="")))
+    assert r.defeitos == []
+
+
+def test_sem_ponteiro_o_bloco_2_ainda_pode_dizer_que_nao_e_desmentir():
+    # A regra da decisão 5 vale só com ponteiro; sem ele, vale o bloco 2 da spec.
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=_chat(BLOCOS_SEM))
+    assert r.defeitos == []
