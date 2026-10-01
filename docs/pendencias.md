@@ -9,7 +9,7 @@ esta página conta o que falta.
 
 | Fase | Change | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | **18** | **7** |
+| **Engage** | `add-engage-desinformacao-saude` | **19** | **6** |
 | **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
 | **Investigate** | `add-selecao-modelos-arquitetura-rag` | 33 | **0** ✅ |
@@ -41,7 +41,7 @@ fazer o quê.
 ## Engage — 7 pendentes
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 18 de 25, vencida há 13 dias.
+11/09 · **Status:** 19 de 25, vencida há 13 dias.
 
 Em 20/09 fecharam oito tasks — todo o bloco 1, todo o bloco 6, a validação do
 bloco 7 e a decisão sobre o change de instrumento. O que restou exigia as
@@ -65,16 +65,15 @@ integrante usa na prática, e a consolidação que depende dele.
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 2.4 | Consolidar os tempos medidos como evidência para o quadro Problema | redação |
+| 2.4 | Consolidar os tempos medidos como evidência para o quadro Problema | 0 ✅ |
 
-**As tasks 2.1, 2.2 e 2.3 fecharam em 24/09.** Seis fichas, uma por caso, em
+**As tasks 2.1 a 2.4 fecharam em 25/09.** Seis fichas, uma por caso, em
 `docs/forense/`, distribuídas entre cinco integrantes — Breno ficou com dois
 casos. Cada ficha tem os oito campos, cita a checagem externa consultada e
 registra o tempo medido.
 
-**Os números já existem:** mínimo de 10 min, mediana de 22 min, máximo de
-43 min, sobre seis verificações. A 2.4 é só levá-los para o quadro Problema do
-[board](engage/board-brainstorming.md) — não depende mais do grupo reunido.
+**Os números estão no `board-brainstorming.md`:** mínimo de 10 min, mediana de 22 min, máximo de
+43 min, sobre seis verificações. A 2.4 os levou para o quadro Problema.
 
 Um achado do bloco: a ficha do caso 05 desmentiu a classificação da seleção. O
 vídeo do presidente da Anvisa foi **recortado**, não sintetizado, e virou
