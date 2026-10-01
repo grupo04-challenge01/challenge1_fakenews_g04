@@ -632,6 +632,74 @@ defeitos, e cada um virou regra:
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.
 
+### 19. Prioridade de idioma: um score, camadas cortadas dele — 01/10/2026
+
+Task 1.4. Código em `prototipo/rag/hibrida.py` (`Recuperador.recuperar`,
+`PRIORIDADE_IDIOMA`, `cobertura_padrao`, `Recuperacao`), testes em
+`prototipo/rag/tests/test_prioridade_idioma.py`. A CLI `python -m prototipo.rag
+buscar` passa a consultar por `recuperar` e mostra a camada.
+
+**Duas decisões, tomadas antes do código** (Samara, 01/10/2026):
+
+1. **"Esgotar" pede critério de cobertura.** Ordenar português antes de inglês
+   não basta: as 6.279 unidades em português sempre enchem o top‑k, e o inglês
+   nunca entraria. Por isso `recuperar` percorre as camadas em
+   `PRIORIDADE_IDIOMA` (`pt-BR`, depois `en`) e só corta a camada seguinte quando
+   o critério `cobre` recusa a anterior. Se o português cobre, nenhuma fonte em
+   inglês entra, que é o cenário Alegação já checada em português. O critério é
+   parâmetro, como o limiar da guarda (decisão 12). O valor é da 1.5. Até lá vale
+   `cobertura_padrao`: a camada cobre se trouxe ao menos uma unidade, a leitura
+   mais estrita de "esgotar". Alternativa descartada: recorrer ao inglês só com o
+   português vazio como mecanismo fixo. Hoje ela é o padrão provisório, mas, fixa
+   no código, obrigaria a 1.5 a mudar a 1.4.
+2. **Só o mecanismo.** Nenhum corpus em inglês está indexado. O esquema 1.1.0 tem
+   `en` no enum `idioma`, mas os dois corpora de `x-corpora` são `pt-BR`. O braço
+   inglês está pronto e inerte, e é provado com fragmentos sintéticos. Indexar
+   uma fonte em inglês amplia o escopo e fica como questão aberta.
+
+**Pontuar uma vez, cortar depois.** A consulta é pontuada sobre o índice
+inteiro, e cada camada é uma máscara sobre o mesmo vetor: o excluído vai a −∞, o
+score de quem fica não muda. Dois índices separados dariam a cada camada o
+próprio fundo em `_sobre_o_fundo` (mediana e percentil 99 da consulta naquela
+camada). O mesmo número significaria coisas diferentes em português e em inglês,
+e o limiar da 1.5 não valeria igual nas duas. O custo também fica igual: o braço
+denso codifica a consulta uma vez, mesmo quando recorre ao inglês.
+
+**O que a verificação recebe.** `Recuperacao` traz quatro campos: `idioma`, a
+camada dos resultados; `resultados`, que agora têm `idioma` por unidade;
+`consultados`, as camadas percorridas, na ordem; e `coberto`. Camada sem fonte
+indexada não é consultada. Se nenhuma camada cobre, voltam os resultados da
+primeira camada não vazia com `coberto=False`, e decidir se o veredito cai para
+`evidência insuficiente` é de quem chama. `buscar` continua sendo o ranking cru
+que a aferição mede.
+
+**Com o índice de hoje, nada muda.** O `buscar` foi dividido em `_pontuar` e
+`_reduzir`. No índice real (23.655 fragmentos, todos `pt-BR`), 20 consultas de
+aferição mais 8 sem alvo, nos quatro modos (léxica, densa, híbrida por score e
+por RRF), o `buscar` da `main`, o `buscar` novo e o `recuperar` devolveram as
+mesmas unidades, na mesma ordem e com o mesmo score: 0 divergências em 112
+comparações. Só o campo `idioma` é novo. O braço denso dessa conferência usou
+scores sintéticos com empates, porque o modelo não estava na máquina da
+verificação. A aferição com `multilingual-e5-base` não foi refeita, porque com
+máscara toda verdadeira o vetor de score é o mesmo, com a mesma ordem e os mesmos
+empates. O teste `test_indice_real_nas_20_consultas_da_afericao_nao_muda` repete
+a conferência no braço léxico sempre que o índice existe na máquina.
+
+**Índice que não diz o idioma não é priorizado.** Fragmento sem `idioma` (índice
+anterior ao esquema 1.0.0) ou com valor fora de `PRIORIDADE_IDIOMA` faz
+`recuperar` parar com erro. A busca crua continua funcionando, para não quebrar a
+aferição de índices antigos.
+
+**Fica para outras tasks.**
+
+- **1.5:** o critério de cobertura entra por `recuperar(..., cobre=...)`, sem
+  mudar a 1.4.
+- **1.6:** `apto_citacao` continua sem ser lido pela busca (decisão 17).
+- **Resposta e interface:** a paráfrase em português com o trecho original em
+  inglês na camada de detalhe (`recuperacao-evidencia`, Auditabilidade da
+  tradução). A recuperação só entrega o `idioma` de cada unidade, para que isso
+  seja possível.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
@@ -640,7 +708,11 @@ defeitos, e cada um virou regra:
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
-  insuficiente`.
+  insuficiente`. Entra na recuperação como o critério `cobre`
+  de `recuperar` (decisão 19).
+- **Fonte em inglês.** Nenhum corpus em inglês está indexado (decisão 19). Falta
+  decidir qual fonte entra, se alguma entra, e com que licença. Até lá, o braço
+  inglês da prioridade de idioma não é exercido com dados reais.
 - **Relato pessoal como alegação.** A extração gradua "minha tia parou o remédio
   e melhorou" como alegação de risco `alto` (decisão 8). A spec não diz se relato
   pessoal é alegação a verificar ou evidência fraca da alegação ao lado. Da

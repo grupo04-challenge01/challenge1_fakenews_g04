@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 3, **Wingrid** 5, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 2, **Wingrid** 5, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -22,7 +22,12 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       em quarentena, `apto_citacao=false`; aferição sem perda
       (`afericao_multilingual-e5-base.json`); decisão 17 do `design.md`, 01/10/2026
 - [ ] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
-- [ ] 1.4 **Samara** Implementar recuperação com prioridade de idioma (PT-BR antes de EN)
+- [x] 1.4 **Samara** Implementar recuperação com prioridade de idioma (PT-BR antes de EN)
+      — `prototipo/rag/hibrida.py` (`Recuperador.recuperar`, `PRIORIDADE_IDIOMA`),
+      testes `prototipo/rag/tests/test_prioridade_idioma.py` 16/16; índice real
+      só em PT: 0 divergências em 112 comparações contra o `buscar` da `main`;
+      critério de cobertura como parâmetro, valor pela 1.5; nenhuma fonte em
+      inglês indexada; decisão 19 do `design.md`, 01/10/2026
 - [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
 - [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
 
