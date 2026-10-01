@@ -53,6 +53,72 @@ O terceiro é o mais delicado: é onde é mais tentador dizer "não existe checa
 sobre isso", que é afirmação sobre o mundo que o sistema não pode fazer. O
 requirement veda isso em texto expresso.
 
+## Decisão 4: sonda dos três estados — 28/09/2026
+
+Tasks 3.1 e 3.2. Arranjo em `prototipo/sonda_sem_evidencia.py`, resultado por
+tentativa em `prototipo/relatorio_sonda_sem_evidencia.json`. Formato da sonda de
+18/09: Gemma 4 12B QAT, `think: false`, temperatura 0,2, três tentativas por
+estado. O estado da recuperação é injetado à mão, porque o roteamento por janela
+do acervo ainda não está ligado ao gerador. Um prompt só, com as duas formas; a
+forma é escolhida pelo estado que chega na mensagem, como manda o risco 1.
+
+| Sonda | Estado | Passou |
+| --- | --- | --- |
+| E1 | `evidência insuficiente` — chá de goiabeira cura dengue | 3/3 |
+| E2 | lacuna com ponteiro — vacina da dengue "transgênica", Aos Fatos 02/02/2024 | 0/3 |
+| E3 | lacuna sem ponteiro — oropouche, zero no acervo e no índice | 0/3 |
+| T1 | reprise literal da T1 de 18/09, mesma mensagem e mesmo trecho | 0/3 |
+
+**O defeito que abriu o change não se repete.** Nas 12 respostas, o bloco 3
+trouxe um passo que a pessoa pode dar sozinha. Nenhuma repetiu "evidência
+insuficiente" dentro do bloco, e nenhuma nomeou técnica do catálogo. Na T1, que
+em 18/09 degenerou, as três tentativas ficaram na forma sem evidência, com os
+quatro blocos em ordem. A task 3.2 está confirmada.
+
+**As falhas de E2, E3 e T1 têm uma causa só.** Nas 9 respostas de lacuna de
+acervo, o bloco 1 abre com "lacuna de acervo" mas omite a data de corte, que o
+requirement "Lacuna de acervo distinguida na resposta" exige. O prompt pede a
+data em texto expresso, e o modelo a ignora 9 vezes em 9. Não é variação de
+amostra; é instrução que não pega. A data de corte é metadado do acervo, não
+conteúdo gerado. Recomendação para a task 3.2 de `mvp-copiloto-verificacao`: o
+sistema compõe a frase de corte do bloco 1 por modelo fixo, sem depender do
+gerador. É a mesma lição da fronteira clínica na decisão 10 de
+`add-selecao-modelos-arquitetura-rag`: o que a spec exige literalmente não deve
+depender de o prompt pegar.
+
+Falha isolada: uma frase acima de 25 palavras em E2.
+
+**Orçamento de palavras, medido.** As respostas tiveram de 65 a 85 palavras,
+todas abaixo do teto de 120. O ponteiro do bloco 4 custou 11 palavras. A forma
+sem ponteiro fecha o bloco 4 em 6. Sobram ao menos 35 palavras de folga, o que
+responde à segunda questão em aberto abaixo e alimenta a task 2.1.
+
+**Correção de método, registrada.** A primeira avaliação reprovou T1 e E2
+também por "afirmação paramétrica". Era falso positivo: o regex pegava o bloco
+1 repetindo a alegação procurada ("foi procurado se a vacina Qdenga causa a
+própria dengue"). O check passou a olhar só os blocos 2 e 3, e as respostas
+gravadas foram reavaliadas sem nova chamada ao modelo (`--reavaliar`). Antes de
+confiar nos checks, testei-os contra uma resposta sintética correta, que passa,
+e contra a resposta degenerada de 18/09, que reprova em 10 checks.
+
+**Nota de ambiente.** Nesta máquina, com RTX 2060 de 6 GB, o `llama-server` do
+Ollama 0.34.4 cai ao iniciar CUDA (`shared object initialization failed`). A
+sonda rodou só em CPU (`--cpu`, `num_gpu: 0`), com 58 a 157 s por resposta,
+contra 17 s em 18/09. Isso muda a latência, não a resposta esperada.
+
+## Decisão 5: conciliação arquitetural das tasks 2.2 e 2.3 — 01/10/2026
+
+Tasks 2.2 e 2.3. R2 Wingrid.
+
+**Task 2.2 — Ancoragem e guarda paramétrica contra `recuperacao-evidencia`:**
+1. Conferido contra os dados da sonda de 28/09 (`prototipo/relatorio_sonda_sem_evidencia.json`): o check de guarda paramétrica passou nas 12 respostas reais produzidas pelo modelo (`gemma4:12b-it-qat`). Os blocos 2 e 3 não fazem afirmação factual ou médica sobre o tema a partir do conhecimento do modelo.
+2. Resolução da questão aberta de E2: sob lacuna de acervo com ponteiro, o bloco 2 atém-se estritamente à limitação do acervo interno consultado (explicando que a ausência no acervo não equivale a desmentido), enquanto qualquer veredito externo e sustentação factual ficam exclusivamente circunscritos e atribuídos ao ponteiro oficial do bloco 4 (agência, data, veredito da agência e link). O bloco 2 não emite juízo sobre a veracidade da alegação.
+3. O bloco 3 oferece passos práticos de verificação que a pessoa pode fazer por conta própria, sem induzir julgamento fático sem trecho ancorado.
+
+**Task 2.3 — Fronteira clínica contra `fronteira-orientacao-saude`:**
+1. A recusa de conduta clínica e o encaminhamento de urgência médica (SAMU 192 / UBS) são aplicados por guardrails na entrada da requisição (pré-RAG). Se o usuário pedir prescrição, alteração de medicação ou relatar emergência, a requisição é interceptada imediatamente com resposta padrão acolhedora do SUS, sem passar pelo pipeline de verificação.
+2. A forma sem evidência só é acionada para alegações informativas em que não houve recuperação. O bloco 3 veda prescrição alternativa e limita-se a canais oficiais de informação pública (como portais do Ministério da Saúde e Anvisa) ou recomendação de procurar profissionais habilitados, cumprindo integralmente o requirement "Veredito sem prescrição alternativa".
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
@@ -67,4 +133,10 @@ requirement veda isso em texto expresso.
   explicitamente a análise da mensagem sem veredito. Hoje a spec veda nomear
   técnica sem evidência; o caso do pedido explícito não foi examinado.
 - Quantas palavras sobram para os blocos 2 e 3 depois do ponteiro, o que só se
-  sabe medindo respostas reais.
+  sabe medindo respostas reais. **Medido em 28/09 (decisão 4):** de 65 a 85
+  palavras no total, com o ponteiro custando 11. A task 2.1 confere o teto.
+- **Aberta em 28/09 pela sonda E2 e resolvida em 01/10 (decisão 5, task 2.2):** o
+  que o bloco 2 diz quando há ponteiro. O bloco 2 atém-se à ausência no acervo
+  interno consultado; o veredito da checagem externa fica circunscrito ao ponteiro
+  do bloco 4, sem conflito de premissas.
+

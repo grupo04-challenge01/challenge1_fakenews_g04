@@ -23,19 +23,38 @@ uma alegação a mais ou a menos derruba o registro para a via conservadora.
 
 Medido sobre o corpus: 221 dos 587 registros multi-alegação segmentam sob essa
 regra. Os demais seguem a disposição da tabela em `dispor_registro`.
+
+Desde a task 1.1 de mvp-copiloto-verificacao (29/09/2026), a saída segue o
+contrato `prototipo/indice/esquema_indexacao.json` e é validada por
+`esquema.validar` antes de ser devolvida. Duas consequências: todo registro
+carrega corpus, tipo de fonte, idioma, aptidão a citação e nome da agência; e a
+alegação segmentada sem justificativa vai para a quarentena, porque um fragmento
+sem trecho não ancora afirmação nenhuma (`recuperacao-evidencia`).
+
+Desde a task 1.2 (01/10/2026, decisão 17), `construir_indice` junta o FACTCK.BR
+como fonte auxiliar, depois do FactCenter e sem mexer nele. Ali não há
+segmentação a fazer: cada linha do TSV já é uma alegação com seu veredito.
 """
 from __future__ import annotations
 
 import ast
-import hashlib
 import json
 import pathlib
 import re
 import unicodedata
 
 from . import corpus as corpus_mod
+from . import esquema as esquema_mod
 
 SAIDA = pathlib.Path(__file__).resolve().parents[1] / "indice"
+
+CORPUS = "factcenter_saude"
+CORPUS_FACTCKBR = "factckbr"
+
+# Sem qualquer um destes, a linha do FACTCK.BR não vira unidade: sem alegação
+# não há o que verificar, sem justificativa não há o que ancorar, sem veredito
+# não há o que contar (x-corpora.factckbr.mapeamento do esquema).
+CAMPOS_EXIGIDOS_FACTCKBR = ("claimReviewed", "reviewBody", "alternativeName")
 
 # Alegação como linha inteira entre aspas. O piso de 15 caracteres descarta
 # interjeição curta; o teto de 400 descarta parágrafo inteiro entre aspas.
@@ -65,7 +84,8 @@ def chave_canonica(veredito: str) -> str:
 
 
 def _id_registro(url: str) -> str:
-    return hashlib.sha1(url.encode("utf-8")).hexdigest()[:10]
+    # Prefixo vazio para o FactCenter: a chave é a mesma da aferição (esquema, I1).
+    return esquema_mod.registro_id(CORPUS, url)
 
 
 def _limpar(texto: str) -> str:
@@ -129,16 +149,24 @@ def _fragmentar(justificativa: str) -> list[str]:
     return [p for p in pedacos if p]
 
 
-def _cabecalho(unidade: dict) -> str:
-    """Alegação e veredito, repetidos em todo fragmento por exigência da spec."""
+def _cabecalho(unidade: dict, agencia: str | None = None) -> str:
+    """Alegação e veredito, repetidos em todo fragmento por exigência da spec.
+
+    O FactCenter mantém a grafia original da agência no cabeçalho, para a matriz
+    densa já calculada continuar valendo. O FACTCK.BR passa o nome exibível: a
+    grafia dele é um pedaço de URL (`https:apublica.org`), que só poluiria os
+    braços léxico e denso.
+    """
     return (f'Alegação: {unidade["alegacao"]}\n'
-            f'Veredito de {unidade["agencia"]} em {unidade["data_publicacao"]}: '
+            f'Veredito de {agencia or unidade["agencia"]} em {unidade["data_publicacao"]}: '
             f'{unidade["veredito_original"]}')
 
 
-def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
+def construir(df, validar_esquema: bool = True) -> tuple[list[dict], list[dict], list[dict], dict]:
+    esquema = esquema_mod.carregar_esquema()
     unidades, fragmentos, quarentena = [], [], []
     contagem = {}
+    unidades_sem_justificativa = 0
 
     for linha in df.to_dict("records"):
         try:
@@ -146,7 +174,8 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
         except (ValueError, SyntaxError):
             vereditos = []
         if not vereditos:
-            quarentena.append({"url": linha["url"], "agencia": linha["source_name"],
+            quarentena.append({"corpus": CORPUS, "url": linha["url"],
+                               "agencia": linha["source_name"],
                                "motivo": "veredito ilegível", "rating": linha["rating"]})
             contagem["quarentena_rating"] = contagem.get("quarentena_rating", 0) + 1
             continue
@@ -157,7 +186,7 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
 
         if disposicao.startswith("quarentena"):
             quarentena.append({
-                "url": linha["url"], "agencia": linha["source_name"],
+                "corpus": CORPUS, "url": linha["url"], "agencia": linha["source_name"],
                 "titulo": _limpar(linha["title"]), "motivo": disposicao,
                 "vereditos_originais": vereditos,
                 "vereditos_chave": sorted({chave_canonica(v) for v in vereditos}),
@@ -165,7 +194,8 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
             continue
 
         rid = _id_registro(linha["url"])
-        base = {"registro_id": rid, "agencia": linha["source_name"],
+        atributos = esquema_mod.atributos_de_corpus(CORPUS, linha["source_name"], esquema)
+        base = {"registro_id": rid, **atributos, "agencia": linha["source_name"],
                 "url": linha["url"], "data_publicacao": linha["publication_date"],
                 "obtido_em": linha["obtained_at"], "titulo": _limpar(linha["title"]),
                 "subtitulo": _limpar(linha["subtitle"]),
@@ -184,6 +214,15 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
             origem = "titulo"
 
         for i, parte in enumerate(partes):
+            if not parte["justificativa"].strip():
+                # O texto raspado terminou antes da justificativa desta alegação.
+                # Sem trecho não há o que citar; o índice das irmãs não muda.
+                quarentena.append({
+                    "corpus": CORPUS, "url": linha["url"], "agencia": linha["source_name"],
+                    "unidade_id": f"{rid}-{i:02d}", "motivo": "justificativa_ausente",
+                    "alegacao": parte["alegacao"], "veredito_original": parte["veredito"]})
+                unidades_sem_justificativa += 1
+                continue
             unidade = dict(base)
             unidade.update({
                 "unidade_id": f"{rid}-{i:02d}",
@@ -207,6 +246,7 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
                 fragmentos.append({
                     "fragmento_id": f'{unidade["unidade_id"]}-{j:02d}',
                     "unidade_id": unidade["unidade_id"],
+                    **atributos,
                     "agencia": unidade["agencia"], "url": unidade["url"],
                     "data_publicacao": unidade["data_publicacao"],
                     "alegacao": unidade["alegacao"],
@@ -219,10 +259,13 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
                 })
 
     manifesto = {
+        "esquema": {"arquivo": "prototipo/indice/esquema_indexacao.json",
+                    "versao": esquema["x-versao"]},
         "registros_lidos": len(df),
         "unidades_indexadas": len(unidades),
         "fragmentos_indexados": len(fragmentos),
-        "registros_em_quarentena": len(quarentena),
+        "registros_em_quarentena": len(quarentena) - unidades_sem_justificativa,
+        "unidades_em_quarentena": unidades_sem_justificativa,
         "disposicoes": contagem,
         "busca": "exata, sem índice aproximado e sem banco vetorial "
                  "(design.md, decisão 3)",
@@ -231,6 +274,148 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
         "fragmento_caracteres": FRAGMENTO_CARACTERES,
         "fragmento_sobreposicao": FRAGMENTO_SOBREPOSICAO,
     }
+    if validar_esquema:
+        laudo = esquema_mod.validar(unidades, fragmentos, quarentena, esquema)
+        esquema_mod.exigir(laudo)
+        manifesto["esquema"]["aprovado"] = True
+    return unidades, fragmentos, quarentena, manifesto
+
+
+def _fragmentos_da_unidade(unidade: dict, atributos: dict, cabecalho: str) -> list[dict]:
+    pedacos = _fragmentar(unidade["justificativa"])
+    unidade["fragmentos"] = len(pedacos)
+    return [{
+        "fragmento_id": f'{unidade["unidade_id"]}-{j:02d}',
+        "unidade_id": unidade["unidade_id"],
+        **atributos,
+        "agencia": unidade["agencia"], "url": unidade["url"],
+        "data_publicacao": unidade["data_publicacao"],
+        "alegacao": unidade["alegacao"],
+        "veredito_original": unidade["veredito_original"],
+        "posicao": j, "total": len(pedacos),
+        "trecho": trecho,
+        "texto": f"{cabecalho}\n{trecho}",
+    } for j, trecho in enumerate(pedacos)]
+
+
+def construir_factckbr(df, urls_ja_indexadas: set[str], esquema: dict | None = None
+                       ) -> tuple[list[dict], list[dict], list[dict], dict]:
+    """Unidades e fragmentos do FACTCK.BR — task 1.2 de mvp-copiloto-verificacao.
+
+    `urls_ja_indexadas` são as URLs normalizadas que outro corpus apto a
+    citação já indexou. Pela I10, a checagem fica com ele, e o registro do
+    FACTCK.BR vai para a quarentena como `duplicata_factcenter`.
+
+    Não valida o esquema: a I10 e a I12 só fecham sobre o índice inteiro, e
+    quem valida é `construir_indice`.
+    """
+    from tratamento.vereditos import rotular
+
+    esquema = esquema or esquema_mod.carregar_esquema()
+
+    # Portão de normalizacao-rotulos: valor fora do mapa interrompe o corpus
+    # inteiro antes de qualquer unidade existir. `rotular` levanta
+    # VeredictoDesconhecido; o rótulo devolvido não entra no índice.
+    for valor in df["alternativeName"]:
+        if valor.strip():
+            rotular(valor)
+
+    unidades, fragmentos, quarentena = [], [], []
+    contagem: dict[str, int] = {}
+
+    def conta(chave: str) -> None:
+        contagem[chave] = contagem.get(chave, 0) + 1
+
+    for url, grupo in df.groupby("URL", sort=False):
+        agencia = grupo["Author"].iloc[0]
+        if esquema_mod.normalizar_url(url) in urls_ja_indexadas:
+            quarentena.append({"corpus": CORPUS_FACTCKBR, "url": url, "agencia": agencia,
+                               "motivo": "duplicata_factcenter", "linhas": len(grupo)})
+            conta("quarentena_duplicata_factcenter")
+            continue
+
+        linhas = grupo.to_dict("records")
+        validas = [all(l[c].strip() for c in CAMPOS_EXIGIDOS_FACTCKBR) for l in linhas]
+        if not any(validas):
+            quarentena.append({"corpus": CORPUS_FACTCKBR, "url": url, "agencia": agencia,
+                               "motivo": "campo_vazio", "linhas": len(grupo)})
+            conta("quarentena_campo_vazio")
+            continue
+
+        rid = esquema_mod.registro_id(CORPUS_FACTCKBR, url, esquema)
+        atributos = esquema_mod.atributos_de_corpus(CORPUS_FACTCKBR, agencia, esquema)
+        disposicao = "unica" if len(linhas) == 1 else "segmentada"
+        conta(disposicao)
+
+        for i, (linha, valida) in enumerate(zip(linhas, validas)):
+            # O índice é a ordem da linha dentro da URL, com lacuna quando uma
+            # irmã vai para a quarentena: o id das demais não depende dela.
+            unidade_id = f"{rid}-{i:02d}"
+            if not valida:
+                vazios = [c for c in CAMPOS_EXIGIDOS_FACTCKBR if not linha[c].strip()]
+                quarentena.append({"corpus": CORPUS_FACTCKBR, "url": url, "agencia": agencia,
+                                   "unidade_id": unidade_id, "motivo": "campo_vazio",
+                                   "campos_vazios": vazios})
+                conta("unidade_em_quarentena")
+                continue
+            unidade = {
+                "registro_id": rid, "unidade_id": unidade_id, "indice_alegacao": i,
+                **atributos, "agencia": agencia, "url": url,
+                # A Lupa grava data e hora; o esquema guarda só a data.
+                "data_publicacao": linha["datePublished"].strip()[:10],
+                "obtido_em": None,
+                "titulo": _limpar(linha["title"]), "subtitulo": None,
+                "alegacoes_no_registro": len(linhas),
+                "alegacao": _limpar(linha["claimReviewed"]),
+                "veredito_original": linha["alternativeName"].strip(),
+                "veredito_chave": chave_canonica(linha["alternativeName"]),
+                "justificativa": linha["reviewBody"].strip(),
+                "origem_alegacao": "claim_review",
+                "disposicao": disposicao,
+                "cobre_multiplas_alegacoes": False,
+            }
+            fragmentos.extend(_fragmentos_da_unidade(
+                unidade, atributos, _cabecalho(unidade, atributos["agencia_nome"])))
+            unidades.append(unidade)
+
+    return unidades, fragmentos, quarentena, contagem
+
+
+def construir_indice(df_factcenter, df_factckbr, validar_esquema: bool = True
+                     ) -> tuple[list[dict], list[dict], list[dict], dict]:
+    """Índice dos dois corpora, FactCenter à frente e intacto.
+
+    A ordem importa: a matriz densa tem uma linha por fragmento, e o FactCenter
+    na frente, igual ao que era, permite estender a matriz em vez de refazê-la.
+    """
+    esquema = esquema_mod.carregar_esquema()
+    uni_fc, frag_fc, q_fc, manifesto = construir(df_factcenter, validar_esquema=False)
+    ja_indexadas = {esquema_mod.normalizar_url(u["url"]) for u in uni_fc}
+    uni_fb, frag_fb, q_fb, contagem_fb = construir_factckbr(df_factckbr, ja_indexadas, esquema)
+
+    unidades, fragmentos, quarentena = uni_fc + uni_fb, frag_fc + frag_fb, q_fc + q_fb
+    manifesto["por_corpus"] = {
+        CORPUS: {"registros_lidos": len(df_factcenter),
+                 "unidades": len(uni_fc), "fragmentos": len(frag_fc),
+                 "disposicoes": manifesto["disposicoes"]},
+        CORPUS_FACTCKBR: {"linhas_lidas": len(df_factckbr),
+                          "registros_lidos": int(df_factckbr["URL"].nunique()),
+                          "unidades": len(uni_fb), "fragmentos": len(frag_fb),
+                          "disposicoes": contagem_fb,
+                          "apto_citacao": esquema["x-corpora"][CORPUS_FACTCKBR]["apto_citacao"]},
+    }
+    manifesto.update({
+        "registros_lidos": len(df_factcenter) + int(df_factckbr["URL"].nunique()),
+        "unidades_indexadas": len(unidades),
+        "fragmentos_indexados": len(fragmentos),
+        "registros_em_quarentena": sum(1 for q in quarentena if not q.get("unidade_id")),
+        "unidades_em_quarentena": sum(1 for q in quarentena if q.get("unidade_id")),
+    })
+    manifesto["esquema"]["versao"] = esquema["x-versao"]
+    if validar_esquema:
+        laudo = esquema_mod.validar(unidades, fragmentos, quarentena, esquema)
+        esquema_mod.exigir(laudo)
+        manifesto["esquema"]["aprovado"] = True
     return unidades, fragmentos, quarentena, manifesto
 
 
@@ -242,9 +427,11 @@ def _gravar(caminho: pathlib.Path, registros) -> None:
 
 def main() -> None:
     laudo = corpus_mod.verificar_integridade_textual()
-    df = corpus_mod.ler_corpus()
-    unidades, fragmentos, quarentena, manifesto = construir(df)
+    laudo_fb = corpus_mod.verificar_integridade_auxiliar(CORPUS_FACTCKBR)
+    unidades, fragmentos, quarentena, manifesto = construir_indice(
+        corpus_mod.ler_corpus(), corpus_mod.ler_factckbr())
     manifesto["integridade_textual"] = laudo
+    manifesto["integridade_textual_factckbr"] = laudo_fb
 
     SAIDA.mkdir(parents=True, exist_ok=True)
     _gravar(SAIDA / "unidades.jsonl", unidades)
