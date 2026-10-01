@@ -154,6 +154,34 @@ há checagem localizada em português; e a vedação de apresentar a ausência d
 ponteiro como ausência de checagem no mundo. Nenhum dos dois contradiz o outro,
 e o caso de teste da 8.2 registra a resposta com as mesmas três exigências.
 
+**Remedição em 01/10/2026: o terceiro estado continua valendo.** Os dois exemplos
+da decisão 3 foram contados de novo, por busca sem caixa no texto inteiro de
+cada registro:
+
+| Termo | FactCenter (4.063) | FACTCK.BR (1.313 linhas) | índice gravado (861, 20/09) | sondagem da API (19/09) |
+| --- | --- | --- | --- | --- |
+| `oropouche` | 0 | 0 | 0 | 0 |
+| `semaglutida` | 0 | 0 | 0 | 0 |
+| `qdenga` | 0 | 0 | **0** | 8 |
+
+O FACTCK.BR entrou no índice de recuperação em 01/10 (task 1.2 de
+`mvp-copiloto-verificacao`) e não muda o quadro: `oropouche` e `semaglutida`
+seguem ausentes de todos os níveis, e a resposta certa para as duas continua
+sendo lacuna de acervo sem ponteiro.
+
+**Achado: o exemplo de lacuna com ponteiro não está no índice gravado.** O
+segundo estado usa a Qdenga como exemplo, aqui (cenário «Pauta posterior ao
+acervo com checagem localizada») e na 8.2. As 8 checagens vêm de
+`datasets/derivados/sonda_factcheck_api.json`, a sondagem de 19/09. O índice
+que o sistema consultaria, `datasets/derivados/indice_checagens_recentes.json`,
+gerado em 20/09, registra `qdenga: 0` em `por_termo`, e a palavra não aparece em
+nenhuma das 861 checagens. O índice tem checagens sobre a vacina da dengue (por
+exemplo «A vacina da dengue é transgênica, altera o DNA e causa câncer», AFP
+Checamos, 15/02/2024), mas nenhuma usa o nome comercial. Isso não muda a 2.4,
+que trata do terceiro estado. Muda o caso de teste do segundo: contra o índice
+gravado, uma alegação que diga «Qdenga» cairia em lacuna **sem** ponteiro.
+Registrado em Questões em aberto.
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
@@ -164,6 +192,12 @@ e o caso de teste da 8.2 registra a resposta com as mesmas três exigências.
 
 ## Questões em aberto
 
+- **Aberta em 01/10 (decisão 6):** o caso de teste da lacuna com ponteiro não se
+  sustenta no índice gravado. A sondagem de 19/09 contou 8 checagens para
+  `qdenga`; o índice de 20/09 tem 0. Falta decidir entre regerar o índice com o
+  termo, trocar o exemplo por uma pauta que o índice tem (vacina da dengue,
+  2024) ou fazer a busca do índice casar a alegação por assunto, e não só pelo
+  nome. É de `indice-checagens-recentes`, de `add-ampliacao-corpus-ptbr`.
 - Se a forma sem evidência deve nomear a técnica quando o usuário **pedir**
   explicitamente a análise da mensagem sem veredito. Hoje a spec veda nomear
   técnica sem evidência; o caso do pedido explícito não foi examinado.
