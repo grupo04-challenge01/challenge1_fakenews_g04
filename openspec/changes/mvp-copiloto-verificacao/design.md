@@ -638,41 +638,60 @@ de 65 a 82 palavras e mediana de 11,2 s (de 6,2 a 27,1 s).
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.
 
-### 19. Fontes oficiais aceitas: homologação, domínios estritos e ausência de veredito — 01/10/2026
+### 19. Lista de fontes oficiais aceitas: Ministério da Saúde, Fiocruz e Anvisa — 01/10/2026
 
-Task 1.3. R2 Wingrid. Artefato em `prototipo/indice/fontes_oficiais.json`,
-requirement `Fontes oficiais aceitas` adicionado a
-`openspec/changes/mvp-copiloto-verificacao/specs/recuperacao-evidencia/spec.md`.
+Task 1.3. R2 Wingrid. Registro estruturado em `prototipo/indice/fontes_oficiais.json`.
 
-O esquema de indexação v1.0.0 (decisão 16) reservou o valor `comunicado_oficial` no
-campo `tipo_fonte` expressamente para esta task, sem veredito. Esta decisão fixa
-as instituições aceitas, as regras de admissão e o tratamento na recuperação:
+O índice reserva `tipo_fonte: "comunicado_oficial"` para documentos institucionais de saúde pública brasileira (decisão 16). Ao contrário das checagens de agências, comunicados oficiais **não têm veredito**: trazem evidência sanitária, regulatória e epidemiológica oficial.
 
-1. **Três órgãos oficiais homologados:**
-   - **Ministério da Saúde (MS):** Autoridade executiva nacional do SUS. Domínios
-     permitidos: `saude.gov.br`, `gov.br/saude`. Tipos aceitos: notas técnicas,
-     boletins epidemiológicos, informes de vacinação e o canal *Saúde com Ciência*.
-   - **Fundação Oswaldo Cruz (Fiocruz):** Autoridade de pesquisa e imunobiológicos.
-     Domínios permitidos: `fiocruz.br`, `portal.fiocruz.br`, `bio.fiocruz.br`,
-     `ioc.fiocruz.br`. Tipos aceitos: notas técnicas, informes científicos e
-     boletim InfoGripe.
-   - **Agência Nacional de Vigilância Sanitária (Anvisa):** Autoridade regulatória
-     de fármacos e vigilância sanitária. Domínios permitidos: `anvisa.gov.br`,
-     `gov.br/anvisa`. Tipos aceitos: alertas sanitários, resoluções RDC, notas
-     técnicas regulatórias e informes de farmacovigilância.
+**Critérios de inclusão e domínios:**
+1. **Ministério da Saúde (MS):** autoridade sanitária nacional do SUS. Domínios autorizados: `gov.br/saude` e `saude.gov.br`. Documentos aceitos: notas técnicas, boletins epidemiológicos, informes do PNI e desmentidos do programa *Saúde com Ciência*.
+2. **Fundação Oswaldo Cruz (Fiocruz):** principal instituição de C&T em saúde pública da América Latina. Domínios autorizados: `fiocruz.br`, `portal.fiocruz.br`, `agencia.fiocruz.br` e `observatorio.fiocruz.br`. Documentos aceitos: relatórios de pesquisa, boletins InfoGripe e pareceres institucionais.
+3. **Agência Nacional de Vigilância Sanitária (Anvisa):** autoridade regulatória federal. Domínios autorizados: `gov.br/anvisa`, `anvisa.gov.br` e `consultas.anvisa.gov.br`. Documentos aceitos: alertas sanitários, resoluções (RDC), registros de medicamentos/vacinas e notas regulatórias.
 
-2. **Critério estrito de domínio institucional:**
-   Para prevenir contaminação do índice por páginas apócrifas ou blogs pessoais
-   hospedados em servidores governamentais, a ingestão exige correspondência exata
-   com a allowlist de domínios (`.gov.br` institucionais e `.fiocruz.br`).
-   Qualquer URL fora da allowlist é recusada como fonte oficial.
+**Vedação:** pronunciamentos e posts em redes sociais sem publicação em diário ou portal oficial não são indexados como comunicado oficial.
 
-3. **Tratamento de veredito:**
-   Comunicados oficiais **não têm veredito**. Eles entram como evidência científica
-   e sanitária institucional de suporte (com `tipo_fonte: "comunicado_oficial"`,
-   `apto_citacao: true` e `agencia_nome` preenchido com o nome do órgão). Na
-   camada de resposta, sustentam o que se sabe sobre o tema sem imputar rótulo de
-   agência checadora.
+### 20. Camada visível e camada de detalhe: separação arquitetural e de interface — 01/10/2026
+
+Task 5.1. R2 Wingrid.
+
+A experiência do usuário organiza-se em duas camadas complementares, assegurando acessibilidade imediata e auditabilidade integral:
+
+1. **Camada Visível (Entrega Primária — Web e WhatsApp):**
+   - Resumo rápido de alta legibilidade, respeitando o teto de 120 palavras e frases de até 20–25 palavras (`acessibilidade-leitura`).
+   - Apresenta rigorosamente os 4 blocos ordenados de `resposta-formativa`.
+   - Veda termos técnicos herméticos e jargões metodológicos sem glossário explicativo entre parênteses.
+   - Possui uma única ação primária por tela (ex.: botão "Ver fontes e detalhes" ou "Fazer nova pergunta").
+
+2. **Camada de Detalhe (Auditabilidade e Aprofundamento — por Ação Explícita):**
+   - Acessível sob demanda (toque/clique no botão de detalhes no chat web ou link com payload no WhatsApp).
+   - Contém: trecho literal da justificativa recuperada, identificação e data da agência/órgão, URL original, critérios de checagem, e versão original em inglês quando houver tradução (auditabilidade de tradução).
+
+### 21. Fluxo de primeira verificação sem cadastro — 01/10/2026
+
+Task 5.3. R2 Wingrid.
+
+Para maximizar o impacto social e garantir acesso universal à checagem de saúde, a primeira verificação elimina completamente barreiras de entrada (zero-friction):
+
+1. **Entrada Direta:** o usuário acessa a aplicação web (ou inicia conversa no WhatsApp) e pode imediatamente colar texto, encaminhar mensagem ou enviar link de notícia.
+2. **Sem Cadastro Prévio:** o sistema não exige login, senha, cadastro, e-mail nem CPF para processar a verificação e entregar a resposta formativa.
+3. **Aderência à LGPD:** mensagens de consulta são processadas de forma anônima e desidentificada, sem retenção de dados pessoais identificáveis.
+4. **Jornada do Usuário:** Input do texto -> Feedback acessível de processamento -> Exibição da Camada Visível (4 blocos) -> Opção de aprofundamento na Camada de Detalhe.
+
+### 22. Consistência do catálogo de técnicas com as dimensões da matriz de confiança — 01/10/2026
+
+Task 8.1. R2 Wingrid.
+
+Conferência entre o catálogo fechado de técnicas de manipulação (`prototipo/resposta/catalogo_tecnicas.json`, 7 rótulos fixados na decisão 6) e as 4 dimensões empíricas da `matriz-confianca` da fase Engage (`docs/engage/kit-matriz-confianca.md`):
+
+| Dimensão na Matriz de Confiança | Rótulo(s) Correspondente(s) no Catálogo | Cobertura e Raciocínio |
+| --- | --- | --- |
+| **Dimensão 1: Falsa Autoridade ou Fonte Inexistente** | `autoridade falsa`, `fonte sem nome` | Cobre tanto a citação de falsos médicos quanto fontes anônimas/vagas. |
+| **Dimensão 2: Recontextualização e Edição de Mídia** | `fora de contexto` | Cobre uso de declarações ou vídeos reais fora do momento/contexto original. |
+| **Dimensão 3: Distorção de Documento Real** | `manchete exagerada`, `dado distorcido` | Cobre inflar conclusões de bulas/estudos reais ou distorcer estatísticas. |
+| **Dimensão 4: Enquadramento Conspiratório** | 8ª vaga reservada (`conspiracao`), amparada por `cura milagrosa` e `urgência fabricada` | Promessas mirabolantes e senso de perigo artificial que alimentam teorias conspiratórias. |
+
+Ficam confirmadas as remoções de "ausência genérica de link" (variância zero) e "polaridade emocional" (não é critério de veracidade), preservando a decisão 7.
 
 ## Questões em aberto
 
@@ -688,5 +707,6 @@ as instituições aceitas, as regras de admissão e o tratamento na recuperaçã
   pessoal é alegação a verificar ou evidência fraca da alegação ao lado. Da
   resposta depende o desempate por ordem. Cabe à curadoria da task 6.1 trazer
   casos com relato antes da alegação.
+
 
 

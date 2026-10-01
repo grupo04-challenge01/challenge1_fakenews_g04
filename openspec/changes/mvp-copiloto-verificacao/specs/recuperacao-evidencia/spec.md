@@ -55,15 +55,15 @@ Vigilância Sanitária (Anvisa), restritos a seus domínios institucionais
 auditáveis (`.gov.br` e `.fiocruz.br`).
 
 Comunicados oficiais MUST ser classificados com `tipo_fonte: "comunicado_oficial"`
-e MUST NOT portar veredito de agência, servindo exclusivamente como evidência de
-orientação científica e sanitária.
+e MUST NOT portar veredito de agência, servindo como evidência de orientação
+científica e sanitária.
 
 #### Scenario: Evidência de órgão oficial homologado
 - **WHEN** a evidência recuperada provém de domínio oficial do Ministério da Saúde, Fiocruz ou Anvisa
 - **THEN** o sistema atribui o órgão oficial como fonte institucional
 - **AND** a informação é indexada como comunicado_oficial sem veredito
 
-#### Scenario: Fonte de esfera não homologada ou domínio comercial
-- **WHEN** uma publicação provém de domínio de terceiro ou de órgão governamental fora da lista homologada
+#### Scenario: Fonte fora da lista homologada
+- **WHEN** uma publicação provém de domínio de terceiro ou órgão fora da lista homologada
 - **THEN** o texto não é admitido como comunicado oficial
 

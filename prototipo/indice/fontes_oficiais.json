@@ -1,78 +1,101 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "versao": "1.0.0",
-  "data_definicao": "2026-10-01",
-  "responsavel": "R2 Wingrid Silva",
-  "descricao": "Lista de fontes oficiais aceitas para tipo_fonte: comunicado_oficial (task 1.3 de mvp-copiloto-verificacao).",
-  "fontes_homologadas": [
+  "data_atualizacao": "2026-10-01",
+  "descricao": "Lista canônica de fontes oficiais brasileiras aceitas no acervo de comunicados do copiloto de verificação (Task 1.3 de mvp-copiloto-verificacao).",
+  "politica_inclusao": {
+    "criterio_primario": "Autoridade sanitária pública e instituição científica pública de saúde do Brasil.",
+    "criterio_dominio": "Exclusivamente domínios governamentais (.gov.br) ou institucionais oficiais (.fiocruz.br).",
+    "natureza_dado": "comunicado_oficial (sem veredito jornalístico; evidência técnica e sanitária de suporte)."
+  },
+  "fontes": [
     {
       "id": "ms",
-      "orgao": "Ministério da Saúde",
+      "nome_exibivel": "Ministério da Saúde",
       "sigla": "MS",
-      "papel_sanitario": "Autoridade executiva máxima do SUS e formulação de políticas nacionais de saúde pública.",
-      "dominios_permitidos": [
-        "saude.gov.br",
-        "gov.br/saude"
+      "esfera": "federal",
+      "dominios_autorizados": [
+        "gov.br/saude",
+        "saude.gov.br"
       ],
       "tipos_documentos_aceitos": [
         "nota_tecnica",
         "boletim_epidemiologico",
         "informe_vacinacao",
-        "campanha_oficial",
-        "saude_com_ciencia"
+        "comunicado_oficial",
+        "desmentido_oficial_saude_com_ciencia"
       ],
-      "tratamento_veredito": "sem_veredito",
-      "apto_citacao": true
+      "documentos_vedados": [
+        "discurso_politico_sem_nota_tecnica",
+        "post_redes_sociais_sem_link_oficial"
+      ],
+      "campos_obrigatorios": [
+        "url",
+        "titulo",
+        "data_publicacao",
+        "orgao_emissor",
+        "texto_integral",
+        "tema_saude"
+      ]
     },
     {
       "id": "fiocruz",
-      "orgao": "Fundação Oswaldo Cruz",
+      "nome_exibivel": "Fundação Oswaldo Cruz",
       "sigla": "Fiocruz",
-      "papel_sanitario": "Principal instituição pública de ciência, tecnologia e pesquisa em saúde e imunobiológicos.",
-      "dominios_permitidos": [
+      "esfera": "federal_cientifica",
+      "dominios_autorizados": [
         "fiocruz.br",
         "portal.fiocruz.br",
-        "bio.fiocruz.br",
-        "ioc.fiocruz.br"
+        "agencia.fiocruz.br",
+        "observatorio.fiocruz.br"
       ],
       "tipos_documentos_aceitos": [
         "nota_tecnica",
-        "informe_cientifico",
+        "relatorio_pesquisa",
         "boletim_infogripe",
-        "comunicado_institucional"
+        "comunicado_imprensa_cientifico",
+        "parecer_institucional"
       ],
-      "tratamento_veredito": "sem_veredito",
-      "apto_citacao": true
+      "documentos_vedados": [
+        "opiniao_pessoal_sem_chancela_institucional"
+      ],
+      "campos_obrigatorios": [
+        "url",
+        "titulo",
+        "data_publicacao",
+        "instituto_emissor",
+        "texto_integral",
+        "tema_saude"
+      ]
     },
     {
       "id": "anvisa",
-      "orgao": "Agência Nacional de Vigilância Sanitária",
+      "nome_exibivel": "Agência Nacional de Vigilância Sanitária",
       "sigla": "Anvisa",
-      "papel_sanitario": "Autoridade regulatória máxima de fármacos, vacinas, produtos biológicos e vigilância sanitária.",
-      "dominios_permitidos": [
+      "esfera": "regulatoria_federal",
+      "dominios_autorizados": [
+        "gov.br/anvisa",
         "anvisa.gov.br",
-        "gov.br/anvisa"
+        "consultas.anvisa.gov.br"
       ],
       "tipos_documentos_aceitos": [
         "alerta_sanitario",
         "resolucao_rdc",
+        "registro_medicamento_vacina",
         "nota_tecnica_regulatoria",
-        "informe_farmacovigilancia",
         "esclarecimento_publico"
       ],
-      "tratamento_veredito": "sem_veredito",
-      "apto_citacao": true
+      "documentos_vedados": [
+        "atas_administrativas_sem_teor_sanitario"
+      ],
+      "campos_obrigatorios": [
+        "url",
+        "titulo",
+        "data_publicacao",
+        "gerencia_geral_emissora",
+        "texto_integral",
+        "tema_saude"
+      ]
     }
-  ],
-  "criterios_inclusao": [
-    "Domínio institucional oficial estrito (.gov.br ou .fiocruz.br)",
-    "Documento de caráter técnico, regulatório, epidemiológico ou de orientação pública",
-    "Presença obrigatória de data de emissão/atualização e URL institucional permanente auditável",
-    "Ausência de veredito jornalístico: classificado como tipo_fonte = comunicado_oficial"
-  ],
-  "criterios_exclusao": [
-    "Artigos de opinião ou blogs pessoais hospedados em servidores governamentais",
-    "Discursos políticos sem fundamentação técnica ou sanitária emitida por corpo técnico",
-    "Portais de prefeituras ou câmaras municipais sem validação prévia de autoridade sanitária",
-    "Conteúdo sem data de publicação ou sem autoria institucional identificável"
   ]
 }
