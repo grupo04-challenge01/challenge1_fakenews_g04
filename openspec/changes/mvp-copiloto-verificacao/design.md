@@ -543,8 +543,98 @@ ancoragem trecho a afirmação existir, nada no código impede que um trecho do
 FACTCK.BR seja exibido. A 1.6 MUST descartar como âncora todo fragmento com
 `apto_citacao=false` e usar dele só agência, link e veredito.
 
+### 18. Quatro blocos: o modelo escreve o conteúdo, o código a forma — 01/10/2026
+
+Task 3.2. Código em `prototipo/resposta/estrutura.py`, testes em
+`prototipo/resposta/tests/test_estrutura.py`, sonda em
+`prototipo/sonda_resposta.py`, resultado por tentativa em
+`prototipo/relatorio_sonda_resposta.json`.
+
+`responder(texto, alegacao, veredito, decomposicao, lacuna)` recebe o
+`Veredito` da guarda (decisão 12) e devolve a camada visível, a camada de
+detalhe e a lista de defeitos. Segue a redação do requirement Estrutura de
+quatro blocos dada por `fix-resposta-sem-evidencia`, com as duas formas.
+
+**O que sai do código.** A forma, escolhida pelo estado da recuperação: com
+evidência quando o veredito cita trecho, sem evidência quando é `evidência
+insuficiente` ou lacuna de acervo. Lacuna com trecho recuperado é recusada,
+porque trocaria a forma. Também saem do código a ordem e os títulos dos blocos,
+a abertura do bloco 1 com o rótulo da guarda, a frase da data de corte e o
+ponteiro da lacuna, e a camada de detalhe com agência, data, link, veredito da
+agência e trecho. O modelo não muda o veredito: se ele escrever "Verdadeiro" no
+bloco 1, a abertura continua "Falso.". Data de corte e ponteiro seguem a
+recomendação da decisão 4 do fix: lá o modelo omitiu a data 9 vezes em 9.
+
+**O que sai do modelo.** O texto dos quatro blocos, em JSON. Um prompt só para
+as duas formas, com o estado na mensagem (risco 1 do fix).
+
+**O que é conferido depois**, sem derrubar a resposta. Os defeitos ficam em
+`Resposta.defeitos`, para quem chama decidir:
+
+- forma com evidência: rótulo do catálogo depois de `Técnica:` no bloco 3
+  (contrato da decisão 7), reforço do mito no `falso` (contrato da decisão 14)
+  e, quando a decomposição traz opinião, o bloco 2 dizendo que aquela parte é
+  opinião (`verificacao-alegacao`);
+- forma sem evidência: nenhum rótulo do catálogo, marcado ou solto, e o bloco 3
+  sem dizer que a mensagem engana;
+- as duas formas: até 120 palavras na camada visível, frases de até 20
+  palavras (`acessibilidade-leitura`) e nenhum "T1" visível, porque os trechos
+  ficam na camada de detalhe.
+
+**Veredito `verdadeiro` não nomeia técnica.** A spec manda o bloco 3 da forma
+com evidência nomear técnica, e o cenário Alegação verdadeira manda o mesmo
+bloco explicar por que a mensagem era difícil de avaliar. Rótulo de manipulação
+em mensagem verdadeira desdiria o veredito. Na sonda isso aconteceu uma vez,
+com `fora de contexto` no caso do caixão. A leitura adotada segue o cenário:
+técnica em `verdadeiro` é defeito, e o título do bloco 3 muda para "POR QUE
+PARECIA DIFÍCIL DE ACREDITAR:". Fica como questão aberta abaixo, para a spec
+dizer isso em texto expresso.
+
+**Sonda, 21 de 21.** Gemma 4 12B QAT, `think: false`, três tentativas por caso,
+no MacBook Air M4, sem `--cpu`. Os vereditos entram prontos, com fragmentos
+reais do índice.
+
+| Caso | Estado | Técnica na resposta | Passou |
+| --- | --- | --- | --- |
+| R1 | `falso`, jatobá, "um médico confirmou" | `cura milagrosa, fonte sem nome` | 3/3 |
+| R2 | `falso`, jatobá, com opinião | `cura milagrosa` | 3/3 |
+| R3 | `verdadeiro` contra-intuitivo, caixão | nenhuma | 3/3 |
+| R4 | fora de contexto, vídeo da cloroquina | `fora de contexto` | 3/3 |
+| S1 | `evidência insuficiente`, goiabeira | nenhuma | 3/3 |
+| S2 | lacuna com ponteiro, vacina da dengue | nenhuma | 3/3 |
+| S3 | lacuna sem ponteiro, oropouche | nenhuma | 3/3 |
+
+As respostas tiveram de 64 a 80 palavras, com mediana de 9,8 s (de 6,5 a
+23,4 s). O 21 de 21 é da terceira versão do prompt. As anteriores mostraram três
+defeitos, e cada um virou regra:
+
+1. O bloco 3 levava "por que engana" em cima de veredito `verdadeiro`.
+2. No R1, a escolha foi `fonte sem nome` 3 vezes em 3, embora a mensagem
+   prometesse cura. O cenário Promessa de cura pede `cura milagrosa`. O prompt
+   agora aceita até dois rótulos e diz que promessa de cura é sempre
+   `cura milagrosa`.
+3. O bloco 1 abriu com "A informação diz que a casca do jatobá cura o câncer",
+   sem marcação de falso. O verificador da 3.4 pegou a frase.
+
+**Limites declarados.**
+
+- A adequação do rótulo ao caso continua fora do código, como na decisão 7. O
+  defeito 2 só apareceu porque as respostas foram lidas.
+- Afirmação do bloco 2 sem trecho de origem não é pega aqui: ancorar cada
+  afirmação a um trecho é a task 1.6. Exemplo: no R3, "o exame saiu uma semana
+  depois".
+- No S2, o bloco 2 diz que "não encontrar não significa que seja falsa", ao
+  lado de um ponteiro que traz veredito `falso`. É a questão aberta pela sonda
+  E2 do fix, a cargo da task 2.2 daquele change.
+- Defeito não gera nova tentativa. Se a montagem final repete a chamada ou
+  devolve a resposta com o defeito registrado é decisão de quem integra o
+  fluxo.
+
 ## Questões em aberto
 
+- **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
+  bloco 3 da forma com evidência nomear técnica, sem exceção. O cenário Alegação
+  verdadeira, e a decisão 18, dizem que não. A spec precisa dizer qual vale.
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
