@@ -1,8 +1,14 @@
 {
+  "esquema": {
+    "arquivo": "prototipo/indice/esquema_indexacao.json",
+    "versao": "1.0.0",
+    "aprovado": true
+  },
   "registros_lidos": 4063,
-  "unidades_indexadas": 5090,
-  "fragmentos_indexados": 22464,
+  "unidades_indexadas": 5089,
+  "fragmentos_indexados": 22463,
   "registros_em_quarentena": 88,
+  "unidades_em_quarentena": 1,
   "disposicoes": {
     "unica": 3476,
     "quarentena_misto": 88,
@@ -41,15 +47,16 @@
   "modelo_embedding": "intfloat/multilingual-e5-base",
   "dimensao": 768,
   "custo_indexacao_s": {
-    "lexico": 2.13,
-    "denso": 883.42,
-    "total": 886.57
+    "lexico": 2.22,
+    "denso": 2453.76,
+    "total": 2469.85
   },
   "fusao_padrao": {
     "forma": "combinação convexa de scores realçados contra o fundo da própria consulta",
-    "alfa": 0.5,
+    "alfa": 0.9,
     "percentil_fundo": 50,
     "percentil_topo": 99,
     "provisorio": "alfa é fixado por medição na task 3.1; o limiar de evidência insuficiente, na 3.5"
-  }
+  },
+  "matriz_densa": "construída por `python -m prototipo.rag construir` em 29/09/2026 sobre 22.464 fragmentos, antes do esquema; a linha do fragmento 4ce7e4777f-04-00 (alegação sem justificativa, quarentena) foi removida e as 22.463 restantes conferidas por texto e id, na mesma ordem — decisão 16 de mvp-copiloto-verificacao"
 }

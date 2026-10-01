@@ -23,19 +23,28 @@ uma alegação a mais ou a menos derruba o registro para a via conservadora.
 
 Medido sobre o corpus: 221 dos 587 registros multi-alegação segmentam sob essa
 regra. Os demais seguem a disposição da tabela em `dispor_registro`.
+
+Desde a task 1.1 de mvp-copiloto-verificacao (29/09/2026), a saída segue o
+contrato `prototipo/indice/esquema_indexacao.json` e é validada por
+`esquema.validar` antes de ser devolvida. Duas consequências: todo registro
+carrega corpus, tipo de fonte, idioma, aptidão a citação e nome da agência; e a
+alegação segmentada sem justificativa vai para a quarentena, porque um fragmento
+sem trecho não ancora afirmação nenhuma (`recuperacao-evidencia`).
 """
 from __future__ import annotations
 
 import ast
-import hashlib
 import json
 import pathlib
 import re
 import unicodedata
 
 from . import corpus as corpus_mod
+from . import esquema as esquema_mod
 
 SAIDA = pathlib.Path(__file__).resolve().parents[1] / "indice"
+
+CORPUS = "factcenter_saude"
 
 # Alegação como linha inteira entre aspas. O piso de 15 caracteres descarta
 # interjeição curta; o teto de 400 descarta parágrafo inteiro entre aspas.
@@ -65,7 +74,8 @@ def chave_canonica(veredito: str) -> str:
 
 
 def _id_registro(url: str) -> str:
-    return hashlib.sha1(url.encode("utf-8")).hexdigest()[:10]
+    # Prefixo vazio para o FactCenter: a chave é a mesma da aferição (esquema, I1).
+    return esquema_mod.registro_id(CORPUS, url)
 
 
 def _limpar(texto: str) -> str:
@@ -136,9 +146,11 @@ def _cabecalho(unidade: dict) -> str:
             f'{unidade["veredito_original"]}')
 
 
-def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
+def construir(df, validar_esquema: bool = True) -> tuple[list[dict], list[dict], list[dict], dict]:
+    esquema = esquema_mod.carregar_esquema()
     unidades, fragmentos, quarentena = [], [], []
     contagem = {}
+    unidades_sem_justificativa = 0
 
     for linha in df.to_dict("records"):
         try:
@@ -146,7 +158,8 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
         except (ValueError, SyntaxError):
             vereditos = []
         if not vereditos:
-            quarentena.append({"url": linha["url"], "agencia": linha["source_name"],
+            quarentena.append({"corpus": CORPUS, "url": linha["url"],
+                               "agencia": linha["source_name"],
                                "motivo": "veredito ilegível", "rating": linha["rating"]})
             contagem["quarentena_rating"] = contagem.get("quarentena_rating", 0) + 1
             continue
@@ -157,7 +170,7 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
 
         if disposicao.startswith("quarentena"):
             quarentena.append({
-                "url": linha["url"], "agencia": linha["source_name"],
+                "corpus": CORPUS, "url": linha["url"], "agencia": linha["source_name"],
                 "titulo": _limpar(linha["title"]), "motivo": disposicao,
                 "vereditos_originais": vereditos,
                 "vereditos_chave": sorted({chave_canonica(v) for v in vereditos}),
@@ -165,7 +178,8 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
             continue
 
         rid = _id_registro(linha["url"])
-        base = {"registro_id": rid, "agencia": linha["source_name"],
+        atributos = esquema_mod.atributos_de_corpus(CORPUS, linha["source_name"], esquema)
+        base = {"registro_id": rid, **atributos, "agencia": linha["source_name"],
                 "url": linha["url"], "data_publicacao": linha["publication_date"],
                 "obtido_em": linha["obtained_at"], "titulo": _limpar(linha["title"]),
                 "subtitulo": _limpar(linha["subtitle"]),
@@ -184,6 +198,15 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
             origem = "titulo"
 
         for i, parte in enumerate(partes):
+            if not parte["justificativa"].strip():
+                # O texto raspado terminou antes da justificativa desta alegação.
+                # Sem trecho não há o que citar; o índice das irmãs não muda.
+                quarentena.append({
+                    "corpus": CORPUS, "url": linha["url"], "agencia": linha["source_name"],
+                    "unidade_id": f"{rid}-{i:02d}", "motivo": "justificativa_ausente",
+                    "alegacao": parte["alegacao"], "veredito_original": parte["veredito"]})
+                unidades_sem_justificativa += 1
+                continue
             unidade = dict(base)
             unidade.update({
                 "unidade_id": f"{rid}-{i:02d}",
@@ -207,6 +230,7 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
                 fragmentos.append({
                     "fragmento_id": f'{unidade["unidade_id"]}-{j:02d}',
                     "unidade_id": unidade["unidade_id"],
+                    **atributos,
                     "agencia": unidade["agencia"], "url": unidade["url"],
                     "data_publicacao": unidade["data_publicacao"],
                     "alegacao": unidade["alegacao"],
@@ -219,10 +243,13 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
                 })
 
     manifesto = {
+        "esquema": {"arquivo": "prototipo/indice/esquema_indexacao.json",
+                    "versao": esquema["x-versao"]},
         "registros_lidos": len(df),
         "unidades_indexadas": len(unidades),
         "fragmentos_indexados": len(fragmentos),
-        "registros_em_quarentena": len(quarentena),
+        "registros_em_quarentena": len(quarentena) - unidades_sem_justificativa,
+        "unidades_em_quarentena": unidades_sem_justificativa,
         "disposicoes": contagem,
         "busca": "exata, sem índice aproximado e sem banco vetorial "
                  "(design.md, decisão 3)",
@@ -231,6 +258,10 @@ def construir(df) -> tuple[list[dict], list[dict], list[dict], dict]:
         "fragmento_caracteres": FRAGMENTO_CARACTERES,
         "fragmento_sobreposicao": FRAGMENTO_SOBREPOSICAO,
     }
+    if validar_esquema:
+        laudo = esquema_mod.validar(unidades, fragmentos, quarentena, esquema)
+        esquema_mod.exigir(laudo)
+        manifesto["esquema"]["aprovado"] = True
     return unidades, fragmentos, quarentena, manifesto
 
 

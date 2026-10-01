@@ -29,25 +29,40 @@ def _ler_jsonl(caminho: pathlib.Path) -> list[dict]:
         return [json.loads(linha) for linha in arquivo]
 
 
+def _etapa(mensagem: str) -> None:
+    """Aviso de etapa em stderr. O stdout fica só com o manifesto, no final."""
+    print(f"[{time.strftime('%H:%M:%S')}] {mensagem}", file=sys.stderr, flush=True)
+
+
 def construir(args) -> None:
     inicio = time.perf_counter()
+    _etapa("1/4 portões de entrada: integridade textual e leitura do corpus")
     laudo = corpus_mod.verificar_integridade_textual()
     df = corpus_mod.ler_corpus()
+    _etapa(f"2/4 unidades e fragmentos de {len(df)} registros, com validação do esquema")
     unidades, fragmentos, quarentena, manifesto = unidades_mod.construir(df)
+    _etapa(f"    {len(unidades)} unidades, {len(fragmentos)} fragmentos, "
+           f"{len(quarentena)} em quarentena — esquema {manifesto['esquema']['versao']} aprovado")
 
     SAIDA.mkdir(parents=True, exist_ok=True)
     unidades_mod._gravar(SAIDA / "unidades.jsonl", unidades)
     unidades_mod._gravar(SAIDA / "fragmentos.jsonl", fragmentos)
     unidades_mod._gravar(SAIDA / "quarentena.jsonl", quarentena)
 
+    _etapa("3/4 índice léxico (BM25)")
     marca = time.perf_counter()
     IndiceLexico(fragmentos)
     custo_lexico = time.perf_counter() - marca
 
+    _etapa(f"4/4 índice denso com {args.modelo}: a etapa longa (883 s no M4 em "
+           "18/09). Na primeira vez nesta máquina o modelo (~1 GB) é baixado antes "
+           "da barra de progresso aparecer")
     marca = time.perf_counter()
     denso = IndiceDenso.construir(fragmentos, args.modelo)
     custo_denso = time.perf_counter() - marca
     denso.gravar(MATRIZ)
+    _etapa(f"índice denso gravado em {MATRIZ.name} "
+           f"({time.perf_counter() - marca:.0f} s); manifesto a seguir")
 
     manifesto.update({
         "integridade_textual": laudo,
@@ -68,13 +83,35 @@ def construir(args) -> None:
     print(json.dumps(manifesto, ensure_ascii=False, indent=2))
 
 
+def conferir_indice(fragmentos: list[dict], denso: IndiceDenso,
+                    matriz: pathlib.Path) -> IndiceDenso:
+    """Portão de carga: a matriz densa tem uma linha por fragmento, na mesma ordem.
+
+    `fragmentos.jsonl` e as `.npy` não são versionados, então cada máquina tem os
+    seus. Rodar só `python -m prototipo.rag.unidades` sobre uma matriz antiga
+    desalinha fragmento e vetor, e a busca densa devolve o fragmento vizinho sem
+    erro nenhum (decisão 16 de mvp-copiloto-verificacao). Linhas a mais ou a
+    menos param a carga; índice anterior ao esquema só gera aviso.
+    """
+    linhas = denso.matriz.shape[0]
+    if linhas != len(fragmentos):
+        sys.exit(f"índice desalinhado: {matriz.name} tem {linhas} linhas e "
+                 f"fragmentos.jsonl tem {len(fragmentos)} fragmentos — rode "
+                 "`python -m prototipo.rag construir` para reconstruir os dois juntos.")
+    if fragmentos and "corpus" not in fragmentos[0]:
+        print("aviso: índice anterior ao esquema de indexação 1.0.0 (fragmentos "
+              "sem `corpus`) — rode `python -m prototipo.rag construir` para "
+              "atualizar.", file=sys.stderr, flush=True)
+    return denso
+
+
 def carregar(modelo: str = MODELO_PADRAO, alfa: float = ALFA_PADRAO) -> Recuperador:
     if not MATRIZ.exists():
         sys.exit("índice ausente — rode `python -m prototipo.rag construir` antes.")
     fragmentos = _ler_jsonl(SAIDA / "fragmentos.jsonl")
     unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
-    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
-                       IndiceDenso.carregar(MATRIZ, modelo), alfa=alfa)
+    denso = conferir_indice(fragmentos, IndiceDenso.carregar(MATRIZ, modelo), MATRIZ)
+    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos), denso, alfa=alfa)
 
 
 def buscar(args) -> None:
@@ -111,8 +148,8 @@ def _recuperador_de(modelo: str, alfa: float = ALFA_PADRAO) -> Recuperador:
         print(f"indexação: {time.perf_counter() - marca:.1f} s", flush=True)
 
     unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
-    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
-                       IndiceDenso.carregar(matriz, modelo), alfa=alfa)
+    denso = conferir_indice(fragmentos, IndiceDenso.carregar(matriz, modelo), matriz)
+    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos), denso, alfa=alfa)
 
 
 def varrer_alfa(args) -> None:
