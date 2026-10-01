@@ -119,6 +119,41 @@ Tasks 2.2 e 2.3. R2 Wingrid.
 1. A recusa de conduta clínica e o encaminhamento de urgência médica (SAMU 192 / UBS) são aplicados por guardrails na entrada da requisição (pré-RAG). Se o usuário pedir prescrição, alteração de medicação ou relatar emergência, a requisição é interceptada imediatamente com resposta padrão acolhedora do SUS, sem passar pelo pipeline de verificação.
 2. A forma sem evidência só é acionada para alegações informativas em que não houve recuperação. O bloco 3 veda prescrição alternativa e limita-se a canais oficiais de informação pública (como portais do Ministério da Saúde e Anvisa) ou recomendação de procurar profissionais habilitados, cumprindo integralmente o requirement "Veredito sem prescrição alternativa".
 
+## Decisão 6: o terceiro estado já é o segundo caso de teste da 8.2 — 01/10/2026
+
+Task 2.4. R4 Samara.
+
+A task pedia levar o terceiro estado da decisão 3 — pauta ausente do acervo
+**e** do índice — à task 8.2 de `add-ampliacao-corpus-ptbr`, que prevê três
+casos de teste de lacuna. A conferência mostra que ele já está lá. A 8.2 foi
+fechada em 20/09 com os três casos em
+`datasets/derivados/declaracao_cobertura_quatro_niveis.json`
+(`tres_respostas_de_lacuna`), e o segundo deles é este estado, com `oropouche`
+como exemplo medido. Nada precisa ser acrescentado àquele change.
+
+**Correspondência entre os dois changes.**
+
+| Estado (decisão 3 deste change) | Situação de `frescor-corpus` (`add-ampliacao-corpus-ptbr`) | Caso de teste da 8.2 |
+| --- | --- | --- |
+| `evidência insuficiente` | nenhuma: a pauta está dentro da janela, não é lacuna | — |
+| lacuna de acervo **com** ponteiro | 1. checagem localizada | `pauta_com_checagem_so_no_indice` — `qdenga` |
+| lacuna de acervo **sem** ponteiro (o terceiro estado) | 2. sem correspondência no acervo consultado | `pauta_sem_correspondencia_em_nenhum_nivel` — `oropouche` |
+| lacuna de acervo **sem** ponteiro, com a data de corte do índice | 3. fora da janela declarada | `pauta_posterior_as_duas_datas_de_corte` |
+
+O terceiro estado deste change cobre duas situações de `frescor-corpus`: a pauta
+que o índice não tem, e a pauta posterior à data de corte do índice. Nas duas,
+o bloco 4 fica sem ponteiro. O que as separa é a data de corte que a resposta
+nomeia, e isso já está no cenário «Alegação sem correspondência em nenhum
+nível» daquela spec.
+
+**As duas specs dizem a mesma coisa sobre o terceiro estado.** O cenário «Pauta
+ausente do acervo e do índice» de `resposta-formativa`, aqui, e o cenário
+«Alegação sem correspondência em nenhum nível» de `frescor-corpus` exigem
+juntos: lacuna de acervo, e não `evidência insuficiente`; declaração de que não
+há checagem localizada em português; e a vedação de apresentar a ausência de
+ponteiro como ausência de checagem no mundo. Nenhum dos dois contradiz o outro,
+e o caso de teste da 8.2 registra a resposta com as mesmas três exigências.
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
