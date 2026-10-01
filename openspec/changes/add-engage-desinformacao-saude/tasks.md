@@ -1,6 +1,6 @@
 # Tasks — add-engage-desinformacao-saude
 
-Donos das tasks em aberto: **Jhessica** 4 (bloco 4), **Breno** 3 (2.4, 7.1, 7.2).
+Donos das tasks em aberto: **Breno** 1 (7.1).
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -62,11 +62,15 @@ Vigência: 08/09 a 11/09.
 ## 4. Matriz de confiança
 
 - [x] 4.1 **Jhessica** Card sorting dos sinais que cada integrante usa na prática
+      — consolidado na Matriz de Confiança versão 1, `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 - [x] 4.2 **Jhessica** Consolidar em dimensões, cada uma com sinal observável, papel da IA e
       limite
+      — quatro dimensões, `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 - [x] 4.3 **Jhessica** Escrever a rubrica de três níveis por dimensão
+      — `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 - [x] 4.4 **Jhessica** Testar a matriz contra os casos da forense e remover dimensões que não
       discriminam nenhum caso
+      — seção «Registro de Remoções», `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 
 ## 5. Guiding questions
 
@@ -99,7 +103,8 @@ Vigência: 08/09 a 11/09.
 ## 7. Fechamento
 
 - [ ] 7.1 **Breno** Consolidar o portfólio de pesquisa (fichas + método + datasets)
-- [ ] 7.2 **Breno** Consolidar a matriz de confiança versão 1
+- [x] 7.2 **Breno** Consolidar a matriz de confiança versão 1
+      — entregue como Matriz de Confiança (Versão 1), `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 - [x] 7.3 Rodar `openspec validate add-engage-desinformacao-saude --strict` — limpo em 20/09/2026
 - [x] 7.4 ~~Abrir `add-instrumento-avaliacao-ptbr` para a fase Investigate~~ —
       **decidido em 20/09/2026: o change não será aberto.** A capability

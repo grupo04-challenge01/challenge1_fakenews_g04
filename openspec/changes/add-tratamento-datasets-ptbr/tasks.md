@@ -1,6 +1,6 @@
 # Tasks — add-tratamento-datasets-ptbr
 
-Donos das tasks em aberto: **Samara** 1 (3.5), **Jhessica** 1 (5.4).
+Donos das tasks em aberto: **Samara** 1 (3.5), **Jhessica** 2 (5.4, 5.7).
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -83,6 +83,11 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 5.5 Montar o pool de few-shot em PT-BR a partir do corpus brasileiro
 - [x] 5.6 Nomear em português os rótulos de força da afirmação, ligados ao
       catálogo de técnicas
+- [ ] 5.7 **Jhessica** Reconferir a rubrica de seis critérios contra a Matriz de
+      Confiança versão 1 (`docs/engage/kit-matriz-confianca.md`, PR #104) e
+      ajustar o que não for compatível. O requirement de `adaptacao-criterios-en`
+      exige rubrica «compatível com a capability `matriz-confianca`»; aberta em
+      01/10/2026
 
 ## 6. Correções no portfólio de pesquisa
 
@@ -91,6 +96,9 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 6.2 Corrigir a contagem de critérios do FakeHealth: 20 em dois conjuntos,
       não 10
 - [x] 6.3 Registrar os achados do corpus PT-BR como caveats do portfólio
+- [x] 6.4 Análise exploratória dos datasets em `exploracao/eda_datasets.ipynb`
+      — entrou pelo PR #94 (commit `274cf452`, 25/09/2026) sem task que a
+      cobrisse; registrada aqui em 01/10/2026
 
 ## 7. Fechamento
 

@@ -6,20 +6,22 @@ Atualizado em **01/10/2026**.
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | **23 de 25** |
-| `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
+| `add-engage-desinformacao-saude` | Engage | completo | **24 de 25** |
+| `add-tratamento-datasets-ptbr` | Investigate | completo | **32 de 35** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
-| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **8 de 13** |
-| `mvp-copiloto-verificacao` | Act | completo | **12 de 31** |
+| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **12 de 13** |
+| `mvp-copiloto-verificacao` | Act | completo | **13 de 31** |
 
 Todos passam `openspec validate --strict`, conferido em 01/10/2026.
 
 ## O que foi entregue entre 25/09 e 01/10/2026
 
-Dezenove tasks em uma semana, pelos PRs #91 a #104. O Act saiu de zero.
+Dezenove tasks em uma semana, pelos PRs #91 a #104. O Act saiu de zero. Em
+01/10, os PRs #106 e #107 fecharam mais cinco, e a correção de consistência
+fechou a 7.2 do Engage.
 
-### Act: de 0 para 12 de 31
+### Act: de 0 para 13 de 31
 
 | Entregue | Tasks | Onde | Decisão do `design.md` |
 | --- | --- | --- | --- |
@@ -35,9 +37,10 @@ Dezenove tasks em uma semana, pelos PRs #91 a #104. O Act saiu de zero.
 | Verificação de reforço do mito | 3.4 | `prototipo/resposta/mito.py` | 14 |
 | Classificador de pedido de conduta clínica | 4.1 | `prototipo/verificacao/fronteira.py` | 15 |
 | Esquema de indexação, versão 1.0.0 | 1.1 | `prototipo/indice/esquema_indexacao.json` | 16 |
+| Estrutura de quatro blocos, sonda 21/21 | 3.2 | `prototipo/resposta/estrutura.py` | 18 |
 
 Decisões do `mvp-copiloto-verificacao`. Canal em 25/09, catálogo e validação em
-28/09, o resto em 29/09.
+28/09, a 3.2 em 01/10, o resto em 29/09.
 
 **Um achado do esquema.** O validador reprovou uma unidade da Lupa sobre câncer
 de pele: alegação com veredito e sem justificativa. Foi para a quarentena com
@@ -45,23 +48,27 @@ motivo `justificativa_ausente`. O índice passou de 5.090 unidades e 22.464
 fragmentos para **5.089 e 22.463**. O PR #103 fez a carga do índice parar quando
 a matriz densa e os fragmentos têm tamanhos diferentes.
 
-**A 1.2 não está na `main`.** A indexação do FACTCK.BR tem commit no branch
-`act-classificacao-guarda`, ainda não fundido.
+**A 1.2 não está na `main`.** A indexação do FACTCK.BR foi fundida no branch
+`act-classificacao-guarda` pelo PR #105, com a decisão 17. O branch
+`act-factckbr-indexacao` a leva à `main`.
 
-### `fix-resposta-sem-evidencia`: de 6 para 8 de 13
+### `fix-resposta-sem-evidencia`: de 6 para 12 de 13
 
 As 3.1 e 3.2 fecharam em 28/09, decisão 4 do change. O defeito que abriu o
 change não se repete: 0 de 12 respostas degeneraram. A falha que sobrou é
 outra: nas 9 respostas de lacuna de acervo, o modelo omitiu a data de corte 9
 vezes em 9. A recomendação para a 3.2 do MVP é compor essa frase por modelo
-fixo.
+fixo, e a 3.2 fez isso (decisão 18 do MVP).
 
-### Engage: de 18 para 23 de 25
+Em 01/10, o PR #106 (Wingrid) fechou as 2.1, 2.2, 2.3 e 3.3. A conciliação está
+na decisão 5 do change. Resta a 2.4, de Samara.
+
+### Engage: de 18 para 24 de 25
 
 | Entregue | Tasks |
 | --- | --- |
 | Tempos medidos (10, 22 e 43 min) no quadro Problema do board e no Miro, 25/09 | 2.4 |
-| Matriz de confiança versão 1, PR #104, 01/10 | 4.1, 4.2, 4.3, 4.4 |
+| Matriz de confiança versão 1, PR #104, 01/10 | 4.1, 4.2, 4.3, 4.4, 7.2 |
 
 A matriz tem quatro dimensões: falsa autoridade ou fonte inexistente,
 recontextualização e edição de mídia, distorção de documento real e
@@ -69,12 +76,14 @@ enquadramento conspiratório. Cada uma com sinal observável, papel da IA, limit
 e rubrica de três níveis. A 4.4 removeu três sinais que não discriminavam
 nenhum caso. Está em [Matriz de confiança](engage/kit-matriz-confianca.md).
 
-Restam a 7.1 e a 7.2, as duas de consolidação.
+A 7.2 foi fechada citando o mesmo PR, que já entregou a matriz como «Versão 1».
+Resta a 7.1, a consolidação do portfólio.
 
 ### Fora de task
 
 - Notebook de análise exploratória, `exploracao/eda_datasets.ipynb` (PR #94).
-  Nenhum change o cobre.
+  Coberto desde 01/10 pela task 6.4 de `add-tratamento-datasets-ptbr`,
+  registrada depois do fato.
 - Remoção do arquivo duplicado do caso 02 (PR #101).
 
 ## O que foi entregue em 24/09/2026
@@ -359,11 +368,13 @@ justificativa escrita.
 | ~~Canal de entrega (WhatsApp vs. web)~~ | **resolvido em 25/09/2026: web primária com extensão WhatsApp**, decisão 5 do MVP | — |
 | ~~Composição do catálogo de técnicas~~ | **resolvido em 28/09/2026: sete rótulos e uma vaga**, decisão 6 do MVP | — |
 | Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | **medido em 19/09: não sai do score fundido, por motivo estrutural; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos** |
-| Estrutura de quatro blocos sob `evidência insuficiente` | `fix-resposta-sem-evidencia`; sonda confirmada em 28/09, decisão 4 | conferências 2.1 a 2.3 e teste 3.3 do change |
+| ~~Estrutura de quatro blocos sob `evidência insuficiente`~~ | **resolvido em 01/10/2026:** conferências e teste fechados pelo PR #106, decisão 5 do fix; implementada na 3.2 do MVP, decisão 18 | — |
+| Técnica em veredito `verdadeiro` | `mvp-copiloto-verificacao`, decisão 18 | redação da spec `resposta-formativa` |
 | ~~Necessidade de reranker~~ | **resolvido em 22/09/2026: não compensa.** Só 2 das 20 consultas caem fora do top-3 (posições 4 e 5); as outras 18 estão no top-2 | — |
 | ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
 | Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | `tratamento/mapa_vereditos.json` | confirmação do grupo |
 | Validação empírica da rubrica de seis critérios | `add-tratamento-datasets-ptbr`, task 5.4 | `avaliacao-instrumento` |
+| Compatibilidade da rubrica com a matriz versão 1 | `add-tratamento-datasets-ptbr`, task 5.7 | — |
 | Origem dos itens verdadeiros | `add-tratamento-datasets-ptbr` | teste com usuário |
 | ~~Sub-recorte dentro de saúde~~ | **resolvido em 17/09/2026: vacinação** | — |
 | ~~Local ou API para geração~~ | **resolvido em 17/09/2026: local, Gemma 4 12B QAT** | — |
@@ -382,9 +393,10 @@ justificativa escrita.
    reindexar.
 6. ~~Forense de casos~~ — **feita em 24/09/2026**, seis fichas. A 2.4 saiu em
    25/09.
-7. ~~Matriz de confiança~~ — **feita em 01/10/2026**, bloco 4 do Engage. Resta
-   o bloco 7, consolidação.
+7. ~~Matriz de confiança~~ — **feita em 01/10/2026**, bloco 4 do Engage e 7.2.
+   Resta a 7.1, consolidação do portfólio.
 8. Decisão sobre "identificar vieses".
 9. **Submeter o protocolo ao CEP** (6.4). A 6.3 fechou em 29/09.
-10. **Fundir a 1.2 na `main`.** A 1.5 depende dela.
-11. Bloco 1 do Act — 1.3, 1.4 e 1.6 — e a 3.2, já em andamento.
+10. **Fundir a 1.2 na `main`**, pelo branch `act-factckbr-indexacao`. A 1.5
+    depende dela.
+11. Bloco 1 do Act — 1.3, 1.4 e 1.6. ~~A 3.2~~ fechou em 01/10, decisão 18.
