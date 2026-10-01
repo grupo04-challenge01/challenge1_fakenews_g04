@@ -71,7 +71,7 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [x] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
 
 ## 6. Avaliação
-- [ ] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
+- [x] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
 - [ ] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
 - [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
