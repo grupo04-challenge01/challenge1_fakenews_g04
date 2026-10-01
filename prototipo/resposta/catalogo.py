@@ -52,3 +52,22 @@ def validar_rotulos(texto, catalogo):
         return ["nenhum rótulo marcado"]
     permitidos = {r.lower() for r in catalogo}
     return [f"rótulo fora do catálogo: {r}" for r in marcados if r not in permitidos]
+
+
+def validar_sem_evidencia(texto, catalogo=None):
+    """Defeitos da forma sem evidência quanto ao catálogo; lista vazia quando em ordem.
+
+    Task 3.3 de fix-resposta-sem-evidencia: sob evidência insuficiente ou lacuna
+    de acervo, qualquer técnica nomeada é tratada como defeito, conforme o
+    scenario 'Técnica nomeada sem evidência recuperada' de resposta-formativa.
+    """
+    marcados = rotulos_marcados(texto)
+    if marcados:
+        return [f"técnica nomeada sob evidência insuficiente: {r}" for r in marcados]
+    if catalogo:
+        limpo = re.sub(r"[*_`]", "", texto).lower()
+        achados = [r for r in catalogo if re.search(r"\b" + re.escape(r.lower()) + r"\b", limpo)]
+        if achados:
+            return [f"técnica do catálogo mencionada sob evidência insuficiente: {r}" for r in achados]
+    return []
+

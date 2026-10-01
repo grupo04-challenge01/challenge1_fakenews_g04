@@ -106,6 +106,19 @@ Ollama 0.34.4 cai ao iniciar CUDA (`shared object initialization failed`). A
 sonda rodou só em CPU (`--cpu`, `num_gpu: 0`), com 58 a 157 s por resposta,
 contra 17 s em 18/09. Isso muda a latência, não a resposta esperada.
 
+## Decisão 5: conciliação arquitetural das tasks 2.2 e 2.3 — 01/10/2026
+
+Tasks 2.2 e 2.3. R2 Wingrid.
+
+**Task 2.2 — Ancoragem e guarda paramétrica contra `recuperacao-evidencia`:**
+1. Conferido contra os dados da sonda de 28/09 (`prototipo/relatorio_sonda_sem_evidencia.json`): o check de guarda paramétrica passou nas 12 respostas reais produzidas pelo modelo (`gemma4:12b-it-qat`). Os blocos 2 e 3 não fazem afirmação factual ou médica sobre o tema a partir do conhecimento do modelo.
+2. Resolução da questão aberta de E2: sob lacuna de acervo com ponteiro, o bloco 2 atém-se estritamente à limitação do acervo interno consultado (explicando que a ausência no acervo não equivale a desmentido), enquanto qualquer veredito externo e sustentação factual ficam exclusivamente circunscritos e atribuídos ao ponteiro oficial do bloco 4 (agência, data, veredito da agência e link). O bloco 2 não emite juízo sobre a veracidade da alegação.
+3. O bloco 3 oferece passos práticos de verificação que a pessoa pode fazer por conta própria, sem induzir julgamento fático sem trecho ancorado.
+
+**Task 2.3 — Fronteira clínica contra `fronteira-orientacao-saude`:**
+1. A recusa de conduta clínica e o encaminhamento de urgência médica (SAMU 192 / UBS) são aplicados por guardrails na entrada da requisição (pré-RAG). Se o usuário pedir prescrição, alteração de medicação ou relatar emergência, a requisição é interceptada imediatamente com resposta padrão acolhedora do SUS, sem passar pelo pipeline de verificação.
+2. A forma sem evidência só é acionada para alegações informativas em que não houve recuperação. O bloco 3 veda prescrição alternativa e limita-se a canais oficiais de informação pública (como portais do Ministério da Saúde e Anvisa) ou recomendação de procurar profissionais habilitados, cumprindo integralmente o requirement "Veredito sem prescrição alternativa".
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
@@ -122,10 +135,8 @@ contra 17 s em 18/09. Isso muda a latência, não a resposta esperada.
 - Quantas palavras sobram para os blocos 2 e 3 depois do ponteiro, o que só se
   sabe medindo respostas reais. **Medido em 28/09 (decisão 4):** de 65 a 85
   palavras no total, com o ponteiro custando 11. A task 2.1 confere o teto.
-- **Aberta em 28/09 pela sonda E2:** o que o bloco 2 diz quando há ponteiro. O
-  título do bloco é "por que isso não equivale a dizer que a mensagem é falsa",
-  mas o ponteiro traz uma agência que disse "falso". O modelo resolveu escrevendo
-  "não encontrar uma checagem não significa que seja verdadeira", o que contradiz
-  o próprio bloco 4, onde a checagem aparece. A spec não prevê esse caso. Entra
-  na conciliação da task 2.2, porque é afirmação sobre a mensagem que o trecho
-  não sustenta, nem para um lado nem para o outro.
+- **Aberta em 28/09 pela sonda E2 e resolvida em 01/10 (decisão 5, task 2.2):** o
+  que o bloco 2 diz quando há ponteiro. O bloco 2 atém-se à ausência no acervo
+  interno consultado; o veredito da checagem externa fica circunscrito ao ponteiro
+  do bloco 4, sem conflito de premissas.
+
