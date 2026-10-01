@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 3, **Wingrid** 5, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 3, **Wingrid** 4, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -21,7 +21,10 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       984 registros, 1.190 unidades, 1.192 fragmentos, 86 registros e 5 unidades
       em quarentena, `apto_citacao=false`; aferição sem perda
       (`afericao_multilingual-e5-base.json`); decisão 17 do `design.md`, 01/10/2026
-- [ ] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
+- [x] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
+      — `prototipo/indice/fontes_oficiais.json` v1.0.0 homologando MS, Fiocruz e Anvisa
+      com domínios estritos (.gov.br e .fiocruz.br), tipos de documentos e sem veredito;
+      decisão 19 do `design.md` e requirement em `specs/recuperacao-evidencia/spec.md`, 01/10/2026
 - [ ] 1.4 **Samara** Implementar recuperação com prioridade de idioma (PT-BR antes de EN)
 - [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
 - [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho

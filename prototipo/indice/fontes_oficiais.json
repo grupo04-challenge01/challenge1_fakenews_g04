@@ -1,0 +1,78 @@
+{
+  "versao": "1.0.0",
+  "data_definicao": "2026-10-01",
+  "responsavel": "R2 Wingrid Silva",
+  "descricao": "Lista de fontes oficiais aceitas para tipo_fonte: comunicado_oficial (task 1.3 de mvp-copiloto-verificacao).",
+  "fontes_homologadas": [
+    {
+      "id": "ms",
+      "orgao": "Ministério da Saúde",
+      "sigla": "MS",
+      "papel_sanitario": "Autoridade executiva máxima do SUS e formulação de políticas nacionais de saúde pública.",
+      "dominios_permitidos": [
+        "saude.gov.br",
+        "gov.br/saude"
+      ],
+      "tipos_documentos_aceitos": [
+        "nota_tecnica",
+        "boletim_epidemiologico",
+        "informe_vacinacao",
+        "campanha_oficial",
+        "saude_com_ciencia"
+      ],
+      "tratamento_veredito": "sem_veredito",
+      "apto_citacao": true
+    },
+    {
+      "id": "fiocruz",
+      "orgao": "Fundação Oswaldo Cruz",
+      "sigla": "Fiocruz",
+      "papel_sanitario": "Principal instituição pública de ciência, tecnologia e pesquisa em saúde e imunobiológicos.",
+      "dominios_permitidos": [
+        "fiocruz.br",
+        "portal.fiocruz.br",
+        "bio.fiocruz.br",
+        "ioc.fiocruz.br"
+      ],
+      "tipos_documentos_aceitos": [
+        "nota_tecnica",
+        "informe_cientifico",
+        "boletim_infogripe",
+        "comunicado_institucional"
+      ],
+      "tratamento_veredito": "sem_veredito",
+      "apto_citacao": true
+    },
+    {
+      "id": "anvisa",
+      "orgao": "Agência Nacional de Vigilância Sanitária",
+      "sigla": "Anvisa",
+      "papel_sanitario": "Autoridade regulatória máxima de fármacos, vacinas, produtos biológicos e vigilância sanitária.",
+      "dominios_permitidos": [
+        "anvisa.gov.br",
+        "gov.br/anvisa"
+      ],
+      "tipos_documentos_aceitos": [
+        "alerta_sanitario",
+        "resolucao_rdc",
+        "nota_tecnica_regulatoria",
+        "informe_farmacovigilancia",
+        "esclarecimento_publico"
+      ],
+      "tratamento_veredito": "sem_veredito",
+      "apto_citacao": true
+    }
+  ],
+  "criterios_inclusao": [
+    "Domínio institucional oficial estrito (.gov.br ou .fiocruz.br)",
+    "Documento de caráter técnico, regulatório, epidemiológico ou de orientação pública",
+    "Presença obrigatória de data de emissão/atualização e URL institucional permanente auditável",
+    "Ausência de veredito jornalístico: classificado como tipo_fonte = comunicado_oficial"
+  ],
+  "criterios_exclusao": [
+    "Artigos de opinião ou blogs pessoais hospedados em servidores governamentais",
+    "Discursos políticos sem fundamentação técnica ou sanitária emitida por corpo técnico",
+    "Portais de prefeituras ou câmaras municipais sem validação prévia de autoridade sanitária",
+    "Conteúdo sem data de publicação ou sem autoria institucional identificável"
+  ]
+}

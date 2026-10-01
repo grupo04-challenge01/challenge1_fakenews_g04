@@ -638,6 +638,42 @@ de 65 a 82 palavras e mediana de 11,2 s (de 6,2 a 27,1 s).
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.
 
+### 19. Fontes oficiais aceitas: homologação, domínios estritos e ausência de veredito — 01/10/2026
+
+Task 1.3. R2 Wingrid. Artefato em `prototipo/indice/fontes_oficiais.json`,
+requirement `Fontes oficiais aceitas` adicionado a
+`openspec/changes/mvp-copiloto-verificacao/specs/recuperacao-evidencia/spec.md`.
+
+O esquema de indexação v1.0.0 (decisão 16) reservou o valor `comunicado_oficial` no
+campo `tipo_fonte` expressamente para esta task, sem veredito. Esta decisão fixa
+as instituições aceitas, as regras de admissão e o tratamento na recuperação:
+
+1. **Três órgãos oficiais homologados:**
+   - **Ministério da Saúde (MS):** Autoridade executiva nacional do SUS. Domínios
+     permitidos: `saude.gov.br`, `gov.br/saude`. Tipos aceitos: notas técnicas,
+     boletins epidemiológicos, informes de vacinação e o canal *Saúde com Ciência*.
+   - **Fundação Oswaldo Cruz (Fiocruz):** Autoridade de pesquisa e imunobiológicos.
+     Domínios permitidos: `fiocruz.br`, `portal.fiocruz.br`, `bio.fiocruz.br`,
+     `ioc.fiocruz.br`. Tipos aceitos: notas técnicas, informes científicos e
+     boletim InfoGripe.
+   - **Agência Nacional de Vigilância Sanitária (Anvisa):** Autoridade regulatória
+     de fármacos e vigilância sanitária. Domínios permitidos: `anvisa.gov.br`,
+     `gov.br/anvisa`. Tipos aceitos: alertas sanitários, resoluções RDC, notas
+     técnicas regulatórias e informes de farmacovigilância.
+
+2. **Critério estrito de domínio institucional:**
+   Para prevenir contaminação do índice por páginas apócrifas ou blogs pessoais
+   hospedados em servidores governamentais, a ingestão exige correspondência exata
+   com a allowlist de domínios (`.gov.br` institucionais e `.fiocruz.br`).
+   Qualquer URL fora da allowlist é recusada como fonte oficial.
+
+3. **Tratamento de veredito:**
+   Comunicados oficiais **não têm veredito**. Eles entram como evidência científica
+   e sanitária institucional de suporte (com `tipo_fonte: "comunicado_oficial"`,
+   `apto_citacao: true` e `agencia_nome` preenchido com o nome do órgão). Na
+   camada de resposta, sustentam o que se sabe sobre o tema sem imputar rótulo de
+   agência checadora.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
