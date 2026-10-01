@@ -40,7 +40,7 @@ def test_indice_do_factcenter_esta_no_esquema(indice):
     laudo = esquema.validar(uni, frags, quarentena)
     assert laudo["aprovado"], laudo["violacoes"]
     assert manifesto["esquema"] == {"arquivo": "prototipo/indice/esquema_indexacao.json",
-                                    "versao": "1.0.0", "aprovado": True}
+                                    "versao": esquema.versao(), "aprovado": True}
     contagem = laudo["por_corpus"]["factcenter_saude"]
     assert contagem["registros_com_unidade"] + contagem["registros_em_quarentena"] == 4063
     assert (laudo["unidades"], laudo["fragmentos"]) == (5089, 22463)

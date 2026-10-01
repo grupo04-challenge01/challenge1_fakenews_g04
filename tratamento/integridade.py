@@ -62,7 +62,7 @@ CAUSA_TRANSFORMACAO = "texto transformado na origem"
 
 
 class ErroDeIntegridade(RuntimeError):
-    """Arquivo reprovado. MUST NOT ser usado em recuperação nem em citação."""
+    """Arquivo reprovado. MUST NOT ser citado; recuperação só marcada como não apta a citação."""
 
 
 def _causa_provavel(nome: str, corrompidos: list[dict]) -> str:
@@ -133,8 +133,9 @@ def exigir_aprovado(nome: str, caminho: pathlib.Path | None = None) -> dict:
         perdidos = [c["maiuscula"] for c in laudo["corrompidos"]]
         raise ErroDeIntegridade(
             f"{nome} reprovado por perda sistemática de caractere: {perdidos}. "
-            "O arquivo MUST NOT ser usado em recuperação nem em citação; "
-            "permanece utilizável apenas para contagem de rótulo.")
+            "O arquivo MUST NOT ser usado em citação; só entra na recuperação "
+            "com todo registro marcado como não apto a citação, e permanece "
+            "utilizável para contagem de rótulo.")
     return laudo
 
 
@@ -162,7 +163,9 @@ def verificar_fidelidade_dos_trechos(df) -> dict:
 
     from prototipo.rag import unidades
 
-    _, fragmentos, _, _ = unidades.construir(df)
+    # Sem validar o esquema: o df pode ser amostra, e a I12 (contagem fechada
+    # contra os registros declarados) só vale para o corpus inteiro.
+    _, fragmentos, _, _ = unidades.construir(df, validar_esquema=False)
 
     origem_por_registro = {
         hashlib.sha1(registro.url.encode()).hexdigest()[:10]: registro.text_news

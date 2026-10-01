@@ -1,6 +1,6 @@
 """CLI da prova de conceito de recuperação — tasks 2.2 a 2.5.
 
-    python -m prototipo.rag construir [--modelo NOME]
+    python -m prototipo.rag construir [--modelo NOME] [--estender]
     python -m prototipo.rag buscar "consulta" [--modo lexica|densa|hibrida]
                                               [--fusao score|rrf] [--k 10]
     python -m prototipo.rag aferir [--modelo NOME] [--alfa 0.9]
@@ -34,15 +34,49 @@ def _etapa(mensagem: str) -> None:
     print(f"[{time.strftime('%H:%M:%S')}] {mensagem}", file=sys.stderr, flush=True)
 
 
+def _prefixo_reaproveitavel(fragmentos: list[dict]) -> int:
+    """Quantas linhas da matriz densa gravada continuam válidas.
+
+    Só o prefixo idêntico, por id e por texto, na mesma ordem. Qualquer
+    divergência devolve 0 e força a reconstrução inteira: vetor desalinhado de
+    fragmento é erro silencioso de recuperação (decisão 13).
+    """
+    import numpy as np
+
+    antigos_caminho = SAIDA / "fragmentos.jsonl"
+    if not (MATRIZ.exists() and antigos_caminho.exists()):
+        return 0
+    antigos = _ler_jsonl(antigos_caminho)
+    linhas = np.load(MATRIZ, mmap_mode="r").shape[0]
+    if linhas != len(antigos) or len(antigos) > len(fragmentos):
+        return 0
+    for velho, novo in zip(antigos, fragmentos):
+        if velho["fragmento_id"] != novo["fragmento_id"] or velho["texto"] != novo["texto"]:
+            return 0
+    return len(antigos)
+
+
 def construir(args) -> None:
+    import numpy as np
+
     inicio = time.perf_counter()
-    _etapa("1/4 portões de entrada: integridade textual e leitura do corpus")
+    _etapa("1/4 portões de entrada: integridade textual e leitura dos corpora")
     laudo = corpus_mod.verificar_integridade_textual()
+    laudo_fb = corpus_mod.verificar_integridade_auxiliar("factckbr")
     df = corpus_mod.ler_corpus()
-    _etapa(f"2/4 unidades e fragmentos de {len(df)} registros, com validação do esquema")
-    unidades, fragmentos, quarentena, manifesto = unidades_mod.construir(df)
+    df_fb = corpus_mod.ler_factckbr()
+    _etapa(f"2/4 unidades e fragmentos de {len(df)} registros do FactCenter e "
+           f"{len(df_fb)} linhas do FACTCK.BR, com validação do esquema")
+    unidades, fragmentos, quarentena, manifesto = unidades_mod.construir_indice(df, df_fb)
     _etapa(f"    {len(unidades)} unidades, {len(fragmentos)} fragmentos, "
            f"{len(quarentena)} em quarentena — esquema {manifesto['esquema']['versao']} aprovado")
+
+    # Antes de sobrescrever os .jsonl: o prefixo reaproveitável é medido contra
+    # os fragmentos que estão em disco junto com a matriz.
+    reaproveitar = _prefixo_reaproveitavel(fragmentos) if args.estender else 0
+    if args.estender and not reaproveitar:
+        sys.exit("--estender recusado: a matriz gravada não corresponde a um prefixo "
+                 "idêntico dos fragmentos novos. Rode `construir` sem --estender.")
 
     SAIDA.mkdir(parents=True, exist_ok=True)
     unidades_mod._gravar(SAIDA / "unidades.jsonl", unidades)
@@ -54,18 +88,39 @@ def construir(args) -> None:
     IndiceLexico(fragmentos)
     custo_lexico = time.perf_counter() - marca
 
-    _etapa(f"4/4 índice denso com {args.modelo}: a etapa longa (883 s no M4 em "
-           "18/09). Na primeira vez nesta máquina o modelo (~1 GB) é baixado antes "
-           "da barra de progresso aparecer")
     marca = time.perf_counter()
-    denso = IndiceDenso.construir(fragmentos, args.modelo)
+    if reaproveitar:
+        _etapa(f"4/4 índice denso com {args.modelo}: {reaproveitar} linhas "
+               f"reaproveitadas, {len(fragmentos) - reaproveitar} fragmentos novos")
+        prefixo = np.load(MATRIZ)
+        partes = [prefixo]
+        if reaproveitar < len(fragmentos):
+            partes.append(IndiceDenso.construir(fragmentos[reaproveitar:], args.modelo).matriz)
+        denso = IndiceDenso(np.ascontiguousarray(
+            np.concatenate(partes).astype("float32")), args.modelo)
+    else:
+        _etapa(f"4/4 índice denso com {args.modelo}: a etapa longa (883 s no M4 em "
+               "18/09). Na primeira vez nesta máquina o modelo (~1 GB) é baixado antes "
+               "da barra de progresso aparecer")
+        denso = IndiceDenso.construir(fragmentos, args.modelo)
+    if denso.matriz.shape[0] != len(fragmentos):
+        sys.exit(f"matriz com {denso.matriz.shape[0]} linhas para {len(fragmentos)} "
+                 "fragmentos — nada gravado")
     custo_denso = time.perf_counter() - marca
     denso.gravar(MATRIZ)
     _etapa(f"índice denso gravado em {MATRIZ.name} "
            f"({time.perf_counter() - marca:.0f} s); manifesto a seguir")
 
+    if reaproveitar:
+        manifesto["matriz_densa"] = (
+            f"estendida por `python -m prototipo.rag construir --estender` em "
+            f"{time.strftime('%d/%m/%Y')}: {reaproveitar} linhas do FactCenter "
+            "reaproveitadas após conferência de id e texto na mesma ordem, e "
+            f"{len(fragmentos) - reaproveitar} linhas novas do FACTCK.BR — decisão 14 "
+            "de mvp-copiloto-verificacao")
     manifesto.update({
         "integridade_textual": laudo,
+        "integridade_textual_factckbr": laudo_fb,
         "modelo_embedding": args.modelo,
         "dimensao": int(denso.matriz.shape[1]),
         "custo_indexacao_s": {"lexico": round(custo_lexico, 2),
@@ -189,6 +244,9 @@ def main() -> None:
 
     c = sub.add_parser("construir", help="constrói unidades, índice léxico e denso")
     c.add_argument("--modelo", default=MODELO_PADRAO)
+    c.add_argument("--estender", action="store_true",
+                   help="reaproveita a matriz densa gravada quando ela é prefixo "
+                        "idêntico dos fragmentos novos; só calcula os vetores que faltam")
     c.set_defaults(func=construir)
 
     b = sub.add_parser("buscar", help="consulta o índice")

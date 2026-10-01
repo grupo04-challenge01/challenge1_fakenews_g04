@@ -1,6 +1,6 @@
 {
-  "versao": "1.0.0",
-  "data": "2026-09-19",
+  "versao": "1.1.0",
+  "data": "2026-10-01",
   "change": "add-tratamento-datasets-ptbr",
   "corpus": "datasets/derivados/factcenter_subset_saude.csv",
   "medicao": {
@@ -10,6 +10,32 @@
     "chaves_canonicas_distintas": 19,
     "agencias": 6
   },
+  "corpus_auxiliar": "datasets/01_nucleo_metodologico/factckbr/FACTCKBR.tsv",
+  "medicao_corpus_auxiliar": {
+    "linhas": 1313,
+    "urls": 984,
+    "chaves_canonicas_distintas": 18,
+    "chaves_fora_do_mapa_1_0_0": ["sem contexto", "impossivel provar", "discutivel", "outros"],
+    "linhas_fora_do_mapa_1_0_0": 75,
+    "linhas_sem_veredito": 4,
+    "agencias": 3
+  },
+  "historico": [
+    {
+      "versao": "1.0.0",
+      "data": "2026-09-19",
+      "change": "add-tratamento-datasets-ptbr",
+      "task": "2.3",
+      "o_que": "19 chaves canônicas do recorte de saúde do FactCenter"
+    },
+    {
+      "versao": "1.1.0",
+      "data": "2026-10-01",
+      "change": "mvp-copiloto-verificacao",
+      "task": "1.2",
+      "o_que": "quatro chaves do FACTCK.BR que interrompiam o processamento; decisão 14 do design.md daquele change. Nas entradas novas, `ocorrencias` conta o FACTCK.BR (campo `corpus`); nas demais continua contando o FactCenter"
+    }
+  ],
   "rotulos_de_destino": [
     "falso",
     "verdadeiro",
@@ -150,6 +176,38 @@
       "grafias": ["DE OLHO"],
       "ocorrencias": 60,
       "nota": "Marcação de acompanhamento da Lupa, não veredito sobre a alegação."
+    },
+    "sem contexto": {
+      "rotulo": "verdadeiro fora de contexto ou exagerado",
+      "agencias": ["https:apublica.org"],
+      "grafias": ["Sem contexto"],
+      "ocorrencias": 42,
+      "corpus": "factckbr",
+      "nota": "Etiqueta do Truco (Agência Pública). Mesmo destino de `fora de contexto` do Estadão Verifica: o problema apontado é a falta de contexto, não a falsidade do dado. Decisão do grupo em 01/10/2026, decisão 14 de mvp-copiloto-verificacao."
+    },
+    "impossivel provar": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["https:apublica.org"],
+      "grafias": ["Impossível provar"],
+      "ocorrencias": 20,
+      "corpus": "factckbr",
+      "nota": "Etiqueta do Truco. Mesmo argumento de `insustentavel`: parece `evidência insuficiente`, mas aquele rótulo é estado da recuperação do sistema, e importar a lacuna declarada pela agência faria o sistema atribuir a si mesmo uma lacuna que é do mundo. Decisão de 01/10/2026."
+    },
+    "discutivel": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["https:apublica.org"],
+      "grafias": ["Discutível"],
+      "ocorrencias": 12,
+      "corpus": "factckbr",
+      "nota": "Etiqueta do Truco para afirmação que admite leituras divergentes dos dados. Não gradua veracidade e não tem destino entre os quatro rótulos. Decisão de 01/10/2026."
+    },
+    "outros": {
+      "rotulo": "nao_mapeavel",
+      "agencias": ["https:www.aosfatos.org"],
+      "grafias": ["outros"],
+      "ocorrencias": 1,
+      "corpus": "factckbr",
+      "nota": "Ocorrência única no Aos Fatos. Categoria residual que não diz nada sobre a veracidade da alegação. Decisão de 01/10/2026."
     }
   }
 }

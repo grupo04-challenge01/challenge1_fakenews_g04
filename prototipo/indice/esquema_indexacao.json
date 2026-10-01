@@ -3,10 +3,10 @@
   "x-arquivo": "prototipo/indice/esquema_indexacao.json",
   "title": "Esquema de indexação do copiloto de verificação",
   "description": "Contrato das duas coleções do índice — unidade e fragmento — para mvp-copiloto-verificacao, task 1.1. Descreve o que o construtor MUST gravar e o que a recuperação pode assumir. Regras que JSON Schema não expressa (identidade, coerência entre fragmento e unidade, literalidade do trecho, deduplicação entre corpora) estão em `x-invariantes` e são conferidas por `prototipo/rag/esquema.py`. Decisão 8 de openspec/changes/mvp-copiloto-verificacao/design.md.",
-  "x-versao": "1.0.0",
-  "x-data": "2026-09-29",
+  "x-versao": "1.1.0",
+  "x-data": "2026-10-01",
   "x-change": "mvp-copiloto-verificacao",
-  "x-task": "1.1",
+  "x-task": "1.1 (contrato), 1.2 (FACTCK.BR indexado)",
   "x-evolucao": "additionalProperties é false nas duas coleções. Campo novo, corpus novo ou valor novo de enum é versão menor e MUST passar por este arquivo antes de chegar ao construtor; mudança de significado de campo existente é versão maior.",
   "x-corpora": {
     "factcenter_saude": {
@@ -37,14 +37,16 @@
       "prefixo_id": "fb-",
       "arquivo": "datasets/01_nucleo_metodologico/factckbr/FACTCKBR.tsv",
       "leitura": "sep='\\t', quoting=QUOTE_NONE, dtype=str",
-      "registros_declarados": 1313,
+      "registros_declarados": 984,
+      "linhas_declaradas": 1313,
+      "motivo_registros_declarados": "registro é a URL (I1, I12); 1.313 linhas em 984 URLs. A versão 1.0.0 declarava as linhas e a I12 reprovaria qualquer construção.",
       "janela": "2016-02-26 a 2019-07-22",
       "idioma": "pt-BR",
       "tipo_fonte": "checagem",
       "apto_citacao": false,
       "motivo_apto_citacao": "reprovado em integridade-textual: Ã 0 contra ã 3.625, Ç 0 contra ç 2.312, Ú 0 contra ú 973 no próprio TSV distribuído — perda irreversível; serve à recuperação e à contagem de rótulo, nunca a trecho exibido",
       "licenca": "MIT para a estrutura; o texto das checagens é das agências",
-      "papel": "fonte auxiliar (task 1.2) — este bloco só fixa o mapeamento; a indexação é da 1.2",
+      "papel": "fonte auxiliar de recuperação (task 1.2, decisão 14): nomeia a agência, liga para a checagem e conta rótulo; nunca fornece trecho exibido. Sem filtro de tema: o corpus entra inteiro, inclusive política",
       "mapeamento": {
         "url": "URL",
         "agencia": "Author",
@@ -56,7 +58,10 @@
         "justificativa": "reviewBody (12 linhas vazias: quarentena pelo mesmo motivo da unidade sem justificativa)",
         "veredito_original": "alternativeName (4 vazias: quarentena por veredito ilegível); ratingValue/bestRating descartados, a escala muda por agência (5, 6 e 8)",
         "origem_alegacao": "claim_review — cada linha já é uma alegação com seu veredito; 91 URLs trazem mais de uma, até 27",
-        "registro": "a URL; indice_alegacao é a ordem da linha dentro da URL no TSV"
+        "registro": "a URL; indice_alegacao é a ordem da linha dentro da URL no TSV, preservada mesmo quando uma linha irmã vai para a quarentena",
+        "disposicao": "unica quando a URL tem uma linha; segmentada (origem claim_review) quando tem mais de uma",
+        "quarentena": "registro inteiro: duplicata_factcenter (I10) ou campo_vazio em todas as linhas; unidade: campo_vazio numa linha com irmãs válidas",
+        "veredito_no_mapa": "toda chave de alternativeName MUST constar de tratamento/mapa_vereditos.json (versão 1.1.0 ou posterior); valor fora do mapa interrompe a construção do corpus inteiro"
       }
     }
   },
