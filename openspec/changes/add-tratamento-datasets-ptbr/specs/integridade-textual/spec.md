@@ -30,13 +30,22 @@ registrada por arquivo, com a lista de caracteres ausentes.
 Ausência total de uma letra MUST NOT bastar, sozinha, para reprovar o arquivo.
 O critério de corrupção sistemática SHALL exigir as duas condições juntas: a
 maiúscula com zero ocorrências **e** a minúscula correspondente frequente no
-mesmo arquivo. Satisfeito o critério, o arquivo MUST NOT ser aprovado para uso
-em recuperação ou em citação.
+mesmo arquivo. Satisfeito o critério, o arquivo MUST NOT ser aprovado para
+citação. O arquivo reprovado MAY entrar no índice de recuperação apenas com
+todos os seus registros marcados como não aptos a citação, e o texto dele MUST
+NOT ser exibido ao usuário: o registro recuperado serve para nomear a agência,
+ligar para a checagem original e contar rótulo, nunca como trecho.
 
 A precisão é necessária porque a leitura literal reprova corpus íntegro:
 `factcenter_subset_saude.csv` tem zero `Ü` em 21,5 milhões de caracteres porque
 o trema foi abolido em 1990, e o `ü` minúsculo aparece 57 vezes no mesmo
 arquivo — prova de que o pipeline não descarta o caractere.
+
+Revisado em 01/10/2026 (decisão 17 de `mvp-copiloto-verificacao`, task 1.2): a
+redação anterior vedava também a recuperação, o que contradizia
+`recuperacao-evidencia`, que manda indexar o FACTCK.BR. O risco que a vedação
+protegia é o texto corrompido chegar ao usuário, e a marcação por registro
+fecha esse risco sem tirar a checagem do alcance da busca.
 
 #### Scenario: Arquivo com classe inteira de caractere ausente
 
@@ -45,8 +54,16 @@ arquivo — prova de que o pipeline não descarta o caractere.
   correspondente frequente
 - **THEN** o arquivo é reprovado para uso em citação
 - **AND** a lista dos caracteres ausentes fica registrada como caveat
-- **AND** o dataset permanece utilizável apenas para contagem de rótulo, não
-  para exibição de texto
+- **AND** o dataset permanece utilizável para contagem de rótulo e para
+  recuperação, com todo registro marcado como não apto a citação
+- **AND** nenhum texto do dataset é exibido ao usuário como trecho
+
+#### Scenario: Registro de arquivo reprovado recuperado pela busca
+
+- **WHEN** a busca devolve uma checagem do FACTCK.BR para a alegação do usuário
+- **THEN** o registro chega marcado como não apto a citação
+- **AND** a resposta pode nomear a agência e ligar para a checagem original
+- **AND** nenhum trecho do registro é exibido ao usuário
 
 #### Scenario: Letra ausente por ortografia, não por corrupção
 

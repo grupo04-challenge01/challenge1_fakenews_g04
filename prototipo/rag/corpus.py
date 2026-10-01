@@ -104,6 +104,58 @@ def verificar_integridade_textual(caminho: pathlib.Path = CAMINHO_CORPUS) -> dic
     return laudo
 
 
+# FACTCK.BR, fonte auxiliar (task 1.2 de mvp-copiloto-verificacao). Contrato de
+# leitura em x-corpora.factckbr do esquema: TSV sem quoting, tudo como texto.
+CAMINHO_FACTCKBR = RAIZ / "datasets" / "01_nucleo_metodologico" / "factckbr" / "FACTCKBR.tsv"
+COLUNAS_FACTCKBR = ("URL", "Author", "datePublished", "claimReviewed",
+                    "reviewBody", "title", "alternativeName")
+
+
+def ler_factckbr(caminho: pathlib.Path = CAMINHO_FACTCKBR):
+    """Lê o FACTCK.BR e confere as linhas contra `linhas_declaradas` do esquema."""
+    import csv
+
+    import pandas as pd
+
+    from . import esquema as esquema_mod
+
+    declaradas = esquema_mod.carregar_esquema()["x-corpora"]["factckbr"]["linhas_declaradas"]
+    df = pd.read_csv(caminho, sep="\t", quoting=csv.QUOTE_NONE, dtype=str,
+                     keep_default_na=False)
+    faltando = [c for c in COLUNAS_FACTCKBR if c not in df.columns]
+    if faltando:
+        raise ErroDePortao(f"colunas ausentes em {caminho.name}: {faltando}")
+    if len(df) != declaradas:
+        raise ErroDePortao(
+            f"{caminho.name}: {len(df)} linhas lidas contra {declaradas} declaradas. "
+            "Leitura inválida — conferir delimitador e quoting.")
+    return df
+
+
+def verificar_integridade_auxiliar(corpus: str = "factckbr") -> dict:
+    """Portão de integridade de um corpus que pode entrar reprovado.
+
+    `integridade-textual`, revisada em 01/10/2026: arquivo reprovado entra na
+    recuperação só com todo registro não apto a citação. O portão, então, não
+    exige aprovação. Exige que o laudo concorde com `apto_citacao` declarado no
+    esquema. Se a recoleta da task 3.5 um dia aprovar o arquivo, a construção
+    para, e alguém troca o esquema de propósito.
+    """
+    from tratamento import integridade
+
+    from . import esquema as esquema_mod
+
+    declarado = esquema_mod.carregar_esquema()["x-corpora"][corpus]
+    caminho = RAIZ / declarado["arquivo"]
+    laudo = integridade.verificar(caminho.name, caminho)
+    if laudo["aprovado"] != declarado["apto_citacao"]:
+        raise ErroDePortao(
+            f"{caminho.name}: laudo de integridade {'aprova' if laudo['aprovado'] else 'reprova'} "
+            f"o arquivo, mas o esquema declara apto_citacao={declarado['apto_citacao']}. "
+            "Corrigir o esquema antes de indexar.")
+    return laudo
+
+
 def sem_acento(texto: str) -> str:
     """Dobra acento para comparação. Nunca aplicado ao texto que vira citação."""
     return "".join(c for c in unicodedata.normalize("NFD", texto)

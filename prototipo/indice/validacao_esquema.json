@@ -1,20 +1,32 @@
 {
-  "data": "2026-09-29",
+  "data": "2026-10-01",
   "change": "mvp-copiloto-verificacao",
-  "task": "1.1",
+  "task": "1.1, 1.2",
   "esquema": "prototipo/indice/esquema_indexacao.json",
-  "corpus": "datasets/derivados/factcenter_subset_saude.csv",
+  "corpus": [
+    "datasets/derivados/factcenter_subset_saude.csv",
+    "datasets/01_nucleo_metodologico/factckbr/FACTCKBR.tsv"
+  ],
   "comando": "python -m prototipo.rag.esquema",
   "disposicoes": {
-    "unica": 3476,
-    "quarentena_misto": 88,
-    "nao_segmentada": 278,
-    "segmentada": 221
+    "factcenter_saude": {
+      "unica": 3476,
+      "quarentena_misto": 88,
+      "nao_segmentada": 278,
+      "segmentada": 221
+    },
+    "factckbr": {
+      "quarentena_duplicata_factcenter": 74,
+      "unica": 813,
+      "quarentena_campo_vazio": 12,
+      "segmentada": 85,
+      "unidade_em_quarentena": 5
+    }
   },
-  "esquema_versao": "1.0.0",
-  "unidades": 5089,
-  "fragmentos": 22463,
-  "quarentena": 89,
+  "esquema_versao": "1.1.0",
+  "unidades": 6279,
+  "fragmentos": 23655,
+  "quarentena": 180,
   "por_corpus": {
     "factcenter_saude": {
       "registros_declarados": 4063,
@@ -22,6 +34,13 @@
       "registros_em_quarentena": 88,
       "unidades": 5089,
       "unidades_em_quarentena": 1
+    },
+    "factckbr": {
+      "registros_declarados": 984,
+      "registros_com_unidade": 898,
+      "registros_em_quarentena": 86,
+      "unidades": 1190,
+      "unidades_em_quarentena": 5
     }
   },
   "aprovado": true,

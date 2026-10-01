@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 2, **Jhessica** 6, **Samara** 4, **Wingrid** 5, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 2, **Jhessica** 6, **Samara** 3, **Wingrid** 5, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -14,7 +14,13 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       `prototipo/rag/esquema.py`; laudo `prototipo/indice/validacao_esquema.json`
       aprovado: 4.063 registros, 5.089 unidades, 22.463 fragmentos, 88 registros
       e 1 unidade em quarentena; decisão 16 do `design.md`, 29/09/2026
-- [ ] 1.2 **Samara** Indexar FACTCK.BR como fonte auxiliar, com rótulos normalizados
+- [x] 1.2 **Samara** Indexar FACTCK.BR como fonte auxiliar, com rótulos normalizados
+      — `prototipo/rag/unidades.py` (`construir_factckbr`, `construir_indice`),
+      testes `prototipo/rag/tests/test_factckbr.py`; esquema 1.1.0 e mapa de
+      vereditos 1.1.0; laudo `prototipo/indice/validacao_esquema.json` aprovado:
+      984 registros, 1.190 unidades, 1.192 fragmentos, 86 registros e 5 unidades
+      em quarentena, `apto_citacao=false`; aferição sem perda
+      (`afericao_multilingual-e5-base.json`); decisão 17 do `design.md`, 01/10/2026
 - [ ] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
 - [ ] 1.4 **Samara** Implementar recuperação com prioridade de idioma (PT-BR antes de EN)
 - [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`

@@ -239,15 +239,18 @@ def main() -> None:
     from . import corpus as corpus_mod
     from . import unidades as unidades_mod
 
-    df = corpus_mod.ler_corpus()
-    unidades, fragmentos, quarentena, manifesto = unidades_mod.construir(df, validar_esquema=False)
+    corpus_mod.verificar_integridade_auxiliar("factckbr")
+    unidades, fragmentos, quarentena, manifesto = unidades_mod.construir_indice(
+        corpus_mod.ler_corpus(), corpus_mod.ler_factckbr(), validar_esquema=False)
     laudo = validar(unidades, fragmentos, quarentena)
     laudo = {"data": datetime.date.today().isoformat(),
-             "change": "mvp-copiloto-verificacao", "task": "1.1",
+             "change": "mvp-copiloto-verificacao", "task": "1.1, 1.2",
              "esquema": str(ESQUEMA.relative_to(RAIZ)),
-             "corpus": str(corpus_mod.CAMINHO_CORPUS.relative_to(RAIZ)),
+             "corpus": [str(corpus_mod.CAMINHO_CORPUS.relative_to(RAIZ)),
+                        str(corpus_mod.CAMINHO_FACTCKBR.relative_to(RAIZ))],
              "comando": "python -m prototipo.rag.esquema",
-             "disposicoes": manifesto["disposicoes"], **laudo}
+             "disposicoes": {c: m["disposicoes"]
+                             for c, m in manifesto["por_corpus"].items()}, **laudo}
     LAUDO.write_text(json.dumps(laudo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in laudo.items() if k != "exemplos"},
                      ensure_ascii=False, indent=2))
