@@ -1,19 +1,81 @@
 # Estado do projeto
 
-Atualizado em **24/09/2026**.
+Atualizado em **01/10/2026**.
 
 ## Os seis changes
 
 | Change | Fase | Planejamento | Tasks |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | **18 de 25** |
+| `add-engage-desinformacao-saude` | Engage | completo | **23 de 25** |
 | `add-tratamento-datasets-ptbr` | Investigate | completo | **31 de 33** |
 | `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
-| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **6 de 13** |
-| `mvp-copiloto-verificacao` | Act | completo | **11 de 31** |
+| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **8 de 13** |
+| `mvp-copiloto-verificacao` | Act | completo | **12 de 31** |
 
-Todos passam `openspec validate --strict`.
+Todos passam `openspec validate --strict`, conferido em 01/10/2026.
+
+## O que foi entregue entre 25/09 e 01/10/2026
+
+Dezenove tasks em uma semana, pelos PRs #91 a #104. O Act saiu de zero.
+
+### Act: de 0 para 12 de 31
+
+| Entregue | Tasks | Onde | Decisão do `design.md` |
+| --- | --- | --- | --- |
+| Canal: web primária, com extensão para WhatsApp | 7.1 | `design.md` | 5 |
+| Catálogo de técnicas: sete rótulos e uma vaga | 3.1 | `prototipo/resposta/catalogo_tecnicas.json` | 6 |
+| Validação de que o rótulo pertence ao catálogo | 3.3 | `prototipo/resposta/catalogo.py` | 7 |
+| Extração da alegação, com seleção | 2.1 | `prototipo/verificacao/extracao.py` | 8 |
+| Decomposição fato / evidência / opinião | 2.5 | `prototipo/verificacao/decomposicao.py` | 9 |
+| Respostas de redirecionamento da fronteira, Web e WhatsApp | 4.2 | `specs/fronteira-orientacao-saude/spec.md` | 10 |
+| Classificação nos quatro rótulos | 2.2 | `prototipo/verificacao/classificacao.py` | 11 |
+| Guarda contra veredito paramétrico, em código | 2.3 | `prototipo/verificacao/guarda.py` | 12 |
+| TCLE e roteiro de debriefing | 6.3 | `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md` | 13 |
+| Verificação de reforço do mito | 3.4 | `prototipo/resposta/mito.py` | 14 |
+| Classificador de pedido de conduta clínica | 4.1 | `prototipo/verificacao/fronteira.py` | 15 |
+| Esquema de indexação, versão 1.0.0 | 1.1 | `prototipo/indice/esquema_indexacao.json` | 16 |
+
+Decisões do `mvp-copiloto-verificacao`. Canal em 25/09, catálogo e validação em
+28/09, o resto em 29/09.
+
+**Um achado do esquema.** O validador reprovou uma unidade da Lupa sobre câncer
+de pele: alegação com veredito e sem justificativa. Foi para a quarentena com
+motivo `justificativa_ausente`. O índice passou de 5.090 unidades e 22.464
+fragmentos para **5.089 e 22.463**. O PR #103 fez a carga do índice parar quando
+a matriz densa e os fragmentos têm tamanhos diferentes.
+
+**A 1.2 não está na `main`.** A indexação do FACTCK.BR tem commit no branch
+`act-classificacao-guarda`, ainda não fundido.
+
+### `fix-resposta-sem-evidencia`: de 6 para 8 de 13
+
+As 3.1 e 3.2 fecharam em 28/09, decisão 4 do change. O defeito que abriu o
+change não se repete: 0 de 12 respostas degeneraram. A falha que sobrou é
+outra: nas 9 respostas de lacuna de acervo, o modelo omitiu a data de corte 9
+vezes em 9. A recomendação para a 3.2 do MVP é compor essa frase por modelo
+fixo.
+
+### Engage: de 18 para 23 de 25
+
+| Entregue | Tasks |
+| --- | --- |
+| Tempos medidos (10, 22 e 43 min) no quadro Problema do board e no Miro, 25/09 | 2.4 |
+| Matriz de confiança versão 1, PR #104, 01/10 | 4.1, 4.2, 4.3, 4.4 |
+
+A matriz tem quatro dimensões: falsa autoridade ou fonte inexistente,
+recontextualização e edição de mídia, distorção de documento real e
+enquadramento conspiratório. Cada uma com sinal observável, papel da IA, limite
+e rubrica de três níveis. A 4.4 removeu três sinais que não discriminavam
+nenhum caso. Está em [Matriz de confiança](engage/kit-matriz-confianca.md).
+
+Restam a 7.1 e a 7.2, as duas de consolidação.
+
+### Fora de task
+
+- Notebook de análise exploratória, `exploracao/eda_datasets.ipynb` (PR #94).
+  Nenhum change o cobre.
+- Remoção do arquivo duplicado do caso 02 (PR #101).
 
 ## O que foi entregue em 24/09/2026
 
@@ -212,7 +274,7 @@ varia 0 a 35, e a ordem final saía inteira do léxico.
 | Capability | Entrega |
 | --- | --- |
 | `pesquisa-investigativa` | protocolo da forense de casos, com ficha e medição de esforço — **seis fichas preenchidas** |
-| `matriz-confianca` | dimensões, sinais, limites e rubrica de três níveis |
+| `matriz-confianca` | dimensões, sinais, limites e rubrica de três níveis — **versão 1, quatro dimensões** |
 | `guiding-questions` | backlog priorizado — **pronto** |
 
 ### Investigate
@@ -254,9 +316,12 @@ guiding q.    -->     frescor-corpus          -->    verificacao-alegacao
                       integridade-textual
 ```
 
-O tratamento dos datasets **bloqueia** as tasks 1.1 a 1.6 do MVP. Indexar antes
+O tratamento dos datasets **bloqueava** as tasks 1.1 a 1.6 do MVP. Indexar antes
 de normalizar propaga o problema de rótulo para dentro do índice, onde ele fica
-caro de tirar.
+caro de tirar. O tratamento fechou em 19/09, e a 1.1 em 29/09.
+
+A matriz de confiança, que bloqueava a 8.1 do Act e a reconferência da rubrica
+de `adaptacao-criterios-en`, existe desde 01/10.
 
 O índice de 18/09/2026 não viola isso, e a forma como não viola importa: ele
 guarda o veredito **com a grafia original da agência** e uma chave normalizada
@@ -291,10 +356,10 @@ justificativa escrita.
 
 | Questão | Onde está registrada | Bloqueia |
 | --- | --- | --- |
-| Canal de entrega (WhatsApp vs. web) | `mvp-copiloto-verificacao` | arquitetura, e a GQ sobre momento da jornada |
-| Composição do catálogo de técnicas | `mvp-copiloto-verificacao` | `resposta-formativa` |
+| ~~Canal de entrega (WhatsApp vs. web)~~ | **resolvido em 25/09/2026: web primária com extensão WhatsApp**, decisão 5 do MVP | — |
+| ~~Composição do catálogo de técnicas~~ | **resolvido em 28/09/2026: sete rótulos e uma vaga**, decisão 6 do MVP | — |
 | Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | **medido em 19/09: não sai do score fundido, por motivo estrutural; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos** |
-| Estrutura de quatro blocos sob `evidência insuficiente` | `add-selecao-modelos-arquitetura-rag`, decisão 10 | task 3.2 do MVP; precisa de change de correção |
+| Estrutura de quatro blocos sob `evidência insuficiente` | `fix-resposta-sem-evidencia`; sonda confirmada em 28/09, decisão 4 | conferências 2.1 a 2.3 e teste 3.3 do change |
 | ~~Necessidade de reranker~~ | **resolvido em 22/09/2026: não compensa.** Só 2 das 20 consultas caem fora do top-3 (posições 4 e 5); as outras 18 estão no top-2 | — |
 | ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
 | Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | `tratamento/mapa_vereditos.json` | confirmação do grupo |
@@ -315,7 +380,11 @@ justificativa escrita.
 5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
    que o índice esperava existe, versionado, e o índice pode recebê-lo sem
    reindexar.
-6. ~~Forense de casos~~ — **feita em 24/09/2026**, seis fichas. Resta a task
-   2.4, levar os tempos medidos para o quadro Problema.
-7. Matriz de confiança — bloco 4 do Engage, e o resto do bloco 7.
+6. ~~Forense de casos~~ — **feita em 24/09/2026**, seis fichas. A 2.4 saiu em
+   25/09.
+7. ~~Matriz de confiança~~ — **feita em 01/10/2026**, bloco 4 do Engage. Resta
+   o bloco 7, consolidação.
 8. Decisão sobre "identificar vieses".
+9. **Submeter o protocolo ao CEP** (6.4). A 6.3 fechou em 29/09.
+10. **Fundir a 1.2 na `main`.** A 1.5 depende dela.
+11. Bloco 1 do Act — 1.3, 1.4 e 1.6 — e a 3.2, já em andamento.
