@@ -58,5 +58,5 @@
     "percentil_topo": 99,
     "provisorio": "alfa é fixado por medição na task 3.1; o limiar de evidência insuficiente, na 3.5"
   },
-  "matriz_densa": "construída por `python -m prototipo.rag construir` em 29/09/2026 sobre 22.464 fragmentos, antes do esquema; a linha do fragmento 4ce7e4777f-04-00 (alegação sem justificativa, quarentena) foi removida e as 22.463 restantes conferidas por texto e id, na mesma ordem — decisão 13 de mvp-copiloto-verificacao"
+  "matriz_densa": "construída por `python -m prototipo.rag construir` em 29/09/2026 sobre 22.464 fragmentos, antes do esquema; a linha do fragmento 4ce7e4777f-04-00 (alegação sem justificativa, quarentena) foi removida e as 22.463 restantes conferidas por texto e id, na mesma ordem — decisão 16 de mvp-copiloto-verificacao"
 }
