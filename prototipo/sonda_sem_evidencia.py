@@ -15,9 +15,11 @@ Uso: python sonda_sem_evidencia.py [modelo] [--tentativas=N] [--cpu] [--reavalia
 `--reavaliar` reaplica os checks às respostas já gravadas no relatório, sem
 chamar o modelo.
 
-`--cpu` força inferência só em CPU (`num_gpu: 0`). Necessário na RTX 2060 de
-6 GB, onde o llama-server do Ollama 0.34.4 cai com `CUDA error: shared object
-initialization failed`. Muda a latência, não a resposta esperada.
+`--cpu` força inferência só em CPU (`num_gpu: 0`). O ambiente da equipe é o
+MacBook Air M4, que roda sem a opção. Ela existe para a máquina de apoio com
+RTX 2060 de 6 GB, onde o llama-server do Ollama 0.34.4 cai com `CUDA error:
+shared object initialization failed`; a execução de 28/09 rodou lá. Muda a
+latência, não a resposta esperada.
 """
 import json, pathlib, re, sys, time
 import ollama
