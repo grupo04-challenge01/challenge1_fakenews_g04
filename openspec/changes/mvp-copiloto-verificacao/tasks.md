@@ -65,7 +65,7 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 5.1 **Wingrid** Camada visível e camada de detalhe
 - [ ] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
 - [ ] 5.3 **Wingrid** Fluxo de primeira verificação sem cadastro
-- [ ] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
+- [x] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
 
 ## 6. Avaliação
 - [ ] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos

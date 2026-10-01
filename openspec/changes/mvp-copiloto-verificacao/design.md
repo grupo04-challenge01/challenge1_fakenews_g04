@@ -616,6 +616,17 @@ defeitos, e cada um virou regra:
 3. O bloco 1 abriu com "A informação diz que a casca do jatobá cura o câncer",
    sem marcação de falso. O verificador da 3.4 pegou a frase.
 
+**Bloco 2 com ponteiro, 01/10.** A decisão 5 do fix definiu que, na lacuna
+com ponteiro, o bloco 2 fala só do acervo consultado e não julga a alegação. Na
+primeira sonda o S2 escreveu "não encontrar não significa que seja falsa" 3
+vezes em 3, ao lado de um ponteiro com veredito `falso`. A instrução no prompt
+não resolveu: com ela, o S2 repetiu a frase 3 vezes em 3, e o R3 deixou o bloco 3
+vazio em 2 de 3. Pelo mesmo motivo da data de corte, o bloco 2 com ponteiro
+passou a sair do código (`BLOCO_2_COM_PONTEIRO`): «O acervo consultado aqui não
+cobre esta mensagem. Não achar nele não confirma nem desmente nada.» O prompt
+voltou a ser o da rodada anterior. A sonda refeita deu 21 de 21, com respostas
+de 65 a 82 palavras e mediana de 11,2 s (de 6,2 a 27,1 s).
+
 **Limites declarados.**
 
 - A adequação do rótulo ao caso continua fora do código, como na decisão 7. O
@@ -623,11 +634,6 @@ defeitos, e cada um virou regra:
 - Afirmação do bloco 2 sem trecho de origem não é pega aqui: ancorar cada
   afirmação a um trecho é a task 1.6. Exemplo: no R3, "o exame saiu uma semana
   depois".
-- No S2, o bloco 2 diz que "não encontrar não significa que seja falsa", ao
-  lado de um ponteiro que traz veredito `falso`. A decisão 5 do fix, de 01/10,
-  resolveu essa questão: com ponteiro, o bloco 2 fala só do acervo consultado e
-  não julga a alegação. O prompt desta decisão ainda não segue essa regra, e
-  ajustá-lo pede nova rodada da sonda.
 - Defeito não gera nova tentativa. Se a montagem final repete a chamada ou
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.
