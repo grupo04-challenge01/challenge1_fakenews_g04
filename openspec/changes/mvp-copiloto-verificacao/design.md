@@ -260,6 +260,97 @@ não cobre a alegação. Isso depende do prompt, e os casos G3 e G4 medem
 exatamente isso. Pegar esse caso em código exige o limiar da task 1.5 ou a
 ancoragem trecho a afirmação da task 1.6.
 
+### 13. Esquema de indexação, versão 1.0.0 — 29/09/2026
+
+Task 1.1. Contrato em `prototipo/indice/esquema_indexacao.json` (JSON Schema
+draft-07), validador em `prototipo/rag/esquema.py`, testes em
+`prototipo/rag/tests/test_esquema.py`, laudo em
+`prototipo/indice/validacao_esquema.json`. Reexecução:
+`python -m prototipo.rag.esquema`.
+
+**O que já existia e o que faltava.** As unidades e os fragmentos do recorte de
+saúde do FactCenter foram construídos na task 2.2 de
+`add-selecao-modelos-arquitetura-rag` (decisão 11 daquele change), mas a forma
+deles estava só no código. O MVP exige do índice quatro coisas que a prova de
+conceito não gravava: saber de que corpus veio o registro (FACTCK.BR entra na
+1.2), se é checagem ou comunicado oficial (1.3), em que idioma está (a prioridade
+PT-BR antes de EN da 1.4) e o nome exibível da agência (atribuição em
+`recuperacao-evidencia`). E `integridade-textual` exige saber, por registro, se o
+texto pode virar citação.
+
+**Duas coleções, campos fechados.**
+
+| Coleção | O que é | Campos novos nesta versão |
+| --- | --- | --- |
+| unidade | uma alegação com veredito e justificativa; unidade de citação e de atribuição | `corpus`, `tipo_fonte`, `idioma`, `apto_citacao`, `agencia_nome` |
+| fragmento | pedaço da justificativa com cabeçalho alegação + veredito; é o que os braços léxico e denso indexam | os mesmos cinco, repetidos da unidade |
+
+`additionalProperties` é `false`: campo, corpus ou valor de enum novo passa pelo
+esquema antes de chegar ao construtor. O rótulo nos quatro valores de
+`verificacao-alegacao` **não** está no esquema. Ele é da task 2.3 de
+`add-tratamento-datasets-ptbr`, e o teste `test_campo_fora_do_esquema_e_recusado`
+garante que ele não entre por fora.
+
+**Doze invariantes que JSON Schema não expressa** (`x-invariantes`), conferidas
+pelo validador. As que carregam as specs: I3, agência, data e URL em todo
+fragmento, sem divergência da unidade; I4, alegação nunca separada do veredito;
+I5, trecho literal da justificativa; I10, a mesma URL não entra por dois corpora;
+I12, a contagem fecha contra os registros declarados.
+
+**Identidade preservada.** `registro_id` continua `sha1(url)[:10]` no FactCenter,
+com prefixo vazio. As 20 chaves de `prototipo/rag/consultas_afericao.json`
+seguem válidas, e a aferição da decisão 15 daquele change não precisa ser
+refeita por causa do esquema. O FACTCK.BR recebe o prefixo `fb-`.
+
+**Achado: uma alegação indexada sem justificativa.** O validador reprovou o
+índice da prova de conceito em um registro. Na checagem da Lupa sobre câncer de
+pele (05/03/2020), o texto raspado termina na quinta alegação, «A quantidade de
+filtro solar influencia na prevenção do câncer de pele», que tem veredito
+`VERDADEIRO` e nenhuma justificativa. Resultado: um fragmento só com cabeçalho,
+que nenhuma afirmação da resposta consegue ancorar. O construtor agora manda a
+unidade para a quarentena com motivo `justificativa_ausente` e mantém as quatro
+irmãs. O índice passa de 5.090 unidades e 22.464 fragmentos para **5.089 e
+22.463**. Os 88 registros mistos continuam em quarentena. A contagem fecha:
+3.975 registros com unidade mais 88 em quarentena dão 4.063.
+
+**Mapeamento do FACTCK.BR, medido e não executado.** A indexação é da 1.2. O
+esquema só fixa o mapeamento, para a 1.2 não mudar o contrato. Medido em
+`FACTCKBR.tsv` em 29/09/2026: 1.313 linhas de três agências (Lupa 528, Truco 415,
+Aos Fatos 370), de 2016 a 2019. Cada linha já é uma alegação com seu próprio
+veredito, então não existe o problema de segmentação do FactCenter. Há 91 URLs
+com mais de uma alegação, até 27. Quatro pontos ficam para a 1.2:
+
+- **Não é apto a citação.** O próprio TSV distribuído tem `Ã` 0 contra `ã`
+  3.625, `Ç` 0 contra `ç` 2.312 e `Ú` 0 contra `ú` 973. A perda é irreversível
+  (`integridade-textual`), por isso `apto_citacao` fica `false`. O corpus serve à
+  recuperação, não a trecho exibido.
+- **Sobreposição com o FactCenter.** 106 linhas (74 URLs) já estão no recorte de
+  saúde do FactCenter. Pela I10, o corpus apto a citação vence.
+- **Campos vazios.** `claimReviewed` vazio em 13 linhas, `reviewBody` em 12 e
+  `alternativeName` em 4. Todas vão para a quarentena; o título não substitui a
+  alegação.
+- **Veredito e data.** A escala de `ratingValue` muda por agência (5, 6 e 8), e
+  só `alternativeName` é usado. A Lupa grava data e hora, que são truncadas.
+
+O FACTCK.BR **não é um recorte de saúde**: cobre política e outros temas. Filtrar
+por tema, ou não filtrar, é decisão da 1.2.
+
+**Consequência operacional.** O índice foi reconstruído em 29/09/2026 com
+`python -m prototipo.rag construir` (2.454 s de braço denso), mas a execução
+rodou sobre o código anterior ao esquema, porque um `git pull` guardou esta task
+em stash. Em vez de reconstruir outra vez, a linha do fragmento
+`4ce7e4777f-04-00` foi removida da matriz densa, e as 22.463 restantes foram
+conferidas contra os fragmentos novos, com texto e id iguais na mesma ordem. O
+`manifesto.json` agora declara esquema 1.0.0, 5.089 unidades e 22.463
+fragmentos, e registra a derivação em `matriz_densa`.
+
+A matriz densa tem uma linha por fragmento e MUST ser reconstruída junto com os
+`.jsonl`. Rodar só `python -m prototipo.rag.unidades` sobre uma `densa.npy`
+antiga desalinha fragmento e vetor. `construir` agora avisa cada etapa em stderr.
+`jsonschema` entrou em `requirements-rag.txt`, mas o `.lock` só pode ser
+regenerado no ambiente fixado (Python 3.14.6, M4), que não é o desta
+verificação.
+
 ## Questões em aberto
 
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~

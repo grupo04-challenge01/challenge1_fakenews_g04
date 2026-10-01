@@ -1,0 +1,30 @@
+{
+  "data": "2026-09-29",
+  "change": "mvp-copiloto-verificacao",
+  "task": "1.1",
+  "esquema": "prototipo/indice/esquema_indexacao.json",
+  "corpus": "datasets/derivados/factcenter_subset_saude.csv",
+  "comando": "python -m prototipo.rag.esquema",
+  "disposicoes": {
+    "unica": 3476,
+    "quarentena_misto": 88,
+    "nao_segmentada": 278,
+    "segmentada": 221
+  },
+  "esquema_versao": "1.0.0",
+  "unidades": 5089,
+  "fragmentos": 22463,
+  "quarentena": 89,
+  "por_corpus": {
+    "factcenter_saude": {
+      "registros_declarados": 4063,
+      "registros_com_unidade": 3975,
+      "registros_em_quarentena": 88,
+      "unidades": 5089,
+      "unidades_em_quarentena": 1
+    }
+  },
+  "aprovado": true,
+  "violacoes": {},
+  "exemplos": []
+}

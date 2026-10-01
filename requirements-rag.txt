@@ -8,3 +8,4 @@ rank-bm25>=0.2.2          # busca léxica (decisão 4 do design)
 sentence-transformers>=3.0 # embeddings; traz torch
 ollama>=0.4                # cliente do gerador local (Gemma 4 12B QAT)
 pytest>=8                  # testes de prototipo/resposta e prototipo/verificacao
+jsonschema>=3.2           # esquema de indexação (task 1.1 de mvp-copiloto-verificacao)
