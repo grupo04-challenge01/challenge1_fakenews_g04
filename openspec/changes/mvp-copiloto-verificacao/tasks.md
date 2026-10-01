@@ -68,7 +68,7 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — especificação de fluxo zero-friction de entrada direta por texto, link
       ou encaminhamento, sem login prévio e compatível com LGPD; decisão 21 do
       `design.md`, 01/10/2026
-- [ ] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
+- [x] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
 
 ## 6. Avaliação
 - [ ] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
