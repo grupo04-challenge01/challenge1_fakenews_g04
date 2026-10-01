@@ -624,8 +624,10 @@ defeitos, e cada um virou regra:
   afirmação a um trecho é a task 1.6. Exemplo: no R3, "o exame saiu uma semana
   depois".
 - No S2, o bloco 2 diz que "não encontrar não significa que seja falsa", ao
-  lado de um ponteiro que traz veredito `falso`. É a questão aberta pela sonda
-  E2 do fix, a cargo da task 2.2 daquele change.
+  lado de um ponteiro que traz veredito `falso`. A decisão 5 do fix, de 01/10,
+  resolveu essa questão: com ponteiro, o bloco 2 fala só do acervo consultado e
+  não julga a alegação. O prompt desta decisão ainda não segue essa regra, e
+  ajustá-lo pede nova rodada da sonda.
 - Defeito não gera nova tentativa. Se a montagem final repete a chamada ou
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.

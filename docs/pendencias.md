@@ -9,16 +9,18 @@ esta página conta o que falta.
 
 | Fase | Change | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | **23** | **2** |
-| **Investigate** | `add-tratamento-datasets-ptbr` | 31 | **2** |
+| **Engage** | `add-engage-desinformacao-saude` | **24** | **1** |
+| **Investigate** | `add-tratamento-datasets-ptbr` | 32 | **3** |
 | **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
 | **Investigate** | `add-selecao-modelos-arquitetura-rag` | 33 | **0** ✅ |
-| **Investigate → Act** | `fix-resposta-sem-evidencia` | 8 | **5** |
-| **Act** | `mvp-copiloto-verificacao` | 12 | **19** |
+| **Investigate → Act** | `fix-resposta-sem-evidencia` | 12 | **1** |
+| **Act** | `mvp-copiloto-verificacao` | 13 | **18** |
 | **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **162** | **28** |
+| | **total** | **169** | **23** |
 
-Contagem de `- [x]` e `- [ ]` nos `tasks.md` de `origin/main` em 01/10/2026.
+Contagem de `- [x]` e `- [ ]` nos `tasks.md` de `origin/main` em 01/10/2026,
+depois dos PRs #106 a #108 e da correção de consistência. Essa correção fechou a
+7.2 do Engage e abriu duas tasks no tratamento: a 5.7 e a 6.4 retroativa.
 
 Entre 25/09 e 01/10 fecharam 19 tasks. O Act saiu de zero: 12 de 31, quase
 todas de verificação, resposta e fronteira. O Engage fechou a matriz de
@@ -31,13 +33,14 @@ sendo a maior parte do produto.
 | --- | --- | --- |
 | 8.1 do Act | Wingrid | matriz de confiança versão 1, PR #104 |
 | 1.4 e 1.6 do Act | Samara | esquema de indexação (1.1) e carga conferida do índice, PR #103 |
-| 3.2 do Act | Vitor | contratos das 3.3 (decisão 7) e 3.4 (decisão 14) prontos; **em andamento** |
+| 3.2 do Act | Vitor | **fechada** em 01/10, PR #107, decisão 18 do design |
 | 4.3 do Act | Jhessica | classificador da fronteira, task 4.1 (decisão 15) |
 | 6.4 do Act | Breno | TCLE e roteiro de debriefing, task 6.3 (decisão 13) |
 
 A 1.5 (Vitor) depende da 1.1, já fechada, e da 1.2, a indexação do FACTCK.BR.
-A 1.2 tem commit no branch `act-classificacao-guarda`, mas **não está na
-`main`**.
+A 1.2 foi fundida no branch `act-classificacao-guarda` pelo PR #105, e não na
+`main`. O branch `act-factckbr-indexacao` a traz com a `main` já mesclada
+(decisão 17 antes da 18) e aguarda PR.
 
 ## O que bloqueia o quê
 
@@ -49,23 +52,23 @@ fazer o quê.
 | ~~**Máquina**~~ — precisava do ambiente com MPS | ~~4~~ **0** | feito em 22/09 |
 | ~~**Trabalho de grupo presencial**~~ — sessão, card sorting, forense | ~~11~~ **0** | forense e sessão em 24/09, matriz em 01/10 |
 | **Anotação e curadoria humana** — 5.4 do tratamento; 2.4, 6.1 e 6.2 do Act | 4 | Jhessica |
-| **Redação** — consolidação do Engage, 7.1 e 7.2 | 2 | Breno |
+| **Redação** — consolidação do portfólio, 7.1 do Engage | 1 | Breno |
 | ~~**Decisão de grupo**~~ — canal e catálogo | ~~4~~ **0** | canal em 25/09, catálogo em 28/09; restam três decisões sem task, ver abaixo |
 | **Processo externo** — CEP, coleta de rede | 3 | prazo de terceiro |
-| **Implementação e conferência** — código, prompt, teste | 19 | dono de cada task |
+| **Implementação e conferência** — código, prompt, teste | 15 | dono de cada task |
 
-A tabela de 24/09 somava 53, não 47. A desta data soma 28.
+A tabela de 24/09 somava 53, não 47. A desta data soma 23.
 
 ---
 
-## Engage — 2 pendentes
+## Engage — 1 pendente
 
 **Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 23 de 25, vencida há 20 dias.
+11/09 · **Status:** 24 de 25, vencida há 20 dias.
 
 Em 20/09 fecharam oito tasks, em 24/09 mais seis. Em 25/09 saiu a 2.4 e em
-01/10 o bloco 4 inteiro. **O que resta é redação**: juntar o que já existe no
-portfólio e na matriz versão 1. Não exige mais o grupo reunido.
+01/10 o bloco 4 inteiro e a 7.2. **O que resta é redação**: juntar o
+portfólio de pesquisa. Não exige mais o grupo reunido.
 
 ### O que existe
 
@@ -115,16 +118,15 @@ alarmista (emoção não é evidência, decisão 7 de
 A quarta dimensão é a vaga que a decisão 6 do Act deixou para `conspiração`
 no catálogo. A conferência é a 8.1 do Act, agora destravada.
 
-### Bloco 7 — Fechamento (2)
+### Bloco 7 — Fechamento (1)
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
 | 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | redação, Breno |
-| 7.2 | Consolidar a matriz de confiança versão 1 | redação, Breno |
 
 As três partes da 7.1 existem: «datasets» pelo bloco 6, «fichas» em 24/09 e
-o «método» nos blocos 2 e 3. Falta juntá-las. A 7.2 parte do arquivo do
-bloco 4, que já se chama «Versão 1».
+o «método» nos blocos 2 e 3. Falta juntá-las. A 7.2 foi fechada em 01/10: o
+PR #104 entregou a matriz já como «Versão 1», e a task passou a citá-lo.
 
 > **A 7.4 foi resolvida em 20/09/2026.** O change
 > `add-instrumento-avaliacao-ptbr` **não será aberto**: a capability
@@ -133,14 +135,18 @@ bloco 4, que já se chama «Versão 1».
 > Escopo preservado, rastreamento realocado. Motivo registrado no `design.md`
 > do change do Engage.
 
-## Investigate — 2 pendentes
+## Investigate — 3 pendentes
 
-### `add-tratamento-datasets-ptbr` — 2 de 33
+### `add-tratamento-datasets-ptbr` — 3 de 35
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
 | 3.5 | Recoletar o FACTCK.BR pelos três feeds com o script reparado, registrando a perda histórica como irreversível | processo externo (coleta de rede) |
 | 5.4 | Validar a rubrica contra casos brasileiros e remover o que não discrimina | trabalho de grupo (anotação humana) |
+| 5.7 | Reconferir a rubrica de seis critérios contra a matriz de confiança versão 1 | conferência, Jhessica; aberta em 01/10 |
+
+A 6.4 entrou marcada em 01/10: registra o notebook `exploracao/eda_datasets.ipynb`,
+que chegou pelo PR #94 sem task que o cobrisse.
 
 **Sobre a 3.5.** O texto original pedia o impossível — regerar o derivado «a
 partir da fonte, com a correção» — quando a corrupção já está no `FACTCKBR.tsv`
@@ -191,20 +197,21 @@ compensa; subir continua não medido).
 
 ---
 
-## Investigate → Act — 5 pendentes
+## Investigate → Act — 1 pendente
 
-### `fix-resposta-sem-evidencia` — 5 de 13
+### `fix-resposta-sem-evidencia` — 1 de 13
 
 Change de correção aberto em 19/09. Planejamento completo, specs escritas sob a
 saída A (forma própria para o caso sem evidência).
 
 | # | Task | Bloqueio |
 | --- | --- | --- |
-| 2.1 | Conferir a forma sem evidência contra o teto de 120 palavras de `acessibilidade-leitura`, **medindo respostas reais** | implementação, Wingrid |
-| 2.2 | Conferir contra `recuperacao-evidencia` que nenhum bloco induz afirmação sem trecho | implementação, Wingrid |
-| 2.3 | Conferir contra `fronteira-orientacao-saude` que a forma sem evidência não vira porta de conduta clínica | implementação, Wingrid |
 | 2.4 | Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr` | **já resolvido** na declaração de quatro níveis; confirmar, Samara |
-| 3.3 | Teste que reprova resposta com técnica nomeada sob `evidência insuficiente` | implementação, Wingrid |
+
+**As 2.1, 2.2, 2.3 e 3.3 fecharam em 01/10, PR #106, Wingrid.** A conciliação
+da 2.2 e da 2.3 está na decisão 5 do `design.md` do change. Ela também resolveu a
+questão aberta pela sonda E2: com ponteiro, o bloco 2 fala só do acervo
+consultado, e o veredito externo fica no ponteiro do bloco 4.
 
 **As 3.1 e 3.2 fecharam em 28/09, decisão 4 do `design.md` do change.** O
 defeito que abriu o change não se repete: 0 de 12 respostas degeneraram, e a T1
@@ -218,10 +225,10 @@ de 120. É material para a 2.1.
 
 ---
 
-## Act — 19 pendentes
+## Act — 18 pendentes
 
 **Change:** `mvp-copiloto-verificacao` · **Cronograma declarado:** semanas 4–5 ·
-**Executadas até agora: 12 de 31.**
+**Executadas até agora: 13 de 31.**
 
 Esta é a fase inteira do produto. O bloco 1 estava bloqueado pelo tratamento dos
 datasets — **e não está mais**.
@@ -231,7 +238,7 @@ datasets — **e não está mais**.
 | # | Task | O que já existe |
 | --- | --- | --- |
 | 1.1 | Esquema de indexação do recorte de saúde do FactCenter | **fechada** em 29/09/2026: `prototipo/indice/esquema_indexacao.json` v1.0.0, validado por `prototipo/rag/esquema.py`, decisão 16 do design; 5.089 unidades e 22.463 fragmentos |
-| 1.2 | Indexar FACTCK.BR como fonte auxiliar, com rótulos normalizados | commit no branch `act-classificacao-guarda`, **fora da `main`**; reprovado para citação (`apto_citacao` falso, decisão 16) |
+| 1.2 | Indexar FACTCK.BR como fonte auxiliar, com rótulos normalizados | feita no branch `act-classificacao-guarda` (PR #105, decisão 17), **fora da `main`**; o branch `act-factckbr-indexacao` a leva à `main`; reprovado para citação (`apto_citacao` falso, decisão 16) |
 | 1.3 | Lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa) | nada |
 | 1.4 | Recuperação com prioridade de idioma (PT-BR antes de EN) | híbrida PT-BR pronta; campo `idioma` no esquema 1.0.0 |
 | 1.5 | Definir e calibrar o limiar de `evidência insuficiente` | **medido:** não sai do score fundido; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos; espera a 1.2 |
@@ -247,12 +254,12 @@ datasets — **e não está mais**.
 | 2.4 | Teste de regressão com itens verdadeiros contra-intuitivos | **sem material:** 21 itens `verdadeiro` em 4.063, e a FakeRecogna 2.0 não resolve |
 | 2.5 | Prompt de decomposição fato / evidência / opinião | **fechada** em 29/09/2026: `prototipo/verificacao/decomposicao.py`, decisão 9 do design; os 245 registros `misto` seguem reservados para teste |
 
-### Bloco 3 — Resposta formativa (1 aberta, 3 fechadas)
+### Bloco 3 — Resposta formativa (0 abertas, 4 fechadas) ✅
 
 | # | Task | Nota |
 | --- | --- | --- |
 | 3.1 | Fechar o catálogo de 6 a 8 técnicas | **fechada** em 28/09/2026: sete rótulos e uma vaga, decisão 6 do design |
-| 3.2 | Prompt da estrutura de quatro blocos | **em andamento**, Vitor; contratos das 3.3 e 3.4 prontos; frase de corte por modelo fixo, decisão 4 do `fix-resposta-sem-evidencia` |
+| 3.2 | Prompt da estrutura de quatro blocos | **fechada** em 01/10/2026: `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do design; data de corte e ponteiro compostos pelo código |
 | 3.3 | Validação automática: rótulo usado pertence ao catálogo | **fechada** em 28/09/2026: `prototipo/resposta/catalogo.py`, decisão 7 do design; confere pertinência, não adequação |
 | 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | **fechada** em 29/09/2026: `prototipo/resposta/mito.py`, decisão 14 do design; contrato com o prompt da 3.2 |
 
@@ -336,10 +343,10 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 20 dias**, 23 de 25 tasks |
+| 1 | Engage | 07/09 a 11/09 | **vencida há 20 dias**, 24 de 25 tasks |
 | 2 | Investigate | 14/09 a 18/09 | encerrada |
-| 3 | Investigate | 21/09 a 25/09 | encerrada, 119 de 121 |
-| **4** | **Act** | **28/09 a 02/10** | **em curso — 12 de 31** |
+| 3 | Investigate | 21/09 a 25/09 | encerrada, 120 de 123 |
+| **4** | **Act** | **28/09 a 02/10** | **em curso — 13 de 31** |
 | 5 | Act | 05/10 a 09/10 | não começou |
 | 6 | Showcase | 12/10 a 16/10 | sem change |
 
@@ -348,18 +355,20 @@ Datas derivadas da proposta do challenge em 20/09/2026 — ver
 
 ### O que isso muda na leitura
 
-**O Investigate encerrou em 119 de 121.** As duas pendentes são as mesmas de
-24/09: a recoleta do FACTCK.BR (3.5), que depende de rede, e a validação da
-rubrica (5.4), que depende de anotação humana. **Nenhuma das duas é código.**
+**O Investigate encerrou em 119 de 121 e está hoje em 120 de 123.** Duas
+pendentes são as mesmas de 24/09: a recoleta do FACTCK.BR (3.5), que depende de
+rede, e a validação da rubrica (5.4), que depende de anotação humana. A terceira,
+a 5.7, foi aberta em 01/10 para reconferir a rubrica contra a matriz.
+**Nenhuma das três é código.**
 
-**O Act começou na data.** Desde 25/09 saíram 12 tasks, quase todas de Vitor
+**O Act começou na data.** Desde 25/09 saíram 13 tasks, quase todas de Vitor
 e Breno: verificação (2.1, 2.2, 2.3, 2.5), resposta (3.1, 3.3, 3.4),
-fronteira (4.1, 4.2), TCLE (6.3), canal (7.1) e esquema de indexação (1.1, de
-Samara). O que resta é recuperação (bloco 1), o prompt da resposta (3.2), a
-interface inteira (bloco 5) e a avaliação com usuário (bloco 6).
+fronteira (4.1, 4.2), TCLE (6.3), canal (7.1), esquema de indexação (1.1, de
+Samara) e a estrutura de quatro blocos (3.2). O que resta é recuperação
+(bloco 1), a interface inteira (bloco 5) e a avaliação com usuário (bloco 6).
 
 **O Engage deixou de travar o Act.** A matriz saiu em 01/10 e destravou a 8.1.
-Restam a 7.1 e a 7.2, que são redação.
+Resta a 7.1, que é redação.
 
 ### O caminho crítico é o comitê de ética
 
@@ -379,9 +388,9 @@ está depois da aprovação do CEP.
 ### Sugestão de ordem para as semanas 4 e 5
 
 1. **Agora:** submeter ao CEP (6.4). Já não depende de nada no repositório.
-2. **Agora:** fundir a 1.2 na `main`. A 1.5 espera por ela.
-3. **Semana 4:** fechar o bloco 1 — 1.4 e 1.6 com Samara, 1.3 com Wingrid — e a
-   3.2, já em andamento.
+2. **Agora:** fundir a 1.2 na `main`, pelo branch `act-factckbr-indexacao`. A
+   1.5 espera por ela.
+3. **Semana 4:** fechar o bloco 1 — 1.4 e 1.6 com Samara, 1.3 com Wingrid.
 4. **Semana 5:** interface (bloco 5), que não tem mais bloqueio de decisão, e
    a bateria adversarial da fronteira (4.3).
 5. **Antes de 12/10:** abrir o change de Showcase.
@@ -390,7 +399,7 @@ está depois da aprovação do CEP.
 
 O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
 existia era o contrário: o Investigate encerrou em 119 de 121 com o Engage em
-18 de 25. Hoje o Engage está em **23 de 25**.
+18 de 25. Hoje o Engage está em **24 de 25**.
 
 **Por que aconteceu.** As pendentes do Engage eram quase todas trabalho de
 grupo presencial — forense com um caso por pessoa, sessão de brainstorming de
@@ -420,7 +429,8 @@ de três níveis cada.
 A task 5.3 está marcada corretamente: ela pede a adaptação, e a adaptação foi
 feita. Mas o requirement da capability só se cumpre quando a compatibilidade for
 conferida. **A reconferência da rubrica contra a matriz ainda não foi feita**, e
-pode exigir ajuste. Nenhuma task a cobre hoje.
+pode exigir ajuste. Desde 01/10 ela tem task: a 5.7 do tratamento, com
+Jhessica.
 
 A mesma dependência alcança a task 8.1 do Act, que manda conferir a consistência
 do catálogo de técnicas com as dimensões da matriz. Essa tem dono: Wingrid.
