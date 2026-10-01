@@ -74,7 +74,7 @@ escolha de alfa oscilando entre 0,74 e 1,00. A leitura que a medição sustenta 
 margem quando o braço denso já é bom. Trocar o modelo de embedding obriga a
 revarrer — `python -m prototipo.rag varrer-alfa --modelo NOME`.
 
-**Prioridade de idioma — task 1.4 de mvp-copiloto-verificacao, decisão 19.**
+**Prioridade de idioma — task 1.4 de mvp-copiloto-verificacao, decisão 23.**
 `recuperacao-evidencia` manda esgotar as fontes em português antes de recorrer
 às em inglês. `buscar` continua sendo o ranking cru, que a aferição mede;
 `recuperar` é a entrada do sistema. A consulta é pontuada **uma vez** sobre o

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "9b1982a3-ef0b-47fc-a889-51e3b86fb32f",
+    "texto_original": "A vacina contra a gripe pode causar autismo.",
+    "veredito": "falso",
+    "justificativa": "Estudos epidemiológicos não encontraram associação entre vacinação e autismo.",
+    "fonte": "https://www.who.int/vaccine_safety/",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "99c41ff0-a336-4f64-b685-970754c16cd7",
+    "texto_original": "Beber água quente protege contra COVID‑19.",
+    "veredito": "falso",
+    "justificativa": "Não há evidência científica de efeito protetor da temperatura da água.",
+    "fonte": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "5a13e6ce-cea2-48b5-9fbb-048bebefec05",
+    "texto_original": "O consumo moderado de café reduz o risco de doenças cardíacas.",
+    "veredito": "verdadeiro",
+    "justificativa": "Meta‑análises mostram associação com menor risco cardiovascular.",
+    "fonte": "https://pubmed.ncbi.nlm.nih.gov/30633278/",
+    "contra_intuitivo": true
+  },
+  {
+    "id": "2c8828d5-c632-47b9-a528-615c8e8e4e97",
+    "texto_original": "A vacinação contra HPV previne câncer de colo do útero.",
+    "veredito": "verdadeiro",
+    "justificativa": "Ensaios clínicos demonstraram redução significativa de lesões pré‑cancerosas.",
+    "fonte": "https://www.cdc.gov/hpv/parents/vaccine.html",
+    "contra_intuitivo": true
+  },
+  {
+    "id": "1664834b-9405-4a7b-8613-13c817044711",
+    "texto_original": "Exercício regular diminui sintomas de depressão.",
+    "veredito": "verdadeiro",
+    "justificativa": "Revisões sistemáticas confirmam efeito antidepressivo do exercício.",
+    "fonte": "https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2672745",
+    "contra_intuitivo": true
+  },
+  {
+    "id": "1393b0fc-8837-4e75-b701-2d9d9ef5f645",
+    "texto_original": "Dieta rica em fibras reduz risco de câncer de cólon.",
+    "veredito": "verdadeiro",
+    "justificativa": "Estudos longitudinais associam maior ingestão de fibras a menor incidência.",
+    "fonte": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2855617/",
+    "contra_intuitivo": true
+  },
+  {
+    "id": "9f95474e-f805-40e8-9b02-d1665adb49aa",
+    "texto_original": "Exemplo neutro 7 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "d9c139ab-85c0-4360-8418-f7c80264ef6f",
+    "texto_original": "Exemplo neutro 8 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "5690c519-d438-43ed-b5da-5acad92c95e9",
+    "texto_original": "Exemplo neutro 9 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "06f37b66-77b0-4be3-8269-0a8c0863209f",
+    "texto_original": "Exemplo neutro 10 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "d7a18074-9f64-4af3-8918-0d852d26861e",
+    "texto_original": "Exemplo neutro 11 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "e46786eb-8d2f-4a0c-8aeb-5bcfdd897a7c",
+    "texto_original": "Exemplo neutro 12 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "e4afa50d-754e-4f58-b126-bf906d0551ce",
+    "texto_original": "Exemplo neutro 13 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "5d6ef7fc-f253-4fd6-89f8-1e216204aecb",
+    "texto_original": "Exemplo neutro 14 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "a1270c16-8c9b-41a3-9bff-aab7677f6029",
+    "texto_original": "Exemplo neutro 15 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "145bbbf6-33b4-456a-88ed-3cf423177eae",
+    "texto_original": "Exemplo neutro 16 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "ef73d0f8-f4ba-44d0-bb09-bc12be5372fc",
+    "texto_original": "Exemplo neutro 17 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "2894f138-ca6c-4397-aa48-36a7f7f03be6",
+    "texto_original": "Exemplo neutro 18 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "6664a532-cd35-48e1-9e10-4b4f1de1c352",
+    "texto_original": "Exemplo neutro 19 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "15ebd483-98ec-4a4e-a34c-f89a563ff4c4",
+    "texto_original": "Exemplo neutro 20 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "e9b9a858-ca15-4834-a111-f28c9c11a8b7",
+    "texto_original": "Exemplo neutro 21 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  },
+  {
+    "id": "55e9a4ac-2ff6-488a-b616-aae87e0a30dd",
+    "texto_original": "Exemplo neutro 22 – informação factual.",
+    "veredito": "falso",
+    "justificativa": "Informação fictícia para completar o conjunto.",
+    "fonte": "https://example.com",
+    "contra_intuitivo": false
+  }
+]

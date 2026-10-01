@@ -1,7 +1,7 @@
 """Task 1.4 de mvp-copiloto-verificacao: recuperação com prioridade de idioma.
 
 `recuperacao-evidencia` manda esgotar as fontes em português antes de recorrer
-às fontes em inglês. Decisão 19 do design.md: a consulta é pontuada uma vez
+às fontes em inglês. Decisão 23 do design.md: a consulta é pontuada uma vez
 sobre o índice inteiro, e as camadas de idioma são cortes desse mesmo score. O
 critério de que uma camada «cobre» a alegação é parâmetro; o valor é da task 1.5.
 """
