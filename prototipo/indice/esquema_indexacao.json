@@ -1,0 +1,437 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "x-arquivo": "prototipo/indice/esquema_indexacao.json",
+  "title": "Esquema de indexação do copiloto de verificação",
+  "description": "Contrato das duas coleções do índice — unidade e fragmento — para mvp-copiloto-verificacao, task 1.1. Descreve o que o construtor MUST gravar e o que a recuperação pode assumir. Regras que JSON Schema não expressa (identidade, coerência entre fragmento e unidade, literalidade do trecho, deduplicação entre corpora) estão em `x-invariantes` e são conferidas por `prototipo/rag/esquema.py`. Decisão 8 de openspec/changes/mvp-copiloto-verificacao/design.md.",
+  "x-versao": "1.0.0",
+  "x-data": "2026-09-29",
+  "x-change": "mvp-copiloto-verificacao",
+  "x-task": "1.1",
+  "x-evolucao": "additionalProperties é false nas duas coleções. Campo novo, corpus novo ou valor novo de enum é versão menor e MUST passar por este arquivo antes de chegar ao construtor; mudança de significado de campo existente é versão maior.",
+  "x-corpora": {
+    "factcenter_saude": {
+      "prefixo_id": "",
+      "arquivo": "datasets/derivados/factcenter_subset_saude.csv",
+      "leitura": "sep=';', quoting padrão (preserva newline de text_news) — contrato de normalizacao-rotulos",
+      "registros_declarados": 4063,
+      "janela": "2013-07-08 a 2021-05-19",
+      "idioma": "pt-BR",
+      "tipo_fonte": "checagem",
+      "apto_citacao": true,
+      "motivo_apto_citacao": "aprovado no portão de integridade-textual: nenhuma maiúscula acentuada ausente com a minúscula frequente (Ü ausente por ortografia) — manifesto.json, integridade_textual",
+      "licenca": "CC BY 4.0, Zenodo 10.5281/zenodo.5191798",
+      "papel": "fonte primária de evidência (task 1.1)",
+      "mapeamento": {
+        "url": "url",
+        "agencia": "source_name",
+        "data_publicacao": "publication_date",
+        "obtido_em": "obtained_at",
+        "titulo": "title",
+        "subtitulo": "subtitle",
+        "alegacao": "title (veredito único ou multi não segmentado) ou linha entre aspas de text_news (segmentação verificada)",
+        "justificativa": "text_news inteiro, ou o trecho de text_news entre uma alegação segmentada e a seguinte",
+        "veredito_original": "elemento de rating, lido como lista (normalizacao-rotulos)"
+      }
+    },
+    "factckbr": {
+      "prefixo_id": "fb-",
+      "arquivo": "datasets/01_nucleo_metodologico/factckbr/FACTCKBR.tsv",
+      "leitura": "sep='\\t', quoting=QUOTE_NONE, dtype=str",
+      "registros_declarados": 1313,
+      "janela": "2016-02-26 a 2019-07-22",
+      "idioma": "pt-BR",
+      "tipo_fonte": "checagem",
+      "apto_citacao": false,
+      "motivo_apto_citacao": "reprovado em integridade-textual: Ã 0 contra ã 3.625, Ç 0 contra ç 2.312, Ú 0 contra ú 973 no próprio TSV distribuído — perda irreversível; serve à recuperação e à contagem de rótulo, nunca a trecho exibido",
+      "licenca": "MIT para a estrutura; o texto das checagens é das agências",
+      "papel": "fonte auxiliar (task 1.2) — este bloco só fixa o mapeamento; a indexação é da 1.2",
+      "mapeamento": {
+        "url": "URL",
+        "agencia": "Author",
+        "data_publicacao": "datePublished, truncado a AAAA-MM-DD (a Lupa grava data e hora em 528 linhas)",
+        "obtido_em": null,
+        "titulo": "title",
+        "subtitulo": null,
+        "alegacao": "claimReviewed (13 linhas vazias: MUST ir para quarentena, não receber o título como alegação)",
+        "justificativa": "reviewBody (12 linhas vazias: quarentena pelo mesmo motivo da unidade sem justificativa)",
+        "veredito_original": "alternativeName (4 vazias: quarentena por veredito ilegível); ratingValue/bestRating descartados, a escala muda por agência (5, 6 e 8)",
+        "origem_alegacao": "claim_review — cada linha já é uma alegação com seu veredito; 91 URLs trazem mais de uma, até 27",
+        "registro": "a URL; indice_alegacao é a ordem da linha dentro da URL no TSV"
+      }
+    }
+  },
+  "x-agencias": {
+    "lupa": "Agência Lupa",
+    "https:piaui.folha.uol.com.brlupa": "Agência Lupa",
+    "boatos": "Boatos.org",
+    "aos fatos": "Aos Fatos",
+    "https:www.aosfatos.org": "Aos Fatos",
+    "fato-ou-fake": "Fato ou Fake (g1)",
+    "ESTADAO_VERIFICA": "Estadão Verifica",
+    "COMPROVA": "Projeto Comprova",
+    "https:apublica.org": "Truco (Agência Pública)"
+  },
+  "x-invariantes": [
+    "I1 identidade: registro_id = prefixo_id do corpus + sha1(url)[:10]; unidade_id = registro_id + '-' + indice_alegacao com 2 dígitos; fragmento_id = unidade_id + '-' + posicao com 2 dígitos. Para factcenter_saude o prefixo é vazio, o que mantém as chaves de prototipo/rag/consultas_afericao.json.",
+    "I2 unicidade: unidade_id e fragmento_id são únicos no índice inteiro.",
+    "I3 proveniência por fragmento: todo fragmento aponta para unidade existente e repete dela, sem divergência, corpus, tipo_fonte, idioma, apto_citacao, agencia, agencia_nome, url, data_publicacao, alegacao e veredito_original (arquitetura-recuperacao: agência, data e endereço acompanham cada fragmento).",
+    "I4 alegação junto do veredito: em checagem, texto começa por 'Alegação: <alegacao>' e a linha seguinte contém veredito_original; texto termina pelo trecho.",
+    "I5 literalidade: trecho é substring exata da justificativa da unidade (integridade-textual: citação sem reescrita).",
+    "I6 cobertura dos fragmentos: as posições de uma unidade são 0..total-1 sem falha, e total = unidade.fragmentos.",
+    "I7 veredito_chave = caixa baixa, sem acento, espaços colapsados de veredito_original (normalizacao-rotulos: chave ao lado da grafia).",
+    "I8 disposição coerente: unica ⇒ alegacoes_no_registro = 1; nao_segmentada ⇔ cobre_multiplas_alegacoes; segmentada ⇒ origem_alegacao ∈ {citacao_segmentada, claim_review}.",
+    "I9 atributos do corpus: idioma, tipo_fonte, apto_citacao e agencia_nome batem com x-corpora e x-agencias.",
+    "I10 deduplicação entre corpora: a mesma URL normalizada (sem esquema, sem www., sem barra final, caixa baixa) MUST NOT aparecer em dois corpora. Precedência: o corpus apto a citação vence. Medido em 29/09/2026: 106 linhas do FACTCK.BR (74 URLs) já estão no recorte de saúde do FactCenter.",
+    "I11 quarentena disjunta: nenhuma unidade indexada tem unidade_id listado na quarentena, e nenhum registro em quarentena inteira tem unidade indexada.",
+    "I12 contagem fechada: por corpus, registros com unidade + registros em quarentena inteira = registros_declarados."
+  ],
+  "definitions": {
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https?://\\S+$"
+    },
+    "corpus": {
+      "type": "string",
+      "enum": [
+        "factcenter_saude",
+        "factckbr"
+      ],
+      "description": "Corpus de origem. Registrado em x-corpora."
+    },
+    "tipo_fonte": {
+      "type": "string",
+      "enum": [
+        "checagem",
+        "comunicado_oficial"
+      ],
+      "description": "recuperacao-evidencia indexa checagens e comunicados oficiais. comunicado_oficial fica reservado à task 1.3: não tem veredito."
+    },
+    "idioma": {
+      "type": "string",
+      "enum": [
+        "pt-BR",
+        "en"
+      ],
+      "description": "Chave da prioridade de idioma (task 1.4): a recuperação esgota pt-BR antes de en."
+    },
+    "apto_citacao": {
+      "type": "boolean",
+      "description": "false: o texto pode ser recuperado e contado, MUST NOT ser exibido como trecho (integridade-textual)."
+    },
+    "registro_id": {
+      "type": "string",
+      "pattern": "^(fb-)?[0-9a-f]{10}$"
+    },
+    "unidade_id": {
+      "type": "string",
+      "pattern": "^(fb-)?[0-9a-f]{10}-\\d{2}$"
+    },
+    "texto_nao_vazio": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "veredito": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "unidade": {
+      "type": "object",
+      "description": "Uma alegação com seu veredito e sua justificativa (arquitetura-recuperacao). É a unidade de citação e de atribuição.",
+      "additionalProperties": false,
+      "properties": {
+        "registro_id": {
+          "$ref": "#/definitions/registro_id"
+        },
+        "unidade_id": {
+          "$ref": "#/definitions/unidade_id"
+        },
+        "indice_alegacao": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        "corpus": {
+          "$ref": "#/definitions/corpus"
+        },
+        "tipo_fonte": {
+          "$ref": "#/definitions/tipo_fonte"
+        },
+        "idioma": {
+          "$ref": "#/definitions/idioma"
+        },
+        "apto_citacao": {
+          "$ref": "#/definitions/apto_citacao"
+        },
+        "agencia": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "Grafia original do corpus, para rastreabilidade até a agência."
+        },
+        "agencia_nome": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "Nome exibível da agência (recuperacao-evidencia: nomear a agência). Vem de x-agencias."
+        },
+        "url": {
+          "$ref": "#/definitions/url",
+          "description": "Endereço da checagem original; também é a chave de deduplicação entre corpora (I10)."
+        },
+        "data_publicacao": {
+          "$ref": "#/definitions/data"
+        },
+        "alegacao": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "A alegação que o veredito resolve. Nunca separada dele (I4)."
+        },
+        "veredito_original": {
+          "$ref": "#/definitions/veredito",
+          "description": "Grafia publicada pela agência. O mapa para os quatro rótulos é da task 2.3 de add-tratamento-datasets-ptbr e não entra aqui."
+        },
+        "obtido_em": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/data"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Data da raspagem; null quando o corpus não a registra (FACTCK.BR)."
+        },
+        "titulo": {
+          "$ref": "#/definitions/texto_nao_vazio"
+        },
+        "subtitulo": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Vazio em 2.694 das 5.090 unidades do FactCenter; não é obrigatório ter conteúdo."
+        },
+        "alegacoes_no_registro": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "veredito_chave": {
+          "$ref": "#/definitions/veredito",
+          "description": "Chave canônica (I7)."
+        },
+        "justificativa": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "Texto da agência que resolve a alegação, literal. Vazia MUST ir para a quarentena: sem trecho não há ancoragem (recuperacao-evidencia)."
+        },
+        "origem_alegacao": {
+          "type": "string",
+          "enum": [
+            "titulo",
+            "citacao_segmentada",
+            "claim_review",
+            "comunicado"
+          ]
+        },
+        "disposicao": {
+          "type": "string",
+          "enum": [
+            "unica",
+            "segmentada",
+            "nao_segmentada"
+          ]
+        },
+        "cobre_multiplas_alegacoes": {
+          "type": "boolean",
+          "description": "true só em nao_segmentada: a citação MUST sair do fragmento, nunca da unidade inteira."
+        },
+        "fragmentos": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "registro_id",
+        "unidade_id",
+        "indice_alegacao",
+        "corpus",
+        "tipo_fonte",
+        "idioma",
+        "apto_citacao",
+        "agencia",
+        "agencia_nome",
+        "url",
+        "data_publicacao",
+        "alegacao",
+        "veredito_original",
+        "obtido_em",
+        "titulo",
+        "subtitulo",
+        "alegacoes_no_registro",
+        "veredito_chave",
+        "justificativa",
+        "origem_alegacao",
+        "disposicao",
+        "cobre_multiplas_alegacoes",
+        "fragmentos"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo_fonte": {
+                "const": "checagem"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "veredito_original": {
+                "$ref": "#/definitions/texto_nao_vazio"
+              },
+              "veredito_chave": {
+                "$ref": "#/definitions/texto_nao_vazio"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "veredito_original": {
+                "type": "null"
+              },
+              "veredito_chave": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "fragmento": {
+      "type": "object",
+      "description": "Pedaço da justificativa de uma unidade, com o cabeçalho alegação+veredito repetido. É o que os braços léxico e denso indexam.",
+      "additionalProperties": false,
+      "properties": {
+        "fragmento_id": {
+          "type": "string",
+          "pattern": "^(fb-)?[0-9a-f]{10}-\\d{2}-\\d{2}$"
+        },
+        "unidade_id": {
+          "$ref": "#/definitions/unidade_id"
+        },
+        "corpus": {
+          "$ref": "#/definitions/corpus"
+        },
+        "tipo_fonte": {
+          "$ref": "#/definitions/tipo_fonte"
+        },
+        "idioma": {
+          "$ref": "#/definitions/idioma"
+        },
+        "apto_citacao": {
+          "$ref": "#/definitions/apto_citacao"
+        },
+        "agencia": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "Grafia original do corpus, para rastreabilidade até a agência."
+        },
+        "agencia_nome": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "Nome exibível da agência (recuperacao-evidencia: nomear a agência). Vem de x-agencias."
+        },
+        "url": {
+          "$ref": "#/definitions/url",
+          "description": "Endereço da checagem original; também é a chave de deduplicação entre corpora (I10)."
+        },
+        "data_publicacao": {
+          "$ref": "#/definitions/data"
+        },
+        "alegacao": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "A alegação que o veredito resolve. Nunca separada dele (I4)."
+        },
+        "veredito_original": {
+          "$ref": "#/definitions/veredito",
+          "description": "Grafia publicada pela agência. O mapa para os quatro rótulos é da task 2.3 de add-tratamento-datasets-ptbr e não entra aqui."
+        },
+        "posicao": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trecho": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/texto_nao_vazio"
+            }
+          ],
+          "maxLength": 1100,
+          "description": "Literal, para citação fiel (I5). maxLength = FRAGMENTO_CARACTERES de unidades.py."
+        },
+        "texto": {
+          "$ref": "#/definitions/texto_nao_vazio",
+          "description": "O que vai ao índice: cabeçalho + '\\n' + trecho (I4)."
+        }
+      },
+      "required": [
+        "fragmento_id",
+        "unidade_id",
+        "corpus",
+        "tipo_fonte",
+        "idioma",
+        "apto_citacao",
+        "agencia",
+        "agencia_nome",
+        "url",
+        "data_publicacao",
+        "alegacao",
+        "veredito_original",
+        "posicao",
+        "total",
+        "trecho",
+        "texto"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo_fonte": {
+                "const": "checagem"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "veredito_original": {
+                "$ref": "#/definitions/texto_nao_vazio"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "veredito_original": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "x-colecoes": {
+    "unidade": "#/definitions/unidade",
+    "fragmento": "#/definitions/fragmento"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/unidade"
+    },
+    {
+      "$ref": "#/definitions/fragmento"
+    }
+  ]
+}

@@ -29,25 +29,40 @@ def _ler_jsonl(caminho: pathlib.Path) -> list[dict]:
         return [json.loads(linha) for linha in arquivo]
 
 
+def _etapa(mensagem: str) -> None:
+    """Aviso de etapa em stderr. O stdout fica só com o manifesto, no final."""
+    print(f"[{time.strftime('%H:%M:%S')}] {mensagem}", file=sys.stderr, flush=True)
+
+
 def construir(args) -> None:
     inicio = time.perf_counter()
+    _etapa("1/4 portões de entrada: integridade textual e leitura do corpus")
     laudo = corpus_mod.verificar_integridade_textual()
     df = corpus_mod.ler_corpus()
+    _etapa(f"2/4 unidades e fragmentos de {len(df)} registros, com validação do esquema")
     unidades, fragmentos, quarentena, manifesto = unidades_mod.construir(df)
+    _etapa(f"    {len(unidades)} unidades, {len(fragmentos)} fragmentos, "
+           f"{len(quarentena)} em quarentena — esquema {manifesto['esquema']['versao']} aprovado")
 
     SAIDA.mkdir(parents=True, exist_ok=True)
     unidades_mod._gravar(SAIDA / "unidades.jsonl", unidades)
     unidades_mod._gravar(SAIDA / "fragmentos.jsonl", fragmentos)
     unidades_mod._gravar(SAIDA / "quarentena.jsonl", quarentena)
 
+    _etapa("3/4 índice léxico (BM25)")
     marca = time.perf_counter()
     IndiceLexico(fragmentos)
     custo_lexico = time.perf_counter() - marca
 
+    _etapa(f"4/4 índice denso com {args.modelo}: a etapa longa (883 s no M4 em "
+           "18/09). Na primeira vez nesta máquina o modelo (~1 GB) é baixado antes "
+           "da barra de progresso aparecer")
     marca = time.perf_counter()
     denso = IndiceDenso.construir(fragmentos, args.modelo)
     custo_denso = time.perf_counter() - marca
     denso.gravar(MATRIZ)
+    _etapa(f"índice denso gravado em {MATRIZ.name} "
+           f"({time.perf_counter() - marca:.0f} s); manifesto a seguir")
 
     manifesto.update({
         "integridade_textual": laudo,
