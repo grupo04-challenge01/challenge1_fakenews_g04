@@ -41,7 +41,7 @@ A precisão é necessária porque a leitura literal reprova corpus íntegro:
 o trema foi abolido em 1990, e o `ü` minúsculo aparece 57 vezes no mesmo
 arquivo — prova de que o pipeline não descarta o caractere.
 
-Revisado em 01/10/2026 (decisão 14 de `mvp-copiloto-verificacao`, task 1.2): a
+Revisado em 01/10/2026 (decisão 17 de `mvp-copiloto-verificacao`, task 1.2): a
 redação anterior vedava também a recuperação, o que contradizia
 `recuperacao-evidencia`, que manda indexar o FACTCK.BR. O risco que a vedação
 protegia é o texto corrompido chegar ao usuário, e a marcação por registro

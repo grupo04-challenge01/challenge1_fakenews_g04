@@ -1,6 +1,6 @@
 """Task 1.2 de mvp-copiloto-verificacao: FACTCK.BR indexado como fonte auxiliar.
 
-Decisão 14 do design.md. O FACTCK.BR entra na busca sem filtro de tema, com todo
+Decisão 17 do design.md. O FACTCK.BR entra na busca sem filtro de tema, com todo
 registro marcado como não apto a citação (integridade-textual revisada em
 01/10/2026), e com cada veredito passando pelo mapa versionado de
 `normalizacao-rotulos` antes de entrar no índice.

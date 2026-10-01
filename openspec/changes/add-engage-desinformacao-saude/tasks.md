@@ -61,11 +61,11 @@ Vigência: 08/09 a 11/09.
 
 ## 4. Matriz de confiança
 
-- [ ] 4.1 **Jhessica** Card sorting dos sinais que cada integrante usa na prática
-- [ ] 4.2 **Jhessica** Consolidar em dimensões, cada uma com sinal observável, papel da IA e
+- [x] 4.1 **Jhessica** Card sorting dos sinais que cada integrante usa na prática
+- [x] 4.2 **Jhessica** Consolidar em dimensões, cada uma com sinal observável, papel da IA e
       limite
-- [ ] 4.3 **Jhessica** Escrever a rubrica de três níveis por dimensão
-- [ ] 4.4 **Jhessica** Testar a matriz contra os casos da forense e remover dimensões que não
+- [x] 4.3 **Jhessica** Escrever a rubrica de três níveis por dimensão
+- [x] 4.4 **Jhessica** Testar a matriz contra os casos da forense e remover dimensões que não
       discriminam nenhum caso
 
 ## 5. Guiding questions

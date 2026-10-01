@@ -33,7 +33,7 @@
       "data": "2026-10-01",
       "change": "mvp-copiloto-verificacao",
       "task": "1.2",
-      "o_que": "quatro chaves do FACTCK.BR que interrompiam o processamento; decisão 14 do design.md daquele change. Nas entradas novas, `ocorrencias` conta o FACTCK.BR (campo `corpus`); nas demais continua contando o FactCenter"
+      "o_que": "quatro chaves do FACTCK.BR que interrompiam o processamento; decisão 17 do design.md daquele change. Nas entradas novas, `ocorrencias` conta o FACTCK.BR (campo `corpus`); nas demais continua contando o FactCenter"
     }
   ],
   "rotulos_de_destino": [
@@ -183,7 +183,7 @@
       "grafias": ["Sem contexto"],
       "ocorrencias": 42,
       "corpus": "factckbr",
-      "nota": "Etiqueta do Truco (Agência Pública). Mesmo destino de `fora de contexto` do Estadão Verifica: o problema apontado é a falta de contexto, não a falsidade do dado. Decisão do grupo em 01/10/2026, decisão 14 de mvp-copiloto-verificacao."
+      "nota": "Etiqueta do Truco (Agência Pública). Mesmo destino de `fora de contexto` do Estadão Verifica: o problema apontado é a falta de contexto, não a falsidade do dado. Decisão do grupo em 01/10/2026, decisão 17 de mvp-copiloto-verificacao."
     },
     "impossivel provar": {
       "rotulo": "nao_mapeavel",

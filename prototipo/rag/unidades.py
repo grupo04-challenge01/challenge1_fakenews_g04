@@ -31,7 +31,7 @@ carrega corpus, tipo de fonte, idioma, aptidão a citação e nome da agência; 
 alegação segmentada sem justificativa vai para a quarentena, porque um fragmento
 sem trecho não ancora afirmação nenhuma (`recuperacao-evidencia`).
 
-Desde a task 1.2 (01/10/2026, decisão 14), `construir_indice` junta o FACTCK.BR
+Desde a task 1.2 (01/10/2026, decisão 17), `construir_indice` junta o FACTCK.BR
 como fonte auxiliar, depois do FactCenter e sem mexer nele. Ali não há
 segmentação a fazer: cada linha do TSV já é uma alegação com seu veredito.
 """

@@ -39,7 +39,7 @@ def _prefixo_reaproveitavel(fragmentos: list[dict]) -> int:
 
     Só o prefixo idêntico, por id e por texto, na mesma ordem. Qualquer
     divergência devolve 0 e força a reconstrução inteira: vetor desalinhado de
-    fragmento é erro silencioso de recuperação (decisão 13).
+    fragmento é erro silencioso de recuperação (decisão 16).
     """
     import numpy as np
 
@@ -116,7 +116,7 @@ def construir(args) -> None:
             f"estendida por `python -m prototipo.rag construir --estender` em "
             f"{time.strftime('%d/%m/%Y')}: {reaproveitar} linhas do FactCenter "
             "reaproveitadas após conferência de id e texto na mesma ordem, e "
-            f"{len(fragmentos) - reaproveitar} linhas novas do FACTCK.BR — decisão 14 "
+            f"{len(fragmentos) - reaproveitar} linhas novas do FACTCK.BR — decisão 17 "
             "de mvp-copiloto-verificacao")
     manifesto.update({
         "integridade_textual": laudo,
@@ -138,13 +138,35 @@ def construir(args) -> None:
     print(json.dumps(manifesto, ensure_ascii=False, indent=2))
 
 
+def conferir_indice(fragmentos: list[dict], denso: IndiceDenso,
+                    matriz: pathlib.Path) -> IndiceDenso:
+    """Portão de carga: a matriz densa tem uma linha por fragmento, na mesma ordem.
+
+    `fragmentos.jsonl` e as `.npy` não são versionados, então cada máquina tem os
+    seus. Rodar só `python -m prototipo.rag.unidades` sobre uma matriz antiga
+    desalinha fragmento e vetor, e a busca densa devolve o fragmento vizinho sem
+    erro nenhum (decisão 16 de mvp-copiloto-verificacao). Linhas a mais ou a
+    menos param a carga; índice anterior ao esquema só gera aviso.
+    """
+    linhas = denso.matriz.shape[0]
+    if linhas != len(fragmentos):
+        sys.exit(f"índice desalinhado: {matriz.name} tem {linhas} linhas e "
+                 f"fragmentos.jsonl tem {len(fragmentos)} fragmentos — rode "
+                 "`python -m prototipo.rag construir` para reconstruir os dois juntos.")
+    if fragmentos and "corpus" not in fragmentos[0]:
+        print("aviso: índice anterior ao esquema de indexação 1.0.0 (fragmentos "
+              "sem `corpus`) — rode `python -m prototipo.rag construir` para "
+              "atualizar.", file=sys.stderr, flush=True)
+    return denso
+
+
 def carregar(modelo: str = MODELO_PADRAO, alfa: float = ALFA_PADRAO) -> Recuperador:
     if not MATRIZ.exists():
         sys.exit("índice ausente — rode `python -m prototipo.rag construir` antes.")
     fragmentos = _ler_jsonl(SAIDA / "fragmentos.jsonl")
     unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
-    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
-                       IndiceDenso.carregar(MATRIZ, modelo), alfa=alfa)
+    denso = conferir_indice(fragmentos, IndiceDenso.carregar(MATRIZ, modelo), MATRIZ)
+    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos), denso, alfa=alfa)
 
 
 def buscar(args) -> None:
@@ -181,8 +203,8 @@ def _recuperador_de(modelo: str, alfa: float = ALFA_PADRAO) -> Recuperador:
         print(f"indexação: {time.perf_counter() - marca:.1f} s", flush=True)
 
     unidades = _ler_jsonl(SAIDA / "unidades.jsonl")
-    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos),
-                       IndiceDenso.carregar(matriz, modelo), alfa=alfa)
+    denso = conferir_indice(fragmentos, IndiceDenso.carregar(matriz, modelo), matriz)
+    return Recuperador(fragmentos, unidades, IndiceLexico(fragmentos), denso, alfa=alfa)
 
 
 def varrer_alfa(args) -> None:

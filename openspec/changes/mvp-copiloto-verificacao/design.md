@@ -260,7 +260,88 @@ não cobre a alegação. Isso depende do prompt, e os casos G3 e G4 medem
 exatamente isso. Pegar esse caso em código exige o limiar da task 1.5 ou a
 ancoragem trecho a afirmação da task 1.6.
 
-### 13. Esquema de indexação, versão 1.0.0 — 29/09/2026
+### 13. Protocolo ético: TCLE e debriefing operacional — 29/09/2026
+
+Task 6.3. Documento em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`.
+
+O teste do copiloto com usuários (prioritariamente idosos) e o uso de 4 a 6 itens-armadilha para medir aceitação cega exigem conformidade estrita com o Conep/CEP (Resoluções CNS 510/2016 e 466/2012):
+
+1. **TCLE com linguagem acessível e consentimento sobre itens-armadilha:** O participante é previamente esclarecido de que o sistema contém simulações de testes com deduções intencionalmente incorretas para aferir confiabilidade, sem adiantar quais são os itens.
+2. **Debriefing supervisionado obrigatório:** Imediatamente após a sessão, o pesquisador abre o gabarito oficial com a verdade científica baseada em fontes do SUS (MS, Fiocruz, Anvisa), neutralizando qualquer risco de fixação de desinformação.
+3. **Privacidade e proteção de dados:** Processamento local e anonimização estrita, sem exposição de dados do usuário a APIs comerciais externas (consistente com Decisão 8 do RAG).
+
+### 14. Reforço do mito: menção reconhecida pelas palavras da alegação — 29/09/2026
+
+Task 3.4. Código em `prototipo/resposta/mito.py`, testes em
+`prototipo/resposta/tests/test_mito.py`.
+
+`verificar_mito(resposta, alegacao)` confere as três exigências do requirement
+Ausência de reforço do mito, frase a frase, sem os títulos de bloco:
+
+1. A primeira frase não menciona a alegação.
+2. Toda frase que menciona a alegação traz marcação de falso: "é falso",
+   "não é verdade", "não há comprovação", "boato", "desmentido", ou negação
+   direta de uma palavra da alegação ("a casca não cura o câncer").
+3. Depois da última menção vem pelo menos uma frase sem menção. É a afirmação
+   correta que fecha o sanduíche.
+
+Uma frase menciona a alegação quando traz pelo menos 60% das palavras de
+conteúdo dela, e no mínimo duas. A comparação é pelo começo da palavra, sem
+acento, para que "cura" e "cure" contem como a mesma. Vale para o veredito
+`falso`. Quem chama a verificação é a montagem da resposta, que é a task 3.2.
+Assim como o marcador `Técnica:` da decisão 7, este verificador é contrato com
+o prompt da 3.2: a resposta que ele reprovar é defeito do prompt.
+
+As duas respostas `falso` da sonda de 18/09 (T2 e T3, jatobá) passam. Ambas
+abrem com "VEREDITO: Falso." e marcam a menção com "não é verdade que" e "não
+existe comprovação de que".
+
+**Limite declarado.** Menção por paráfrase, com outras palavras, escapa. Menção
+por pronome ("essa informação") também escapa, mas essa não repete o mito. O
+limiar de 60% foi escolhido nos exemplos dos testes, não medido em corpus.
+Medir exige respostas reais da 3.2.
+
+### 15. Fronteira: regras antes do modelo, respostas padrão lidas da spec — 29/09/2026
+
+Task 4.1. Código em `prototipo/verificacao/fronteira.py`, testes em
+`prototipo/verificacao/tests/test_fronteira.py`, sonda em
+`prototipo/sonda_fronteira.py`. Segue o contrato da decisão 10.
+
+São quatro categorias, em ordem de prioridade: `risco_imediato`,
+`sofrimento_psiquico`, `conduta_individual` e `checagem`. A mensagem pode ter
+mais de uma, e as respostas padrão se empilham nessa ordem.
+
+- **Regras primeiro.** O léxico em PT-BR roda em microssegundos. Se ele acha
+  risco imediato ou sofrimento psíquico, o resultado sai sem chamar o modelo, e
+  o bypass da checagem cumpre os 500 ms do contrato. Sintoma de risco só conta
+  com marca de que está acontecendo com alguém ("estou com", "meu pai",
+  "agora"). Sem essa marca, "recebi que dor no peito se cura com água" viraria
+  emergência.
+- **Modelo depois.** O modelo pega pedido indireto ("o que você acha?") e
+  sofrimento dito sem as palavras fortes. Conduta achada pelas regras se soma à
+  do modelo. Saída inválida do modelo deixa só as regras.
+- **Respostas padrão lidas da spec.** `carregar_respostas` lê os blocos
+  "Resposta Padrão" de `fronteira-orientacao-saude` direto do arquivo da spec.
+  Não há cópia do texto no código que possa divergir dela.
+
+Sonda de 29/09, com Gemma 4 12B QAT, `think: false`, 14 mensagens e três
+tentativas cada: classificador 42/42, e modelo sozinho também 42/42. Bypass em
+0 ms nas 15 tentativas de risco e de sofrimento; o caminho pelo modelo levou de
+3,2 a 9,6 s. Na primeira rodada, a regra de sintoma "não acorda" casou com "seria
+melhor não acordar mais" e mandou ao SAMU quem precisava do CVV (F10, 0/3). A
+regra foi corrigida e F10 virou teste.
+
+**Limites declarados.**
+
+- As regras foram ajustadas com as mesmas mensagens da sonda. O acerto delas
+  fora dessas mensagens é o que a bateria adversarial da task 4.3 mede.
+- Emergência que o léxico não reconhece ainda chega ao bypass pelo modelo, mas
+  em segundos, fora dos 500 ms.
+- Quando as regras acham risco imediato, o modelo não roda. Sofrimento
+  psíquico dito de forma indireta na mesma mensagem fica sem a resposta do CVV,
+  e a resposta do SAMU vai sozinha.
+
+### 16. Esquema de indexação, versão 1.0.0 — 29/09/2026
 
 Task 1.1. Contrato em `prototipo/indice/esquema_indexacao.json` (JSON Schema
 draft-07), validador em `prototipo/rag/esquema.py`, testes em
@@ -351,7 +432,7 @@ antiga desalinha fragmento e vetor. `construir` agora avisa cada etapa em stderr
 regenerado no ambiente fixado (Python 3.14.6, M4), que não é o desta
 verificação.
 
-### 14. FACTCK.BR indexado como fonte auxiliar, esquema 1.1.0 — 01/10/2026
+### 17. FACTCK.BR indexado como fonte auxiliar, esquema 1.1.0 — 01/10/2026
 
 Task 1.2. Construtor em `prototipo/rag/unidades.py` (`construir_factckbr` e
 `construir_indice`), leitura e portão em `prototipo/rag/corpus.py`, testes em
@@ -377,7 +458,7 @@ prototipo.rag.esquema` (sem braço denso) e `python -m prototipo.rag construir
    `sem contexto` (Truco, 42) → `verdadeiro fora de contexto ou exagerado`, como
    `fora de contexto` do Estadão; `impossivel provar` (Truco, 20),
    `discutivel` (Truco, 12) e `outros` (Aos Fatos, 1) → `nao_mapeavel`. O rótulo
-   de destino continua fora do índice (decisão 13); o portão só garante que toda
+   de destino continua fora do índice (decisão 16); o portão só garante que toda
    `veredito_chave` indexada tem decisão registrada.
 3. **Sem filtro de tema.** O FACTCK.BR cobre política e outros temas. Um filtro
    por termo foi medido e reprovado: pegou 243 linhas com falso positivo
@@ -416,7 +497,7 @@ fragmentos, esquema 1.1.0 aprovado sem violação.
 
 **Aferição sem filtro de tema: a busca não piorou.** `python -m prototipo.rag
 aferir` com `multilingual-e5-base`, no ambiente fixado, 01/10/2026, sobre as 20
-consultas de `consultas_afericao.json`, contra a aferição da decisão 13:
+consultas de `consultas_afericao.json`, contra a aferição da decisão 16:
 
 | modo | recall@1 | recall@5 | MRR antes | MRR depois |
 | --- | --- | --- | --- | --- |
@@ -453,7 +534,7 @@ alguém troca o esquema de propósito.
 
 **Correção colateral.** `verificar_fidelidade_dos_trechos`, de
 `tratamento/integridade.py`, construía o índice sobre uma amostra de 500
-registros com o esquema ligado, e a I12 o reprovava desde a decisão 13. O
+registros com o esquema ligado, e a I12 o reprovava desde a decisão 16. O
 teste ficava vermelho na `main`. A verificação de fidelidade agora constrói sem
 validar o esquema, porque a I12 só vale para o corpus inteiro.
 

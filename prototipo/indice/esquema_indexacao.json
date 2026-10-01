@@ -46,7 +46,7 @@
       "apto_citacao": false,
       "motivo_apto_citacao": "reprovado em integridade-textual: Ã 0 contra ã 3.625, Ç 0 contra ç 2.312, Ú 0 contra ú 973 no próprio TSV distribuído — perda irreversível; serve à recuperação e à contagem de rótulo, nunca a trecho exibido",
       "licenca": "MIT para a estrutura; o texto das checagens é das agências",
-      "papel": "fonte auxiliar de recuperação (task 1.2, decisão 14): nomeia a agência, liga para a checagem e conta rótulo; nunca fornece trecho exibido. Sem filtro de tema: o corpus entra inteiro, inclusive política",
+      "papel": "fonte auxiliar de recuperação (task 1.2, decisão 17): nomeia a agência, liga para a checagem e conta rótulo; nunca fornece trecho exibido. Sem filtro de tema: o corpus entra inteiro, inclusive política",
       "mapeamento": {
         "url": "URL",
         "agencia": "Author",

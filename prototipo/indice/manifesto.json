@@ -46,7 +46,7 @@
       "apto_citacao": false
     }
   },
-  "matriz_densa": "estendida por `python -m prototipo.rag construir --estender` em 01/10/2026: 22463 linhas do FactCenter reaproveitadas após conferência de id e texto na mesma ordem, e 1192 linhas novas do FACTCK.BR — decisão 14 de mvp-copiloto-verificacao",
+  "matriz_densa": "estendida por `python -m prototipo.rag construir --estender` em 01/10/2026: 22463 linhas do FactCenter reaproveitadas após conferência de id e texto na mesma ordem, e 1192 linhas novas do FACTCK.BR — decisão 17 de mvp-copiloto-verificacao",
   "integridade_textual": {
     "arquivo": "factcenter_subset_saude.csv",
     "caracteres": 21559001,
