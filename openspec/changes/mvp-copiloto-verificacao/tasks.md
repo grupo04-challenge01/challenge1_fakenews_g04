@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 3, **Wingrid** 5, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 3, **Wingrid** 1, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -21,7 +21,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       984 registros, 1.190 unidades, 1.192 fragmentos, 86 registros e 5 unidades
       em quarentena, `apto_citacao=false`; aferição sem perda
       (`afericao_multilingual-e5-base.json`); decisão 17 do `design.md`, 01/10/2026
-- [ ] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
+- [x] 1.3 **Wingrid** Definir lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa)
+      — `prototipo/indice/fontes_oficiais.json`, com critérios de domínio e
+      tipologia documental; decisão 19 do `design.md`, 01/10/2026
 - [ ] 1.4 **Samara** Implementar recuperação com prioridade de idioma (PT-BR antes de EN)
 - [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
 - [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
@@ -33,7 +35,7 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — `prototipo/verificacao/classificacao.py`, sonda 9/9, decisão 11 do `design.md`, 29/09/2026
 - [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
       — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 12 do `design.md`, 29/09/2026;
-        limiar como parâmetro, valor pela 1.5
+         limiar como parâmetro, valor pela 1.5
 - [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
@@ -57,9 +59,15 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
 
 ## 5. Interface
-- [ ] 5.1 **Wingrid** Camada visível e camada de detalhe
+- [x] 5.1 **Wingrid** Camada visível e camada de detalhe
+      — separação arquitetural e de interface em duas camadas (teto de 120
+      palavras na primária e auditabilidade sob demanda na secundária);
+      decisão 20 do `design.md`, 01/10/2026
 - [ ] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
-- [ ] 5.3 **Wingrid** Fluxo de primeira verificação sem cadastro
+- [x] 5.3 **Wingrid** Fluxo de primeira verificação sem cadastro
+      — especificação de fluxo zero-friction de entrada direta por texto, link
+      ou encaminhamento, sem login prévio e compatível com LGPD; decisão 21 do
+      `design.md`, 01/10/2026
 - [x] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
 
 ## 6. Avaliação
@@ -77,6 +85,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       primário, com extensão para WhatsApp. Decisão 5 do `design.md`
 
 ## 8. Fechamento
-- [ ] 8.1 **Wingrid** Conferir consistência do catálogo de técnicas com as dimensões da
+- [x] 8.1 **Wingrid** Conferir consistência do catálogo de técnicas com as dimensões da
       `matriz-confianca` da fase Engage
+      — mapeamento 1-para-1 dos 7 rótulos e reserva da 8ª vaga contra as 4
+      dimensões empíricas da matriz; decisão 22 do `design.md`, 01/10/2026
 - [ ] 8.2 **Wingrid** `openspec validate mvp-copiloto-verificacao --strict` limpo
+
