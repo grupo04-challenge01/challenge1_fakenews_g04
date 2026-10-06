@@ -47,6 +47,20 @@ def checar_x3(r):
             "copiou a opinião": bool(r.opiniao)}
 
 
+def checar_x4(r):
+    s = r.selecionada["texto"] if r.verificavel else ""
+    return {"verificável": r.verificavel,
+            "alegação diz de que doença fala": _tem(s, "oropouche"),
+            "sem pronome solto": not re.search(r"\b(ela|ele|isso)\b", s.lower())}
+
+
+def checar_x5(r):
+    s = r.selecionada["texto"] if r.verificavel else ""
+    return {"verificável": r.verificavel,
+            "mantém quem afirmou": _tem(s, "anvisa"),
+            "mantém o que afirmou": _tem(s, "risco")}
+
+
 def checar_d1(d):
     fatos = " ".join(d.fatos).lower()
     return {"fato: jejum e fígado": "jejum" in fatos and "fígado" in fatos,
@@ -75,6 +89,13 @@ SONDAS = [
               "praça. E o chá de boldo cura hepatite, minha tia parou o remédio e melhorou."},
     {"id": "X3_so_opiniao", "prompt": "extracao", "checar": checar_x3,
      "texto": "Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila."},
+    # Execução ponta a ponta de 06/10: pronome sem referente e atribuição separada.
+    {"id": "X4_pronome_sem_referente", "prompt": "extracao", "checar": checar_x4,
+     "texto": "Recebi isto: 'A febre oropouche passa pelo mosquito da dengue e a vacina "
+              "da dengue protege contra ela.' É verdade?"},
+    {"id": "X5_atribuicao", "prompt": "extracao", "checar": checar_x5,
+     "texto": "Olha o presidente da Anvisa admitindo: a vacinação contra a covid é um "
+              "risco sanitário grave para a população!"},
     {"id": "D1_caso_misto", "prompt": "decomposicao", "checar": checar_d1,
      "texto": "Um médico no YouTube explicou que o jejum de três dias limpa o fígado. "
               "Eu acho que remédio de farmácia só faz mal."},

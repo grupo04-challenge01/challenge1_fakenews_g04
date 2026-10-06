@@ -3,7 +3,7 @@
   "think": false,
   "cpu": false,
   "tentativas": 3,
-  "gerado_em": "2026-09-29 09:19",
+  "gerado_em": "2026-10-06 09:43",
   "sondas": [
     {
       "id": "X1_uma_alegacao",
@@ -13,7 +13,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 18.7,
+          "segundos": 10.2,
           "checks": {
             "saída bem formada": true,
             "verificável": true,
@@ -21,12 +21,12 @@
             "risco alto (promete tratar doença)": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
+          "resposta": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 16.3,
+          "segundos": 4.9,
           "checks": {
             "saída bem formada": true,
             "verificável": true,
@@ -34,12 +34,12 @@
             "risco alto (promete tratar doença)": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
+          "resposta": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 15.1,
+          "segundos": 4.8,
           "checks": {
             "saída bem formada": true,
             "verificável": true,
@@ -47,7 +47,7 @@
             "risco alto (promete tratar doença)": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O estudo ainda não foi divulgado\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": \"Compartilhem urgente!\"\n}"
+          "resposta": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
         }
       ],
       "passou": 3
@@ -60,7 +60,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 26.4,
+          "segundos": 14.5,
           "checks": {
             "saída bem formada": true,
             "selecionou a do boldo (maior risco)": true,
@@ -69,12 +69,12 @@
             "prefeito marcado fora de saúde": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+          "resposta": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 22.2,
+          "segundos": 10.8,
           "checks": {
             "saída bem formada": true,
             "selecionou a do boldo (maior risco)": true,
@@ -83,12 +83,12 @@
             "prefeito marcado fora de saúde": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+          "resposta": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 20.6,
+          "segundos": 10.8,
           "checks": {
             "saída bem formada": true,
             "selecionou a do boldo (maior risco)": true,
@@ -97,7 +97,7 @@
             "prefeito marcado fora de saúde": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O hospital de Sorocaba ficou lotado ontem\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O prefeito gastou 2 milhões numa praça\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"o chá de boldo cura hepatite\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+          "resposta": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}"
         }
       ],
       "passou": 3
@@ -110,7 +110,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 8.9,
+          "segundos": 6.7,
           "checks": {
             "saída bem formada": true,
             "não verificável": true,
@@ -122,7 +122,7 @@
         {
           "n": 2,
           "passou": true,
-          "segundos": 4.4,
+          "segundos": 3.0,
           "checks": {
             "saída bem formada": true,
             "não verificável": true,
@@ -134,7 +134,7 @@
         {
           "n": 3,
           "passou": true,
-          "segundos": 4.3,
+          "segundos": 3.0,
           "checks": {
             "saída bem formada": true,
             "não verificável": true,
@@ -147,6 +147,100 @@
       "passou": 3
     },
     {
+      "id": "X4_pronome_sem_referente",
+      "prompt": "extracao",
+      "texto": "Recebi isto: 'A febre oropouche passa pelo mosquito da dengue e a vacina da dengue protege contra ela.' É verdade?",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 10.1,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "alegação diz de que doença fala": true,
+            "sem pronome solto": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 6.4,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "alegação diz de que doença fala": true,
+            "sem pronome solto": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 6.6,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "alegação diz de que doença fala": true,
+            "sem pronome solto": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "X5_atribuicao",
+      "prompt": "extracao",
+      "texto": "Olha o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população!",
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 9.5,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "mantém quem afirmou": true,
+            "mantém o que afirmou": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [{\"texto\": \"o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 6.5,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "mantém quem afirmou": true,
+            "mantém o que afirmou": true
+          },
+          "defeitos": [],
+          "resposta": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 4.8,
+          "checks": {
+            "saída bem formada": true,
+            "verificável": true,
+            "mantém quem afirmou": true,
+            "mantém o que afirmou": true
+          },
+          "defeitos": [],
+          "resposta": "{\"alegacoes\": [{\"texto\": \"o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}"
+        }
+      ],
+      "passou": 3
+    },
+    {
       "id": "D1_caso_misto",
       "prompt": "decomposicao",
       "texto": "Um médico no YouTube explicou que o jejum de três dias limpa o fígado. Eu acho que remédio de farmácia só faz mal.",
@@ -154,7 +248,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 21.3,
+          "segundos": 14.2,
           "checks": {
             "saída bem formada": true,
             "fato: jejum e fígado": true,
@@ -168,7 +262,7 @@
         {
           "n": 2,
           "passou": true,
-          "segundos": 12.1,
+          "segundos": 8.7,
           "checks": {
             "saída bem formada": true,
             "fato: jejum e fígado": true,
@@ -182,7 +276,7 @@
         {
           "n": 3,
           "passou": true,
-          "segundos": 12.1,
+          "segundos": 8.8,
           "checks": {
             "saída bem formada": true,
             "fato: jejum e fígado": true,
@@ -204,7 +298,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 27.0,
+          "segundos": 20.0,
           "checks": {
             "saída bem formada": true,
             "fato: bula cita relatos": true,
@@ -214,12 +308,12 @@
             "conclusão não listada como fato": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade direta e definitiva entre a vacina e o autismo.\"\n  }\n}"
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade científica direta.\"\n  }\n}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 19.0,
+          "segundos": 14.5,
           "checks": {
             "saída bem formada": true,
             "fato: bula cita relatos": true,
@@ -229,12 +323,12 @@
             "conclusão não listada como fato": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade direta e comprovada entre as duas variáveis.\"\n  }\n}"
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece uma relação de causalidade científica definitiva.\"\n  }\n}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 20.5,
+          "segundos": 15.9,
           "checks": {
             "saída bem formada": true,
             "fato: bula cita relatos": true,
@@ -244,7 +338,7 @@
             "conclusão não listada como fato": true
           },
           "defeitos": [],
-          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos em uma bula estabelece um nexo causal direto entre a vacina e o desenvolvimento do autismo.\"\n  }\n}"
+          "resposta": "{\n  \"fatos\": [\n    \"A bula da vacina Tripedia cita relatos de autismo depois da vacina.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"bula da vacina Tripedia\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacina causa autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a existência de relatos de efeitos colaterais em uma bula estabelece uma relação de causalidade direta e definitiva.\"\n  }\n}"
         }
       ],
       "passou": 3

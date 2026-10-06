@@ -761,6 +761,106 @@ aferição de índices antigos.
   tradução). A recuperação só entrega o `idioma` de cada unidade, para que isso
   seja possível.
 
+### 24. Correções vindas da execução ponta a ponta — 06/10/2026
+
+Tasks 2.5, 3.2 e 3.4. As sondas de cada task rodam a etapa isolada, com a
+entrada pronta. Em 06/10 o fluxo inteiro rodou sobre 17 mensagens, com Gemma 4
+12B QAT e o índice reconstruído: fronteira, extração, decomposição, recuperação
+com prioridade de idioma, guarda e resposta. Passaram 8 de 17. Três defeitos
+eram do código, não do modelo, e são corrigidos aqui.
+
+**1. Marcador do bloco 3 sai do código** (`estrutura.py`, decisão 18). Em 5 dos
+6 casos da forense, o modelo escreveu os rótulos certos sem `Técnica:` —
+"medo de dano oculto, urgência fabricada. A mensagem…" — e a validação da 3.3
+reprovou por "nenhum rótulo marcado". A sonda da 3.2 não viu isso porque seus
+casos eram de cura milagrosa, em que o modelo manteve o marcador. Mesmo remédio
+da data de corte: quando a primeira frase do bloco 3 é inteira de rótulos do
+catálogo, o código põe `Técnica: ` na frente. Não vale para veredito
+`verdadeiro`, nem quando a frase traz qualquer palavra fora do catálogo; nesses
+casos a validação da 3.3 continua decidindo.
+
+**2. Conclusão toda nula conta como ausente** (`decomposicao.py`, decisão 9).
+Sem conclusão na mensagem, o modelo devolveu `{"texto": null, "decorre": null,
+"salto": null}` em vez de `null`, e a decomposição parou o fluxo com "conclusão
+sem texto". Objeto com todos os campos vazios passa a valer `None`. Conclusão
+parcial, com algum campo preenchido, continua defeito.
+
+**3. "Falsamente" marca a menção** (`mito.py`, decisão 14). "A mensagem afirma
+falsamente que as vacinas causam autismo" foi lida como menção sem marcação,
+porque o padrão só aceitava `falso` e `falsa`. O advérbio entrou no padrão.
+
+**Resultado.** Com as saídas do modelo gravadas na execução de 06/10, o mesmo
+fluxo passa em 12 de 17. O caso da conclusão nula, refeito com o modelo, passa.
+
+**O que fica de fora, por não ser defeito de código:**
+
+- *Menção marcada só por negação distante.* "Não existe relação entre vacinas e
+  autismo" e "não encontrou provas de que a vacina cause câncer" continuam
+  reprovadas pela 3.4. A primeira põe três palavras entre o "não" e a
+  alegação; a segunda é mais fraca que "falso" e soa como evidência
+  insuficiente. Aceitá-las afrouxa a verificação e pede decisão, não correção.
+- *Extração que troca a alegação.* No vídeo da Anvisa a extração tirou "o
+  presidente da Anvisa disse", e no caso da oropouche escolheu a alegação da
+  vacina da dengue. É prompt da 2.1.
+- *Recuperação e rótulo do vídeo da cloroquina*, que não trouxe a checagem e
+  rotulou `verdadeiro`, e *lacuna de acervo com trecho recuperado*, que depende
+  do limiar da 1.5.
+
+### 25. Segunda rodada de correções da execução ponta a ponta — 06/10/2026
+
+Tasks 2.1, 2.2 e 3.4. Continua a decisão 24. Das falhas que ela deixou de fora,
+três não dependiam de task em aberto e são corrigidas aqui. A lacuna de acervo com
+trecho recuperado continua com a 1.5.
+
+**1. Alegação que se entende sozinha** (`extracao.py`, decisão 8). Dois casos:
+
+- *Pronome sem referente.* Em "a febre oropouche passa pelo mosquito da dengue e
+  a vacina da dengue protege contra ela", a extração separou as duas alegações e
+  selecionou "a vacina da dengue protege contra ela". Sem o referente, a
+  recuperação buscou vacina da dengue, e a guarda aceitou um trecho sobre a
+  Dengvaxia como veredito `verdadeiro`.
+- *Atribuição separada.* Em "o presidente da Anvisa admitindo: a vacinação é um
+  risco sanitário grave", a extração tirou "presidente da Anvisa admitindo" e
+  o marcou como fora de saúde. O veredito saiu certo, mas a alegação perdeu a
+  falsa autoridade, que é a manipulação do caso.
+
+O prompt pede alegação que se entenda sem ler a mensagem, com pronome trocado
+pelo nome, e que inclua quem afirmou quando a mensagem atribui a fala.
+
+**2. "Verdadeiro" contra o veredito da agência** (`classificacao.py`, decisão
+11). No vídeo de Bruno Covas, a checagem recuperada foi a do Boatos.org, com
+veredito `boato`. O fragmento que chegou à guarda é a introdução, que diz
+"teria acabado de liberar (isso em 2021)"; a data do vídeo está em outro
+fragmento. O modelo rotulou `verdadeiro`. O prompt passa a dizer que, sendo a
+mesma alegação, veredito da agência falso, boato, enganoso ou fora de contexto
+impede `verdadeiro`, e que "acabou de" desmentido pela data é fora de contexto.
+
+**3. Negação a três palavras da alegação** (`mito.py`, decisão 14). "Não existe
+relação entre vacinas e autismo" é a afirmação correta, mas o verificador só
+aceitava até duas palavras entre o "não" e a alegação. Passa a aceitar três.
+"Não encontrou provas de que a vacina cause câncer" continua reprovada: em
+veredito `falso`, a frase diz menos que o veredito.
+
+**4. Opinião no bloco 2 sai do código** (`estrutura.py`, decisão 18). Nos casos
+da bula e do caixão, a decomposição achou opinião e o bloco 2 não a separou,
+embora o prompt peça. Mesmo remédio do marcador da decisão 24: quando há opinião
+e o bloco 2 não fala dela, o código acrescenta "Uma parte da mensagem é opinião,
+e opinião não se checa."
+
+**Sondas, Gemma 4 12B QAT, três tentativas.** Extração e decomposição, 21 de 21,
+com dois casos novos: X4, pronome sem referente, e X5, atribuição. Classificação
+e guarda, 24 de 24, com o caso novo C4, só a introdução da checagem e veredito
+`boato`; vale `falso` ou fora de contexto. Os casos anteriores das duas sondas
+continuam passando.
+
+**Fluxo inteiro.** Com o modelo, depois dos itens 1 a 3: 15 de 17. Com as saídas
+gravadas e o item 4: 16 de 17. Resta o vídeo de 2018 da idosa. O bloco 2 diz
+"a idosa morreu por infarto em 2018, após tomar vacina contra a gripe", que é o
+contexto correto, e a 3.4 o lê como menção sem marca, porque a frase repete as
+palavras da alegação. É o limite declarado na decisão 14: a verificação reconhece
+menção por palavras, não por sentido. Afrouxá-la para aceitar esse caso deixaria
+passar a repetição do mito; fica como está.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o

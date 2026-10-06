@@ -3,7 +3,7 @@
   "think": false,
   "cpu": false,
   "tentativas": 3,
-  "gerado_em": "2026-09-29 09:42",
+  "gerado_em": "2026-10-06 09:46",
   "sondas": [
     {
       "id": "C1_falso",
@@ -16,7 +16,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 16.6,
+          "segundos": 17.2,
           "chamadas_ao_modelo": 1,
           "rotulo": "falso",
           "insuficiente_por": null,
@@ -37,28 +37,7 @@
         {
           "n": 2,
           "passou": true,
-          "segundos": 6.0,
-          "chamadas_ao_modelo": 1,
-          "rotulo": "falso",
-          "insuficiente_por": null,
-          "rebaixado_por": null,
-          "criterio": "O trecho afirma explicitamente que não é verdade que a casca triturada do fruto do jatobá sirva como tratamento contra o câncer e que não existe alimento comprovadamente capaz de curar a doença.",
-          "trechos_citados": [
-            "c7a4591df5-00-00"
-          ],
-          "modelo_disse": {
-            "rotulo": "falso",
-            "trechos": [
-              "T1"
-            ],
-            "criterio": "O trecho afirma explicitamente que não é verdade que a casca triturada do fruto do jatobá sirva como tratamento contra o câncer e que não existe alimento comprovadamente capaz de curar a doença."
-          },
-          "erro": null
-        },
-        {
-          "n": 3,
-          "passou": true,
-          "segundos": 5.9,
+          "segundos": 7.1,
           "chamadas_ao_modelo": 1,
           "rotulo": "falso",
           "insuficiente_por": null,
@@ -73,6 +52,27 @@
               "T1"
             ],
             "criterio": "O trecho afirma explicitamente que não é verdade que a casca triturada do fruto do jatobá sirva como tratamento contra o câncer e que não existe alimento capaz de curar a doença."
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 7.2,
+          "chamadas_ao_modelo": 1,
+          "rotulo": "falso",
+          "insuficiente_por": null,
+          "rebaixado_por": null,
+          "criterio": "O trecho afirma explicitamente que não é verdade que a casca triturada do fruto do jatobá sirva como tratamento contra o câncer e que não existe alimento comprovadamente capaz de curar a doença.",
+          "trechos_citados": [
+            "c7a4591df5-00-00"
+          ],
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho afirma explicitamente que não é verdade que a casca triturada do fruto do jatobá sirva como tratamento contra o câncer e que não existe alimento comprovadamente capaz de curar a doença."
           },
           "erro": null
         }
@@ -90,7 +90,7 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 8.9,
+          "segundos": 16.2,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro",
           "insuficiente_por": null,
@@ -111,7 +111,7 @@
         {
           "n": 2,
           "passou": true,
-          "segundos": 5.1,
+          "segundos": 6.3,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro",
           "insuficiente_por": null,
@@ -132,12 +132,12 @@
         {
           "n": 3,
           "passou": true,
-          "segundos": 5.1,
+          "segundos": 5.9,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro",
           "insuficiente_por": null,
           "rebaixado_por": null,
-          "criterio": "O trecho confirma que uma criança com suspeita de covid foi colocada em caixão lacrado sem limpeza e que, posteriormente, o exame deu negativo.",
+          "criterio": "O trecho confirma que uma criança com suspeita de covid foi colocada em caixão lacrado sem limpeza e que o exame posterior deu negativo.",
           "trechos_citados": [
             "beff276238-00-00"
           ],
@@ -146,7 +146,7 @@
             "trechos": [
               "T1"
             ],
-            "criterio": "O trecho confirma que uma criança com suspeita de covid foi colocada em caixão lacrado sem limpeza e que, posteriormente, o exame deu negativo."
+            "criterio": "O trecho confirma que uma criança com suspeita de covid foi colocada em caixão lacrado sem limpeza e que o exame posterior deu negativo."
           },
           "erro": null
         }
@@ -165,12 +165,12 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 13.2,
+          "segundos": 21.2,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro fora de contexto ou exagerado",
           "insuficiente_por": null,
           "rebaixado_por": null,
-          "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual.",
+          "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e não aconteceu 'agora' no fim de julho.",
           "trechos_citados": [
             "cd575dcaa4-00-00",
             "cd575dcaa4-00-01"
@@ -181,19 +181,19 @@
               "T1",
               "T2"
             ],
-            "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual."
+            "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e não aconteceu 'agora' no fim de julho."
           },
           "erro": null
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 6.5,
+          "segundos": 7.6,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro fora de contexto ou exagerado",
           "insuficiente_por": null,
           "rebaixado_por": null,
-          "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual.",
+          "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e não aconteceu 'agora' no fim de julho.",
           "trechos_citados": [
             "cd575dcaa4-00-00",
             "cd575dcaa4-00-01"
@@ -204,19 +204,19 @@
               "T1",
               "T2"
             ],
-            "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual."
+            "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e não aconteceu 'agora' no fim de julho."
           },
           "erro": null
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 7.4,
+          "segundos": 7.2,
           "chamadas_ao_modelo": 1,
           "rotulo": "verdadeiro fora de contexto ou exagerado",
           "insuficiente_por": null,
           "rebaixado_por": null,
-          "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual (julho), mudando o contexto temporal.",
+          "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual.",
           "trechos_citados": [
             "cd575dcaa4-00-00",
             "cd575dcaa4-00-01"
@@ -227,7 +227,84 @@
               "T1",
               "T2"
             ],
-            "criterio": "Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual (julho), mudando o contexto temporal."
+            "criterio": "Os trechos confirmam que o vídeo mostra Covas anunciando a cloroquina, mas esclarecem que o vídeo é antigo (abril) e está sendo compartilhado como se fosse atual."
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "C4_veredito_da_agencia_boato",
+      "alegacao": "O prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo.",
+      "esperado": [
+        "falso",
+        "verdadeiro fora de contexto ou exagerado"
+      ],
+      "fragmentos": [
+        "73fd0f67bb-00-00"
+      ],
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 13.7,
+          "chamadas_ao_modelo": 1,
+          "rotulo": "falso",
+          "insuficiente_por": null,
+          "rebaixado_por": null,
+          "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito.",
+          "trechos_citados": [
+            "73fd0f67bb-00-00"
+          ],
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito."
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 4.9,
+          "chamadas_ao_modelo": 1,
+          "rotulo": "falso",
+          "insuficiente_por": null,
+          "rebaixado_por": null,
+          "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito.",
+          "trechos_citados": [
+            "73fd0f67bb-00-00"
+          ],
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito."
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 4.8,
+          "chamadas_ao_modelo": 1,
+          "rotulo": "falso",
+          "insuficiente_por": null,
+          "rebaixado_por": null,
+          "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito.",
+          "trechos_citados": [
+            "73fd0f67bb-00-00"
+          ],
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "A agência classificou a informação como boato, esclarecendo que não houve tal liberação pelo prefeito."
           },
           "erro": null
         }
@@ -294,51 +371,51 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 12.3,
+          "segundos": 19.6,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Nenhum dos trechos recuperados aborda a relação entre a vacina contra o sarampo e o autismo.",
+          "criterio": "Não há nenhum trecho nos textos fornecidos que mencione a vacina contra o sarampo ou sua relação com o autismo.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Nenhum dos trechos recuperados aborda a relação entre a vacina contra o sarampo e o autismo."
+            "criterio": "Não há nenhum trecho nos textos fornecidos que mencione a vacina contra o sarampo ou sua relação com o autismo."
           },
           "erro": null
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 4.4,
+          "segundos": 6.3,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Não há nenhum trecho nos textos fornecidos que mencione vacinas contra o sarampo ou autismo.",
+          "criterio": "Não há nenhum trecho nos textos fornecidos que mencione a vacina contra o sarampo ou sua relação com o autismo.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Não há nenhum trecho nos textos fornecidos que mencione vacinas contra o sarampo ou autismo."
+            "criterio": "Não há nenhum trecho nos textos fornecidos que mencione a vacina contra o sarampo ou sua relação com o autismo."
           },
           "erro": null
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 4.6,
+          "segundos": 5.7,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Nenhum dos trechos fornecidos aborda a relação entre a vacina contra o sarampo e o autismo.",
+          "criterio": "Não há nenhum trecho nos textos fornecidos que mencione vacinas, sarampo ou autismo.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Nenhum dos trechos fornecidos aborda a relação entre a vacina contra o sarampo e o autismo."
+            "criterio": "Não há nenhum trecho nos textos fornecidos que mencione vacinas, sarampo ou autismo."
           },
           "erro": null
         }
@@ -356,51 +433,51 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 10.8,
+          "segundos": 20.6,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Os trechos recuperados tratam do uso da cloroquina como tratamento em hospitais, mas não mencionam o uso semanal da hidroxicloroquina para prevenção da covid.",
+          "criterio": "Os trechos recuperados tratam do uso da cloroquina como tratamento em hospitais municipais, mas não mencionam o uso semanal de hidroxicloroquina para prevenção da covid.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Os trechos recuperados tratam do uso da cloroquina como tratamento em hospitais, mas não mencionam o uso semanal da hidroxicloroquina para prevenção da covid."
+            "criterio": "Os trechos recuperados tratam do uso da cloroquina como tratamento em hospitais municipais, mas não mencionam o uso semanal de hidroxicloroquina para prevenção da covid."
           },
           "erro": null
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 4.7,
+          "segundos": 7.2,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Não há nenhum trecho que mencione o uso semanal da hidroxicloroquina como forma de prevenção à covid-19.",
+          "criterio": "Não há nenhum trecho que mencione a prevenção da covid-19 através do uso semanal de hidroxicloroquina.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Não há nenhum trecho que mencione o uso semanal da hidroxicloroquina como forma de prevenção à covid-19."
+            "criterio": "Não há nenhum trecho que mencione a prevenção da covid-19 através do uso semanal de hidroxicloroquina."
           },
           "erro": null
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 5.5,
+          "segundos": 7.4,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Os trechos recuperados tratam apenas do uso da cloroquina como tratamento em protocolos hospitalares, não mencionando o uso semanal de hidroxicloroquina para prevenção.",
+          "criterio": "Os trechos recuperados tratam do uso da cloroquina em protocolos hospitalares e não mencionam o uso semanal de hidroxicloroquina para prevenção da covid.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Os trechos recuperados tratam apenas do uso da cloroquina como tratamento em protocolos hospitalares, não mencionando o uso semanal de hidroxicloroquina para prevenção."
+            "criterio": "Os trechos recuperados tratam do uso da cloroquina em protocolos hospitalares e não mencionam o uso semanal de hidroxicloroquina para prevenção da covid."
           },
           "erro": null
         }
@@ -418,24 +495,41 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 11.5,
+          "segundos": 16.6,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
           "rebaixado_por": null,
-          "criterio": "Os trechos recuperados tratam apenas de alegações sobre a casca do fruto do jatobá e câncer, não mencionando chá de goiabeira ou dengue.",
+          "criterio": "Não há nenhum trecho que mencione chá de folha de goiabeira ou tratamento para a dengue.",
           "trechos_citados": [],
           "modelo_disse": {
             "rotulo": "evidência insuficiente",
             "trechos": [],
-            "criterio": "Os trechos recuperados tratam apenas de alegações sobre a casca do fruto do jatobá e câncer, não mencionando chá de goiabeira ou dengue."
+            "criterio": "Não há nenhum trecho que mencione chá de folha de goiabeira ou tratamento para a dengue."
           },
           "erro": null
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 4.5,
+          "segundos": 7.3,
+          "chamadas_ao_modelo": 1,
+          "rotulo": "evidência insuficiente",
+          "insuficiente_por": "modelo",
+          "rebaixado_por": null,
+          "criterio": "Não há nenhum trecho que mencione chá de folha de goiabeira ou tratamento para a dengue.",
+          "trechos_citados": [],
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não há nenhum trecho que mencione chá de folha de goiabeira ou tratamento para a dengue."
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 7.0,
           "chamadas_ao_modelo": 1,
           "rotulo": "evidência insuficiente",
           "insuficiente_por": "modelo",
@@ -446,23 +540,6 @@
             "rotulo": "evidência insuficiente",
             "trechos": [],
             "criterio": "Não há nenhum trecho que mencione chá de folha de goiabeira ou tratamento para dengue."
-          },
-          "erro": null
-        },
-        {
-          "n": 3,
-          "passou": true,
-          "segundos": 6.4,
-          "chamadas_ao_modelo": 1,
-          "rotulo": "evidência insuficiente",
-          "insuficiente_por": "modelo",
-          "rebaixado_por": null,
-          "criterio": "Os trechos recuperados tratam apenas de alegações sobre a casca do fruto do jatobá e câncer, não mencionando chá de goiabeira ou cura da dengue.",
-          "trechos_citados": [],
-          "modelo_disse": {
-            "rotulo": "evidência insuficiente",
-            "trechos": [],
-            "criterio": "Os trechos recuperados tratam apenas de alegações sobre a casca do fruto do jatobá e câncer, não mencionando chá de goiabeira ou cura da dengue."
           },
           "erro": null
         }
