@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "registro_sessao.json",
+  "title": "Registro de sessão de avaliação com participante",
+  "description": "Task 6.5 de mvp-copiloto-verificacao. Um arquivo por sessão, preenchido pelo pesquisador durante a sessão e antes do debriefing. Requirement Métricas de resultado e de guarda, de avaliacao-instrumento. Definições operacionais na decisão 27 do design.md e em specs/avaliacao-instrumento/instrumento-coleta-metricas.md.",
+  "versao": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["versao_instrumento", "participante", "tipo", "data", "faixa_etaria", "casos_sha256",
+               "tcle_assinado", "confianca_fontes", "itens", "abandono_sessao", "debriefing_realizado"],
+  "properties": {
+    "versao_instrumento": {"const": "1.0.0"},
+    "participante": {"type": "string", "pattern": "^P-[0-9]{2}$",
+                     "description": "Código anônimo. Nome, telefone ou qualquer dado identificável MUST NOT entrar no registro."},
+    "tipo": {"enum": ["piloto", "coleta"]},
+    "data": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "faixa_etaria": {"enum": ["18-39", "40-59", "60+"]},
+    "casos_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$",
+                     "description": "SHA-256 do arquivo de casos usado na sessão. Os ids dos casos são uuid4 e mudam a cada execução de utils/gerar_casos.py; o hash amarra o registro à versão dos casos."},
+    "sistema": {
+      "type": "object",
+      "description": "Opcional: o que gerou as respostas exibidas, para reprodução.",
+      "additionalProperties": false,
+      "properties": {
+        "commit": {"type": "string"},
+        "modelo": {"type": "string"},
+        "indice": {"type": "string"}
+      }
+    },
+    "tcle_assinado": {"type": "boolean"},
+    "confianca_fontes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inicio", "fim"],
+      "properties": {
+        "inicio": {"$ref": "#/definitions/escala_confianca"},
+        "fim": {"oneOf": [{"$ref": "#/definitions/escala_confianca"}, {"type": "null"}]}
+      }
+    },
+    "itens": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/item"}},
+    "abandono_sessao": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bloco", "motivo", "detalhe"],
+          "properties": {
+            "bloco": {"enum": ["acolhimento", "com_ferramenta", "transferencia"]},
+            "motivo": {"enum": ["atrito", "cansaco", "desconforto", "outro"]},
+            "detalhe": {"type": "string"}
+          }
+        }
+      ]
+    },
+    "debriefing_realizado": {"type": "boolean"}
+  },
+  "definitions": {
+    "escala_confianca": {
+      "type": "object",
+      "description": "Likert de 1 (nada) a 5 (totalmente) para 'Quanto você confia nas informações de saúde que vêm de...'. Fontes de prototipo/indice/fontes_oficiais.json.",
+      "additionalProperties": false,
+      "required": ["ministerio_saude", "fiocruz", "anvisa"],
+      "properties": {
+        "ministerio_saude": {"type": "integer", "minimum": 1, "maximum": 5},
+        "fiocruz": {"type": "integer", "minimum": 1, "maximum": 5},
+        "anvisa": {"type": "integer", "minimum": 1, "maximum": 5}
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["caso_id", "bloco", "inicio", "decisao", "rotulo_exibido", "expressou_duvida",
+                   "julgamento", "criterios_citados", "abriu_detalhe", "consultou_fonte_externa",
+                   "abandono", "observacao"],
+      "properties": {
+        "caso_id": {"type": "string"},
+        "bloco": {"enum": ["com_ferramenta", "transferencia"]},
+        "inicio": {"type": "string", "format": "date-time",
+                   "description": "Momento em que a mensagem é entregue ao participante."},
+        "decisao": {"type": ["string", "null"], "format": "date-time",
+                    "description": "Momento em que o participante diz o julgamento."},
+        "rotulo_exibido": {
+          "description": "Veredito que a ferramenta mostrou na camada visível. Nulo na transferência.",
+          "enum": ["falso", "verdadeiro", "verdadeiro fora de contexto ou exagerado",
+                   "evidência insuficiente", null]
+        },
+        "expressou_duvida": {"type": ["boolean", "null"],
+                             "description": "Questionou a saída em voz alta ou por gesto observável. Nulo na transferência."},
+        "julgamento": {"enum": ["confiavel", "nao_confiavel", "nao_sei", null]},
+        "criterios_citados": {"type": "array", "items": {"type": "string", "minLength": 1},
+                              "description": "Critérios que o participante disse ter usado. Preferir os rótulos do catálogo de técnicas (prototipo/resposta/catalogo_tecnicas.json)."},
+        "abriu_detalhe": {"type": "boolean", "description": "Abriu a camada de detalhe (decisão 20)."},
+        "consultou_fonte_externa": {"type": "boolean", "description": "Buscou fora da ferramenta: site, buscador, outra pessoa."},
+        "abandono": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["motivo", "detalhe"],
+              "properties": {
+                "motivo": {"enum": ["atrito", "outro"]},
+                "detalhe": {"type": "string"}
+              }
+            }
+          ]
+        },
+        "observacao": {"type": "string"}
+      }
+    }
+  },
+  "x-invariantes": {
+    "S1": "Todo caso_id existe no conjunto de casos; se casos_sha256 está preenchido, é igual ao hash do arquivo de casos usado na validação.",
+    "S2": "Nenhum caso aparece duas vezes na mesma sessão.",
+    "S3": "Item de transferência tem rotulo_exibido nulo, expressou_duvida nulo e abriu_detalhe falso.",
+    "S4": "Item com ferramenta não abandonado tem rotulo_exibido e expressou_duvida preenchidos.",
+    "S5": "Item-armadilha só aparece no bloco com_ferramenta.",
+    "S6": "julgamento e decisao são nulos se e somente se o item foi abandonado; decisao não é anterior a inicio.",
+    "S7": "tcle_assinado é verdadeiro: sem TCLE não há sessão a registrar.",
+    "S8": "debriefing_realizado é verdadeiro, também em sessão abandonada.",
+    "S9": "confianca_fontes.fim é preenchida quando a sessão não foi abandonada, antes do debriefing.",
+    "aviso_armadilha": "Item-armadilha cujo rótulo exibido não contradiz o gabarito não mede aceitação cega; sai como aviso."
+  }
+}

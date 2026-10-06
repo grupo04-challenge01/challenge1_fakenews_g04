@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 1, **Jhessica** 6, **Samara** 2, **Wingrid** 1, **Breno** 1.
+Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 0, **Wingrid** 1, **Breno** 1.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -30,8 +30,20 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       só em PT: 0 divergências em 112 comparações contra o `buscar` da `main`;
       critério de cobertura como parâmetro, valor pela 1.5; nenhuma fonte em
       inglês indexada; decisão 23 do `design.md`, 01/10/2026
-- [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
-- [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+- [x] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
+      — `LIMIAR_EVIDENCIA = 0.55` em `prototipo/rag/hibrida.py`, critério `cobre`
+      padrão de `recuperar` e limiar padrão da guarda; sonda
+      `prototipo/sonda_limiar.py`, relatório `prototipo/relatorio_sonda_limiar.json`:
+      48 casos, nenhuma evidência que cobre cortada, 8/8 ausentes em `evidência
+      insuficiente` pelo modelo; alegação parecida fica em 5 de 20 vizinhas, que
+      nenhum limiar separa; decisão 27 do `design.md`, 06/10/2026
+- [x] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+      — `prototipo/resposta/ancoragem.py`, `estrutura.py` (blocos 1 e 2 como
+      lista de frase e trecho, rebaixamento por frase essencial), `guarda.py`
+      (inapto só como metadado, `Veredito.referencias`), `apto_citacao` na
+      busca; testes `test_ancoragem.py`, `test_estrutura.py`, `test_guarda.py`,
+      `test_apto_citacao.py`; sonda da resposta 21/21; decisão 26 do
+      `design.md`, 06/10/2026
 
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
@@ -93,7 +105,13 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
 - [x] 6.4 **Breno** Submeter protocolo ao comitê de ética
       — protocolo ético e dossiê institucional homologados sob simulação acadêmica da residência em `specs/avaliacao-instrumento/dossie-submissao-cep.md` com registro do Parecer `RES-IA-G04-2026-PARECER-001`
-- [ ] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
+- [x] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
+      — registro de sessão `prototipo/avaliacao/registro_sessao.json` 1.0.0
+      (invariantes S1 a S9), cálculo `prototipo/avaliacao/metricas.py`, CLI
+      `python -m prototipo.avaliacao modelo|validar|metricas`, testes
+      `prototipo/avaliacao/tests/` 37/37; instrumento para o pesquisador e o CEP
+      em `specs/avaliacao-instrumento/instrumento-coleta-metricas.md`; decisão 27
+      do `design.md`, 06/10/2026
 - [ ] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta
 
 ## 7. Decisões pendentes

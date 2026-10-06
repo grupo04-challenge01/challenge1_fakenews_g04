@@ -50,7 +50,7 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 1. **Termo de Consentimento Livre e Esclarecido (TCLE):** Conforme documento [`protocolo-etico-tcle-debriefing.md`](protocolo-etico-tcle-debriefing.md#2-termo-de-consentimento-livre-e-esclarecido-tcle).
 2. **Roteiro Operacional de Debriefing:** Conforme documento [`protocolo-etico-tcle-debriefing.md`](protocolo-etico-tcle-debriefing.md#3-roteiro-operacional-de-debriefing-supervisionado).
 3. **Catálogo de Estímulos e Casos de Teste:** Banco curado de alegações factuais e itens-armadilha (`datasets/casos_mvp_copiloto/mvp_copiloto_casos.json` — Tasks 6.1 e 6.2 concluídas).
-4. **Instrumento de Coleta de Métricas:** Questionário de transferência e anotação de usabilidade (Task 6.5 — pendente de entrega).
+4. **Instrumento de Coleta de Métricas:** Questionário de confiança em fontes oficiais, ficha de anotação por item e bloco de transferência, conforme documento [`instrumento-coleta-metricas.md`](instrumento-coleta-metricas.md) (Task 6.5).
 
 ---
 

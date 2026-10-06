@@ -3,7 +3,8 @@
 `recuperacao-evidencia` manda esgotar as fontes em português antes de recorrer
 às fontes em inglês. Decisão 23 do design.md: a consulta é pontuada uma vez
 sobre o índice inteiro, e as camadas de idioma são cortes desse mesmo score. O
-critério de que uma camada «cobre» a alegação é parâmetro; o valor é da task 1.5.
+critério de que uma camada «cobre» a alegação é parâmetro, e o padrão é o
+limiar da task 1.5 (decisão 27).
 """
 import json
 import pathlib
@@ -11,8 +12,8 @@ import pathlib
 import numpy as np
 import pytest
 
-from prototipo.rag.hibrida import (PRIORIDADE_IDIOMA, Recuperacao, Recuperador,
-                                   cobertura_padrao)
+from prototipo.rag.hibrida import (LIMIAR_EVIDENCIA, PRIORIDADE_IDIOMA, Recuperacao,
+                                   Recuperador, cobertura_padrao)
 
 RAIZ = pathlib.Path(__file__).resolve().parents[3]
 ESQUEMA = RAIZ / "prototipo" / "indice" / "esquema_indexacao.json"
@@ -70,9 +71,20 @@ def test_resultado_traz_o_idioma_do_fragmento():
     assert {r["idioma"] for r in achados} == {"pt-BR", "en"}
 
 
-def test_cobertura_padrao_e_ter_ao_menos_uma_unidade():
-    assert cobertura_padrao([{"unidade_id": "u"}]) is True
+def test_cobertura_padrao_e_alguma_unidade_no_limiar():
+    assert cobertura_padrao([{"score": 0.2}, {"score": LIMIAR_EVIDENCIA}]) is True
+    assert cobertura_padrao([{"score": LIMIAR_EVIDENCIA - 0.001}]) is False
     assert cobertura_padrao([]) is False
+
+
+def test_limiar_da_1_5_e_o_calibrado():
+    # Decisão 27: abaixo da positiva mais fraca da calibração (0,5785).
+    assert LIMIAR_EVIDENCIA == 0.55
+
+
+def _presenca(resultados):
+    """Cobre se trouxe alguma unidade: isola a prioridade de idioma do limiar."""
+    return bool(resultados)
 
 
 # Cenário «Alegação já checada em português» -------------------------------
@@ -82,7 +94,7 @@ def test_pt_cobre_e_nenhuma_fonte_em_ingles_entra():
     # Sem a prioridade, o inglês abriria a lista.
     assert recuperador.buscar("q", k=3, modo="densa")[0]["idioma"] == "en"
 
-    recuperacao = recuperador.recuperar("q", k=3, modo="densa")
+    recuperacao = recuperador.recuperar("q", k=3, modo="densa", cobre=_presenca)
     assert isinstance(recuperacao, Recuperacao)
     assert recuperacao.idioma == "pt-BR"
     assert recuperacao.coberto is True

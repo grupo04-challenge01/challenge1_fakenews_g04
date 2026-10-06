@@ -81,11 +81,21 @@ revarrer — `python -m prototipo.rag varrer-alfa --modelo NOME`.
 índice inteiro, e cada camada de idioma é um corte desse mesmo score: separar
 em dois índices daria a cada um seu próprio fundo (`_sobre_o_fundo`), e o
 limiar da 1.5 deixaria de valer igual nas duas camadas. O inglês só é
-consultado quando o critério `cobre` diz que o português não cobre. O critério
-é parâmetro; o valor é da 1.5. Até lá vale `cobertura_padrao`, o mais
-conservador: o português cobre enquanto trouxer alguma unidade. Nenhum corpus
-em inglês está indexado em 01/10/2026, então com o índice de hoje `recuperar`
-devolve exatamente o que `buscar` devolve.
+consultado quando o critério `cobre` diz que o português não cobre. Nenhum
+corpus em inglês está indexado em 01/10/2026, então com o índice de hoje
+`recuperar` devolve exatamente o que `buscar` devolve.
+
+**Limiar de `evidência insuficiente` — task 1.5, decisão 27.** O critério
+`cobre` padrão é o limiar `LIMIAR_EVIDENCIA`: a camada cobre se ao menos uma
+unidade tem score fundido igual ou acima dele. A guarda usa o mesmo valor para
+descartar trecho fraco. O valor é um piso, não um separador. Na calibração de
+06/10, nenhum corte sobre score separa o trecho que cobre a alegação do trecho
+que só fala de alegação parecida, e o modelo já devolve `evidência
+insuficiente` nas 8 pautas ausentes do acervo. O piso fica abaixo da positiva
+mais fraca (0,5785) e não corta nenhuma evidência que cobre; quem decide a
+cobertura é o modelo, e o limite fica registrado na decisão 27. Vale para a
+fusão por score com alfa 0,9 e `e5-base`. Em outro modo ou fusão o score muda
+de escala, e quem chama passa seu próprio `cobre`.
 """
 from __future__ import annotations
 
@@ -103,16 +113,19 @@ _EPS = 1e-6
 # os do enum `idioma` do esquema de indexação; o teste confere que batem.
 PRIORIDADE_IDIOMA = ("pt-BR", "en")
 
+# Piso do score fundido abaixo do qual o trecho conta como não recuperado.
+# Calibrado na task 1.5 (decisão 27) para a fusão por score, alfa 0,9 e e5-base:
+# a positiva mais fraca da calibração fica em 0,5785.
+LIMIAR_EVIDENCIA = 0.55
 
-def cobertura_padrao(resultados: list[dict]) -> bool:
-    """Critério provisório de cobertura de uma camada, até a task 1.5.
 
-    A camada cobre se trouxe ao menos uma unidade. Com ele, o inglês só é
-    consultado quando não há nada em português, que é a leitura mais estrita de
-    «esgotar». A 1.5 troca este critério pelo limiar calibrado, passado em
-    `Recuperador.recuperar(..., cobre=...)`, sem mudar a 1.4.
+def cobertura_padrao(resultados: list[dict], limiar: float = LIMIAR_EVIDENCIA) -> bool:
+    """A camada cobre se ao menos uma unidade alcança o limiar (task 1.5).
+
+    É o mesmo corte que a guarda aplica a cada trecho. Camada sem unidade acima
+    dele não cobre, e a recuperação passa à camada seguinte de idioma.
     """
-    return len(resultados) > 0
+    return any(r["score"] >= limiar for r in resultados)
 
 
 @dataclass(frozen=True)
@@ -122,8 +135,8 @@ class Recuperacao:
     `idioma` é a camada de onde vêm os `resultados`; `consultados`, as camadas
     pelas quais a busca passou, na ordem. Camada sem nenhuma fonte indexada não
     é consultada. `coberto` falso quer dizer que nenhuma camada satisfez o
-    critério: os resultados são os da primeira camada não vazia, e decidir se o
-    veredito cai para `evidência insuficiente` é de quem chama (task 1.5).
+    critério: os resultados são os da primeira camada não vazia. O veredito cai
+    para `evidência insuficiente` na guarda, que corta com o mesmo limiar.
     """
 
     idioma: str | None
@@ -242,6 +255,10 @@ class Recuperador:
                 "score_lexico": float(s_lex[i]),
                 "score_denso": float(s_den[i]),
                 "idioma": fragmento.get("idioma"),
+                # Decisão 17: fragmento inapto não serve de âncora. A busca só
+                # entrega a marca; ausente (índice anterior ao esquema 1.0.0)
+                # sai `None`, e a ancoragem decide — a busca não supõe valor.
+                "apto_citacao": fragmento.get("apto_citacao"),
                 "agencia": unidade["agencia"],
                 "data_publicacao": unidade["data_publicacao"],
                 "url": unidade["url"],

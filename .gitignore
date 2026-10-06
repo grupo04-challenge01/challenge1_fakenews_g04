@@ -55,3 +55,7 @@ datasets/01_nucleo_metodologico/whavax/*.ipynb
 datasets/01_nucleo_metodologico/whavax/*.py
 datasets/04_acervo_circulacao/telegram_antivacina_br/*.jsonl
 datasets/03_banco_estimulos/fakerecogna2/
+
+# Registros de sessão com participantes (task 6.5 de mvp-copiloto-verificacao).
+# Dados de pessoa, ainda que anônimos; só o relatório agregado é versionado.
+prototipo/avaliacao/sessoes/
