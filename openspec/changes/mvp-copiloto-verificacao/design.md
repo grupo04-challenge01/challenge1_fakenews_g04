@@ -835,11 +835,29 @@ existir. A marca inline continua aceita. Alternativas descartadas: reforçar a
 instrução no prompt (o padrão acima); conferir contra T1 a frase sem marca
 quando há um só trecho (não resolve o R4, que tem dois, e deixa de ser âncora
 declarada). Achado lateral: em 4 das 11 respostas refeitas na forma sem
-evidência, o modelo deixou o bloco 4 vazio, o que não ocorreu no S1.
+evidência, o modelo deixou o bloco 4 vazio, o que não ocorreu no S1 (ver a
+segunda sonda).
 
-**Pendente: a sonda com a âncora em campo próprio.** A `Resposta` passa a
-guardar a saída crua do modelo (`bruto`, as duas no rebaixamento), e o relatório
-a registra.
+**Segunda sonda, âncora em campo próprio: ancoragem 9 de 9, duas regressões.**
+A `Resposta` passa a guardar a saída crua do modelo (`bruto`, as duas no
+rebaixamento), e o relatório a registra. Na rodada de 06/10, 10:01, R1, R2 e R3
+deram 9 de 9: o modelo preencheu `trecho` em todas as frases, sem descarte nem
+rebaixamento. Duas regressões vieram da troca do formato, não da ancoragem: o
+R4 escreveu o rótulo no bloco 3 sem o prefixo «Técnica:» (0 de 3), e o S1
+deixou o bloco 4 vazio, como se fosse lacuna (0 de 3). O exemplo de formato no
+fim do prompt era um só para a forma sem evidência, com `"bloco3": "..."`.
+Passou a ser um por estado: com evidência, com «Técnica: rótulo.» no bloco 3 e
+o aviso de que o verdadeiro não leva o prefixo; evidência insuficiente, com o
+bloco 4 preenchido; lacuna de acervo, com o bloco 4 vazio.
+
+**Terceira sonda: 21 de 21.** Rodada de 06/10, 10:09, Gemma 4 12B QAT, três
+tentativas: R1 a R4 12 de 12, S1 a S3 9 de 9, nenhum rebaixamento. Respostas de
+63 a 88 palavras, mediana de 11,8 s (de 7,0 a 22,3 s). O R3, verdadeiro, não
+nomeou técnica, apesar do exemplo com «Técnica:». A ancoragem agiu uma vez, e no
+caso certo: no R1, que não tem opinião na decomposição, o modelo escreveu
+«Essa parte é opinião e não se checa.» nas três tentativas; a frase não tinha
+âncora e saiu, e a resposta ficou com evidência. Antes da 1.6, essa frase ia
+para o usuário.
 
 **Limites declarados.**
 
