@@ -55,3 +55,6 @@ datasets/01_nucleo_metodologico/whavax/*.ipynb
 datasets/01_nucleo_metodologico/whavax/*.py
 datasets/04_acervo_circulacao/telegram_antivacina_br/*.jsonl
 datasets/03_banco_estimulos/fakerecogna2/
+
+# Relatórios gerados pela bancada (python -m bancada rodar)
+bancada/relatorios/

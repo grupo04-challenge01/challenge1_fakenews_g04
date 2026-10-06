@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "2d8e5050c9399bca": "{\"categorias\": [\"checagem\"], \"motivo\": \"A usuária quer confirmar a veracidade de uma informação sobre um tratamento natural.\"}",
+  "4b5aec17242224d6": "{\"alegacoes\": [{\"texto\": \"Chá de folha de goiabeira cura a dengue em 24 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "88c3b9a2659b0717": "{\n  \"fatos\": [\n    \"Chá de folha de goiabeira cura a dengue em 24 horas.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
+  "b5648730760ab791": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados menciona o uso de chá de folha de goiabeira para o tratamento da dengue.\"}",
+  "9d53bea587f7b315": "{\"bloco1\": \"Foi buscado por informações sobre o chá de goiabeira na dengue.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Você pode pesquisar em sites oficiais de saúde e órgãos governamentais.\", \"bloco4\": \"Procure por orientações em portais como o Ministério da Saúde.\"}"
+ },
+ "busca": {
+  "61698a2ade6e877a": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "c5d4b94adb-00",
+     "fragmento_id": "c5d4b94adb-00-01",
+     "score": 0.6724535226821899,
+     "score_lexico": 14.593414306640625,
+     "score_denso": 0.8648998737335205,
+     "idioma": "pt-BR",
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-02-18",
+     "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/02/18/e-fake-que-ufmg-fez-estudo-que-diz-que-suco-de-inhame-corta-os-efeitos-da-dengue-em-apenas-quatro-horas.ghtml",
+     "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "cina da UFMG. Ela afirmou: \"Não existe estudo que comprove a eficácia e a efetividade desse recurso na dengue\".O G1 fez reportagem a respeito em 2019. Na ocasião, o médico Carlos Caldeira, coordenador do Centro de Assistência Toxicológica (Ceatox) do Hospital de Base de Rio Preto, disse que o suco de inhame não é um \"remédio\" capaz de aumentar rapidamente a imunidade ou \"agir de forma mágica\" nos sintomas da doença, que incluem febre, cansaço, dor de cabeça e no fundo dos olhos.Veja o que diz a mensagem #FAKE\"Se você está com dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água. Compartilhem, gente, muitos casos de dengue, vamos ajudar as pessoas.\"Vídeo: Veja como identificar uma mensagem falsaVEJA outras checagens feitas pela equipe do FATO ou FAKE\nAdicione nosso número de Whatsapp: +55 (21) 97305-9827 (após adicionar o número, mande uma saudação para ser inscrito"
+    },
+    {
+     "unidade_id": "50cb17dd68-00",
+     "fragmento_id": "50cb17dd68-00-00",
+     "score": 0.6509451270103455,
+     "score_lexico": 15.159010887145996,
+     "score_denso": 0.8583757281303406,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2020-02-17",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
+     "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais que a Universidade Federal de Minas Gerais (UFMG) realizou um estudo que mostrou a eficácia do suco de inhame contra os sintomas da dengue. Segundo o texto, basta tomar uma bebida feita com o alimento batido cru, com água, no liquidificador, para cortar os efeitos da doença em apenas quatro horas. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Se você está com Dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da Dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água”\nTexto de post no Facebook que, até as 16h de 17 de fevereiro de 2020, tinha mais de 2 mil compartilhamentos\n\n\nA informação analisada pela Lupa é falsa. Não foi realizado qualquer estudo pela UFMG que comprovasse a eficiência do suco de inhame no tratamento da dengue."
+    },
+    {
+     "unidade_id": "f308f09db9-00",
+     "fragmento_id": "f308f09db9-00-02",
+     "score": 0.6155400276184082,
+     "score_lexico": 12.395315170288086,
+     "score_denso": 0.8507890701293945,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-02-07",
+     "url": "https://www.boatos.org/saude/cha-erva-doce-cura-novo-coronavirus-diretor-hc.html",
+     "alegacao": "Chá de erva-doce cura o novo coronavírus, diz diretor do HC #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições. * *Repasse: é muito importante.*Chá de erva-doce cura o novo coronavírus?Pois é. O que não faltou foi gente compartilhando a tal dica. O grande (grande mesmo) problema disso é que ela é falsa. Calma aí que a gente explica tudo para vocês.Na realidade, essa história de “diretor do HC” + “chá de erva-doce e Tamiflu” já foi desmentida e até relembrada por aqui. Como o desmentido da versão “gripe” (que era a que circulava) serve para a “versão coronavírus”, relembre o que escrevemos:Como falamos lá no início do texto, essa história é a junção de duas notícias falsas já desmentidas. A história que falava do alerta do diretor do Hospital das Clínicas é de 2018. A do chá de erva-doce no lugar de Tamiflu também é de 2018. A história do diretor surgiu em um contexto diferente. Na ocasião, a fala foi atribuída a uma suposta nova gripe, que seria o H3N2. Na realidade, quem havia feito um alerta era o diretor da Santa Casa de Sorocaba."
+    },
+    {
+     "unidade_id": "c7822447bb-00",
+     "fragmento_id": "c7822447bb-00-02",
+     "score": 0.6077952980995178,
+     "score_lexico": 12.311470031738281,
+     "score_denso": 0.849120557308197,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-01-27",
+     "url": "https://www.boatos.org/saude/diretor-do-hc-preocupado-nova-gripe-recomenda-cha-de-erva-doce.html",
+     "alegacao": "Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições. Um infectologista do hospital São Domingos, recomenda tomar de 12 em 12/horas o chá de erva doce, pois ele mata o vírus da influenza. É da erva-doce que é feito o TAMIFLU. * Repasse para seus famíliares e amigos pois é muito importante.Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu?Em meio a apreensão que o planeta está passando em relação ao Coronavírus é claro que a história iria viralizar. Mas será mesmo que o diretor do HC fez o tal alerta sobre a “nova gripe” e a tal recomendação do chá de erva-doce? A resposta é não. Vamos aos fatos.Como falamos lá no início do texto, essa história é a junção de duas notícias falsas já desmentidas. A história que falava do alerta do diretor do Hospital das Clínicas é de 2018. A do chá de erva-doce no lugar de Tamiflu também é de 2018. A história do diretor surgiu em um contexto diferente."
+    },
+    {
+     "unidade_id": "be7e3207a4-00",
+     "fragmento_id": "be7e3207a4-00-02",
+     "score": 0.60258948802948,
+     "score_lexico": 17.534231185913086,
+     "score_denso": 0.846373975276947,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-02-10",
+     "url": "https://www.boatos.org/saude/cha-folhas-abacate-hortela-cura-previne-coronavirus.html",
+     "alegacao": "Chá de folhas de abacate com hortelã cura e previne o coronavírus #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "crescente 6 folhas de abacate e folhas de hortelã (A quantidade das folhas de hortelã é o tanto que enche um copo de 200 ml) Tampe e desligue o fogão. Se estiver Calor tome o chá Gelado e se estiver tempo Frio tome o chá quenteVersão 2: ALERTA VERMELHO NO PLANETA!!! A CURA NATURAL da epidemia do “CoronaVírus” e suas mutações!!! MULHER SIMPLES E HUMILDE DO POVO, senhora católica… …SONHOU COM A MÃE DE JESUS… na roupagem de NOSSA SENHORA DO CARMO… e divulga mensagem de CHÁ SIMPLES DE FOLHAS: – DE *ABACATE* + FOLHAS DE *HORTELÃ* TEM PODER DE ELIMINAR O “CoronaVírus” + suas mutações e tbm outros vírus patogênicos. Chá de IMUNIZAÇÃO que elimina o “CoronaVírus” + mutações!!! […]COMO TOMAR??? * tomar um copo de 100ml de 1 em 1 hora. * total 1.000ml para 10 (dez) horas seguidas de tratamento até o desaparecimento total dos sintomas e + 3 dias de prevenção, se houver chá disponível.Chá de folhas de abacate com hortelã cura e previne o coronavírus?A mensagem em questão já deixou muita gente curiosa com a suposta eficácia do chá de abacate contra o coronavírus."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

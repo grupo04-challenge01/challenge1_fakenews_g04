@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "0a40830406fd7a50": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer saber se uma informação específica sobre um fato ocorrido é verdadeira.\"}",
+  "7fb6490d2038eee3": "{\"alegacoes\": [{\"texto\": \"enterraram uma menina em caixão lacrado como covid\", \"saude\": true, \"risco\": \"medio\"}], \"opiniao\": \"Absurdo\"}",
+  "9cff63f59a73798a": "{\n  \"fatos\": [\n    \"Uma menina foi enterrada em um caixão lacrado como caso de Covid.\",\n    \"O exame da menina deu negativo.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Absurdo:\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Isso é verdade?\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta uma pergunta sobre a veracidade do relato sem fornecer dados para confirmação.\"\n  }\n}",
+  "1b36958aed5e2b94": "{\"rotulo\": \"verdadeiro\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho confirma que uma menina foi enterrada em caixão lacrado por suspeita de covid-19, embora o exame posterior tenha dado negativo.\"}",
+  "8c9992081e4b6699": "{\"bloco1\": \"A checagem confirmou que o fato aconteceu em Touros, no Rio Grande do Norte.\", \"bloco2\": \"O procedimento de lacrar caixões era padrão para suspeitas de coronavírus na época. A parte 'Absurdo' é uma opinião e não pode ser checada.\", \"bloco3\": \"A mensagem não engana.\", \"bloco4\": \"A confirmação foi baseada em notícias que detalham o caso da menina e o exame negativo.\"}"
+ },
+ "busca": {
+  "f6b3a6d50c75d61c": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "beff276238-00",
+     "fragmento_id": "beff276238-00-00",
+     "score": 0.7482718825340271,
+     "score_lexico": 28.424755096435547,
+     "score_denso": 0.9058445692062378,
+     "idioma": "pt-BR",
+     "agencia": "COMPROVA",
+     "data_publicacao": "2020-06-10",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
+     "alegacao": "É verdade que criança com suspeita de covid-19 foi colocada em caixão lacrado e, mais tarde, testou negativo",
+     "veredito_original": "Comprovado",
+     "veredito_chave": "comprovado",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "O procedimento de lacrar o caixão é padrão em casos de óbitos confirmados ou com suspeitas de coronavírus, como é o caso da morte de uma menina cujo caixão aparece em vídeo publicado nas redes sociais sendo aberto pela família. O resultado do exame foi divulgado somente uma semana depois e o teste deu negativo\nÉ verdadeira a história que circula nas redes sociais de que uma criança com suspeita de covid-19 foi colocada, sem limpeza, dentro de caixão lacrado. Ela, contudo, não havia sido infectada pelo novo coronavírus, de acordo com resultado do exame divulgado uma semana depois. Um vídeo, que mostra o momento que a família abre a urna e se depara com a menina suja de sangue, viralizou na internet.\nO caso ocorreu na cidade de Touros, no Rio Grande do Norte, no dia 19 de maio. A menina seria enterrada com a urna lacrada por suspeita de covid-19, mas a família abriu o caixão e descobriu que a limpeza do corpo não havia sido realizada para o sepultamento."
+    },
+    {
+     "unidade_id": "0a04a958d3-00",
+     "fragmento_id": "0a04a958d3-00-04",
+     "score": 0.6915162205696106,
+     "score_lexico": 15.964984893798828,
+     "score_denso": 0.883353590965271,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2021-04-02",
+     "url": "https://www.boatos.org/brasil/mulher-com-covid-19-colocada-caixao-seria-enterrada-vida-governo-sao-paulo.html",
+     "alegacao": "Mulher com Covid-19 é colocada em caixão e seria enterrada viva pelo governo de São Paulo #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "de Covid-19. Dada a enorme chance de contaminação pela doença, pessoas vítimas de Covid-19 não possuem velório e são enterradas com o caixão lacrado. Nesse caso, a mulher com certeza seria levada imediatamente ao cemitério e, no máximo, apenas alguns parentes poderiam acompanhar todo o processo.Depois de toda a repercussão, uma página do Facebook que acompanha os acontecimentos na região de Perus, em São Paulo, publicou um esclarecimento sobre o caso. De acordo com a página, um familiar da mulher que aparece sendo velada no vídeo solicitou que a página retirasse o vídeo do ar. Segundo ele, o neto da mulher estava muito abalado no momento e achou estranho que o corpo da avó estivesse mole e com alguns sangramentos. Após abrir o caixão, a família percebeu que a mulher realmente estava morta.O coordenador do Laboratório de Anatomia da Universidade Federal do Ceará (UFC) explicou que espasmos, gases, arrotos, suor, urina e defecação são comuns em corpos pós-morte, por causa do espalhamento de bactérias e da morte gradativa das células."
+    },
+    {
+     "unidade_id": "fd1ab1ffdb-00",
+     "fragmento_id": "fd1ab1ffdb-00-00",
+     "score": 0.6110219359397888,
+     "score_lexico": 4.831647872924805,
+     "score_denso": 0.8657535910606384,
+     "idioma": "pt-BR",
+     "agencia": "COMPROVA",
+     "data_publicacao": "2020-09-22",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/nao-ha-evidencias-que-liguem-morte-de-menina-alema-ao-uso-de-mascaras/",
+     "alegacao": "Não há evidências que liguem morte de menina alemã ao uso de máscaras",
+     "veredito_original": "Enganoso",
+     "veredito_chave": "enganoso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "O questionamento foi feito por uma deputada alemã de extrema-direita que chegou a ser censurada por um líder de seu partido. Ela insinuou que a morte de uma estudante de 13 anos num ônibus escolar poderia ter sido motivado pelo uso de máscara\nConteúdo verificado: Postagens dizem que o uso de máscaras foi posto em xeque na Alemanha após garota de 13 anos morrer em ônibus escolar\nSão enganosas as postagens que afirmam que o uso de máscaras de proteção facial contra a covid-19 foi colocado em xeque na Alemanha. O questionamento contra o equipamento de proteção foi feito somente por uma deputada da extrema-direita que insufla boatos sobre a morte de uma estudante de 13 anos num ônibus escolar. Ela foi censurada por um líder de seu partido, uma vez que a relação entre o óbito e o uso da máscara não foi feita nem por autoridades nem pela imprensa local.\nO caso ocorreu na cidade de Germersheim, no estado da Renânia-Palatinado, sudoeste da Alemanha, em 7 de setembro. A garota desmaiou dentro de um ônibus escolar, foi socorrida e morreu no hospital."
+    },
+    {
+     "unidade_id": "00a8664123-00",
+     "fragmento_id": "00a8664123-00-01",
+     "score": 0.6030392050743103,
+     "score_lexico": 7.997800827026367,
+     "score_denso": 0.8605308532714844,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2020-04-29",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/04/29/verificamos-foto-caixao-vazio-enterros-covid-19-amazonas/",
+     "alegacao": "#Verificamos: Foto e vídeo de caixão vazio são antigas e não têm relação com enterros por Covid-19 no Amazonas",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Texto em post no Facebook que, até as 12h de 29 de abril de 2020, tinha mais de 6,5 mil compartilhamentos\n\n\nA informação analisada pela Lupa é falsa. Tanto a foto na parte superior da montagem como o vídeo dessa cena, que mostram um caixão vazio aberto, não têm nenhuma relação com a pandemia de Covid-19, doença causada pelo novo coronavírus. A imagem original foi registrada pelo fotógrafo Milton Rogério e publicada no site São Carlos Agora em 30 de maio de 2017. Na época, a polícia descobriu que um grupo de pessoas em São Carlos, no interior de São Paulo, forjou a morte de uma moradora de rua para ganhar o dinheiro do seguro de vida.\nSegundo reportagem do UOL, o grupo, liderado por um ex-agente funerário, fez seis apólices no nome da mulher, com valores entre R$ 800 mil e R$ 1,4 milhão. Meses antes, eles aproximaram-se da moradora de rua. Dizendo que iriam, ajudá-la, convenceram-na a solicitar a segunda via do RG e do CPF no Poupatempo da cidade. A quadrilha reteve os protocolos e, mais tarde, retirou os documentos, sem que ela soubesse."
+    },
+    {
+     "unidade_id": "513ef65335-00",
+     "fragmento_id": "513ef65335-00-00",
+     "score": 0.5935548543930054,
+     "score_lexico": 9.36119270324707,
+     "score_denso": 0.8574633598327637,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2021-04-09",
+     "url": "https://piaui.folha.uol.com.br/lupa/2021/04/09/verificamos-idosa-enterrada-viva/",
+     "alegacao": "#Verificamos: É falso que idosa foi enterrada viva em cemitério de São Paulo",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais um vídeo que mostra um grupo de pessoas ao redor de um caixão que transportava o corpo de uma mulher. Na gravação, uma pessoa não identificada diz que ela estava sendo enterrada viva. Por WhatsApp, leitores da Lupa sugeriram que esse conteúdo fosse analisado. Confira a seguir o trabalho de verificação:\n\n“Hospital informa que a paciente entrou em óbito por Covid. Chama a funerária, joga no caixão e manda enterrar. Os familiares desconfiam e vão conferir.\nResultado: a paciente estava VIVA dentro do caixão!!!!”\nTexto que acompanha vídeo que circula no WhatsApp\n\n\nA informação analisada pela Lupa é falsa. O vídeo que circula pelas redes sociais não mostra o caso de uma pessoa que quase foi enterrada viva. Na verdade, Maria Aparecida Ribeiro estava morta quando foi encaminhada para o cemitério Dom Bosco, em Perus, Zona Norte de São Paulo, no dia 26 de março. Apesar de algumas pessoas gritarem que ela estaria se mexendo, a suspeita não foi confirmada, de acordo com os próprios familiares da idosa. Por fim, ela não morreu de Covid-19."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}
