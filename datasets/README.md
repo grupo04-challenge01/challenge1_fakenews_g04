@@ -12,6 +12,7 @@ datasets-desinformacao/
 │   ├── fakehealth/             # reviews/ content/ engagements/ (JSON originais)
 │   ├── factcenter/             # central_de_fatos.csv (bruto, sep=";")
 │   └── factckbr/               # FACTCKBR.tsv + script de update RSS
+│       └── recoleta_2026-10-06/  # captura, saída e laudo da recoleta (task 3.5)
 ├── 02_comparacao_exagero/
 │   └── scientific_exaggeration/  # insciout train/test (JSONL + CSV)
 ├── 03_banco_estimulos/
@@ -168,7 +169,7 @@ Registrados pelo change `add-tratamento-datasets-ptbr`. Todos reexecutáveis por
 | FactCenter | janela 2013-07-08 a 2021-05-19, 54% em 2020; `qdenga`, `mpox`, `oropouche` e `semaglutida` com zero ocorrência |
 | FactCenter | 245 registros mistos e 11 compilados, fora do banco de estímulos |
 | FactCenter | 48.392 linhas físicas para 4.063 registros; separador `;` |
-| FACTCK.BR | **reprovado para citação.** Onze maiúsculas acentuadas ausentes, sete com evidência de corrupção. A perda está na fonte distribuída e é irreversível |
+| FACTCK.BR | **reprovado para citação.** Onze maiúsculas acentuadas ausentes, sete com evidência de corrupção. A perda está na fonte distribuída e é irreversível. Recoleta de 06/10/2026 pelos três feeds com o script reparado: zero alegações (`factckbr/recoleta_2026-10-06/`) |
 | FakeRecogna | **reprovada para citação** por texto transformado na origem (coluna `Noticia` lematizada e sem caixa), não por corrupção |
 | PUBHEALTH | classe majoritária é `true` (~52% do treino), não "maioria falsa"; o derivado tem aspas escapadas em excesso na origem |
 | FakeHealth | 20 perguntas em dois conjuntos de 10. O nome `fakehealth_matriz_10_criterios.csv` está errado e foi mantido por estabilidade de referência |

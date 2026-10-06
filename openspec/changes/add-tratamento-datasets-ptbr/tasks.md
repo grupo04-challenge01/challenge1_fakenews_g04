@@ -1,6 +1,6 @@
 # Tasks — add-tratamento-datasets-ptbr
 
-Donos das tasks em aberto: **Samara** 1 (3.5), **Jhessica** 2 (5.4, 5.7).
+Donos das tasks em aberto: **Jhessica** 1 (5.4).
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -45,14 +45,26 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 3.3 Reprovar `factckbr_normalizado.csv` para citação e registrar o caveat
 - [x] 3.4 Corrigir a allowlist do `re_char()` em `update_factckbr.py`, ou
       substituí-la por normalização Unicode sem descarte
-- [ ] 3.5 **Samara** Recoletar o FACTCK.BR pelos três feeds com o script reparado, e
+- [x] 3.5 **Samara** Recoletar o FACTCK.BR pelos três feeds com o script reparado, e
       registrar a perda histórica como irreversível. **Reescrita em 19/09/2026.**
       O texto anterior — "regerar o derivado a partir da fonte, com a correção"
       — pedia o impossível: a perda de caractere já está no `FACTCKBR.tsv`
       distribuído (`Ã` = 0 contra `ã` = 3.625 **na própria fonte**), e nenhuma
       reexecução recupera o que não está no arquivo. O reparo da task 3.4 vale
       para coleta futura; o acervo de 1.313 alegações permanece reprovado para
-      citação
+      citação. **Concluída em 06/10/2026.** Evidência:
+      `datasets/01_nucleo_metodologico/factckbr/recoleta_2026-10-06/laudo_recoleta.json`,
+      gerado por `datasets/scripts/recoletar_factckbr.py` e reconstruído por
+      `tratamento/tests/test_recoleta_factckbr.py` (11 testes). Os três feeds
+      foram consultados e o script reparado extraiu **zero** alegações: Aos Fatos
+      com 18 `ClaimReview` descartados por `author` em lista sem `url` (o
+      `except` engole o erro); Truco com feed parado em 26/10/2018; Lupa
+      redirecionada para `agencialupa.org`, sem `ClaimReview`. O filtro reparado
+      preserva 18/18 blocos e 20/20 títulos. Reaplicar o `re_char()` ao
+      `FACTCKBR.tsv` mantém `Ã` = 0 contra `ã` = 3.625: zero maiúsculas
+      recuperadas, perda irreversível. Registro em
+      `docs/investigate/tratamento-datasets.md`, «Recoleta de 06/10/2026». O
+      conserto do `author` em lista fica para change nova
 - [x] 3.6 Teste de fidelidade: trecho citado idêntico ao texto de origem
 
 ## 4. Frescor

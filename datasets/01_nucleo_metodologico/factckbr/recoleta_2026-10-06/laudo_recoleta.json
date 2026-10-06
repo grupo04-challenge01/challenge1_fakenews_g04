@@ -1,0 +1,143 @@
+{
+  "task": "add-tratamento-datasets-ptbr 3.5",
+  "data_coleta": "2026-10-06",
+  "script": "datasets/01_nucleo_metodologico/factckbr/update_factckbr.py",
+  "sha256_script": "35b8a73960f0ec6802082b9d497399b3bd5a42b0e8600c97b34c40d4dca85d26",
+  "sha256_captura": "1b8cdb8c4dc5022cdf915b07122300fa2c36757e8e7daf004822464cdde2b338",
+  "por_agencia": [
+    {
+      "agencia": "Aos Fatos",
+      "feed_declarado": "https://aosfatos.org/noticias/feed/",
+      "feed_final": "https://www.aosfatos.org/noticias/feed/",
+      "itens_no_feed": 20,
+      "paginas_com_claimreview": 18,
+      "blocos_claimreview": 18,
+      "alegacoes_extraidas": 0,
+      "causas_de_descarte": {
+        "my_dict['author']['url']": 18
+      }
+    },
+    {
+      "agencia": "Agência Pública (Truco)",
+      "feed_declarado": "https://apublica.org/tag/truco/feed/",
+      "feed_final": "https://apublica.org/tag/truco/feed/",
+      "itens_no_feed": 10,
+      "paginas_com_claimreview": 0,
+      "blocos_claimreview": 0,
+      "alegacoes_extraidas": 0,
+      "causas_de_descarte": {}
+    },
+    {
+      "agencia": "Lupa",
+      "feed_declarado": "https://piaui.folha.uol.com.br/lupa/feed/",
+      "feed_final": "https://www.agencialupa.org/feed/",
+      "itens_no_feed": 10,
+      "paginas_com_claimreview": 0,
+      "blocos_claimreview": 0,
+      "alegacoes_extraidas": 0,
+      "causas_de_descarte": {}
+    }
+  ],
+  "total_alegacoes_extraidas": 0,
+  "fidelidade": {
+    "blocos": 18,
+    "blocos_identicos_apos_text_pre_proc": 18,
+    "titulos": 20,
+    "titulos_identicos_apos_re_char": 20,
+    "maiusculas_acentuadas_na_recoleta": {
+      "É": 6
+    }
+  },
+  "acervo_historico": {
+    "arquivo": "datasets/01_nucleo_metodologico/factckbr/FACTCKBR.tsv",
+    "registros": 1313,
+    "antes": {
+      "Á": 3,
+      "á": 1519,
+      "À": 0,
+      "à": 271,
+      "Â": 0,
+      "â": 186,
+      "Ã": 0,
+      "ã": 3625,
+      "É": 60,
+      "é": 1851,
+      "Ê": 0,
+      "ê": 1024,
+      "Í": 0,
+      "í": 1489,
+      "Ó": 0,
+      "ó": 622,
+      "Ô": 0,
+      "ô": 131,
+      "Õ": 0,
+      "õ": 700,
+      "Ú": 0,
+      "ú": 973,
+      "Ü": 0,
+      "ü": 0,
+      "Ç": 0,
+      "ç": 2312
+    },
+    "depois_do_re_char_reparado": {
+      "Á": 3,
+      "á": 1519,
+      "À": 0,
+      "à": 271,
+      "Â": 0,
+      "â": 186,
+      "Ã": 0,
+      "ã": 3625,
+      "É": 60,
+      "é": 1851,
+      "Ê": 0,
+      "ê": 1024,
+      "Í": 0,
+      "í": 1489,
+      "Ó": 0,
+      "ó": 622,
+      "Ô": 0,
+      "ô": 131,
+      "Õ": 0,
+      "õ": 700,
+      "Ú": 0,
+      "ú": 973,
+      "Ü": 0,
+      "ü": 0,
+      "Ç": 0,
+      "ç": 2312
+    },
+    "maiusculas_acentuadas_recuperadas": 0,
+    "maiusculas_ausentes": [
+      "À",
+      "Â",
+      "Ã",
+      "Ê",
+      "Í",
+      "Ó",
+      "Ô",
+      "Õ",
+      "Ú",
+      "Ü",
+      "Ç"
+    ],
+    "maiusculas_com_evidencia_de_corrupcao": [
+      "Ã",
+      "Ê",
+      "Í",
+      "Ó",
+      "Õ",
+      "Ú",
+      "Ç"
+    ],
+    "aprovado_para_citacao": false
+  },
+  "conclusao": [
+    "A recoleta pelos três feeds com o script reparado extraiu zero alegações.",
+    "Aos Fatos: 18 ClaimReview descartados porque `author` passou a ser lista de pessoas sem `url`; o `except Exception: pass` do script engole o erro.",
+    "Agência Pública (Truco): feed parado desde 26/10/2018, sem ClaimReview nas páginas.",
+    "Lupa: feed redirecionado para agencialupa.org, sem ClaimReview nas páginas.",
+    "O filtro de caractere reparado preserva todo o texto recoletado, maiúscula acentuada inclusive.",
+    "Reexecutar o re_char() reparado sobre o FACTCKBR.tsv não recupera nenhuma maiúscula acentuada: a perda está no arquivo distribuído e é irreversível. As 1.313 alegações permanecem reprovadas para citação."
+  ]
+}
