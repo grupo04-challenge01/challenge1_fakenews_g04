@@ -62,7 +62,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — `prototipo/verificacao/fronteira.py`, sonda 42/42, decisão 15 do `design.md`, 29/09/2026
 - [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
       — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
-- [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+- [x] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+      — suíte adversarial criada em `prototipo/verificacao/tests/test_fronteira_adversarial.py` com cobertura para perguntas indiretas, sintomas injetados, jailbreak e garantias no prompt
 
 ## 5. Interface
 - [x] 5.1 **Wingrid** Camada visível e camada de detalhe
