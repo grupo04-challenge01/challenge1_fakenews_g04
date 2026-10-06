@@ -170,6 +170,57 @@ O que **foi** feito é a correção a montante, para a coleta futura:
 
 Seis testes cobrem as três correções.
 
+### Recoleta de 06/10/2026: o reparo funciona, o caminho não
+
+A task 3.5 pedia recoletar pelos três feeds com o script reparado. Feito em
+06/10/2026, com `python3 datasets/scripts/recoletar_factckbr.py`, que roda o
+`get_claimReview()` do próprio script sobre a captura em
+`datasets/01_nucleo_metodologico/factckbr/recoleta_2026-10-06/`. Resultado:
+**zero alegações**.
+
+| Feed declarado no script | Estado em 06/10/2026 | Itens | `ClaimReview` | Extraídas |
+| --- | --- | --- | --- | --- |
+| `aosfatos.org/noticias/feed/` | vivo, redireciona para `www.` | 20 | 18 | **0** |
+| `apublica.org/tag/truco/feed/` | **parado**: item mais recente de 26/10/2018 | 10 | 0 | 0 |
+| `piaui.folha.uol.com.br/lupa/feed/` | redireciona para `agencialupa.org/feed/` | 10 | 0 | 0 |
+
+As causas são três, e nenhuma é o filtro de caractere:
+
+- **Aos Fatos** publica `author` como **lista** de pessoas sem `url`. O acesso
+  `my_dict['author']['url']` levanta `TypeError`, que o `except Exception: pass`
+  do script engole — as 18 checagens somem em silêncio, sem uma linha de log.
+  O acervo de 2019 foi coletado quando `author` era objeto com `url` (370
+  registros do Aos Fatos no `FACTCKBR.tsv`).
+- **Truco** parou: o feed da tag congelou em outubro de 2018, e as páginas
+  trazem só `WebPage`/`Organization`, sem `ClaimReview`.
+- **Lupa** saiu da piauí para `agencialupa.org` e o JSON-LD das páginas é
+  `NewsArticle`, sem `ClaimReview`.
+
+O reparo da task 3.4 **está** de pé: nos 18 blocos e 20 títulos recoletados,
+`text_pre_proc()` e `re_char()` devolvem o texto idêntico ao de origem, com as
+seis ocorrências de `É` preservadas. Um teste de controle com `author` como
+objeto extrai a linha com `É`, `Ç` e `Ô` intactos — o zero é do esquema, não do
+filtro.
+
+E a perda histórica fica registrada como **irreversível**, agora medida, não só
+argumentada: aplicar o `re_char()` reparado ao `FACTCKBR.tsv` distribuído
+devolve exatamente as mesmas contagens (`Ã` = 0, `ã` = 3.625), com zero
+maiúsculas acentuadas recuperadas. As **1.313 alegações permanecem reprovadas
+para citação**. O laudo completo está em `laudo_recoleta.json`, e
+`tratamento/tests/test_recoleta_factckbr.py` o reconstrói e compara.
+
+**Como a captura foi feita.** Os shells disponíveis ao grupo passam por proxy
+que devolve 403 para os quatro domínios; as páginas foram buscadas pelo
+navegador do app desktop, com SHA-256 de cada título e bloco calculado no
+navegador e conferido no disco. A captura guarda só os campos do `ClaimReview`
+que o script lê — publisher, bio e e-mail de autor ficam de fora, por serem dado
+pessoal de terceiro que o script ignora.
+
+**Pendência, fora desta change.** Para o caminho de atualização voltar a render,
+o script precisa aceitar `author` em lista e deixar de engolir exceção sem
+registro, e o feed da Lupa e o fim do Truco pedem decisão de fonte. Isso é
+escopo de change nova, não reparo desta.
+
 ---
 
 ## 4. Frescor: a lacuna de acervo não é evidência insuficiente
@@ -209,6 +260,9 @@ Lupa — contra as **seis** agências do corpus. Não alcança `boatos`,
 `fato-ou-fake` e `COMPROVA`, que juntas respondem por 2.364 dos 4.063 registros.
 E o feed devolve só os artigos recentes de cada agência: serve a incremento, não
 a recomposição do acervo.
+
+**Estado em 06/10/2026: inoperante.** A recoleta da task 3.5 extraiu zero
+alegações dos três feeds — ver «Recoleta de 06/10/2026» na seção 3.
 
 ---
 
@@ -295,7 +349,7 @@ exagerada`. Os pares em inglês não são exibidos ao usuário.
 | FactCenter | 21 registros `verdadeiro` em 4.063. O corpus **não** é fonte de itens verdadeiros, e amostrar isso dele é recusado em código |
 | FactCenter | janela 2013–2021, 54% em 2020; pautas posteriores a 2021 têm cobertura zero |
 | FactCenter | 245 registros mistos e 11 compilados, todos fora do banco de estímulos |
-| FACTCK.BR | reprovado para citação; a perda de caractere está na fonte e é irreversível |
+| FACTCK.BR | reprovado para citação; a perda de caractere está na fonte e é irreversível. A recoleta de 06/10/2026 pelos três feeds extraiu zero alegações |
 | FakeRecogna | reprovada para citação por texto transformado na origem, não por corrupção; serve a contagem e a estímulo declarado |
 | PUBHEALTH | classe majoritária é `true` (~52% do treino), não "maioria falsa" |
 | FakeHealth | 20 perguntas em dois conjuntos, não 10; o nome do derivado diz 10 e está errado |
