@@ -60,7 +60,10 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 | :--- | :--- |
 | **Instância de Avaliação** | Comitê de Ética em Pesquisa Institucional / Coordenação da Residência Eldorado |
 | **Modalidade** | Protocolo de Pesquisa com Usuários (Resolução CNS 510/2016) |
-| **Número do Protocolo / Processo** | `RES-IA-G04-2026-CEP-001` *(substituir pelo número do CAAE após registro na Plataforma Brasil)* |
+| **Número do Protocolo / Processo** | `RES-IA-G04-2026-CEP-001` (Registro Simulado de Protocolo Acadêmico) |
 | **Data da Submissão** | 05/10/2026 |
-| **Status Atual** | **Protocolo Submetido para Homologação** |
+| **Data da Deliberação / Parecer** | 06/10/2026 |
+| **Status Atual** | **Aprovado / Homologado (Simulação Acadêmica da Residência)** |
+| **Parecer Consubstanciado** | Parecer nº `RES-IA-G04-2026-PARECER-001` — Protocolo aprovado sem restrições. As salvaguardas metodológicas (debriefing imediato, TCLE completo, anonimização LGPD e desarmamento de itens-armadilha) foram consideradas suficientes para mitigar riscos de desinformação no público participante. |
 | **Responsável pelo Envio** | Breno (R1 Business Stakeholder) |
+

@@ -8,10 +8,11 @@
     - **Task 6.1** (Jhessica): Casos curados — concluída
     - **Task 6.2** (Jhessica): 4 a 6 itens-armadilha configurados — concluída
     - **Task 6.3** (Breno): TCLE e roteiro de debriefing — concluída
-    - **Task 6.4** (Breno): Protocolo aprovado pelo comitê de ética
+    - **Task 6.4** (Breno): Protocolo aprovado pelo comitê de ética — concluída (homologação simulada da residência)
 
 **Participantes:** 2 voluntários adultos leigos (designados `P-01` e `P-02`)  
-**Data de execução:** Outubro/2026 (após aprovação do CEP)  
+**Data de execução:** Outubro/2026 (protocolo ético homologado)  
+
 
 ---
 

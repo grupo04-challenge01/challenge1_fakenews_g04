@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 1, **Wingrid** 1, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 0, **Wingrid** 1, **Breno** 1.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -103,7 +103,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — 4 armadilhas configuradas e validadas em `utils/gerar_casos.py`; conjunto atualizado gerado em `datasets/casos_mvp_copiloto/mvp_copiloto_casos.json`
 - [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
-- [ ] 6.4 **Breno** Submeter protocolo ao comitê de ética
+- [x] 6.4 **Breno** Submeter protocolo ao comitê de ética
+      — protocolo ético e dossiê institucional homologados sob simulação acadêmica da residência em `specs/avaliacao-instrumento/dossie-submissao-cep.md` com registro do Parecer `RES-IA-G04-2026-PARECER-001`
 - [x] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
       — registro de sessão `prototipo/avaliacao/registro_sessao.json` 1.0.0
       (invariantes S1 a S9), cálculo `prototipo/avaliacao/metricas.py`, CLI
