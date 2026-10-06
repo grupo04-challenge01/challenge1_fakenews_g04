@@ -105,12 +105,16 @@ Se o estado for `evidência insuficiente` ou `lacuna de acervo`:
 - "bloco4": em `evidência insuficiente`, onde a pessoa pode procurar. Em
   `lacuna de acervo`, deixe "" vazio: o sistema escreve essa parte.
 
-Responda só com JSON. Na forma com evidência:
+Responda só com JSON, no formato do estado.
+Estado `com evidência` (se o veredito for "verdadeiro", o bloco3 NÃO começa com "Técnica:"):
 {{"bloco1": [{{"frase": "...", "trecho": "T1"}}],
  "bloco2": [{{"frase": "...", "trecho": "T1"}}, {{"frase": "...", "trecho": "T1"}}],
- "bloco3": "...", "bloco4": "..."}}
-Na forma sem evidência:
-{{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": "..."}}"""
+ "bloco3": "Técnica: rótulo. Qual sinal aparece nesta mensagem.",
+ "bloco4": "..."}}
+Estado `evidência insuficiente` (o bloco4 diz onde procurar, nunca vazio):
+{{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": "Onde a pessoa pode procurar."}}
+Estado `lacuna de acervo`:
+{{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": ""}}"""
 
 ID_TRECHO = re.compile(r"\bT[1-9]\d*\b")
 ENGANA = re.compile(r"\b(engana|enganos[ao]|é fals[ao]|mentira)\b", re.IGNORECASE)

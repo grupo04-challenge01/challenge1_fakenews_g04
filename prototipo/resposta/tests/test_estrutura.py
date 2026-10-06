@@ -461,3 +461,13 @@ def test_rebaixamento_guarda_as_duas_saidas_do_modelo():
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(primeira, BLOCOS_SEM))
     antes, depois = r.bruto.split("\n\n--- refeita na forma sem evidência ---\n\n")
     assert json.loads(antes) == primeira and json.loads(depois) == BLOCOS_SEM
+
+
+def test_prompt_tem_um_formato_por_estado():
+    # Sonda de 06/10, 10:01: com um formato só para a forma sem evidência, o S1
+    # deixou o bloco 4 vazio 3 vezes em 3; sem o prefixo no exemplo, o R4 escreveu
+    # o rótulo sem "Técnica:" 3 vezes em 3.
+    for estado in ("`com evidência`", f"`{INSUFICIENTE}`", "`lacuna de acervo`"):
+        assert f"Estado {estado}" in estrutura.SISTEMA
+    assert '"bloco3": "Técnica: rótulo.' in estrutura.SISTEMA
+    assert '"bloco4": "Onde a pessoa pode procurar."' in estrutura.SISTEMA
