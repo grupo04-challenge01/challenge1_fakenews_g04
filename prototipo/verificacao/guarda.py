@@ -6,8 +6,9 @@ só pelo conhecimento do modelo. O prompt da classificação já pede isso, mas 
 guarda não depende dele. Ela vale em três pontos, todos em código:
 
 1. Sem trecho, o modelo não é chamado. Não há como ele responder de memória.
-2. Com `limiar`, trecho de score abaixo dele conta como não recuperado. O valor
-   do limiar é a task 1.5; até lá o parâmetro fica sem valor padrão.
+2. Trecho de score abaixo de `limiar` conta como não recuperado. O padrão é
+   `LIMIAR_EVIDENCIA`, calibrado na task 1.5 (decisão 27); `limiar=None`
+   desliga o corte.
 3. Veredito que não cita trecho recuperado, ou que cita trecho que não existe,
    cai para `evidência insuficiente`, e o que o modelo disse fica registrado.
 
@@ -23,6 +24,7 @@ autoriza citá-lo. Sem trecho apto, o modelo não é chamado, como no ponto 1.
 """
 from dataclasses import dataclass, field
 
+from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
 from prototipo.verificacao import classificacao
 from prototipo.verificacao.modelo import chat_ollama
 
@@ -47,12 +49,12 @@ def _insuficiente(motivo):
 
 
 def _verificar(alegacao, trechos, chat, limiar):
+    if not trechos:
+        return _insuficiente("nenhum trecho recuperado"), []
     if limiar is not None:
         trechos = [t for t in trechos if t["score"] >= limiar]
         if not trechos:
             return _insuficiente(f"nenhum trecho acima do limiar {limiar}"), []
-    if not trechos:
-        return _insuficiente("nenhum trecho recuperado"), []
 
     referencias = [{k: t[k] for k in REFERENCIA}
                    for t in trechos if t.get("apto_citacao") is not True]
@@ -62,7 +64,7 @@ def _verificar(alegacao, trechos, chat, limiar):
     return _classificar(alegacao, trechos, chat), referencias
 
 
-def verificar(alegacao, trechos, chat=chat_ollama, limiar=None):
+def verificar(alegacao, trechos, chat=chat_ollama, limiar=LIMIAR_EVIDENCIA):
     v, referencias = _verificar(alegacao, trechos, chat, limiar)
     v.referencias = referencias
     return v

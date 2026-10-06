@@ -1,0 +1,4227 @@
+{
+ "modelo": "gemma4:12b-it-qat",
+ "think": false,
+ "k": 5,
+ "fusao": "score",
+ "gerado_em": "2026-10-06 10:46",
+ "casos": [
+  {
+   "tipo": "pos",
+   "id": "a01",
+   "familia": "verbatim",
+   "consulta": "O vírus da febre amarela sofreu uma mutação e a vacina não protege mais",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7104,
+     "cosseno": 0.8843,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato"
+    },
+    {
+     "score": 0.6263,
+     "cosseno": 0.8626,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6221,
+     "cosseno": 0.8647,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Febre amarela é uma farsa criada pelo governo para vender vacina #boato"
+    },
+    {
+     "score": 0.6142,
+     "cosseno": 0.8611,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    },
+    {
+     "score": 0.6133,
+     "cosseno": 0.8601,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma explicitamente que as mutações detectadas no vírus não afetam a eficácia da vacina, pois o imunizante protege contra diferentes genótipos e as alterações não atingem as proteínas centrais para o seu funcionamento.",
+   "segundos": 22.4
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a01",
+   "familia": "verbatim",
+   "consulta": "O vírus da febre amarela sofreu uma mutação e a vacina não protege mais",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6263,
+     "cosseno": 0.8626,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6221,
+     "cosseno": 0.8647,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Febre amarela é uma farsa criada pelo governo para vender vacina #boato"
+    },
+    {
+     "score": 0.6142,
+     "cosseno": 0.8611,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    },
+    {
+     "score": 0.6133,
+     "cosseno": 0.8601,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6076,
+     "cosseno": 0.8586,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médica funcionária do Instituto Butantan fala do perigo da vacina da febre amarela #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma que a vacina contra a febre amarela protege contra a infecção durante a vida toda e é altamente eficaz (acima de 95%), contradizendo a alegação de que ela não protegeria mais.",
+   "segundos": 22.2
+  },
+  {
+   "tipo": "pos",
+   "id": "a02",
+   "familia": "verbatim",
+   "consulta": "A vacina da gripe é um veneno mortal",
+   "posicao_do_alvo": 2,
+   "trechos": [
+    {
+     "score": 0.6771,
+     "cosseno": 0.9058,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    },
+    {
+     "score": 0.6672,
+     "cosseno": 0.9012,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    },
+    {
+     "score": 0.653,
+     "cosseno": 0.8952,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 informações falsas (e perigosas) sobre a gripe que sempre circulam online"
+    },
+    {
+     "score": 0.6437,
+     "cosseno": 0.8932,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 alertas falsos sobre efeitos colaterais de remédios, vacinas e exames"
+    },
+    {
+     "score": 0.6227,
+     "cosseno": 0.8868,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico diz que vacina da gripe está causando um surto mortal de gripe #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "criterio": "Os trechos identificam a alegação de que a vacina da gripe é um veneno mortal como boato, desmentindo a história e classificando-a como desinformação.",
+   "segundos": 22.8
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a02",
+   "familia": "verbatim",
+   "consulta": "A vacina da gripe é um veneno mortal",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6771,
+     "cosseno": 0.9058,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    },
+    {
+     "score": 0.653,
+     "cosseno": 0.8952,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 informações falsas (e perigosas) sobre a gripe que sempre circulam online"
+    },
+    {
+     "score": 0.6437,
+     "cosseno": 0.8932,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 alertas falsos sobre efeitos colaterais de remédios, vacinas e exames"
+    },
+    {
+     "score": 0.6227,
+     "cosseno": 0.8868,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico diz que vacina da gripe está causando um surto mortal de gripe #boato"
+    },
+    {
+     "score": 0.6218,
+     "cosseno": 0.8865,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra a gripe tem nível de mercúrio letal #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3
+   ],
+   "criterio": "Os trechos identificam a alegação de que a vacina da gripe é um veneno mortal como um boato e desmentem essa história, classificando-a como desinformação.",
+   "segundos": 24.3
+  },
+  {
+   "tipo": "pos",
+   "id": "a03",
+   "familia": "verbatim",
+   "consulta": "Vacina contra H1N1 causa narcolepsia",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7399,
+     "cosseno": 0.9198,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra H1N1 causa narcolepsia #boato"
+    },
+    {
+     "score": 0.702,
+     "cosseno": 0.9008,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É impossível que vacina cause alterações genéticas, dizem especialistas"
+    },
+    {
+     "score": 0.6977,
+     "cosseno": 0.8988,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: Vacinas contra a Covid-19 não são ‘derivadas de células fetais’ nem causam ‘modificação genética’"
+    },
+    {
+     "score": 0.6875,
+     "cosseno": 0.8954,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "Campanha de desinformação sobre vacina apela para ligação estapafúrdia entre imunizante e infertilidade"
+    },
+    {
+     "score": 0.6593,
+     "cosseno": 0.8844,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    3,
+    4
+   ],
+   "criterio": "As agências classificaram a alegação como falsa porque estudos do CDC não associaram a vacina contra H1N1 à narcolepsia e pesquisas no Reino Unido mostraram ocorrência extremamente baixa, sem evidências de risco em outros imunizantes.",
+   "segundos": 30.4
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a03",
+   "familia": "verbatim",
+   "consulta": "Vacina contra H1N1 causa narcolepsia",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.702,
+     "cosseno": 0.9008,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É impossível que vacina cause alterações genéticas, dizem especialistas"
+    },
+    {
+     "score": 0.6977,
+     "cosseno": 0.8988,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: Vacinas contra a Covid-19 não são ‘derivadas de células fetais’ nem causam ‘modificação genética’"
+    },
+    {
+     "score": 0.6875,
+     "cosseno": 0.8954,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "Campanha de desinformação sobre vacina apela para ligação estapafúrdia entre imunizante e infertilidade"
+    },
+    {
+     "score": 0.6593,
+     "cosseno": 0.8844,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    },
+    {
+     "score": 0.6202,
+     "cosseno": 0.8728,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2,
+    3
+   ],
+   "criterio": "As agências classificam como falso que as vacinas contra H1N1 causem narcolepsia de forma geral, esclarecendo que estudos não associaram a vacinação à doença e que casos raros foram restritos a um imunizante específico (Pandemrix) em regiões com suscetibilidade genética.",
+   "segundos": 38.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a04",
+   "familia": "verbatim",
+   "consulta": "Adultos têm que tomar a vacina contra o sarampo mesmo tendo se vacinado na infância",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7302,
+     "cosseno": 0.9013,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Adultos têm que tomar a vacina contra o sarampo mesmo tendo se vacinado na infância #boato"
+    },
+    {
+     "score": 0.6955,
+     "cosseno": 0.8912,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Todos devem tomar a vacina contra o sarampo"
+    },
+    {
+     "score": 0.6918,
+     "cosseno": 0.8894,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Todos devem tomar a vacina contra o sarampo"
+    },
+    {
+     "score": 0.6865,
+     "cosseno": 0.8863,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Rio terá campanha de vacinação contra a poliomelite e sarampo de 6 a 31 de agosto #boato"
+    },
+    {
+     "score": 0.6563,
+     "cosseno": 0.8778,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO",
+     "alegacao": "A vacina contra o sarampo deve ser tomada em duas doses"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    4
+   ],
+   "criterio": "O trecho afirma explicitamente que pessoas que já tomaram a vacina tríplice viral na infância não precisam se vacinar novamente.",
+   "segundos": 35.0
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a04",
+   "familia": "verbatim",
+   "consulta": "Adultos têm que tomar a vacina contra o sarampo mesmo tendo se vacinado na infância",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6955,
+     "cosseno": 0.8912,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Todos devem tomar a vacina contra o sarampo"
+    },
+    {
+     "score": 0.6918,
+     "cosseno": 0.8894,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Todos devem tomar a vacina contra o sarampo"
+    },
+    {
+     "score": 0.6865,
+     "cosseno": 0.8863,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Rio terá campanha de vacinação contra a poliomelite e sarampo de 6 a 31 de agosto #boato"
+    },
+    {
+     "score": 0.6563,
+     "cosseno": 0.8778,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO",
+     "alegacao": "A vacina contra o sarampo deve ser tomada em duas doses"
+    },
+    {
+     "score": 0.6498,
+     "cosseno": 0.8785,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO",
+     "alegacao": "A vacina é o único meio eficaz de evitar o sarampo"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    3
+   ],
+   "criterio": "O trecho afirma explicitamente que pessoas que já tomaram a vacina na infância não precisam tomar novamente.",
+   "segundos": 27.8
+  },
+  {
+   "tipo": "pos",
+   "id": "a05",
+   "familia": "verbatim",
+   "consulta": "A vacina contra febre amarela mata em 50% dos casos",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.722,
+     "cosseno": 0.8923,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato"
+    },
+    {
+     "score": 0.6693,
+     "cosseno": 0.8756,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6681,
+     "cosseno": 0.8728,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6605,
+     "cosseno": 0.8733,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato"
+    },
+    {
+     "score": 0.6509,
+     "cosseno": 0.8703,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Falso",
+     "alegacao": "'A vacina da febre amarela contém um porcentual absurdo de mercúrio.'"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    3
+   ],
+   "criterio": "Os trechos identificam explicitamente como boato a informação de que a vacina contra a febre amarela mata em 50% dos casos, afirmando que tal dado é falso.",
+   "segundos": 28.4
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a05",
+   "familia": "verbatim",
+   "consulta": "A vacina contra febre amarela mata em 50% dos casos",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6693,
+     "cosseno": 0.8756,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6681,
+     "cosseno": 0.8728,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6605,
+     "cosseno": 0.8733,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato"
+    },
+    {
+     "score": 0.6509,
+     "cosseno": 0.8703,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Falso",
+     "alegacao": "'A vacina da febre amarela contém um porcentual absurdo de mercúrio.'"
+    },
+    {
+     "score": 0.6394,
+     "cosseno": 0.867,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2
+   ],
+   "criterio": "O trecho identifica explicitamente que a afirmação de que a vacina contra febre amarela mata em 50% dos casos é um boato.",
+   "segundos": 28.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a06",
+   "familia": "verbatim",
+   "consulta": "Vacina contra febre amarela causa perda de visão e cegueira",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7579,
+     "cosseno": 0.9201,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    },
+    {
+     "score": 0.7155,
+     "cosseno": 0.9015,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6402,
+     "cosseno": 0.8728,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato"
+    },
+    {
+     "score": 0.6348,
+     "cosseno": 0.8745,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Exagerado",
+     "alegacao": "A bula traz como reações e danos: meningite, síndrome de Guillain-Barré e encefalopatias.'"
+    },
+    {
+     "score": 0.634,
+     "cosseno": 0.8736,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3
+   ],
+   "criterio": "Os trechos confirmam que a alegação de que a vacina contra febre amarela causa cegueira é um boato, afirmando explicitamente que não há previsão de efeitos colaterais relacionados à perda de visão.",
+   "segundos": 25.7
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a06",
+   "familia": "verbatim",
+   "consulta": "Vacina contra febre amarela causa perda de visão e cegueira",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.7155,
+     "cosseno": 0.9015,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6402,
+     "cosseno": 0.8728,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato"
+    },
+    {
+     "score": 0.6348,
+     "cosseno": 0.8745,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Exagerado",
+     "alegacao": "A bula traz como reações e danos: meningite, síndrome de Guillain-Barré e encefalopatias.'"
+    },
+    {
+     "score": 0.634,
+     "cosseno": 0.8736,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.633,
+     "cosseno": 0.8712,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2
+   ],
+   "criterio": "Os trechos classificam como boato a afirmação de que a vacina contra a febre amarela causa cegueira, esclarecendo que se trata de desinformação.",
+   "segundos": 24.4
+  },
+  {
+   "tipo": "pos",
+   "id": "a07",
+   "familia": "verbatim",
+   "consulta": "A vacina contra a gripe tem nível de mercúrio letal",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7356,
+     "cosseno": 0.9022,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra a gripe tem nível de mercúrio letal #boato"
+    },
+    {
+     "score": 0.7047,
+     "cosseno": 0.8893,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    },
+    {
+     "score": 0.7032,
+     "cosseno": 0.8877,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 alertas falsos sobre efeitos colaterais de remédios, vacinas e exames"
+    },
+    {
+     "score": 0.7009,
+     "cosseno": 0.89,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    },
+    {
+     "score": 0.6851,
+     "cosseno": 0.8815,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 informações falsas (e perigosas) sobre a gripe que sempre circulam online"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    3,
+    5
+   ],
+   "criterio": "Os trechos identificam a alegação como boato e afirmam explicitamente que a agência apurou e desmentiu a história de que a vacina contra a gripe tem nível letal de mercúrio.",
+   "segundos": 29.0
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a07",
+   "familia": "verbatim",
+   "consulta": "A vacina contra a gripe tem nível de mercúrio letal",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.7047,
+     "cosseno": 0.8893,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    },
+    {
+     "score": 0.7032,
+     "cosseno": 0.8877,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 alertas falsos sobre efeitos colaterais de remédios, vacinas e exames"
+    },
+    {
+     "score": 0.7009,
+     "cosseno": 0.89,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    },
+    {
+     "score": 0.6851,
+     "cosseno": 0.8815,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 informações falsas (e perigosas) sobre a gripe que sempre circulam online"
+    },
+    {
+     "score": 0.6778,
+     "cosseno": 0.8823,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Falso",
+     "alegacao": "'A vacina da febre amarela contém um porcentual absurdo de mercúrio.'"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2,
+    4
+   ],
+   "criterio": "As agências de checagem classificaram como boato e desmentiram a afirmação de que a vacina contra a gripe possui níveis letais de mercúrio.",
+   "segundos": 27.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a08",
+   "familia": "verbatim",
+   "consulta": "MPF proíbe a vacina contra o HPV em todo o Brasil",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7682,
+     "cosseno": 0.9112,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "MPF proíbe a vacina contra o HPV em todo Brasil #boato"
+    },
+    {
+     "score": 0.6386,
+     "cosseno": 0.8652,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina do H1N1 destrói a imunidade das pessoas e dá câncer #boato"
+    },
+    {
+     "score": 0.6281,
+     "cosseno": 0.8627,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacinas foram criadas para reduzir a população mundial usando o vírus do câncer #boato"
+    },
+    {
+     "score": 0.6157,
+     "cosseno": 0.8594,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Bula da Pfizer proíbe sexo após vacina por causa de alterações no DNA #boato"
+    },
+    {
+     "score": 0.6136,
+     "cosseno": 0.8625,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que a Covid é um plano internacional de controle e redução da população lançado em 2020"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho classifica explicitamente como boato a informação de que o Ministério Público Federal teria proibido a vacinação contra o HPV no Brasil.",
+   "segundos": 31.4
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a08",
+   "familia": "verbatim",
+   "consulta": "MPF proíbe a vacina contra o HPV em todo o Brasil",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6386,
+     "cosseno": 0.8652,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina do H1N1 destrói a imunidade das pessoas e dá câncer #boato"
+    },
+    {
+     "score": 0.6281,
+     "cosseno": 0.8627,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacinas foram criadas para reduzir a população mundial usando o vírus do câncer #boato"
+    },
+    {
+     "score": 0.6157,
+     "cosseno": 0.8594,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Bula da Pfizer proíbe sexo após vacina por causa de alterações no DNA #boato"
+    },
+    {
+     "score": 0.6136,
+     "cosseno": 0.8625,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que a Covid é um plano internacional de controle e redução da população lançado em 2020"
+    },
+    {
+     "score": 0.6025,
+     "cosseno": 0.8596,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "É melhor não tomar a vacina porque ela altera DNA e causa “homossexualismo” #boato"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Nenhum dos trechos fornecidos menciona qualquer proibição do MPF em relação à vacina contra o HPV.",
+   "segundos": 28.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a09",
+   "familia": "verbatim",
+   "consulta": "Larvicida pyriproxyfen causou a microcefalia, o Zika é uma farsa",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7831,
+     "cosseno": 0.9127,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Larvicida pyriproxyfen causou microcefalia; Zika é uma farsa #boato"
+    },
+    {
+     "score": 0.6807,
+     "cosseno": 0.8725,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre Zika, dengue, microcefalia e aedes aegypti"
+    },
+    {
+     "score": 0.6659,
+     "cosseno": 0.8692,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vírus zika não foi criado pelos Rockefeller, não tem patente e não gera lucro com vacinas"
+    },
+    {
+     "score": 0.6489,
+     "cosseno": 0.8634,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Microcefalia foi causada por vacina vencida de rubéola, diz balela"
+    },
+    {
+     "score": 0.6435,
+     "cosseno": 0.8626,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Causa da microcefalia é vacina para gestantes, diz estudo #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho classifica como boato a afirmação de que o vírus Zika é uma farsa e que a causa da microcefalia seria o larvicida Pyriproxyfen.",
+   "segundos": 29.5
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a09",
+   "familia": "verbatim",
+   "consulta": "Larvicida pyriproxyfen causou a microcefalia, o Zika é uma farsa",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6807,
+     "cosseno": 0.8725,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre Zika, dengue, microcefalia e aedes aegypti"
+    },
+    {
+     "score": 0.6659,
+     "cosseno": 0.8692,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vírus zika não foi criado pelos Rockefeller, não tem patente e não gera lucro com vacinas"
+    },
+    {
+     "score": 0.6489,
+     "cosseno": 0.8634,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Microcefalia foi causada por vacina vencida de rubéola, diz balela"
+    },
+    {
+     "score": 0.6435,
+     "cosseno": 0.8626,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Causa da microcefalia é vacina para gestantes, diz estudo #boato"
+    },
+    {
+     "score": 0.6345,
+     "cosseno": 0.8604,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Microcefalia: governo e sete estados divergem sobre casos confirmados"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Nenhum dos trechos fornecidos menciona o larvicida pyriproxyfen ou afirma que o vírus Zika é uma farsa.",
+   "segundos": 27.7
+  },
+  {
+   "tipo": "pos",
+   "id": "a10",
+   "familia": "verbatim",
+   "consulta": "Chá de erva-doce cura a gripe H1N1 e é a fórmula do Tamiflu",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.7804,
+     "cosseno": 0.9251,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Chá de erva-doce cura a gripe H1N1 e é a fórmula do Tamiflu #boato"
+    },
+    {
+     "score": 0.7667,
+     "cosseno": 0.9174,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Chá de erva-doce cura o novo coronavírus, diz diretor do HC #boato"
+    },
+    {
+     "score": 0.7644,
+     "cosseno": 0.9164,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu #boato"
+    },
+    {
+     "score": 0.7625,
+     "cosseno": 0.9159,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que diretor do HC mandou mensagem com dicas para evitar gripe e que Tamiflu é feito de erva-doce"
+    },
+    {
+     "score": 0.7391,
+     "cosseno": 0.9027,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que chá de erva-doce pode ser usado como tratamento contra o novo coronavírus"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "criterio": "Os trechos classificam a alegação como boato, fake ou falso, esclarecendo que o chá de erva-doce não possui as mesmas substâncias do Tamiflu e que o princípio ativo deste medicamento (fosfato de oseltamivir) não está presente na planta.",
+   "segundos": 36.7
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a10",
+   "familia": "verbatim",
+   "consulta": "Chá de erva-doce cura a gripe H1N1 e é a fórmula do Tamiflu",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.7667,
+     "cosseno": 0.9174,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Chá de erva-doce cura o novo coronavírus, diz diretor do HC #boato"
+    },
+    {
+     "score": 0.7644,
+     "cosseno": 0.9164,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu #boato"
+    },
+    {
+     "score": 0.7625,
+     "cosseno": 0.9159,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que diretor do HC mandou mensagem com dicas para evitar gripe e que Tamiflu é feito de erva-doce"
+    },
+    {
+     "score": 0.7391,
+     "cosseno": 0.9027,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que chá de erva-doce pode ser usado como tratamento contra o novo coronavírus"
+    },
+    {
+     "score": 0.7353,
+     "cosseno": 0.902,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Renato Ribeiro, diretor do HC, recomenda chá de erva-doce e vitamina C contra o coronavírus #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    4,
+    5
+   ],
+   "criterio": "Os trechos confirmam que o chá de erva-doce não possui a mesma substância que o Tamiflu (cujo princípio ativo é o fosfato de oseltamivir) e que essa informação foi desmentida por órgãos oficiais e médicos.",
+   "segundos": 36.0
+  },
+  {
+   "tipo": "pos",
+   "id": "a11",
+   "familia": "reformulada",
+   "consulta": "é verdade que quem tomou a vacina amarela pode ficar com problema no fígado?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6743,
+     "cosseno": 0.9068,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato"
+    },
+    {
+     "score": 0.6495,
+     "cosseno": 0.8971,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6082,
+     "cosseno": 0.8866,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    },
+    {
+     "score": 0.6065,
+     "cosseno": 0.8873,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.6061,
+     "cosseno": 0.8871,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médica funcionária do Instituto Butantan fala do perigo da vacina da febre amarela #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2
+   ],
+   "criterio": "Os trechos classificam como boato a afirmação de que a vacina contra a febre amarela 'paralisa' ou destrói o fígado, esclarecendo que a história é uma teoria da conspiração.",
+   "segundos": 32.6
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a11",
+   "familia": "reformulada",
+   "consulta": "é verdade que quem tomou a vacina amarela pode ficar com problema no fígado?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6495,
+     "cosseno": 0.8971,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados"
+    },
+    {
+     "score": 0.6082,
+     "cosseno": 0.8866,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato"
+    },
+    {
+     "score": 0.6065,
+     "cosseno": 0.8873,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.6061,
+     "cosseno": 0.8871,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médica funcionária do Instituto Butantan fala do perigo da vacina da febre amarela #boato"
+    },
+    {
+     "score": 0.6045,
+     "cosseno": 0.8886,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O texto classifica como boato a afirmação de que a vacina da febre amarela paralisa o fígado, afirmando que a vacina é segura.",
+   "segundos": 30.4
+  },
+  {
+   "tipo": "pos",
+   "id": "a12",
+   "familia": "reformulada",
+   "consulta": "o governo inventou a doença para vender vacina?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6327,
+     "cosseno": 0.8771,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Febre amarela é uma farsa criada pelo governo para vender vacina #boato"
+    },
+    {
+     "score": 0.5922,
+     "cosseno": 0.8773,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vírus zika não foi criado pelos Rockefeller, não tem patente e não gera lucro com vacinas"
+    },
+    {
+     "score": 0.5855,
+     "cosseno": 0.8596,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.5852,
+     "cosseno": 0.8721,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Zika vírus foi criado para controle da população #boato"
+    },
+    {
+     "score": 0.5849,
+     "cosseno": 0.8655,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Larvicida pyriproxyfen causou microcefalia; Zika é uma farsa #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    3
+   ],
+   "criterio": "O trecho classifica explicitamente a história de que o governo inventou uma doença para vender vacina como 'bobagem tão absurda' e um 'boato', tratando a alegação de que a doença é uma farsa como desinformação.",
+   "segundos": 32.2
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a12",
+   "familia": "reformulada",
+   "consulta": "o governo inventou a doença para vender vacina?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5922,
+     "cosseno": 0.8773,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vírus zika não foi criado pelos Rockefeller, não tem patente e não gera lucro com vacinas"
+    },
+    {
+     "score": 0.5855,
+     "cosseno": 0.8596,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.5852,
+     "cosseno": 0.8721,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Zika vírus foi criado para controle da população #boato"
+    },
+    {
+     "score": 0.5849,
+     "cosseno": 0.8655,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Larvicida pyriproxyfen causou microcefalia; Zika é uma farsa #boato"
+    },
+    {
+     "score": 0.5646,
+     "cosseno": 0.8579,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Empresa chinesa que produz vacina contra a Covid-19 vendia vacinas falsas #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2
+   ],
+   "criterio": "O trecho classifica como boato a afirmação de que o governo inventou a febre amarela e que a doença é uma farsa, tratando a história como desinformação e sensacionalismo.",
+   "segundos": 29.4
+  },
+  {
+   "tipo": "pos",
+   "id": "a13",
+   "familia": "reformulada",
+   "consulta": "a bula da vacina admite que ela pode causar autismo em criança?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.685,
+     "cosseno": 0.9066,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que bula confirme relação de vacina com autismo"
+    },
+    {
+     "score": 0.6434,
+     "cosseno": 0.8937,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas qu"
+    },
+    {
+     "score": 0.6405,
+     "cosseno": 0.8918,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Bula da Pfizer proíbe sexo após vacina por causa de alterações no DNA #boato"
+    },
+    {
+     "score": 0.6203,
+     "cosseno": 0.8858,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Exagerado",
+     "alegacao": "A bula traz como reações e danos: meningite, síndrome de Guillain-Barré e encefalopatias.'"
+    },
+    {
+     "score": 0.5811,
+     "cosseno": 0.876,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso que pesquisa tenha descoberto que vacina da Pfizer pode causar Alzheimer e outras doenças degenerativas"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho esclarece que, embora a bula mencionasse relatos voluntários, o próprio texto afirma explicitamente que não é possível estabelecer uma relação causal entre a vacina e o autismo.",
+   "segundos": 24.9
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a13",
+   "familia": "reformulada",
+   "consulta": "a bula da vacina admite que ela pode causar autismo em criança?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6434,
+     "cosseno": 0.8937,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas qu"
+    },
+    {
+     "score": 0.6405,
+     "cosseno": 0.8918,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Bula da Pfizer proíbe sexo após vacina por causa de alterações no DNA #boato"
+    },
+    {
+     "score": 0.6203,
+     "cosseno": 0.8858,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Exagerado",
+     "alegacao": "A bula traz como reações e danos: meningite, síndrome de Guillain-Barré e encefalopatias.'"
+    },
+    {
+     "score": 0.5811,
+     "cosseno": 0.876,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso que pesquisa tenha descoberto que vacina da Pfizer pode causar Alzheimer e outras doenças degenerativas"
+    },
+    {
+     "score": 0.578,
+     "cosseno": 0.872,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "ENGANOSO",
+     "alegacao": "Não, manual de testes da vacina da Pfizer não indica riscos de alterações genéticas"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma que o boato sobre vacinas provocarem autismo é antigo, baseado em um estudo retratado e sem base científica, reforçando que as vacinas são seguras.",
+   "segundos": 25.2
+  },
+  {
+   "tipo": "pos",
+   "id": "a14",
+   "familia": "reformulada",
+   "consulta": "o supremo liberou estrangeiro de se vacinar para entrar no país?",
+   "posicao_do_alvo": 5,
+   "trechos": [
+    {
+     "score": 0.6289,
+     "cosseno": 0.8504,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "STF não decidiu em 2018 que vacinação obrigatória seria inconstitucional"
+    },
+    {
+     "score": 0.6187,
+     "cosseno": 0.8496,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É falso tuíte afirmando que Pazuello viajou para os EUA com passaporte diplomático"
+    },
+    {
+     "score": 0.6085,
+     "cosseno": 0.8469,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "STF proibiu vacinação obrigatória para venezuelanos a pedido do PSOL em 2018 #boato"
+    },
+    {
+     "score": 0.6083,
+     "cosseno": 0.8467,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso tuíte afirmando que Pazuello viajou para os EUA com passaporte diplomático"
+    },
+    {
+     "score": 0.6016,
+     "cosseno": 0.8451,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que STF impediu obrigatoriedade da vacinação contra sarampo para imigrantes venezuelanos"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    5
+   ],
+   "criterio": "As agências de checagem classificaram como falso que o STF impediu a vacinação obrigatória de imigrantes, afirmando explicitamente que o tribunal não impediu que o Ministério da Saúde instituísse tal medida.",
+   "segundos": 30.3
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a14",
+   "familia": "reformulada",
+   "consulta": "o supremo liberou estrangeiro de se vacinar para entrar no país?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6289,
+     "cosseno": 0.8504,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "STF não decidiu em 2018 que vacinação obrigatória seria inconstitucional"
+    },
+    {
+     "score": 0.6187,
+     "cosseno": 0.8496,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É falso tuíte afirmando que Pazuello viajou para os EUA com passaporte diplomático"
+    },
+    {
+     "score": 0.6085,
+     "cosseno": 0.8469,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "STF proibiu vacinação obrigatória para venezuelanos a pedido do PSOL em 2018 #boato"
+    },
+    {
+     "score": 0.6083,
+     "cosseno": 0.8467,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso tuíte afirmando que Pazuello viajou para os EUA com passaporte diplomático"
+    },
+    {
+     "score": 0.6009,
+     "cosseno": 0.8436,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Presidente de um dos países do Leste Europeu se vacinou sem agulha #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma explicitamente que a alegação de que o STF decidiu em 2018 que a vacinação compulsória seria inconstitucional (no caso de imigrantes venezuelanos) é falsa.",
+   "segundos": 13.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a15",
+   "familia": "reformulada",
+   "consulta": "de quanto em quanto tempo preciso repetir a dose da vacina amarela?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6756,
+     "cosseno": 0.8937,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "‘A vacina da febre amarela no Rio só vale por 3 anos’. Será?"
+    },
+    {
+     "score": 0.6365,
+     "cosseno": 0.8841,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO, MAS",
+     "alegacao": "Para evitar a febre amarela é necessário tomar uma vacina"
+    },
+    {
+     "score": 0.6274,
+     "cosseno": 0.8752,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato"
+    },
+    {
+     "score": 0.6166,
+     "cosseno": 0.8765,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6144,
+     "cosseno": 0.8759,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    }
+   ],
+   "rotulo": "verdadeiro fora de contexto ou exagerado",
+   "citados": [
+    1,
+    4
+   ],
+   "criterio": "Os trechos apresentam informações conflitantes: T1 afirma que a OMS entende que a vacina única vale para a vida toda, enquanto T2 diz que ela é válida por dez anos; o rótulo reflete essa inconsistência de prazos na base fornecida.",
+   "segundos": 31.5
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a15",
+   "familia": "reformulada",
+   "consulta": "de quanto em quanto tempo preciso repetir a dose da vacina amarela?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6365,
+     "cosseno": 0.8841,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO, MAS",
+     "alegacao": "Para evitar a febre amarela é necessário tomar uma vacina"
+    },
+    {
+     "score": 0.6274,
+     "cosseno": 0.8752,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato"
+    },
+    {
+     "score": 0.6166,
+     "cosseno": 0.8765,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Post confunde ao comparar letalidade da covid-19 com outras doenças"
+    },
+    {
+     "score": 0.6144,
+     "cosseno": 0.8759,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato"
+    },
+    {
+     "score": 0.6085,
+     "cosseno": 0.8738,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "Grávidas devem tomar vacina contra a febre amarela"
+    }
+   ],
+   "rotulo": "verdadeiro fora de contexto ou exagerado",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma que a vacina é válida por dez anos, mas não confirma se essa é a periodicidade obrigatória para todos os casos, pois outro trecho indica que ela protege contra a infecção durante a vida toda.",
+   "segundos": 26.6
+  },
+  {
+   "tipo": "pos",
+   "id": "a16",
+   "familia": "reformulada",
+   "consulta": "um ex-presidente barrou a compra de vacina para uma doença do cérebro?",
+   "posicao_do_alvo": 4,
+   "trechos": [
+    {
+     "score": 0.6035,
+     "cosseno": 0.8604,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Robert F. Kennedy Jr. escreve texto que aponta que vacina mRNA contra Covid-19 altera o DNA #boato"
+    },
+    {
+     "score": 0.6029,
+     "cosseno": 0.8598,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Lula proibiu aplicação de vacina contra meningite no SUS em 2010 #boato"
+    },
+    {
+     "score": 0.6027,
+     "cosseno": 0.8574,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "É falso que filho do ex-presidente Lula comprou 20% das ações da Sinovac"
+    },
+    {
+     "score": 0.5907,
+     "cosseno": 0.8588,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "distorcido",
+     "alegacao": "Lula não vetou distribuição de vacina contra meningite; sites distorcem informações"
+    },
+    {
+     "score": 0.5824,
+     "cosseno": 0.8543,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que todos os ex-presidentes recusaram convite de Doria para tomar a vacina contra Covid-19"
+    }
+   ],
+   "rotulo": "verdadeiro fora de contexto ou exagerado",
+   "citados": [
+    2,
+    4
+   ],
+   "criterio": "Os trechos confirmam que o ex-presidente Lula vetou um projeto de lei em 2010 que incluía a vacina contra a meningite (doença do cérebro), mas explicam que o veto ocorreu por falta de critérios epidemiológicos e entraves burocráticos, não sendo uma proibição direta da vacina em si.",
+   "segundos": 42.9
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a16",
+   "familia": "reformulada",
+   "consulta": "um ex-presidente barrou a compra de vacina para uma doença do cérebro?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6035,
+     "cosseno": 0.8604,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Robert F. Kennedy Jr. escreve texto que aponta que vacina mRNA contra Covid-19 altera o DNA #boato"
+    },
+    {
+     "score": 0.6029,
+     "cosseno": 0.8598,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Lula proibiu aplicação de vacina contra meningite no SUS em 2010 #boato"
+    },
+    {
+     "score": 0.6027,
+     "cosseno": 0.8574,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "É falso que filho do ex-presidente Lula comprou 20% das ações da Sinovac"
+    },
+    {
+     "score": 0.5824,
+     "cosseno": 0.8543,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que todos os ex-presidentes recusaram convite de Doria para tomar a vacina contra Covid-19"
+    },
+    {
+     "score": 0.575,
+     "cosseno": 0.8529,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico da Bélgica está certo ao falar que vacinas não têm comprovação, mudam DNA e controlam pessoas pelo 5G #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2
+   ],
+   "criterio": "O trecho desmente que o ex-presidente Lula proibiu a vacina da meningite, esclarecendo que, embora tenha havido um veto real em 2010, a alegação de que ele proibiu a distribuição ou causou a morte do neto é falsa.",
+   "segundos": 20.5
+  },
+  {
+   "tipo": "pos",
+   "id": "a17",
+   "familia": "reformulada",
+   "consulta": "uma família rica registrou a patente do vírus para lucrar com a vacina?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6937,
+     "cosseno": 0.8956,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vírus zika não foi criado pelos Rockefeller, não tem patente e não gera lucro com vacinas"
+    },
+    {
+     "score": 0.6508,
+     "cosseno": 0.8798,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Empresa de Bill Gates é a dona da patente do novo coronavírus #boato"
+    },
+    {
+     "score": 0.6365,
+     "cosseno": 0.8721,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Não é do novo coronavírus a patente citada em posts nas redes sociais"
+    },
+    {
+     "score": 0.6259,
+     "cosseno": 0.8693,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que patente prove que farmacêuticas espalharam novo coronavírus para vender vacinas"
+    },
+    {
+     "score": 0.6215,
+     "cosseno": 0.8689,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "É falso que fundação de Bill Gates financiou patente do novo coronavírus"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "criterio": "Os trechos desmentem a alegação ao mostrar que as patentes citadas em boatos não pertencem a famílias ricas para lucrar com vacinas humanas, mas sim a instituições de pesquisa (como o Instituto Pirbright) e referem-se a vírus de animais ou versões atenuadas sem relação com os vírus humanos mencionados.",
+   "segundos": 49.5
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a17",
+   "familia": "reformulada",
+   "consulta": "uma família rica registrou a patente do vírus para lucrar com a vacina?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6508,
+     "cosseno": 0.8798,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Empresa de Bill Gates é a dona da patente do novo coronavírus #boato"
+    },
+    {
+     "score": 0.6365,
+     "cosseno": 0.8721,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Não é do novo coronavírus a patente citada em posts nas redes sociais"
+    },
+    {
+     "score": 0.6259,
+     "cosseno": 0.8693,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que patente prove que farmacêuticas espalharam novo coronavírus para vender vacinas"
+    },
+    {
+     "score": 0.6215,
+     "cosseno": 0.8689,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "É falso que fundação de Bill Gates financiou patente do novo coronavírus"
+    },
+    {
+     "score": 0.5913,
+     "cosseno": 0.863,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Vacinas de RNA contra a Covid-19 não são capazes de alterar o DNA"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2,
+    3
+   ],
+   "criterio": "Os trechos confirmam que a patente citada em boatos não é do novo coronavírus, mas sim de um vírus da bronquite infecciosa aviária (que afeta aves e não humanos), registrado por um instituto de pesquisa e não por uma família rica.",
+   "segundos": 43.0
+  },
+  {
+   "tipo": "pos",
+   "id": "a18",
+   "familia": "reformulada",
+   "consulta": "sem-terra atearam fogo no laboratório onde faziam a vacina?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6011,
+     "cosseno": 0.8606,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "MST queimou laboratório que produzia vacina contra a meningite #boato"
+    },
+    {
+     "score": 0.5792,
+     "cosseno": 0.8605,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que laboratório de Wuhan e Pfizer sejam de propriedade da farmacêutica Glaxo"
+    },
+    {
+     "score": 0.5631,
+     "cosseno": 0.8563,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso que Europa tenha ‘interditado’ vacinas chinesas"
+    },
+    {
+     "score": 0.5548,
+     "cosseno": 0.8549,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É impossível que vacina cause alterações genéticas, dizem especialistas"
+    },
+    {
+     "score": 0.5545,
+     "cosseno": 0.8548,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra Covid-19 matou três jovens (18, 16 e 13 anos) e destruiu família #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho identifica a história de que o MST queimou um laboratório de vacinas como boato.",
+   "segundos": 32.0
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a18",
+   "familia": "reformulada",
+   "consulta": "sem-terra atearam fogo no laboratório onde faziam a vacina?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5792,
+     "cosseno": 0.8605,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que laboratório de Wuhan e Pfizer sejam de propriedade da farmacêutica Glaxo"
+    },
+    {
+     "score": 0.5631,
+     "cosseno": 0.8563,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "É falso que Europa tenha ‘interditado’ vacinas chinesas"
+    },
+    {
+     "score": 0.5548,
+     "cosseno": 0.8549,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "É impossível que vacina cause alterações genéticas, dizem especialistas"
+    },
+    {
+     "score": 0.5545,
+     "cosseno": 0.8548,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra Covid-19 matou três jovens (18, 16 e 13 anos) e destruiu família #boato"
+    },
+    {
+     "score": 0.5532,
+     "cosseno": 0.8545,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Laboratório de Wuhan é da Glaxo, Pfizer e recebe dinheiro de Soros e Gates #boato"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Nenhum dos trechos recuperados menciona o movimento sem-terra ou qualquer ato de incêndio em laboratórios de vacinas.",
+   "segundos": 30.9
+  },
+  {
+   "tipo": "pos",
+   "id": "a19",
+   "familia": "reformulada",
+   "consulta": "aquele suco de raiz que a universidade estudou corta a doença do mosquito em quatro horas?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.6932,
+     "cosseno": 0.8831,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas"
+    },
+    {
+     "score": 0.6767,
+     "cosseno": 0.8756,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue"
+    },
+    {
+     "score": 0.6272,
+     "cosseno": 0.865,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Mosquitos transgênicos causaram Zika vírus #boato"
+    },
+    {
+     "score": 0.6076,
+     "cosseno": 0.8554,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Própolis afasta mosquito da febre amarela e da dengue #boato"
+    },
+    {
+     "score": 0.5956,
+     "cosseno": 0.8533,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Suco de beterraba milagroso cura câncer em 42 horas e já curou 50 mil #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1,
+    2
+   ],
+   "criterio": "As agências de checagem confirmam que não existe nenhum estudo da UFMG que comprove a eficácia do suco de inhame para cortar os efeitos da dengue em quatro horas.",
+   "segundos": 32.0
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a19",
+   "familia": "reformulada",
+   "consulta": "aquele suco de raiz que a universidade estudou corta a doença do mosquito em quatro horas?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6767,
+     "cosseno": 0.8756,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue"
+    },
+    {
+     "score": 0.6272,
+     "cosseno": 0.865,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Mosquitos transgênicos causaram Zika vírus #boato"
+    },
+    {
+     "score": 0.6076,
+     "cosseno": 0.8554,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Própolis afasta mosquito da febre amarela e da dengue #boato"
+    },
+    {
+     "score": 0.5956,
+     "cosseno": 0.8533,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Suco de beterraba milagroso cura câncer em 42 horas e já curou 50 mil #boato"
+    },
+    {
+     "score": 0.5932,
+     "cosseno": 0.8546,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "Não é verdade que OMS aprovou mistura de pimenta, mel e gengibre como cura da Covid-19"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma que a informação é falsa e que não foi realizado qualquer estudo pela UFMG que comprovasse a eficácia do suco de inhame no tratamento da dengue.",
+   "segundos": 35.4
+  },
+  {
+   "tipo": "pos",
+   "id": "a20",
+   "familia": "reformulada",
+   "consulta": "tomar a vacina todo ano acaba derrubando a defesa do corpo e pode dar tumor?",
+   "posicao_do_alvo": 1,
+   "trechos": [
+    {
+     "score": 0.5785,
+     "cosseno": 0.8893,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina do H1N1 destrói a imunidade das pessoas e dá câncer #boato"
+    },
+    {
+     "score": 0.5715,
+     "cosseno": 0.8791,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "Não é verdade que vacina contra a covid-19 cause câncer, danos genéticos ou ‘homossexualismo’"
+    },
+    {
+     "score": 0.5684,
+     "cosseno": 0.8771,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra Covid-19 faz imunidade do corpo diminuir e chance de infecção aumentar #boato"
+    },
+    {
+     "score": 0.5665,
+     "cosseno": 0.8781,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "É melhor não tomar a vacina porque ela altera DNA e causa “homossexualismo” #boato"
+    },
+    {
+     "score": 0.564,
+     "cosseno": 0.8758,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "É enganoso post no Facebook sobre morte de médico por covid-19 após tomar a vacina"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    1
+   ],
+   "criterio": "O trecho afirma explicitamente que a história de que a vacina destrói a imunidade e causa câncer é falsa, destacando que as vacinas colaboram para fortalecer o sistema imune.",
+   "segundos": 37.7
+  },
+  {
+   "tipo": "vizinho",
+   "id": "a20",
+   "familia": "reformulada",
+   "consulta": "tomar a vacina todo ano acaba derrubando a defesa do corpo e pode dar tumor?",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5715,
+     "cosseno": 0.8791,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Falso",
+     "alegacao": "Não é verdade que vacina contra a covid-19 cause câncer, danos genéticos ou ‘homossexualismo’"
+    },
+    {
+     "score": 0.5684,
+     "cosseno": 0.8771,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra Covid-19 faz imunidade do corpo diminuir e chance de infecção aumentar #boato"
+    },
+    {
+     "score": 0.5665,
+     "cosseno": 0.8781,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "É melhor não tomar a vacina porque ela altera DNA e causa “homossexualismo” #boato"
+    },
+    {
+     "score": 0.564,
+     "cosseno": 0.8758,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "É enganoso post no Facebook sobre morte de médico por covid-19 após tomar a vacina"
+    },
+    {
+     "score": 0.5586,
+     "cosseno": 0.8777,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacinação em massa criará novas variantes da Covid-19, acabar com sistema imunológico e destruir a humanidade #boato"
+    }
+   ],
+   "rotulo": "falso",
+   "citados": [
+    2,
+    5
+   ],
+   "criterio": "Os trechos desmentem que as vacinas diminuam a imunidade do organismo, classificando essa afirmação como 'pura balela' e informando que a hipótese de a vacina destruir o sistema imunológico não faz sentido.",
+   "segundos": 42.6
+  },
+  {
+   "tipo": "ausente",
+   "id": "n01",
+   "familia": "",
+   "consulta": "Qdenga causa a própria dengue em quem toma",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.641,
+     "cosseno": 0.8572,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Tomar paracetamol causa morte em pacientes com dengue #boato"
+    },
+    {
+     "score": 0.6303,
+     "cosseno": 0.8556,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas"
+    },
+    {
+     "score": 0.6124,
+     "cosseno": 0.8504,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Própolis espanta mosquito da zika e dengue #boato"
+    },
+    {
+     "score": 0.6037,
+     "cosseno": 0.8482,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 alertas falsos sobre efeitos colaterais de remédios, vacinas e exames"
+    },
+    {
+     "score": 0.5864,
+     "cosseno": 0.8472,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "7 boatos sobre Zika, dengue, microcefalia e aedes aegypti"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Nenhum dos trechos fornecidos menciona o medicamento Qdenga ou afirmações sobre ele causar dengue.",
+   "segundos": 35.0
+  },
+  {
+   "tipo": "ausente",
+   "id": "n02",
+   "familia": "",
+   "consulta": "a vacina contra mpox foi aprovada sem teste",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5739,
+     "cosseno": 0.8689,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO, MAS",
+     "alegacao": "(…) [CoronaVac é] uma vacina chinesa que não tem comprovação nenhuma"
+    },
+    {
+     "score": 0.5649,
+     "cosseno": 0.8663,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico de Cabo Frio afirma que vacina contra Covid-19 mata #boato"
+    },
+    {
+     "score": 0.5649,
+     "cosseno": 0.8633,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico denuncia que vacina chinesa será aplicada como um teste nos brasileiros #boato"
+    },
+    {
+     "score": 0.5617,
+     "cosseno": 0.8659,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "FALSO",
+     "alegacao": "O placebo não é capaz de matar uma pessoa, mas um teste de uma vacina [a CoronaVac] sim"
+    },
+    {
+     "score": 0.5599,
+     "cosseno": 0.8704,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médico Michael Yeadon (ex-vice da Pfizer) diz que vacina a -80°C é um agente de transfecção de células e material genético #boato"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho nos textos fornecidos que mencione a vacina contra mpox ou sobre a aprovação de qualquer vacina específica para essa doença.",
+   "segundos": 30.7
+  },
+  {
+   "tipo": "ausente",
+   "id": "n03",
+   "familia": "",
+   "consulta": "o vírus oropouche foi criado em laboratório",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6234,
+     "cosseno": 0.8744,
+     "corpus": "factcenter_saude",
+     "agencia": "aos fatos",
+     "veredito_original": "falso",
+     "alegacao": "É falso que TV italiana noticiou em 2015 que novo coronavírus foi criado em laboratório"
+    },
+    {
+     "score": 0.609,
+     "cosseno": 0.8684,
+     "corpus": "factcenter_saude",
+     "agencia": "fato-ou-fake",
+     "veredito_original": "fake",
+     "alegacao": "É #FAKE que TV da Itália mostrou que novo coronavírus foi fabricado em laboratório chinês"
+    },
+    {
+     "score": 0.5969,
+     "cosseno": 0.8654,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "Reportagem de TV italiana sobre vírus criado em laboratório chinês não tem relação com a covid-19"
+    },
+    {
+     "score": 0.5885,
+     "cosseno": 0.8606,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Série My Secret Terrius avisou que China iria criar coronavírus como arma biológica #boato"
+    },
+    {
+     "score": 0.5862,
+     "cosseno": 0.8607,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "ENGANOSO",
+     "alegacao": "Reportagem de TV italiana sobre vírus criado em laboratório chinês não tem relação com a covid-19"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho que mencione o vírus Oropouche; todos os textos tratam exclusivamente sobre a origem do vírus SARS-CoV-2 (Covid-19).",
+   "segundos": 32.4
+  },
+  {
+   "tipo": "ausente",
+   "id": "n04",
+   "familia": "",
+   "consulta": "semaglutida faz o estômago parar de funcionar",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5974,
+     "cosseno": 0.8407,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Beber água morna cura câncer; água gelada causa infarto #boato"
+    },
+    {
+     "score": 0.5965,
+     "cosseno": 0.8354,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Água gelada faz mal para você; causa câncer e infarto #boato"
+    },
+    {
+     "score": 0.5828,
+     "cosseno": 0.8331,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Água gelada faz mal para o fígado, coração e causa câncer, diz Dr. Drauzio Varella #boato"
+    },
+    {
+     "score": 0.5794,
+     "cosseno": 0.8335,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Comer frutas de estômago vazio evita o câncer #boato"
+    },
+    {
+     "score": 0.577,
+     "cosseno": 0.8371,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "ENGANOSO",
+     "alegacao": "Especialistas esclarecem que levantar-se rápido durante a noite não causa morte súbita"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho que mencione a semaglutida ou seus efeitos sobre o funcionamento do estômago.",
+   "segundos": 30.9
+  },
+  {
+   "tipo": "ausente",
+   "id": "n05",
+   "familia": "",
+   "consulta": "tomar Qdenga junto com a vacina da gripe é perigoso",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.5932,
+     "cosseno": 0.8724,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Após vacinarem milhões, descobriram que vacina da gripe é veneno mortal #boato"
+    },
+    {
+     "score": 0.576,
+     "cosseno": 0.8662,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina contra a gripe tem nível de mercúrio letal #boato"
+    },
+    {
+     "score": 0.5746,
+     "cosseno": 0.868,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da gripe é um veneno mortal #boato"
+    },
+    {
+     "score": 0.5719,
+     "cosseno": 0.8653,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Médicos por la Verdad falam a verdade ao relatar que a pandemia da Covid-19 é uma farsa, vacina da gripe e 5G causam a doença, que testes, i"
+    },
+    {
+     "score": 0.5603,
+     "cosseno": 0.8649,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina da China e de Oxford são feitas com DNA recombinante e não deram certo em porcos #boato"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho nos textos fornecidos que mencione especificamente a vacina Qdenga ou a segurança de tomá-la em conjunto com a vacina da gripe.",
+   "segundos": 33.0
+  },
+  {
+   "tipo": "ausente",
+   "id": "n06",
+   "familia": "",
+   "consulta": "qual o melhor tênis para corrida de rua",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.69,
+     "cosseno": 0.8292,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "FALSO",
+     "alegacao": "Não, Nike não tem relação com produção de ‘tênis de Satanás’"
+    },
+    {
+     "score": 0.6317,
+     "cosseno": 0.8143,
+     "corpus": "factckbr",
+     "agencia": "https:piaui.folha.uol.com.brlupa",
+     "veredito_original": "Verdadeiro",
+     "alegacao": "Venezuelanos mataram um homem a pauladas para roubar os tênis dele"
+    },
+    {
+     "score": 0.5969,
+     "cosseno": 0.8092,
+     "corpus": "factcenter_saude",
+     "agencia": "lupa",
+     "veredito_original": "VERDADEIRO",
+     "alegacao": "Um policial militar só vai para a rua depois de um ano de treinamento"
+    },
+    {
+     "score": 0.5936,
+     "cosseno": 0.8077,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "O melhor de 2020 no Boatos.org, por Edgard Matsuki"
+    },
+    {
+     "score": 0.5907,
+     "cosseno": 0.8115,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "O melhor do Boatos.org em 2020, por Raiane Gonoli"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho que mencione ou responda sobre qual é o melhor tênis para corrida de rua.",
+   "segundos": 22.5
+  },
+  {
+   "tipo": "ausente",
+   "id": "n07",
+   "familia": "",
+   "consulta": "como declarar imposto de renda atrasado",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6642,
+     "cosseno": 0.8469,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Celso de Mello se aposentou por invalidez no STF para não pagar Imposto de Renda #boato"
+    },
+    {
+     "score": 0.6314,
+     "cosseno": 0.839,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Falso",
+     "alegacao": "IMPOSTO DE RENDA - Decreto que aumenta de 27,5% para 35% a alíquota do Imposto de Renda. - Este reajuste atinge diretamente a classe média. "
+    },
+    {
+     "score": 0.6261,
+     "cosseno": 0.8382,
+     "corpus": "factckbr",
+     "agencia": "https:piaui.folha.uol.com.brlupa",
+     "veredito_original": "Falso",
+     "alegacao": "Você sabia que vereadores, deputados, governadores, senadores não pagam imposto de renda! Nem contribuem com a previdência!"
+    },
+    {
+     "score": 0.6089,
+     "cosseno": 0.836,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Verdadeiro",
+     "alegacao": "Quem paga mais imposto no Brasil, proporcionalmente, é o pobre."
+    },
+    {
+     "score": 0.6081,
+     "cosseno": 0.8341,
+     "corpus": "factckbr",
+     "agencia": "https:apublica.org",
+     "veredito_original": "Falso",
+     "alegacao": "'Os 10 países onde MAIS se trabalhou em um ano para pagar impostos.'"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Nenhum dos trechos fornecidos explica como declarar imposto de renda atrasado.",
+   "segundos": 13.6
+  },
+  {
+   "tipo": "ausente",
+   "id": "n08",
+   "familia": "",
+   "consulta": "a nova vacina de 2026 contra o vírus X foi proibida",
+   "posicao_do_alvo": null,
+   "trechos": [
+    {
+     "score": 0.6023,
+     "cosseno": 0.8785,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Robert F. Kennedy Jr. escreve texto que aponta que vacina mRNA contra Covid-19 altera o DNA #boato"
+    },
+    {
+     "score": 0.5804,
+     "cosseno": 0.8724,
+     "corpus": "factcenter_saude",
+     "agencia": "ESTADAO_VERIFICA",
+     "veredito_original": "ENGANOSO",
+     "alegacao": "Coronavac não foi proibida nos EUA e na Europa; agências reguladoras ainda não divulgaram análise da vacina"
+    },
+    {
+     "score": 0.5682,
+     "cosseno": 0.8761,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Bula da Pfizer proíbe sexo após vacina por causa de alterações no DNA #boato"
+    },
+    {
+     "score": 0.5636,
+     "cosseno": 0.8703,
+     "corpus": "factcenter_saude",
+     "agencia": "boatos",
+     "veredito_original": "boato",
+     "alegacao": "Vacina chinesa contra Covid-19 é feita de fetos de bebês abortados #boato"
+    },
+    {
+     "score": 0.5623,
+     "cosseno": 0.8678,
+     "corpus": "factcenter_saude",
+     "agencia": "COMPROVA",
+     "veredito_original": "Enganoso",
+     "alegacao": "É enganoso que Coronavac foi proibida nos EUA e na Europa"
+    }
+   ],
+   "rotulo": "evidência insuficiente",
+   "citados": [],
+   "criterio": "Não há nenhum trecho que mencione uma vacina de 2026 contra o vírus X ou qualquer proibição relacionada a esse contexto específico.",
+   "segundos": 27.5
+  }
+ ],
+ "adjudicacao": {
+  "a01": {
+   "cobre": false,
+   "motivo": "trecho diz que a vacina protege a vida toda; não fala de mutação"
+  },
+  "a02": {
+   "cobre": true,
+   "motivo": "duas listas do Boatos.org desmentem a mesma 'vacina da gripe é veneno mortal'"
+  },
+  "a03": {
+   "cobre": true,
+   "motivo": "Lupa desmente a mesma ligação entre vacina H1N1 e narcolepsia"
+  },
+  "a04": {
+   "cobre": true,
+   "motivo": "Boatos.org diz que quem tomou na infância não precisa tomar de novo"
+  },
+  "a05": {
+   "cobre": true,
+   "motivo": "lista de boatos da febre amarela traz '50% de letalidade'"
+  },
+  "a06": {
+   "cobre": true,
+   "motivo": "lista de boatos da febre amarela traz a cegueira"
+  },
+  "a07": {
+   "cobre": false,
+   "motivo": "trechos falam de 'veneno mortal', não de mercúrio; o critério inventa o mercúrio"
+  },
+  "a10": {
+   "cobre": true,
+   "motivo": "Lupa desmente que chá de erva-doce tem as propriedades do Tamiflu"
+  },
+  "a11": {
+   "cobre": true,
+   "motivo": "lista de boatos da febre amarela traz o médico de Sorocaba e o fígado"
+  },
+  "a12": {
+   "cobre": true,
+   "motivo": "Boatos.org chama de bobagem que o governo inventou a febre amarela para vender vacina"
+  },
+  "a13": {
+   "cobre": false,
+   "motivo": "trecho fala do estudo retratado sobre autismo, não da bula"
+  },
+  "a14": {
+   "cobre": true,
+   "motivo": "Aos Fatos desmente a mesma decisão do STF sobre imigrantes venezuelanos"
+  },
+  "a15": {
+   "cobre": true,
+   "motivo": "Lupa diz que a vacina vale dez anos, que responde à pergunta"
+  },
+  "a16": {
+   "cobre": true,
+   "motivo": "Boatos.org desmente o mesmo veto de Lula à vacina da meningite"
+  },
+  "a17": {
+   "cobre": false,
+   "motivo": "patente do coronavírus, não do zika nem dos Rockefeller"
+  },
+  "a19": {
+   "cobre": true,
+   "motivo": "Lupa desmente o mesmo estudo da UFMG sobre suco de inhame"
+  },
+  "a20": {
+   "cobre": false,
+   "motivo": "vacina da covid baixando imunidade; a alegação é a da H1N1 e câncer"
+  }
+ },
+ "avaliacao": {
+  "modelo_sozinho": {
+   "positivas_com_veredito": 20,
+   "positivas": 20,
+   "ausentes_insuficiente": 8,
+   "ausentes": 8,
+   "vizinhos_insuficiente": 3,
+   "vizinhos_legitimos": [
+    "a02",
+    "a03",
+    "a04",
+    "a05",
+    "a06",
+    "a10",
+    "a11",
+    "a12",
+    "a14",
+    "a15",
+    "a16",
+    "a19"
+   ],
+   "vizinhos_erro": [
+    "a01",
+    "a07",
+    "a13",
+    "a17",
+    "a20"
+   ]
+  },
+  "score_do_alvo_nas_positivas": {
+   "minimo": 0.5785,
+   "ordenados": [
+    0.5785,
+    0.5907,
+    0.6011,
+    0.6016,
+    0.6327,
+    0.6672,
+    0.6743,
+    0.6756,
+    0.685,
+    0.6932,
+    0.6937,
+    0.7104,
+    0.722,
+    0.7302,
+    0.7356,
+    0.7399,
+    0.7579,
+    0.7682,
+    0.7804,
+    0.7831
+   ]
+  },
+  "maior_limiar_sem_perda": 0.575,
+  "trechos_factckbr_entre_os_k": 12,
+  "grade": [
+   {
+    "limiar": 0.5,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.505,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.51,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.515,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.52,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.525,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.53,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.535,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.54,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.545,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.55,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.555,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.56,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.565,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": []
+   },
+   {
+    "limiar": 0.57,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.575,
+    "positivas_perdidas": [],
+    "legitimos_perdidos": [],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.58,
+    "positivas_perdidas": [
+     "a20"
+    ],
+    "legitimos_perdidos": [],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.585,
+    "positivas_perdidas": [
+     "a20"
+    ],
+    "legitimos_perdidos": [],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.59,
+    "positivas_perdidas": [
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.595,
+    "positivas_perdidas": [
+     "a16",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.6,
+    "positivas_perdidas": [
+     "a16",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.605,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.61,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.615,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.62,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.625,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.63,
+    "positivas_perdidas": [
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a14",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.635,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a14",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.64,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.645,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.65,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.655,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.66,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.665,
+    "positivas_perdidas": [
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.67,
+    "positivas_perdidas": [
+     "a02",
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.675,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a14",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.68,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.685,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.69,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a18",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.695,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.7,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.705,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.71,
+    "positivas_perdidas": [
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.715,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.72,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.725,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a05",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.73,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a05",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.735,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a04",
+     "a05",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.74,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.745,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.75,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.755,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.76,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.765,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.77,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.775,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.78,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.785,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a09",
+     "a10",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.79,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a09",
+     "a10",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.795,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a09",
+     "a10",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   },
+   {
+    "limiar": 0.8,
+    "positivas_perdidas": [
+     "a01",
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a07",
+     "a08",
+     "a09",
+     "a10",
+     "a11",
+     "a12",
+     "a13",
+     "a14",
+     "a15",
+     "a16",
+     "a17",
+     "a18",
+     "a19",
+     "a20"
+    ],
+    "legitimos_perdidos": [
+     "a02",
+     "a03",
+     "a04",
+     "a05",
+     "a06",
+     "a10",
+     "a11",
+     "a12",
+     "a14",
+     "a15",
+     "a16",
+     "a19"
+    ],
+    "erros_pegos": [
+     "a01",
+     "a07",
+     "a13",
+     "a17",
+     "a20"
+    ]
+   }
+  ]
+ }
+}

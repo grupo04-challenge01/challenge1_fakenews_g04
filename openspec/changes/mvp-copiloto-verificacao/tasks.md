@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 1, **Jhessica** 0, **Samara** 0, **Wingrid** 1, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 1, **Wingrid** 1, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -30,7 +30,13 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       só em PT: 0 divergências em 112 comparações contra o `buscar` da `main`;
       critério de cobertura como parâmetro, valor pela 1.5; nenhuma fonte em
       inglês indexada; decisão 23 do `design.md`, 01/10/2026
-- [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
+- [x] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
+      — `LIMIAR_EVIDENCIA = 0.55` em `prototipo/rag/hibrida.py`, critério `cobre`
+      padrão de `recuperar` e limiar padrão da guarda; sonda
+      `prototipo/sonda_limiar.py`, relatório `prototipo/relatorio_sonda_limiar.json`:
+      48 casos, nenhuma evidência que cobre cortada, 8/8 ausentes em `evidência
+      insuficiente` pelo modelo; alegação parecida fica em 5 de 20 vizinhas, que
+      nenhum limiar separa; decisão 27 do `design.md`, 06/10/2026
 - [x] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
       — `prototipo/resposta/ancoragem.py`, `estrutura.py` (blocos 1 e 2 como
       lista de frase e trecho, rebaixamento por frase essencial), `guarda.py`
