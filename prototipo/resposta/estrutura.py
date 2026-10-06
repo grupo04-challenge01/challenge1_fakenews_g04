@@ -89,6 +89,10 @@ Se o estado for `evidência insuficiente` ou `lacuna de acervo`:
 Responda só com JSON, neste formato:
 {{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": "..."}}"""
 
+# verificacao-alegacao: o bloco 2 separa a opinião da mensagem. O modelo esqueceu
+# na execução ponta a ponta de 06/10 (casos F04 e R3); a frase sai do código.
+FRASE_OPINIAO = "Uma parte da mensagem é opinião, e opinião não se checa."
+
 ID_TRECHO = re.compile(r"\bT[1-9]\d*\b")
 ENGANA = re.compile(r"\b(engana|enganos[ao]|é fals[ao]|mentira)\b", re.IGNORECASE)
 # Decisão 5 de fix-resposta-sem-evidencia: com ponteiro, o bloco 2 fala só do
@@ -249,6 +253,9 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     blocos = list(gerados)
     if com and veredito.rotulo != "verdadeiro":
         blocos[2] = _marcar(blocos[2], catalogo)
+    if com and decomposicao and decomposicao.get("opinioes") and blocos[1] \
+            and "opini" not in blocos[1].lower():
+        blocos[1] = f"{blocos[1]} {FRASE_OPINIAO}"
     blocos[0] = f"{_abertura(veredito, estado, lacuna)} {gerados[0]}".strip()
     if estado == LACUNA:
         blocos[3] = _ponteiro(lacuna)

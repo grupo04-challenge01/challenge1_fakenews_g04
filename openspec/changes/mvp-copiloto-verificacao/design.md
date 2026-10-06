@@ -806,6 +806,61 @@ fluxo passa em 12 de 17. O caso da conclusão nula, refeito com o modelo, passa.
   rotulou `verdadeiro`, e *lacuna de acervo com trecho recuperado*, que depende
   do limiar da 1.5.
 
+### 25. Segunda rodada de correções da execução ponta a ponta — 06/10/2026
+
+Tasks 2.1, 2.2 e 3.4. Continua a decisão 24. Das falhas que ela deixou de fora,
+três não dependiam de task em aberto e são corrigidas aqui. A lacuna de acervo com
+trecho recuperado continua com a 1.5.
+
+**1. Alegação que se entende sozinha** (`extracao.py`, decisão 8). Dois casos:
+
+- *Pronome sem referente.* Em "a febre oropouche passa pelo mosquito da dengue e
+  a vacina da dengue protege contra ela", a extração separou as duas alegações e
+  selecionou "a vacina da dengue protege contra ela". Sem o referente, a
+  recuperação buscou vacina da dengue, e a guarda aceitou um trecho sobre a
+  Dengvaxia como veredito `verdadeiro`.
+- *Atribuição separada.* Em "o presidente da Anvisa admitindo: a vacinação é um
+  risco sanitário grave", a extração tirou "presidente da Anvisa admitindo" e
+  o marcou como fora de saúde. O veredito saiu certo, mas a alegação perdeu a
+  falsa autoridade, que é a manipulação do caso.
+
+O prompt pede alegação que se entenda sem ler a mensagem, com pronome trocado
+pelo nome, e que inclua quem afirmou quando a mensagem atribui a fala.
+
+**2. "Verdadeiro" contra o veredito da agência** (`classificacao.py`, decisão
+11). No vídeo de Bruno Covas, a checagem recuperada foi a do Boatos.org, com
+veredito `boato`. O fragmento que chegou à guarda é a introdução, que diz
+"teria acabado de liberar (isso em 2021)"; a data do vídeo está em outro
+fragmento. O modelo rotulou `verdadeiro`. O prompt passa a dizer que, sendo a
+mesma alegação, veredito da agência falso, boato, enganoso ou fora de contexto
+impede `verdadeiro`, e que "acabou de" desmentido pela data é fora de contexto.
+
+**3. Negação a três palavras da alegação** (`mito.py`, decisão 14). "Não existe
+relação entre vacinas e autismo" é a afirmação correta, mas o verificador só
+aceitava até duas palavras entre o "não" e a alegação. Passa a aceitar três.
+"Não encontrou provas de que a vacina cause câncer" continua reprovada: em
+veredito `falso`, a frase diz menos que o veredito.
+
+**4. Opinião no bloco 2 sai do código** (`estrutura.py`, decisão 18). Nos casos
+da bula e do caixão, a decomposição achou opinião e o bloco 2 não a separou,
+embora o prompt peça. Mesmo remédio do marcador da decisão 24: quando há opinião
+e o bloco 2 não fala dela, o código acrescenta "Uma parte da mensagem é opinião,
+e opinião não se checa."
+
+**Sondas, Gemma 4 12B QAT, três tentativas.** Extração e decomposição, 21 de 21,
+com dois casos novos: X4, pronome sem referente, e X5, atribuição. Classificação
+e guarda, 24 de 24, com o caso novo C4, só a introdução da checagem e veredito
+`boato`; vale `falso` ou fora de contexto. Os casos anteriores das duas sondas
+continuam passando.
+
+**Fluxo inteiro.** Com o modelo, depois dos itens 1 a 3: 15 de 17. Com as saídas
+gravadas e o item 4: 16 de 17. Resta o vídeo de 2018 da idosa. O bloco 2 diz
+"a idosa morreu por infarto em 2018, após tomar vacina contra a gripe", que é o
+contexto correto, e a 3.4 o lê como menção sem marca, porque a frase repete as
+palavras da alegação. É o limite declarado na decisão 14: a verificação reconhece
+menção por palavras, não por sentido. Afrouxá-la para aceitar esse caso deixaria
+passar a repetição do mito; fica como está.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o

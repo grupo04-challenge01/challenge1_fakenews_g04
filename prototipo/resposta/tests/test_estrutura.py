@@ -216,6 +216,15 @@ def test_marcador_nao_e_posto_em_veredito_verdadeiro():
     assert not r.blocos[2].startswith("Técnica:")
 
 
+def test_bloco_2_que_ja_fala_de_opiniao_nao_ganha_a_frase():
+    decomposicao = {"fatos": [ALEGACAO], "evidencias": [], "conclusao": None,
+                    "opinioes": ["os laboratórios escondem isso"]}
+    bloco2 = "O Inca não indica alimento contra câncer. Dizer que escondem é opinião."
+    r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao,
+                  chat=_chat(_com(bloco2=bloco2)))
+    assert r.blocos[1] == bloco2
+
+
 def test_tecnica_fora_do_catalogo_e_defeito():
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(bloco3="Técnica: apelo ao medo.")))
     assert "bloco 3: rótulo fora do catálogo: apelo ao medo" in r.defeitos
@@ -288,8 +297,10 @@ def test_opiniao_da_mensagem_tem_de_aparecer_no_bloco_2():
     # verificacao-alegacao: a decomposição aparece no bloco 2.
     decomposicao = {"fatos": ["a casca cura o câncer"], "evidencias": [],
                     "opinioes": ["os médicos escondem isso"], "conclusao": None}
+    # Quando o modelo esquece, o código completa o bloco 2 (decisão 25).
     r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao, chat=_chat(BLOCOS_FALSO))
-    assert "bloco 2 não separa a opinião da mensagem" in r.defeitos
+    assert r.blocos[1].endswith(estrutura.FRASE_OPINIAO)
+    assert "bloco 2 não separa a opinião da mensagem" not in r.defeitos
     ok = _com(bloco2=BLOCOS_FALSO["bloco2"] + " Que os médicos escondem isso é opinião.")
     assert responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao,
                      chat=_chat(ok)).defeitos == []

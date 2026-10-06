@@ -70,9 +70,10 @@ def _marcada(frase, alegacao):
     texto = _sem_acento(frase)
     if MARCA.search(texto):
         return True
-    # Negação direta de uma palavra da alegação: "a casca não cura o câncer".
+    # Negação direta de uma palavra da alegação: "a casca não cura o câncer",
+    # "não existe relação entre vacinas e autismo".
     for prefixo in set(_conteudo(alegacao)):
-        if re.search(rf"\bnao (\w+ ){{0,2}}{re.escape(prefixo)}", texto):
+        if re.search(rf"\bnao (\w+ ){{0,3}}{re.escape(prefixo)}", texto):
             return True
     return False
 
