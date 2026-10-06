@@ -162,12 +162,13 @@ def texto_do_bloco(conteudo):
     return _limpa(str(conteudo or "")) if conteudo else ""
 
 
-def ancorar_bloco(conteudo, trechos, opiniao=False):
+def ancorar_bloco(conteudo, trechos, opiniao=False, usadas=None):
     """Frases que ficam (sem a marca), frases descartadas com o motivo, e
     quantas das que ficam estão ancoradas — a de opinião fica, mas não conta.
 
     `conteudo` é a lista de {"frase", "trecho"} ou texto com marca inline.
     `trechos` é a lista na ordem em que foi numerada T1, T2... para o modelo.
+    `usadas`, se dado, recebe o número de cada trecho que ancora frase que fica.
     """
     mantidas, descartadas, ancoradas = [], [], 0
     for bruta, do_campo in _itens(conteudo):
@@ -182,4 +183,6 @@ def ancorar_bloco(conteudo, trechos, opiniao=False):
         else:
             mantidas.append(frase)
             ancoradas += 1
+            if usadas is not None:
+                usadas.update(int(m[1:]) for m in marcas)
     return mantidas, descartadas, ancoradas

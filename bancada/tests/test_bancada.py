@@ -50,6 +50,10 @@ class Recuperador:
         self.consultas.append((consulta, k, modo))
         return self.trechos[:k]
 
+    def expandir(self, consulta, trechos, modo="hibrida"):
+        self.consultas.append(("expandir", consulta, modo))
+        return list(trechos)
+
     def recuperar(self, consulta, k=10, modo="hibrida"):
         from prototipo.rag.hibrida import Recuperacao
         self.consultas.append((consulta, k, modo))
@@ -70,7 +74,9 @@ def test_fluxo_completo_registra_todas_as_etapas():
 def test_recuperacao_usa_a_alegacao_selecionada_e_os_parametros():
     rec = Recuperador()
     executar("msg", rec, chat=chat_fixo(), k=3, modo="lexica", alfa=0.5)
-    assert rec.consultas == [("A casca do jatobá cura o câncer.", 3, "lexica")]
+    # Os vizinhos da decisão 29 usam a mesma alegação e o mesmo modo.
+    assert rec.consultas == [("A casca do jatobá cura o câncer.", 3, "lexica"),
+                             ("expandir", "A casca do jatobá cura o câncer.", "lexica")]
     assert rec.alfa == 0.5
 
 

@@ -3,8 +3,8 @@
   "2d8e5050c9399bca": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma informação sobre um tratamento natural.\"}",
   "4b5aec17242224d6": "{\"alegacoes\": [{\"texto\": \"Chá de folha de goiabeira cura a dengue em 24 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "88c3b9a2659b0717": "{\n  \"fatos\": [\n    \"Chá de folha de goiabeira cura a dengue em 24 horas.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
-  "b5648730760ab791": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho que mencione especificamente o uso de chá de folha de goiabeira para curar a dengue.\"}",
-  "c8fb16cc1272ef7d": "{\"bloco1\": \"Foram buscadas informações sobre o uso do chá de goiabeira para tratar a dengue.\", \"bloco2\": \"Não encontrar dados científicos não significa que a afirmação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos em sites de saúde oficiais. Procure por orientações de órgãos públicos.\", \"bloco4\": \"Busque informações em sites do Ministério da Saúde ou da Organização Mundial da Saúde.\"}"
+  "b5648730760ab791": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados menciona o uso de chá de folha de goiabeira para o tratamento da dengue.\"}",
+  "c8fb16cc1272ef7d": "{\"bloco1\": \"Foram buscadas informações sobre o chá de goiabeira na dengue.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Procure por orientações em sites oficiais de saúde. Verifique se há estudos científicos reais.\", \"bloco4\": \"Consulte órgãos como o Ministério da Saúde ou a Anvisa.\"}"
  },
  "busca": {
   "61698a2ade6e877a": {

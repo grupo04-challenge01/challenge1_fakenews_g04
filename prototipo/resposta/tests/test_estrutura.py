@@ -350,7 +350,8 @@ def test_sem_ponteiro_o_bloco_2_ainda_pode_dizer_que_nao_e_desmentir():
 # ---- ancoragem trecho a afirmação: task 1.6 --------------------------------
 
 def _chat_em_sequencia(*saidas):
-    """Uma saída por chamada: a segunda é a da forma sem evidência, no rebaixamento."""
+    """Uma saída por chamada. No rebaixamento são três: a primeira, a refeita com
+    o aviso da conferência (decisão 29) e a da forma sem evidência."""
     chamadas = []
 
     def chat(sistema, usuario):
@@ -385,34 +386,38 @@ def test_termo_inventado_com_marca_tambem_some():
 
 
 def test_bloco_1_sem_ancora_rebaixa_para_a_forma_sem_evidencia():
-    chat = _chat_em_sequencia(_com(bloco1="A checagem foi feita em 2019."), BLOCOS_SEM)
+    falha = _com(bloco1="A checagem foi feita em 2019.")
+    chat = _chat_em_sequencia(falha, falha, BLOCOS_SEM)
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
     assert r.forma == "sem evidência" and r.titulos == SEM
     assert r.blocos[0].startswith("Evidência insuficiente.")
     assert r.rebaixada_por == "ancoragem: bloco 1: sem âncora"
     assert r.descartadas == [{"bloco": 1, "frase": "A checagem foi feita em 2019.",
                               "motivo": "sem âncora"}]
-    assert len(chat.chamadas) == 2
-    assert f"ESTADO DA RECUPERAÇÃO: {INSUFICIENTE}" in chat.chamadas[1][1]
+    assert len(chat.chamadas) == 3
+    assert f"ESTADO DA RECUPERAÇÃO: {INSUFICIENTE}" in chat.chamadas[2][1]
     assert r.detalhe == []
 
 
 def test_bloco_2_sem_frase_ancorada_rebaixa():
-    chat = _chat_em_sequencia(_com(bloco2="Isso nunca foi estudado."), BLOCOS_SEM)
+    falha = _com(bloco2="Isso nunca foi estudado.")
+    chat = _chat_em_sequencia(falha, falha, BLOCOS_SEM)
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
     assert r.forma == "sem evidência"
     assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
 
 
 def test_bloco_2_vazio_rebaixa():
-    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(_com(bloco2=" "), BLOCOS_SEM))
+    falha = _com(bloco2=" ")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(falha, falha, BLOCOS_SEM))
     assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
 
 
 def test_bloco_2_so_com_opiniao_rebaixa():
     decomposicao = {"fatos": [], "evidencias": [], "opinioes": ["os médicos escondem isso"],
                     "conclusao": None}
-    chat = _chat_em_sequencia(_com(bloco2="Que os médicos escondem isso é opinião."), BLOCOS_SEM)
+    falha = _com(bloco2="Que os médicos escondem isso é opinião.")
+    chat = _chat_em_sequencia(falha, falha, BLOCOS_SEM)
     r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao, chat=chat)
     assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
 
@@ -421,7 +426,7 @@ def test_rebaixamento_leva_as_referencias_do_veredito():
     ref = {"agencia": "lupa", "data_publicacao": "2020-01-01", "url": "https://l/1",
            "veredito_original": "falso"}
     v = Veredito("falso", "critério", [TRECHO], referencias=[ref])
-    chat = _chat_em_sequencia(_com(bloco1="Sem marca."), BLOCOS_SEM)
+    chat = _chat_em_sequencia(_com(bloco1="Sem marca."), _com(bloco1="Sem marca."), BLOCOS_SEM)
     r = responder(MENSAGEM, ALEGACAO, v, chat=chat)
     assert r.rebaixada_por is not None
     assert r.veredito.referencias == [ref]
@@ -479,7 +484,8 @@ def test_so_referencias_vao_ao_detalhe_da_forma_sem_evidencia():
 
 def test_referencia_continua_no_detalhe_depois_do_rebaixamento():
     v = Veredito("falso", "critério", [TRECHO], referencias=[REFERENCIA])
-    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat_em_sequencia(_com(bloco1="Sem marca."), BLOCOS_SEM))
+    falha = _com(bloco1="Sem marca.")
+    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat_em_sequencia(falha, falha, BLOCOS_SEM))
     assert r.rebaixada_por is not None
     assert r.detalhe == [{**REFERENCIA, "trecho": None}]
 
@@ -489,11 +495,99 @@ def test_saida_crua_do_modelo_fica_na_resposta():
     assert json.loads(r.bruto) == BLOCOS_FALSO
 
 
-def test_rebaixamento_guarda_as_duas_saidas_do_modelo():
+def test_rebaixamento_guarda_as_tres_saidas_do_modelo():
     primeira = _com(bloco2="Isso nunca foi estudado.")
-    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(primeira, BLOCOS_SEM))
+    segunda = _com(bloco2="Isso nunca foi pesquisado.")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(primeira, segunda, BLOCOS_SEM))
     antes, depois = r.bruto.split("\n\n--- refeita na forma sem evidência ---\n\n")
-    assert json.loads(antes) == primeira and json.loads(depois) == BLOCOS_SEM
+    um, dois = antes.split("\n\n--- refeita com o aviso da conferência ---\n\n")
+    assert json.loads(um) == primeira and json.loads(dois) == segunda
+    assert json.loads(depois) == BLOCOS_SEM
+
+
+# ---- nova tentativa antes do rebaixamento: decisão 29 ----------------------
+
+def test_segunda_tentativa_ancorada_mantem_o_veredito():
+    # F06 da bancada: o bloco 2 veio só com a opinião, e o "falso" caía.
+    decomposicao = {"fatos": [], "evidencias": [], "opinioes": ["os médicos escondem isso"],
+                    "conclusao": None}
+    falha = _com(bloco2=[{"frase": "Que os médicos escondem isso é opinião.", "trecho": ""}])
+    chat = _chat_em_sequencia(falha, BLOCOS_FALSO)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao, chat=chat)
+    assert r.forma == "com evidência" and r.rebaixada_por is None
+    assert len(chat.chamadas) == 2
+    assert r.veredito.rotulo == "falso"
+
+
+def test_aviso_diz_o_motivo_e_as_frases_descartadas():
+    falha = _com(bloco2=[{"frase": "O Inca testou 300 pacientes.", "trecho": "T1"}])
+    chat = _chat_em_sequencia(falha, BLOCOS_FALSO)
+    responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    aviso = chat.chamadas[1][1]
+    assert chat.chamadas[1][1].startswith(chat.chamadas[0][1])
+    assert "bloco 2 sem frase ancorada" in aviso
+    assert "O Inca testou 300 pacientes." in aviso and "termo fora do trecho: inca, 300" in aviso
+
+
+def test_frase_descartada_na_segunda_tentativa_e_a_que_fica_registrada():
+    segunda = _com(bloco2=BLOCOS_FALSO["bloco2"] + [{"frase": "Um médico de Goiânia foi punido.",
+                                                     "trecho": ""}])
+    chat = _chat_em_sequencia(_com(bloco2="Isso nunca foi estudado."), segunda)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert r.rebaixada_por is None
+    assert [d["frase"] for d in r.descartadas] == ["Um médico de Goiânia foi punido."]
+
+
+# ---- fragmentos vizinhos da checagem citada: decisão 29 --------------------
+
+VIZINHO = {**TRECHO, "fragmento_id": "c7a4591df5-00-03",
+           "trecho": "O boato circula desde abril de 2020, segundo a checagem.", "score": 0.4}
+OUTRO_VIZINHO = {**TRECHO, "fragmento_id": "c7a4591df5-00-04",
+                 "trecho": "A checagem ouviu o Inca.", "score": 0.3}
+
+
+def _expandir(trechos):
+    return list(trechos) + [VIZINHO, OUTRO_VIZINHO]
+
+
+def test_vizinhos_chegam_ao_modelo_depois_dos_trechos_do_veredito():
+    chat = _chat(BLOCOS_FALSO)
+    responder(MENSAGEM, ALEGACAO, FALSO, chat=chat, expandir=_expandir)
+    usuario = chat.chamadas[0][1]
+    assert "[T1]" in usuario and "[T2]" in usuario and "[T3]" in usuario
+    assert usuario.index(TRECHO["trecho"]) < usuario.index(VIZINHO["trecho"])
+
+
+def test_frase_ancorada_no_vizinho_fica_e_o_vizinho_vai_ao_detalhe():
+    blocos = _com(bloco2=BLOCOS_FALSO["bloco2"] + [{"frase": "O boato circula desde abril de 2020.",
+                                                    "trecho": "T2"}])
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos), expandir=_expandir)
+    assert "abril de 2020" in r.texto and r.descartadas == []
+    assert [d["trecho"] for d in r.detalhe] == [TRECHO["trecho"], VIZINHO["trecho"]]
+
+
+def test_vizinho_que_nao_ancora_nada_fica_fora_do_detalhe():
+    # recuperacao-evidencia: o texto da checagem não é reproduzido na íntegra.
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO), expandir=_expandir)
+    assert [d["trecho"] for d in r.detalhe] == [TRECHO["trecho"]]
+
+
+def test_veredito_da_resposta_continua_com_os_trechos_da_guarda():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO), expandir=_expandir)
+    assert r.veredito.trechos == [TRECHO]
+
+
+def test_sem_expandir_nada_muda():
+    chat = _chat(BLOCOS_FALSO)
+    responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert "[T2]" not in chat.chamadas[0][1]
+
+
+def test_forma_sem_evidencia_nao_expande():
+    def explode(trechos):
+        raise AssertionError("sem trecho não há o que expandir")
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=_chat(BLOCOS_SEM), expandir=explode)
+    assert r.forma == "sem evidência"
 
 
 def test_prompt_tem_um_formato_por_estado():

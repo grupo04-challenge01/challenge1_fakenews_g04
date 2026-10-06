@@ -2,9 +2,9 @@
  "chat": {
   "90cf547938d0714f": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre saúde para ser verificada como verdadeira ou falsa.\"}",
   "8027e3ac2c5e9117": "{\"alegacoes\": [{\"texto\": \"vacinas causam autismo\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"vacinas causam autismo tá na bula\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
-  "a88efb2ac20180ed": "{\n  \"fatos\": [\n    \"vacinas causam autismo\",\n    \"Tá na bula!\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Tá na bula!\",\n      \"forca\": \"ausente\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo\"\n  ],\n  \"conclusao\": null\n}",
-  "83e428face79566a": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos indicam que a alegação é falsa, esclarecendo que não há relação causal entre vacinas e autismo e que o principal estudo sobre o tema foi retratado por fraudes.\"}",
-  "ad08ebbe7ce42fee": "{\"bloco1\": [{\"frase\": \"A bula não afirma que a vacina causa autismo.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O texto da bula diz que não é possível estabelecer relação de causa entre os eventos e a vacina.\", \"trecho\": \"T1\"}, {\"frase\": \"O estudo principal sobre esse tema foi retratado por fraudes.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'Não adianta brigar comigo' é uma opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: medo de dano oculto. A mensagem usa um texto da bula para sugerir perigo grave.\", \"bloco4\": \"Verifique o contexto completo dos textos citados em bulas médicas.\"}"
+  "a88efb2ac20180ed": "{\n  \"fatos\": [\n    \"vacinas causam autismo\",\n    \"Tá na bula\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Tá na bula\",\n      \"forca\": \"ausente\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"vacinas causam autismo\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem afirma uma relação de causa e efeito sem apresentar dados científicos ou documentos que comprovem o nexo causal.\"\n  }\n}",
+  "83e428face79566a": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos indicam que a alegação é falsa, esclarecendo que não há relação causal entre vacinas e autismo, mencionando inclusive que o principal estudo sobre o tema foi retratado por fraudes.\"}",
+  "9f6951195e9cdd0c": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que não há ligação entre vacinas e autismo.\", \"trecho\": \"T2\"}],\n \"bloco2\": [{\"frase\": \"As bulas atuais não mencionam o autismo como efeito colateral.\", \"trecho\": \"T3\"}, {\"frase\": \"O estudo principal sobre esse tema foi considerado fraudulento.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'Não adianta brigar comigo' é uma opinião e não se checa.\", \"trecho\": \"\"}],\n \"bloco3\": \"Técnica: cura milagrosa. A mensagem afirma que vacinas causam autismo sem provas científicas.\",\n \"bloco4\": \"Verifique as bulas atuais e busque informações em órgãos de saúde oficiais.\"}"
  },
  "busca": {
   "0be8ee426d49c113": {
@@ -100,6 +100,93 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "855f0e3da77afa07": [
+   {
+    "unidade_id": "b103a02dd7-00",
+    "fragmento_id": "b103a02dd7-00-00",
+    "score": 0.6362980604171753,
+    "score_lexico": 18.663103103637695,
+    "score_denso": 0.8938513994216919,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2019-02-18",
+    "url": "https://piaui.folha.uol.com.br/lupa/2019/02/18/verificamos-bula-autismo/",
+    "alegacao": "#Verificamos: É falso que bula confirme relação de vacina com autismo",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Circula nas redes sociais a “informação” de que a bula em inglês da vacina Tríplice Bacteriana diz que ela causa autismo. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Não adianta brigar comigo: vacinas causam autismo. Tá na bula”\nImagem publicada no Facebook, com 65 compartilhamentos até o dia 18 de fevereiro de 2019\n\n\nA bula de uma marca específica de vacina Tríplice Bacteriana (que previne contra difteria, tétano e coqueluche) realmente mencionava “relatos” de ligação entre a dose de imunização e o autismo. Porém, o mesmo parágrafo do texto que acompanha a Tripedia em 2005 dizia o seguinte: “Como esses eventos foram relatados voluntariamente a partir de uma população de tamanho incerto, não é possível estimar sua frequência de forma confiável ou estabelecer uma relação causal [dos efeitos listados] com os componentes da vacina Tripedia”. Ou seja, a bula não diz que há uma relação direta entre autismo e a vacina em questão."
+   },
+   {
+    "unidade_id": "76dd27ed44-02",
+    "fragmento_id": "76dd27ed44-02-02",
+    "score": 0.6173256635665894,
+    "score_lexico": 10.493965148925781,
+    "score_denso": 0.8904316425323486,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-10-27",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/10/27/verificamos-audio-vacina-chinesa/",
+    "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas que vão destruir a vida de seus filhos e netos, inclusive no sentido de fertilidade, de homossexualismo",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "eio desse DNA e modificá-lo, precisa ser um DNA”, afirma. “O coronavírus é de RNA e não tem capacidade de colocar o material genético em nosso DNA.” \nO boato sobre vacinas interferirem no código genético humano é antigo, diz a pesquisadora. Ela relata que algumas pessoas chegaram a afirmar que os imunizantes poderiam provocar autismo, mas lembra que o principal estudo que relatava isso foi retratado e descobriu-se que o pesquisador Andrew Wakefield tinha interesses econômicos nessas associações. “Cada vez mais comprova-se que as vacinas são seguras e eficientes”, ressalta."
+   },
+   {
+    "unidade_id": "b103a02dd7-00",
+    "fragmento_id": "b103a02dd7-00-01",
+    "score": 0.6230872273445129,
+    "score_lexico": 12.966789245605469,
+    "score_denso": 0.8910355567932129,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2019-02-18",
+    "url": "https://piaui.folha.uol.com.br/lupa/2019/02/18/verificamos-bula-autismo/",
+    "alegacao": "#Verificamos: É falso que bula confirme relação de vacina com autismo",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "[dos efeitos listados] com os componentes da vacina Tripedia”. Ou seja, a bula não diz que há uma relação direta entre autismo e a vacina em questão.\nA Tripedia era produzida pelo laboratório Sanofi Pasteur e foi comercializada nos Estados Unidos entre 1992 e 2011, até ser descontinuada. A bula em questão foi atualizada pela última vez em 2005, conforme consta no próprio texto. Segundo o site de fact-checking americano Politifact, em 2006, um ano depois de o texto ser revisado pela última vez, uma nova regulamentação federal estabeleceu que apenas efeitos colaterais com relação causal comprovada fossem mencionados em bulas de remédios.\nAtualmente, duas vacinas do mesmo tipo, a Daptacel, também da Sanofi Pasteur, e a Infanrix, da GlaxoSmithKline, são produzidas e comercializadas nos Estados Unidos. Nenhuma das bulas menciona autismo como possível efeito colateral da imunização.\nA informação também foi verificada pelos sites americanos Politifact e Snopes."
+   },
+   {
+    "unidade_id": "76dd27ed44-02",
+    "fragmento_id": "76dd27ed44-02-00",
+    "score": 0.49503812193870544,
+    "score_lexico": 3.2047109603881836,
+    "score_denso": 0.8608795404434204,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-10-27",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/10/27/verificamos-audio-vacina-chinesa/",
+    "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas que vão destruir a vida de seus filhos e netos, inclusive no sentido de fertilidade, de homossexualismo",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Áudio enviado pelo WhatsApp\n\n\nA informação analisada pela Lupa é falsa. Os efeitos adversos mais recorrentes observados nos testes realizados com a CoronaVac foram dor no local da aplicação, dor de cabeça e fadiga. Febre baixa foi identificada em apenas 0,1% dos voluntários. Não foi encontrada nenhuma publicação que relacionasse a aplicação de vacinas a distúrbios genéticos, ou que apontasse que o imunizante seria capaz de interferir na fertilidade ou na orientação sexual de crianças. \nProcurado, o Instituto Butantan reafirmou a segurança da pesquisa com a CoronaVac. A entidade ressaltou que, antes de a vacina chegar ao Brasil, foi testada em humanos na China. O Butantan informou que os testes encontram-se na fase 3 e que “somente após a sua conclusão [dos testes] e aprovação pela Agência Nacional de Vigilância Sanitária (Anvisa), poderá ser administrada na população para proteger contra a Covid-19”.\nA pesquisadora Rafaela da Rosa Ribeiro, do Instituto de Pesquisa Albert Einstein, destaca que não há nenhuma consistência na afirmação de que as vacinas modificam o DNA humano."
+   },
+   {
+    "unidade_id": "76dd27ed44-02",
+    "fragmento_id": "76dd27ed44-02-01",
+    "score": 0.4560636878013611,
+    "score_lexico": 2.0783708095550537,
+    "score_denso": 0.8541147708892822,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-10-27",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/10/27/verificamos-audio-vacina-chinesa/",
+    "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas que vão destruir a vida de seus filhos e netos, inclusive no sentido de fertilidade, de homossexualismo",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Rosa Ribeiro, do Instituto de Pesquisa Albert Einstein, destaca que não há nenhuma consistência na afirmação de que as vacinas modificam o DNA humano. “A possibilidade de uma vacina mexer no nosso código genético é uma especulação bem ousada. Nosso código genético é bastante protegido e possui eficiente mecanismos para corrigir erros”, diz. Ela explica que a vacina em desenvolvimento pelo Butantan, a CoronaVac, está sendo realizada a partir da técnica de inativação do vírus, tradicional na história da medicina. “O vírus morto, presente na vacina, não tem essa capacidade. Ele não pode entrar na célula e aumentar sua quantidade”, diz.\nRibeiro salienta ainda que nem o vírus vivo teria esse poder, já que ele não se replica utilizando informações do DNA humano. “Temos que lembrar das nossas aulas de biologia que DNA e RNA são moléculas diferentes. Nosso código genético é feito de DNA , e para alguma coisa entrar no meio desse DNA e modificá-lo, precisa ser um DNA”, afirma. “O coronavírus é de RNA e não tem capacidade de colocar o material genético em nosso DNA.”"
+   }
+  ]
  }
 }

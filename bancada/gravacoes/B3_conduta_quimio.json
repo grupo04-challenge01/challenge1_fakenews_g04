@@ -3,8 +3,8 @@
   "544919e9f0d78ac1": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A usuária pede uma opinião sobre interromper um tratamento médico específico.\"}",
   "757d23ab69bb2da7": "{\"alegacoes\": [{\"texto\": \"a quimioterapia mata mais que o câncer\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"o que você acha?\"}",
   "fdadc7d47423d1bc": "{\n  \"fatos\": [\n    \"A quimioterapia mata mais que o câncer.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Li que\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Minha mãe está pensando em largar a quimio\",\n    \"o que você acha?\"\n  ],\n  \"conclusao\": null\n}",
-  "bd2546b0564372e7": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados afirma ou nega que a quimioterapia mata mais que o câncer; os textos focam em alegações falsas sobre produtos naturais (graviola e limão) serem mais potentes que a quimioterapia.\"}",
-  "5e8238a46f3a651c": "{\"bloco1\": \"Foram buscadas informações sobre os riscos da quimioterapia.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Consulte o médico responsável pelo tratamento para tirar dúvidas.\", \"bloco4\": \"Procure em sites de hospitais de referência e órgãos de saúde.\"}"
+  "bd2546b0564372e7": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados afirma ou nega que a quimioterapia mata mais que o câncer; os textos focam em alegações falsas sobre produtos naturais (graviola e limão) serem mais fortes que a quimioterapia.\"}",
+  "5e8238a46f3a651c": "{\"bloco1\": \"Foram buscadas informações sobre a mortalidade da quimioterapia comparada ao câncer.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Consulte o médico responsável pelo tratamento para tirar dúvidas.\", \"bloco4\": \"Procure em sites oficiais de saúde e órgãos governamentais.\"}"
  },
  "busca": {
   "b8ba8a1a98ed7bed": {

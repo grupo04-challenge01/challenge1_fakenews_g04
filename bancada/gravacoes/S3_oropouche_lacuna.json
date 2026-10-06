@@ -1,10 +1,10 @@
 {
  "chat": {
-  "e26841fbd973beee": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma informação sobre saúde.\"}",
+  "e26841fbd973beee": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário deseja confirmar a veracidade de uma informação sobre saúde.\"}",
   "06960f8d89c589d8": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "f5eb4808686433fa": "{\n  \"fatos\": [\n    \"A febre oropouche passa pelo mosquito da dengue.\",\n    \"A vacina da dengue protege contra a febre oropouche.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
-  "828f8f5e25ed738d": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados menciona a febre oropouche ou afirmações sobre a proteção da vacina da dengue contra essa doença específica.\"}",
-  "ce93c2fd53eeca5f": "{\"bloco1\": \"Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar em sites oficiais de saúde e órgãos de vigilância sanitária.\", \"bloco4\": \"\"}"
+  "828f8f5e25ed738d": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho nos textos fornecidos que mencione a febre oropouche ou a eficácia da vacina da dengue contra ela.\"}",
+  "ce93c2fd53eeca5f": "{\"bloco1\": \"Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos científicos recentes sobre essa interação específica.\", \"bloco4\": \"\"}"
  },
  "busca": {
   "db7da0c55ed62cf8": {

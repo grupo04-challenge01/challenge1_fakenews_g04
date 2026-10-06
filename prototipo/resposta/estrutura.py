@@ -24,14 +24,21 @@ da evidência). Na forma com evidência, os blocos 1 e 2 chegam como lista de
 confere. Frase que não passa
 sai da resposta e fica em `Resposta.descartadas`. Ao contrário dos defeitos, o
 descarte age: se a frase do bloco 1 cai, ou se o bloco 2 fica sem frase
-ancorada, o veredito cai para `evidência insuficiente` e a resposta é refeita na
-forma sem evidência, com uma segunda chamada ao modelo. Os blocos 3 e 4 falam da
-técnica e do que observar, não de fato sobre o mundo, e não passam pela
-ancoragem.
+ancorada, o modelo refaz a resposta uma vez, com o motivo e as frases recusadas
+no aviso da conferência (decisão 29). Se falhar de novo, o veredito cai para
+`evidência insuficiente` e a resposta é refeita na forma sem evidência. Os
+blocos 3 e 4 falam da técnica e do que observar, não de fato sobre o mundo, e
+não passam pela ancoragem.
+
+Decisão 29, fragmentos vizinhos: com `expandir`, cada checagem citada chega ao
+modelo com outros fragmentos seus, depois dos trechos do veredito, porque o
+fato que decide a resposta pode estar num fragmento que a busca não entregou.
+A camada de detalhe mostra os trechos do veredito e só os vizinhos que ancoram
+frase, para não reproduzir a checagem inteira (`recuperacao-evidencia`).
 """
 import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.ancoragem import ancorar_bloco, texto_do_bloco
@@ -195,14 +202,15 @@ def _ponteiro(lacuna):
             f"{p['veredito']}. {p['endereco']}")
 
 
-def _detalhe(veredito):
-    """Trechos citados e, depois deles, as referências inaptas (decisão 17).
+def _detalhe(veredito, vizinhos=()):
+    """Trechos citados, os vizinhos que ancoram frase (decisão 29) e, depois
+    deles, as referências inaptas (decisão 17).
 
     A referência tem as mesmas chaves, com `trecho` vazio: agência, data, link e
     veredito da agência são auditáveis, o texto reprovado não é exibido.
     """
     chaves = ("agencia", "data_publicacao", "url", "veredito_original", "trecho")
-    citados = [{k: t[k] for k in chaves} for t in veredito.trechos]
+    citados = [{k: t[k] for k in chaves} for t in [*veredito.trechos, *vizinhos]]
     return citados + [{**{k: ref[k] for k in chaves[:-1]}, "trecho": None}
                       for ref in veredito.referencias]
 
@@ -269,12 +277,13 @@ def _defeitos_sem(r, catalogo):
     return achados
 
 
-def _ancorar(crus, veredito, decomposicao):
+def _ancorar(crus, trechos, decomposicao, usadas):
     """Blocos 1 e 2 sem as frases não ancoradas, as descartadas e o motivo do
-    rebaixamento — `None` quando o veredito se sustenta."""
+    rebaixamento — `None` quando o veredito se sustenta. `usadas` recebe o
+    número dos trechos que ancoram frase."""
     opiniao = bool(decomposicao and decomposicao.get("opinioes"))
-    m1, d1, _ = ancorar_bloco(crus[0], veredito.trechos)
-    m2, d2, ancoradas2 = ancorar_bloco(crus[1], veredito.trechos, opiniao=opiniao)
+    m1, d1, _ = ancorar_bloco(crus[0], trechos, usadas=usadas)
+    m2, d2, ancoradas2 = ancorar_bloco(crus[1], trechos, opiniao=opiniao, usadas=usadas)
     descartadas = [{"bloco": 1, **d} for d in d1] + [{"bloco": 2, **d} for d in d2]
     motivo = None
     if d1:
@@ -282,6 +291,18 @@ def _ancorar(crus, veredito, decomposicao):
     elif not ancoradas2:
         motivo = "bloco 2 sem frase ancorada"
     return " ".join(m1), " ".join(m2), descartadas, motivo
+
+
+def _aviso(motivo, descartadas):
+    """O que a conferência recusou, para a segunda tentativa (decisão 29)."""
+    linhas = [f"AVISO DA CONFERÊNCIA: a resposta anterior foi recusada ({motivo}).",
+              "Os blocos 1 e 2 precisam de frases de fato, cada uma com o trecho que a "
+              "sustenta no campo \"trecho\". Use só o que os trechos dizem. O bloco 2 "
+              "precisa de ao menos uma frase de fato, além da frase sobre opinião."]
+    if descartadas:
+        linhas.append("Frases recusadas:")
+        linhas += [f"- \"{d['frase']}\": {d['motivo']}" for d in descartadas]
+    return "\n".join(linhas)
 
 
 def _rebaixado(veredito, motivo):
@@ -292,12 +313,14 @@ def _rebaixado(veredito, motivo):
 
 
 def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
-              chat=chat_ollama, catalogo=None):
+              chat=chat_ollama, catalogo=None, expandir=None):
     """Monta a resposta de quatro blocos a partir do veredito da guarda.
 
     `veredito` é o `guarda.Veredito`. `lacuna`, quando a pauta é posterior ao
     acervo, traz `corte` e, se o índice de checagens recentes achou, `ponteiro`
-    com agência, data, veredito e endereço.
+    com agência, data, veredito e endereço. `expandir` recebe os trechos do
+    veredito e os devolve na frente, com os fragmentos vizinhos depois
+    (`Recuperador.expandir`, decisão 29).
     """
     catalogo = catalogo or catalogo_mod.carregar_catalogo()
     estado = _estado(veredito, lacuna)
@@ -307,14 +330,28 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
         titulos[2] = TITULO_3_VERDADEIRO
 
     ponteiro = bool(lacuna and lacuna.get("ponteiro"))
-    bruto = chat(SISTEMA, mensagem(texto, alegacao, veredito, estado, decomposicao))
+    trechos = list(veredito.trechos)
+    if com and expandir is not None:
+        trechos = expandir(veredito.trechos)
+    pedido = mensagem(texto, alegacao, replace(veredito, trechos=trechos), estado, decomposicao)
+    bruto = chat(SISTEMA, pedido)
     dados = ler_json(bruto)
     crus = [(dados or {}).get(f"bloco{n}") for n in range(1, 5)]
     gerados = [texto_do_bloco(c) for c in crus]
 
-    descartadas = []
+    descartadas, usadas = [], set()
     if com and dados is not None:
-        gerados[0], gerados[1], descartadas, motivo = _ancorar(crus, veredito, decomposicao)
+        gerados[0], gerados[1], descartadas, motivo = _ancorar(crus, trechos, decomposicao, usadas)
+        if motivo:
+            # Uma tentativa a mais antes de rebaixar (decisão 29).
+            refeito = chat(SISTEMA, f"{pedido}\n\n{_aviso(motivo, descartadas)}")
+            bruto = f"{bruto}\n\n--- refeita com o aviso da conferência ---\n\n{refeito}"
+            novos = ler_json(refeito)
+            if novos is not None:
+                dados, crus = novos, [novos.get(f"bloco{n}") for n in range(1, 5)]
+                gerados, usadas = [texto_do_bloco(c) for c in crus], set()
+                gerados[0], gerados[1], descartadas, motivo = _ancorar(
+                    crus, trechos, decomposicao, usadas)
         if motivo:
             rebaixado = _rebaixado(veredito, motivo)
             r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo)
@@ -334,7 +371,10 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
         blocos[3] = _ponteiro(lacuna)
     if ponteiro:
         blocos[1] = BLOCO_2_COM_PONTEIRO
-    r = Resposta("com evidência" if com else "sem evidência", titulos, blocos, _detalhe(veredito),
+    n = len(veredito.trechos)
+    vizinhos = [trechos[i - 1] for i in sorted(usadas) if n < i <= len(trechos)]
+    r = Resposta("com evidência" if com else "sem evidência", titulos, blocos,
+                 _detalhe(veredito, vizinhos),
                  descartadas=descartadas, veredito=veredito, bruto=bruto)
 
     if dados is None:
