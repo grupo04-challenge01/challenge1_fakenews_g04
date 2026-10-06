@@ -2,9 +2,9 @@
  "chat": {
   "0a40830406fd7a50": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer saber se uma informação específica sobre um fato ocorrido é verdadeira.\"}",
   "7fb6490d2038eee3": "{\"alegacoes\": [{\"texto\": \"enterraram uma menina em caixão lacrado como covid\", \"saude\": true, \"risco\": \"medio\"}], \"opiniao\": \"Absurdo\"}",
-  "9cff63f59a73798a": "{\n  \"fatos\": [\n    \"Uma menina foi enterrada em um caixão lacrado como caso de Covid.\",\n    \"O exame da menina deu negativo.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Absurdo:\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Isso é verdade?\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta uma pergunta sobre a veracidade do relato sem fornecer dados para confirmação.\"\n  }\n}",
-  "1b36958aed5e2b94": "{\"rotulo\": \"verdadeiro\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho confirma que uma menina foi enterrada em caixão lacrado por suspeita de covid-19, embora o exame posterior tenha dado negativo.\"}",
-  "8c9992081e4b6699": "{\"bloco1\": \"A checagem confirmou que o fato aconteceu em Touros, no Rio Grande do Norte.\", \"bloco2\": \"O procedimento de lacrar caixões era padrão para suspeitas de coronavírus na época. A parte 'Absurdo' é uma opinião e não pode ser checada.\", \"bloco3\": \"A mensagem não engana.\", \"bloco4\": \"A confirmação foi baseada em notícias que detalham o caso da menina e o exame negativo.\"}"
+  "9cff63f59a73798a": "{\n  \"fatos\": [\n    \"Uma menina foi enterrada em um caixão lacrado como caso de covid.\",\n    \"O exame da menina deu negativo.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Absurdo\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Isso é verdade?\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta uma pergunta sobre a veracidade do relato sem fornecer dados para confirmação.\"\n  }\n}",
+  "1b36958aed5e2b94": "{\"rotulo\": \"verdadeiro\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho confirma que uma menina foi colocada em um caixão lacrado por suspeita de covid-19, embora o exame posterior tenha dado negativo.\"}",
+  "7cd95d6057a28e09": "{\"bloco1\": [{\"frase\": \"A história de que uma menina foi enterrada em caixão lacrado por suspeita de covid-19 é real.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O exame da criança deu negativo apenas uma semana depois do sepultamento.\", \"trecho\": \"T1\"}, {\"frase\": \"A parte que diz 'Absurdo' é uma opinião e não pode ser checada.\", \"trecho\": \"\"}], \"bloco3\": \"A mensagem parecia difícil de acreditar porque envolve um relato muito forte sobre um erro no sepultamento.\", \"bloco4\": \"O fato foi confirmado por notícias que mostram o vídeo da família abrindo a urna.\"}"
  },
  "busca": {
   "f6b3a6d50c75d61c": {
@@ -17,6 +17,7 @@
      "score_lexico": 28.424755096435547,
      "score_denso": 0.9058445692062378,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2020-06-10",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
@@ -33,6 +34,7 @@
      "score_lexico": 15.964984893798828,
      "score_denso": 0.883353590965271,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2021-04-02",
      "url": "https://www.boatos.org/brasil/mulher-com-covid-19-colocada-caixao-seria-enterrada-vida-governo-sao-paulo.html",
@@ -49,6 +51,7 @@
      "score_lexico": 4.831647872924805,
      "score_denso": 0.8657535910606384,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2020-09-22",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/nao-ha-evidencias-que-liguem-morte-de-menina-alema-ao-uso-de-mascaras/",
@@ -65,6 +68,7 @@
      "score_lexico": 7.997800827026367,
      "score_denso": 0.8605308532714844,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2020-04-29",
      "url": "https://piaui.folha.uol.com.br/lupa/2020/04/29/verificamos-foto-caixao-vazio-enterros-covid-19-amazonas/",
@@ -81,6 +85,7 @@
      "score_lexico": 9.36119270324707,
      "score_denso": 0.8574633598327637,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2021-04-09",
      "url": "https://piaui.folha.uol.com.br/lupa/2021/04/09/verificamos-idosa-enterrada-viva/",

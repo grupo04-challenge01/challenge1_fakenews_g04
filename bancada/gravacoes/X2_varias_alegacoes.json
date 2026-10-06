@@ -1,10 +1,10 @@
 {
  "chat": {
-  "7a70d74c77e8bdcb": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A mensagem relata a interrupção de um tratamento médico por uma pessoa próxima.\"}",
+  "7a70d74c77e8bdcb": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A usuária relata a interrupção de um tratamento médico por conta de uma crença em chá.\"}",
   "ac004aae2c52413e": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}",
   "6ac3a497f2fac7a1": "{\n  \"fatos\": [\n    \"O hospital de Sorocaba ficou lotado ontem.\",\n    \"O prefeito gastou 2 milhões numa praça.\",\n    \"O chá de boldo cura hepatite.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": null,\n    \"decorre\": null,\n    \"salto\": null\n  }\n}",
-  "dd15b21da1a0c8f9": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Os trechos mencionam que o boldo é usado para tratar 'males do fígado' ou problemas hepáticos de forma geral, mas não afirmam nem negam especificamente a cura da hepatite.\"}",
-  "13a8dc2df15e9aa6": "{\"bloco1\": \"Foi buscado por informações sobre o uso do chá de boldo para tratar hepatite.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode pesquisar em sites oficiais de saúde ou consultar médicos.\", \"bloco4\": \"Procure por fontes governamentais ou instituições de pesquisa médica.\"}"
+  "dd15b21da1a0c8f9": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Os trechos mencionam que o boldo é usado para tratar 'males do fígado' ou problemas hepáticos de forma geral, mas não há nenhuma informação que afirme ou negue que ele cure a hepatite.\"}",
+  "39ac398ffd5e5cdf": "{\"bloco1\": \"Foram buscadas informações sobre o uso do chá de boldo para tratar hepatite.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos científicos sobre plantas medicinais. Procure por fontes de saúde oficiais.\", \"bloco4\": \"Consulte sites de órgãos de saúde pública ou instituições de pesquisa médica.\"}"
  },
  "busca": {
   "1380cdb9dfdb3e72": {
@@ -17,6 +17,7 @@
      "score_lexico": 23.798851013183594,
      "score_denso": 0.8972338438034058,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-04-07",
      "url": "https://www.boatos.org/saude/cha-folhas-boldo-cura-coronavirus.html",
@@ -33,6 +34,7 @@
      "score_lexico": 18.198060989379883,
      "score_denso": 0.8955926895141602,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2020-05-14",
      "url": "https://piaui.folha.uol.com.br/lupa/2020/05/14/verificamos-cha-boldo-covid/",
@@ -49,6 +51,7 @@
      "score_lexico": 18.779569625854492,
      "score_denso": 0.88697350025177,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2020-05-14",
      "url": "https://www.aosfatos.org/noticias/cha-de-boldo-nao-combate-sintomas-nem-cura-covid-19/",
@@ -65,6 +68,7 @@
      "score_lexico": 22.77678871154785,
      "score_denso": 0.885079026222229,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "fato-ou-fake",
      "data_publicacao": "2020-05-15",
      "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/15/e-fake-que-cha-de-boldo-combate-a-covid-19-em-tres-horas.ghtml",
@@ -81,6 +85,7 @@
      "score_lexico": 11.742849349975586,
      "score_denso": 0.883760929107666,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-02-07",
      "url": "https://www.boatos.org/saude/cha-erva-doce-cura-novo-coronavirus-diretor-hc.html",

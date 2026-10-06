@@ -2,9 +2,9 @@
  "chat": {
   "e281aec909dcf36e": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer verificar a veracidade de uma afirmação sobre uma notícia.\"}",
   "0ea97e857df63fd4": "{\"alegacoes\": [{\"texto\": \"o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
-  "f4aa6c3014c853fa": "{\n  \"fatos\": [\n    \"O presidente da Anvisa admitiu que a vacinação contra a covid é um risco sanitário grave para a população.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"presidente da Anvisa\",\n      \"forca\": \"ausente\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "1010e5a741bc2390": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T4\"], \"criterio\": \"As agências de checagem confirmaram que o vídeo do presidente da Anvisa foi editado e retirado de contexto; ele não disse que a vacinação é um risco, mas sim que uma medida provisória que obrigava a aprovação rápida de vacinas estrangeiras sem análise prévia seria um 'risco sanitário grave'.\"}",
-  "d5120e78eb4f96b5": "{\n\"bloco1\": \"A checagem mostrou que o vídeo do presidente da Anvisa foi editado.\",\n\"bloco2\": \"Ele falou sobre um risco em uma medida provisória, não sobre as vacinas. A mensagem usa a fala dele para dizer algo diferente.\",\n\"bloco3\": \"Técnica: fora de contexto. O vídeo foi cortado para mudar o sentido da fala original.\",\n\"bloco4\": \"Confira se o vídeo completo está disponível antes de acreditar em falas curtas.\"\n}"
+  "f4aa6c3014c853fa": "{\n  \"fatos\": [\n    \"O presidente da Anvisa admitiu que a vacinação contra a covid é um risco sanitário grave para a população.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"presidente da Anvisa\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "1010e5a741bc2390": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T4\"], \"criterio\": \"Os trechos mostram que o vídeo do presidente da Anvisa foi editado e retirado de contexto; ele não afirmou que a vacinação é um risco, mas sim que uma medida provisória que obrigava a aprovação rápida de vacinas estrangeiras sem análise prévia seria um 'risco sanitário grave'.\"}",
+  "c44675007aae7df0": "{\"bloco1\": [{\"frase\": \"A mensagem usa um vídeo cortado para mudar o sentido da fala.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O presidente disse que a aprovação rápida de vacinas estrangeiras sem análise era o risco.\", \"trecho\": \"T2\"}, {\"frase\": \"As vacinas aprovadas pela Anvisa são seguras e eficazes.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo foi editado para parecer que ele falava das vacinas já aprovadas.\", \"bloco4\": \"Verifique se o vídeo foi cortado ou se a legenda distorce as palavras do entrevistado.\"}"
  },
  "busca": {
   "bc3f637b16084326": {
@@ -17,6 +17,7 @@
      "score_lexico": 39.01222610473633,
      "score_denso": 0.8975449800491333,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2021-02-18",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/video-manipulado-deturpa-entrevista-de-presidente-da-anvisa-para-sugerir-risco-sanitario-grave-na-vacinacao/",
@@ -33,6 +34,7 @@
      "score_lexico": 22.390892028808594,
      "score_denso": 0.9010798931121826,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2021-02-15",
      "url": "https://www.boatos.org/saude/diretor-presidente-anvisa-diz-populacao-corre-risco-grave-ao-tomar-vacinas.html",
@@ -49,6 +51,7 @@
      "score_lexico": 11.777861595153809,
      "score_denso": 0.8868561387062073,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2021-01-22",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-enganoso-que-imunogenicidade-da-coronavac-ofereca-risco-anvisa-pediu-dados-complementares-e-nao-questionou-seguranca/",
@@ -65,6 +68,7 @@
      "score_lexico": 21.456830978393555,
      "score_denso": 0.8785038590431213,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2021-02-19",
      "url": "https://piaui.folha.uol.com.br/lupa/2021/02/19/verificamos-anvisa-vacinas-covid/",
@@ -81,6 +85,7 @@
      "score_lexico": 15.385566711425781,
      "score_denso": 0.8781771063804626,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2021-01-19",
      "url": "https://www.boatos.org/saude/medico-cabo-frio-afirma-vacina-covid-19-mata.html",

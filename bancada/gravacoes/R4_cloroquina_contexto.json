@@ -1,22 +1,24 @@
 {
  "chat": {
-  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer verificar a veracidade de uma notícia sobre política de saúde pública.\"}",
-  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"o prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma notícia sobre política de saúde pública.\"}",
+  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"O prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "fd1b58b7a333f1bc": "{\n  \"fatos\": [\n    \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "8b2e931e4b27110e": "{\"rotulo\": \"verdadeiro fora de contexto ou exagerado\", \"trechos\": [\"T1\", \"T3\"], \"criterio\": \"Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina como opção de tratamento em abril de 2020, mas a alegação usa 'acabou de' para um fato ocorrido há anos e ignora que a medida foi anunciada antes do diagnóstico de Covas.\"}",
-  "e02f6bc0a4fa111b": "{\"bloco1\": \"A checagem confirmou que a prefeitura liberou o remédio em 2020.\", \"bloco2\": \"O prefeito anunciou a inclusão do medicamento como opção de tratamento em abril de 2020. A mensagem usa 'acabou de' para um fato antigo.\", \"bloco3\": \"Técnica: fora de contexto. O vídeo é antigo e não mostra um fato recente.\", \"bloco4\": \"Verifique a data da publicação antes de compartilhar vídeos antigos.\"}"
+  "fe22050d6929ba1b": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"A agência classificou como boato a afirmação de que o prefeito Bruno Covas teria acabado de liberar a cloroquina em 2021, esclarecendo que ele já havia anunciado a inclusão do medicamento como opção de tratamento em abril de 2020.\"}",
+  "8382ff6e22121eee": "{\"bloco1\": [{\"frase\": \"A informação sobre a liberação recente é falsa.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O prefeito já havia anunciado o uso do remédio em abril de 2020.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo é antigo e foi usado para contar uma história nova.\", \"bloco4\": \"Verifique a data da publicação original antes de compartilhar vídeos.\"}",
+  "769edaea9d7d1d72": "{\"bloco1\": \"Foram buscadas informações sobre a liberação da cloroquina pelo prefeito.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique o site oficial da prefeitura ou portais de notícias confiáveis.\", \"bloco4\": \"Procure em sites governamentais e agências de checagem conhecidas.\"}"
  },
  "busca": {
-  "ad6b7d129ebb7b03": {
+  "cc7de47bc11cf233": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "73fd0f67bb-00",
      "fragmento_id": "73fd0f67bb-00-00",
-     "score": 0.7118890881538391,
+     "score": 0.714712917804718,
      "score_lexico": 33.769866943359375,
-     "score_denso": 0.907903254032135,
+     "score_denso": 0.9053514003753662,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2021-01-31",
      "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
@@ -29,10 +31,11 @@
     {
      "unidade_id": "dc429bdfc1-00",
      "fragmento_id": "dc429bdfc1-00-00",
-     "score": 0.6997487545013428,
+     "score": 0.7006698846817017,
      "score_lexico": 31.02199363708496,
-     "score_denso": 0.902712881565094,
+     "score_denso": 0.8992341756820679,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2020-06-29",
      "url": "https://piaui.folha.uol.com.br/lupa/2020/06/29/verificamos-covas-cloroquina-tratamento/",
@@ -45,10 +48,11 @@
     {
      "unidade_id": "e1320a8aaf-00",
      "fragmento_id": "e1320a8aaf-00-01",
-     "score": 0.6774696111679077,
+     "score": 0.6802047491073608,
      "score_lexico": 26.425039291381836,
-     "score_denso": 0.8942699432373047,
+     "score_denso": 0.8915815353393555,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2020-06-25",
      "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
@@ -61,10 +65,11 @@
     {
      "unidade_id": "9678877505-00",
      "fragmento_id": "9678877505-00-02",
-     "score": 0.677006721496582,
+     "score": 0.6785768866539001,
      "score_lexico": 22.259658813476562,
-     "score_denso": 0.8954479694366455,
+     "score_denso": 0.8922828435897827,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2020-06-26",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/prefeito-de-sao-paulo-nao-proibiu-hidroxicloroquina-e-usou-azitromicina-no-tratamento-da-covid-19/",
@@ -77,10 +82,11 @@
     {
      "unidade_id": "b8f19a0568-00",
      "fragmento_id": "b8f19a0568-00-01",
-     "score": 0.663156270980835,
+     "score": 0.6640893816947937,
      "score_lexico": 19.323041915893555,
-     "score_denso": 0.8910980224609375,
+     "score_denso": 0.8876985311508179,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "ESTADAO_VERIFICA",
      "data_publicacao": "2020-06-26",
      "url": "https://politica.estadao.com.br/blogs/estadao-verifica/prefeito-de-sao-paulo-nao-proibiu-hidroxicloroquina-e-usou-azitromicina-no-tratamento-da-covid-19/",
