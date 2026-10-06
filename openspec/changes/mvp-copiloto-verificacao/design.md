@@ -784,9 +784,10 @@ e `prototipo/resposta/tests/test_estrutura.py`.
    veredito copiado da agência sem trecho que o sustente; e mandar o texto e só
    proibir a citação, porque a paráfrase de texto reprovado entraria no bloco 2.
 2. **O modelo declara a âncora, o código confere por termos.** Na forma com
-   evidência, cada frase dos blocos 1 e 2 termina com a marca do trecho, no
-   estilo de citação: «Nenhum estudo mostra isso [T1].» A marca sai do texto
-   visível. A frase passa se o trecho marcado é apto e contém os **termos
+   evidência, os blocos 1 e 2 são listas de frases, cada uma com o trecho que a
+   sustenta: `{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}`. (A
+   primeira versão pedia a marca inline, `[T1]`; ver a sonda abaixo.) A frase
+   passa se o trecho declarado é apto e contém os **termos
    verificáveis** dela: número em algarismos (casado inteiro), mês, quantidade
    por extenso («uma semana», «dois dias»; `um`/`uma` sozinhos são artigo) e
    nome próprio (maiúscula que não abre a frase). Agência e data de publicação
@@ -821,11 +822,24 @@ respostas R registradas em `relatorio_sonda_resposta.json` (prompt anterior,
 sem marca) foram conferidas contra os trechos de cada caso: 31 de 31 ancoradas,
 nenhum falso descarte. Isso mede a regra de termos, não o prompt novo.
 
-**Pendente: a sonda com o prompt novo.** O prompt dos quatro blocos mudou: pede
-a marca nos blocos 1 e 2 e a frase de opinião sem colchetes. A sonda da resposta
-(`python -m prototipo.sonda_resposta`) passa a reprovar caso R rebaixado pela
-ancoragem e registra as frases descartadas. Ela não foi refeita: o gerador local
-não estava acessível da máquina da implementação.
+**Primeira sonda, marca inline: 1 de 12.** A sonda da resposta passa a
+reprovar caso R rebaixado pela ancoragem e a registrar as frases descartadas.
+Com o prompt pedindo a marca no fim de cada frase («... isso [T1].»), a rodada
+de 06/10 deu 9 de 9 nos casos S e 1 de 12 nos R: 11 rebaixados por «bloco 2
+sem frase ancorada». Nenhum descarte foi por termo fora do trecho. O modelo
+marcou o bloco 1 e deixou o bloco 2 sem marca, com frases legítimas, como
+«Nenhum alimento pode prevenir ou curar essa doença» no R1. É o mesmo padrão
+das decisões 4 do fix e 18: o que depende de o modelo lembrar uma instrução de
+forma falha. A âncora passou a campo próprio no JSON, que o modo JSON obriga a
+existir. A marca inline continua aceita. Alternativas descartadas: reforçar a
+instrução no prompt (o padrão acima); conferir contra T1 a frase sem marca
+quando há um só trecho (não resolve o R4, que tem dois, e deixa de ser âncora
+declarada). Achado lateral: em 4 das 11 respostas refeitas na forma sem
+evidência, o modelo deixou o bloco 4 vazio, o que não ocorreu no S1.
+
+**Pendente: a sonda com a âncora em campo próprio.** A `Resposta` passa a
+guardar a saída crua do modelo (`bruto`, as duas no rebaixamento), e o relatório
+a registra.
 
 **Limites declarados.**
 
