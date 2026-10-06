@@ -1,10 +1,10 @@
 {
  "chat": {
-  "3c03f2adb4f81672": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário deseja verificar a veracidade de uma informação sobre efeitos colaterais da vacina.\"}",
+  "3c03f2adb4f81672": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma informação sobre saúde que precisa de verificação de veracidade.\"}",
   "475fdb0fa8ef0947": "{\"alegacoes\": [{\"texto\": \"a vacina da febre amarela mata em 50% dos casos\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Não deixem ninguém da família tomar!\"}",
-  "da228d1a6cc22289": "{\n  \"fatos\": [\n    \"A vacina da febre amarela mata em 50% dos casos.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Não deixem ninguém da família tomar!\"\n  ],\n  \"conclusao\": null\n}",
-  "a557677bb8e60c42": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a afirmação como boato, esclarecendo que não há nenhuma fala ou dado que sustente que 50% das pessoas que tomam a vacina vêm a óbito.\"}",
-  "5fe7e8d53c50ffc7": "{\"bloco1\": \"A checagem confirmou que a vacina não causa mortes em 50% dos casos.\", \"bloco2\": \"Especialistas já esclareceram que essa informação é um boato antigo. A parte sobre não tomar a vacina é uma opinião pessoal.\", \"bloco3\": \"medo de dano oculto, urgência fabricada. A mensagem usa termos alarmantes e pede compartilhamento rápido para espalhar medo.\", \"bloco4\": \"Verifique se há dados reais de órgãos de saúde antes de acreditar em alertas graves.\"}"
+  "da228d1a6cc22289": "{\n  \"fatos\": [\n    \"a vacina da febre amarela mata em 50% dos casos\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"URGENTE!!!\",\n    \"Não deixem ninguém da família tomar!\"\n  ],\n  \"conclusao\": null\n}",
+  "e3157dcd326ef2a1": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a afirmação como boato, esclarecendo que não há qualquer fala sobre 50% de óbitos e que essa informação é falsa.\"}",
+  "d97e02337c5b990e": "{\"bloco1\": [{\"frase\": \"A informação sobre a letalidade da vacina é falsa.\", \"trecho\": \"T2\"}], \"bloco2\": [{\"frase\": \"Especialistas já esclareceram que não houve fala sobre 50% de óbitos.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa história circula em redes sociais desde 2008.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'URGENTE!!!' e o pedido para não tomar a vacina são opiniões.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: medo de dano oculto, urgência fabricada. A mensagem usa um tom alarmista para espalhar um boato sobre riscos da vacina.\", \"bloco4\": \"Verifique se a informação vem de fontes oficiais de saúde antes de compartilhar.\"}"
  },
  "busca": {
   "f58c02f4e4997f70": {
@@ -17,6 +17,7 @@
      "score_lexico": 32.47487258911133,
      "score_denso": 0.9115083813667297,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2017-03-22",
      "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
@@ -33,6 +34,7 @@
      "score_lexico": 30.853853225708008,
      "score_denso": 0.8947590589523315,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-30",
      "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
@@ -49,6 +51,7 @@
      "score_lexico": 20.557920455932617,
      "score_denso": 0.8950203061103821,
      "idioma": "pt-BR",
+     "apto_citacao": false,
      "agencia": "https:apublica.org",
      "data_publicacao": "2018-02-06",
      "url": "https://apublica.org/2018/02/truco-correntes-de-whatsapp-espalham-informacoes-falsas-sobre-febre-amarela/",
@@ -65,6 +68,7 @@
      "score_lexico": 19.05996322631836,
      "score_denso": 0.8934404850006104,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-20",
      "url": "https://www.boatos.org/saude/enfermeira-vacina-febre-amarela-farsa.html",
@@ -81,6 +85,7 @@
      "score_lexico": 18.36847686767578,
      "score_denso": 0.8930206894874573,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-02-27",
      "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",

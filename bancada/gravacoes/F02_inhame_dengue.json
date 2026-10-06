@@ -1,10 +1,10 @@
 {
  "chat": {
-  "48317649ab4ff8e8": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem busca confirmar a veracidade de uma informação sobre tratamento de doença.\"}",
+  "48317649ab4ff8e8": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem solicita a verificação da veracidade de uma informação sobre tratamento de doença.\"}",
   "37c6adde7d53a126": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Compartilhem urgente, vamos ajudar as pessoas!\"}",
   "7da10d9a9cd610af": "{\n  \"fatos\": [\n    \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Compartilhem urgente, vamos ajudar as pessoas!\"\n  ],\n  \"conclusao\": null\n}",
-  "16b94a49811c7142": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"As agências de checagem afirmam que não existe nenhum estudo realizado pela UFMG que comprove a eficácia do suco de inhame no tratamento da dengue.\"}",
-  "b67c74fcb9284c73": "{\"bloco1\": \"A checagem não encontrou nenhum estudo da UFMG sobre esse assunto.\", \"bloco2\": \"O suco de inhame não é um remédio para a dengue. A parte do texto que pede compartilhamento urgente é apenas uma opinião.\", \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com algo simples e pede repasse imediato.\", \"bloco4\": \"Verifique se a instituição citada realmente publicou o estudo em seu site oficial.\"}"
+  "16b94a49811c7142": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"As agências de checagem afirmam que não existe nenhum estudo da UFMG que comprove a eficácia do suco de inhame no tratamento da dengue.\"}",
+  "66ea6d0b01869207": "{\"bloco1\": [{\"frase\": \"Não existe estudo da UFMG sobre esse suco.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O inhame não é um remédio para a dengue.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte sobre compartilhar urgente é uma opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com alimento simples e pede compartilhamento imediato.\", \"bloco4\": \"Verifique sempre a fonte oficial da universidade antes de acreditar em curas caseiras.\"}"
  },
  "busca": {
   "070facc943de3c8d": {
@@ -17,6 +17,7 @@
      "score_lexico": 89.85535430908203,
      "score_denso": 0.9256025552749634,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2020-02-17",
      "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
@@ -33,6 +34,7 @@
      "score_lexico": 78.86619567871094,
      "score_denso": 0.9199079871177673,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "fato-ou-fake",
      "data_publicacao": "2020-02-18",
      "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/02/18/e-fake-que-ufmg-fez-estudo-que-diz-que-suco-de-inhame-corta-os-efeitos-da-dengue-em-apenas-quatro-horas.ghtml",
@@ -49,6 +51,7 @@
      "score_lexico": 28.615419387817383,
      "score_denso": 0.8595187067985535,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-05-25",
      "url": "https://www.boatos.org/saude/maca-inhame-cru-agua-coco-previnem-curam-coronavirus.html",
@@ -65,6 +68,7 @@
      "score_lexico": 12.109095573425293,
      "score_denso": 0.8579654693603516,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2016-02-15",
      "url": "https://www.boatos.org/saude/propolis-espanta-mosquito-da-zika-e-dengue-boato.html",
@@ -81,6 +85,7 @@
      "score_lexico": 18.8575496673584,
      "score_denso": 0.8526370525360107,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "fato-ou-fake",
      "data_publicacao": "2020-05-26",
      "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/26/e-fake-que-formula-caseira-com-maca-inhame-e-agua-de-coco-proteja-do-coronavirus.ghtml",

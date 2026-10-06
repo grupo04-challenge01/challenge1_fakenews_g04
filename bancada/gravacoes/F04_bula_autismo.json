@@ -1,10 +1,10 @@
 {
  "chat": {
-  "90cf547938d0714f": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre saúde que precisa de verificação de veracidade.\"}",
+  "90cf547938d0714f": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre saúde para ser verificada como verdadeira ou falsa.\"}",
   "8027e3ac2c5e9117": "{\"alegacoes\": [{\"texto\": \"vacinas causam autismo\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"vacinas causam autismo tá na bula\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "a88efb2ac20180ed": "{\n  \"fatos\": [\n    \"vacinas causam autismo\",\n    \"Tá na bula!\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Tá na bula!\",\n      \"forca\": \"ausente\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo\"\n  ],\n  \"conclusao\": null\n}",
-  "83e428face79566a": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos indicam que a alegação é falsa: o T1 esclarece que bulas não estabelecem relação causal entre vacinas e autismo, e o T2 afirma que o principal estudo sobre o tema foi retratado por interesses econômicos, reforçando que as vacinas são seguras.\"}",
-  "d51e68cd704f4cb4": "{\"bloco1\": \"A checagem mostrou que a bula não confirma relação entre vacina e autismo.\", \"bloco2\": \"Bulas citam relatos voluntários sem comprovar causa. O estudo principal sobre o tema foi retratado por interesses econômicos.\", \"bloco3\": \"medo de dano oculto, fonte sem nome. A mensagem usa um medo comum para espalhar desinformação.\", \"bloco4\": \"Verifique se a bula afirma uma causa direta ou apenas cita relatos isolados.\"}"
+  "83e428face79566a": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos indicam que a alegação é falsa, esclarecendo que não há relação causal entre vacinas e autismo e que o principal estudo sobre o tema foi retratado por fraudes.\"}",
+  "ad08ebbe7ce42fee": "{\"bloco1\": [{\"frase\": \"A bula não afirma que a vacina causa autismo.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O texto da bula diz que não é possível estabelecer relação de causa entre os eventos e a vacina.\", \"trecho\": \"T1\"}, {\"frase\": \"O estudo principal sobre esse tema foi retratado por fraudes.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'Não adianta brigar comigo' é uma opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: medo de dano oculto. A mensagem usa um texto da bula para sugerir perigo grave.\", \"bloco4\": \"Verifique o contexto completo dos textos citados em bulas médicas.\"}"
  },
  "busca": {
   "0be8ee426d49c113": {
@@ -17,6 +17,7 @@
      "score_lexico": 18.663103103637695,
      "score_denso": 0.8938513994216919,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2019-02-18",
      "url": "https://piaui.folha.uol.com.br/lupa/2019/02/18/verificamos-bula-autismo/",
@@ -33,6 +34,7 @@
      "score_lexico": 10.493965148925781,
      "score_denso": 0.8904316425323486,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2020-10-27",
      "url": "https://piaui.folha.uol.com.br/lupa/2020/10/27/verificamos-audio-vacina-chinesa/",
@@ -49,6 +51,7 @@
      "score_lexico": 11.463340759277344,
      "score_denso": 0.8813718557357788,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2016-02-15",
      "url": "https://www.boatos.org/saude/zika-e-uma-farsa-microcefalia-foi-causada-por-larvicida.html",
@@ -65,6 +68,7 @@
      "score_lexico": 4.456489562988281,
      "score_denso": 0.884851336479187,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "fato-ou-fake",
      "data_publicacao": "2020-10-28",
      "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/10/28/e-fake-que-substancias-presentes-em-vacinas-para-a-covid-19-podem-causar-alzheimer-e-fibromialgia.ghtml",
@@ -81,6 +85,7 @@
      "score_lexico": 13.450654983520508,
      "score_denso": 0.8756688833236694,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-07-07",
      "url": "https://www.boatos.org/saude/medicos-enzimas-cancer-vacinas-mortos.html",

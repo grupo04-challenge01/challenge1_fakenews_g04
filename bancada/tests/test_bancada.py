@@ -12,7 +12,8 @@ from prototipo.verificacao import classificacao, decomposicao, extracao, frontei
 TRECHO = {"unidade_id": "u1-00", "fragmento_id": "u1-00-00", "score": 0.9,
           "agencia": "Aos Fatos", "data_publicacao": "2021-01-08", "url": "https://x",
           "alegacao": "jatobá cura câncer", "veredito_original": "falso",
-          "trecho": "Não é verdade que a casca do jatobá trate o câncer."}
+          "trecho": "Não é verdade que a casca do jatobá trate o câncer.",
+          "apto_citacao": True}
 
 SAIDAS = {
     fronteira.SISTEMA: {"categorias": ["checagem"], "motivo": "pede checagem"},
@@ -22,8 +23,10 @@ SAIDAS = {
                            "opinioes": [], "conclusao": None},
     classificacao.SISTEMA: {"rotulo": "falso", "trechos": ["T1"],
                             "criterio": "T1 diz que a casca não trata câncer."},
-    estrutura.SISTEMA: {"bloco1": "A casca do jatobá não cura câncer.",
-                        "bloco2": "A checagem consultou o Inca.",
+    # Blocos 1 e 2 como lista de frase e trecho (task 1.6, decisão 26).
+    estrutura.SISTEMA: {"bloco1": [{"frase": "A casca do jatobá não cura câncer.", "trecho": "T1"}],
+                        "bloco2": [{"frase": "Não é verdade que a casca do jatobá trate o câncer.",
+                                    "trecho": "T1"}],
                         "bloco3": "Técnica: cura milagrosa. Promete cura simples.",
                         "bloco4": "Desconfie de cura fácil."},
 }

@@ -1,10 +1,10 @@
 {
  "chat": {
-  "de1ee37f46f1cf26": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem busca confirmar a veracidade de uma afirmação sobre cura de doença.\"}",
+  "de1ee37f46f1cf26": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre cura de doença que precisa ser verificada.\"}",
   "1185f5a397474119": "{\"alegacoes\": [{\"texto\": \"A casca do jatobá triturada cura o câncer\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"Um médico do interior confirmou que a casca do jatobá triturada cura o câncer\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "d9b18a9ecdfd0d18": "{\n  \"fatos\": [\n    \"A casca do jatobá triturada cura o câncer.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico do interior confirmou.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "b9a16c94a31c5a1e": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho afirma explicitamente que não é verdade que o consumo da casca triturada do jatobá sirva como tratamento contra o câncer e que não existe alimento comprovadamente capaz de curar a doença.\"}",
-  "8bb33a3cdfbc4caf": "{\n\"bloco1\": \"A checagem confirmou que a casca do jatobá não cura o câncer.\",\n\"bloco2\": \"Órgãos de saúde afirmam que nenhum alimento previne ou cura a doença.\",\n\"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\",\n\"bloco4\": \"Verifique se o tratamento citado tem apoio de órgãos oficiais de saúde.\"\n}"
+  "b9a16c94a31c5a1e": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho afirma explicitamente que não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, sendo desmentido pelo Ministério da Saúde e pelo Inca.\"}",
+  "2ebde5749caaade5": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"O Ministério da Saúde e o Inca desmentem essa afirmação.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificá-lo.\", \"bloco4\": \"Verifique se órgãos de saúde oficiais confirmam o tratamento antes de compartilhar.\"}"
  },
  "busca": {
   "817606959578d8de": {
@@ -17,6 +17,7 @@
      "score_lexico": 51.2878303527832,
      "score_denso": 0.9013576507568359,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2021-01-08",
      "url": "https://www.aosfatos.org/noticias/e-falso-que-casca-triturada-do-fruto-do-jatoba-seja-capaz-de-curar-o-cancer/",
@@ -33,6 +34,7 @@
      "score_lexico": 8.570998191833496,
      "score_denso": 0.8612022995948792,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2019-01-15",
      "url": "https://www.aosfatos.org/noticias/cortar-acucar-ou-tomar-limao-e-oleo-de-coco-nao-curam-cancer-texto-traz-informacoes-falsas/",
@@ -49,6 +51,7 @@
      "score_lexico": 10.260809898376465,
      "score_denso": 0.8588579297065735,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-04-27",
      "url": "https://www.boatos.org/saude/cha-graviola-cura-cancer-oncologista.html",
@@ -65,6 +68,7 @@
      "score_lexico": 11.547162055969238,
      "score_denso": 0.8559857606887817,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2019-12-25",
      "url": "https://www.boatos.org/ciencia/cura-cancer-foi-encontrada-disponivel-inicio-2020.html",
@@ -81,6 +85,7 @@
      "score_lexico": 9.620702743530273,
      "score_denso": 0.8559277057647705,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-03-21",
      "url": "https://www.boatos.org/saude/eua-cura-novo-coronavirus-teste-hospital-stanford.html",

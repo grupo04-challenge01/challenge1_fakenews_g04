@@ -1,10 +1,10 @@
 {
  "chat": {
-  "acbc7f018c23a0ab": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário apresenta uma afirmação sobre cura de doença e busca validação da informação.\"}",
+  "acbc7f018c23a0ab": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário apresenta uma afirmação sobre eficácia de um produto natural e busca validação da informação.\"}",
   "f079d092e2306c2f": "{\"alegacoes\": [{\"texto\": \"A casca do jatobá cura o câncer\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"os laboratórios escondem isso porque não dá lucro.\"}",
   "ba8d6b729f19c23e": "{\n  \"fatos\": [\n    \"A casca do jatobá cura o câncer.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Na minha opinião os laboratórios escondem isso porque não dá lucro.\"\n  ],\n  \"conclusao\": null\n}",
-  "105dd82f02254016": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho afirma explicitamente que não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, sendo classificado pela agência como falso.\"}",
-  "880f7439dc14a701": "{\"bloco1\": \"A checagem confirmou que a casca do jatobá não cura o câncer.\", \"bloco2\": \"Não existem alimentos que previnam ou curem essa doença. A parte sobre laboratórios é opinião e não pode ser checada.\", \"bloco3\": \"Técnica: cura milagrosa. A mensagem promete curar uma doença grave com um item simples.\", \"bloco4\": \"Verifique sempre se órgãos de saúde confirmam o tratamento antes de compartilhar.\"}"
+  "105dd82f02254016": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho afirma explicitamente que não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, sendo desmentido pelo Ministério da Saúde e pelo Inca.\"}",
+  "5ef9370444ecec67": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Não existe alimento que cure ou previna a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: cura milagrosa. A mensagem promete cura para uma doença grave com um item natural.\", \"bloco4\": \"Verifique sempre informações de saúde em sites oficiais como o Ministério da Saúde.\"}"
  },
  "busca": {
   "6658398a71dcfe72": {
@@ -17,6 +17,7 @@
      "score_lexico": 35.15778732299805,
      "score_denso": 0.8945494890213013,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2021-01-08",
      "url": "https://www.aosfatos.org/noticias/e-falso-que-casca-triturada-do-fruto-do-jatoba-seja-capaz-de-curar-o-cancer/",
@@ -33,6 +34,7 @@
      "score_lexico": 10.260809898376465,
      "score_denso": 0.8616259098052979,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-04-27",
      "url": "https://www.boatos.org/saude/cha-graviola-cura-cancer-oncologista.html",
@@ -49,6 +51,7 @@
      "score_lexico": 11.547162055969238,
      "score_denso": 0.8606972694396973,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2019-12-25",
      "url": "https://www.boatos.org/ciencia/cura-cancer-foi-encontrada-disponivel-inicio-2020.html",
@@ -65,6 +68,7 @@
      "score_lexico": 8.49164867401123,
      "score_denso": 0.8609700202941895,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2017-07-30",
      "url": "https://www.boatos.org/saude/suco-beterraba-cura-cancer.html",
@@ -81,6 +85,7 @@
      "score_lexico": 9.620702743530273,
      "score_denso": 0.8595166206359863,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-03-21",
      "url": "https://www.boatos.org/saude/eua-cura-novo-coronavirus-teste-hospital-stanford.html",

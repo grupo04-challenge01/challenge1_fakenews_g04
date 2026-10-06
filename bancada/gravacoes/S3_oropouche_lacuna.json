@@ -3,8 +3,8 @@
   "e26841fbd973beee": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma informação sobre saúde.\"}",
   "06960f8d89c589d8": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "f5eb4808686433fa": "{\n  \"fatos\": [\n    \"A febre oropouche passa pelo mosquito da dengue.\",\n    \"A vacina da dengue protege contra a febre oropouche.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
-  "828f8f5e25ed738d": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho nos textos fornecidos que mencione a febre oropouche ou a eficácia da vacina da dengue contra ela.\"}",
-  "5edfd81f23121c4b": "{\"bloco1\": \"Foi buscado se a vacina da dengue protege contra o vírus Oropouche.\", \"bloco2\": \"Não encontrar informações sobre um assunto não significa que ele seja falso.\", \"bloco3\": \"Você pode consultar sites oficiais de saúde para ver as doenças cobertas pela vacina.\", \"bloco4\": \"\"}"
+  "828f8f5e25ed738d": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados menciona a febre oropouche ou afirmações sobre a proteção da vacina da dengue contra essa doença específica.\"}",
+  "ce93c2fd53eeca5f": "{\"bloco1\": \"Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar em sites oficiais de saúde e órgãos de vigilância sanitária.\", \"bloco4\": \"\"}"
  },
  "busca": {
   "db7da0c55ed62cf8": {
@@ -17,6 +17,7 @@
      "score_lexico": 23.188018798828125,
      "score_denso": 0.8827871084213257,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2020-09-08",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/post-confunde-ao-comparar-letalidade-da-covid-19-com-outras-doencas/",
@@ -33,6 +34,7 @@
      "score_lexico": 20.7048282623291,
      "score_denso": 0.8735347986221313,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-21",
      "url": "https://www.boatos.org/saude/propolis-mosquito-febre-amarela.html",
@@ -49,6 +51,7 @@
      "score_lexico": 16.562623977661133,
      "score_denso": 0.8661757707595825,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-02-27",
      "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",
@@ -65,6 +68,7 @@
      "score_lexico": 19.409587860107422,
      "score_denso": 0.8622579574584961,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-30",
      "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
@@ -81,6 +85,7 @@
      "score_lexico": 16.062549591064453,
      "score_denso": 0.8632549047470093,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-21",
      "url": "https://www.boatos.org/saude/febre-amarela-farsa-governo.html",

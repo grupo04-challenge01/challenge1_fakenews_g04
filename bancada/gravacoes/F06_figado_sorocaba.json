@@ -1,10 +1,11 @@
 {
  "chat": {
-  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina e busca validação da informação.\"}",
+  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina e busca validação dessa informação.\"}",
   "7c966d66dbf902a5": "{\"alegacoes\": [{\"texto\": \"o marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela paralisa o fígado\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"a vacina da febre amarela já matou gente\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"É o governo querendo matar a população. Não tomem!\"}",
-  "0da07dd4f3193e1e": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado.\",\n    \"A vacina da febre amarela já matou gente.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"marido dela, médico em Sorocaba\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população.\",\n    \"Não tomem!\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Não tomem!\",\n    \"decorre\": false,\n    \"salto\": \"A recomendação de não tomar a vacina baseia-se em uma interpretação subjetiva e alarmista sobre os efeitos relatados.\"\n  }\n}",
-  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a alegação como boato, esclarecendo que a história sobre o médico de Sorocaba e a vacina paralisa o fígado é falsa.\"}",
-  "2028ca99ed7818bb": "{\"bloco1\": \"A checagem confirmou que a história do médico é um boato antigo.\", \"bloco2\": \"A vacina contra febre amarela é segura para o grupo de risco. A parte sobre o governo querer matar as pessoas é opinião e não pode ser checada.\", \"bloco3\": \"medo de dano oculto, fonte sem nome. A mensagem usa um suposto médico sem identificação e diz que a vacina causa danos graves.\", \"bloco4\": \"Verifique se a informação cita nomes reais ou fontes oficiais antes de compartilhar.\"}"
+  "0da07dd4f3193e1e": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado\",\n    \"A vacina da febre amarela já matou gente\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"marido dela, médico em Sorocaba\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população.\",\n    \"Não tomem!\"\n  ],\n  \"conclusao\": null\n}",
+  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a alegação como boato, confirmando que a história sobre o médico de Sorocaba e a vacina paralisando o fígado é falsa.\"}",
+  "d37a1a7547c298bd": "{\"bloco1\": [{\"frase\": \"A história sobre o médico de Sorocaba e a vacina é falsa.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Essa mensagem contém opiniões que não podem ser checadas.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: fonte sem nome, medo de dano oculto. A mensagem usa um suposto médico para espalhar medo e teorias de conspiração.\", \"bloco4\": \"Verifique se a informação vem de órgãos oficiais de saúde.\"}",
+  "528de93e1c3a1948": "{\"bloco1\": \"Foram buscadas informações sobre danos graves causados pela vacina da febre amarela.\", \"bloco2\": \"O fato de não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique as fontes oficiais de saúde e procure por estudos científicos.\", \"bloco4\": \"Procure em sites de órgãos governamentais de saúde ou instituições médicas conhecidas.\"}"
  },
  "busca": {
   "2ef93bd5764a4ddf": {
@@ -17,6 +18,7 @@
      "score_lexico": 75.59331512451172,
      "score_denso": 0.9099765419960022,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-28",
      "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
@@ -33,6 +35,7 @@
      "score_lexico": 59.00989532470703,
      "score_denso": 0.8829622864723206,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-30",
      "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
@@ -49,6 +52,7 @@
      "score_lexico": 25.11038589477539,
      "score_denso": 0.8699363470077515,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-01-19",
      "url": "https://www.boatos.org/saude/enfermeira-febre-amarela-sao-paulo.html",
@@ -65,6 +69,7 @@
      "score_lexico": 23.82247543334961,
      "score_denso": 0.8599716424942017,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2017-03-22",
      "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
@@ -81,6 +86,7 @@
      "score_lexico": 17.8580265045166,
      "score_denso": 0.8567104935646057,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2018-02-27",
      "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",

@@ -2,9 +2,9 @@
  "chat": {
   "d82eb606bdcc5fcc": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre um evento e busca confirmação de veracidade.\"}",
   "720596d7292a6913": "{\"alegacoes\": [{\"texto\": \"idosa morreu minutos depois de tomar a vacina\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"Estão escondendo as mortes da vacinação!\", \"saude\": true, \"risco\": \"medio\"}], \"opiniao\": null}",
-  "e797e78358e7cab9": "{\n  \"fatos\": [\n    \"Idosa morreu minutos depois de tomar a vacina.\",\n    \"Estão escondendo as mortes da vacinação.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": \"Estão escondendo as mortes da vacinação!\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a morte foi causada pela vacina e que há uma conspiração de ocultação sem apresentar provas dessa relação ou do esquema.\"\n  }\n}",
-  "1049ef68da6d677f": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\", \"T4\"], \"criterio\": \"Os trechos mostram que a idosa morreu de infarto agudo do miocárdio, e não por causa da vacina, além de indicarem que o fato ocorreu em 2018 e não é atual.\"}",
-  "17fc359b460d12f8": "{\"bloco1\": \"A checagem mostrou que o vídeo é antigo e não tem relação com a Covid-19.\", \"bloco2\": \"Os documentos mostram que a idosa morreu por infarto em 2018, após tomar vacina contra a gripe. A afirmação sobre esconder mortes é apenas uma opinião sem provas.\", \"bloco3\": \"fora de contexto\", \"bloco4\": \"A confirmação ocorreu porque o laudo médico provou que a causa da morte foi um infarto.\"}"
+  "e797e78358e7cab9": "{\"fatos\": [\"Idosa morreu minutos depois de tomar a vacina.\"], \"evidencias\": [{\"texto\": \"vídeo\", \"forca\": \"fraca\"}], \"opinioes\": [], \"conclusao\": {\"texto\": \"Estão escondendo as mortes da vacinação!\", \"decorre\": false, \"salto\": \"A mensagem não apresenta dados estatísticos ou provas de ocultação para ligar a morte individual ao sistema de saúde.\"}}",
+  "1049ef68da6d677f": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\", \"T4\"], \"criterio\": \"Os trechos mostram que a idosa morreu por infarto agudo do miocárdio, e não pela vacina, além de esclarecerem que o fato ocorreu em 2018 e não é atual.\"}",
+  "a579ec3f76c9a6ca": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que o vídeo é antigo e a causa da morte foi um infarto.\", \"trecho\": \"T1\"}],\n\"bloco2\": [{\"frase\": \"O fato ocorreu em 2018, não sendo atual.\", \"trecho\": \"T1\"}, {\"frase\": \"A idosa morreu por infarto agudo do miocárdio.\", \"trecho\": \"T2\"}, {\"frase\": \"A alegação de que estão escondendo mortes é uma opinião sem provas.\", \"trecho\": \"SALTO\"}],\n\"bloco3\": \"Técnica: fora de contexto, urgência fabricada. O vídeo usa um fato antigo e cortado para criar um susto atual.\",\n\"bloco4\": \"Observe se o vídeo menciona datas antigas ou se corta partes importantes da fala.\"}"
  },
  "busca": {
   "f9b690d5c3da681d": {
@@ -17,6 +17,7 @@
      "score_lexico": 17.911869049072266,
      "score_denso": 0.9010517597198486,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "aos fatos",
      "data_publicacao": "2021-02-05",
      "url": "https://www.aosfatos.org/noticias/video-sobre-idosa-morta-apos-tomar-vacina-e-de-2018-e-imunizante-nao-foi-causa-do-obito/",
@@ -33,6 +34,7 @@
      "score_lexico": 18.307981491088867,
      "score_denso": 0.8984692096710205,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "lupa",
      "data_publicacao": "2021-02-09",
      "url": "https://piaui.folha.uol.com.br/lupa/2021/02/09/verificamos-idosa-morreu-vacinada/",
@@ -49,6 +51,7 @@
      "score_lexico": 21.818735122680664,
      "score_denso": 0.8920412063598633,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "boatos",
      "data_publicacao": "2020-12-20",
      "url": "https://www.boatos.org/mundo/tiffany-dover-enfermeira-desmaiou-tomar-vacina-morreu.html",
@@ -65,6 +68,7 @@
      "score_lexico": 23.798938751220703,
      "score_denso": 0.8911131024360657,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "COMPROVA",
      "data_publicacao": "2021-02-04",
      "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/postagem-usa-video-de-2018-para-afirmar-que-idosa-morreu-apos-tomar-vacina/",
@@ -81,6 +85,7 @@
      "score_lexico": 14.985527038574219,
      "score_denso": 0.8899929523468018,
      "idioma": "pt-BR",
+     "apto_citacao": true,
      "agencia": "fato-ou-fake",
      "data_publicacao": "2020-12-20",
      "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/12/20/e-fake-que-enfermeira-morreu-no-tennessee-apos-tomar-vacina-contra-covid-19-e-desmaiar-em-publico.ghtml",
