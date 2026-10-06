@@ -27,6 +27,13 @@ def test_prompt_define_os_tres_niveis_de_risco():
         assert f'"{nivel}"' in SISTEMA
 
 
+def test_prompt_pede_alegacao_que_se_entende_sozinha():
+    # Execução ponta a ponta de 06/10: "a vacina da dengue protege contra ela",
+    # com o pronome sem referente, e "presidente da Anvisa" separado do que disse.
+    assert "pronome" in SISTEMA
+    assert "quem afirmou" in SISTEMA
+
+
 def test_mensagem_leva_o_texto_recebido():
     assert "Chá de boldo" in mensagem("Chá de boldo cura hepatite.")
 

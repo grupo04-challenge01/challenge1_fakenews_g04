@@ -49,6 +49,20 @@ def test_mencao_marcada_como_boato_passa():
     assert verificar_mito(resposta, ALEGACAO) == []
 
 
+def test_adverbio_falsamente_conta_como_marcacao():
+    # Bancada de 06/10, caso F04: "afirma falsamente" foi lido como menção sem marca.
+    resposta = ("Falso. Nenhum estudo sustenta isso. A mensagem afirma falsamente que a casca "
+                "triturada do jatobá cura o câncer. O Inca não indica alimento contra câncer.")
+    assert verificar_mito(resposta, ALEGACAO) == []
+
+
+def test_negacao_com_tres_palavras_antes_da_alegacao_conta_como_marcacao():
+    # Execução ponta a ponta de 06/10, caso F04.
+    resposta = ("Falso. A bula não diz isso. A checagem mostra que não existe relação "
+                "entre vacinas e autismo. Vacinar continua seguro.")
+    assert verificar_mito(resposta, "Vacinas causam autismo.") == []
+
+
 def test_negacao_direta_conta_como_marcacao():
     # "não cura" é a afirmação correta, não repetição do mito.
     resposta = "Falso. A casca do fruto do jatobá não cura o câncer. Converse com o médico."

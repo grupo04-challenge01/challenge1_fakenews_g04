@@ -54,6 +54,19 @@ def test_salto_entre_fato_e_conclusao_e_lido():
     assert d.conclusao["salto"].startswith("Relato registrado")
 
 
+def test_conclusao_toda_nula_e_ausencia_de_conclusao():
+    # Bancada de 06/10, caso X2: sem conclusão na mensagem, o modelo devolveu o
+    # objeto com os três campos nulos em vez de `null` (decisão 24).
+    bruto = _bruto(fatos=["X."], conclusao={"texto": None, "decorre": None, "salto": None})
+    assert defeitos(bruto) == []
+    assert interpretar(bruto).conclusao is None
+
+
+def test_conclusao_parcial_continua_defeito():
+    bruto = _bruto(fatos=["X."], conclusao={"texto": None, "decorre": False, "salto": "Z."})
+    assert "conclusão sem texto" in defeitos(bruto)
+
+
 def test_conclusao_que_nao_decorre_sem_salto_explicado_e_defeito():
     bruto = _bruto(fatos=["X."], conclusao={"texto": "Y.", "decorre": False, "salto": ""})
     assert "conclusão que não decorre sem o salto explicado" in defeitos(bruto)

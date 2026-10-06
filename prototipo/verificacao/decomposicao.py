@@ -85,6 +85,19 @@ def _textos(dados):
         yield "salto", c.get("salto")
 
 
+def _conclusao(dados):
+    """Conclusão da saída; o objeto com todos os campos vazios conta como ausente.
+
+    Sem conclusão na mensagem, o modelo às vezes devolve `{"texto": null,
+    "decorre": null, "salto": null}` em vez de `null` (bancada de 06/10,
+    decisão 24). Conclusão parcial continua defeito.
+    """
+    c = dados.get("conclusao")
+    if isinstance(c, dict) and not any(v not in (None, "") for v in c.values()):
+        return None
+    return c
+
+
 def defeitos(bruto):
     """Defeitos de forma e vazamento de veredito; lista vazia quando está em ordem."""
     dados = ler_json(bruto)
@@ -103,7 +116,7 @@ def defeitos(bruto):
             achados.append(f"evidência {n} sem texto")
         elif e.get("forca") not in FORCAS:
             achados.append(f"evidência {n} com força fora de forte/fraca/ausente")
-    c = dados.get("conclusao")
+    c = _conclusao(dados)
     if c is not None:
         if not isinstance(c, dict) or not str(c.get("texto") or "").strip():
             achados.append("conclusão sem texto")
@@ -125,7 +138,7 @@ def interpretar(bruto):
     if achados:
         raise ValueError("; ".join(achados))
     d = ler_json(bruto)
-    return Decomposicao(d["fatos"], d["evidencias"], d["opinioes"], d.get("conclusao"))
+    return Decomposicao(d["fatos"], d["evidencias"], d["opinioes"], _conclusao(d))
 
 
 def decompor(texto, chat=chat_ollama):
