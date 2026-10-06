@@ -31,7 +31,13 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       critério de cobertura como parâmetro, valor pela 1.5; nenhuma fonte em
       inglês indexada; decisão 23 do `design.md`, 01/10/2026
 - [ ] 1.5 **Vitor** Definir e calibrar o limiar de `evidência insuficiente`
-- [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+- [x] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+      — `prototipo/resposta/ancoragem.py`, `estrutura.py` (blocos 1 e 2 como
+      lista de frase e trecho, rebaixamento por frase essencial), `guarda.py`
+      (inapto só como metadado, `Veredito.referencias`), `apto_citacao` na
+      busca; testes `test_ancoragem.py`, `test_estrutura.py`, `test_guarda.py`,
+      `test_apto_citacao.py`; sonda da resposta 21/21; decisão 26 do
+      `design.md`, 06/10/2026
 
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias

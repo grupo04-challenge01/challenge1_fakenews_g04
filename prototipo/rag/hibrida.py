@@ -242,6 +242,10 @@ class Recuperador:
                 "score_lexico": float(s_lex[i]),
                 "score_denso": float(s_den[i]),
                 "idioma": fragmento.get("idioma"),
+                # Decisão 17: fragmento inapto não serve de âncora. A busca só
+                # entrega a marca; ausente (índice anterior ao esquema 1.0.0)
+                # sai `None`, e a ancoragem decide — a busca não supõe valor.
+                "apto_citacao": fragmento.get("apto_citacao"),
                 "agencia": unidade["agencia"],
                 "data_publicacao": unidade["data_publicacao"],
                 "url": unidade["url"],
