@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Samara** 1, **Wingrid** 1, **Breno** 2.
+Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 1, **Wingrid** 1, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -104,7 +104,13 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
 - [ ] 6.4 **Breno** Submeter protocolo ao comitê de ética
-- [ ] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
+- [x] 6.5 **Samara** Instrumentar coleta das métricas de resultado e de guarda
+      — registro de sessão `prototipo/avaliacao/registro_sessao.json` 1.0.0
+      (invariantes S1 a S9), cálculo `prototipo/avaliacao/metricas.py`, CLI
+      `python -m prototipo.avaliacao modelo|validar|metricas`, testes
+      `prototipo/avaliacao/tests/` 37/37; instrumento para o pesquisador e o CEP
+      em `specs/avaliacao-instrumento/instrumento-coleta-metricas.md`; decisão 27
+      do `design.md`, 06/10/2026
 - [ ] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta
 
 ## 7. Decisões pendentes

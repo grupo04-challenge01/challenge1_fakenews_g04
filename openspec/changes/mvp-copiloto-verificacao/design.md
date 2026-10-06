@@ -1035,6 +1035,65 @@ trecho. Ela pode pegar parte desses casos, como o mercúrio do a07, que não est
 no trecho citado, mas isso não foi medido aqui. O resto fica com o prompt da
 2.2. O número a bater é 5 de 20, medido em 06/10/2026 sem a ancoragem.
 
+### 28. Instrumento de coleta das métricas: registro por sessão, número por código — 06/10/2026
+
+Task 6.5. R4 + R6 + R7 Samara. Esquema do registro em
+`prototipo/avaliacao/registro_sessao.json` (versão 1.0.0, invariantes S1 a S9),
+validação em `prototipo/avaliacao/sessao.py`, cálculo em
+`prototipo/avaliacao/metricas.py`, CLI `python -m prototipo.avaliacao
+modelo|validar|metricas`, testes em `prototipo/avaliacao/tests/` (37). O
+documento para o pesquisador e para o comitê de ética é
+`specs/avaliacao-instrumento/instrumento-coleta-metricas.md`, anexo 4 do dossiê.
+
+**O pesquisador anota fatos; o código classifica.** O cenário Item-armadilha
+pede registrar se o participante aceitou, questionou ou consultou fonte. Pedir a
+classificação na hora mistura observação com julgamento do observador. O registro
+guarda três fatos (`expressou_duvida`, `abriu_detalhe`,
+`consultou_fonte_externa`) e `metricas.reacao` deriva a classe pelo
+comportamento mais forte: consultar vence questionar, que vence aceitar.
+
+**Aceitação cega mede erro exibido, não item marcado.** Os itens-armadilha da
+6.2 são casos marcados com `armadilha`; a spec define a armadilha pela saída da
+IA estar errada. O registro guarda o `rotulo_exibido`, e erro da IA é veredito
+exibido de sentido oposto ao gabarito (`evidência insuficiente` é abstenção, não
+erro). Aceitação cega é erro da IA + reação `aceitou` + julgamento igual ao da
+IA. Sai em duas taxas: nos itens-armadilha, que é a medida da spec, e em todo
+erro da IA, porque o sistema real erra fora das armadilhas. Armadilha em que a
+ferramenta acertou não entra na taxa e gera aviso na validação. Alternativa
+descartada: confiar na marca `armadilha` do caso. Contaria como aceitação cega o
+participante que concordou com uma resposta certa.
+
+**Discernimento sem as armadilhas.** Nos itens-armadilha o acerto do
+participante é resistir à IA, que já é a aceitação cega. Contá-los também no
+discernimento mediria a mesma coisa duas vezes e puxaria a métrica primária
+para baixo pelo desenho do teste, não pelo efeito da ferramenta.
+
+**Decisão fundamentada é decisão com critério citado.** O tempo até decisão
+fundamentada usa só os itens em que o participante disse ao menos um critério.
+Os critérios são anotados com os rótulos do catálogo de técnicas (decisão 6),
+mais `fonte oficial` e `outro: ...`, para que a transferência diga qual técnica
+voltou sem a ferramenta (decisão 2).
+
+**Queda de confiança por questionário antes do debriefing.** Likert de 1 a 5 para
+Ministério da Saúde, Fiocruz e Anvisa (decisão 19), depois do TCLE e de novo
+antes do debriefing. Depois do gabarito, a confiança medida seria a do
+debriefing.
+
+**Fração, não percentual; nenhum limiar.** Toda taxa sai como `{n, de, taxa}`, e
+denominador zero dá `taxa` nula. Piloto e coleta nunca se agregam juntos. A spec
+não fixa limiar para nenhuma métrica, e o instrumento também não: o grupo decide
+depois do piloto (6.6).
+
+**O registro amarra a versão dos casos.** `utils/gerar_casos.py` gera ids com
+`uuid4`, e cada execução troca todos eles (aconteceu entre a 6.1 e a 6.2). O
+registro guarda `casos_sha256`, preenchido por `modelo`; a validação recusa
+registro feito sobre outro arquivo (S1), e o relatório grava o hash usado.
+
+**Registro fora do git.** Os registros de sessão ficam em
+`prototipo/avaliacao/sessoes/`, no `.gitignore`: são dados de participante,
+ainda que só com código `P-xx` e faixa etária. Só `relatorio_metricas.json`, o
+agregado, é versionado.
+
 **O que o valor não cobre.**
 
 - **Outra configuração.** Vale para a fusão por score com alfa 0,9 e
@@ -1066,6 +1125,8 @@ no trecho citado, mas isso não foi medido aqui. O resto fica com o prompt da
   pessoal é alegação a verificar ou evidência fraca da alegação ao lado. Da
   resposta depende o desempate por ordem. Cabe à curadoria da task 6.1 trazer
   casos com relato antes da alegação.
-
-
-
+- **Saída errada dos itens-armadilha.** A 6.2 marcou os itens, mas a aceitação
+  cega só é medida se a ferramenta exibir o veredito errado neles (decisão 27).
+  Falta decidir como a saída errada é produzida na sessão: resposta preparada
+  e servida no lugar da do sistema, ou instrução ao modelo. Precisa estar
+  resolvido antes do piloto (6.6).
