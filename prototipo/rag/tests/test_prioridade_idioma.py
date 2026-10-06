@@ -4,7 +4,7 @@
 às fontes em inglês. Decisão 23 do design.md: a consulta é pontuada uma vez
 sobre o índice inteiro, e as camadas de idioma são cortes desse mesmo score. O
 critério de que uma camada «cobre» a alegação é parâmetro, e o padrão é o
-limiar da task 1.5 (decisão 26).
+limiar da task 1.5 (decisão 27).
 """
 import json
 import pathlib
@@ -78,7 +78,7 @@ def test_cobertura_padrao_e_alguma_unidade_no_limiar():
 
 
 def test_limiar_da_1_5_e_o_calibrado():
-    # Decisão 26: abaixo da positiva mais fraca da calibração (0,5785).
+    # Decisão 27: abaixo da positiva mais fraca da calibração (0,5785).
     assert LIMIAR_EVIDENCIA == 0.55
 
 

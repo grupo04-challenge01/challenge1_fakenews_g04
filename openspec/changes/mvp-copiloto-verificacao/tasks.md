@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Jhessica** 2, **Samara** 2, **Wingrid** 1, **Breno** 2.
+Donos das tasks em aberto: **Samara** 1, **Wingrid** 1, **Breno** 2.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -36,8 +36,14 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       `prototipo/sonda_limiar.py`, relatório `prototipo/relatorio_sonda_limiar.json`:
       48 casos, nenhuma evidência que cobre cortada, 8/8 ausentes em `evidência
       insuficiente` pelo modelo; alegação parecida fica em 5 de 20 vizinhas, que
-      nenhum limiar separa; decisão 26 do `design.md`, 06/10/2026
-- [ ] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+      nenhum limiar separa; decisão 27 do `design.md`, 06/10/2026
+- [x] 1.6 **Samara** Implementar ancoragem trecho a afirmação e descarte de afirmação sem trecho
+      — `prototipo/resposta/ancoragem.py`, `estrutura.py` (blocos 1 e 2 como
+      lista de frase e trecho, rebaixamento por frase essencial), `guarda.py`
+      (inapto só como metadado, `Veredito.referencias`), `apto_citacao` na
+      busca; testes `test_ancoragem.py`, `test_estrutura.py`, `test_guarda.py`,
+      `test_apto_citacao.py`; sonda da resposta 21/21; decisão 26 do
+      `design.md`, 06/10/2026
 
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
@@ -48,8 +54,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
         veredito da agência impede `verdadeiro`, sonda 24/24, decisão 25, 06/10/2026
 - [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
       — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 12 do `design.md`, 29/09/2026;
-         limiar como parâmetro, valor pela 1.5
-- [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+        limiar como parâmetro, valor pela 1.5
+- [x] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+      — implementado o `test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo` em `prototipo/verificacao/tests/test_classificacao.py`
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
       — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026;
@@ -74,7 +81,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — `prototipo/verificacao/fronteira.py`, sonda 42/42, decisão 15 do `design.md`, 29/09/2026
 - [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
       — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
-- [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+- [x] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+      — suíte adversarial criada em `prototipo/verificacao/tests/test_fronteira_adversarial.py` com cobertura para perguntas indiretas, sintomas injetados, jailbreak e garantias no prompt
 
 ## 5. Interface
 - [x] 5.1 **Wingrid** Camada visível e camada de detalhe

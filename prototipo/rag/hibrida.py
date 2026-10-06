@@ -85,7 +85,7 @@ consultado quando o critério `cobre` diz que o português não cobre. Nenhum
 corpus em inglês está indexado em 01/10/2026, então com o índice de hoje
 `recuperar` devolve exatamente o que `buscar` devolve.
 
-**Limiar de `evidência insuficiente` — task 1.5, decisão 26.** O critério
+**Limiar de `evidência insuficiente` — task 1.5, decisão 27.** O critério
 `cobre` padrão é o limiar `LIMIAR_EVIDENCIA`: a camada cobre se ao menos uma
 unidade tem score fundido igual ou acima dele. A guarda usa o mesmo valor para
 descartar trecho fraco. O valor é um piso, não um separador. Na calibração de
@@ -93,7 +93,7 @@ descartar trecho fraco. O valor é um piso, não um separador. Na calibração d
 que só fala de alegação parecida, e o modelo já devolve `evidência
 insuficiente` nas 8 pautas ausentes do acervo. O piso fica abaixo da positiva
 mais fraca (0,5785) e não corta nenhuma evidência que cobre; quem decide a
-cobertura é o modelo, e o limite fica registrado na decisão 26. Vale para a
+cobertura é o modelo, e o limite fica registrado na decisão 27. Vale para a
 fusão por score com alfa 0,9 e `e5-base`. Em outro modo ou fusão o score muda
 de escala, e quem chama passa seu próprio `cobre`.
 """
@@ -114,7 +114,7 @@ _EPS = 1e-6
 PRIORIDADE_IDIOMA = ("pt-BR", "en")
 
 # Piso do score fundido abaixo do qual o trecho conta como não recuperado.
-# Calibrado na task 1.5 (decisão 26) para a fusão por score, alfa 0,9 e e5-base:
+# Calibrado na task 1.5 (decisão 27) para a fusão por score, alfa 0,9 e e5-base:
 # a positiva mais fraca da calibração fica em 0,5785.
 LIMIAR_EVIDENCIA = 0.55
 
@@ -255,6 +255,10 @@ class Recuperador:
                 "score_lexico": float(s_lex[i]),
                 "score_denso": float(s_den[i]),
                 "idioma": fragmento.get("idioma"),
+                # Decisão 17: fragmento inapto não serve de âncora. A busca só
+                # entrega a marca; ausente (índice anterior ao esquema 1.0.0)
+                # sai `None`, e a ancoragem decide — a busca não supõe valor.
+                "apto_citacao": fragmento.get("apto_citacao"),
                 "agencia": unidade["agencia"],
                 "data_publicacao": unidade["data_publicacao"],
                 "url": unidade["url"],

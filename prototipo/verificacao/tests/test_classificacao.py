@@ -37,6 +37,8 @@ def test_prompt_proibe_conhecimento_proprio():
     assert "NUNCA use o que você sabe" in SISTEMA
 
 
+def test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo():
+    assert "não rebaixe o rótulo porque a alegação soa estranha" in SISTEMA
 def test_prompt_nao_deixa_verdadeiro_contra_o_veredito_da_agencia():
     # Execução ponta a ponta de 06/10: "verdadeiro" citando checagem com veredito
     # "boato" para a mesma alegação.

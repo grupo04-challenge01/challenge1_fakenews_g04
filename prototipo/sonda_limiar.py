@@ -2,7 +2,7 @@
 
 Spec `verificacao-alegacao`: o sistema MUST usar `evidência insuficiente` quando a
 recuperação não retornar fonte que cubra a alegação. O limiar decide quando um
-trecho recuperado conta como não recuperado. Ver decisão 26 do design.md.
+trecho recuperado conta como não recuperado. Ver decisão 27 do design.md.
 
 A sonda mede o limiar junto com o modelo, porque é o par que decide. Três
 famílias de caso, todas tiradas de `rag/consultas_afericao.json`:

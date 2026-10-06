@@ -861,7 +861,116 @@ palavras da alegação. É o limite declarado na decisão 14: a verificação re
 menção por palavras, não por sentido. Afrouxá-la para aceitar esse caso deixaria
 passar a repetição do mito; fica como está.
 
-### 26. Limiar de `evidência insuficiente`: piso de 0,55, o modelo decide a cobertura — 06/10/2026
+### 26. Ancoragem trecho a afirmação: marca declarada, termos conferidos — 06/10/2026
+
+Task 1.6. Código em `prototipo/resposta/ancoragem.py`, `prototipo/verificacao/guarda.py`
+(`Veredito.referencias`), `prototipo/resposta/estrutura.py` (`_ancorar`,
+`Resposta.descartadas`, `Resposta.rebaixada_por`) e `prototipo/rag/hibrida.py`
+(`apto_citacao` no resultado). Testes em `prototipo/rag/tests/test_apto_citacao.py`,
+`prototipo/verificacao/tests/test_guarda.py`, `prototipo/resposta/tests/test_ancoragem.py`
+e `prototipo/resposta/tests/test_estrutura.py`.
+
+**Três decisões, tomadas antes do código** (Samara, 06/10/2026):
+
+1. **Fragmento inapto é só metadado.** Fecha o que a decisão 17 deixou para a
+   1.6. A busca entrega `apto_citacao` por resultado, e a guarda separa: o
+   trecho apto vai ao modelo, numerado T1, T2...; do inapto, nem o texto nem o
+   metadado vão ao modelo. Agência, data, link e veredito da agência saem em
+   `Veredito.referencias` e chegam à camada de detalhe com `trecho` vazio.
+   Sem trecho apto, o modelo não é chamado e o veredito é `evidência
+   insuficiente`, como no ponto 1 da guarda (decisão 12). Marca ausente conta
+   como inapta: índice que não diz se o trecho é citável não autoriza citá-lo.
+   Alternativas descartadas: mandar o metadado ao modelo, porque convida a um
+   veredito copiado da agência sem trecho que o sustente; e mandar o texto e só
+   proibir a citação, porque a paráfrase de texto reprovado entraria no bloco 2.
+2. **O modelo declara a âncora, o código confere por termos.** Na forma com
+   evidência, os blocos 1 e 2 são listas de frases, cada uma com o trecho que a
+   sustenta: `{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}`. (A
+   primeira versão pedia a marca inline, `[T1]`; ver a sonda abaixo.) A frase
+   passa se o trecho declarado é apto e contém os **termos
+   verificáveis** dela: número em algarismos (casado inteiro), mês, quantidade
+   por extenso («uma semana», «dois dias»; `um`/`uma` sozinhos são artigo) e
+   nome próprio (maiúscula que não abre a frase). Agência e data de publicação
+   da fonte contam como fonte. Maiúscula e acento não contam. Alternativas
+   descartadas: só conferir que a marca existe (repete o limite da guarda);
+   modelo como juiz por frase (soma latência a uma resposta que já leva de 6 a
+   27 s, e não é determinístico); similaridade de embedding com limiar (exige
+   calibração que encosta na 1.5).
+3. **Frase essencial.** Frase que não passa sai da resposta e fica em
+   `Resposta.descartadas`, com o motivo. O veredito cai para `evidência
+   insuficiente` se a frase descartada é do bloco 1, ou se o bloco 2 fica sem
+   frase ancorada. A resposta é refeita na forma sem evidência, numa segunda
+   chamada ao modelo, com as referências do veredito original. A frase que
+   separa a opinião da mensagem pode ficar sem marca, quando a decomposição
+   achou opinião, mas não conta como ancorada: bloco 2 só com ela também
+   rebaixa. Os blocos 3 e 4 tratam da técnica e do que observar, não de fato
+   sobre o mundo, e não passam pela ancoragem.
+
+**Por que agência e data contam como fonte.** No R4 da sonda da resposta, o
+modelo escreveu «O prefeito fez esse anúncio em abril de 2020». «Abril» está no
+trecho; «2020» não, mas é o ano da checagem (2020-07-31). A spec pede afirmação
+ancorada «com fonte e data acessíveis», e a data da fonte está na camada de
+detalhe ao lado do trecho.
+
+**O exemplo da decisão 18 não se sustenta.** Lá, «o exame saiu uma semana
+depois», do R3, aparece como afirmação sem trecho de origem. O trecho do R3
+diz «O resultado do exame foi divulgado somente uma semana depois». A frase está
+ancorada, e a regra a aceita (`test_r3_uma_semana_depois_esta_no_trecho`).
+
+**Medição sobre respostas reais.** As 31 frases dos blocos 1 e 2 das 12
+respostas R registradas em `relatorio_sonda_resposta.json` (prompt anterior,
+sem marca) foram conferidas contra os trechos de cada caso: 31 de 31 ancoradas,
+nenhum falso descarte. Isso mede a regra de termos, não o prompt novo.
+
+**Primeira sonda, marca inline: 1 de 12.** A sonda da resposta passa a
+reprovar caso R rebaixado pela ancoragem e a registrar as frases descartadas.
+Com o prompt pedindo a marca no fim de cada frase («... isso [T1].»), a rodada
+de 06/10 deu 9 de 9 nos casos S e 1 de 12 nos R: 11 rebaixados por «bloco 2
+sem frase ancorada». Nenhum descarte foi por termo fora do trecho. O modelo
+marcou o bloco 1 e deixou o bloco 2 sem marca, com frases legítimas, como
+«Nenhum alimento pode prevenir ou curar essa doença» no R1. É o mesmo padrão
+das decisões 4 do fix e 18: o que depende de o modelo lembrar uma instrução de
+forma falha. A âncora passou a campo próprio no JSON, que o modo JSON obriga a
+existir. A marca inline continua aceita. Alternativas descartadas: reforçar a
+instrução no prompt (o padrão acima); conferir contra T1 a frase sem marca
+quando há um só trecho (não resolve o R4, que tem dois, e deixa de ser âncora
+declarada). Achado lateral: em 4 das 11 respostas refeitas na forma sem
+evidência, o modelo deixou o bloco 4 vazio, o que não ocorreu no S1 (ver a
+segunda sonda).
+
+**Segunda sonda, âncora em campo próprio: ancoragem 9 de 9, duas regressões.**
+A `Resposta` passa a guardar a saída crua do modelo (`bruto`, as duas no
+rebaixamento), e o relatório a registra. Na rodada de 06/10, 10:01, R1, R2 e R3
+deram 9 de 9: o modelo preencheu `trecho` em todas as frases, sem descarte nem
+rebaixamento. Duas regressões vieram da troca do formato, não da ancoragem: o
+R4 escreveu o rótulo no bloco 3 sem o prefixo «Técnica:» (0 de 3), e o S1
+deixou o bloco 4 vazio, como se fosse lacuna (0 de 3). O exemplo de formato no
+fim do prompt era um só para a forma sem evidência, com `"bloco3": "..."`.
+Passou a ser um por estado: com evidência, com «Técnica: rótulo.» no bloco 3 e
+o aviso de que o verdadeiro não leva o prefixo; evidência insuficiente, com o
+bloco 4 preenchido; lacuna de acervo, com o bloco 4 vazio.
+
+**Terceira sonda: 21 de 21.** Rodada de 06/10, 10:09, Gemma 4 12B QAT, três
+tentativas: R1 a R4 12 de 12, S1 a S3 9 de 9, nenhum rebaixamento. Respostas de
+63 a 88 palavras, mediana de 11,8 s (de 7,0 a 22,3 s). O R3, verdadeiro, não
+nomeou técnica, apesar do exemplo com «Técnica:». A ancoragem agiu uma vez, e no
+caso certo: no R1, que não tem opinião na decomposição, o modelo escreveu
+«Essa parte é opinião e não se checa.» nas três tentativas; a frase não tinha
+âncora e saiu, e a resposta ficou com evidência. Antes da 1.6, essa frase ia
+para o usuário.
+
+**Limites declarados.**
+
+- Paráfrase sem termo verificável passa sempre. Frase que inverte o sentido do
+  trecho com as mesmas palavras («o exame deu positivo») não é pega.
+- O limite da guarda (decisão 12) continua: a ancoragem confere a resposta, não
+  o veredito. Veredito que cita trecho real que não cobre a alegação ainda
+  depende do prompt da classificação ou do limiar da 1.5.
+- Nome próprio composto é conferido palavra a palavra: «Rio Grande» passa se
+  «rio» e «grande» estão no trecho, mesmo que separados.
+- O rebaixamento custa uma segunda chamada ao modelo.
+
+### 27. Limiar de `evidência insuficiente`: piso de 0,55, o modelo decide a cobertura — 06/10/2026
 
 Task 1.5. Valor em `prototipo/rag/hibrida.py` (`LIMIAR_EVIDENCIA`), usado em dois
 pontos: é o critério `cobre` padrão de `recuperar` (decisão 23) e o `limiar`
@@ -919,8 +1028,12 @@ pelo modelo, que já acerta as 8 ausentes.
 
 **Limite declarado.** Na lacuna de acervo com trecho recuperado, o modelo dá
 veredito a partir de alegação parecida em 5 de 20 casos. Nem o limiar nem a
-guarda pegam isso. Fica com a ancoragem trecho a afirmação da 1.6 e com o prompt
-da 2.2. O número a bater é 5 de 20, medido em 06/10/2026.
+guarda pegam isso. A decisão 26 conta com o limiar para esse caso, e esta
+medição mostra que ele não basta. A ancoragem da 1.6 (decisão 26) confere os
+termos de cada frase da resposta contra o trecho, não a alegação contra o
+trecho. Ela pode pegar parte desses casos, como o mercúrio do a07, que não está
+no trecho citado, mas isso não foi medido aqui. O resto fica com o prompt da
+2.2. O número a bater é 5 de 20, medido em 06/10/2026 sem a ancoragem.
 
 **O que o valor não cobre.**
 
@@ -943,7 +1056,7 @@ da 2.2. O número a bater é 5 de 20, medido em 06/10/2026.
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** ~~a partir do qual o veredito cai para `evidência
-  insuficiente`~~. Fechada na decisão 26: piso de 0,55. Continua aberto o caso
+  insuficiente`~~. Fechada na decisão 27: piso de 0,55. Continua aberto o caso
   da alegação parecida, que nenhum limiar separa (5 de 20 na calibração).
 - **Fonte em inglês.** Nenhum corpus em inglês está indexado (decisão 19). Falta
   decidir qual fonte entra, se alguma entra, e com que licença. Até lá, o braço
