@@ -5,8 +5,8 @@
 **Dependências obrigatórias antes de executar:**
 
 !!! warning "Este guia só pode ser executado após a conclusão de:"
-    - **Task 6.1** (Jhessica): Casos curados (20–30 com ≥ 4 verdadeiros contra-intuitivos)
-    - **Task 6.2** (Jhessica): 4 a 6 itens-armadilha configurados
+    - **Task 6.1** (Jhessica): Casos curados — ✅ concluída
+    - **Task 6.2** (Jhessica): 4 a 6 itens-armadilha configurados — ✅ concluída
     - **Task 6.3** (Breno): TCLE e roteiro de debriefing — ✅ concluída
     - **Task 6.4** (Breno): Protocolo aprovado pelo comitê de ética
 
@@ -27,11 +27,11 @@ Antes de submeter o copiloto à coleta de campo com 20 a 30 usuários, o piloto 
 
 ## 2. Preparação da Sessão (Checklist do Pesquisador)
 
-!!! important "Preencher este checklist somente após as tasks 6.1 e 6.2 estarem concluídas"
+!!! important "Preencher este checklist na preparação da sessão (Tasks 6.1 e 6.2 ✅ concluídas)"
 
 - [ ] 2 vias impressas do TCLE (ou formulário digital de coleta de consentimento).
 - [ ] Protótipo do Copiloto aberto e testado no navegador ou dispositivo de teste.
-- [ ] Conjunto de 5 casos selecionados para a sessão *(curados na task 6.1 / armadilhas na task 6.2)*:
+- [ ] Conjunto de 5 casos selecionados para a sessão extraídos de `datasets/casos_mvp_copiloto/mvp_copiloto_casos.json`:
   - Caso 1: Notícia falsa evidente (ex.: suco de inhame cura dengue).
   - Caso 2: Notícia verdadeira contra-intuitiva (ex.: vacina da gripe é recomendada para gestantes).
   - Caso 3: Item-armadilha (copiloto induz ou fornece explicação incompleta para aferir dependência acrítica).
