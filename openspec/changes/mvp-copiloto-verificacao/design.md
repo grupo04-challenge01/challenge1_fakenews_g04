@@ -1109,6 +1109,65 @@ agregado, é versionado.
   injeta trechos sem score e roda com `limiar=None`, porque mede o modelo e não
   a recuperação.
 
+### 29. Ancoragem: vizinhos da checagem citada e uma tentativa antes de rebaixar — 06/10/2026
+
+Task 1.6, continuação da decisão 26. Código em `prototipo/rag/hibrida.py`
+(`Recuperador.expandir`, `TETO_VIZINHOS`), `prototipo/resposta/estrutura.py`
+(`responder(expandir=...)`, `_aviso`) e `prototipo/resposta/ancoragem.py`
+(`ancorar_bloco(usadas=...)`). Testes em `prototipo/rag/tests/test_vizinhos.py`,
+`prototipo/resposta/tests/test_estrutura.py` e `bancada/tests/test_bancada.py`.
+
+**O que a bancada mostrou.** Com a 1.5 e a 1.6 juntas, a bancada caiu de 15 para
+14 de 17. Dois casos tinham veredito `falso` correto e foram rebaixados pela
+ancoragem com "bloco 2 sem frase ancorada":
+
+- **R4 (cloroquina).** A frase "o prefeito anunciou o uso em abril de 2020"
+  caiu por "termo fora do trecho". A data não está no fragmento citado, e sim
+  no quarto, quinto e sexto fragmentos da mesma checagem. O modelo só viu o
+  primeiro, então escreveu a data de memória. A ancoragem agiu certo; o
+  defeito era a resposta não ver o resto da checagem. É o mesmo padrão do
+  caso Bruno Covas na decisão 25.
+- **F06 (fígado).** O modelo pôs no bloco 2 só a frase de opinião, sem nenhum
+  fato. O veredito estava sustentado pelo bloco 1.
+
+**1. Vizinhos da checagem citada.** A busca reduz a unidade e entrega o melhor
+fragmento de cada checagem. Depois da guarda, `expandir` devolve os trechos do
+veredito, na mesma ordem, e depois deles até 3 outros fragmentos de cada
+checagem citada, pelos mais próximos da consulta. Uma checagem tem mediana de 3
+fragmentos e p90 de 8. A resposta numera os vizinhos depois dos trechos do
+veredito, e a ancoragem confere contra a lista toda. O veredito continua com os
+trechos da guarda.
+
+A camada de detalhe mostra os trechos do veredito e **só os vizinhos que
+ancoram alguma frase**. `recuperacao-evidencia` proíbe reproduzir a checagem
+inteira, e mostrar todos os vizinhos chegaria perto disso.
+
+Foi descartado conferir a frase contra a checagem inteira sem mostrá-la ao
+modelo. O modelo continuaria escrevendo a data de memória, e a conferência
+legitimaria um conhecimento paramétrico que só por acaso bate com a fonte.
+
+**2. Uma tentativa antes de rebaixar.** Quando a ancoragem reprova (bloco 1
+caiu ou bloco 2 sem frase ancorada), o modelo refaz a resposta uma vez. O
+pedido leva o aviso da conferência, com o motivo e as frases recusadas. Só se a
+segunda tentativa também reprovar o veredito cai para `evidência insuficiente`,
+como na decisão 26. O custo é uma chamada a mais, e só nesse caso.
+
+**Resultado.** Bancada com Gemma 4 12B QAT, com o modelo e offline: **17 de
+17** (resposta 28/28, guarda 12/12). No R4, "abril de 2020" é ancorado no
+vizinho, e o rótulo saiu `verdadeiro fora de contexto ou exagerado`. Vizinhos
+ancoraram frase em 8 casos, com no máximo 4 trechos no detalhe.
+
+**O que fica de fora.**
+
+- **A segunda tentativa não foi exercida.** Nesta rodada ela não disparou em
+  nenhum caso. O F06 passou de primeira, o que pode ser efeito dos vizinhos ou
+  variação do modelo. A tentativa está coberta só pelos testes.
+- **O teto de 3 vizinhos é escolha, não medição.** No R4 os fragmentos com a
+  data ficaram em segundo e terceiro lugar. Checagem longa, com o fato fora dos
+  3 mais próximos da consulta, continua caindo.
+- **O limite da decisão 27 não foi remedido.** As 5 de 20 vizinhas com
+  alegação parecida foram medidas sem ancoragem e sem vizinhos.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
