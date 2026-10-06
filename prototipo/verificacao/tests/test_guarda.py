@@ -11,9 +11,10 @@ import pytest
 from prototipo.verificacao.guarda import INSUFICIENTE, verificar
 
 
-def _trecho(score=0.5):
+def _trecho(score=0.5, apto=True):
     return {"agencia": "aos fatos", "data_publicacao": "2021-01-08", "url": "https://a/1",
-            "veredito_original": "falso", "trecho": "Não é verdade que...", "score": score}
+            "veredito_original": "falso", "trecho": "Não é verdade que...", "score": score,
+            "apto_citacao": apto}
 
 
 def _chat(rotulo="falso", trechos=("T1",), criterio="O trecho T1 desmente."):
@@ -98,3 +99,48 @@ def test_rebaixado_guarda_o_que_o_modelo_disse():
 def test_saida_malformada_do_modelo_propaga_erro():
     with pytest.raises(ValueError):
         verificar("X.", [_trecho()], chat=lambda s, u: "sem json")
+
+
+# Task 1.6: fragmento inapto é só metadado (decisão 17) -----------------------
+
+def _inapto(texto="TEXTO REPROVADO NO PORTÃO", url="https://factckbr/1", score=0.9):
+    t = _trecho(score=score, apto=False)
+    t.update({"agencia": "lupa", "url": url, "veredito_original": "falso", "trecho": texto})
+    return t
+
+
+def test_texto_do_inapto_nao_vai_ao_modelo_e_nao_ganha_numero():
+    chat = _chat(trechos=("T1",))
+    verificar("alegação", [_inapto(), _trecho()], chat=chat)
+    assert "TEXTO REPROVADO" not in chat.chamadas[0]
+    assert "[T1]" in chat.chamadas[0] and "[T2]" not in chat.chamadas[0]
+
+
+def test_so_inaptos_da_insuficiente_sem_chamar_o_modelo():
+    v = verificar("alegação", [_inapto(), _inapto(url="https://factckbr/2")], chat=_explode)
+    assert v.rotulo == INSUFICIENTE
+    assert "apto" in v.rebaixado_por
+    assert [r["url"] for r in v.referencias] == ["https://factckbr/1", "https://factckbr/2"]
+
+
+def test_referencia_leva_agencia_link_e_veredito_e_nunca_o_trecho():
+    v = verificar("alegação", [_inapto(), _trecho()], chat=_chat(trechos=("T1",)))
+    assert v.rotulo == "falso"
+    assert v.referencias == [{"agencia": "lupa", "data_publicacao": "2021-01-08",
+                              "url": "https://factckbr/1", "veredito_original": "falso"}]
+    assert all("trecho" not in r for r in v.referencias)
+    assert all(t["apto_citacao"] is True for t in v.trechos)
+
+
+def test_sem_a_marca_conta_como_inapto():
+    sem_marca = _trecho()
+    del sem_marca["apto_citacao"]
+    v = verificar("alegação", [sem_marca], chat=_explode)
+    assert v.rotulo == INSUFICIENTE
+    assert len(v.referencias) == 1
+
+
+def test_limiar_vale_tambem_para_o_inapto():
+    v = verificar("alegação", [_inapto(score=0.1), _trecho(score=0.8)],
+                  chat=_chat(trechos=("T1",)), limiar=0.5)
+    assert v.referencias == []

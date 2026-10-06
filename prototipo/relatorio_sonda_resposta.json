@@ -4,7 +4,7 @@
   "cpu": false,
   "tentativas": 3,
   "corte_acervo": "2021",
-  "gerado_em": "2026-10-01 15:57",
+  "gerado_em": "2026-10-06 10:09",
   "sondas": [
     {
       "id": "R1_falso",
@@ -17,47 +17,74 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 19.4,
+          "segundos": 21.3,
           "forma": "com evidência",
-          "palavras": 73,
+          "palavras": 63,
           "palavras_por_bloco": [
-            13,
-            12,
+            9,
+            7,
             19,
-            13
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "rebaixada_por": null,
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Essa parte é opinião e não se checa.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Nenhum alimento previne ou cura a doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificá-lo.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique sempre em sites oficiais de saúde antes de compartilhar curas naturais.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"Um médico do interior confirmou.\"}], \"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificá-lo.\", \"bloco4\": \"Verifique sempre em sites oficiais de saúde antes de compartilhar curas naturais.\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 9.4,
+          "segundos": 12.2,
           "forma": "com evidência",
-          "palavras": 73,
+          "palavras": 66,
           "palavras_por_bloco": [
-            13,
-            12,
-            19,
+            9,
+            7,
+            21,
             13
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "rebaixada_por": null,
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Essa parte é opinião e não se checa.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Nenhum alimento previne ou cura a doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem dizer quem é.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique sempre informações de saúde em sites oficiais como o Ministério da Saúde.",
+          "bruto": "{\n\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}],\n\"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"Um médico do interior confirmou.\"}],\n\"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem dizer quem é.\",\n\"bloco4\": \"Verifique sempre informações de saúde em sites oficiais como o Ministério da Saúde.\"\n}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 9.5,
+          "segundos": 11.8,
           "forma": "com evidência",
-          "palavras": 73,
+          "palavras": 64,
           "palavras_por_bloco": [
-            13,
-            12,
+            9,
+            7,
             19,
             13
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "rebaixada_por": null,
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Essa parte é opinião e não se checa.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Nenhum alimento previne ou cura a doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique sempre informações de saúde em sites oficiais como o Ministério da Saúde.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"Um médico do interior confirmou.\"}], \"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificação.\", \"bloco4\": \"Verifique sempre informações de saúde em sites oficiais como o Ministério da Saúde.\"}"
         }
       ],
       "passou": 3
@@ -73,47 +100,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 20.4,
+          "segundos": 16.4,
           "forma": "com evidência",
-          "palavras": 69,
+          "palavras": 68,
           "palavras_por_bloco": [
-            13,
-            15,
-            15,
-            10
+            9,
+            17,
+            14,
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca de jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que curem ou previnam essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem promete cura para uma doença grave com um produto natural.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existe alimento que cure ou previna a doença. Essa parte é opinião e não se checa.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem afirma que um alimento simples cura uma doença grave.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique informações de saúde em sites oficiais como o Ministério da Saúde.",
+          "bruto": "{\n\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}],\n\"bloco2\": [{\"frase\": \"Não existe alimento que cure ou previna a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"os laboratórios escondem isso porque não dá lucro.\"}],\n\"bloco3\": \"Técnica: cura milagrosa. A mensagem afirma que um alimento simples cura uma doença grave.\",\n\"bloco4\": \"Verifique informações de saúde em sites oficiais como o Ministério da Saúde.\"\n}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 10.1,
+          "segundos": 11.3,
           "forma": "com evidência",
-          "palavras": 70,
+          "palavras": 68,
           "palavras_por_bloco": [
+            9,
+            17,
             13,
-            15,
-            15,
-            11
+            13
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que previnam ou curem essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem promete cura para uma doença grave com um alimento simples.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação tem apoio de órgãos oficiais de saúde."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existe alimento que previna ou cure a doença. Essa parte é opinião e não se checa.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem promete cura de doença grave com algo natural.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique sempre informações sobre saúde em sites oficiais como o Ministério da Saúde.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Não existe alimento que previna ou cure a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: cura milagrosa. A mensagem promete cura de doença grave com algo natural.\", \"bloco4\": \"Verifique sempre informações sobre saúde em sites oficiais como o Ministério da Saúde.\"}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 11.2,
+          "segundos": 11.9,
           "forma": "com evidência",
-          "palavras": 73,
+          "palavras": 66,
           "palavras_por_bloco": [
-            13,
+            9,
             15,
-            19,
-            10
+            14,
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que previnam ou curem essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um segredo sem nomes.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Falso. A casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Nenhum alimento previne ou cura a doença. Essa parte é opinião e não se checa.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem afirma que um fruto simples cura uma doença grave.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique informações de saúde em sites oficiais como o Ministério da Saúde.",
+          "bruto": "{\n\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}],\n\"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa parte é opinião e não se checa.\", \"trecho\": \"\"}],\n\"bloco3\": \"Técnica: cura milagrosa. A mensagem afirma que um fruto simples cura uma doença grave.\",\n\"bloco4\": \"Verifique informações de saúde em sites oficiais como o Ministério da Saúde.\"\n}"
         }
       ],
       "passou": 3
@@ -129,47 +165,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 24.6,
+          "segundos": 16.3,
           "forma": "com evidência",
-          "palavras": 76,
+          "palavras": 78,
           "palavras_por_bloco": [
+            11,
+            23,
             15,
-            14,
-            14,
-            16
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado e testou negativo.\n\nO QUE SE SABE: O procedimento de lacrar a urna era padrão para casos com suspeita de covid-19.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parecia difícil de acreditar por envolver um relato muito forte e triste.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação foi baseada em notícias que detalharam o caso ocorrido no Rio Grande do Norte."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro. A história sobre a menina no caixão lacrado é real.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para suspeitas de covid-19. O exame negativo foi divulgado apenas uma semana após o sepultamento.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parece difícil de acreditar por envolver um erro grave no manejo do corpo.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: O caso foi confirmado por registros e vídeos da família em Touros.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A história sobre a menina no caixão lacrado é real.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O procedimento de lacrar o caixão era padrão para suspeitas de covid-19.\", \"trecho\": \"T1\"}, {\"frase\": \"O exame negativo foi divulgado apenas uma semana após o sepultamento.\", \"trecho\": \"T1\"}], \"bloco3\": \"A mensagem parece difícil de acreditar por envolver um erro grave no manejo do corpo.\", \"bloco4\": \"O caso foi confirmado por registros e vídeos da família em Touros.\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 13.1,
+          "segundos": 11.7,
           "forma": "com evidência",
-          "palavras": 77,
+          "palavras": 76,
           "palavras_por_bloco": [
-            12,
-            22,
+            11,
+            23,
             13,
-            13
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para casos com suspeita de covid-19. O exame negativo só saiu uma semana depois.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parecia difícil de acreditar por envolver um caso trágico e polêmico.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação foi baseada em relatos sobre o ocorrido na cidade de Touros."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro. A história sobre a menina no caixão lacrado é real.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para suspeitas de coronavírus. O exame negativo só foi divulgado uma semana após a morte.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parece difícil de acreditar porque envolve um erro grave no sepultamento.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: O caso foi confirmado por relatos da família e resultados de exames.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A história sobre a menina no caixão lacrado é real.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O procedimento de lacrar o caixão era padrão para suspeitas de coronavírus.\", \"trecho\": \"T1\"}, {\"frase\": \"O exame negativo só foi divulgado uma semana após a morte.\", \"trecho\": \"T1\"}], \"bloco3\": \"A mensagem parece difícil de acreditar porque envolve um erro grave no sepultamento.\", \"bloco4\": \"O caso foi confirmado por relatos da família e resultados de exames.\"}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 10.4,
+          "segundos": 12.7,
           "forma": "com evidência",
-          "palavras": 65,
+          "palavras": 78,
           "palavras_por_bloco": [
-            12,
-            20,
-            4,
-            12
+            11,
+            23,
+            13,
+            14
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para suspeitas de coronavírus. O exame negativo só saiu uma semana depois.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem não engana.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação veio do relato sobre a abertura da urna pela família."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro. A história sobre a menina no caixão lacrado é real.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para suspeitas de covid-19. O exame da criança deu negativo uma semana após o enterro.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parece difícil de acreditar por envolver um erro grave no sepultamento.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: O caso foi confirmado por registros do resultado do exame e vídeos da família.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A história sobre a menina no caixão lacrado é real.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O procedimento de lacrar o caixão era padrão para suspeitas de covid-19.\", \"trecho\": \"T1\"}, {\"frase\": \"O exame da criança deu negativo uma semana após o enterro.\", \"trecho\": \"T1\"}], \"bloco3\": \"A mensagem parece difícil de acreditar por envolver um erro grave no sepultamento.\", \"bloco4\": \"O caso foi confirmado por registros do resultado do exame e vídeos da família.\"}"
         }
       ],
       "passou": 3
@@ -186,47 +231,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 27.1,
+          "segundos": 22.3,
           "forma": "com evidência",
-          "palavras": 70,
+          "palavras": 77,
           "palavras_por_bloco": [
-            17,
-            11,
             15,
+            19,
+            16,
             11
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez esse anúncio em abril de 2020, não agora.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo é antigo e foi postado como se fosse atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data da publicação antes de compartilhar vídeos de políticos."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo é antigo.\n\nO QUE SE SABE: O prefeito fez esse anúncio em abril de 2020. O estado já liberava a cloroquina desde maio daquele ano.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo foi postado como se fosse atual, mas é de abril.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Observe a data da publicação original do vídeo antes de compartilhar.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que o vídeo é antigo.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O prefeito fez esse anúncio em abril de 2020.\", \"trecho\": \"T1\"}, {\"frase\": \"O estado já liberava a cloroquina desde maio daquele ano.\", \"trecho\": \"T2\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo foi postado como se fosse atual, mas é de abril.\", \"bloco4\": \"Observe a data da publicação original do vídeo antes de compartilhar.\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 11.3,
+          "segundos": 14.9,
           "forma": "com evidência",
-          "palavras": 78,
+          "palavras": 74,
           "palavras_por_bloco": [
+            15,
             17,
-            17,
-            18,
-            10
+            14,
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez esse anúncio em abril de 2020. A mensagem dá a entender que foi agora.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo é de outra época e foi usado para contar uma história atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data da publicação antes de compartilhar vídeos antigos."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo é antigo.\n\nO QUE SE SABE: O vídeo foi gravado em abril de 2020. Ele foi postado como se fosse atual em julho.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo antigo foi usado para passar uma informação atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data da publicação e compare com o conteúdo do vídeo.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que o vídeo é antigo.\", \"trecho\": \"T2\"}], \"bloco2\": [{\"frase\": \"O vídeo foi gravado em abril de 2020.\", \"trecho\": \"T2\"}, {\"frase\": \"Ele foi postado como se fosse atual em julho.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo antigo foi usado para passar uma informação atual.\", \"bloco4\": \"Verifique a data da publicação e compare com o conteúdo do vídeo.\"}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 11.8,
+          "segundos": 15.8,
           "forma": "com evidência",
-          "palavras": 79,
+          "palavras": 82,
           "palavras_por_bloco": [
-            17,
-            22,
-            15,
-            9
+            16,
+            23,
+            16,
+            11
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez o anúncio em abril de 2020, não agora. O uso da cloroquina já era permitido desde maio daquele ano.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. A mensagem usa um vídeo de outra época para parecer atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data original do vídeo antes de compartilhar."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. O vídeo mostra um anúncio real feito pelo prefeito.\n\nO QUE SE SABE: A gravação é de abril e foi postada em julho como se fosse atual. O uso da cloroquina já era liberado desde maio.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo antigo foi usado para fingir que o fato aconteceu agora.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Observe a data das postagens e se o vídeo é recente.",
+          "bruto": "{\"bloco1\": [{\"frase\": \"O vídeo mostra um anúncio real feito pelo prefeito.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"A gravação é de abril e foi postada em julho como se fosse atual.\", \"trecho\": \"T2\"}, {\"frase\": \"O uso da cloroquina já era liberado desde maio.\", \"trecho\": \"T2\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo antigo foi usado para fingir que o fato aconteceu agora.\", \"bloco4\": \"Observe a data das postagens e se o vídeo é recente.\"}"
         }
       ],
       "passou": 3
@@ -240,47 +294,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 17.8,
+          "segundos": 12.0,
           "forma": "sem evidência",
-          "palavras": 65,
+          "palavras": 76,
           "palavras_por_bloco": [
-            14,
+            13,
             10,
-            11,
-            8
+            18,
+            13
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscado por informações sobre o chá de goiabeira e a dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde ou órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais de saúde pública."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Não foram encontrados estudos sobre o chá de goiabeira para dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar se há registros em órgãos de saúde oficiais. Procure por orientações de médicos sobre tratamentos.\n\nONDE PROCURAR: Procure em sites do Ministério da Saúde ou da Organização Mundial da Saúde.",
+          "bruto": "{\"bloco1\": \"Não foram encontrados estudos sobre o chá de goiabeira para dengue.\", \"bloco2\": \"Não encontrar informações não significa que a afirmação seja falsa.\", \"bloco3\": \"Você pode verificar se há registros em órgãos de saúde oficiais. Procure por orientações de médicos sobre tratamentos.\", \"bloco4\": \"Procure em sites do Ministério da Saúde ou da Organização Mundial da Saúde.\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 9.2,
+          "segundos": 11.7,
           "forma": "sem evidência",
-          "palavras": 66,
+          "palavras": 79,
           "palavras_por_bloco": [
-            13,
-            10,
-            11,
+            14,
+            12,
+            21,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscado por informações sobre o chá de goiabeira na dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais como o Ministério da Saúde."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre o chá de goiabeira para tratar a dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que ele seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar se há estudos científicos sobre plantas medicinais em sites oficiais. Procure por orientações de órgãos de saúde pública.\n\nONDE PROCURAR: Procure em sites de universidades ou portais governamentais de saúde.",
+          "bruto": "{\"bloco1\": \"Foram buscadas informações sobre o chá de goiabeira para tratar a dengue.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que ele seja falso.\", \"bloco3\": \"Você pode verificar se há estudos científicos sobre plantas medicinais em sites oficiais. Procure por orientações de órgãos de saúde pública.\", \"bloco4\": \"Procure em sites de universidades ou portais governamentais de saúde.\"}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 9.1,
+          "segundos": 11.6,
           "forma": "sem evidência",
-          "palavras": 65,
+          "palavras": 74,
           "palavras_por_bloco": [
             14,
             10,
-            11,
-            8
+            16,
+            12
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscada informação sobre o chá de goiabeira para tratar a dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde ou órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais de saúde pública."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas por estudos sobre o chá de goiabeira na dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar se há registros em sites oficiais de saúde. Procure por orientações de médicos.\n\nONDE PROCURAR: Procure em portais do Ministério da Saúde ou órgãos de vigilância sanitária.",
+          "bruto": "{\"bloco1\": \"Foram feitas buscas por estudos sobre o chá de goiabeira na dengue.\", \"bloco2\": \"Não encontrar informações não significa que a afirmação seja falsa.\", \"bloco3\": \"Você pode verificar se há registros em sites oficiais de saúde. Procure por orientações de médicos.\", \"bloco4\": \"Procure em portais do Ministério da Saúde ou órgãos de vigilância sanitária.\"}"
         }
       ],
       "passou": 3
@@ -294,47 +357,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 15.8,
+          "segundos": 10.1,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 85,
           "palavras_por_bloco": [
-            21,
+            20,
             16,
-            11,
+            17,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a composição e efeitos da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar as bulas oficiais nos sites do governo. Procure por estudos de órgãos de saúde.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/",
+          "bruto": "{\"bloco1\": \"Foram buscadas informações sobre a composição e efeitos da vacina.\",\n\"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\",\n\"bloco3\": \"Você pode verificar as bulas oficiais nos sites do governo. Procure por estudos de órgãos de saúde.\",\n\"bloco4\": \"\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 7.2,
+          "segundos": 7.0,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 76,
           "palavras_por_bloco": [
-            21,
+            20,
             16,
-            11,
+            8,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a composição e efeitos da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar as bulas oficiais dos medicamentos.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/",
+          "bruto": "{\"bloco1\": \"Foram buscadas informações sobre a composição e efeitos da vacina.\",\n\"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\",\n\"bloco3\": \"Você pode verificar as bulas oficiais dos medicamentos.\",\n\"bloco4\": \"\"}"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 7.3,
+          "segundos": 8.0,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 85,
           "palavras_por_bloco": [
-            21,
+            20,
             16,
-            11,
+            17,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a composição e efeitos da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar as bulas oficiais nos sites do governo. Procure por estudos em órgãos de saúde.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/",
+          "bruto": "{\"bloco1\": \"Foram buscadas informações sobre a composição e efeitos da vacina.\",\n\"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\",\n\"bloco3\": \"Você pode verificar as bulas oficiais nos sites do governo. Procure por estudos em órgãos de saúde.\",\n\"bloco4\": \"\"}"
         }
       ],
       "passou": 3
@@ -348,47 +420,56 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 16.9,
+          "segundos": 10.5,
           "forma": "sem evidência",
-          "palavras": 82,
+          "palavras": 86,
           "palavras_por_bloco": [
-            25,
+            29,
             13,
             14,
             8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a relação entre o vírus Oropouche e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para verificar as doenças transmitidas por mosquitos.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a relação entre o vírus Oropouche, o mosquito Aedes aegypti e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar em sites oficiais de saúde pública ou órgãos de vigilância sanitária.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso.",
+          "bruto": "{\"bloco1\": \"Foram buscadas informações sobre a relação entre o vírus Oropouche, o mosquito Aedes aegypti e a vacina da dengue.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar em sites oficiais de saúde pública ou órgãos de vigilância sanitária.\", \"bloco4\": \"\"}"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 6.2,
+          "segundos": 7.8,
           "forma": "sem evidência",
-          "palavras": 67,
+          "palavras": 80,
           "palavras_por_bloco": [
-            19,
-            10,
-            8,
-            8
-          ],
-          "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre essa proteção.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde pública.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
-        },
-        {
-          "n": 3,
-          "passou": true,
-          "segundos": 8.3,
-          "forma": "sem evidência",
-          "palavras": 79,
-          "palavras_por_bloco": [
-            25,
+            26,
             10,
             14,
             8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi buscado conteúdo sobre a relação entre o vírus Oropouche e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para ver as doenças cobertas pela vacina.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Pesquisamos informações sobre a relação entre o vírus Oropouche, o mosquito da dengue e a vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para ver as doenças transmitidas por mosquitos.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso.",
+          "bruto": "{\"bloco1\": \"Pesquisamos informações sobre a relação entre o vírus Oropouche, o mosquito da dengue e a vacina.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Você pode consultar sites oficiais de saúde para ver as doenças transmitidas por mosquitos.\", \"bloco4\": \"\"}"
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 9.1,
+          "forma": "sem evidência",
+          "palavras": 88,
+          "palavras_por_bloco": [
+            29,
+            10,
+            19,
+            8
+          ],
+          "defeitos": [],
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a relação entre o vírus Oropouche, o mosquito Aedes aegypti e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode verificar em sites oficiais de saúde pública. Consulte órgãos como a Anvisa ou o Ministério da Saúde.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso.",
+          "bruto": "{\"bloco1\": \"Foram feitas buscas sobre a relação entre o vírus Oropouche, o mosquito Aedes aegypti e a vacina da dengue.\", \"bloco2\": \"Não encontrar informações não significa que a afirmação seja falsa.\", \"bloco3\": \"Você pode verificar em sites oficiais de saúde pública. Consulte órgãos como a Anvisa ou o Ministério da Saúde.\", \"bloco4\": \"\"}"
         }
       ],
       "passou": 3
