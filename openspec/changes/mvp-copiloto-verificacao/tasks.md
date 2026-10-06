@@ -58,7 +58,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 
 ## 5. Interface
 - [ ] 5.1 **Wingrid** Camada visível e camada de detalhe
-- [ ] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
+- [x] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
+      — `specs/acessibilidade-leitura/checklist.md` criado com os requisitos verificáveis da especificação
 - [ ] 5.3 **Wingrid** Fluxo de primeira verificação sem cadastro
 - [x] 5.4 **Jhessica** Verificação de legibilidade da camada visível (limite de palavras e frases)
 
