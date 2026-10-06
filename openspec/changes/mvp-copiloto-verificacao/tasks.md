@@ -74,7 +74,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — separação arquitetural e de interface em duas camadas (teto de 120
       palavras na primária e auditabilidade sob demanda na secundária);
       decisão 20 do `design.md`, 01/10/2026
-- [ ] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
+- [x] 5.2 **Jhessica** Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária
+      — `specs/acessibilidade-leitura/checklist.md` criado com os requisitos verificáveis da especificação
 - [x] 5.3 **Wingrid** Fluxo de primeira verificação sem cadastro
       — especificação de fluxo zero-friction de entrada direta por texto, link
       ou encaminhamento, sem login prévio e compatível com LGPD; decisão 21 do
@@ -83,7 +84,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 
 ## 6. Avaliação
 - [x] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
-- [ ] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
+- [x] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
+      — 4 armadilhas configuradas e validadas em `utils/gerar_casos.py`; conjunto atualizado gerado em `datasets/casos_mvp_copiloto/mvp_copiloto_casos.json`
 - [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
 - [ ] 6.4 **Breno** Submeter protocolo ao comitê de ética
