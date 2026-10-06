@@ -33,7 +33,10 @@ NUNCA use o que você sabe de medicina ou de notícias. Se você sabe a resposta
 mas nenhum trecho a dá, o rótulo é "evidência insuficiente".
 
 O veredito da agência vale para a alegação que a agência checou. Confira se é a
-mesma alegação antes de usá-lo.
+mesma alegação antes de usá-lo. Se for a mesma alegação e o veredito da agência
+for falso, boato, enganoso ou fora de contexto, o rótulo NÃO pode ser "verdadeiro".
+Se a alegação diz que algo acontece agora ("acabou de", "hoje") e o trecho mostra
+que aconteceu antes, o rótulo é "verdadeiro fora de contexto ou exagerado".
 
 Escreva:
 - "rotulo": um dos quatro rótulos.

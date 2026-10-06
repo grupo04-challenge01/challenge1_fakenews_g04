@@ -28,6 +28,7 @@ JATOBA = "c7a4591df5-00-00"      # aos fatos, 2021: casca do jatobá não cura c
 CAIXAO = "beff276238-00-00"      # Comprova, 2020: verdadeiro, criança em caixão lacrado testou negativo
 CLOROQ = "cd575dcaa4-00-00"      # Comprova, 2020: enganoso, vídeo de abril postado como atual
 CLOROQ_DATA = "cd575dcaa4-00-01"  # mesmo registro: gravação de 9 de abril, post de 30 de julho
+COVAS_2021 = "73fd0f67bb-00-00"   # Boatos.org, 2021: boato, vídeo de 2020 dado como atual
 
 SONDAS = [
     {"id": "C1_falso", "esperado": "falso", "fragmentos": [JATOBA],
@@ -39,6 +40,11 @@ SONDAS = [
      "fragmentos": [CLOROQ, CLOROQ_DATA],
      "alegacao": "Vídeo mostra o prefeito Bruno Covas anunciando agora, no fim de julho, "
                  "a cloroquina no protocolo de tratamento da covid em São Paulo."},
+    # Execução ponta a ponta de 06/10: só a introdução da checagem, com veredito
+    # "boato". O modelo rotulou "verdadeiro". Falso ou fora de contexto servem.
+    {"id": "C4_veredito_da_agencia_boato",
+     "esperado": ["falso", "verdadeiro fora de contexto ou exagerado"], "fragmentos": [COVAS_2021],
+     "alegacao": "O prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo."},
     {"id": "G1_sem_trecho", "esperado": INSUFICIENTE, "fragmentos": [],
      "alegacao": "A vacina contra o sarampo causa autismo."},
     {"id": "G2_trecho_de_outro_assunto", "esperado": INSUFICIENTE, "fragmentos": [JATOBA, CAIXAO],
@@ -91,7 +97,8 @@ def main():
             except ValueError as e:
                 v, erro = None, str(e)
             dt = time.time() - t0
-            ok = v is not None and v.rotulo == s["esperado"]
+            aceitos = s["esperado"] if isinstance(s["esperado"], list) else [s["esperado"]]
+            ok = v is not None and v.rotulo in aceitos
             quem = None if v is None or v.rotulo != INSUFICIENTE else (
                 "guarda" if v.rebaixado_por else "modelo")
             print(f"  tentativa {n}: [{'PASSOU' if ok else 'FALHOU'}] {dt:.1f}s "

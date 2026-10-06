@@ -89,6 +89,10 @@ Se o estado for `evidência insuficiente` ou `lacuna de acervo`:
 Responda só com JSON, neste formato:
 {{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": "..."}}"""
 
+# verificacao-alegacao: o bloco 2 separa a opinião da mensagem. O modelo esqueceu
+# na execução ponta a ponta de 06/10 (casos F04 e R3); a frase sai do código.
+FRASE_OPINIAO = "Uma parte da mensagem é opinião, e opinião não se checa."
+
 ID_TRECHO = re.compile(r"\bT[1-9]\d*\b")
 ENGANA = re.compile(r"\b(engana|enganos[ao]|é fals[ao]|mentira)\b", re.IGNORECASE)
 # Decisão 5 de fix-resposta-sem-evidencia: com ponteiro, o bloco 2 fala só do
@@ -164,6 +168,24 @@ def _detalhe(veredito):
     return [{k: t[k] for k in chaves} for t in veredito.trechos]
 
 
+def _marcar(bloco3, catalogo):
+    """Põe `Técnica: ` no bloco 3 que abre só com rótulos do catálogo.
+
+    O modelo escolhe os rótulos, mas omite o marcador: na bancada de 06/10,
+    5 de 6 casos da forense. Só a primeira frase conta, e só quando ela é
+    inteira de rótulos do catálogo; o resto continua a cargo da validação da
+    3.3 (decisão 24).
+    """
+    if catalogo_mod.MARCADOR.search(bloco3):
+        return bloco3
+    primeira = re.split(r"[.!?\n]", bloco3, maxsplit=1)[0]
+    partes = [catalogo_mod._limpo(p) for p in re.split(r",|\se\s", primeira)]
+    permitidos = {r.lower() for r in catalogo}
+    if partes and all(p in permitidos for p in partes):
+        return f"Técnica: {bloco3}"
+    return bloco3
+
+
 def _frases(texto):
     return [f.strip() for f in re.split(r"(?<=[.!?])\s+|\n+", texto) if f.strip()]
 
@@ -229,6 +251,11 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     gerados = [str((dados or {}).get(f"bloco{n}") or "").strip() for n in range(1, 5)]
 
     blocos = list(gerados)
+    if com and veredito.rotulo != "verdadeiro":
+        blocos[2] = _marcar(blocos[2], catalogo)
+    if com and decomposicao and decomposicao.get("opinioes") and blocos[1] \
+            and "opini" not in blocos[1].lower():
+        blocos[1] = f"{blocos[1]} {FRASE_OPINIAO}"
     blocos[0] = f"{_abertura(veredito, estado, lacuna)} {gerados[0]}".strip()
     if estado == LACUNA:
         blocos[3] = _ponteiro(lacuna)
