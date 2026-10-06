@@ -45,3 +45,25 @@ curta acompanhada de paráfrase.
 - **WHEN** a evidência principal é uma checagem de agência
 - **THEN** a resposta nomeia a agência e traz o link
 - **AND** o texto original não é reproduzido na íntegra
+
+### Requirement: Fontes oficiais aceitas
+
+O sistema SHALL aceitar comunicados e notas técnicas exclusivamente de órgãos
+oficiais brasileiros listados em arquivo versionado (`fontes_oficiais.json`):
+Ministério da Saúde, Fundação Oswaldo Cruz (Fiocruz) e Agência Nacional de
+Vigilância Sanitária (Anvisa), restritos a seus domínios institucionais
+auditáveis (`.gov.br` e `.fiocruz.br`).
+
+Comunicados oficiais MUST ser classificados com `tipo_fonte: "comunicado_oficial"`
+e MUST NOT portar veredito de agência, servindo como evidência de orientação
+científica e sanitária.
+
+#### Scenario: Evidência de órgão oficial homologado
+- **WHEN** a evidência recuperada provém de domínio oficial do Ministério da Saúde, Fiocruz ou Anvisa
+- **THEN** o sistema atribui o órgão oficial como fonte institucional
+- **AND** a informação é indexada como comunicado_oficial sem veredito
+
+#### Scenario: Fonte fora da lista homologada
+- **WHEN** uma publicação provém de domínio de terceiro ou órgão fora da lista homologada
+- **THEN** o texto não é admitido como comunicado oficial
+

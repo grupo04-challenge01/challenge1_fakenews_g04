@@ -616,6 +616,17 @@ defeitos, e cada um virou regra:
 3. O bloco 1 abriu com "A informação diz que a casca do jatobá cura o câncer",
    sem marcação de falso. O verificador da 3.4 pegou a frase.
 
+**Bloco 2 com ponteiro, 01/10.** A decisão 5 do fix definiu que, na lacuna
+com ponteiro, o bloco 2 fala só do acervo consultado e não julga a alegação. Na
+primeira sonda o S2 escreveu "não encontrar não significa que seja falsa" 3
+vezes em 3, ao lado de um ponteiro com veredito `falso`. A instrução no prompt
+não resolveu: com ela, o S2 repetiu a frase 3 vezes em 3, e o R3 deixou o bloco 3
+vazio em 2 de 3. Pelo mesmo motivo da data de corte, o bloco 2 com ponteiro
+passou a sair do código (`BLOCO_2_COM_PONTEIRO`): «O acervo consultado aqui não
+cobre esta mensagem. Não achar nele não confirma nem desmente nada.» O prompt
+voltou a ser o da rodada anterior. A sonda refeita deu 21 de 21, com respostas
+de 65 a 82 palavras e mediana de 11,2 s (de 6,2 a 27,1 s).
+
 **Limites declarados.**
 
 - A adequação do rótulo ao caso continua fora do código, como na decisão 7. O
@@ -623,14 +634,132 @@ defeitos, e cada um virou regra:
 - Afirmação do bloco 2 sem trecho de origem não é pega aqui: ancorar cada
   afirmação a um trecho é a task 1.6. Exemplo: no R3, "o exame saiu uma semana
   depois".
-- No S2, o bloco 2 diz que "não encontrar não significa que seja falsa", ao
-  lado de um ponteiro que traz veredito `falso`. A decisão 5 do fix, de 01/10,
-  resolveu essa questão: com ponteiro, o bloco 2 fala só do acervo consultado e
-  não julga a alegação. O prompt desta decisão ainda não segue essa regra, e
-  ajustá-lo pede nova rodada da sonda.
 - Defeito não gera nova tentativa. Se a montagem final repete a chamada ou
   devolve a resposta com o defeito registrado é decisão de quem integra o
   fluxo.
+
+### 19. Lista de fontes oficiais aceitas: Ministério da Saúde, Fiocruz e Anvisa — 01/10/2026
+
+Task 1.3. R2 Wingrid. Registro estruturado em `prototipo/indice/fontes_oficiais.json`.
+
+O índice reserva `tipo_fonte: "comunicado_oficial"` para documentos institucionais de saúde pública brasileira (decisão 16). Ao contrário das checagens de agências, comunicados oficiais **não têm veredito**: trazem evidência sanitária, regulatória e epidemiológica oficial.
+
+**Critérios de inclusão e domínios:**
+1. **Ministério da Saúde (MS):** autoridade sanitária nacional do SUS. Domínios autorizados: `gov.br/saude` e `saude.gov.br`. Documentos aceitos: notas técnicas, boletins epidemiológicos, informes do PNI e desmentidos do programa *Saúde com Ciência*.
+2. **Fundação Oswaldo Cruz (Fiocruz):** principal instituição de C&T em saúde pública da América Latina. Domínios autorizados: `fiocruz.br`, `portal.fiocruz.br`, `agencia.fiocruz.br` e `observatorio.fiocruz.br`. Documentos aceitos: relatórios de pesquisa, boletins InfoGripe e pareceres institucionais.
+3. **Agência Nacional de Vigilância Sanitária (Anvisa):** autoridade regulatória federal. Domínios autorizados: `gov.br/anvisa`, `anvisa.gov.br` e `consultas.anvisa.gov.br`. Documentos aceitos: alertas sanitários, resoluções (RDC), registros de medicamentos/vacinas e notas regulatórias.
+
+**Vedação:** pronunciamentos e posts em redes sociais sem publicação em diário ou portal oficial não são indexados como comunicado oficial.
+
+### 20. Camada visível e camada de detalhe: separação arquitetural e de interface — 01/10/2026
+
+Task 5.1. R2 Wingrid.
+
+A experiência do usuário organiza-se em duas camadas complementares, assegurando acessibilidade imediata e auditabilidade integral:
+
+1. **Camada Visível (Entrega Primária — Web e WhatsApp):**
+   - Resumo rápido de alta legibilidade, respeitando o teto de 120 palavras e frases de até 20–25 palavras (`acessibilidade-leitura`).
+   - Apresenta rigorosamente os 4 blocos ordenados de `resposta-formativa`.
+   - Veda termos técnicos herméticos e jargões metodológicos sem glossário explicativo entre parênteses.
+   - Possui uma única ação primária por tela (ex.: botão "Ver fontes e detalhes" ou "Fazer nova pergunta").
+
+2. **Camada de Detalhe (Auditabilidade e Aprofundamento — por Ação Explícita):**
+   - Acessível sob demanda (toque/clique no botão de detalhes no chat web ou link com payload no WhatsApp).
+   - Contém: trecho literal da justificativa recuperada, identificação e data da agência/órgão, URL original, critérios de checagem, e versão original em inglês quando houver tradução (auditabilidade de tradução).
+
+### 21. Fluxo de primeira verificação sem cadastro — 01/10/2026
+
+Task 5.3. R2 Wingrid.
+
+Para maximizar o impacto social e garantir acesso universal à checagem de saúde, a primeira verificação elimina completamente barreiras de entrada (zero-friction):
+
+1. **Entrada Direta:** o usuário acessa a aplicação web (ou inicia conversa no WhatsApp) e pode imediatamente colar texto, encaminhar mensagem ou enviar link de notícia.
+2. **Sem Cadastro Prévio:** o sistema não exige login, senha, cadastro, e-mail nem CPF para processar a verificação e entregar a resposta formativa.
+3. **Aderência à LGPD:** mensagens de consulta são processadas de forma anônima e desidentificada, sem retenção de dados pessoais identificáveis.
+4. **Jornada do Usuário:** Input do texto -> Feedback acessível de processamento -> Exibição da Camada Visível (4 blocos) -> Opção de aprofundamento na Camada de Detalhe.
+
+### 22. Consistência do catálogo de técnicas com as dimensões da matriz de confiança — 01/10/2026
+
+Task 8.1. R2 Wingrid.
+
+Conferência entre o catálogo fechado de técnicas de manipulação (`prototipo/resposta/catalogo_tecnicas.json`, 7 rótulos fixados na decisão 6) e as 4 dimensões empíricas da `matriz-confianca` da fase Engage (`docs/engage/kit-matriz-confianca.md`):
+
+| Dimensão na Matriz de Confiança | Rótulo(s) Correspondente(s) no Catálogo | Cobertura e Raciocínio |
+| --- | --- | --- |
+| **Dimensão 1: Falsa Autoridade ou Fonte Inexistente** | `autoridade falsa`, `fonte sem nome` | Cobre tanto a citação de falsos médicos quanto fontes anônimas/vagas. |
+| **Dimensão 2: Recontextualização e Edição de Mídia** | `fora de contexto` | Cobre uso de declarações ou vídeos reais fora do momento/contexto original. |
+| **Dimensão 3: Distorção de Documento Real** | `manchete exagerada`, `dado distorcido` | Cobre inflar conclusões de bulas/estudos reais ou distorcer estatísticas. |
+| **Dimensão 4: Enquadramento Conspiratório** | 8ª vaga reservada (`conspiracao`), amparada por `cura milagrosa` e `urgência fabricada` | Promessas mirabolantes e senso de perigo artificial que alimentam teorias conspiratórias. |
+
+Ficam confirmadas as remoções de "ausência genérica de link" (variância zero) e "polaridade emocional" (não é critério de veracidade), preservando a decisão 7.
+
+### 23. Prioridade de idioma: um score, camadas cortadas dele — 01/10/2026
+
+Task 1.4. Código em `prototipo/rag/hibrida.py` (`Recuperador.recuperar`,
+`PRIORIDADE_IDIOMA`, `cobertura_padrao`, `Recuperacao`), testes em
+`prototipo/rag/tests/test_prioridade_idioma.py`. A CLI `python -m prototipo.rag
+buscar` passa a consultar por `recuperar` e mostra a camada.
+
+**Duas decisões, tomadas antes do código** (Samara, 01/10/2026):
+
+1. **"Esgotar" pede critério de cobertura.** Ordenar português antes de inglês
+   não basta: as 6.279 unidades em português sempre enchem o top‑k, e o inglês
+   nunca entraria. Por isso `recuperar` percorre as camadas em
+   `PRIORIDADE_IDIOMA` (`pt-BR`, depois `en`) e só corta a camada seguinte quando
+   o critério `cobre` recusa a anterior. Se o português cobre, nenhuma fonte em
+   inglês entra, que é o cenário Alegação já checada em português. O critério é
+   parâmetro, como o limiar da guarda (decisão 12). O valor é da 1.5. Até lá vale
+   `cobertura_padrao`: a camada cobre se trouxe ao menos uma unidade, a leitura
+   mais estrita de "esgotar". Alternativa descartada: recorrer ao inglês só com o
+   português vazio como mecanismo fixo. Hoje ela é o padrão provisório, mas, fixa
+   no código, obrigaria a 1.5 a mudar a 1.4.
+2. **Só o mecanismo.** Nenhum corpus em inglês está indexado. O esquema 1.1.0 tem
+   `en` no enum `idioma`, mas os dois corpora de `x-corpora` são `pt-BR`. O braço
+   inglês está pronto e inerte, e é provado com fragmentos sintéticos. Indexar
+   uma fonte em inglês amplia o escopo e fica como questão aberta.
+
+**Pontuar uma vez, cortar depois.** A consulta é pontuada sobre o índice
+inteiro, e cada camada é uma máscara sobre o mesmo vetor: o excluído vai a −∞, o
+score de quem fica não muda. Dois índices separados dariam a cada camada o
+próprio fundo em `_sobre_o_fundo` (mediana e percentil 99 da consulta naquela
+camada). O mesmo número significaria coisas diferentes em português e em inglês,
+e o limiar da 1.5 não valeria igual nas duas. O custo também fica igual: o braço
+denso codifica a consulta uma vez, mesmo quando recorre ao inglês.
+
+**O que a verificação recebe.** `Recuperacao` traz quatro campos: `idioma`, a
+camada dos resultados; `resultados`, que agora têm `idioma` por unidade;
+`consultados`, as camadas percorridas, na ordem; e `coberto`. Camada sem fonte
+indexada não é consultada. Se nenhuma camada cobre, voltam os resultados da
+primeira camada não vazia com `coberto=False`, e decidir se o veredito cai para
+`evidência insuficiente` é de quem chama. `buscar` continua sendo o ranking cru
+que a aferição mede.
+
+**Com o índice de hoje, nada muda.** O `buscar` foi dividido em `_pontuar` e
+`_reduzir`. No índice real (23.655 fragmentos, todos `pt-BR`), 20 consultas de
+aferição mais 8 sem alvo, nos quatro modos (léxica, densa, híbrida por score e
+por RRF), o `buscar` da `main`, o `buscar` novo e o `recuperar` devolveram as
+mesmas unidades, na mesma ordem e com o mesmo score: 0 divergências em 112
+comparações. Só o campo `idioma` é novo. O braço denso dessa conferência usou
+scores sintéticos com empates, porque o modelo não estava na máquina da
+verificação. A aferição com `multilingual-e5-base` não foi refeita, porque com
+máscara toda verdadeira o vetor de score é o mesmo, com a mesma ordem e os mesmos
+empates. O teste `test_indice_real_nas_20_consultas_da_afericao_nao_muda` repete
+a conferência no braço léxico sempre que o índice existe na máquina.
+
+**Índice que não diz o idioma não é priorizado.** Fragmento sem `idioma` (índice
+anterior ao esquema 1.0.0) ou com valor fora de `PRIORIDADE_IDIOMA` faz
+`recuperar` parar com erro. A busca crua continua funcionando, para não quebrar a
+aferição de índices antigos.
+
+**Fica para outras tasks.**
+
+- **1.5:** o critério de cobertura entra por `recuperar(..., cobre=...)`, sem
+  mudar a 1.4.
+- **1.6:** `apto_citacao` continua sem ser lido pela busca (decisão 17).
+- **Resposta e interface:** a paráfrase em português com o trecho original em
+  inglês na camada de detalhe (`recuperacao-evidencia`, Auditabilidade da
+  tradução). A recuperação só entrega o `idioma` de cada unidade, para que isso
+  seja possível.
 
 ## Questões em aberto
 
@@ -640,11 +769,16 @@ defeitos, e cada um virou regra:
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
 - **Limiar de recuperação** a partir do qual o veredito cai para `evidência
-  insuficiente`.
+  insuficiente`. Entra na recuperação como o critério `cobre`
+  de `recuperar` (decisão 19).
+- **Fonte em inglês.** Nenhum corpus em inglês está indexado (decisão 19). Falta
+  decidir qual fonte entra, se alguma entra, e com que licença. Até lá, o braço
+  inglês da prioridade de idioma não é exercido com dados reais.
 - **Relato pessoal como alegação.** A extração gradua "minha tia parou o remédio
   e melhorou" como alegação de risco `alto` (decisão 8). A spec não diz se relato
   pessoal é alegação a verificar ou evidência fraca da alegação ao lado. Da
   resposta depende o desempate por ordem. Cabe à curadoria da task 6.1 trazer
   casos com relato antes da alegação.
+
 
 

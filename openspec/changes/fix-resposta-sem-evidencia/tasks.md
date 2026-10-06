@@ -1,6 +1,6 @@
 # Tasks — fix-resposta-sem-evidencia
 
-Donos das tasks em aberto: **Samara** 1 (2.4).
+Donos das tasks em aberto: nenhum — 13 de 13 feitas em 01/10/2026.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -43,8 +43,13 @@ Change de correção. Bloqueia a task 3.2 de `mvp-copiloto-verificacao`.
       `design.md` (01/10/2026): os guardrails de conduta clínica e emergência atuam
       na entrada (pré-RAG) com recusa e bypass imediato para UBS/SAMU 192, nunca
       alcançando a geração; ademais, o bloco 3 veda prescrição alternativa
-- [ ] 2.4 **Samara** Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr`, que
-      prevê três casos de teste de lacuna e precisa deste como o terceiro
+- [x] 2.4 **Samara** Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr`, que
+      prevê três casos de teste de lacuna e precisa deste como o terceiro —
+      já estava lá: caso `pauta_sem_correspondencia_em_nenhum_nivel`, exemplo
+      `oropouche`, em `datasets/derivados/declaracao_cobertura_quatro_niveis.json`,
+      e cenário «Alegação sem correspondência em nenhum nível» de `frescor-corpus`;
+      remedido em 01/10 (`oropouche` e `semaglutida` em zero no FactCenter, no
+      FACTCK.BR e no índice); decisão 6 do `design.md`, 01/10/2026
 
 ## 3. Verificação
 

@@ -119,6 +119,69 @@ Tasks 2.2 e 2.3. R2 Wingrid.
 1. A recusa de conduta clínica e o encaminhamento de urgência médica (SAMU 192 / UBS) são aplicados por guardrails na entrada da requisição (pré-RAG). Se o usuário pedir prescrição, alteração de medicação ou relatar emergência, a requisição é interceptada imediatamente com resposta padrão acolhedora do SUS, sem passar pelo pipeline de verificação.
 2. A forma sem evidência só é acionada para alegações informativas em que não houve recuperação. O bloco 3 veda prescrição alternativa e limita-se a canais oficiais de informação pública (como portais do Ministério da Saúde e Anvisa) ou recomendação de procurar profissionais habilitados, cumprindo integralmente o requirement "Veredito sem prescrição alternativa".
 
+## Decisão 6: o terceiro estado já é o segundo caso de teste da 8.2 — 01/10/2026
+
+Task 2.4. R4 Samara.
+
+A task pedia levar o terceiro estado da decisão 3 — pauta ausente do acervo
+**e** do índice — à task 8.2 de `add-ampliacao-corpus-ptbr`, que prevê três
+casos de teste de lacuna. A conferência mostra que ele já está lá. A 8.2 foi
+fechada em 20/09 com os três casos em
+`datasets/derivados/declaracao_cobertura_quatro_niveis.json`
+(`tres_respostas_de_lacuna`), e o segundo deles é este estado, com `oropouche`
+como exemplo medido. Nada precisa ser acrescentado àquele change.
+
+**Correspondência entre os dois changes.**
+
+| Estado (decisão 3 deste change) | Situação de `frescor-corpus` (`add-ampliacao-corpus-ptbr`) | Caso de teste da 8.2 |
+| --- | --- | --- |
+| `evidência insuficiente` | nenhuma: a pauta está dentro da janela, não é lacuna | — |
+| lacuna de acervo **com** ponteiro | 1. checagem localizada | `pauta_com_checagem_so_no_indice` — `qdenga` |
+| lacuna de acervo **sem** ponteiro (o terceiro estado) | 2. sem correspondência no acervo consultado | `pauta_sem_correspondencia_em_nenhum_nivel` — `oropouche` |
+| lacuna de acervo **sem** ponteiro, com a data de corte do índice | 3. fora da janela declarada | `pauta_posterior_as_duas_datas_de_corte` |
+
+O terceiro estado deste change cobre duas situações de `frescor-corpus`: a pauta
+que o índice não tem, e a pauta posterior à data de corte do índice. Nas duas,
+o bloco 4 fica sem ponteiro. O que as separa é a data de corte que a resposta
+nomeia, e isso já está no cenário «Alegação sem correspondência em nenhum
+nível» daquela spec.
+
+**As duas specs dizem a mesma coisa sobre o terceiro estado.** O cenário «Pauta
+ausente do acervo e do índice» de `resposta-formativa`, aqui, e o cenário
+«Alegação sem correspondência em nenhum nível» de `frescor-corpus` exigem
+juntos: lacuna de acervo, e não `evidência insuficiente`; declaração de que não
+há checagem localizada em português; e a vedação de apresentar a ausência de
+ponteiro como ausência de checagem no mundo. Nenhum dos dois contradiz o outro,
+e o caso de teste da 8.2 registra a resposta com as mesmas três exigências.
+
+**Remedição em 01/10/2026: o terceiro estado continua valendo.** Os dois exemplos
+da decisão 3 foram contados de novo, por busca sem caixa no texto inteiro de
+cada registro:
+
+| Termo | FactCenter (4.063) | FACTCK.BR (1.313 linhas) | índice gravado (861, 20/09) | sondagem da API (19/09) |
+| --- | --- | --- | --- | --- |
+| `oropouche` | 0 | 0 | 0 | 0 |
+| `semaglutida` | 0 | 0 | 0 | 0 |
+| `qdenga` | 0 | 0 | **0** | 8 |
+
+O FACTCK.BR entrou no índice de recuperação em 01/10 (task 1.2 de
+`mvp-copiloto-verificacao`) e não muda o quadro: `oropouche` e `semaglutida`
+seguem ausentes de todos os níveis, e a resposta certa para as duas continua
+sendo lacuna de acervo sem ponteiro.
+
+**Achado: o exemplo de lacuna com ponteiro não está no índice gravado.** O
+segundo estado usa a Qdenga como exemplo, aqui (cenário «Pauta posterior ao
+acervo com checagem localizada») e na 8.2. As 8 checagens vêm de
+`datasets/derivados/sonda_factcheck_api.json`, a sondagem de 19/09. O índice
+que o sistema consultaria, `datasets/derivados/indice_checagens_recentes.json`,
+gerado em 20/09, registra `qdenga: 0` em `por_termo`, e a palavra não aparece em
+nenhuma das 861 checagens. O índice tem checagens sobre a vacina da dengue (por
+exemplo «A vacina da dengue é transgênica, altera o DNA e causa câncer», AFP
+Checamos, 15/02/2024), mas nenhuma usa o nome comercial. Isso não muda a 2.4,
+que trata do terceiro estado. Muda o caso de teste do segundo: contra o índice
+gravado, uma alegação que diga «Qdenga» cairia em lacuna **sem** ponteiro.
+Registrado em Questões em aberto.
+
 ## Riscos
 
 | Risco | Efeito | Mitigação |
@@ -129,6 +192,12 @@ Tasks 2.2 e 2.3. R2 Wingrid.
 
 ## Questões em aberto
 
+- **Aberta em 01/10 (decisão 6):** o caso de teste da lacuna com ponteiro não se
+  sustenta no índice gravado. A sondagem de 19/09 contou 8 checagens para
+  `qdenga`; o índice de 20/09 tem 0. Falta decidir entre regerar o índice com o
+  termo, trocar o exemplo por uma pauta que o índice tem (vacina da dengue,
+  2024) ou fazer a busca do índice casar a alegação por assunto, e não só pelo
+  nome. É de `indice-checagens-recentes`, de `add-ampliacao-corpus-ptbr`.
 - Se a forma sem evidência deve nomear a técnica quando o usuário **pedir**
   explicitamente a análise da mensagem sem veredito. Hoje a spec veda nomear
   técnica sem evidência; o caso do pedido explícito não foi examinado.

@@ -1,7 +1,7 @@
 """CLI da prova de conceito de recuperação — tasks 2.2 a 2.5.
 
     python -m prototipo.rag construir [--modelo NOME] [--estender]
-    python -m prototipo.rag buscar "consulta" [--modo lexica|densa|hibrida]
+    python -m prototipo.rag buscar "consulta" [--modo lexica|densa|hibrida]   (com prioridade de idioma, task 1.4)
                                               [--fusao score|rrf] [--k 10]
     python -m prototipo.rag aferir [--modelo NOME] [--alfa 0.9]
     python -m prototipo.rag varrer-alfa [--modelo NOME]
@@ -172,17 +172,22 @@ def carregar(modelo: str = MODELO_PADRAO, alfa: float = ALFA_PADRAO) -> Recupera
 def buscar(args) -> None:
     recuperador = carregar(args.modelo, args.alfa)
     inicio = time.perf_counter()
-    achados = recuperador.buscar(args.consulta, k=args.k, modo=args.modo,
-                                 fusao=args.fusao)
+    # A CLI consulta como o sistema consulta: com a prioridade de idioma da
+    # task 1.4. A aferição continua sobre o ranking cru de `buscar`.
+    recuperacao = recuperador.recuperar(args.consulta, k=args.k, modo=args.modo,
+                                        fusao=args.fusao)
+    achados = recuperacao.resultados
     custo = (time.perf_counter() - inicio) * 1000
 
-    print(f'consulta: {args.consulta!r}  modo={args.modo}  {custo:.0f} ms\n')
+    print(f'consulta: {args.consulta!r}  modo={args.modo}  {custo:.0f} ms')
+    print(f'camada: {recuperacao.idioma}  consultadas: {", ".join(recuperacao.consultados)}  '
+          f'coberto: {"sim" if recuperacao.coberto else "não"}\n')
     for posicao, achado in enumerate(achados, 1):
         marca = "  [unidade cobre mais de uma alegação]" if achado["cobre_multiplas_alegacoes"] else ""
         print(f'{posicao:2d}. {achado["score"]:.4f}  '
               f'(lex {achado["score_lexico"]:6.2f} | den {achado["score_denso"]:.3f})  '
               f'[{achado["veredito_original"]}] {achado["agencia"]}, '
-              f'{achado["data_publicacao"]}{marca}')
+              f'{achado["data_publicacao"]}, {achado["idioma"]}{marca}')
         print(f'    {achado["alegacao"][:110]}')
         print(f'    {achado["url"]}')
 

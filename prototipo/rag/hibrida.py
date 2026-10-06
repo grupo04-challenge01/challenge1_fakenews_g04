@@ -73,8 +73,24 @@ escolha de alfa oscilando entre 0,74 e 1,00. A leitura que a medição sustenta 
 «0,9 com `e5-base`», não «híbrida supera densa»: o braço léxico só corrige na
 margem quando o braço denso já é bom. Trocar o modelo de embedding obriga a
 revarrer — `python -m prototipo.rag varrer-alfa --modelo NOME`.
+
+**Prioridade de idioma — task 1.4 de mvp-copiloto-verificacao, decisão 23.**
+`recuperacao-evidencia` manda esgotar as fontes em português antes de recorrer
+às em inglês. `buscar` continua sendo o ranking cru, que a aferição mede;
+`recuperar` é a entrada do sistema. A consulta é pontuada **uma vez** sobre o
+índice inteiro, e cada camada de idioma é um corte desse mesmo score: separar
+em dois índices daria a cada um seu próprio fundo (`_sobre_o_fundo`), e o
+limiar da 1.5 deixaria de valer igual nas duas camadas. O inglês só é
+consultado quando o critério `cobre` diz que o português não cobre. O critério
+é parâmetro; o valor é da 1.5. Até lá vale `cobertura_padrao`, o mais
+conservador: o português cobre enquanto trouxer alguma unidade. Nenhum corpus
+em inglês está indexado em 01/10/2026, então com o índice de hoje `recuperar`
+devolve exatamente o que `buscar` devolve.
 """
 from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Callable
 
 ALFA_PADRAO = 0.9        # peso do denso; 1.0 = só denso, 0.0 = só léxico
                          # medido na task 3.1 para intfloat/multilingual-e5-base
@@ -82,6 +98,38 @@ PERCENTIL_FUNDO = 50     # o que o braço devolve para qualquer coisa
 PERCENTIL_TOPO = 99      # escala em que o braço separa
 K_RRF = 60
 _EPS = 1e-6
+
+# Ordem em que as camadas são esgotadas (recuperacao-evidencia). Os valores são
+# os do enum `idioma` do esquema de indexação; o teste confere que batem.
+PRIORIDADE_IDIOMA = ("pt-BR", "en")
+
+
+def cobertura_padrao(resultados: list[dict]) -> bool:
+    """Critério provisório de cobertura de uma camada, até a task 1.5.
+
+    A camada cobre se trouxe ao menos uma unidade. Com ele, o inglês só é
+    consultado quando não há nada em português, que é a leitura mais estrita de
+    «esgotar». A 1.5 troca este critério pelo limiar calibrado, passado em
+    `Recuperador.recuperar(..., cobre=...)`, sem mudar a 1.4.
+    """
+    return len(resultados) > 0
+
+
+@dataclass(frozen=True)
+class Recuperacao:
+    """O que a recuperação entrega à verificação.
+
+    `idioma` é a camada de onde vêm os `resultados`; `consultados`, as camadas
+    pelas quais a busca passou, na ordem. Camada sem nenhuma fonte indexada não
+    é consultada. `coberto` falso quer dizer que nenhuma camada satisfez o
+    critério: os resultados são os da primeira camada não vazia, e decidir se o
+    veredito cai para `evidência insuficiente` é de quem chama (task 1.5).
+    """
+
+    idioma: str | None
+    resultados: list[dict]
+    coberto: bool
+    consultados: tuple[str, ...]
 
 
 def _sobre_o_fundo(scores):
@@ -106,11 +154,16 @@ class Recuperador:
 
     def __init__(self, fragmentos, unidades, indice_lexico, indice_denso,
                  alfa: float = ALFA_PADRAO):
+        import numpy as np
+
         self.fragmentos = fragmentos
         self.unidades = {u["unidade_id"]: u for u in unidades}
         self.lexico = indice_lexico
         self.denso = indice_denso
         self.alfa = alfa
+        # Fragmento de índice anterior ao esquema 1.0.0 não tem `idioma`; a
+        # busca crua segue funcionando, e só `recuperar` o recusa.
+        self._idioma = np.array([f.get("idioma") for f in fragmentos], dtype=object)
 
     # ---- fusão ----------------------------------------------------------
 
@@ -132,15 +185,8 @@ class Recuperador:
 
     # ---- consulta -------------------------------------------------------
 
-    def buscar(self, consulta: str, k: int = 10, modo: str = "hibrida",
-               fusao: str = "score") -> list[dict]:
-        """Devolve até `k` unidades, cada uma com seu melhor fragmento.
-
-        A busca roda em fragmento e o resultado é reduzido a unidade: cinco
-        fragmentos da mesma checagem ocupando o topo é uma checagem recuperada,
-        não cinco evidências. A redução usa o melhor fragmento, que é o trecho
-        que a resposta deve citar.
-        """
+    def _pontuar(self, consulta: str, modo: str, fusao: str):
+        """Score de todos os fragmentos do índice, mais os brutos de cada braço."""
         import numpy as np
 
         if modo not in self.MODOS:
@@ -158,11 +204,28 @@ class Recuperador:
             score = self._fundir_por_rrf(s_lex, s_den)
         else:
             score = self._fundir_por_score(s_lex, s_den)
+        return score, s_lex, s_den
+
+    def _reduzir(self, score, s_lex, s_den, k: int, mascara=None) -> list[dict]:
+        """Ordena, reduz a unidade e corta em `k`.
+
+        `mascara` restringe os candidatos sem tocar no score de quem fica: o
+        excluído vai para −∞ e é descartado depois da ordenação. Máscara toda
+        verdadeira deixa o vetor idêntico, e a ordem — empates inclusive — é a
+        mesma da busca sem máscara.
+        """
+        import numpy as np
+
+        if mascara is not None:
+            score = score.copy()
+            score[~mascara] = -np.inf
 
         # Reduz a unidade antes de cortar em k, senão o corte pode gastar as k
         # vagas com fragmentos de uma checagem só.
         melhor: dict[str, int] = {}
         for i in np.argsort(-score)[: max(k * 20, 200)]:
+            if mascara is not None and not mascara[i]:
+                continue
             uid = self.fragmentos[i]["unidade_id"]
             if uid not in melhor:
                 melhor[uid] = int(i)
@@ -178,6 +241,7 @@ class Recuperador:
                 "score": float(score[i]),
                 "score_lexico": float(s_lex[i]),
                 "score_denso": float(s_den[i]),
+                "idioma": fragmento.get("idioma"),
                 "agencia": unidade["agencia"],
                 "data_publicacao": unidade["data_publicacao"],
                 "url": unidade["url"],
@@ -192,3 +256,54 @@ class Recuperador:
                 "trecho": fragmento["trecho"],
             })
         return resultado
+
+    def buscar(self, consulta: str, k: int = 10, modo: str = "hibrida",
+               fusao: str = "score") -> list[dict]:
+        """Devolve até `k` unidades, cada uma com seu melhor fragmento.
+
+        A busca roda em fragmento e o resultado é reduzido a unidade: cinco
+        fragmentos da mesma checagem ocupando o topo é uma checagem recuperada,
+        não cinco evidências. A redução usa o melhor fragmento, que é o trecho
+        que a resposta deve citar.
+
+        É o ranking cru, sem prioridade de idioma — o que a aferição mede. A
+        entrada do sistema é `recuperar`.
+        """
+        return self._reduzir(*self._pontuar(consulta, modo, fusao), k)
+
+    def recuperar(self, consulta: str, k: int = 10, modo: str = "hibrida",
+                  fusao: str = "score",
+                  cobre: Callable[[list[dict]], bool] = cobertura_padrao) -> Recuperacao:
+        """Esgota o português antes de recorrer ao inglês (recuperacao-evidencia).
+
+        Pontua uma vez e percorre `PRIORIDADE_IDIOMA`. A primeira camada que
+        `cobre` aceita é a resposta, e as seguintes nem são cortadas: se o
+        português cobre, nenhuma fonte em inglês entra. Se nenhuma cobre,
+        devolve a primeira camada não vazia com `coberto=False`.
+        """
+        import numpy as np
+
+        fora = sorted({str(i) for i in self._idioma} - set(PRIORIDADE_IDIOMA))
+        if fora:
+            raise ValueError(
+                f"fragmento com idioma fora de {PRIORIDADE_IDIOMA}: {fora}. "
+                "`None` é índice anterior ao esquema de indexação 1.0.0 — rode "
+                "`python -m prototipo.rag construir`; outro valor exige "
+                "atualizar o esquema e a prioridade juntos.")
+
+        score, s_lex, s_den = self._pontuar(consulta, modo, fusao)
+        consultados: list[str] = []
+        reserva: tuple[str, list[dict]] | None = None
+        for idioma in PRIORIDADE_IDIOMA:
+            mascara = self._idioma == idioma
+            if not np.any(mascara):
+                continue
+            consultados.append(idioma)
+            resultados = self._reduzir(score, s_lex, s_den, k, mascara)
+            if cobre(resultados):
+                return Recuperacao(idioma, resultados, True, tuple(consultados))
+            if reserva is None and resultados:
+                reserva = (idioma, resultados)
+
+        idioma, resultados = reserva if reserva else (None, [])
+        return Recuperacao(idioma, resultados, False, tuple(consultados))
