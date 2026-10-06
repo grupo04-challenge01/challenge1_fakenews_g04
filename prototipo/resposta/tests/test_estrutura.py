@@ -401,3 +401,33 @@ def test_forma_sem_evidencia_nao_passa_pela_ancoragem():
 
 def test_prompt_pede_a_ancora_nos_blocos_1_e_2():
     assert "[T1]" in estrutura.SISTEMA
+
+
+# ---- referências inaptas na camada de detalhe: decisão 17, task 1.6 --------
+
+REFERENCIA = {"agencia": "lupa", "data_publicacao": "2020-01-01", "url": "https://l/1",
+              "veredito_original": "falso"}
+
+
+def test_referencia_vai_ao_detalhe_depois_dos_trechos_e_sem_texto():
+    v = Veredito("falso", "critério", [TRECHO], referencias=[REFERENCIA])
+    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(BLOCOS_FALSO))
+    assert r.detalhe[0]["trecho"] == TRECHO["trecho"]
+    assert r.detalhe[1] == {**REFERENCIA, "trecho": None}
+    assert REFERENCIA["url"] not in r.texto
+
+
+def test_so_referencias_vao_ao_detalhe_da_forma_sem_evidencia():
+    # Guarda sem trecho apto: insuficiente, mas a agência e o link continuam auditáveis.
+    v = Veredito(INSUFICIENTE, "Nenhum trecho recuperado cobre a alegação.",
+                 rebaixado_por="nenhum trecho apto a citação", referencias=[REFERENCIA])
+    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(BLOCOS_SEM))
+    assert r.forma == "sem evidência"
+    assert r.detalhe == [{**REFERENCIA, "trecho": None}]
+
+
+def test_referencia_continua_no_detalhe_depois_do_rebaixamento():
+    v = Veredito("falso", "critério", [TRECHO], referencias=[REFERENCIA])
+    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat_em_sequencia(_com(bloco1="Sem marca."), BLOCOS_SEM))
+    assert r.rebaixada_por is not None
+    assert r.detalhe == [{**REFERENCIA, "trecho": None}]

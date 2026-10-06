@@ -181,8 +181,15 @@ def _ponteiro(lacuna):
 
 
 def _detalhe(veredito):
+    """Trechos citados e, depois deles, as referências inaptas (decisão 17).
+
+    A referência tem as mesmas chaves, com `trecho` vazio: agência, data, link e
+    veredito da agência são auditáveis, o texto reprovado não é exibido.
+    """
     chaves = ("agencia", "data_publicacao", "url", "veredito_original", "trecho")
-    return [{k: t[k] for k in chaves} for t in veredito.trechos]
+    citados = [{k: t[k] for k in chaves} for t in veredito.trechos]
+    return citados + [{**{k: ref[k] for k in chaves[:-1]}, "trecho": None}
+                      for ref in veredito.referencias]
 
 
 def _frases(texto):
