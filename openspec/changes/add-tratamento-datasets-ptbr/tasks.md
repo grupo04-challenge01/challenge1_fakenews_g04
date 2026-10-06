@@ -83,11 +83,11 @@ Fase Investigate. Bloqueia as tasks 1.1 a 1.6 de `mvp-copiloto-verificacao`.
 - [x] 5.5 Montar o pool de few-shot em PT-BR a partir do corpus brasileiro
 - [x] 5.6 Nomear em português os rótulos de força da afirmação, ligados ao
       catálogo de técnicas
-- [ ] 5.7 **Jhessica** Reconferir a rubrica de seis critérios contra a Matriz de
+- [x] 5.7 **Jhessica** Reconferir a rubrica de seis critérios contra a Matriz de
       Confiança versão 1 (`docs/engage/kit-matriz-confianca.md`, PR #104) e
       ajustar o que não for compatível. O requirement de `adaptacao-criterios-en`
       exige rubrica «compatível com a capability `matriz-confianca`»; aberta em
-      01/10/2026
+      01/10/2026. Evidência: `datasets/derivados/rubrica_criterios_ptbr.json` atualizado com três níveis de sinal e remoção de linguagem.
 
 ## 6. Correções no portfólio de pesquisa
 

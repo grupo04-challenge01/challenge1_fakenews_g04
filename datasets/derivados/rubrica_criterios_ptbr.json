@@ -33,9 +33,9 @@
       "pergunta_pt": "A mensagem diz de onde veio a informação e que tipo de estudo ou fonte a sustenta?",
       "conjunto_de_origem": "ambos",
       "niveis": {
-        "atende": "nomeia a fonte e o tipo de estudo, e a fonte é localizável por quem lê",
-        "atende em parte": "menciona estudo, médico ou instituição sem nome, data ou link que permita conferir",
-        "nao atende": "afirma sem qualquer origem, ou apela a «comprovado cientificamente» sem nada mais"
+        "sinal ausente": "não invoca autoridade técnica ou a fonte citada é localizável e corrobora a afirmação",
+        "sinal fraco": "cita uma autoridade de forma vaga, impossibilitando a verificação de autoria",
+        "sinal forte": "cita instituição ou autoridade nominal, mas a verificação confirma a inexistência do estudo ou da declaração"
       },
       "sinais": [
         "estudo",
@@ -57,9 +57,9 @@
       "pergunta_pt": "O benefício prometido vem com número, ou só com adjetivo?",
       "conjunto_de_origem": "ambos",
       "niveis": {
-        "atende": "dá a magnitude do efeito e sobre quantas pessoas foi observado",
-        "atende em parte": "dá número solto, sem base de comparação nem tamanho do grupo",
-        "nao atende": "só adjetivo — «poderoso», «eficaz», «cura»"
+        "sinal ausente": "dá a magnitude do efeito e sobre quantas pessoas foi observado",
+        "sinal fraco": "dá número solto, sem base de comparação nem tamanho do grupo",
+        "sinal forte": "só adjetivo — «poderoso», «eficaz», «cura»"
       },
       "sinais": [
         "cura",
@@ -81,9 +81,9 @@
       "pergunta_pt": "A mensagem diz o que pode dar errado, ou só o que pode dar certo?",
       "conjunto_de_origem": "ambos",
       "niveis": {
-        "atende": "nomeia efeitos adversos e com que frequência ocorrem",
-        "atende em parte": "menciona risco sem dizer qual nem quão comum",
-        "nao atende": "não menciona risco algum, ou afirma que não há"
+        "sinal ausente": "nomeia efeitos adversos e com que frequência ocorrem",
+        "sinal fraco": "menciona risco sem dizer qual nem quão comum",
+        "sinal forte": "não menciona risco algum, ou afirma que não há"
       },
       "sinais": [
         "efeito colateral",
@@ -105,9 +105,9 @@
       "pergunta_pt": "A mensagem aumenta o tamanho do problema para justificar a solução que oferece?",
       "conjunto_de_origem": "ambos",
       "niveis": {
-        "atende": "descreve a gravidade e a frequência do problema como a fonte descreve",
-        "atende em parte": "usa caso extremo como se fosse o caso comum",
-        "nao atende": "inventa epidemia, urgência ou conspiração para empurrar a conclusão"
+        "sinal ausente": "a mensagem foca-se apenas no relato dos fatos, sem atribuir intenções ocultas a terceiros",
+        "sinal fraco": "insinuação de que informações cruciais estão sendo ocultadas propositadamente",
+        "sinal forte": "acusação direta de plano maligno/secreto institucional sem apresentação de nenhuma evidência documental"
       },
       "sinais": [
         "urgente",
@@ -129,9 +129,9 @@
       "pergunta_pt": "Dá para saber quem publicou e o que essa pessoa ganha se você acreditar?",
       "conjunto_de_origem": "HealthStory",
       "niveis": {
-        "atende": "autor e financiador identificáveis, e o interesse declarado quando existe",
-        "atende em parte": "autor identificável, interesse não declarado",
-        "nao atende": "autoria anônima, ou fonte que vende o que indica"
+        "sinal ausente": "autor e financiador identificáveis, e o interesse declarado quando existe",
+        "sinal fraco": "autor identificável, interesse não declarado",
+        "sinal forte": "autoria anônima, ou fonte que vende o que indica"
       },
       "sinais": [
         "vende",
@@ -147,29 +147,6 @@
         "laboratorio"
       ],
       "nota": "Absorve a pergunta de financiador do conjunto HealthRelease. É também a única cobertura direta da competência «identificar vieses» hoje — ver a lacuna registrada em docs/estado.md."
-    },
-    {
-      "id": "linguagem",
-      "pergunta_en": "Does the news release include unjustifiable, sensational language, including in the quotes of researchers?",
-      "pergunta_pt": "O texto precisa de letra maiúscula, ponto de exclamação ou pedido de repasse para se sustentar?",
-      "conjunto_de_origem": "HealthRelease",
-      "niveis": {
-        "atende": "tom informativo, sem apelo emocional para convencer",
-        "atende em parte": "tom exaltado em parte do texto",
-        "nao atende": "caixa alta, exclamação em série, pedido de compartilhamento urgente"
-      },
-      "sinais": [
-        "!",
-        "urgente",
-        "chocante",
-        "inacreditavel",
-        "compartilhe",
-        "repasse",
-        "atencao",
-        "cuidado",
-        "voce precisa saber"
-      ],
-      "nota": "Preservada do conjunto HealthRelease por não ter correspondente em HealthStory e por endereçar direto o catálogo de técnicas de `resposta-formativa`."
     }
   ],
   "removidos": [
@@ -237,6 +214,23 @@
         "assessoria",
         "nota a imprensa",
         "press release"
+      ]
+    },
+    {
+      "id": "linguagem",
+      "pergunta_en": "Does the news release include unjustifiable, sensational language, including in the quotes of researchers?",
+      "conjunto_de_origem": "HealthRelease",
+      "motivo_da_remocao": "Removida por determinação de arquitetura na Matriz de Confiança v1. O tom técnico e sóbrio também é muito usado em desinformação; polaridade emocional não é evidência de falsidade.",
+      "sinais": [
+        "!",
+        "urgente",
+        "chocante",
+        "inacreditavel",
+        "compartilhe",
+        "repasse",
+        "atencao",
+        "cuidado",
+        "voce precisa saber"
       ]
     }
   ],

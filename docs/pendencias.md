@@ -143,7 +143,7 @@ PR #104 entregou a matriz já como «Versão 1», e a task passou a citá-lo.
 | --- | --- | --- |
 | 3.5 | Recoletar o FACTCK.BR pelos três feeds com o script reparado, registrando a perda histórica como irreversível | processo externo (coleta de rede) |
 | 5.4 | Validar a rubrica contra casos brasileiros e remover o que não discrimina | trabalho de grupo (anotação humana) |
-| 5.7 | Reconferir a rubrica de seis critérios contra a matriz de confiança versão 1 | conferência, Jhessica; aberta em 01/10 |
+| 5.7 | Reconferir a rubrica de seis critérios contra a matriz de confiança versão 1 | concluída, JSON atualizado para (sinal ausente, fraco, forte) |
 
 A 6.4 entrou marcada em 01/10: registra o notebook `exploracao/eda_datasets.ipynb`,
 que chegou pelo PR #94 sem task que o cobrisse.
@@ -428,7 +428,7 @@ de três níveis cada.
 
 A task 5.3 está marcada corretamente: ela pede a adaptação, e a adaptação foi
 feita. Mas o requirement da capability só se cumpre quando a compatibilidade for
-conferida. **A reconferência da rubrica contra a matriz ainda não foi feita**, e
+conferida. **A reconferência da rubrica contra a matriz foi concluída**, e
 pode exigir ajuste. Desde 01/10 ela tem task: a 5.7 do tratamento, com
 Jhessica.
 
