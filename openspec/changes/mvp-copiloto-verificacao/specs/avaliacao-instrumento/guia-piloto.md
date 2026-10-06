@@ -5,9 +5,9 @@
 **Dependências obrigatórias antes de executar:**
 
 !!! warning "Este guia só pode ser executado após a conclusão de:"
-    - **Task 6.1** (Jhessica): Casos curados — ✅ concluída
-    - **Task 6.2** (Jhessica): 4 a 6 itens-armadilha configurados — ✅ concluída
-    - **Task 6.3** (Breno): TCLE e roteiro de debriefing — ✅ concluída
+    - **Task 6.1** (Jhessica): Casos curados — concluída
+    - **Task 6.2** (Jhessica): 4 a 6 itens-armadilha configurados — concluída
+    - **Task 6.3** (Breno): TCLE e roteiro de debriefing — concluída
     - **Task 6.4** (Breno): Protocolo aprovado pelo comitê de ética
 
 **Participantes:** 2 voluntários adultos leigos (designados `P-01` e `P-02`)  
@@ -27,7 +27,7 @@ Antes de submeter o copiloto à coleta de campo com 20 a 30 usuários, o piloto 
 
 ## 2. Preparação da Sessão (Checklist do Pesquisador)
 
-!!! important "Preencher este checklist na preparação da sessão (Tasks 6.1 e 6.2 ✅ concluídas)"
+!!! important "Preencher este checklist na preparação da sessão (Tasks 6.1 e 6.2 concluídas)"
 
 - [ ] 2 vias impressas do TCLE (ou formulário digital de coleta de consentimento).
 - [ ] Protótipo do Copiloto aberto e testado no navegador ou dispositivo de teste.
