@@ -137,7 +137,7 @@ def main():
                 "n": n, "passou": ok, "segundos": round(dt, 1), "forma": r.forma,
                 "palavras": palavras, "palavras_por_bloco": [len(b.split()) for b in r.blocos],
                 "defeitos": r.defeitos, "rebaixada_por": r.rebaixada_por,
-                "descartadas": r.descartadas, "resposta": r.texto})
+                "descartadas": r.descartadas, "resposta": r.texto, "bruto": r.bruto})
         registro["passou"] = sum(t["passou"] for t in registro["tentativas"])
         rel["sondas"].append(registro)
     DESTINO.write_text(json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -29,10 +29,10 @@ SEM_TRECHO = Veredito(INSUFICIENTE, "Nenhum trecho recuperado cobre a alegação
                       rebaixado_por="nenhum trecho recuperado")
 
 BLOCOS_FALSO = {
-    # Blocos 1 e 2 levam a âncora inline (task 1.6); o código a tira do texto.
-    "bloco1": "Nenhum estudo mostra isso [T1].",
-    "bloco2": "As checagens não acharam estudo sobre o jatobá e o câncer [T1]. "
-              "Não é verdade que a casca do jatobá cura o câncer [T1].",
+    # Blocos 1 e 2 como lista de frases com o trecho de cada uma (task 1.6).
+    "bloco1": [{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}],
+    "bloco2": [{"frase": "As checagens não acharam estudo sobre o jatobá e o câncer.", "trecho": "T1"},
+               {"frase": "Não é verdade que a casca do jatobá cura o câncer.", "trecho": "T1"}],
     "bloco3": "Técnica: cura milagrosa. A mensagem promete curar doença grave com algo caseiro.",
     "bloco4": "Desconfie de promessa de cura simples. Pergunte quem fez o estudo.",
 }
@@ -271,7 +271,8 @@ def test_opiniao_da_mensagem_tem_de_aparecer_no_bloco_2():
                     "opinioes": ["os médicos escondem isso"], "conclusao": None}
     r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao, chat=_chat(BLOCOS_FALSO))
     assert "bloco 2 não separa a opinião da mensagem" in r.defeitos
-    ok = _com(bloco2=BLOCOS_FALSO["bloco2"] + " Que os médicos escondem isso é opinião.")
+    ok = _com(bloco2=BLOCOS_FALSO["bloco2"] + [{"frase": "Que os médicos escondem isso é opinião.",
+                                                 "trecho": ""}])
     assert responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao,
                      chat=_chat(ok)).defeitos == []
 
@@ -399,8 +400,25 @@ def test_forma_sem_evidencia_nao_passa_pela_ancoragem():
     assert r.blocos[1] == BLOCOS_SEM["bloco2"]
 
 
-def test_prompt_pede_a_ancora_nos_blocos_1_e_2():
-    assert "[T1]" in estrutura.SISTEMA
+def test_prompt_pede_a_ancora_em_campo_proprio_nos_blocos_1_e_2():
+    assert '{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}' in estrutura.SISTEMA
+    assert '"bloco2": [{"frase": "...", "trecho": "T1"}' in estrutura.SISTEMA
+
+
+def test_marca_inline_continua_aceita():
+    # Formato da primeira versão; o modelo pode voltar a ele.
+    blocos = _com(bloco1="Nenhum estudo mostra isso [T1].",
+                  bloco2="Não há estudo sobre o jatobá [T1].")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos))
+    assert r.rebaixada_por is None
+    assert r.blocos[1] == "Não há estudo sobre o jatobá."
+
+
+def test_lista_na_forma_sem_evidencia_vira_texto():
+    blocos = _sem(bloco1=[{"frase": "Procuramos checagens sobre goiabeira.", "trecho": ""}])
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=_chat(blocos))
+    assert r.blocos[0] == "Evidência insuficiente. Procuramos checagens sobre goiabeira."
+    assert "frase" not in r.texto
 
 
 # ---- referências inaptas na camada de detalhe: decisão 17, task 1.6 --------
@@ -431,3 +449,15 @@ def test_referencia_continua_no_detalhe_depois_do_rebaixamento():
     r = responder(MENSAGEM, ALEGACAO, v, chat=_chat_em_sequencia(_com(bloco1="Sem marca."), BLOCOS_SEM))
     assert r.rebaixada_por is not None
     assert r.detalhe == [{**REFERENCIA, "trecho": None}]
+
+
+def test_saida_crua_do_modelo_fica_na_resposta():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO))
+    assert json.loads(r.bruto) == BLOCOS_FALSO
+
+
+def test_rebaixamento_guarda_as_duas_saidas_do_modelo():
+    primeira = _com(bloco2="Isso nunca foi estudado.")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(primeira, BLOCOS_SEM))
+    antes, depois = r.bruto.split("\n\n--- refeita na forma sem evidência ---\n\n")
+    assert json.loads(antes) == primeira and json.loads(depois) == BLOCOS_SEM

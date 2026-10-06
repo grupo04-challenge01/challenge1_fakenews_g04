@@ -167,3 +167,55 @@ def test_frase_de_opiniao_sem_marca_fica_so_quando_ha_opiniao():
 
 def test_bloco_vazio_nao_tem_frase():
     assert ancorar_bloco("  ", [JATOBA]) == ([], [], 0)
+
+
+# Bloco como lista de {"frase", "trecho"}: o formato pedido ao modelo ------------
+#
+# Na sonda de 06/10 com a marca inline, o modelo marcou o bloco 1 e deixou o
+# bloco 2 sem marca em 11 de 12 respostas. Com a âncora em campo próprio, o
+# modo JSON obriga o campo a existir.
+
+def test_lista_de_frases_com_campo_trecho():
+    mantidas, descartadas, ancoradas = ancorar_bloco(
+        [{"frase": "O exame saiu uma semana depois.", "trecho": "T1"},
+         {"frase": "O caixão era lacrado por padrão.", "trecho": "T1"}], [CAIXAO])
+    assert mantidas == ["O exame saiu uma semana depois.", "O caixão era lacrado por padrão."]
+    assert descartadas == [] and ancoradas == 2
+
+
+def test_campo_trecho_vazio_e_sem_ancora():
+    _, descartadas, _ = ancorar_bloco([{"frase": "Isso vale no país todo.", "trecho": ""}], [CAIXAO])
+    assert descartadas == [{"frase": "Isso vale no país todo.", "motivo": "sem âncora"}]
+
+
+def test_campo_trecho_aceita_lista_e_texto_com_dois():
+    for trecho in (["T1", "T2"], "T1, T2"):
+        mantidas, _, _ = ancorar_bloco([{"frase": "Em Touros, como em abril.", "trecho": trecho}],
+                                       [CAIXAO, COVAS])
+        assert mantidas == ["Em Touros, como em abril."]
+
+
+def test_marca_inline_dentro_da_frase_da_lista_sai_e_conta():
+    mantidas, _, _ = ancorar_bloco([{"frase": "O caixão era lacrado [T1].", "trecho": ""}], [CAIXAO])
+    assert mantidas == ["O caixão era lacrado."]
+
+
+def test_frase_de_opiniao_na_lista_com_trecho_vazio():
+    mantidas, _, ancoradas = ancorar_bloco(
+        [{"frase": "Nenhum alimento cura.", "trecho": "T1"},
+         {"frase": "A parte sobre laboratórios é opinião.", "trecho": ""}], [JATOBA], opiniao=True)
+    assert mantidas == ["Nenhum alimento cura.", "A parte sobre laboratórios é opinião."]
+    assert ancoradas == 1
+
+
+def test_item_sem_frase_e_ignorado_e_item_texto_vale_como_inline():
+    mantidas, descartadas, _ = ancorar_bloco(
+        [{"frase": " ", "trecho": "T1"}, "O caixão era lacrado [T1]."], [CAIXAO])
+    assert mantidas == ["O caixão era lacrado."] and descartadas == []
+
+
+def test_texto_do_bloco_em_lista_ou_texto():
+    from prototipo.resposta.ancoragem import texto_do_bloco
+    assert texto_do_bloco([{"frase": "Uma [T1].", "trecho": "T1"}, {"frase": "Duas."}]) == "Uma. Duas."
+    assert texto_do_bloco("  Só texto. ") == "Só texto."
+    assert texto_do_bloco(None) == ""

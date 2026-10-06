@@ -19,8 +19,9 @@ Divisão do trabalho:
   `Resposta.defeitos` para quem chama decidir. Ver decisão 18 do design.md.
 
 Task 1.6, ancoragem trecho a afirmação (`recuperacao-evidencia`, Rastreabilidade
-da evidência). Na forma com evidência, cada frase dos blocos 1 e 2 leva a marca
-do trecho que a sustenta, `[T1]`, e `ancoragem.py` confere. Frase que não passa
+da evidência). Na forma com evidência, os blocos 1 e 2 chegam como lista de
+`{"frase", "trecho"}`, cada frase com o trecho que a sustenta, e `ancoragem.py`
+confere. Frase que não passa
 sai da resposta e fica em `Resposta.descartadas`. Ao contrário dos defeitos, o
 descarte age: se a frase do bloco 1 cai, ou se o bloco 2 fica sem frase
 ancorada, o veredito cai para `evidência insuficiente` e a resposta é refeita na
@@ -33,7 +34,7 @@ import re
 from dataclasses import dataclass, field
 
 from prototipo.resposta import catalogo as catalogo_mod
-from prototipo.resposta.ancoragem import ancorar_bloco
+from prototipo.resposta.ancoragem import ancorar_bloco, texto_do_bloco
 from prototipo.resposta.mito import verificar_mito
 from prototipo.verificacao.guarda import INSUFICIENTE, Veredito
 from prototipo.verificacao.modelo import chat_ollama, ler_json
@@ -68,10 +69,11 @@ NUNCA dê orientação clínica individual.
 Frases curtas, de no máximo 15 palavras. Palavras do dia a dia. A resposta inteira
 cabe em 90 palavras.
 
-Nos blocos 1 e 2 da forma com evidência, termine CADA frase com o trecho que a
-sustenta, entre colchetes, antes do ponto: "Nenhum estudo mostra isso [T1]."
-Frase sem trecho que a sustente é apagada. Nos blocos 3 e 4, e na forma sem
-evidência, NÃO escreva "T1", "T2": os trechos aparecem em outra tela.
+Na forma com evidência, os blocos 1 e 2 são LISTAS de frases. Cada frase vem
+com o trecho que a sustenta: {{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}}.
+Frase sem trecho que a sustente é apagada. Dentro de "frase", só o texto. Nos
+blocos 3 e 4, e na forma sem evidência, NÃO escreva "T1", "T2": os trechos
+aparecem em outra tela.
 
 A mensagem traz o ESTADO DA RECUPERAÇÃO. Ele decide o que vai em cada bloco.
 
@@ -80,8 +82,8 @@ Se o estado for `com evidência`:
   NÃO repita o veredito: ele já abre o bloco. NÃO conte o que a mensagem diz;
   diga o que a checagem encontrou.
 - "bloco2": o que se sabe sobre o assunto, pelos trechos. Se a mensagem tiver
-  OPINIÃO, diga, numa frase sem colchetes, que aquela parte é opinião e não se
-  checa.
+  OPINIÃO, diga, numa frase com "trecho": "", que aquela parte é opinião e não
+  se checa.
 - "bloco3": comece com "Técnica: " e o rótulo, escrito igual a um desta lista:
 {_LISTA}
   Se a mensagem tiver mais de um sinal, escreva até dois rótulos separados por
@@ -103,7 +105,11 @@ Se o estado for `evidência insuficiente` ou `lacuna de acervo`:
 - "bloco4": em `evidência insuficiente`, onde a pessoa pode procurar. Em
   `lacuna de acervo`, deixe "" vazio: o sistema escreve essa parte.
 
-Responda só com JSON, neste formato:
+Responda só com JSON. Na forma com evidência:
+{{"bloco1": [{{"frase": "...", "trecho": "T1"}}],
+ "bloco2": [{{"frase": "...", "trecho": "T1"}}, {{"frase": "...", "trecho": "T1"}}],
+ "bloco3": "...", "bloco4": "..."}}
+Na forma sem evidência:
 {{"bloco1": "...", "bloco2": "...", "bloco3": "...", "bloco4": "..."}}"""
 
 ID_TRECHO = re.compile(r"\bT[1-9]\d*\b")
@@ -126,6 +132,7 @@ class Resposta:
     descartadas: list = field(default_factory=list)
     rebaixada_por: str | None = None
     veredito: Veredito | None = None
+    bruto: str = ""  # saída do modelo, para a sonda ler o que ele de fato escreveu
 
     @property
     def texto(self):
@@ -236,12 +243,12 @@ def _defeitos_sem(r, catalogo):
     return achados
 
 
-def _ancorar(gerados, veredito, decomposicao):
+def _ancorar(crus, veredito, decomposicao):
     """Blocos 1 e 2 sem as frases não ancoradas, as descartadas e o motivo do
     rebaixamento — `None` quando o veredito se sustenta."""
     opiniao = bool(decomposicao and decomposicao.get("opinioes"))
-    m1, d1, _ = ancorar_bloco(gerados[0], veredito.trechos)
-    m2, d2, ancoradas2 = ancorar_bloco(gerados[1], veredito.trechos, opiniao=opiniao)
+    m1, d1, _ = ancorar_bloco(crus[0], veredito.trechos)
+    m2, d2, ancoradas2 = ancorar_bloco(crus[1], veredito.trechos, opiniao=opiniao)
     descartadas = [{"bloco": 1, **d} for d in d1] + [{"bloco": 2, **d} for d in d2]
     motivo = None
     if d1:
@@ -276,16 +283,18 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     ponteiro = bool(lacuna and lacuna.get("ponteiro"))
     bruto = chat(SISTEMA, mensagem(texto, alegacao, veredito, estado, decomposicao))
     dados = ler_json(bruto)
-    gerados = [str((dados or {}).get(f"bloco{n}") or "").strip() for n in range(1, 5)]
+    crus = [(dados or {}).get(f"bloco{n}") for n in range(1, 5)]
+    gerados = [texto_do_bloco(c) for c in crus]
 
     descartadas = []
     if com and dados is not None:
-        gerados[0], gerados[1], descartadas, motivo = _ancorar(gerados, veredito, decomposicao)
+        gerados[0], gerados[1], descartadas, motivo = _ancorar(crus, veredito, decomposicao)
         if motivo:
             rebaixado = _rebaixado(veredito, motivo)
             r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo)
             r.descartadas = descartadas
             r.rebaixada_por = rebaixado.rebaixado_por
+            r.bruto = f"{bruto}\n\n--- refeita na forma sem evidência ---\n\n{r.bruto}"
             return r
 
     blocos = list(gerados)
@@ -295,7 +304,7 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     if ponteiro:
         blocos[1] = BLOCO_2_COM_PONTEIRO
     r = Resposta("com evidência" if com else "sem evidência", titulos, blocos, _detalhe(veredito),
-                 descartadas=descartadas, veredito=veredito)
+                 descartadas=descartadas, veredito=veredito, bruto=bruto)
 
     if dados is None:
         r.defeitos = ["saída não é JSON"]

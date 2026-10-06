@@ -98,8 +98,11 @@ def ancorada(frase, trecho):
 
 # ---- bloco inteiro ----------------------------------------------------------
 #
-# O modelo marca a âncora no fim de cada frase, no estilo de citação:
-# "Nenhum estudo mostra isso [T1]." A marca sai do texto visível. Frase sem
+# O bloco chega como lista de {"frase": ..., "trecho": "T1"}: a âncora tem campo
+# próprio. A primeira versão pedia a marca inline, no estilo de citação ("Nenhum
+# estudo mostra isso [T1]."), e na sonda de 06/10 o modelo marcou o bloco 1 e
+# deixou o bloco 2 sem marca em 11 de 12 respostas. A marca inline continua
+# aceita, no texto e dentro de "frase", e sai do texto visível. Frase sem
 # marca, com marca para trecho que não existe ou inapto, ou com termo que
 # nenhum dos trechos marcados contém, é descartada. A única frase que pode ficar
 # sem marca é a que separa a opinião da mensagem, e só quando a decomposição
@@ -134,15 +137,41 @@ def conferir(frase, marcas, trechos):
     return f"termo fora do trecho: {', '.join(faltam)}" if faltam else None
 
 
-def ancorar_bloco(texto, trechos, opiniao=False):
+_ID = re.compile(r"T[1-9]\d*")
+
+
+def _itens(conteudo):
+    """(frase com eventual marca inline, marcas do campo `trecho`) de cada frase."""
+    if isinstance(conteudo, str):
+        return [(f, []) for f in _frases(conteudo)]
+    itens = []
+    for item in conteudo or []:
+        if isinstance(item, str):
+            itens += [(f, []) for f in _frases(item)]
+        elif isinstance(item, dict) and str(item.get("frase") or "").strip():
+            campo = item.get("trecho")
+            campo = " ".join(map(str, campo)) if isinstance(campo, list) else str(campo or "")
+            itens.append((str(item["frase"]).strip(), _ID.findall(campo)))
+    return itens
+
+
+def texto_do_bloco(conteudo):
+    """Texto visível de um bloco que veio como texto ou como lista de frases."""
+    if isinstance(conteudo, list):
+        return " ".join(f for f, _ in ((_limpa(b), m) for b, m in _itens(conteudo)) if f)
+    return _limpa(str(conteudo or "")) if conteudo else ""
+
+
+def ancorar_bloco(conteudo, trechos, opiniao=False):
     """Frases que ficam (sem a marca), frases descartadas com o motivo, e
     quantas das que ficam estão ancoradas — a de opinião fica, mas não conta.
 
+    `conteudo` é a lista de {"frase", "trecho"} ou texto com marca inline.
     `trechos` é a lista na ordem em que foi numerada T1, T2... para o modelo.
     """
     mantidas, descartadas, ancoradas = [], [], 0
-    for bruta in _frases(texto or ""):
-        marcas = MARCA.findall(bruta)
+    for bruta, do_campo in _itens(conteudo):
+        marcas = list(dict.fromkeys(do_campo + MARCA.findall(bruta)))
         frase = _limpa(bruta)
         if not marcas and opiniao and "opini" in frase.lower():
             mantidas.append(frase)
