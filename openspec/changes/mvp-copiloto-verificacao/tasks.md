@@ -40,8 +40,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — `prototipo/verificacao/classificacao.py`, sonda 9/9, decisão 11 do `design.md`, 29/09/2026
 - [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
       — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 12 do `design.md`, 29/09/2026;
-         limiar como parâmetro, valor pela 1.5
-- [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+        limiar como parâmetro, valor pela 1.5
+- [x] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+      — implementado o `test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo` em `prototipo/verificacao/tests/test_classificacao.py`
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
       — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026

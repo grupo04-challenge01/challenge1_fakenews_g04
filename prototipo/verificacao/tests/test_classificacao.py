@@ -37,6 +37,10 @@ def test_prompt_proibe_conhecimento_proprio():
     assert "NUNCA use o que você sabe" in SISTEMA
 
 
+def test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo():
+    assert "não rebaixe o rótulo porque a alegação soa estranha" in SISTEMA
+
+
 def test_mensagem_numera_os_trechos_com_fonte_e_data():
     m = mensagem("Casca do jatobá cura câncer.", TRECHOS)
     assert "[T1] aos fatos, 2021-01-08" in m
