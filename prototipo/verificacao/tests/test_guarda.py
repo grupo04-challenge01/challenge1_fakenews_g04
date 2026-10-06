@@ -8,10 +8,11 @@ import json
 
 import pytest
 
+from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
 from prototipo.verificacao.guarda import INSUFICIENTE, verificar
 
 
-def _trecho(score=0.5):
+def _trecho(score=0.9):
     return {"agencia": "aos fatos", "data_publicacao": "2021-01-08", "url": "https://a/1",
             "veredito_original": "falso", "trecho": "Não é verdade que...", "score": score}
 
@@ -52,9 +53,17 @@ def test_limiar_filtra_so_os_trechos_fracos():
     assert v.trechos[0]["score"] == 0.6
 
 
+def test_limiar_padrao_e_o_calibrado_na_1_5():
+    v = verificar("X.", [_trecho(LIMIAR_EVIDENCIA - 0.01)], chat=_explode)
+    assert v.rebaixado_por == f"nenhum trecho acima do limiar {LIMIAR_EVIDENCIA}"
+    chat = _chat()
+    verificar("X.", [_trecho(LIMIAR_EVIDENCIA)], chat=chat)
+    assert "[T1]" in chat.chamadas[0]
+
+
 def test_sem_limiar_todos_os_trechos_vao_ao_modelo():
     chat = _chat()
-    verificar("X.", [_trecho(0.01), _trecho(0.02)], chat=chat)
+    verificar("X.", [_trecho(0.01), _trecho(0.02)], chat=chat, limiar=None)
     assert "[T2]" in chat.chamadas[0]
 
 

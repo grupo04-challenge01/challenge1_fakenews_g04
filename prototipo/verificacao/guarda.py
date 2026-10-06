@@ -6,8 +6,9 @@ só pelo conhecimento do modelo. O prompt da classificação já pede isso, mas 
 guarda não depende dele. Ela vale em três pontos, todos em código:
 
 1. Sem trecho, o modelo não é chamado. Não há como ele responder de memória.
-2. Com `limiar`, trecho de score abaixo dele conta como não recuperado. O valor
-   do limiar é a task 1.5; até lá o parâmetro fica sem valor padrão.
+2. Trecho de score abaixo de `limiar` conta como não recuperado. O padrão é
+   `LIMIAR_EVIDENCIA`, calibrado na task 1.5 (decisão 26); `limiar=None`
+   desliga o corte.
 3. Veredito que não cita trecho recuperado, ou que cita trecho que não existe,
    cai para `evidência insuficiente`, e o que o modelo disse fica registrado.
 
@@ -17,6 +18,7 @@ design.md.
 """
 from dataclasses import dataclass, field
 
+from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
 from prototipo.verificacao import classificacao
 from prototipo.verificacao.modelo import chat_ollama
 
@@ -36,13 +38,13 @@ def _insuficiente(motivo):
     return Veredito(INSUFICIENTE, "Nenhum trecho recuperado cobre a alegação.", rebaixado_por=motivo)
 
 
-def verificar(alegacao, trechos, chat=chat_ollama, limiar=None):
+def verificar(alegacao, trechos, chat=chat_ollama, limiar=LIMIAR_EVIDENCIA):
+    if not trechos:
+        return _insuficiente("nenhum trecho recuperado")
     if limiar is not None:
         trechos = [t for t in trechos if t["score"] >= limiar]
         if not trechos:
             return _insuficiente(f"nenhum trecho acima do limiar {limiar}")
-    if not trechos:
-        return _insuficiente("nenhum trecho recuperado")
 
     c = classificacao.classificar(alegacao, trechos, chat=chat)
     original = {"rotulo": c.rotulo, "trechos": c.trechos, "criterio": c.criterio}

@@ -92,7 +92,10 @@ def main():
         for n in range(1, TENTATIVAS + 1):
             antes, t0 = len(chamadas), time.time()
             try:
-                v = verificar(s["alegacao"], [trechos[i] for i in s["fragmentos"]], chat=chat)
+                # Trechos escolhidos à mão, sem score de recuperação: a sonda
+                # mede o modelo, e o limiar da 1.5 não se aplica.
+                v = verificar(s["alegacao"], [trechos[i] for i in s["fragmentos"]], chat=chat,
+                              limiar=None)
                 erro = None
             except ValueError as e:
                 v, erro = None, str(e)
