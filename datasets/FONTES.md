@@ -83,6 +83,9 @@ baixe de cada fonte primária abaixo e confira contra os checksums da última se
 - **Origem:** `thiagorainmaker77/FACTCK.BR`, espelho do original `jghm-f/FACTCK.BR`.
 - **Composição:** 1.313 alegações em português, coletadas via schema ClaimReview.
 - **Versionado por inteiro** (721 KB), com `LICENSE` e o script `update_factckbr.py`.
+- **Recoleta de 06/10/2026** em `recoleta_2026-10-06/`: projeção dos `ClaimReview` lidos
+  pelo script (sem dado pessoal de autor), a saída do script e o laudo. Zero
+  alegações extraídas; reexecutável por `datasets/scripts/recoletar_factckbr.py`.
 
 - **Caveats medidos:** ver a seção «Caveats do tratamento» em [`README.md`](README.md).
 

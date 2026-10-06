@@ -1,0 +1,520 @@
+{
+ "descricao": "Recoleta do FACTCK.BR pelos três feeds de update_factckbr.py, task 3.5 de add-tratamento-datasets-ptbr. Guarda, por página, o título e a PROJEÇÃO de cada bloco JSON-LD com claimReviewed: só os campos que get_claimReview() lê. Publisher, bio e e-mail dos autores ficam de fora — o script não os lê, e são dado pessoal de terceiro. O hash do bloco original completo é guardado para provar que a projeção veio de um bloco real.",
+ "data_coleta": "2026-10-06",
+ "transporte": {
+  "meio": "navegador do app Claude desktop (Chromium 152) no computador do grupo, via fetch() same-origin",
+  "motivo": "o proxy de saída dos dois shells disponíveis (computador do grupo e contêiner) devolve 403 para aosfatos.org, apublica.org, piaui.folha.uol.com.br e agencialupa.org",
+  "integridade": "SHA-256 de cada título e de cada projeção calculado no navegador (crypto.subtle, UTF-8) e conferido depois da gravação; 20/20 títulos e 18/18 projeções batem",
+  "equivalencia": "get_articles_url() substituído pela lista de <item><link> do feed, que é o que feedparser devolve; requests.get() substituído por HTML mínimo com <title> e os blocos projetados. text_pre_proc(), re_char() e a montagem de linha de get_claimReview() rodam sem alteração."
+ },
+ "agencias": [
+  {
+   "agencia": "Aos Fatos",
+   "feed_declarado": "https://aosfatos.org/noticias/feed/",
+   "feed_final": "https://www.aosfatos.org/noticias/feed/",
+   "redirecionado": true,
+   "coletado_em": "2026-10-06T17:51:27Z",
+   "itens_no_feed": 20,
+   "paginas": [
+    {
+     "url": "https://www.aosfatos.org/noticias/lula-7-bilhoes-viagens/",
+     "pubDate": "Mon, 05 Oct 2026 21:10:22 +0000",
+     "status": 200,
+     "title": "Lula não gastou R$ 7 bilhões em viagens pessoais | Aos Fatos",
+     "sha256_title": "5d9ddeb0c154d372f3b48f77cd8e2b3bf72ee1f62d23ca60cbd918fad6420826",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2545,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Bianca Bortolon\"}],\"datePublished\":\"2026-10-05\",\"claimReviewed\":\"Lula gastou mais de 7 bilhões em viagens\",\"reviewBody\":\"Valor corresponde às despesas com viagens a serviço de órgãos e servidores do governo federal, sem incluir Lula\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "785b011c3afa1ba362b87afd2685851f50c2db0550f4d3ab312b7e0620db722c",
+       "sha256_projecao": "a06440a7f75c674ea553b44a6df90c5dc0ce703bff4e661273dadf64e360c77d"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/votos-senadores-pl-flavio-fraude/",
+     "pubDate": "Mon, 05 Oct 2026 20:46:11 +0000",
+     "status": 200,
+     "title": "Diferença entre votos para senadores do PL e Flávio não indica fraude | Aos Fatos",
+     "sha256_title": "fe4f47d400636ad33d65a77bfb1d37880caed8d0218083ff965816248f24e473",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2773,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-05\",\"claimReviewed\":\"A conta não fecha: senadores do PL tiveram 58.123.987 de votos enquanto Flávio Bolsonaro teve 56.076.888.\",\"reviewBody\":\"Comparação desconsidera que eleitores puderam votar em dois candidatos ao Senado e que, em eleições passadas, votos para presidente não coincidiram com o de senador\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "862bfeb4bff3c4352485bb197f4fe2b8647764f001b289a38a26fe5691c81696",
+       "sha256_projecao": "535d433d695a7f18a2d017de11e7974ad9e8acda0c4b643da7cb5f0059af0eee"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/gilmar-mendes-cabine-votacao-celular/",
+     "pubDate": "Mon, 05 Oct 2026 19:54:23 +0000",
+     "status": 200,
+     "title": "É falso que Gilmar Mendes entrou na cabine de votação com celular | Aos Fatos",
+     "sha256_title": "89e566fc8396e4de856960971bf2bee8b02c18f6c7d5dd4d54a4198bcbe8b586",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2550,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiza Vezzá\"}],\"datePublished\":\"2026-10-05\",\"claimReviewed\":\"Gilmar Mendes vota usando celular!!\",\"reviewBody\":\"Ministro segurava carteira funcional com ‘cola’ para votação; peças usam ainda foto de Gilmar mexendo em aparelho fora da zona eleitoral.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "7eb12bb32ed01f98578faaf680071010c5c0015d474622feede7727442e64fce",
+       "sha256_projecao": "ba29b0e05fa343d33c517ef38f09aa2835829843de981250d39c597f9ceebe16"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/entrega-colas-branco-mesarios-irregularidade/",
+     "pubDate": "Sun, 04 Oct 2026 22:24:50 +0000",
+     "status": 200,
+     "title": "Entrega de colas em branco por mesários não configura irregularidade | Aos Fatos",
+     "sha256_title": "8413dcc83b7354cc2218a75cf5e14b37733e268b27d274a1b1d009fd0feae201",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2706,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Denúncia aponta mesários entregando papeis a eleitores em Camaçari\",\"reviewBody\":\"Ação só seria ilegal se papeis estivessem preenchidos ou tivessem sido entregues por pessoas ligadas a campanhas\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "3ea7ee8e990d9fdb1894d2f5c83ac896ff8a48079edebae5fb3ecc1449358175",
+       "sha256_projecao": "96498845d74e653eb11e5f075077d919cd59adb177d37dfc05d3494bbbf0366a"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/pesquisa-flavio-61-intencoes-voto/",
+     "pubDate": "Sun, 04 Oct 2026 21:58:01 +0000",
+     "status": 200,
+     "title": "É falso que pesquisa mostra Flávio com 61% das intenções de voto | Aos Fatos",
+     "sha256_title": "81fbd5a5008e6f5e2b4da95a7f7f162fce31ec167f725612d70afb4e76ed7ddd",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2581,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Bianca Bortolon\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Pesquisa mostra Flávio Bolsonaro com 61% das intenções de voto\",\"reviewBody\":\"Número é do Polymarket, plataforma de apostas e previsões, não de uma pesquisa de intenção de voto\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "88a3f81198ffab6b43154831d6d0d832a2d6cd1518c793455809742dca9eb653",
+       "sha256_projecao": "8b1673655daed57a62801fd4c2fecaa506aa927302c39c4d7a542d9d6f7f0552"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/apertar-confirma-duas-vezes/",
+     "pubDate": "Sun, 04 Oct 2026 21:04:04 +0000",
+     "status": 200,
+     "title": "Eleitores não precisam apertar ‘confirma’ duas vezes na urna | Aos Fatos",
+     "sha256_title": "7255f701a8d241dc13782712fcf35d719ae3876439d494231572355e6183d03d",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2612,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiza Vezzá\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Mais alguém marretou o 22 e teve que apertar CONFIRMA duas vezes, por que na primeira não aconteceu nada?\",\"reviewBody\":\"Todas as urnas eletrônicas têm um intervalo entre o fim da digitação do número do candidato escolhido para que o eleitor possa conferir seu voto\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "adaa7e66cc160c0b75e32274b9ac0a9746c6076fb0aff17f4d7dd35971cfaf7d",
+       "sha256_projecao": "1a62d6f588475cba91ab637778b541eabeb3fd3539a74dde2e79547797973c4c"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/video-ia-flavio-direitos-trabalhistas/",
+     "pubDate": "Sun, 04 Oct 2026 20:30:47 +0000",
+     "status": 200,
+     "title": "Posts difundem como real vídeo de IA em que Flávio critica direitos trabalhistas | Aos Fatos",
+     "sha256_title": "bb0552e98415882118a416b404f9f4a12bf103f4bbffa3e6594f75d2662d2667",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2633,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Giovanna Massaro\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Vídeo criado por IA: Como meu pai dizia, e agora se eu vou falar, todos nós sabemos que o salário no Brasil é pouco para quem recebe e muito para quem paga. O trabalhador vai ter que decidir um dia entre menos direitos e emprego ou todos os direitos e desemprego. O que eu quero dizer é que o salário no Brasil é pouco para quem recebe e muito para quem paga.\",\"reviewBody\":\"Posts desinformativos manipularam vídeo publicado pelo candidato em janeiro deste ano, no qual falava sobre Holocausto.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "7c0c2b02e5975a5ef6fd06c6cc43500bf42e958bfba14ae1e2b6a37dec184875",
+       "sha256_projecao": "6ccfb0daffb10fc44d649da9d6e8bdf1452b4c22c25ed277c499e6f4d6c8eeb4"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/lula-bandeira-brasil-chao/",
+     "pubDate": "Sun, 04 Oct 2026 19:40:47 +0000",
+     "status": 200,
+     "title": "É falso que Lula jogou bandeira do Brasil no chão após votar | Aos Fatos",
+     "sha256_title": "15e8ef2421531b73afeb7cd731e403fc05635582954ddef4ec443d5f0bb06a60",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2627,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Lula amassou e jogou bandeira do Brasil no chão\",\"reviewBody\":\"Presidente entregou bandeira nas mãos de seu fotógrafo oficial, que a guardou no bolso\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "d6d70d526126f93aa3df87a02fdb9f956629553ed04690495cf07b2cb55c0200",
+       "sha256_projecao": "91152ea9a0079f7993f6320673bb4281c6e9a02a0f8b446323ca921231610e6d"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/tse-nao-liberou-voto-celular-eleicoes/",
+     "pubDate": "Sun, 04 Oct 2026 18:35:50 +0000",
+     "status": 200,
+     "title": "TSE não liberou voto pelo celular nas eleições | Aos Fatos",
+     "sha256_title": "3b11030b236e9a6f463c2c95680287ff53c66e9d225a16d89503aa38adcb20a6",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2559,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Bianca Bortolon\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"TSE permite voto pelo celular\",\"reviewBody\":\"Imagem simula anúncio da Justiça Eleitoral; eleitores devem comparecer presencialmente às seções eleitorais\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "b6bc3853922ffd96cbd785656f447c2bcf2d241783baef809e66529bc8913d84",
+       "sha256_projecao": "0b7926de222ef3723dd43c62ca15bbe99cc633537385328caefcc11561c2a74f"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/exercito-interferencia-externa-eleicoes/",
+     "pubDate": "Sun, 04 Oct 2026 15:24:19 +0000",
+     "status": 200,
+     "title": "É falso que Exército disse que não fará nada em caso de interferência externa nas eleições | Aos Fatos",
+     "sha256_title": "78b84bac5173897e6d74a4a8099e97aa47f0d6075f1039def40391e0df1fe4cb",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2424,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Giovanna Massaro\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"Notícia-bomba! Militares avisam ao STF que não vão intervir caso haja crise institucional ou intervenção estrangeira: ‘Olha, não contem conosco pra nada, tá? Não podemos, não queremos, não faremos.”\",\"reviewBody\":\"Exército, Ministério da Defesa e Secom da presidência negam.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "881275ba4207b09f838793e01909b7d29c9c509da85fa69bb13b15b12dac92b3",
+       "sha256_projecao": "c746ba587d7ceb5635c062c1e3efb5f8867755c4a680ea8d7957e7c64a101ccc"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/mendonca-locais-votacao-rio/",
+     "pubDate": "Sun, 04 Oct 2026 14:12:53 +0000",
+     "status": 200,
+     "title": "Mendonça não alterou locais de votação em reduto lulista no Rio | Aos Fatos",
+     "sha256_title": "5d6870e2124142d7332d678ead190e688ddd816916fab49f3879b2d418b02e42",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2744,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-04\",\"claimReviewed\":\"André Mendonça autorizou alteração de local de votação de moradores do Complexo da Maré na véspera das eleições\",\"reviewBody\":\"Mudanças em zonas eleitorais da Maré foram anunciadas há cerca de dois meses pelo TRE-RJ, que alegou razões de segurança\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "d7cdfa6492efcc7fe8ed5e4d8017c05c3a6a13e05d7f7b88112822657af46d5e",
+       "sha256_projecao": "686347780834db9f27f333139e0f7091032ef3029cafcf50a62fa2b445aa483a"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/teoria-conspiratoria-sobre-golpe-da-esquerda/",
+     "pubDate": "Sun, 04 Oct 2026 01:45:14 +0000",
+     "status": 200,
+     "title": "Teoria conspiratória sobre ‘golpe da esquerda’ ganha força às vésperas do 1º turno | Aos Fatos",
+     "sha256_title": "74b1cf88b5161397c5b71997afc7b9922e22aa3b35f26f625c6166491b68679c",
+     "total_ldjson": 0,
+     "blocos": []
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/ia-documento-falso-fakes-campanha-digital-primeiro-turno/",
+     "pubDate": "Sun, 04 Oct 2026 00:54:30 +0000",
+     "status": 200,
+     "title": "IA vai de documento falso a fazendas de fakes e domina a campanha digital no primeiro turno | Aos Fatos",
+     "sha256_title": "05f496858a22dfa05a449e112c0e70d47313c5cbdb1a58abb53bce8929f47e6a",
+     "total_ldjson": 0,
+     "blocos": []
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/policiais-urna-fraudada-df/",
+     "pubDate": "Sat, 03 Oct 2026 22:29:54 +0000",
+     "status": 200,
+     "title": "Não é verdade que policiais encontraram urna fraudada no DF | Aos Fatos",
+     "sha256_title": "8919adc6e2b32e22f73c97f6ebadf12311e2695c74506846f11f94ff9f4ed714",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2551,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Bianca Bortolon\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"PMs descobriram uma urna eletrônica fraudada no Distrito Federal\",\"reviewBody\":\"Denúncia decorreu de um desconhecimento técnico; alegação falsa circula desde 2018\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "5ca438d452082873394e53b47887a180215eeeeff16347f6baa3ce3b380d3dbe",
+       "sha256_projecao": "e6d21460d8486abc3e87573e6a013b5c7d9b07ccfb19585892aa8ed1e8d80441"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/policia-sp-plano-pcc-flavio/",
+     "pubDate": "Sat, 03 Oct 2026 22:10:40 +0000",
+     "status": 200,
+     "title": "É falso que polícia de SP identificou plano de ataques do PCC caso Flávio vença | Aos Fatos",
+     "sha256_title": "730cf8c85cfce86434f6031bd900d09caf6ffb057d5de40fba0aea5f2d9ce146",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2713,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Bianca Bortolon\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"PM-SP registra planos do PCC para atacar embaixadas\",\"reviewBody\":\"A SSP-SP (Secretaria de Segurança Pública do Estado de São Paulo) disse que a informação é ‘totalmente improcedente’. Já a PF investigou ameaças contra instalações diplomáticas americanas, mas não identificou relação com facções criminosas.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "7aa0c2a579a3a0276a72becb70d20fc2d83b8e94f2c81e6c7aa055a4a473d314",
+       "sha256_projecao": "d9f4c3dc0e28ae9f8358a0545c1d33e9dd947688ff8b9a59f9d9726f3aa455ed"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/revogacao-visto-embaixadora-eua-eleicoes/",
+     "pubDate": "Sat, 03 Oct 2026 22:04:55 +0000",
+     "status": 200,
+     "title": "Revogação de visto de embaixadora nos EUA não teve a ver com eleições | Aos Fatos",
+     "sha256_title": "f3ebcf7be071c108d408b7eebe7891dc6917800fd85eb21d8c69dd10ee270762",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2687,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiza Vezzá\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"Estados unidos revoga o visto de embaixadora do Brasil agora, eles afirmam que não permitirá fraude nas eleições de 2026\",\"reviewBody\":\"Visto de Viotti foi revogado em agosto pela demora do Brasil em nomear um novo embaixador dos EUA em Brasília. Vídeo utilizado é de março de 2026 e sem relação com o Brasil.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "e4fcdd262ebe2eff30e7d9134ee02d21becb86bf2a82b3ec2f91d865a5e28016",
+       "sha256_projecao": "d99c18de80e592f0c5aeeba4f7532b0a3246b91287d6bb6b5b53fb9292a69114"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/william-waack-lula-golpe-eleicoes/",
+     "pubDate": "Sat, 03 Oct 2026 21:06:17 +0000",
+     "status": 200,
+     "title": "William Waack não disse que Lula planeja golpe se perder eleições | Aos Fatos",
+     "sha256_title": "1d821af40d0d36c3a14d3cae936981219f36ecad5d3926c6b840eb1761854632",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2680,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"William Waack revela plano de Lula para dar um golpe em caso de derrota nas eleições de 2026\",\"reviewBody\":\"Não há registro de fala semelhante do jornalista; vídeo é manipulação feita com IA\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "7f14c4a70a33e1dc09b9c58daf254fe47fa9099b6895e7a91d54d0af95221e20",
+       "sha256_projecao": "ecfd1c1d2bb0215bd248d88459c5dc503f617bff6eb8d19107cfb5e988dc5a4f"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/movimentacao-militar-americana-brasil-eleicao/",
+     "pubDate": "Sat, 03 Oct 2026 19:31:21 +0000",
+     "status": 200,
+     "title": "Vídeos não mostram movimentação militar americana no Brasil para eleição | Aos Fatos",
+     "sha256_title": "0dfa7126dbf8414501ef146512e6536bb03a6aa74d68b08531b81e3fcaf39c3f",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2726,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"Vídeos mostram movimentação do Exército dos EUA no Brasil nas vésperas da eleição de 2026\",\"reviewBody\":\"Os registros foram feitos em novembro de 2024, quando o ex-presidente dos EUA Joe Biden visitou Manaus\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "54b9c6be8a98a5d5dffa2811f80dd6ed74b6f92d953f2a55b2452092f5c8bf4c",
+       "sha256_projecao": "bb6e76770f0fe28de5d3741a58ebcc77a8dde832abfb5909d052e8a55d51771a"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/carro-janja-ovos/",
+     "pubDate": "Sat, 03 Oct 2026 16:34:43 +0000",
+     "status": 200,
+     "title": "Vídeo não mostra carro de Janja sendo atingido por ovos | Aos Fatos",
+     "sha256_title": "6298ab4581293385708f747606a68700c0755517c57edb69616907909678f8ae",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2326,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Giovanna Massaro\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"Veículo oficial/pessoal conduzido por Rosângela da Silva (Janja), foi literalmente lavado em ovos\",\"reviewBody\":\"O vídeo original circula desde julho deste ano e foi feito na Albânia, durante manifestações que não envolvem o Brasil\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "9f23d5b7326d64b388013dca2193701d2ece1a5f1a5fdcc365e6c6364c6ab1e9",
+       "sha256_projecao": "b276c5582f8a70a1ef4bf010f41e497ed8801d49b4cf2100bf5dd9d96fd9a24b"
+      }
+     ]
+    },
+    {
+     "url": "https://www.aosfatos.org/noticias/eleitores-flavio-votar-4-outubro/",
+     "pubDate": "Sat, 03 Oct 2026 15:47:53 +0000",
+     "status": 200,
+     "title": "É falso que só eleitores de Flávio poderão votar no dia 4 de outubro | Aos Fatos",
+     "sha256_title": "69aafdd6e03637e1003553ebc69767b3f329f3cac32482f38eb917ec1f07e586",
+     "total_ldjson": 1,
+     "blocos": [
+      {
+       "bytes_bloco_original": 2742,
+       "projecao": "{\"@type\":[\"Review\",\"ClaimReview\"],\"author\":[{\"@type\":\"Person\",\"name\":\"Luiz Fernando Menezes\"}],\"datePublished\":\"2026-10-03\",\"claimReviewed\":\"TSE decidiu separar a população para que apenas os eleitores de Flávio Bolsonaro votem no domingo (4)\",\"reviewBody\":\"Não há nenhum comunicado nesse sentido no site do TSE. Essa medida sequer seria possível porque a legislação determina o sigilo do voto.\",\"reviewRating\":{\"ratingValue\":1,\"bestRating\":6,\"alternateName\":\"falso\"},\"itemReviewed\":{\"@type\":\"CreativeWork\"}}",
+       "sha256_bloco_original": "062230071c18fd31aa46ffdc4e096add41bf3342ad8bc8677b75543a584a29d7",
+       "sha256_projecao": "9c713005792e4f257bef9705e51bb5f61a2dedb12627e111ad227936bbc7fb84"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "agencia": "Agência Pública (Truco)",
+   "feed_declarado": "https://apublica.org/tag/truco/feed/",
+   "feed_final": "https://apublica.org/tag/truco/feed/",
+   "redirecionado": false,
+   "itens_no_feed": 10,
+   "observacao": "feed parado: item mais recente de 26/10/2018",
+   "paginas": [
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-em-economia-bolsonaro-cita-dados-falsos-e-haddad-subestima-e-acerta/",
+     "pubDate": "Fri, 26 Oct 2018 22:02:38 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "WebPage+ImageObject+BreadcrumbList+WebSite+Organization"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-haddad-exagera-e-bolsonaro-erra-em-frases-sobre-educacao/",
+     "pubDate": "Fri, 26 Oct 2018 18:18:46 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-pesquisa-falsa-mostra-bolsonaro-na-lideranca-em-todos-os-estados/",
+     "pubDate": "Thu, 25 Oct 2018 20:01:55 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-pesquisa-falsa-coloca-bolsonaro-com-52-e-haddad-com-48/",
+     "pubDate": "Tue, 23 Oct 2018 20:40:15 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-corrente-falsa-usa-ate-homonimo-para-inflar-processos-contra-haddad/",
+     "pubDate": "Tue, 23 Oct 2018 17:16:05 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-verdades-e-mentiras-misturam-se-em-corrente-contra-haddad/",
+     "pubDate": "Thu, 18 Oct 2018 15:16:34 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-o-que-e-falso-ou-verdadeiro-em-corrente-contra-bolsonaro/",
+     "pubDate": "Thu, 18 Oct 2018 15:15:03 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-haddad-nao-criou-o-kit-gay/",
+     "pubDate": "Thu, 11 Oct 2018 17:00:34 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-haddad-erra-historico-eleitoral-de-paulo-maluf/",
+     "pubDate": "Wed, 10 Oct 2018 20:47:48 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    },
+    {
+     "url": "https://apublica.org/checagem/2018/10/truco-mensagem-falsa-diz-que-haddad-autorizou-livro-infantil-que-trata-de-incesto/",
+     "pubDate": "Tue, 09 Oct 2018 21:04:06 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "blocos": []
+    }
+   ]
+  },
+  {
+   "agencia": "Lupa",
+   "feed_declarado": "https://piaui.folha.uol.com.br/lupa/feed/",
+   "feed_final": "https://www.agencialupa.org/feed/",
+   "redirecionado": true,
+   "itens_no_feed": 10,
+   "paginas": [
+    {
+     "url": "https://www.agencialupa.org/jornalismo/2026/10/05/e-falso-que-militares-avisaram-ao-stf-que-nao-vao-intervir-em-caso-de-crise-institucional/",
+     "pubDate": "Mon, 05 Oct 2026 22:09:29 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/noticias/2026/10/04/apos-confirmacao-do-2o-turno-lula-erra-sobre-superavit-e-flavio-sobre-reeleicao-e-endividamento/",
+     "pubDate": "Mon, 05 Oct 2026 02:49:33 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person+Person+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/04/posts-viralizam-imagem-com-resultados-falsos-da-eleicao-no-exterior/",
+     "pubDate": "Sun, 04 Oct 2026 22:25:22 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/jornalismo/2026/10/04/zema-recorre-a-fake-contra-lula-para-justificar-descumprimento-de-regra-eleitoral/",
+     "pubDate": "Sun, 04 Oct 2026 21:31:34 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/04/exercicio-militar-entre-brasil-e-argentina-vira-alvo-de-teorias-sobre-intervencao-nas-eleicoes/",
+     "pubDate": "Sun, 04 Oct 2026 21:20:23 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/verificacao/2026/10/04/e-falsa-pesquisa-de-boca-de-urna-que-mostra-flavio-eleito-em-1o-turno/",
+     "pubDate": "Sun, 04 Oct 2026 21:07:29 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/04/lula-nao-jogou-bandeira-do-brasil-no-chao-apos-votar-simbolo-foi-entregue-a-fotografo/",
+     "pubDate": "Sun, 04 Oct 2026 20:43:12 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+VideoObject+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/verificacao/2026/10/04/video-nao-mostra-carro-de-janja-atacado-com-ovos/",
+     "pubDate": "Sun, 04 Oct 2026 19:49:10 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/04/e-falso-que-tse-divulgou-possibilidade-de-voto-digital/",
+     "pubDate": "Sun, 04 Oct 2026 18:22:16 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+Person"
+     ],
+     "blocos": []
+    },
+    {
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/04/video-nao-mostra-gilmar-mendes-com-celular-na-cabine-de-votacao/",
+     "pubDate": "Sun, 04 Oct 2026 18:17:58 +0000",
+     "status": 200,
+     "total_ldjson": 1,
+     "tipos_ldjson": [
+      "NewsArticle+WebPage+ImageObject+BreadcrumbList+WebSite+NewsMediaOrganization+ItemList+VideoObject+Person"
+     ],
+     "blocos": []
+    }
+   ]
+  }
+ ]
+}
