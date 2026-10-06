@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "7a70d74c77e8bdcb": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A mensagem relata a interrupção de um tratamento médico por uma pessoa próxima.\"}",
+  "ac004aae2c52413e": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}",
+  "6ac3a497f2fac7a1": "{\n  \"fatos\": [\n    \"O hospital de Sorocaba ficou lotado ontem.\",\n    \"O prefeito gastou 2 milhões numa praça.\",\n    \"O chá de boldo cura hepatite.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": null,\n    \"decorre\": null,\n    \"salto\": null\n  }\n}",
+  "dd15b21da1a0c8f9": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Os trechos mencionam que o boldo é usado para tratar 'males do fígado' ou problemas hepáticos de forma geral, mas não afirmam nem negam especificamente a cura da hepatite.\"}",
+  "13a8dc2df15e9aa6": "{\"bloco1\": \"Foi buscado por informações sobre o uso do chá de boldo para tratar hepatite.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode pesquisar em sites oficiais de saúde ou consultar médicos.\", \"bloco4\": \"Procure por fontes governamentais ou instituições de pesquisa médica.\"}"
+ },
+ "busca": {
+  "1380cdb9dfdb3e72": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "7d20dc1293-00",
+     "fragmento_id": "7d20dc1293-00-02",
+     "score": 0.6817712187767029,
+     "score_lexico": 23.798851013183594,
+     "score_denso": 0.8972338438034058,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-04-07",
+     "url": "https://www.boatos.org/saude/cha-folhas-boldo-cura-coronavirus.html",
+     "alegacao": "Chá de folhas de boldo é a cura do coronavírus #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "á de folhas de boldo realmente curtam o coronavírus? A resposta é não!Vamos aos detalhes! Antes de entrarmos na explicação, é necessário uma ressalva. O chá de boldo, de fato, possui propriedades muito interessantes. Ele é frequentemente usado em casos de má digestão e problemas no fígado (quem nunca fugiu do temido chá de boldo quando criança?). Os benefícios do boldo são comprovados cientificamente e tem relação com o alcaloide chamado boldina.Entretanto, os benefícios se relacionam com a espécie conhecida como boldo-do-chile. As espécies brasileiras, também estudadas, podem ter efeito oposto. De acordo com os estudos, a maior parte das espécies brasileiras podem causar irritação gástrica e problemas durante a gestação."
+    },
+    {
+     "unidade_id": "c65ba961ee-00",
+     "fragmento_id": "c65ba961ee-00-01",
+     "score": 0.6739669442176819,
+     "score_lexico": 18.198060989379883,
+     "score_denso": 0.8955926895141602,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2020-05-14",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/05/14/verificamos-cha-boldo-covid/",
+     "alegacao": "#Verificamos: É falso que chá de boldo elimina sintomas da Covid-19 em até três horas",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "tério da Saúde informa que nenhum tipo de chá pode ser utilizado para substituir um tratamento adequado contra uma gripe ou contra o novo coronavírus. No máximo, alguns chás ajudam a amenizar sintomas mais leves da doença.\nO chá de boldo é conhecido por suas propriedades terapêuticas e é usado para tratar males gastrointestinais, combatendo as dores estomacais, os males do fígado e diarreia. Além disso, ele também facilita o trabalho da vesícula biliar, estimula a secreção da bílis e favorece a digestão de gorduras. Contudo, esse chá pode causar intoxicação quando consumido em excesso. Além disso, o chá de boldo pode ser prejudicial para o bebê durante a gravidez. \nDesde o início da pandemia, diversas receitas caseiras foram compartilhadas como supostas curas da Covid-19. A Lupa já desmentiu informações sobre os efeitos “preventivos” ou “curativos” da água quente com alho, com limão ou com erva-doce contra o novo coronavírus. Todas essas receitas não tem base em pesquisas ou estudos e foram classificadas como falsas.\nUma checagem semelhante foi feita pelo Boatos.org."
+    },
+    {
+     "unidade_id": "1ac2e37d9f-00",
+     "fragmento_id": "1ac2e37d9f-00-04",
+     "score": 0.6556907892227173,
+     "score_lexico": 18.779569625854492,
+     "score_denso": 0.88697350025177,
+     "idioma": "pt-BR",
+     "agencia": "aos fatos",
+     "data_publicacao": "2020-05-14",
+     "url": "https://www.aosfatos.org/noticias/cha-de-boldo-nao-combate-sintomas-nem-cura-covid-19/",
+     "alegacao": "Chá de boldo não combate sintomas nem cura a Covid-19",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": true,
+     "trecho": "ra planta, a quina. O conteúdo foi desmentido por Aos Fatos em checagem.\nReferências:\n1. Ministério da Saúde\n2. OMS (Fontes 1 e 2)\n3. NCBI\n4. Fiocruz\nEsta checagem foi atualizada às 14h de 21 de maio de 2020 para acrescentar informações sobre outra peça de desinformação checada por Aos Fatos que mencionava as supostas propriedades terapêuticas do boldo no tratamento da Covid-19.\nDe acordo com nossos esforços para alcançar mais pessoas com informação verificada, Aos Fatos libera esta reportagem para livre republicação com atribuição de crédito e link para este site."
+    },
+    {
+     "unidade_id": "35d0300239-00",
+     "fragmento_id": "35d0300239-00-03",
+     "score": 0.6544550061225891,
+     "score_lexico": 22.77678871154785,
+     "score_denso": 0.885079026222229,
+     "idioma": "pt-BR",
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-05-15",
+     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/15/e-fake-que-cha-de-boldo-combate-a-covid-19-em-tres-horas.ghtml",
+     "alegacao": "É #FAKE que chá de boldo combate a Covid-19 em três horas",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "osse podem ajudar a aliviar os sintomas. Mas essas pessoas já melhorariam, independentemente de tomar ou não. Não dá para dizer que houve causalidade. Não evita nem cura”, explica.A infectologista Ingrid Cotta, também da Beneficiência Portuguesa, lembra que o chá pode ajudar na hidratação do paciente, mas não cura a Covid-19. “Não temos evidência científica de que o chá de boldo seja eficaz contra o coronavírus. O adequado a se dizer é que a hidratação ajuda a aliviar os sintomas de resfriado. Como 80% dos casos são leves, não requerem hospitalização, qualquer líquido pode ajudar, não especificamente o chá de boldo. O recomendado é a gente se alimentar bem, se hidratar, repousar, ter boas horas de sono. E, se necessário, tomar remédios para febre, dores, náuseas, conforme orientação médica.”A equipe do Fato ou Fake já desmentiu outras informações falsas sobre alimentos e remédios caseiros aos quais é atribuída a cura da Covid-19."
+    },
+    {
+     "unidade_id": "f308f09db9-00",
+     "fragmento_id": "f308f09db9-00-01",
+     "score": 0.6387651562690735,
+     "score_lexico": 11.742849349975586,
+     "score_denso": 0.883760929107666,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-02-07",
+     "url": "https://www.boatos.org/saude/cha-erva-doce-cura-novo-coronavirus-diretor-hc.html",
+     "alegacao": "Chá de erva-doce cura o novo coronavírus, diz diretor do HC #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "eria componentes da fórmula do Tamiflu (remédio utilizado em tratamentos contra doenças como o H1N1 e gripe aviária). No final, pede compartilhamento. Leia a mensagem que circula online:Atenção! Não acredite em cura milagrosa do novo coronavírusCuidado com a desinformação em relação coronavírus (confira 7 fake news no vídeo:<span data-mce-type=\"bookmark\" style=\"display: inline-block; width: 0px; overflow: hidden; line-height: 0;\" class=\"mce_SELRES_start\">﻿</span>Diretor do Hospital das Clínicas (HC) preocupado com a nova gripe (coronavírus), faz as seguintes *recomendações*: – Fazer do álcool gel o nossso aliado. – Começar a tomar vitamina C urgente. – Lavar as mãos muitas vezes ao dia. – Evitar locais onde haja multidão; – Comer fígado de boi; – Ingerir sucos de acerola e laranja. – Tomar chá de erva-doce duas vezes ao dia._ERVA-DOCE_ O chá de erva-doce tem a mesma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

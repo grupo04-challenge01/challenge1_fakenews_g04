@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "48317649ab4ff8e8": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem busca confirmar a veracidade de uma informação sobre tratamento de doença.\"}",
+  "37c6adde7d53a126": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Compartilhem urgente, vamos ajudar as pessoas!\"}",
+  "7da10d9a9cd610af": "{\n  \"fatos\": [\n    \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Compartilhem urgente, vamos ajudar as pessoas!\"\n  ],\n  \"conclusao\": null\n}",
+  "16b94a49811c7142": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"As agências de checagem afirmam que não existe nenhum estudo realizado pela UFMG que comprove a eficácia do suco de inhame no tratamento da dengue.\"}",
+  "b67c74fcb9284c73": "{\"bloco1\": \"A checagem não encontrou nenhum estudo da UFMG sobre esse assunto.\", \"bloco2\": \"O suco de inhame não é um remédio para a dengue. A parte do texto que pede compartilhamento urgente é apenas uma opinião.\", \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com algo simples e pede repasse imediato.\", \"bloco4\": \"Verifique se a instituição citada realmente publicou o estudo em seu site oficial.\"}"
+ },
+ "busca": {
+  "070facc943de3c8d": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "50cb17dd68-00",
+     "fragmento_id": "50cb17dd68-00-00",
+     "score": 0.7851542830467224,
+     "score_lexico": 89.85535430908203,
+     "score_denso": 0.9256025552749634,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2020-02-17",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
+     "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais que a Universidade Federal de Minas Gerais (UFMG) realizou um estudo que mostrou a eficácia do suco de inhame contra os sintomas da dengue. Segundo o texto, basta tomar uma bebida feita com o alimento batido cru, com água, no liquidificador, para cortar os efeitos da doença em apenas quatro horas. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Se você está com Dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da Dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água”\nTexto de post no Facebook que, até as 16h de 17 de fevereiro de 2020, tinha mais de 2 mil compartilhamentos\n\n\nA informação analisada pela Lupa é falsa. Não foi realizado qualquer estudo pela UFMG que comprovasse a eficiência do suco de inhame no tratamento da dengue."
+    },
+    {
+     "unidade_id": "c5d4b94adb-00",
+     "fragmento_id": "c5d4b94adb-00-01",
+     "score": 0.7761020660400391,
+     "score_lexico": 78.86619567871094,
+     "score_denso": 0.9199079871177673,
+     "idioma": "pt-BR",
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-02-18",
+     "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/02/18/e-fake-que-ufmg-fez-estudo-que-diz-que-suco-de-inhame-corta-os-efeitos-da-dengue-em-apenas-quatro-horas.ghtml",
+     "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "cina da UFMG. Ela afirmou: \"Não existe estudo que comprove a eficácia e a efetividade desse recurso na dengue\".O G1 fez reportagem a respeito em 2019. Na ocasião, o médico Carlos Caldeira, coordenador do Centro de Assistência Toxicológica (Ceatox) do Hospital de Base de Rio Preto, disse que o suco de inhame não é um \"remédio\" capaz de aumentar rapidamente a imunidade ou \"agir de forma mágica\" nos sintomas da doença, que incluem febre, cansaço, dor de cabeça e no fundo dos olhos.Veja o que diz a mensagem #FAKE\"Se você está com dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água. Compartilhem, gente, muitos casos de dengue, vamos ajudar as pessoas.\"Vídeo: Veja como identificar uma mensagem falsaVEJA outras checagens feitas pela equipe do FATO ou FAKE\nAdicione nosso número de Whatsapp: +55 (21) 97305-9827 (após adicionar o número, mande uma saudação para ser inscrito"
+    },
+    {
+     "unidade_id": "20c161dc3d-00",
+     "fragmento_id": "20c161dc3d-00-04",
+     "score": 0.6139216423034668,
+     "score_lexico": 28.615419387817383,
+     "score_denso": 0.8595187067985535,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-05-25",
+     "url": "https://www.boatos.org/saude/maca-inhame-cru-agua-coco-previnem-curam-coronavirus.html",
+     "alegacao": "Maçã, inhame cru e água de coco previnem e curam o coronavírus #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "e cuidado. Por conta da presença do ácido oxálico (substância que causa formigamento e coceira), de taninos e fitatos, ele não pode ser consumido cru. Já imaginou o estrago que poderia acontecer ao ingerir essa espécie de inhame crua na mistura sugerida pela história?Em resumo: a história que diz que a mistura de maçã, inhame cru e água de coco pode curar e prevenir o coronavírus é falsa! Os alimentos podem ser bastante nutritivos, mas também podem causar um problemão de saúde, como ingerir inhame do tipo taro cru (causando formigamento e coceira em várias partes do corpo). Além disso, infelizmente, o fato é que ainda não temos uma vacina ou tratamento eficaz contra o novo coronavírus. Apesar de termos boas notícias em relação às vacinas, ainda falta bastante para elas chegarem ao mercado. Dessa forma, além da história não passar de boato, a forma mais eficaz de nos protegermos contra o novo coronavírus é ficarmos em casa, se possível, e seguirmos as orientações da OMS sobre a higienização das mãos, o uso da máscara e o distanciamento social."
+    },
+    {
+     "unidade_id": "e3a2f57b38-00",
+     "fragmento_id": "e3a2f57b38-00-01",
+     "score": 0.5891222953796387,
+     "score_lexico": 12.109095573425293,
+     "score_denso": 0.8579654693603516,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2016-02-15",
+     "url": "https://www.boatos.org/saude/propolis-espanta-mosquito-da-zika-e-dengue-boato.html",
+     "alegacao": "Própolis espanta mosquito da zika e dengue #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "é o suficiente. Ele é expelido pelas glândulas sudoríparas, ou seja, pelo suor e afugenta o mosquitinho. Quem puder repasse para amigos e familiares. É uma solução simples, barata e pode salvar muitas vidas.’Essa receita caseira que promete proteger as pessoas de forma prática e fácil se espalhou feito o Aedes aegypti por aí. Porém, diferente do mosquito, que infelizmente é uma realidade, essa história não procede.Primeiramente, não é de agora que circula pela internet que o própolis atua contra o Aedes aegypti. Quando lá em 2008 nos preocupávamos ‘apenas’ com a dengue, essa receita já circulava. Inclusive, nessa época a notícia foi repassada como um estudo realizado pela Unicamp, que a instituição desmentiu e esclareceu.Assim como a citronela, a vitamina B ou a mistura de cravo-da-índia e cânfora, não existe comprovação científica sobre a efetividade do própolis na prevenção do mosquito. Especialistas já discutiram o assunto e o veredito é o mesmo – não há provas de que funcione."
+    },
+    {
+     "unidade_id": "a8a33a7bd2-00",
+     "fragmento_id": "a8a33a7bd2-00-00",
+     "score": 0.5745217800140381,
+     "score_lexico": 18.8575496673584,
+     "score_denso": 0.8526370525360107,
+     "idioma": "pt-BR",
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-05-26",
+     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/26/e-fake-que-formula-caseira-com-maca-inhame-e-agua-de-coco-proteja-do-coronavirus.ghtml",
+     "alegacao": "É #FAKE que fórmula caseira com maçã, inhame e água de coco proteja do coronavírus",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais mais uma receita caseira para combater a Covid-19. A mensagem diz que a combinação de maçã, inhame e água de coco é eficaz contra o novo coronavírus. É #FAKE.A mensagem diz que se trata de um “remédio caseiro para o coronavírus” e que “não há contraindicação.” Mas não há qualquer evidência científica de que a fruta, o tubérculo e a bebida combatam o vírus, juntas ou separadas.A receita ensina a pessoa a bater no liquidificador uma maçã, um pedaço de inhame e um copo de água de coco. A recomendação dada é que se beba a mistura uma vez ao dia. “Tente salvar sua vida, porque a única coisa que podemos fazer é a receita de quem fez e deu certo”, afirma a mensagem, que ainda diz que “a fé é o ingrediente principal”.O inhame é uma raiz cheia de vitaminas, usualmente tratada como benéfica para a imunidade do organismo, assim como a maçã; por sua vez, a água de coco tem poder hidratante. Ou seja, os três fazem bem à saúde."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

@@ -1,0 +1,7 @@
+[server]
+# O vigia percorre sys.modules e tropeça nos módulos de imagem do transformers
+# (torchvision ausente). Recarregue a tela com R depois de editar.
+fileWatcherType = "none"
+
+[client]
+toolbarMode = "minimal"

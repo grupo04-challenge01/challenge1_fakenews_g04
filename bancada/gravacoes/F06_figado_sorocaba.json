@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina e busca validação da informação.\"}",
+  "7c966d66dbf902a5": "{\"alegacoes\": [{\"texto\": \"o marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela paralisa o fígado\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"a vacina da febre amarela já matou gente\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"É o governo querendo matar a população. Não tomem!\"}",
+  "0da07dd4f3193e1e": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado.\",\n    \"A vacina da febre amarela já matou gente.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"marido dela, médico em Sorocaba\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população.\",\n    \"Não tomem!\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Não tomem!\",\n    \"decorre\": false,\n    \"salto\": \"A recomendação de não tomar a vacina baseia-se em uma interpretação subjetiva e alarmista sobre os efeitos relatados.\"\n  }\n}",
+  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a alegação como boato, esclarecendo que a história sobre o médico de Sorocaba e a vacina paralisa o fígado é falsa.\"}",
+  "2028ca99ed7818bb": "{\"bloco1\": \"A checagem confirmou que a história do médico é um boato antigo.\", \"bloco2\": \"A vacina contra febre amarela é segura para o grupo de risco. A parte sobre o governo querer matar as pessoas é opinião e não pode ser checada.\", \"bloco3\": \"medo de dano oculto, fonte sem nome. A mensagem usa um suposto médico sem identificação e diz que a vacina causa danos graves.\", \"bloco4\": \"Verifique se a informação cita nomes reais ou fontes oficiais antes de compartilhar.\"}"
+ },
+ "busca": {
+  "2ef93bd5764a4ddf": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "ad3b65d166-00",
+     "fragmento_id": "ad3b65d166-00-00",
+     "score": 0.7825806736946106,
+     "score_lexico": 75.59331512451172,
+     "score_denso": 0.9099765419960022,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-28",
+     "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
+     "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Boato – O marido da Simone, médico de Sorocaba, disse que a vacina contra febre amarela paralisa o fígado, que o governo quer matar as pessoas sem elas perceberem e que ninguém deve, de jeito nenhum, tomar a vacina.Atualmente, dois assuntos têm dominado o noticiário brasileiro: a condenação de Lula no TRF-4 e o surto de febre amarela no Sudeste. É claro que a grande maioria dos boatos que surgem na web estão relacionados a um dos dois assuntos. No caso de hoje, a história está relacionada à febre amarela.Circula na internet um alerta que seria “da minha prima Simone, que mora em Sorocaba”. De acordo com o texto, um médico do hospital da cidade (marido da Simone) teria falado para ninguém tomar a vacina contra febre amarela. De acordo com a mensagem, a vacina “paralisa o fígado” e será sendo usada pelo governo para matar as pessoas."
+    },
+    {
+     "unidade_id": "7f62165646-00",
+     "fragmento_id": "7f62165646-00-02",
+     "score": 0.7198721766471863,
+     "score_lexico": 59.00989532470703,
+     "score_denso": 0.8829622864723206,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-30",
+     "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "tra febre amarela não é segura. Além disso, ela também afirmava que a vacina só era dada, porque era melhor se vacinar do que morrer de febre amarela. O fato da mulher usar o nome do Instituto Butantan e até trazer alguns fatos verdadeiros sobre o assunto confundiu muita gente. Apesar disso, a história não passou de boato. A vacina é segura sim, basta ficar de olho na lista do grupo de risco.4) Médico de Sorocaba diz que vacina paralisa o fígadoE parece que os médicos “gostaram” de falar sobre a vacina da febre amarela. Nessa história, a esposa de um médico de Sorocaba afirma que o marido alertou para os riscos de se tomar a vacina da febre amarela. De acordo com o médico, a vacina paralisa o fígado. E tem mais, ele também acusa o governo de usar essa manobra para matar a população sem que ela perceba. A teoria da conspiração é tão doida, que só a equipe do Boatos.org para desvendar a história."
+    },
+    {
+     "unidade_id": "8b7db64d0e-00",
+     "fragmento_id": "8b7db64d0e-00-01",
+     "score": 0.6636495590209961,
+     "score_lexico": 25.11038589477539,
+     "score_denso": 0.8699363470077515,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-19",
+     "url": "https://www.boatos.org/saude/enfermeira-febre-amarela-sao-paulo.html",
+     "alegacao": "Enfermeira do HC diz que todos têm que tomar vacina da febre amarela na cidade de São Paulo #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "utro de Itaquaquecetuba. Então assim desses três pacientes, um já está no estado muito grave entubado e os outros dois chegaram andando e conversando. Esses dois que chegaram andando e conversando já estão entubados em estado gravíssimo com fígado quase explodindo. Porque essa doença febre amarela ela fulmina o fígado, ela acaba com o fígado, e é por isso que os pacientes morrem. Pacientes fortes, tá! Ninguém era magro. Pacientes fortes, jovens de 30 e 32 anos.O primeiro caso que chegou aqui no HC foi uma paciente chamada Mariana de 32 anos já chegou com hepatite fulminante e ela já chegou aguardando transplante de fígado, porque não tinha o que fazer. Só transplante de fígado ia salvar a vida dela. Ela faleceu ontem. Ela foi para o exame de tomografia. Em seguida, ela ia para o centro cirúrgico para já fazer transplante e ela não aguentou e morreu, aos 32 anos.Eu estava conversando agora com a enfermeira da UTI onde estão ficando esses pacientes da febre amarela e ela falou que está dando dó, porque os pacientes são jovens, fortes e os médicos não tão sabendo que fazer."
+    },
+    {
+     "unidade_id": "4ebed93208-00",
+     "fragmento_id": "4ebed93208-00-00",
+     "score": 0.6183481812477112,
+     "score_lexico": 23.82247543334961,
+     "score_denso": 0.8599716424942017,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2017-03-22",
+     "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+     "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Depois da confirmação de três casos de febre amarela no Rio de Janeiro, o governo do estado começou uma campanha de vacinação para prevenir a população de um surto. Como quase sempre acontece em casos de alertas contra doenças, diversas informações falsas começam a circular na internet. Há poucos dias desmentimos um caso que aponta que a vacina causava cegueira. Hoje, o alerta é mais grave ainda.Em um áudio que circula por WhatsApp, uma mulher afirma que uma dermatologista foi ao programa do Roberto Canazio, na Rádio Globo, e alertou que a vacina contra a febre amarela tem índice de letalidade de 50%. Ou seja, metade das pessoas que tomam a vacina vêm a óbito. Leia a transcrição do áudio:Meninas, boa tarde. Estava aqui em casa escutando o Roberto Canazio. Até estou tentando entrar no site da rádio Globo para ver se eu consigo pegar essa entrevista dele. Se vocês conseguirem, entra no Roberto Canazio. Ele entrevistou hoje a dermatologista falando sobre a vacina da febre amarela. Gente, ela é muito perigosa. Ela falou que quem tomar vai ter a reação. Não tem essa será que vai ter."
+    },
+    {
+     "unidade_id": "5db9f418f0-00",
+     "fragmento_id": "5db9f418f0-00-03",
+     "score": 0.5950486660003662,
+     "score_lexico": 17.8580265045166,
+     "score_denso": 0.8567104935646057,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-02-27",
+     "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "fricano. Além disso, as alterações detectadas no estudo não afetam as proteínas do envelope do vírus, que são centrais para o funcionamento da vacina. Eles ressaltam que as sequências genéticas completas dos vírus analisados no estudo já foram publicadas no GenBank, de modo a estarem disponíveis para comparações que possam ser realizadas por outros cientistas do Brasil e do mundo.A mesma informação foi confirmada quando entramos em contato com a Fiocruz, que produziu a seguinte nota de esclarecimento sobre o caso no dia 27/02/2018:Em relação aos boatos que têm circulado em mídias sociais sugerindo que a vacina para febre amarela supostamente não seria eficaz por conta de mutações identificadas no vírus, a Fundação Oswaldo Cruz (Fiocruz) esclarece que:– O Instituto Oswaldo Cruz (IOC/Fiocruz) realizou um estudo para acompanhar possíveis mudanças genéticas no vírus da febre amarela em circulação no país. – Foram identificadas mutações no vírus. Esses resultados foram publicados em 2017."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

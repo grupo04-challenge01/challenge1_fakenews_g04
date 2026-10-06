@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "d82eb606bdcc5fcc": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre um evento e busca confirmação de veracidade.\"}",
+  "720596d7292a6913": "{\"alegacoes\": [{\"texto\": \"idosa morreu minutos depois de tomar a vacina\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"Estão escondendo as mortes da vacinação!\", \"saude\": true, \"risco\": \"medio\"}], \"opiniao\": null}",
+  "e797e78358e7cab9": "{\n  \"fatos\": [\n    \"Idosa morreu minutos depois de tomar a vacina.\",\n    \"Estão escondendo as mortes da vacinação.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": \"Estão escondendo as mortes da vacinação!\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem assume que a morte foi causada pela vacina e que há uma conspiração de ocultação sem apresentar provas dessa relação ou do esquema.\"\n  }\n}",
+  "1049ef68da6d677f": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\", \"T4\"], \"criterio\": \"Os trechos mostram que a idosa morreu de infarto agudo do miocárdio, e não por causa da vacina, além de indicarem que o fato ocorreu em 2018 e não é atual.\"}",
+  "17fc359b460d12f8": "{\"bloco1\": \"A checagem mostrou que o vídeo é antigo e não tem relação com a Covid-19.\", \"bloco2\": \"Os documentos mostram que a idosa morreu por infarto em 2018, após tomar vacina contra a gripe. A afirmação sobre esconder mortes é apenas uma opinião sem provas.\", \"bloco3\": \"fora de contexto\", \"bloco4\": \"A confirmação ocorreu porque o laudo médico provou que a causa da morte foi um infarto.\"}"
+ },
+ "busca": {
+  "f9b690d5c3da681d": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "637b7d7469-00",
+     "fragmento_id": "637b7d7469-00-00",
+     "score": 0.6425738334655762,
+     "score_lexico": 17.911869049072266,
+     "score_denso": 0.9010517597198486,
+     "idioma": "pt-BR",
+     "agencia": "aos fatos",
+     "data_publicacao": "2021-02-05",
+     "url": "https://www.aosfatos.org/noticias/video-sobre-idosa-morta-apos-tomar-vacina-e-de-2018-e-imunizante-nao-foi-causa-do-obito/",
+     "alegacao": "Vídeo sobre idosa morta após tomar vacina é de 2018 e imunizante não foi a causa do óbito",
+     "veredito_original": "distorcido",
+     "veredito_chave": "distorcido",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "É de 2018, não atual, um vídeo em que é noticiada a morte de uma idosa de Goiânia (GO) que havia tomado a vacina contra a gripe H1N1, diferentemente do que sugerem postagens nas redes sociais (veja aqui). A causa do óbito também não foi o imunizante, mas um infarto agudo do miocárdio, segundo laudo divulgado na época.\n\nPostagens que trazem o vídeo fora de contexto reuniam 123.900 compartilhamentos até a tarde desta sexta-feira (5) no Facebook e foram marcadas com o selo DISTORCIDO na ferramenta de verificação da plataforma (saiba como funciona).\n\n\n\n\nCircula como se fosse atual nas redes sociais um trecho de reportagem da Rede Record exibida em 19 de abril de 2018 sobre a morte de uma idosa em Goiânia (GO) logo após uma injeção da vacina contra a gripe H1N1.\nA reportagem completa mostra que Maria Batista da Silva, 71, começou a passar mal quando retornava do posto de saúde Ville de France, teve um mal súbito e morreu enquanto ainda recebia os primeiros socorros."
+    },
+    {
+     "unidade_id": "3795956b4d-00",
+     "fragmento_id": "3795956b4d-00-00",
+     "score": 0.6372809410095215,
+     "score_lexico": 18.307981491088867,
+     "score_denso": 0.8984692096710205,
+     "idioma": "pt-BR",
+     "agencia": "lupa",
+     "data_publicacao": "2021-02-09",
+     "url": "https://piaui.folha.uol.com.br/lupa/2021/02/09/verificamos-idosa-morreu-vacinada/",
+     "alegacao": "#Verificamos: Vídeo de 2018 é tirado de contexto para dizer que idosa morreu após ser vacinada",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula nas redes sociais um vídeo de uma reportagem da TV Record de Goiás que mostra que uma senhora de 71 anos morreu após ser vacinada. Apesar de não especificar qual foi o imunizante, os compartilhamentos sugerem que o fato ocorreu por causa da vacina contra a Covid-19. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Mulher morre imediatamente depois da vacina”\nLegenda de post publicado no Facebook que, até as 14h de 9 de fevereiro de 2021, tinha mais de 43 mil compartilhamentos\n\nA informação analisada pela Lupa é antiga e não tem relação com a Covid-19. O vídeo que circula nas redes sociais é de uma reportagem da Record TV Goiás, exibida em abril de 2018. O fato ocorreu em Goiânia (GO), após uma senhora de 71 anos ser vacinada contra a gripe H1N1. De acordo com a secretaria de Saúde de Goiânia, laudo médico informou que a idosa morreu devido a um infarto não relacionado com a vacina."
+    },
+    {
+     "unidade_id": "0d7dcb2f00-00",
+     "fragmento_id": "0d7dcb2f00-00-01",
+     "score": 0.6256273984909058,
+     "score_lexico": 21.818735122680664,
+     "score_denso": 0.8920412063598633,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2020-12-20",
+     "url": "https://www.boatos.org/mundo/tiffany-dover-enfermeira-desmaiou-tomar-vacina-morreu.html",
+     "alegacao": "Tiffany Dover, enfermeira que desmaiou após tomar vacina, morreu #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "enfermeira que passou mal ao tomar a vacina ao vivo nos EUA veio a óbito Eles estão silenciando a todos, mas a verdade é filha do tempo e como o sol. A enfermeira que tomou a vacina ao vivo nos EUA e 17 minutos depois desmaiou (19/12), hoje veio a óbito.Versão 2: A enfermeira que tomou a vacina é desmaiou, FALECEU. Estão calando os familiares dela. A midia não vai postar nada sobre isso. Ela MORREU! Minhas condolências à família. Versão 3: Morre Tiffany Pontes Dover, enfermeira que desmaiou logo após receber a vacina anti peste chinesa.Tiffany Dover, enfermeira que desmaiou após tomar vacina, morreu?Muita gente compartilhou a informação para reforçar a tese (falsa) de que o melhor é não tomar a vacina. O que nem todos se atentaram é que, assim como a informação de que o desmaio foi causado por “componentes da vacina”, a história que aponta que Tiffany Dover morreu é falsa.A lógica é o primeiro fator que nos deixa desconfiados."
+    },
+    {
+     "unidade_id": "0dc8e869e9-00",
+     "fragmento_id": "0dc8e869e9-00-00",
+     "score": 0.624993622303009,
+     "score_lexico": 23.798938751220703,
+     "score_denso": 0.8911131024360657,
+     "idioma": "pt-BR",
+     "agencia": "COMPROVA",
+     "data_publicacao": "2021-02-04",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/postagem-usa-video-de-2018-para-afirmar-que-idosa-morreu-apos-tomar-vacina/",
+     "alegacao": "Postagem usa vídeo de 2018 para afirmar que idosa morreu após tomar vacina",
+     "veredito_original": "Enganoso",
+     "veredito_chave": "enganoso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Retirado de contexto, vídeo que viralizou em um perfil no Facebook corta propositadamente os trechos nos quais as palavras \"gripe\" e \"H1N1\" são mencionadas. Ainda assim, o laudo de óbito não indica relação entre a morte da idosa e a vacina contra a gripe.\nConteúdo verificado: Postagem em um perfil pessoal no Facebook de uma reportagem da TV Record sobre uma idosa que morreu após ser vacinada\nÉ enganoso um vídeo publicado no Facebook que sugere que uma idosa morreu após ser vacinada contra a covid-19. A postagem usa somente um trecho de uma reportagem, veiculada na TV Record em 2018, com a legenda “mulher morre imediatamente depois da vacina”. A matéria trata da morte de uma mulher de 71 anos por infarto, após a vacinação contra a gripe Influenza A (H1N1), naquele mesmo ano (e antes do surgimento da covid-19), na cidade de Goiânia (GO).\nO vídeo que viralizou nesta semana corta propositalmente os trechos em que as palavras “gripe” e “H1N1” são mencionadas."
+    },
+    {
+     "unidade_id": "e995f310f4-00",
+     "fragmento_id": "e995f310f4-00-00",
+     "score": 0.6124262809753418,
+     "score_lexico": 14.985527038574219,
+     "score_denso": 0.8899929523468018,
+     "idioma": "pt-BR",
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-12-20",
+     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/12/20/e-fake-que-enfermeira-morreu-no-tennessee-apos-tomar-vacina-contra-covid-19-e-desmaiar-em-publico.ghtml",
+     "alegacao": "É #FAKE que enfermeira morreu no Tennessee após tomar vacina contra Covid-19 e desmaiar em público",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais um vídeo em que uma enfermeira desmaia e recebe socorro após tomar uma vacina contra a Covid-19. Legendas que acompanham o vídeo dizem que Tiffany Dover morreu após tomar o imunizante. É #FAKE.O vídeo mostra o logotipo do CHI Hospital, em Chattanooga, Tennessee, nos Estados Unidos, onde a enfermeira trabalha. Em seu perfil no Twitter, a instituição informou neste sábado (19) que ela está em casa e bem. \"A enfermeira Tiffany Dover agradece a preocupação demonstrada por ela. Ela está em casa e bem. Ela pede privacidade para ela e para sua família.\"Em um outro comunicado anterior, o hospital disse que em 17 de dezembro administrou suas primeiras doses da vacina da Pfizer a seis pessoas, três médicos e três enfermeiras. \"Pouco depois e durante a realização de uma entrevista à imprensa, uma das enfermeiras ficou tonta e foi ajudada a se deitar. Ela nunca perdeu a consciência. E se recuperou rapidamente\", afirmou.A enfermeira explicou que tem um histórico de síncope vasovagal."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

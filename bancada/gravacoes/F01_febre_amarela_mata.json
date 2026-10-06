@@ -1,0 +1,100 @@
+{
+ "chat": {
+  "3c03f2adb4f81672": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário deseja verificar a veracidade de uma informação sobre efeitos colaterais da vacina.\"}",
+  "475fdb0fa8ef0947": "{\"alegacoes\": [{\"texto\": \"a vacina da febre amarela mata em 50% dos casos\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Não deixem ninguém da família tomar!\"}",
+  "da228d1a6cc22289": "{\n  \"fatos\": [\n    \"A vacina da febre amarela mata em 50% dos casos.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Não deixem ninguém da família tomar!\"\n  ],\n  \"conclusao\": null\n}",
+  "a557677bb8e60c42": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a afirmação como boato, esclarecendo que não há nenhuma fala ou dado que sustente que 50% das pessoas que tomam a vacina vêm a óbito.\"}",
+  "5fe7e8d53c50ffc7": "{\"bloco1\": \"A checagem confirmou que a vacina não causa mortes em 50% dos casos.\", \"bloco2\": \"Especialistas já esclareceram que essa informação é um boato antigo. A parte sobre não tomar a vacina é uma opinião pessoal.\", \"bloco3\": \"medo de dano oculto, urgência fabricada. A mensagem usa termos alarmantes e pede compartilhamento rápido para espalhar medo.\", \"bloco4\": \"Verifique se há dados reais de órgãos de saúde antes de acreditar em alertas graves.\"}"
+ },
+ "busca": {
+  "f58c02f4e4997f70": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "4ebed93208-00",
+     "fragmento_id": "4ebed93208-00-03",
+     "score": 0.701012372970581,
+     "score_lexico": 32.47487258911133,
+     "score_denso": 0.9115083813667297,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2017-03-22",
+     "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+     "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ama dele foi agora, 12h20, 12h30. Que foi a entrevista dele com essa dermatologista. Dão essa ajudinha até para a gente conseguir espalhar esse áudio. Então, beijinho.Vacina contra febre amarela mata em 50% dos casos?Não é preciso nem dizer que a informação causou um receio geral em tomar a vacina contra a febre amarela. Mas será mesmo que é verdadeira a informação que aponta que 50% das pessoas que tomam a vacina vêm a óbito? É claro que a resposta é não. Vamos aos fatos.O próprio Roberto Canazio e a reumatologista Selma Merenlender esclareceram a história no programa da rádio Globo no dia 22 de março de 2017. Esse áudio mostra a entrevista completa do dia 20 de março (que serviu como base para o boato) e uma nova entrevista no dia 22.Na reprodução da entrevista que foi ao ar no dia 20, é possível que ver há uma confusão com as informações repassadas. Para começar, a doutora citada é uma reumatologista e não uma dermatologista.Ao ouvir a entrevista, percebemos que nem de longe ela fala em 50% de óbitos."
+    },
+    {
+     "unidade_id": "7f62165646-00",
+     "fragmento_id": "7f62165646-00-05",
+     "score": 0.6614314317703247,
+     "score_lexico": 30.853853225708008,
+     "score_denso": 0.8947590589523315,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-30",
+     "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ação é simples: beber de 3 a 6 gotas de própolis por dia iria fazer com que o seu corpo produzisse um cheiro desagradável para o mosquito transmissor. O fato é que própolis é muito bom, mas não pra espantar o mosquito transmissor da febre amarela e da dengue. Vale lembrar que a história já circulou em 2008, quando falava só da dengue, e em 2016, quando falava da Zika.Bônus – Vacina tem 50% de letalidade e causa perda de visãoDe todos os boatos sobre a febre amarela que circularam pelas redes sociais, alguns alertavam para perigos sobre a doença e também sobre a vacina, outros pediam para as pessoas não se vacinarem devido aos efeitos colaterais da vacina e outros apresentavam um certo teor apocalíptico.E os dois boatos (bônus) que trazemos hoje se enquadram na última descrição. No primeiro, um dermatologista teria dito em um programa de rádio que a vacina contra febre amarela mata em 50% dos casos. Já a segunda, afirma que um estudo do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato."
+    },
+    {
+     "unidade_id": "fb-69ac43624a-04",
+     "fragmento_id": "fb-69ac43624a-04-00",
+     "score": 0.6546289920806885,
+     "score_lexico": 20.557920455932617,
+     "score_denso": 0.8950203061103821,
+     "idioma": "pt-BR",
+     "agencia": "https:apublica.org",
+     "data_publicacao": "2018-02-06",
+     "url": "https://apublica.org/2018/02/truco-correntes-de-whatsapp-espalham-informacoes-falsas-sobre-febre-amarela/",
+     "alegacao": "'A vacina da febre amarela contém um porcentual absurdo de mercúrio.'",
+     "veredito_original": "Falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Corrente de WhatsApp sobre a febre amarela diz que a vacina contém um porcentual absurdo de mercúrio."
+    },
+    {
+     "unidade_id": "1a5c710558-00",
+     "fragmento_id": "1a5c710558-00-05",
+     "score": 0.6488676071166992,
+     "score_lexico": 19.05996322631836,
+     "score_denso": 0.8934404850006104,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-20",
+     "url": "https://www.boatos.org/saude/enfermeira-vacina-febre-amarela-farsa.html",
+     "alegacao": "Enfermeira alerta que ninguém deve tomar a vacina contra febre amarela #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "rapia e em determinados tratamentos de saúde.Porém, o índice de letalidade da vacina contra a febre amarela são muito menores do que os 30% da doença. De acordo com o Centro de Controle e Prevenção de Doenças (CDC – em inglês), dos Estados Unidos, efeitos colaterais graves, que colocam a vida do paciente em risco, acorrem em 1 a cada 250 mil pessoas que são vacinadas contra a doença.Além disso, essa história de mercúrio em vacina é comum no mundo da boataria. A propósito, o Boatos.org já desmentiu muitas delas como na história da vacina contra a gripe, gripe A, veneno mortal em vacina e muitas outras. Ou seja, boato velho.E mais: essa história de que o governo inventou a febre amarela para vender vacina vencida é uma bobagem tão absurda que será pauta para outro desmentido (aguardem)."
+    },
+    {
+     "unidade_id": "5db9f418f0-00",
+     "fragmento_id": "5db9f418f0-00-04",
+     "score": 0.6469523906707764,
+     "score_lexico": 18.36847686767578,
+     "score_denso": 0.8930206894874573,
+     "idioma": "pt-BR",
+     "agencia": "boatos",
+     "data_publicacao": "2018-02-27",
+     "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",
+     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "udanças genéticas no vírus da febre amarela em circulação no país. – Foram identificadas mutações no vírus. Esses resultados foram publicados em 2017. – Conforme divulgado textualmente na própria comunicação original efetuada pela Fiocruz em 2017, não há qualquer impacto destas mutações para a eficácia da vacina.Já deu para ver que a informação que aponta que a mutação do vírus causou a ineficácia da vacina não procede. Porém, gostaríamos de deixar uma última explicação: a vacina contra a febre amarela tem, de acordo com a Organização Mundial da Saúde, 99% de eficácia.É um índice alto. Mas vale dizer que o conselho de continuar se cuidando com o mosquito mesmo depois de tomar a vacina é válido. Nessa história, só tem uma coisa que não é válida: deixar de tomar a vacina se você estiver em uma área de risco. Neste caso, o seu 99% de proteção vai cair para 0%. E ninguém quer isso, não é verdade?Ps.: Esse artigo é uma sugestão de leitores do Boatos.org."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}
