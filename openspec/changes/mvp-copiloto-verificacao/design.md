@@ -970,6 +970,84 @@ para o usuário.
   «rio» e «grande» estão no trecho, mesmo que separados.
 - O rebaixamento custa uma segunda chamada ao modelo.
 
+### 27. Limiar de `evidência insuficiente`: piso de 0,55, o modelo decide a cobertura — 06/10/2026
+
+Task 1.5. Valor em `prototipo/rag/hibrida.py` (`LIMIAR_EVIDENCIA`), usado em dois
+pontos: é o critério `cobre` padrão de `recuperar` (decisão 23) e o `limiar`
+padrão da guarda (decisão 12). Sonda em `prototipo/sonda_limiar.py`, relatório em
+`prototipo/relatorio_sonda_limiar.json`.
+
+**Como foi medido.** A aferição de 19/09 (decisão 17) já mostrava que o score do
+alvo e o do ruído se sobrepõem, e por isso o limiar não podia sair da
+recuperação sozinha. Esta sonda mede o limiar junto com o modelo, porque é o par
+que decide. São 48 casos, todos de `consultas_afericao.json`, com Gemma 4 12B
+QAT, k = 5, fusão por score e alfa 0,9:
+
+- **20 positivas.** As consultas de aferição, com a checagem correta no índice.
+- **20 vizinhas.** As mesmas consultas com o registro correto mascarado. É a
+  lacuna de acervo com trecho recuperado, que as decisões 24 e 25 deixaram para
+  a 1.5.
+- **8 ausentes.** Pauta posterior ao acervo ou fora de saúde.
+
+A guarda roda sem limiar, e a grade de limiares é aplicada depois, sobre os
+scores gravados.
+
+**O modelo sozinho.** As 20 positivas recebem veredito, e as 8 ausentes recebem
+`evidência insuficiente`, inclusive "qual o melhor tênis para corrida de rua",
+cujo score fundido (0,69) passa o de várias positivas. Das 20 vizinhas, o modelo
+diz `evidência insuficiente` em 3. As outras 17 foram lidas no trecho citado:
+
+- **12 são legítimas.** Outra checagem cobre a mesma alegação. Exemplos: as
+  listas de boatos da febre amarela e a checagem da Lupa sobre o suco de inhame.
+- **5 são erro (a01, a07, a13, a17 e a20).** O modelo deu veredito com checagem
+  de alegação parecida, e não da mesma: "veneno mortal" usado para mercúrio,
+  patente do coronavírus usada para a do zika, vacina da covid usada para a da
+  H1N1.
+
+**O que o score consegue.** A positiva mais fraca tem o trecho correto em 0,5785.
+Nenhum corte pega os erros sem perder evidência que cobre:
+
+| limiar | positivas perdidas | legítimas perdidas | erros pegos |
+| --- | --- | --- | --- |
+| **0,55** | 0 | 0 | 0 |
+| 0,57 | 0 | 0 | 1 (a20) |
+| 0,60 | 2 | 1 | 1 |
+| 0,63 | 4 | 3 | 2 |
+| 0,705 | 11 | 10 | 5 |
+
+O cosseno cru do braço denso foi medido também e não faz melhor. Ele separa o
+fora de domínio, mas o primeiro erro só cai a 0,864, quando já se perderam 3
+positivas.
+
+**Decisão.** O limiar é um piso, não um separador. Vale 0,55, cerca de 0,03 abaixo
+da positiva mais fraca. Na calibração ele não corta nenhuma evidência que cobre a
+alegação, e na bancada não corta nenhum dos trechos das 14 mensagens que chegam
+à recuperação, cujo menor score é 0,575. O 0,57 pegaria o a20, mas com margem de
+0,0085 sobre 20 positivas, o que seria ajuste ao conjunto. A cobertura é decidida
+pelo modelo, que já acerta as 8 ausentes.
+
+**Limite declarado.** Na lacuna de acervo com trecho recuperado, o modelo dá
+veredito a partir de alegação parecida em 5 de 20 casos. Nem o limiar nem a
+guarda pegam isso. A decisão 26 conta com o limiar para esse caso, e esta
+medição mostra que ele não basta. A ancoragem da 1.6 (decisão 26) confere os
+termos de cada frase da resposta contra o trecho, não a alegação contra o
+trecho. Ela pode pegar parte desses casos, como o mercúrio do a07, que não está
+no trecho citado, mas isso não foi medido aqui. O resto fica com o prompt da
+2.2. O número a bater é 5 de 20, medido em 06/10/2026 sem a ancoragem.
+
+**O que o valor não cobre.**
+
+- **Outra configuração.** Vale para a fusão por score com alfa 0,9 e
+  `e5-base`. Em outro modo, em RRF ou com outro modelo, o score muda de escala,
+  e quem chama passa seu próprio `cobre` e `limiar`. Trocar o modelo de
+  embedding obriga a rodar `python -m prototipo.sonda_limiar` de novo.
+- **Trechos do FACTCK.BR.** Doze trechos do FACTCK.BR apareceram entre os cinco
+  primeiros, mas nenhum veredito dependeu só deles. Por isso a regra da 1.6, de
+  que trecho inapto não chega ao modelo, não muda esta calibração.
+- **Sondas de trecho escolhido à mão.** A sonda de classificação e guarda
+  injeta trechos sem score e roda com `limiar=None`, porque mede o modelo e não
+  a recuperação.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o
@@ -977,9 +1055,9 @@ para o usuário.
   verdadeira, e a decisão 18, dizem que não. A spec precisa dizer qual vale.
 - **Composição do catálogo.** ~~Quais 6 a 8 técnicas, e com que nomes.~~
   Fechada na decisão 6, com a vaga de `conspiração` pendente da matriz.
-- **Limiar de recuperação** a partir do qual o veredito cai para `evidência
-  insuficiente`. Entra na recuperação como o critério `cobre`
-  de `recuperar` (decisão 19).
+- **Limiar de recuperação** ~~a partir do qual o veredito cai para `evidência
+  insuficiente`~~. Fechada na decisão 27: piso de 0,55. Continua aberto o caso
+  da alegação parecida, que nenhum limiar separa (5 de 20 na calibração).
 - **Fonte em inglês.** Nenhum corpus em inglês está indexado (decisão 19). Falta
   decidir qual fonte entra, se alguma entra, e com que licença. Até lá, o braço
   inglês da prioridade de idioma não é exercido com dados reais.
