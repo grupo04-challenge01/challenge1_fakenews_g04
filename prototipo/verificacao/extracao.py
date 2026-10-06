@@ -27,6 +27,12 @@ Para cada alegação da mensagem, escreva:
   "medio": causa medo ou desconfiança sobre saúde, sem pedir uma ação.
   "baixo": o resto.
 
+Cada alegação precisa ser entendida sozinha, sem ler a mensagem. Troque todo
+pronome ("ela", "isso", "ele") pelo nome a que ele se refere.
+Se a mensagem diz que uma pessoa, um órgão ou um estudo afirmou algo, a alegação
+inclui quem afirmou: "o presidente da Anvisa disse que a vacina é um risco". NÃO
+separe quem afirmou do que foi afirmado.
+
 Se a mensagem tiver opinião, copie a opinião em "opiniao". Se não tiver, use null.
 Se a mensagem não tiver nenhuma alegação, devolva a lista vazia.
 

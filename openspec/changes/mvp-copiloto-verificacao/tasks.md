@@ -36,38 +36,47 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       lista de frase e trecho, rebaixamento por frase essencial), `guarda.py`
       (inapto só como metadado, `Veredito.referencias`), `apto_citacao` na
       busca; testes `test_ancoragem.py`, `test_estrutura.py`, `test_guarda.py`,
-      `test_apto_citacao.py`; sonda da resposta 21/21; decisão 24 do
+      `test_apto_citacao.py`; sonda da resposta 21/21; decisão 26 do
       `design.md`, 06/10/2026
 
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias
-      — `prototipo/verificacao/extracao.py`, sonda 9/9, decisão 8 do `design.md`, 29/09/2026
+      — `prototipo/verificacao/extracao.py`, sonda 9/9, decisão 8 do `design.md`, 29/09/2026;
+        alegação que se entende sozinha, sonda 15/15, decisão 25, 06/10/2026
 - [x] 2.2 **Vitor** Prompt de classificação nos quatro rótulos
-      — `prototipo/verificacao/classificacao.py`, sonda 9/9, decisão 11 do `design.md`, 29/09/2026
+      — `prototipo/verificacao/classificacao.py`, sonda 9/9, decisão 11 do `design.md`, 29/09/2026;
+        veredito da agência impede `verdadeiro`, sonda 24/24, decisão 25, 06/10/2026
 - [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
       — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 12 do `design.md`, 29/09/2026;
-         limiar como parâmetro, valor pela 1.5
-- [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+        limiar como parâmetro, valor pela 1.5
+- [x] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+      — implementado o `test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo` em `prototipo/verificacao/tests/test_classificacao.py`
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
-      — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026
+      — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026;
+        conclusão toda nula conta como ausente, decisão 24, 06/10/2026
 
 ## 3. Resposta formativa
 - [x] 3.1 **Vitor** Fechar o catálogo de 6 a 8 técnicas, com nome e descrição em linguagem cotidiana
       — sete rótulos e uma vaga reservada, decisão 6 do `design.md`, 28/09/2026
 - [x] 3.2 **Vitor** Prompt da estrutura de quatro blocos
-      — `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do `design.md`, 01/10/2026
+      — `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do `design.md`, 01/10/2026;
+        marcador `Técnica:` posto pelo código, decisão 24, 06/10/2026;
+        frase de opinião no bloco 2 posta pelo código, decisão 25, 06/10/2026
 - [x] 3.3 **Vitor** Validação automática: rótulo usado pertence ao catálogo
       — `prototipo/resposta/catalogo.py`, decisão 7 do `design.md`, 28/09/2026
 - [x] 3.4 **Vitor** Verificação de que a alegação falsa nunca abre a resposta sem marcação
-      — `prototipo/resposta/mito.py`, decisão 14 do `design.md`, 29/09/2026
+      — `prototipo/resposta/mito.py`, decisão 14 do `design.md`, 29/09/2026;
+        "falsamente" aceito como marcação, decisão 24, 06/10/2026;
+        negação a até três palavras da alegação, decisão 25, 06/10/2026
 
 ## 4. Fronteira de saúde
 - [x] 4.1 **Vitor** Classificador de pedido de conduta clínica individual
       — `prototipo/verificacao/fronteira.py`, sonda 42/42, decisão 15 do `design.md`, 29/09/2026
 - [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
       — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
-- [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+- [x] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+      — suíte adversarial criada em `prototipo/verificacao/tests/test_fronteira_adversarial.py` com cobertura para perguntas indiretas, sintomas injetados, jailbreak e garantias no prompt
 
 ## 5. Interface
 - [x] 5.1 **Wingrid** Camada visível e camada de detalhe
