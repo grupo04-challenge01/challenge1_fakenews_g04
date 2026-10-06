@@ -761,6 +761,83 @@ aferição de índices antigos.
   tradução). A recuperação só entrega o `idioma` de cada unidade, para que isso
   seja possível.
 
+### 24. Ancoragem trecho a afirmação: marca declarada, termos conferidos — 06/10/2026
+
+Task 1.6. Código em `prototipo/resposta/ancoragem.py`, `prototipo/verificacao/guarda.py`
+(`Veredito.referencias`), `prototipo/resposta/estrutura.py` (`_ancorar`,
+`Resposta.descartadas`, `Resposta.rebaixada_por`) e `prototipo/rag/hibrida.py`
+(`apto_citacao` no resultado). Testes em `prototipo/rag/tests/test_apto_citacao.py`,
+`prototipo/verificacao/tests/test_guarda.py`, `prototipo/resposta/tests/test_ancoragem.py`
+e `prototipo/resposta/tests/test_estrutura.py`.
+
+**Três decisões, tomadas antes do código** (Samara, 06/10/2026):
+
+1. **Fragmento inapto é só metadado.** Fecha o que a decisão 17 deixou para a
+   1.6. A busca entrega `apto_citacao` por resultado, e a guarda separa: o
+   trecho apto vai ao modelo, numerado T1, T2...; do inapto, nem o texto nem o
+   metadado vão ao modelo. Agência, data, link e veredito da agência saem em
+   `Veredito.referencias` e chegam à camada de detalhe com `trecho` vazio.
+   Sem trecho apto, o modelo não é chamado e o veredito é `evidência
+   insuficiente`, como no ponto 1 da guarda (decisão 12). Marca ausente conta
+   como inapta: índice que não diz se o trecho é citável não autoriza citá-lo.
+   Alternativas descartadas: mandar o metadado ao modelo, porque convida a um
+   veredito copiado da agência sem trecho que o sustente; e mandar o texto e só
+   proibir a citação, porque a paráfrase de texto reprovado entraria no bloco 2.
+2. **O modelo declara a âncora, o código confere por termos.** Na forma com
+   evidência, cada frase dos blocos 1 e 2 termina com a marca do trecho, no
+   estilo de citação: «Nenhum estudo mostra isso [T1].» A marca sai do texto
+   visível. A frase passa se o trecho marcado é apto e contém os **termos
+   verificáveis** dela: número em algarismos (casado inteiro), mês, quantidade
+   por extenso («uma semana», «dois dias»; `um`/`uma` sozinhos são artigo) e
+   nome próprio (maiúscula que não abre a frase). Agência e data de publicação
+   da fonte contam como fonte. Maiúscula e acento não contam. Alternativas
+   descartadas: só conferir que a marca existe (repete o limite da guarda);
+   modelo como juiz por frase (soma latência a uma resposta que já leva de 6 a
+   27 s, e não é determinístico); similaridade de embedding com limiar (exige
+   calibração que encosta na 1.5).
+3. **Frase essencial.** Frase que não passa sai da resposta e fica em
+   `Resposta.descartadas`, com o motivo. O veredito cai para `evidência
+   insuficiente` se a frase descartada é do bloco 1, ou se o bloco 2 fica sem
+   frase ancorada. A resposta é refeita na forma sem evidência, numa segunda
+   chamada ao modelo, com as referências do veredito original. A frase que
+   separa a opinião da mensagem pode ficar sem marca, quando a decomposição
+   achou opinião, mas não conta como ancorada: bloco 2 só com ela também
+   rebaixa. Os blocos 3 e 4 tratam da técnica e do que observar, não de fato
+   sobre o mundo, e não passam pela ancoragem.
+
+**Por que agência e data contam como fonte.** No R4 da sonda da resposta, o
+modelo escreveu «O prefeito fez esse anúncio em abril de 2020». «Abril» está no
+trecho; «2020» não, mas é o ano da checagem (2020-07-31). A spec pede afirmação
+ancorada «com fonte e data acessíveis», e a data da fonte está na camada de
+detalhe ao lado do trecho.
+
+**O exemplo da decisão 18 não se sustenta.** Lá, «o exame saiu uma semana
+depois», do R3, aparece como afirmação sem trecho de origem. O trecho do R3
+diz «O resultado do exame foi divulgado somente uma semana depois». A frase está
+ancorada, e a regra a aceita (`test_r3_uma_semana_depois_esta_no_trecho`).
+
+**Medição sobre respostas reais.** As 31 frases dos blocos 1 e 2 das 12
+respostas R registradas em `relatorio_sonda_resposta.json` (prompt anterior,
+sem marca) foram conferidas contra os trechos de cada caso: 31 de 31 ancoradas,
+nenhum falso descarte. Isso mede a regra de termos, não o prompt novo.
+
+**Pendente: a sonda com o prompt novo.** O prompt dos quatro blocos mudou: pede
+a marca nos blocos 1 e 2 e a frase de opinião sem colchetes. A sonda da resposta
+(`python -m prototipo.sonda_resposta`) passa a reprovar caso R rebaixado pela
+ancoragem e registra as frases descartadas. Ela não foi refeita: o gerador local
+não estava acessível da máquina da implementação.
+
+**Limites declarados.**
+
+- Paráfrase sem termo verificável passa sempre. Frase que inverte o sentido do
+  trecho com as mesmas palavras («o exame deu positivo») não é pega.
+- O limite da guarda (decisão 12) continua: a ancoragem confere a resposta, não
+  o veredito. Veredito que cita trecho real que não cobre a alegação ainda
+  depende do prompt da classificação ou do limiar da 1.5.
+- Nome próprio composto é conferido palavra a palavra: «Rio Grande» passa se
+  «rio» e «grande» estão no trecho, mesmo que separados.
+- O rebaixamento custa uma segunda chamada ao modelo.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o

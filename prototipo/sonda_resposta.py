@@ -11,6 +11,12 @@ spec e um caso com opinião na mensagem. Casos S sem evidência: os três estado
 da decisão 3 de fix-resposta-sem-evidencia. Uma tentativa passa quando
 `Resposta.defeitos` sai vazia.
 
+Task 1.6: nos casos R, os trechos sustentam o veredito por construção, então a
+tentativa também falha se a ancoragem rebaixar a resposta. Frase descartada sem
+rebaixamento não reprova, mas fica no relatório: ela é detalhe que o modelo
+inventou, ou paráfrase legítima que a regra de termos recusou, e só a leitura
+diz qual.
+
 Uso: python -m prototipo.sonda_resposta [modelo] [--tentativas=N] [--cpu]
 """
 import json, pathlib, sys, time
@@ -117,15 +123,21 @@ def main():
             r = responder(s["mensagem"], s["alegacao"], veredito(s, trechos),
                           decomposicao=s.get("decomposicao"), lacuna=s.get("lacuna"), chat=chat)
             dt = time.time() - t0
-            ok = not r.defeitos
+            rebaixou = s["id"].startswith("R") and r.rebaixada_por is not None
+            ok = not r.defeitos and not rebaixou
             palavras = len(r.texto.split())
             print(f"  tentativa {n}: [{'PASSOU' if ok else 'FALHOU'}] {dt:.1f}s, {palavras} palavras")
             for d in r.defeitos:
                 print(f"    XX {d}")
+            if r.rebaixada_por:
+                print(f"    {'XX' if rebaixou else '--'} rebaixada: {r.rebaixada_por}")
+            for d in r.descartadas:
+                print(f"    -- descartada no bloco {d['bloco']} ({d['motivo']}): {d['frase']}")
             registro["tentativas"].append({
                 "n": n, "passou": ok, "segundos": round(dt, 1), "forma": r.forma,
                 "palavras": palavras, "palavras_por_bloco": [len(b.split()) for b in r.blocos],
-                "defeitos": r.defeitos, "resposta": r.texto})
+                "defeitos": r.defeitos, "rebaixada_por": r.rebaixada_por,
+                "descartadas": r.descartadas, "resposta": r.texto})
         registro["passou"] = sum(t["passou"] for t in registro["tentativas"])
         rel["sondas"].append(registro)
     DESTINO.write_text(json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")
