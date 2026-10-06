@@ -24,7 +24,7 @@ VAZIAS = {"para", "pelo", "pela", "pelos", "pelas", "como", "mais", "muito", "is
 
 # Marcação de falso na própria frase. Aplicada ao texto sem acento.
 MARCA = re.compile(
-    r"\bfals[oa]s?\b|nao e verdade|nao (ha|existe|tem) (\w+ )?(prova|comprovacao|evidencia|estudo)"
+    r"\bfals(?:[oa]s?|amente)\b|nao e verdade|nao (ha|existe|tem) (\w+ )?(prova|comprovacao|evidencia|estudo)"
     r"|sem (prova|comprovacao|evidencia)|\bboato|\bmentira|desmentid|nao se sustenta|\bengan")
 
 TITULO = re.compile(r"^\s*[A-ZÀ-Ý][A-ZÀ-Ý ]{2,}:\s*", re.MULTILINE)

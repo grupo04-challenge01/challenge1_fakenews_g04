@@ -761,6 +761,51 @@ aferição de índices antigos.
   tradução). A recuperação só entrega o `idioma` de cada unidade, para que isso
   seja possível.
 
+### 24. Correções vindas da execução ponta a ponta — 06/10/2026
+
+Tasks 2.5, 3.2 e 3.4. As sondas de cada task rodam a etapa isolada, com a
+entrada pronta. Em 06/10 o fluxo inteiro rodou sobre 17 mensagens, com Gemma 4
+12B QAT e o índice reconstruído: fronteira, extração, decomposição, recuperação
+com prioridade de idioma, guarda e resposta. Passaram 8 de 17. Três defeitos
+eram do código, não do modelo, e são corrigidos aqui.
+
+**1. Marcador do bloco 3 sai do código** (`estrutura.py`, decisão 18). Em 5 dos
+6 casos da forense, o modelo escreveu os rótulos certos sem `Técnica:` —
+"medo de dano oculto, urgência fabricada. A mensagem…" — e a validação da 3.3
+reprovou por "nenhum rótulo marcado". A sonda da 3.2 não viu isso porque seus
+casos eram de cura milagrosa, em que o modelo manteve o marcador. Mesmo remédio
+da data de corte: quando a primeira frase do bloco 3 é inteira de rótulos do
+catálogo, o código põe `Técnica: ` na frente. Não vale para veredito
+`verdadeiro`, nem quando a frase traz qualquer palavra fora do catálogo; nesses
+casos a validação da 3.3 continua decidindo.
+
+**2. Conclusão toda nula conta como ausente** (`decomposicao.py`, decisão 9).
+Sem conclusão na mensagem, o modelo devolveu `{"texto": null, "decorre": null,
+"salto": null}` em vez de `null`, e a decomposição parou o fluxo com "conclusão
+sem texto". Objeto com todos os campos vazios passa a valer `None`. Conclusão
+parcial, com algum campo preenchido, continua defeito.
+
+**3. "Falsamente" marca a menção** (`mito.py`, decisão 14). "A mensagem afirma
+falsamente que as vacinas causam autismo" foi lida como menção sem marcação,
+porque o padrão só aceitava `falso` e `falsa`. O advérbio entrou no padrão.
+
+**Resultado.** Com as saídas do modelo gravadas na execução de 06/10, o mesmo
+fluxo passa em 12 de 17. O caso da conclusão nula, refeito com o modelo, passa.
+
+**O que fica de fora, por não ser defeito de código:**
+
+- *Menção marcada só por negação distante.* "Não existe relação entre vacinas e
+  autismo" e "não encontrou provas de que a vacina cause câncer" continuam
+  reprovadas pela 3.4. A primeira põe três palavras entre o "não" e a
+  alegação; a segunda é mais fraca que "falso" e soa como evidência
+  insuficiente. Aceitá-las afrouxa a verificação e pede decisão, não correção.
+- *Extração que troca a alegação.* No vídeo da Anvisa a extração tirou "o
+  presidente da Anvisa disse", e no caso da oropouche escolheu a alegação da
+  vacina da dengue. É prompt da 2.1.
+- *Recuperação e rótulo do vídeo da cloroquina*, que não trouxe a checagem e
+  rotulou `verdadeiro`, e *lacuna de acervo com trecho recuperado*, que depende
+  do limiar da 1.5.
+
 ## Questões em aberto
 
 - **Técnica em veredito `verdadeiro`.** O requirement Catálogo fechado manda o

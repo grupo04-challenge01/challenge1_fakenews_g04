@@ -194,6 +194,28 @@ def test_bloco_3_sem_marcador_de_tecnica_e_defeito():
     assert "bloco 3: nenhum rótulo marcado" in r.defeitos
 
 
+def test_bloco_3_que_abre_com_rotulos_do_catalogo_ganha_o_marcador():
+    # Bancada de 06/10: o modelo escreveu os rótulos certos sem "Técnica:" em 5 de
+    # 6 casos da forense. O marcador sai do código (decisão 24).
+    blocos = _com(bloco3="medo de dano oculto, urgência fabricada. A mensagem assusta e pede pressa.")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos))
+    assert r.blocos[2].startswith("Técnica: medo de dano oculto, urgência fabricada.")
+    assert r.defeitos == []
+
+
+def test_marcador_nao_e_posto_quando_a_primeira_frase_nao_e_so_rotulo():
+    r = responder(MENSAGEM, ALEGACAO, FALSO,
+                  chat=_chat(_com(bloco3="Cura milagrosa é o que a mensagem promete.")))
+    assert not r.blocos[2].startswith("Técnica:")
+    assert "bloco 3: nenhum rótulo marcado" in r.defeitos
+
+
+def test_marcador_nao_e_posto_em_veredito_verdadeiro():
+    r = responder(MENSAGEM, ALEGACAO, VERDADEIRO,
+                  chat=_chat(_com(bloco3="fora de contexto. Parece exagero.")))
+    assert not r.blocos[2].startswith("Técnica:")
+
+
 def test_tecnica_fora_do_catalogo_e_defeito():
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(bloco3="Técnica: apelo ao medo.")))
     assert "bloco 3: rótulo fora do catálogo: apelo ao medo" in r.defeitos

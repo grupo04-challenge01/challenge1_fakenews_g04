@@ -44,17 +44,20 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 - [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
-      — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026
+      — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026;
+        conclusão toda nula conta como ausente, decisão 24, 06/10/2026
 
 ## 3. Resposta formativa
 - [x] 3.1 **Vitor** Fechar o catálogo de 6 a 8 técnicas, com nome e descrição em linguagem cotidiana
       — sete rótulos e uma vaga reservada, decisão 6 do `design.md`, 28/09/2026
 - [x] 3.2 **Vitor** Prompt da estrutura de quatro blocos
-      — `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do `design.md`, 01/10/2026
+      — `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do `design.md`, 01/10/2026;
+        marcador `Técnica:` posto pelo código, decisão 24, 06/10/2026
 - [x] 3.3 **Vitor** Validação automática: rótulo usado pertence ao catálogo
       — `prototipo/resposta/catalogo.py`, decisão 7 do `design.md`, 28/09/2026
 - [x] 3.4 **Vitor** Verificação de que a alegação falsa nunca abre a resposta sem marcação
-      — `prototipo/resposta/mito.py`, decisão 14 do `design.md`, 29/09/2026
+      — `prototipo/resposta/mito.py`, decisão 14 do `design.md`, 29/09/2026;
+        "falsamente" aceito como marcação, decisão 24, 06/10/2026
 
 ## 4. Fronteira de saúde
 - [x] 4.1 **Vitor** Classificador de pedido de conduta clínica individual

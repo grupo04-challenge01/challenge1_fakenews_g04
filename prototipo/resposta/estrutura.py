@@ -164,6 +164,24 @@ def _detalhe(veredito):
     return [{k: t[k] for k in chaves} for t in veredito.trechos]
 
 
+def _marcar(bloco3, catalogo):
+    """Põe `Técnica: ` no bloco 3 que abre só com rótulos do catálogo.
+
+    O modelo escolhe os rótulos, mas omite o marcador: na bancada de 06/10,
+    5 de 6 casos da forense. Só a primeira frase conta, e só quando ela é
+    inteira de rótulos do catálogo; o resto continua a cargo da validação da
+    3.3 (decisão 24).
+    """
+    if catalogo_mod.MARCADOR.search(bloco3):
+        return bloco3
+    primeira = re.split(r"[.!?\n]", bloco3, maxsplit=1)[0]
+    partes = [catalogo_mod._limpo(p) for p in re.split(r",|\se\s", primeira)]
+    permitidos = {r.lower() for r in catalogo}
+    if partes and all(p in permitidos for p in partes):
+        return f"Técnica: {bloco3}"
+    return bloco3
+
+
 def _frases(texto):
     return [f.strip() for f in re.split(r"(?<=[.!?])\s+|\n+", texto) if f.strip()]
 
@@ -229,6 +247,8 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     gerados = [str((dados or {}).get(f"bloco{n}") or "").strip() for n in range(1, 5)]
 
     blocos = list(gerados)
+    if com and veredito.rotulo != "verdadeiro":
+        blocos[2] = _marcar(blocos[2], catalogo)
     blocos[0] = f"{_abertura(veredito, estado, lacuna)} {gerados[0]}".strip()
     if estado == LACUNA:
         blocos[3] = _ponteiro(lacuna)
