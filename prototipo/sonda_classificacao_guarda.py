@@ -61,7 +61,7 @@ def carregar_trechos(ids):
             if frag["fragmento_id"] in ids:
                 por_id[frag["fragmento_id"]] = {k: frag[k] for k in (
                     "fragmento_id", "agencia", "url", "data_publicacao",
-                    "veredito_original", "trecho")}
+                    "veredito_original", "trecho", "apto_citacao")}
     faltam = set(ids) - set(por_id)
     if faltam:
         sys.exit(f"fragmentos ausentes do índice: {sorted(faltam)}")
