@@ -64,7 +64,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
 
 ## 6. Avaliação
 - [x] 6.1 **Jhessica** Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos
-- [ ] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
+- [x] 6.2 **Jhessica** Configurar 4 a 6 itens-armadilha
+      — 4 armadilhas configuradas e validadas em `utils/gerar_casos.py`; conjunto atualizado gerado em `datasets/casos_mvp_copiloto/mvp_copiloto_casos.json`
 - [x] 6.3 **Breno** Redigir TCLE e roteiro de debriefing
       — minuta do TCLE e roteiro operacional em `specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`, decisão 13 do `design.md`, 29/09/2026
 - [ ] 6.4 **Breno** Submeter protocolo ao comitê de ética
