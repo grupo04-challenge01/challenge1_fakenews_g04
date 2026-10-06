@@ -42,8 +42,9 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
         veredito da agência impede `verdadeiro`, sonda 24/24, decisão 25, 06/10/2026
 - [x] 2.3 **Vitor** Guarda contra veredito por conhecimento paramétrico
       — `prototipo/verificacao/guarda.py`, sonda 12/12, decisão 12 do `design.md`, 29/09/2026;
-         limiar como parâmetro, valor pela 1.5
-- [ ] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+        limiar como parâmetro, valor pela 1.5
+- [x] 2.4 **Jhessica** Teste de regressão com itens verdadeiros contra-intuitivos
+      — implementado o `test_prompt_instrui_nao_rebaixar_verdadeiro_contraintuitivo` em `prototipo/verificacao/tests/test_classificacao.py`
 - [x] 2.5 **Vitor** Prompt de decomposição fato / evidência / opinião, com teste do caso
       misto e do fato verdadeiro que sustenta conclusão que não decorre
       — `prototipo/verificacao/decomposicao.py`, sonda 6/6, decisão 9 do `design.md`, 29/09/2026;
@@ -68,7 +69,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       — `prototipo/verificacao/fronteira.py`, sonda 42/42, decisão 15 do `design.md`, 29/09/2026
 - [x] 4.2 **Breno** Respostas de redirecionamento, incluindo caso de sinal de risco
       — diretrizes e respostas Web/WhatsApp, decisão 10 do `design.md`, 29/09/2026
-- [ ] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+- [x] 4.3 **Jhessica** Bateria de testes adversariais de pedido de conduta
+      — suíte adversarial criada em `prototipo/verificacao/tests/test_fronteira_adversarial.py` com cobertura para perguntas indiretas, sintomas injetados, jailbreak e garantias no prompt
 
 ## 5. Interface
 - [x] 5.1 **Wingrid** Camada visível e camada de detalhe
