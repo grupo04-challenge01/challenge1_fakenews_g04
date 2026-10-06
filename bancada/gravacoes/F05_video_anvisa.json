@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "e281aec909dcf36e": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer verificar a veracidade de uma afirmação sobre uma notícia.\"}",
+  "0ea97e857df63fd4": "{\"alegacoes\": [{\"texto\": \"o presidente da Anvisa admitindo: a vacinação contra a covid é um risco sanitário grave para a população\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "f4aa6c3014c853fa": "{\n  \"fatos\": [\n    \"O presidente da Anvisa admitiu que a vacinação contra a covid é um risco sanitário grave para a população.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"presidente da Anvisa\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "1010e5a741bc2390": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T4\"], \"criterio\": \"Os trechos mostram que o vídeo do presidente da Anvisa foi editado e retirado de contexto; ele não afirmou que a vacinação é um risco, mas sim que uma medida provisória que obrigava a aprovação rápida de vacinas estrangeiras sem análise prévia seria um 'risco sanitário grave'.\"}",
+  "c44675007aae7df0": "{\"bloco1\": [{\"frase\": \"A mensagem usa um vídeo cortado para mudar o sentido da fala.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O presidente disse que a aprovação rápida de vacinas estrangeiras sem análise era o risco.\", \"trecho\": \"T2\"}, {\"frase\": \"As vacinas aprovadas pela Anvisa são seguras e eficazes.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo foi editado para parecer que ele falava das vacinas já aprovadas.\", \"bloco4\": \"Verifique se o vídeo foi cortado ou se a legenda distorce as palavras do entrevistado.\"}"
+ },
+ "busca": {
+  "bc3f637b16084326": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "eb77180631-00",
+     "fragmento_id": "eb77180631-00-00",
+     "score": 0.6744481325149536,
+     "score_lexico": 39.01222610473633,
+     "score_denso": 0.8975449800491333,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "COMPROVA",
+     "data_publicacao": "2021-02-18",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/video-manipulado-deturpa-entrevista-de-presidente-da-anvisa-para-sugerir-risco-sanitario-grave-na-vacinacao/",
+     "alegacao": "Vídeo manipulado deturpa entrevista de presidente da Anvisa para sugerir “risco sanitário grave” na vacinação",
+     "veredito_original": "Falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Em vídeo postado no Twitter, Antônio Barra Torres aparece dizendo que a população “corre risco sanitário grave”, mas as imagens foram editadas para fazer parecer que ele se referia às vacinas já aprovadas.\nConteúdo verificado: vídeo publicado no Twitter, em que o presidente da Anvisa (Agência Nacional de Vigilância Sanitária), Antônio Barra Torres, aparece dizendo que a vacina contra a covid-19 não é segura e que a população está correndo um “risco sanitário grave”.\nÉ falso o conteúdo de um post publicado no Twitter segundo o qual a população brasileira “corre risco grave ao tomar a vacina” contra covid-19. O tuíte traz uma informação inverídica e, para embasá-la, utiliza-se de um vídeo manipulado de uma entrevista de Antônio Barra Torres, presidente da Agência Nacional de Vigilância Sanitária (Anvisa). As vacinas aprovadas pela Anvisa até aqui – a de Oxford em parceria com a AstraZeneca e a CoronaVac – são seguras e eficazes para lidar com a pandemia.\nO Comprova concluiu que o vídeo postado no Twitter foi editado e retirado do contexto."
+    },
+    {
+     "unidade_id": "8d652f2779-00",
+     "fragmento_id": "8d652f2779-00-01",
+     "score": 0.6742364764213562,
+     "score_lexico": 22.390892028808594,
+     "score_denso": 0.9010798931121826,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2021-02-15",
+     "url": "https://www.boatos.org/saude/diretor-presidente-anvisa-diz-populacao-corre-risco-grave-ao-tomar-vacinas.html",
+     "alegacao": "Diretor-presidente da Anvisa diz que população corre risco grave ao tomar vacinas #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ave ao tomar a vacina. Ele declara em entrevista que foi tirado o direito da Anvisa de analisar todos os dados necessários para a liberação da vacina. Isso quer dizer que ninguém sabe o que estão tomando, e nem os benefícios ou riscos que se corre com a vacina. É um tiro no escuro. E você? Quer pagar pra ver?Diretor-presidente da Anvisa diz que população corre risco grave ao tomar vacinas?Com uma mensagem como essa, é claro que muita gente iria ficar assustada e iria compartilhar a mensagem a torto e a direito por aí. Porém, o vídeo da entrevista de Antonio Barra Torres à CNN foi totalmente retirado de contexto.Para chegar à solução do caso, resolvemos procurar pelo vídeo da entrevista do diretor-presidente da Anvisa. Ela foi concedida à CNN no dia 10 de fevereiro de 2021."
+    },
+    {
+     "unidade_id": "713c132643-00",
+     "fragmento_id": "713c132643-00-03",
+     "score": 0.6155128479003906,
+     "score_lexico": 11.777861595153809,
+     "score_denso": 0.8868561387062073,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "COMPROVA",
+     "data_publicacao": "2021-01-22",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-enganoso-que-imunogenicidade-da-coronavac-ofereca-risco-anvisa-pediu-dados-complementares-e-nao-questionou-seguranca/",
+     "alegacao": "É enganoso que imunogenicidade da CoronaVac ofereça risco; Anvisa pediu dados complementares e não questionou segurança",
+     "veredito_original": "Enganoso",
+     "veredito_chave": "enganoso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "e presidente da Sociedade Brasileira de Virologia (SBV).\nTambém consultamos o dicionário de conceitos da Sociedade Brasileira de Imunizações (SBIm).\nEntramos em contato com a Agência Nacional de Vigilância Sanitária (Anvisa) para esclarecer o significado da fala do gerente Gustavo Mendes e procuramos o Instituto Butantan para que explicasse que dados ainda precisam ser enviados à Agência.\nTambém procuramos os autores dos tuítes que viralizaram. Segundo eles, as informações divulgadas em seus perfis são baseadas em uma matéria do UOL e comunicados da Anvisa. Com um dos três autores não conseguimos contato. No entanto, em seu perfil ele também compartilha as afirmações tirando de contexto os dados publicados pela Anvisa na apresentação da Coronavac.\nO Comprova fez esta verificação baseado em informações científicas e dados oficiais sobre o novo coronavírus e a covid-19 disponíveis no dia 22 de janeiro de 2021.\nVerificação\nO que é imunogenicidade?"
+    },
+    {
+     "unidade_id": "2ae314e5d0-00",
+     "fragmento_id": "2ae314e5d0-00-01",
+     "score": 0.5976203680038452,
+     "score_lexico": 21.456830978393555,
+     "score_denso": 0.8785038590431213,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2021-02-19",
+     "url": "https://piaui.folha.uol.com.br/lupa/2021/02/19/verificamos-anvisa-vacinas-covid/",
+     "alegacao": "#Verificamos: É falso que diretor da Anvisa alertou para ‘riscos’ de vacinas contra Covid-19 usadas no Brasil",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "que circula pelo Instagram foi editado e a legenda que acompanha a gravação distorce a fala do diretor-presidente da agência, Antônio Barra Torres. \nNo dia 10 de fevereiro, Torres concedeu uma entrevista à CNN e comentou sobre o artigo 5 da Medida Provisória (MP) 1.003/2020, que obriga a Anvisa a conceder autorização temporária de uso emergencial para a importação, a distribuição e o uso de “qualquer vacina contra a Covid-19” após cinco dias do pedido do laboratório. Essa determinação vale apenas para produtos que tenham sido aprovados por pelo menos uma de nove autoridades sanitárias estrangeiras listadas na MP. Atualmente, o prazo é de 10 dias para a análise, e não há obrigação de aprovação caso a vacina já tenha sido liberada por órgãos sanitários estrangeiros. \nTorres considerou a aprovação dessa medida seria considerada um “risco sanitário grave”. Ele disse ainda que a Anvisa tem servidores qualificados para realizar análises e conceder as autorizações necessárias para o uso seguro de vacinas para os brasileiros."
+    },
+    {
+     "unidade_id": "2ab845692a-00",
+     "fragmento_id": "2ab845692a-00-04",
+     "score": 0.5886909365653992,
+     "score_lexico": 15.385566711425781,
+     "score_denso": 0.8781771063804626,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2021-01-19",
+     "url": "https://www.boatos.org/saude/medico-cabo-frio-afirma-vacina-covid-19-mata.html",
+     "alegacao": "Médico de Cabo Frio afirma que vacina contra Covid-19 mata #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "placebo e, infelizmente, acabou falecendo por complicações da Covid-19.A segunda afirmação falsa é a de que não existem vacinas aprovadas pela Anvisa. No 17 de janeiro de 2021, a Anvisa aprovou, por unanimidade, o uso emergencial das vacinas Coronavac (uma parceria entre o Instituto Butantan e a farmacêutica chinesa Sinovac) e de Oxford/AstraZeneca.A terceira afirmação equivocada é a de que o governador de São Paulo, João Doria, estaria obrigando a população a se vacinar sem o imunizante ser aprovado em testes. Nenhuma vacina será aprovada pela Anvisa se não conseguir um bom resultado em termos de eficácia (mínimo de 50%) e segurança. Sem a aprovação nos testes e pela agência reguladora (Anvisa), a vacina jamais chegará ao público.Por fim, há ainda a afirmação de que o governo irá vacinar apenas metade da população. A outra metade receberia apenas uma dose de placebo. Isso não é verdade! Se um governo anuncia a vacinação contra a Covid-19, significa que toda a população será vacina com o imunizante."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

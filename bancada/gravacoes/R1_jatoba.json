@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "de1ee37f46f1cf26": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre cura de doença que precisa ser verificada.\"}",
+  "1185f5a397474119": "{\"alegacoes\": [{\"texto\": \"A casca do jatobá triturada cura o câncer\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"Um médico do interior confirmou que a casca do jatobá triturada cura o câncer\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "d9b18a9ecdfd0d18": "{\n  \"fatos\": [\n    \"A casca do jatobá triturada cura o câncer.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico do interior confirmou.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "b9a16c94a31c5a1e": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho afirma explicitamente que não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, sendo desmentido pelo Ministério da Saúde e pelo Inca.\"}",
+  "2ebde5749caaade5": "{\"bloco1\": [{\"frase\": \"A casca do jatobá não cura o câncer.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Nenhum alimento previne ou cura a doença.\", \"trecho\": \"T1\"}, {\"frase\": \"O Ministério da Saúde e o Inca desmentem essa afirmação.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo simples e cita um médico sem identificá-lo.\", \"bloco4\": \"Verifique se órgãos de saúde oficiais confirmam o tratamento antes de compartilhar.\"}"
+ },
+ "busca": {
+  "817606959578d8de": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "c7a4591df5-00",
+     "fragmento_id": "c7a4591df5-00-00",
+     "score": 0.7470971345901489,
+     "score_lexico": 51.2878303527832,
+     "score_denso": 0.9013576507568359,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2021-01-08",
+     "url": "https://www.aosfatos.org/noticias/e-falso-que-casca-triturada-do-fruto-do-jatoba-seja-capaz-de-curar-o-cancer/",
+     "alegacao": "É falso que a casca triturada do fruto do jatobá seja capaz de curar o câncer",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, conforme afirmam postagens nas redes (veja aqui). Não existe um alimento comprovadamente capaz de prevenir ou curar a doença, segundo o Ministério da Saúde, o Inca (Instituto Nacional do Câncer) e um oncologista ouvido por Aos Fatos.\nO conteúdo enganoso reunia ao menos 172 mil compartilhamentos no Facebook nesta sexta-feira (8) e foi marcado com o selo FALSO na ferramenta de verificação da rede social (entenda como funciona).\n\nMédico em Goiânia revoluciona o tratamento de câncer: casca do fruto do jatobá triturada\n\nÉ enganoso que a casca triturada do fruto do jatobá cura o câncer, conforme afirmam postagens nas redes sociais. O falso tratamento foi desmentido pelo Ministério da Saúde e por uma cartilha do Programa de Educação Tutorial da UFMT (Universidade Federal do Mato Grosso). Não existem alimentos capazes de prevenir ou curar a doença, segundo o Inca (Instituto Nacional do Câncer).\n“Não tenho qualquer conhecimento sobre o tema."
+    },
+    {
+     "unidade_id": "988af04acc-00",
+     "fragmento_id": "988af04acc-00-04",
+     "score": 0.6123461723327637,
+     "score_lexico": 8.570998191833496,
+     "score_denso": 0.8612022995948792,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2019-01-15",
+     "url": "https://www.aosfatos.org/noticias/cortar-acucar-ou-tomar-limao-e-oleo-de-coco-nao-curam-cancer-texto-traz-informacoes-falsas/",
+     "alegacao": "Cortar açúcar ou tomar limão e óleo de coco não curam câncer; texto traz informações falsas",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "is os componentes anti-cancerígenos do limão, segundo o National Center for Health Research: os limonoides e a pecticina modificada de cítricos (PMC). Enquanto os primeiros tiveram resultado positivo ao combater células do câncer de mama em cultura in vitro, a PMC já mostrou que pode ajudar no tratamento de vários tipos da doença em animais. Isso significa que os componentes do limão podem ter propriedades de combate ao câncer, mas tais benefícios ainda não foram comprovados. Nos EUA, a cura da doença com o uso de limões já foi desmentida em checagens dos sites Snopes e Hoax Slayer.\nÓleo de coco. A corrente termina dizendo que “beber três colheres de óleo de coco orgânico” fará o câncer desaparecer. Ainda que, de fato, algumas pesquisas apontem que o ácido láurico — presente no óleo de coco — pode estar associado à melhoria da qualidade de vida de pacientes com câncer de mama e também na inibição de crescimento do câncer de colo de útero, não há evidências científicas de que o óleo cure, de alguma maneira, a doença em suas múltiplas variações."
+    },
+    {
+     "unidade_id": "f1e11d9eff-00",
+     "fragmento_id": "f1e11d9eff-00-00",
+     "score": 0.6080120205879211,
+     "score_lexico": 10.260809898376465,
+     "score_denso": 0.8588579297065735,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-04-27",
+     "url": "https://www.boatos.org/saude/cha-graviola-cura-cancer-oncologista.html",
+     "alegacao": "Chá de folhas de graviola cura câncer, afirma médico oncologista #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Boato – Dr. Rafael Onuki Sato, médico oncologista em Londrina (PR), gravou um áudio afirmando que o chá das folhas de graviola cura o câncer porque a acetogenina (substância presente na graviola) mata as células cancerígenas.Um dos caminhos para se checar os boatos que circulam na internet, principalmente os relacionados à saúde, é buscar por especialistas que atestem ou refutem uma tese. Há alguns anos (quase cinco), desmentimos uma história que apontava que a graviola cura câncer. Um dos motivos apresentados foi o fato de que ninguém na medicina endossava essa tese.Porém, uma mensagem que circula no WhatsApp aponta que a situação mudou. De acordo com a postagem, o Dr. Rafael Onuki Sato, médico oncologista, teria gravado um áudio apontando os motivos que credenciam o chá de graviola como uma arma para tratar o câncer. Leia a mensagem que circula online, escute o áudio e leia a transcrição.Texto: Dr. Rafael Onuki Sato."
+    },
+    {
+     "unidade_id": "5e3388a7a8-00",
+     "fragmento_id": "5e3388a7a8-00-00",
+     "score": 0.599506676197052,
+     "score_lexico": 11.547162055969238,
+     "score_denso": 0.8559857606887817,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2019-12-25",
+     "url": "https://www.boatos.org/ciencia/cura-cancer-foi-encontrada-disponivel-inicio-2020.html",
+     "alegacao": "Cura definitiva do câncer foi encontrada e estará disponível até o início de 2020 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "O câncer é uma doença que atinge milhares de pessoas ao redor do mundo. De acordo com a estimativa do Instituto Nacional de Câncer José Alencar Gomes (Inca), são esperados 600 mil novos casos da doença entre 2018 e 2019. Nas últimas semanas, o prefeito de São Paulo Bruno Covas foi diagnosticado com câncer no trato digestivo e precisou se submeter a sessões de quimioterapia, mostrando que o câncer pode atingir qualquer um.Entretanto, parece que a humanidade tem motivos para comemorar a luta contra a doença. Segundo uma publicação que está circulando nas redes sociais, uma empresa israelense teria encontrado a cura do câncer. De acordo com uma reportagem que acompanha a publicação, a cura definitiva para o câncer estaria disponível em até um ano para as pessoas, com preço acessível e poucos efeitos colaterais. Ainda segundo as imagens, proteínas específicas seriam injetadas nos pacientes e elas começariam a atacar as células cancerígenas. Confira:Versão 1: “Cura definitiva do Câncer”."
+    },
+    {
+     "unidade_id": "faf0434651-00",
+     "fragmento_id": "faf0434651-00-07",
+     "score": 0.5949239730834961,
+     "score_lexico": 9.620702743530273,
+     "score_denso": 0.8559277057647705,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-03-21",
+     "url": "https://www.boatos.org/saude/eua-cura-novo-coronavirus-teste-hospital-stanford.html",
+     "alegacao": "EUA encontraram a cura para o novo coronavírus após teste no Hospital de Stanford #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "a para algumas pessoas com câncer. Muita gente largou o tratamento convencional contra o câncer por acreditar que a substância poderia curar o câncer. Depois de muita discussão, o governo brasileiro autorizou uma pesquisa para compreender a eficácia da substância no tratamento contra o câncer. Em 2017, os resultados foram categóricos: a ação da substância não era suficiente para combater as células cancerígenas. E, infelizmente, nesse período, muita gente já havia deixado a quimioterapia de lado para se dedicar, exclusivamente, ao tratamento com fosfoetanolamina e tiveram piora em seus quadros.Voltando à nossa história, o segundo ponto é mais claro. Não foram os pesquisadores dos Estados Unidos que “descobriram” a cura. Apesar da publicação apontar que a pesquisa foi desenvolvida nos Estados Unidos (em alguns casos, há um áudio atribuindo o estudo ao pesquisador Cláudio Lottenberg, do Hospital Albert Einstein), os testes foram realizados na França."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

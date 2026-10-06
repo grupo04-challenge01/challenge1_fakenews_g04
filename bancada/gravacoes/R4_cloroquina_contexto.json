@@ -1,0 +1,106 @@
+{
+ "chat": {
+  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma notícia sobre política de saúde pública.\"}",
+  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"O prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "fd1b58b7a333f1bc": "{\n  \"fatos\": [\n    \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "fe22050d6929ba1b": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"A agência classificou como boato a afirmação de que o prefeito Bruno Covas teria acabado de liberar a cloroquina em 2021, esclarecendo que ele já havia anunciado a inclusão do medicamento como opção de tratamento em abril de 2020.\"}",
+  "8382ff6e22121eee": "{\"bloco1\": [{\"frase\": \"A informação sobre a liberação recente é falsa.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O prefeito já havia anunciado o uso do remédio em abril de 2020.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo é antigo e foi usado para contar uma história nova.\", \"bloco4\": \"Verifique a data da publicação original antes de compartilhar vídeos.\"}",
+  "769edaea9d7d1d72": "{\"bloco1\": \"Foram buscadas informações sobre a liberação da cloroquina pelo prefeito.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique o site oficial da prefeitura ou portais de notícias confiáveis.\", \"bloco4\": \"Procure em sites governamentais e agências de checagem conhecidas.\"}"
+ },
+ "busca": {
+  "cc7de47bc11cf233": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "73fd0f67bb-00",
+     "fragmento_id": "73fd0f67bb-00-00",
+     "score": 0.714712917804718,
+     "score_lexico": 33.769866943359375,
+     "score_denso": 0.9053514003753662,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2021-01-31",
+     "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
+     "alegacao": "Bruno Covas acaba (em 2021) de liberar cloroquina para tratamento da Covid-19 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "A vacinação contra a Covid-19 já começou aqui no Brasil e em outros países do mundo, mas quando o assunto é a cloroquina, medicamento que teve seu uso como alvo de discussões (inclusive, políticas) logo no início da pandemia, a internet não para. E é sobre isso que muitos internautas vêm debatendo nas redes sociais nos últimos dias depois uma publicação que começou circular online.De acordo com uma postagem no Facebook, o prefeito de São Paulo, Bruno Covas, teria acabado de liberar (isso em 2021) a cloroquina para tratamento da Covid-19. Em vídeo que está sendo compartilhado, gravado no que parece ser uma coletiva de imprensa, Covas aparece explicando que a Secretaria Municipal de Saúde teria concordado que o remédio poderia ser usado, mesmo sem comprovação científica sobre sua eficácia, desde que sob prescrição médica e com consentimento dos pacientes ou familiares destes.Mais que isso, o prefeito fala que também teria liberado a compra de mais cápsulas de cloroquina, já que, até então, eles teriam em estoque cerca de 6 mil cápsulas, compreendendo que, como cada paciente precisa de"
+    },
+    {
+     "unidade_id": "dc429bdfc1-00",
+     "fragmento_id": "dc429bdfc1-00-00",
+     "score": 0.7006698846817017,
+     "score_lexico": 31.02199363708496,
+     "score_denso": 0.8992341756820679,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2020-06-29",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/06/29/verificamos-covas-cloroquina-tratamento/",
+     "alegacao": "#Verificamos: É falso que prefeito de São Paulo usou cloroquina em seu tratamento para Covid-19",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula nas redes sociais que o atual prefeito de São Paulo, Bruno Covas (PSDB), usou a cloroquina, medicamento usado no tratamento e profilaxia da malária, em seu tratamento de Covid-19. De acordo com o conteúdo, Covas teria dado esta informação à CNN Brasil. O prefeito contraiu a doença em 13 de junho, e já está curado. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n“A POPULACAO NAO pode tomar, esse canalha usou o remédio!\nO prefeito de São Paulo, Bruno Covas está com Coronavírus e sem surpresa alguma, disse na CNN Brasil que faz uso de cloroquina e azitromicina.\nE você ai, defendendo especialista que não sabe a diferença de um comprimido para um supositório.”\nFrase publicada no Facebook que, até o dia 29 de junho, foi compartilhada por 211 pessoas\n\nA informação analisada pela Lupa é falsa. O prefeito de São Paulo, Bruno Covas (PSDB), não disse que usou cloroquina em seu tratamento para Covid-19 em entrevista à CNN."
+    },
+    {
+     "unidade_id": "e1320a8aaf-00",
+     "fragmento_id": "e1320a8aaf-00-01",
+     "score": 0.6802047491073608,
+     "score_lexico": 26.425039291381836,
+     "score_denso": 0.8915815353393555,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2020-06-25",
+     "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
+     "alegacao": "Bruno Covas não proibiu nem disse que usou cloroquina",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": true,
+     "trecho": "édio que negou ao povo. Quantas pessoas que nem sofriam de câncer, como ele, morreram e quantas poderiam ter sido salvas se tivessem sido medicadas.\n\nPostagens que circulam nas redes sociais afirmam que o prefeito de São Paulo, Bruno Covas (PSDB), proibiu o uso de hidroxicloroquina para o tratamento de Covid-19, e depois admitiu ter tomado o medicamento quando foi diagnosticado com a doença. As duas alegações são falsas — a cloroquina nunca foi proibida na cidade e Covas disse apenas que tomou o antibiótico azitromicina.\nNão só o prefeito não impediu o uso da droga como anunciou, no dia 9 de abril, que a Secretaria Municipal de Saúde a incluiria como opção de tratamento para Covid-19 nos hospitais municipais. À época, a prefeitura já tinha 6 mil cápsulas de cloroquina à disposição, mas o prefeito ressaltou que o uso dependeria da prescrição médica e autorização da família e paciente. A medida foi anunciada poucos dias depois de o Ministério da Saúde ter publicado um protocolo para o uso da droga em casos graves."
+    },
+    {
+     "unidade_id": "9678877505-00",
+     "fragmento_id": "9678877505-00-02",
+     "score": 0.6785768866539001,
+     "score_lexico": 22.259658813476562,
+     "score_denso": 0.8922828435897827,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "COMPROVA",
+     "data_publicacao": "2020-06-26",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/prefeito-de-sao-paulo-nao-proibiu-hidroxicloroquina-e-usou-azitromicina-no-tratamento-da-covid-19/",
+     "alegacao": "Prefeito de São Paulo não proibiu hidroxicloroquina e usou azitromicina no tratamento da covid-19",
+     "veredito_original": "Falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "tíficas que justifiquem o uso da cloroquina e da hidroxicloroquina contra o novo coronavírus, o uso deve ser evitado em pacientes com sintomas leves.\nBruno Covas, de 40 anos, anunciou que estava com covid-19 no dia 13 de junho. O prefeito, que trata um câncer no sistema digestivo, recebeu o diagnóstico depois de um exame de rotina. Em sua conta oficial no Instagram, afirmou que não teve sintomas como febre, dor ou falta de ar e que passaria dez dias isolado, trabalhando de casa. No dia 15, Covas publicou um vídeo em que esclareceu que, mesmo assintomático, estava tomando o antibiótico azitromicina por recomendação médica. “Remédio não é de esquerda ou de direita. Lamento que alguns queiram politizar a escolha do medicamento”, disse. No dia 24, mais uma vez numa mensagem gravada, Covas anunciou que estava recuperado e voltaria ao trabalho presencialmente na prefeitura.\nComo verificamos?"
+    },
+    {
+     "unidade_id": "b8f19a0568-00",
+     "fragmento_id": "b8f19a0568-00-01",
+     "score": 0.6640893816947937,
+     "score_lexico": 19.323041915893555,
+     "score_denso": 0.8876985311508179,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "ESTADAO_VERIFICA",
+     "data_publicacao": "2020-06-26",
+     "url": "https://politica.estadao.com.br/blogs/estadao-verifica/prefeito-de-sao-paulo-nao-proibiu-hidroxicloroquina-e-usou-azitromicina-no-tratamento-da-covid-19/",
+     "alegacao": "É falso que Bruno Covas tenha proibido hidroxicloroquina em SP",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "no município, anunciado em 9 de abril, recomenda que o uso do medicamento seja feito com prescrição médica e consentimento do paciente ou da família. Uma recomendação técnica da Secretaria Municipal da Saúde, publicada em 17 de junho, lembra que ainda não existe um medicamento específico para o tratamento da covid-19. E, como não há evidências científicas que justifiquem o uso da cloroquina e da hidroxicloroquina contra o novo coronavírus, o uso deve ser evitado em pacientes com sintomas leves.\nLEIA TAMBÉM\nVeja todas as checagens sobre coronavírus publicadas pelo Estadão Verifica\nDocumento\nRECOMENDAÇÃO TÉCNICA PARA INTERVENÇÃO OPORTUNA NA COVID -19 EM CASOS SINTOMÁTICOS – PREFEITURA SP  \n PDF\nBruno Covas, de 40 anos, anunciou que estava com covid-19 no dia 13 de junho. O prefeito, que trata um câncer no sistema digestivo, recebeu o diagnóstico depois de um exame de rotina. Em sua conta oficial no Instagram, afirmou que não teve sintomas como febre, dor ou falta de ar e que passaria dez dias isolado, trabalhando de casa."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

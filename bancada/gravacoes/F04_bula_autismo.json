@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "90cf547938d0714f": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre saúde para ser verificada como verdadeira ou falsa.\"}",
+  "8027e3ac2c5e9117": "{\"alegacoes\": [{\"texto\": \"vacinas causam autismo\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"vacinas causam autismo tá na bula\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "a88efb2ac20180ed": "{\n  \"fatos\": [\n    \"vacinas causam autismo\",\n    \"Tá na bula!\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Tá na bula!\",\n      \"forca\": \"ausente\"\n    }\n  ],\n  \"opinioes\": [\n    \"Não adianta brigar comigo\"\n  ],\n  \"conclusao\": null\n}",
+  "83e428face79566a": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos indicam que a alegação é falsa, esclarecendo que não há relação causal entre vacinas e autismo e que o principal estudo sobre o tema foi retratado por fraudes.\"}",
+  "ad08ebbe7ce42fee": "{\"bloco1\": [{\"frase\": \"A bula não afirma que a vacina causa autismo.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O texto da bula diz que não é possível estabelecer relação de causa entre os eventos e a vacina.\", \"trecho\": \"T1\"}, {\"frase\": \"O estudo principal sobre esse tema foi retratado por fraudes.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'Não adianta brigar comigo' é uma opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: medo de dano oculto. A mensagem usa um texto da bula para sugerir perigo grave.\", \"bloco4\": \"Verifique o contexto completo dos textos citados em bulas médicas.\"}"
+ },
+ "busca": {
+  "0be8ee426d49c113": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "b103a02dd7-00",
+     "fragmento_id": "b103a02dd7-00-00",
+     "score": 0.6362980604171753,
+     "score_lexico": 18.663103103637695,
+     "score_denso": 0.8938513994216919,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2019-02-18",
+     "url": "https://piaui.folha.uol.com.br/lupa/2019/02/18/verificamos-bula-autismo/",
+     "alegacao": "#Verificamos: É falso que bula confirme relação de vacina com autismo",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula nas redes sociais a “informação” de que a bula em inglês da vacina Tríplice Bacteriana diz que ela causa autismo. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Não adianta brigar comigo: vacinas causam autismo. Tá na bula”\nImagem publicada no Facebook, com 65 compartilhamentos até o dia 18 de fevereiro de 2019\n\n\nA bula de uma marca específica de vacina Tríplice Bacteriana (que previne contra difteria, tétano e coqueluche) realmente mencionava “relatos” de ligação entre a dose de imunização e o autismo. Porém, o mesmo parágrafo do texto que acompanha a Tripedia em 2005 dizia o seguinte: “Como esses eventos foram relatados voluntariamente a partir de uma população de tamanho incerto, não é possível estimar sua frequência de forma confiável ou estabelecer uma relação causal [dos efeitos listados] com os componentes da vacina Tripedia”. Ou seja, a bula não diz que há uma relação direta entre autismo e a vacina em questão."
+    },
+    {
+     "unidade_id": "76dd27ed44-02",
+     "fragmento_id": "76dd27ed44-02-02",
+     "score": 0.6173256635665894,
+     "score_lexico": 10.493965148925781,
+     "score_denso": 0.8904316425323486,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2020-10-27",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/10/27/verificamos-audio-vacina-chinesa/",
+     "alegacao": "Essa é uma vacina que altera o código genético, vocês vão comprometer a vida de seus filhos e netos. Vocês vão causar síndromes perigosas que vão destruir a vida de seus filhos e netos, inclusive no sentido de fertilidade, de homossexualismo",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "eio desse DNA e modificá-lo, precisa ser um DNA”, afirma. “O coronavírus é de RNA e não tem capacidade de colocar o material genético em nosso DNA.” \nO boato sobre vacinas interferirem no código genético humano é antigo, diz a pesquisadora. Ela relata que algumas pessoas chegaram a afirmar que os imunizantes poderiam provocar autismo, mas lembra que o principal estudo que relatava isso foi retratado e descobriu-se que o pesquisador Andrew Wakefield tinha interesses econômicos nessas associações. “Cada vez mais comprova-se que as vacinas são seguras e eficientes”, ressalta."
+    },
+    {
+     "unidade_id": "503d53ca8f-00",
+     "fragmento_id": "503d53ca8f-00-03",
+     "score": 0.594852864742279,
+     "score_lexico": 11.463340759277344,
+     "score_denso": 0.8813718557357788,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2016-02-15",
+     "url": "https://www.boatos.org/saude/zika-e-uma-farsa-microcefalia-foi-causada-por-larvicida.html",
+     "alegacao": "Larvicida pyriproxyfen causou microcefalia; Zika é uma farsa #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "s em seu relatório, o Zika vírus nunca foi conhecido por causar deformações cerebrais em crianças: As epidemias anteriores de Zika não causaram defeitos congênitos em recém-nascidos, apesar de infectar 75% da população nesses países. Além disso, em outros países, como a Colômbia, não há registros de microcefalia; no entanto, há uma abundância de casos de Zika…É um ciclo vicioso, é claro: o governo pulveriza substâncias químicas que causam deformações cerebrais em crianças, mas, a fim de evitar culpar os produtos químicos, eles culpam os mosquitos, exigindo, assim, que produtos químicos mais tóxicos sejam pulverizados, causando ainda mais deformações que exigem ainda mais produtos químicos e assim por diante.Se tudo isso soa familiar, é porque isso é arrancando da cartilha da indústria de vacinas: Muitas vacinas realmente causam epidemias (é por isso que as crianças que são afetadas com sarampo e caxumba têm quase sempre sido previamente vacinadas contra o sarampo e caxumba), aumentando assim a demanda pública por mais vacinas que causam mais surtos, ad infinitum...Baseado inteirament"
+    },
+    {
+     "unidade_id": "da0297e31c-00",
+     "fragmento_id": "da0297e31c-00-04",
+     "score": 0.5825064182281494,
+     "score_lexico": 4.456489562988281,
+     "score_denso": 0.884851336479187,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-10-28",
+     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/10/28/e-fake-que-substancias-presentes-em-vacinas-para-a-covid-19-podem-causar-alzheimer-e-fibromialgia.ghtml",
+     "alegacao": "É #FAKE que substâncias presentes em vacinas para a Covid-19 podem causar Alzheimer e fibromialgia",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "de diferentes vacinas”, esclarece o médico.Tampouco há embasamento científico para dizer que adjuvantes de outras vacinas possam causar esses quadros. O mal de Alzheimer e a fibromialgia têm origem desconhecida. O Alzheimer pode ser determinado geneticamente, e a fibromialgia, decorrer de quadros de estresse.“Os adjuvantes são usados tradicionalmente nas vacinas. Não tem nenhum composto anormal. E o placebo é só o adjuvante da vacina, sem o composto que faz a resposta humana. Não vejo sentido nisso tudo que foi misturado nesse vídeo”, diz Ralcyon Teixeira, diretor da divisão médica do Hospital Emílio Ribas, em São Paulo.O homem que aparece nas imagens também diz que a CoronaVac pode gerar alteração do DNA humano – informação falsa que já circula há meses e que foi desmentida pela equipe do Fato ou Fake."
+    },
+    {
+     "unidade_id": "7567f6a954-00",
+     "fragmento_id": "7567f6a954-00-03",
+     "score": 0.5808874368667603,
+     "score_lexico": 13.450654983520508,
+     "score_denso": 0.8756688833236694,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-07-07",
+     "url": "https://www.boatos.org/saude/medicos-enzimas-cancer-vacinas-mortos.html",
+     "alegacao": "Médicos que descobriram enzimas do câncer em vacinas foram mortos #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "onfiáveis e com pedido de compartilhamento.Não bastasse isso, a história está publicada em um site que, volta e meia, publica fake news que viralizam. Um exemplo é a que aponta que o FBI descobriu que o Brasil vendeu a Copa para a Alemanha. Outra é a que aponta que um médico disse que vacinas é que causam surto de gripe. Enfim, o site não é nada confiável.Outro ponto no conteúdo que causa dúvida. O título fala em “médicos” encontrados mortos. Porém, o conteúdo fala apenas em um médico. Ou seja, o conteúdo não confirma o que está sendo vendido no título. Ao buscar mais sobre a história, descobrimos que, de fato, o “Dr. James Bradstreet” (Jeff Bradstreet) foi encontrado morto. Porém, está bem claro que ele não foi assassinado. Ele cometeu suicídio.A história circulou muito nos EUA e foi desmentida por sites de fact-checking. De acordo com o Politifact, a própria teoria de Bradstreet (que tinha como principal foco a cura do autismo com macrófago) já havia sido refutada e era considerada perigosa. De acordo com o Snopes, há outras versões do boato. Uma fala em cinco médicos mortos."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

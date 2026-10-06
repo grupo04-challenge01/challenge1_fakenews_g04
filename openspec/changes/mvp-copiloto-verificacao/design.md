@@ -767,7 +767,9 @@ Tasks 2.5, 3.2 e 3.4. As sondas de cada task rodam a etapa isolada, com a
 entrada pronta. Em 06/10 o fluxo inteiro rodou sobre 17 mensagens, com Gemma 4
 12B QAT e o índice reconstruído: fronteira, extração, decomposição, recuperação
 com prioridade de idioma, guarda e resposta. Passaram 8 de 17. Três defeitos
-eram do código, não do modelo, e são corrigidos aqui.
+eram do código, não do modelo, e são corrigidos aqui. O fluxo roda pela bancada
+em `bancada/`: `python -m bancada rodar` usa o modelo e o índice e grava as
+saídas em `bancada/gravacoes/`, e `--offline` as reproduz sem o modelo.
 
 **1. Marcador do bloco 3 sai do código** (`estrutura.py`, decisão 18). Em 5 dos
 6 casos da forense, o modelo escreveu os rótulos certos sem `Técnica:` —
