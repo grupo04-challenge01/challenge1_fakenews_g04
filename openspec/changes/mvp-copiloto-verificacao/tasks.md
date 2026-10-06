@@ -43,7 +43,8 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       (inapto só como metadado, `Veredito.referencias`), `apto_citacao` na
       busca; testes `test_ancoragem.py`, `test_estrutura.py`, `test_guarda.py`,
       `test_apto_citacao.py`; sonda da resposta 21/21; decisão 26 do
-      `design.md`, 06/10/2026
+      `design.md`, 06/10/2026; vizinhos da checagem citada e uma tentativa
+      antes de rebaixar, bancada 17/17, decisão 29, 06/10/2026
 
 ## 2. Verificação e veredito
 - [x] 2.1 **Vitor** Prompt de extração de alegação, com seleção quando há várias

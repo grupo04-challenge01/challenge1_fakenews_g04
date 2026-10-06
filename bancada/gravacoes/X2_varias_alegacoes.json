@@ -1,10 +1,10 @@
 {
  "chat": {
-  "7a70d74c77e8bdcb": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A usuária relata a interrupção de um tratamento médico por conta de uma crença em chá.\"}",
+  "7a70d74c77e8bdcb": "{\"categorias\": [\"conduta_individual\"], \"motivo\": \"A mensagem relata a interrupção de um tratamento médico por conta de uma crença em chá.\"}",
   "ac004aae2c52413e": "{\"alegacoes\": [\n  {\"texto\": \"O hospital de Sorocaba ficou lotado ontem\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O prefeito gastou 2 milhões numa praça\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"o chá de boldo cura hepatite\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"minha tia parou o remédio e melhorou\", \"saude\": true, \"risco\": \"alto\"}\n], \"opiniao\": null}",
   "6ac3a497f2fac7a1": "{\n  \"fatos\": [\n    \"O hospital de Sorocaba ficou lotado ontem.\",\n    \"O prefeito gastou 2 milhões numa praça.\",\n    \"O chá de boldo cura hepatite.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"minha tia parou o remédio e melhorou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": null,\n    \"decorre\": null,\n    \"salto\": null\n  }\n}",
-  "dd15b21da1a0c8f9": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Os trechos mencionam que o boldo é usado para tratar 'males do fígado' ou problemas hepáticos de forma geral, mas não há nenhuma informação que afirme ou negue que ele cure a hepatite.\"}",
-  "39ac398ffd5e5cdf": "{\"bloco1\": \"Foram buscadas informações sobre o uso do chá de boldo para tratar hepatite.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos científicos sobre plantas medicinais. Procure por fontes de saúde oficiais.\", \"bloco4\": \"Consulte sites de órgãos de saúde pública ou instituições de pesquisa médica.\"}"
+  "dd15b21da1a0c8f9": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Os trechos mencionam que o boldo é usado para tratar 'males do fígado' ou problemas hepáticos de forma geral, mas não há nenhuma informação sobre ele curar a hepatite.\"}",
+  "39ac398ffd5e5cdf": "{\"bloco1\": \"Pesquisamos informações sobre o uso do chá de boldo para tratar a hepatite.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos científicos sobre plantas medicinais. Procure por fontes de saúde oficiais.\", \"bloco4\": \"Consulte sites de órgãos governamentais de saúde ou revistas médicas confiáveis.\"}"
  },
  "busca": {
   "1380cdb9dfdb3e72": {

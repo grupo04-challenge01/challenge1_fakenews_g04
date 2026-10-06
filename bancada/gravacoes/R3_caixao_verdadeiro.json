@@ -1,10 +1,10 @@
 {
  "chat": {
-  "0a40830406fd7a50": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer saber se uma informação específica sobre um fato ocorrido é verdadeira.\"}",
+  "0a40830406fd7a50": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer saber se a informação sobre o enterro de uma pessoa com diagnóstico incorreto é verdadeira.\"}",
   "7fb6490d2038eee3": "{\"alegacoes\": [{\"texto\": \"enterraram uma menina em caixão lacrado como covid\", \"saude\": true, \"risco\": \"medio\"}], \"opiniao\": \"Absurdo\"}",
-  "9cff63f59a73798a": "{\n  \"fatos\": [\n    \"Uma menina foi enterrada em um caixão lacrado como caso de covid.\",\n    \"O exame da menina deu negativo.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Absurdo\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Isso é verdade?\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta uma pergunta sobre a veracidade do relato sem fornecer dados para confirmação.\"\n  }\n}",
+  "9cff63f59a73798a": "{\n  \"fatos\": [\n    \"Uma menina foi enterrada em caixão lacrado como caso de covid.\",\n    \"O exame da menina deu negativo.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Absurdo\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Isso é verdade?\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta uma pergunta sobre a veracidade do relato sem fornecer dados para confirmação.\"\n  }\n}",
   "1b36958aed5e2b94": "{\"rotulo\": \"verdadeiro\", \"trechos\": [\"T1\"], \"criterio\": \"O trecho confirma que uma menina foi colocada em um caixão lacrado por suspeita de covid-19, embora o exame posterior tenha dado negativo.\"}",
-  "7cd95d6057a28e09": "{\"bloco1\": [{\"frase\": \"A história de que uma menina foi enterrada em caixão lacrado por suspeita de covid-19 é real.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O exame da criança deu negativo apenas uma semana depois do sepultamento.\", \"trecho\": \"T1\"}, {\"frase\": \"A parte que diz 'Absurdo' é uma opinião e não pode ser checada.\", \"trecho\": \"\"}], \"bloco3\": \"A mensagem parecia difícil de acreditar porque envolve um relato muito forte sobre um erro no sepultamento.\", \"bloco4\": \"O fato foi confirmado por notícias que mostram o vídeo da família abrindo a urna.\"}"
+  "4c04c8a70f38f53c": "{\"bloco1\": [{\"frase\": \"Uma menina foi enterrada em caixão lacrado por suspeita de covid-19.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O exame da criança deu negativo uma semana depois.\", \"trecho\": \"T3\"}, {\"frase\": \"A parte 'Absurdo' é opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"A mensagem pareceu difícil de acreditar porque envolve um relato forte sobre erro em procedimento funerário.\", \"bloco4\": \"O fato foi confirmado por documentos da prefeitura e órgãos de saúde.\"}"
  },
  "busca": {
   "f6b3a6d50c75d61c": {
@@ -100,6 +100,76 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "20c0480e4ae76a3f": [
+   {
+    "unidade_id": "beff276238-00",
+    "fragmento_id": "beff276238-00-00",
+    "score": 0.7482718825340271,
+    "score_lexico": 28.424755096435547,
+    "score_denso": 0.9058445692062378,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "COMPROVA",
+    "data_publicacao": "2020-06-10",
+    "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
+    "alegacao": "É verdade que criança com suspeita de covid-19 foi colocada em caixão lacrado e, mais tarde, testou negativo",
+    "veredito_original": "Comprovado",
+    "veredito_chave": "comprovado",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "O procedimento de lacrar o caixão é padrão em casos de óbitos confirmados ou com suspeitas de coronavírus, como é o caso da morte de uma menina cujo caixão aparece em vídeo publicado nas redes sociais sendo aberto pela família. O resultado do exame foi divulgado somente uma semana depois e o teste deu negativo\nÉ verdadeira a história que circula nas redes sociais de que uma criança com suspeita de covid-19 foi colocada, sem limpeza, dentro de caixão lacrado. Ela, contudo, não havia sido infectada pelo novo coronavírus, de acordo com resultado do exame divulgado uma semana depois. Um vídeo, que mostra o momento que a família abre a urna e se depara com a menina suja de sangue, viralizou na internet.\nO caso ocorreu na cidade de Touros, no Rio Grande do Norte, no dia 19 de maio. A menina seria enterrada com a urna lacrada por suspeita de covid-19, mas a família abriu o caixão e descobriu que a limpeza do corpo não havia sido realizada para o sepultamento."
+   },
+   {
+    "unidade_id": "beff276238-00",
+    "fragmento_id": "beff276238-00-04",
+    "score": 0.721361517906189,
+    "score_lexico": 28.330501556396484,
+    "score_denso": 0.8923282623291016,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "COMPROVA",
+    "data_publicacao": "2020-06-10",
+    "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
+    "alegacao": "É verdade que criança com suspeita de covid-19 foi colocada em caixão lacrado e, mais tarde, testou negativo",
+    "veredito_original": "Comprovado",
+    "veredito_chave": "comprovado",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "gundo informações da Secretaria Municipal de Saúde, a criança de 9 anos deu entrada no Hospital de Touros com falta de ar, às 21h30 do dia 18 de maio. O caso se agravou e a menina morreu. Na declaração emitida pela unidade, o motivo da morte era “insuficiência respiratória aguda e suspeita de covid-19”. O diagnóstico, contudo, foi contestado pela família, segundo a própria prefeitura.\nO serviço funerário foi realizado com auxílio da prefeitura. Como havia suspeita de infecção pelo novo coronavírus, o caixão foi lacrado, conforme orientação do Ministério da Saúde.\nNo dia do sepultamento, familiares da menina, que contestavam o diagnóstico, resolveram abrir o caixão. O vídeo que circula na internet mostra o momento em que a urna é aberta e a criança aparece morta apenas com um pedaço de pano cobrindo o corpo, sem a devida limpeza. Nas imagens é possível ver sangue escorrendo do nariz da menina.\nRevoltada, a mãe da criança diz que jogaram a menina como um bicho dentro do caixão e que esse teria sido o motivo para lacrar a urna."
+   },
+   {
+    "unidade_id": "beff276238-00",
+    "fragmento_id": "beff276238-00-01",
+    "score": 0.6992390155792236,
+    "score_lexico": 15.52971076965332,
+    "score_denso": 0.8866202235221863,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "COMPROVA",
+    "data_publicacao": "2020-06-10",
+    "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
+    "alegacao": "É verdade que criança com suspeita de covid-19 foi colocada em caixão lacrado e, mais tarde, testou negativo",
+    "veredito_original": "Comprovado",
+    "veredito_chave": "comprovado",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "a urna lacrada por suspeita de covid-19, mas a família abriu o caixão e descobriu que a limpeza do corpo não havia sido realizada para o sepultamento. O procedimento de lacração é padrão em casos de suspeita de contaminação pelo novo coronavírus, de acordo com o Guia para o Manejo de Corpos no Contexto do Novo Coronavírus – COVID-19 do Ministério da Saúde.\nA Prefeitura de Touros abriu um processo administrativo para investigar o que ocorreu. E informou, uma semana após o fato, que o resultado do teste da criança deu negativo para o novo coronavírus e que o óbito não foi contabilizado nas estatísticas do estado de mortes relacionadas à pandemia.\nPor que investigamos?\nO Comprova monitora conteúdos sobre o novo coronavírus compartilhados em redes sociais e aplicativos de mensagens que tenham grande alcance e repercussão. No caso do vídeo investigado, em uma publicação no Facebook, no dia 22 de maio, ele foi visto por cerca de 8,4 milhões de pessoas."
+   },
+   {
+    "unidade_id": "beff276238-00",
+    "fragmento_id": "beff276238-00-02",
+    "score": 0.6951438188552856,
+    "score_lexico": 15.544282913208008,
+    "score_denso": 0.8849595785140991,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "COMPROVA",
+    "data_publicacao": "2020-06-10",
+    "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/e-verdade-que-crianca-com-suspeita-de-covid-19-foi-colocada-em-caixao-lacrado-e-mais-tarde-testou-negativo/",
+    "alegacao": "É verdade que criança com suspeita de covid-19 foi colocada em caixão lacrado e, mais tarde, testou negativo",
+    "veredito_original": "Comprovado",
+    "veredito_chave": "comprovado",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "nce e repercussão. No caso do vídeo investigado, em uma publicação no Facebook, no dia 22 de maio, ele foi visto por cerca de 8,4 milhões de pessoas.\nAlém disso, a história é compartilhada em um contexto em que mensagens tentam minimizar os efeitos da pandemia e questionam informações fornecidas por órgãos oficiais, alegando uma suposta supernotificação de casos contabilizados de mortes causadas pela covid-19 no Brasil.\nEm maio, o Comprova fez uma verificação de uma publicação enganosa a partir de um post que continha a foto de um caixão aberto com um travesseiro dentro. A alegação era de que caixões vazios estariam sendo enterrados no estado do Amazonas. A imagem era, na realidade, de 2017 e foi publicada em uma reportagem que denunciava um golpe para resgate de seguro de vida.\nO selo comprovado, para o Comprova, é fato verdadeiro, evento confirmado, localização comprovada ou conteúdo original publicado sem edição.\nComo verificamos?"
+   }
+  ]
  }
 }

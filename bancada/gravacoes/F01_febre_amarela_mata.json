@@ -1,10 +1,10 @@
 {
  "chat": {
-  "3c03f2adb4f81672": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma informação sobre saúde que precisa de verificação de veracidade.\"}",
+  "3c03f2adb4f81672": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário deseja verificar a veracidade de uma informação sobre efeitos colaterais da vacina.\"}",
   "475fdb0fa8ef0947": "{\"alegacoes\": [{\"texto\": \"a vacina da febre amarela mata em 50% dos casos\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Não deixem ninguém da família tomar!\"}",
-  "da228d1a6cc22289": "{\n  \"fatos\": [\n    \"a vacina da febre amarela mata em 50% dos casos\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"URGENTE!!!\",\n    \"Não deixem ninguém da família tomar!\"\n  ],\n  \"conclusao\": null\n}",
+  "da228d1a6cc22289": "{\n  \"fatos\": [\n    \"A vacina da febre amarela mata em 50% dos casos.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Não deixem ninguém da família tomar!\"\n  ],\n  \"conclusao\": null\n}",
   "e3157dcd326ef2a1": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a afirmação como boato, esclarecendo que não há qualquer fala sobre 50% de óbitos e que essa informação é falsa.\"}",
-  "d97e02337c5b990e": "{\"bloco1\": [{\"frase\": \"A informação sobre a letalidade da vacina é falsa.\", \"trecho\": \"T2\"}], \"bloco2\": [{\"frase\": \"Especialistas já esclareceram que não houve fala sobre 50% de óbitos.\", \"trecho\": \"T1\"}, {\"frase\": \"Essa história circula em redes sociais desde 2008.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte 'URGENTE!!!' e o pedido para não tomar a vacina são opiniões.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: medo de dano oculto, urgência fabricada. A mensagem usa um tom alarmista para espalhar um boato sobre riscos da vacina.\", \"bloco4\": \"Verifique se a informação vem de fontes oficiais de saúde antes de compartilhar.\"}"
+  "09b6798b5bc2882f": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que a informação é falsa.\", \"trecho\": \"T3\"}],\n \"bloco2\": [{\"frase\": \"A médica citada não disse que metade das pessoas morrem ao tomar a vacina.\", \"trecho\": \"T5\"}, {\"frase\": \"O número de 50% refere-se apenas à letalidade da doença em casos raros após a vacinação.\", \"trecho\": \"T5\"}, {\"frase\": \"A parte que pede para não deixar ninguém tomar é uma opinião e não se checa.\", \"trecho\": \"\"}],\n \"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem usa um áudio de entrevista fora de contexto para criar medo sobre a vacina.\",\n \"bloco4\": \"A confirmação ocorreu porque os dados reais foram confundidos com uma interpretação errada da fala médica.\"}"
  },
  "busca": {
   "f58c02f4e4997f70": {
@@ -100,6 +100,144 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "a2df7bdaa9f9b11a": [
+   {
+    "unidade_id": "4ebed93208-00",
+    "fragmento_id": "4ebed93208-00-03",
+    "score": 0.701012372970581,
+    "score_lexico": 32.47487258911133,
+    "score_denso": 0.9115083813667297,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2017-03-22",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+    "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "ama dele foi agora, 12h20, 12h30. Que foi a entrevista dele com essa dermatologista. Dão essa ajudinha até para a gente conseguir espalhar esse áudio. Então, beijinho.Vacina contra febre amarela mata em 50% dos casos?Não é preciso nem dizer que a informação causou um receio geral em tomar a vacina contra a febre amarela. Mas será mesmo que é verdadeira a informação que aponta que 50% das pessoas que tomam a vacina vêm a óbito? É claro que a resposta é não. Vamos aos fatos.O próprio Roberto Canazio e a reumatologista Selma Merenlender esclareceram a história no programa da rádio Globo no dia 22 de março de 2017. Esse áudio mostra a entrevista completa do dia 20 de março (que serviu como base para o boato) e uma nova entrevista no dia 22.Na reprodução da entrevista que foi ao ar no dia 20, é possível que ver há uma confusão com as informações repassadas. Para começar, a doutora citada é uma reumatologista e não uma dermatologista.Ao ouvir a entrevista, percebemos que nem de longe ela fala em 50% de óbitos."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-05",
+    "score": 0.6614314317703247,
+    "score_lexico": 30.853853225708008,
+    "score_denso": 0.8947590589523315,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "ação é simples: beber de 3 a 6 gotas de própolis por dia iria fazer com que o seu corpo produzisse um cheiro desagradável para o mosquito transmissor. O fato é que própolis é muito bom, mas não pra espantar o mosquito transmissor da febre amarela e da dengue. Vale lembrar que a história já circulou em 2008, quando falava só da dengue, e em 2016, quando falava da Zika.Bônus – Vacina tem 50% de letalidade e causa perda de visãoDe todos os boatos sobre a febre amarela que circularam pelas redes sociais, alguns alertavam para perigos sobre a doença e também sobre a vacina, outros pediam para as pessoas não se vacinarem devido aos efeitos colaterais da vacina e outros apresentavam um certo teor apocalíptico.E os dois boatos (bônus) que trazemos hoje se enquadram na última descrição. No primeiro, um dermatologista teria dito em um programa de rádio que a vacina contra febre amarela mata em 50% dos casos. Já a segunda, afirma que um estudo do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato."
+   },
+   {
+    "unidade_id": "4ebed93208-00",
+    "fragmento_id": "4ebed93208-00-05",
+    "score": 0.6995840668678284,
+    "score_lexico": 27.25692367553711,
+    "score_denso": 0.912263810634613,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2017-03-22",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+    "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "boato. “A pessoa comenta o que foi dito no programa e não a gravação. É preciso que a explicação seja ouvida na íntegra e não contada pelo internauta. Se não ouviu direito, pede que a gente coloque a gravação de novo, mas não sai espalhando por aí”, apontou.Resumindo: a informação que aponta que 50% das pessoas que tomam vacina contra febre amarela morrem é falsa e usou como fonte uma entrevista totalmente tirada de contexto. Reforçando o conselho de Canazio, muito cuidado na hora de espalhar informações como essa.PS.: esse artigo é uma sugestão de Claudia Capellani, Marco Cirigliano, Carmem Fokker e de diversos leitores via WhatsApp. Se você quiser sugerir um tema ao Boatos.org, entre em contato com a gente pelo site, Facebook ou WhatsApp no telefone (61) 99331- 6821.Jornalista e caçador de falcatruas na internet"
+   },
+   {
+    "unidade_id": "4ebed93208-00",
+    "fragmento_id": "4ebed93208-00-00",
+    "score": 0.6626321077346802,
+    "score_lexico": 30.698684692382812,
+    "score_denso": 0.8952484130859375,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2017-03-22",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+    "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Depois da confirmação de três casos de febre amarela no Rio de Janeiro, o governo do estado começou uma campanha de vacinação para prevenir a população de um surto. Como quase sempre acontece em casos de alertas contra doenças, diversas informações falsas começam a circular na internet. Há poucos dias desmentimos um caso que aponta que a vacina causava cegueira. Hoje, o alerta é mais grave ainda.Em um áudio que circula por WhatsApp, uma mulher afirma que uma dermatologista foi ao programa do Roberto Canazio, na Rádio Globo, e alertou que a vacina contra a febre amarela tem índice de letalidade de 50%. Ou seja, metade das pessoas que tomam a vacina vêm a óbito. Leia a transcrição do áudio:Meninas, boa tarde. Estava aqui em casa escutando o Roberto Canazio. Até estou tentando entrar no site da rádio Globo para ver se eu consigo pegar essa entrevista dele. Se vocês conseguirem, entra no Roberto Canazio. Ele entrevistou hoje a dermatologista falando sobre a vacina da febre amarela. Gente, ela é muito perigosa. Ela falou que quem tomar vai ter a reação. Não tem essa será que vai ter."
+   },
+   {
+    "unidade_id": "4ebed93208-00",
+    "fragmento_id": "4ebed93208-00-04",
+    "score": 0.6574559211730957,
+    "score_lexico": 28.578250885009766,
+    "score_denso": 0.8937497138977051,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2017-03-22",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-mata.html",
+    "alegacao": "Vacina contra febre amarela mata em 50% dos casos #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "começar, a doutora citada é uma reumatologista e não uma dermatologista.Ao ouvir a entrevista, percebemos que nem de longe ela fala em 50% de óbitos. Os números que ela passa são os seguintes: uma dose para 131 mil vai ter uma reação grave de alergia, uma a cada 150 mil doses vai ter encefalite, uma para 200 mil doses resultará em casos de febre amarela. Se a pessoa tiver mais de 60 anos, o número vai para uma a cada 40 mil. E aí, a letalidade no caso de contrair a doença por vacina é de 50%.Deu para entender? Não tem nada a ver com 50% das pessoas que tomam a vacina vão a óbito. Apesar de todas as ressalvas que a médica faz (como por exemplo, pessoas com artrite, psioríase e outras doenças que prejudicam o sistema imunológico não poderem tomar a vacina), ela não citou um número tão alarmante como “50% de pessoas que tomam a vacina morrem”.Canazio ainda fez alguns comentários sobre o áudio que gerou o boato. “A pessoa comenta o que foi dito no programa e não a gravação. É preciso que a explicação seja ouvida na íntegra e não contada pelo internauta."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-02",
+    "score": 0.6157803535461426,
+    "score_lexico": 20.86231231689453,
+    "score_denso": 0.8817382454872131,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "tra febre amarela não é segura. Além disso, ela também afirmava que a vacina só era dada, porque era melhor se vacinar do que morrer de febre amarela. O fato da mulher usar o nome do Instituto Butantan e até trazer alguns fatos verdadeiros sobre o assunto confundiu muita gente. Apesar disso, a história não passou de boato. A vacina é segura sim, basta ficar de olho na lista do grupo de risco.4) Médico de Sorocaba diz que vacina paralisa o fígadoE parece que os médicos “gostaram” de falar sobre a vacina da febre amarela. Nessa história, a esposa de um médico de Sorocaba afirma que o marido alertou para os riscos de se tomar a vacina da febre amarela. De acordo com o médico, a vacina paralisa o fígado. E tem mais, ele também acusa o governo de usar essa manobra para matar a população sem que ela perceba. A teoria da conspiração é tão doida, que só a equipe do Boatos.org para desvendar a história."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-06",
+    "score": 0.6082422137260437,
+    "score_lexico": 18.28250503540039,
+    "score_denso": 0.8803085684776306,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato. No caso da primeira, se tratou apenas de uma confusão de quem ouviu a entrevista. No caso da segunda, foi apenas má fé, já que o tal instituto nem existe."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-01",
+    "score": 0.5926549434661865,
+    "score_lexico": 20.260011672973633,
+    "score_denso": 0.8753389716148376,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "a febre amarela ser transmitida, é necessário um vetor, ou seja, um mosquito. Macacos não transmitem a doença para humanos e nem para outros macacos. E vale lembrar que matar animais silvestres é considerado crime ambiental.2) Febre amarela é uma farsa criada para vender vacinasEssa afirmação não é nova. Sempre que o surto de uma doença é registrado, teorias de que a doença é uma farsa e só foi inventada para que a indústria farmacêutica venda vacinas ou medicamentos começam a pipocar pela internet. No caso da febre amarela, o vídeo afirmava que a doença teria sido criada pelo governo para desviar recursos. A história é tão sem pé nem cabeça, que os fatos apresentados pela pessoa que aparece no vídeo são simplesmente mentiras. Ou seja, boato.3) Médica do Butantan alerta contra febre amarelaEsse foi um áudio muito divulgado no Whatsapp e enganou muita gente. No áudio, uma suposta médica do Instituto Butantan teria dito que a vacina contra febre amarela não é segura. Além disso, ela também afirmava que a vacina só era dada, porque era melhor se vacinar do que morrer de febre amarela."
+   }
+  ]
  }
 }

@@ -112,8 +112,11 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
                            lambda par: par[1])
         veredito = etapa("guarda", lambda: guarda.verificar(alegacao, trechos, chat=chat,
                                                             limiar=limiar))
+        # Decisão 29: a resposta vê os fragmentos vizinhos das checagens citadas.
+        expandir = lambda ts: recuperador.expandir(alegacao, ts, modo=modo)  # noqa: E731
         resp = etapa("resposta", lambda: estrutura.responder(
-            texto, alegacao, veredito, decomposicao=asdict(dec), lacuna=lacuna, chat=chat),
+            texto, alegacao, veredito, decomposicao=asdict(dec), lacuna=lacuna, chat=chat,
+            expandir=expandir),
             lambda r: {**asdict(r), "texto": r.texto})
         rastro["resposta"] = {"forma": resp.forma, "texto": resp.texto,
                               "defeitos": resp.defeitos}

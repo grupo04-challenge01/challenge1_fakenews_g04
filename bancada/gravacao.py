@@ -68,6 +68,17 @@ class _Busca:
         return r
 
 
+    def expandir(self, consulta, trechos, modo="hibrida"):
+        c = chave("expandir", consulta, [t["fragmento_id"] for t in trechos], modo, self.alfa)
+        if self._real is None:
+            if c not in self._dados["busca"]:
+                raise GravacaoAusente(f"vizinhos sem gravação: {consulta!r}, {modo}, alfa={self.alfa}")
+            return self._dados["busca"][c]
+        resultado = self._real.expandir(consulta, trechos, modo=modo)
+        self._dados["busca"][c] = resultado
+        return resultado
+
+
 def gravando(dados, chat, recuperador):
     """(chat, recuperador) que repassam ao real e guardam o resultado em `dados`."""
     def chat_gravado(sistema, usuario):

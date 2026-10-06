@@ -1,10 +1,10 @@
 {
  "chat": {
-  "48317649ab4ff8e8": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem solicita a verificação da veracidade de uma informação sobre tratamento de doença.\"}",
+  "48317649ab4ff8e8": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem pede a verificação da veracidade de uma informação sobre tratamento de saúde.\"}",
   "37c6adde7d53a126": "{\"alegacoes\": [{\"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"Compartilhem urgente, vamos ajudar as pessoas!\"}",
   "7da10d9a9cd610af": "{\n  \"fatos\": [\n    \"suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Compartilhem urgente, vamos ajudar as pessoas!\"\n  ],\n  \"conclusao\": null\n}",
   "16b94a49811c7142": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"As agências de checagem afirmam que não existe nenhum estudo da UFMG que comprove a eficácia do suco de inhame no tratamento da dengue.\"}",
-  "66ea6d0b01869207": "{\"bloco1\": [{\"frase\": \"Não existe estudo da UFMG sobre esse suco.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O inhame não é um remédio para a dengue.\", \"trecho\": \"T2\"}, {\"frase\": \"A parte sobre compartilhar urgente é uma opinião e não se checa.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com alimento simples e pede compartilhamento imediato.\", \"bloco4\": \"Verifique sempre a fonte oficial da universidade antes de acreditar em curas caseiras.\"}"
+  "2b99865de3b80fc9": "{\"bloco1\": [{\"frase\": \"A checagem confirmou que não existe tal estudo.\", \"trecho\": \"T1\"}],\n\"bloco2\": [{\"frase\": \"A universidade nega a existência dessa pesquisa.\", \"trecho\": \"T3\"}, {\"frase\": \"O inhame cru pode conter bactérias se não for bem lavado.\", \"trecho\": \"T3\"}, {\"frase\": \"Essa parte da mensagem é opinião e não se checa.\", \"trecho\": \"\"}],\n\"bloco3\": \"Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura rápida com algo caseiro e usa um especialista inexistente.\",\n\"bloco4\": \"Verifique sempre em sites oficiais de saúde ou nos canais da própria universidade.\"}"
  },
  "busca": {
   "070facc943de3c8d": {
@@ -100,6 +100,93 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "313a66f6611b5464": [
+   {
+    "unidade_id": "50cb17dd68-00",
+    "fragmento_id": "50cb17dd68-00-00",
+    "score": 0.7851542830467224,
+    "score_lexico": 89.85535430908203,
+    "score_denso": 0.9256025552749634,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-02-17",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
+    "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Circula pelas redes sociais que a Universidade Federal de Minas Gerais (UFMG) realizou um estudo que mostrou a eficácia do suco de inhame contra os sintomas da dengue. Segundo o texto, basta tomar uma bebida feita com o alimento batido cru, com água, no liquidificador, para cortar os efeitos da doença em apenas quatro horas. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Se você está com Dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da Dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água”\nTexto de post no Facebook que, até as 16h de 17 de fevereiro de 2020, tinha mais de 2 mil compartilhamentos\n\n\nA informação analisada pela Lupa é falsa. Não foi realizado qualquer estudo pela UFMG que comprovasse a eficiência do suco de inhame no tratamento da dengue."
+   },
+   {
+    "unidade_id": "c5d4b94adb-00",
+    "fragmento_id": "c5d4b94adb-00-01",
+    "score": 0.7761020660400391,
+    "score_lexico": 78.86619567871094,
+    "score_denso": 0.9199079871177673,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "fato-ou-fake",
+    "data_publicacao": "2020-02-18",
+    "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/02/18/e-fake-que-ufmg-fez-estudo-que-diz-que-suco-de-inhame-corta-os-efeitos-da-dengue-em-apenas-quatro-horas.ghtml",
+    "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas",
+    "veredito_original": "fake",
+    "veredito_chave": "fake",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "cina da UFMG. Ela afirmou: \"Não existe estudo que comprove a eficácia e a efetividade desse recurso na dengue\".O G1 fez reportagem a respeito em 2019. Na ocasião, o médico Carlos Caldeira, coordenador do Centro de Assistência Toxicológica (Ceatox) do Hospital de Base de Rio Preto, disse que o suco de inhame não é um \"remédio\" capaz de aumentar rapidamente a imunidade ou \"agir de forma mágica\" nos sintomas da doença, que incluem febre, cansaço, dor de cabeça e no fundo dos olhos.Veja o que diz a mensagem #FAKE\"Se você está com dengue preste atenção: de acordo com um estudo realizado pela UFMG (mas ainda não divulgado), o suco feito de inhame (carazinho) corta os efeitos da dengue em apenas 4 horas. O inhame deve ser batido cru no liquidificador, apenas com água. Compartilhem, gente, muitos casos de dengue, vamos ajudar as pessoas.\"Vídeo: Veja como identificar uma mensagem falsaVEJA outras checagens feitas pela equipe do FATO ou FAKE\nAdicione nosso número de Whatsapp: +55 (21) 97305-9827 (após adicionar o número, mande uma saudação para ser inscrito"
+   },
+   {
+    "unidade_id": "50cb17dd68-00",
+    "fragmento_id": "50cb17dd68-00-01",
+    "score": 0.738592267036438,
+    "score_lexico": 60.781978607177734,
+    "score_denso": 0.8992469310760498,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-02-17",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
+    "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "mação analisada pela Lupa é falsa. Não foi realizado qualquer estudo pela UFMG que comprovasse a eficiência do suco de inhame no tratamento da dengue. Em nota, a assessoria de imprensa da universidade afirmou não ter encontrado nenhuma pesquisa desse tipo. Segundo a assessoria, esse boato já circula desde, pelo menos, 2019. Na época, a TV UFMG produziu um vídeo sobre o tema, desmentindo este e outros boatos sobre a doença.\nNa gravação, publicada em 9 de maio de 2019, a professora Marise Fonseca, da Faculdade de Medicina da UFMG, afirma que nenhuma pesquisa chegou à conclusão de que o suco de inhame “corta os efeitos da doença”. “Não existe estudo que comprove a eficácia, a efetividade desse recurso na dengue”, disse. Ela alertou também para o risco no consumo do inhame cru, como foi sugerido pelo post, uma vez que o alimento pode vir acompanhado de bactérias se não houver uma higienização adequada.\n\nO Ministério da Saúde não lista nenhuma solução caseira na página que mantém sobre a dengue."
+   },
+   {
+    "unidade_id": "50cb17dd68-00",
+    "fragmento_id": "50cb17dd68-00-02",
+    "score": 0.6931594610214233,
+    "score_lexico": 37.99525451660156,
+    "score_denso": 0.8819438219070435,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "lupa",
+    "data_publicacao": "2020-02-17",
+    "url": "https://piaui.folha.uol.com.br/lupa/2020/02/17/verificamos-estudo-ufmg-suco-inhame-contra-dengue/",
+    "alegacao": "#Verificamos: É falso que estudo da UFMG indica tomar suco de inhame contra dengue",
+    "veredito_original": "FALSO",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "do de bactérias se não houver uma higienização adequada.\n\nO Ministério da Saúde não lista nenhuma solução caseira na página que mantém sobre a dengue. A pasta afirma que não há tratamento específico para a doença e recomenda  a procura de um profissional de saúde para que seja feito o diagnóstico. Para aliviar os sintomas, indica que o paciente faça repouso e tome muita água para se manter hidratado. Essas medidas, contudo, não dispensam a consulta médica."
+   },
+   {
+    "unidade_id": "c5d4b94adb-00",
+    "fragmento_id": "c5d4b94adb-00-00",
+    "score": 0.7666767835617065,
+    "score_lexico": 64.75727081298828,
+    "score_denso": 0.9148772358894348,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "fato-ou-fake",
+    "data_publicacao": "2020-02-18",
+    "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/02/18/e-fake-que-ufmg-fez-estudo-que-diz-que-suco-de-inhame-corta-os-efeitos-da-dengue-em-apenas-quatro-horas.ghtml",
+    "alegacao": "É #FAKE que UFMG fez estudo que diz que suco de inhame corta os efeitos da dengue em apenas quatro horas",
+    "veredito_original": "fake",
+    "veredito_chave": "fake",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Circula pelas redes sociais uma mensagem que diz que um estudo realizado pela UFMG concluiu que o suco de inhame corta dos efeitos da dengue em apenas quatro horas. A mensagem é #FAKE.A assessoria da universidade diz que não foi identificado nenhum estudo com esse teor.A mensagem falsa afirma que o estudo \"ainda não foi divulgado\". No entanto, já faz anos que essa mensagem circula. O boato está na internet desde pelo menos 2013.Em 2019, a UFMG fez até um vídeo em que uma especialista fala a respeito do tema. E nega que tenha havido qualquer estudo com essa conclusão.A entrevistada é a professora Marise Fonseca, do Departamento de Clínica Médica da Faculdade de Medicina da UFMG. Ela afirmou: \"Não existe estudo que comprove a eficácia e a efetividade desse recurso na dengue\".O G1 fez reportagem a respeito em 2019."
+   }
+  ]
  }
 }

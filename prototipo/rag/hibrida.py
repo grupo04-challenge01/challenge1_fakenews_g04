@@ -118,6 +118,10 @@ PRIORIDADE_IDIOMA = ("pt-BR", "en")
 # a positiva mais fraca da calibração fica em 0,5785.
 LIMIAR_EVIDENCIA = 0.55
 
+# Fragmentos da mesma checagem que acompanham cada trecho citado até a resposta
+# (decisão 29). Uma checagem tem mediana de 3 fragmentos e p90 de 8.
+TETO_VIZINHOS = 3
+
 
 def cobertura_padrao(resultados: list[dict], limiar: float = LIMIAR_EVIDENCIA) -> bool:
     """A camada cobre se ao menos uma unidade alcança o limiar (task 1.5).
@@ -244,35 +248,37 @@ class Recuperador:
                 melhor[uid] = int(i)
 
         ordenadas = sorted(melhor.items(), key=lambda par: -score[par[1]])[:k]
-        resultado = []
-        for uid, i in ordenadas:
-            fragmento = self.fragmentos[i]
-            unidade = self.unidades[uid]
-            resultado.append({
-                "unidade_id": uid,
-                "fragmento_id": fragmento["fragmento_id"],
-                "score": float(score[i]),
-                "score_lexico": float(s_lex[i]),
-                "score_denso": float(s_den[i]),
-                "idioma": fragmento.get("idioma"),
-                # Decisão 17: fragmento inapto não serve de âncora. A busca só
-                # entrega a marca; ausente (índice anterior ao esquema 1.0.0)
-                # sai `None`, e a ancoragem decide — a busca não supõe valor.
-                "apto_citacao": fragmento.get("apto_citacao"),
-                "agencia": unidade["agencia"],
-                "data_publicacao": unidade["data_publicacao"],
-                "url": unidade["url"],
-                "alegacao": unidade["alegacao"],
-                "veredito_original": unidade["veredito_original"],
-                "veredito_chave": unidade["veredito_chave"],
-                "cobre_multiplas_alegacoes": unidade["cobre_multiplas_alegacoes"],
-                # Trecho literal, para citação fiel. A disponibilidade do texto
-                # no índice não autoriza reproduzi-lo inteiro ao usuário
-                # (arquitetura-recuperacao, cenário "Indexação não autoriza
-                # reprodução").
-                "trecho": fragmento["trecho"],
-            })
-        return resultado
+        return [self._resultado(i, score, s_lex, s_den) for _, i in ordenadas]
+
+    def _resultado(self, i: int, score, s_lex, s_den) -> dict:
+        """Um fragmento no formato que a busca entrega, com os dados da unidade."""
+        fragmento = self.fragmentos[i]
+        uid = fragmento["unidade_id"]
+        unidade = self.unidades[uid]
+        return {
+            "unidade_id": uid,
+            "fragmento_id": fragmento["fragmento_id"],
+            "score": float(score[i]),
+            "score_lexico": float(s_lex[i]),
+            "score_denso": float(s_den[i]),
+            "idioma": fragmento.get("idioma"),
+            # Decisão 17: fragmento inapto não serve de âncora. A busca só
+            # entrega a marca; ausente (índice anterior ao esquema 1.0.0)
+            # sai `None`, e a ancoragem decide — a busca não supõe valor.
+            "apto_citacao": fragmento.get("apto_citacao"),
+            "agencia": unidade["agencia"],
+            "data_publicacao": unidade["data_publicacao"],
+            "url": unidade["url"],
+            "alegacao": unidade["alegacao"],
+            "veredito_original": unidade["veredito_original"],
+            "veredito_chave": unidade["veredito_chave"],
+            "cobre_multiplas_alegacoes": unidade["cobre_multiplas_alegacoes"],
+            # Trecho literal, para citação fiel. A disponibilidade do texto
+            # no índice não autoriza reproduzi-lo inteiro ao usuário
+            # (arquitetura-recuperacao, cenário "Indexação não autoriza
+            # reprodução").
+            "trecho": fragmento["trecho"],
+        }
 
     def buscar(self, consulta: str, k: int = 10, modo: str = "hibrida",
                fusao: str = "score") -> list[dict]:
@@ -324,3 +330,34 @@ class Recuperador:
 
         idioma, resultados = reserva if reserva else (None, [])
         return Recuperacao(idioma, resultados, False, tuple(consultados))
+
+    def expandir(self, consulta: str, trechos: list[dict], teto: int = TETO_VIZINHOS,
+                 modo: str = "hibrida", fusao: str = "score") -> list[dict]:
+        """Os trechos citados e, depois deles, outros fragmentos das mesmas checagens.
+
+        A busca reduz a unidade e entrega o melhor fragmento de cada checagem,
+        mas o fato que decide a resposta pode estar em outro fragmento dela. No
+        R4 da bancada, a data do vídeo estava no quarto fragmento, o modelo só
+        viu o primeiro e escreveu a data de memória (decisão 29). Cada checagem
+        citada ganha até `teto` fragmentos seus, pelos mais próximos da
+        consulta. Os citados ficam na frente e na mesma ordem, para que T1..Tn
+        continuem sendo os trechos do veredito.
+        """
+        if not trechos:
+            return []
+        if not hasattr(self, "_por_unidade"):
+            self._por_unidade: dict[str, list[int]] = {}
+            for i, f in enumerate(self.fragmentos):
+                self._por_unidade.setdefault(f["unidade_id"], []).append(i)
+
+        score, s_lex, s_den = self._pontuar(consulta, modo, fusao)
+        saida = list(trechos)
+        vistos = {t["fragmento_id"] for t in trechos}
+        for t in trechos:
+            outros = [i for i in self._por_unidade.get(t["unidade_id"], [])
+                      if self.fragmentos[i]["fragmento_id"] not in vistos]
+            outros.sort(key=lambda i: -score[i])
+            for i in outros[:teto]:
+                saida.append(self._resultado(i, score, s_lex, s_den))
+                vistos.add(self.fragmentos[i]["fragmento_id"])
+        return saida

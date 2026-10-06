@@ -1,11 +1,10 @@
 {
  "chat": {
-  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina e busca validação dessa informação.\"}",
+  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina que precisa ser verificada.\"}",
   "7c966d66dbf902a5": "{\"alegacoes\": [{\"texto\": \"o marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela paralisa o fígado\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"a vacina da febre amarela já matou gente\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"É o governo querendo matar a população. Não tomem!\"}",
   "0da07dd4f3193e1e": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado\",\n    \"A vacina da febre amarela já matou gente\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"marido dela, médico em Sorocaba\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população.\",\n    \"Não tomem!\"\n  ],\n  \"conclusao\": null\n}",
-  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos classificam a alegação como boato, confirmando que a história sobre o médico de Sorocaba e a vacina paralisando o fígado é falsa.\"}",
-  "d37a1a7547c298bd": "{\"bloco1\": [{\"frase\": \"A história sobre o médico de Sorocaba e a vacina é falsa.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"Essa mensagem contém opiniões que não podem ser checadas.\", \"trecho\": \"\"}], \"bloco3\": \"Técnica: fonte sem nome, medo de dano oculto. A mensagem usa um suposto médico para espalhar medo e teorias de conspiração.\", \"bloco4\": \"Verifique se a informação vem de órgãos oficiais de saúde.\"}",
-  "528de93e1c3a1948": "{\"bloco1\": \"Foram buscadas informações sobre danos graves causados pela vacina da febre amarela.\", \"bloco2\": \"O fato de não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique as fontes oficiais de saúde e procure por estudos científicos.\", \"bloco4\": \"Procure em sites de órgãos governamentais de saúde ou instituições médicas conhecidas.\"}"
+  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos identificam a alegação como boato, esclarecendo que a história sobre o médico de Sorocaba e a vacina paralisando o fígado é falsa.\"}",
+  "b582b7bd4fcbe6fb": "{\"bloco1\": [{\"frase\": \"A história do médico de Sorocaba é um boato.\", \"trecho\": \"T1\"}],\n \"bloco2\": [{\"frase\": \"A vacina não destrói o fígado.\", \"trecho\": \"T5\"}, {\"frase\": \"Não há registro de nenhum médico que tenha falado isso.\", \"trecho\": \"T4\"}, {\"frase\": \"Aquela parte é opinião e não se checa.\", \"trecho\": \"É o governo querendo matar a população. Não tomem!\"}],\n \"bloco3\": \"Técnica: fonte sem nome, cura milagrosa. A mensagem usa um médico fictício para espalhar medo e pedir que as pessoas não se vacinem.\",\n \"bloco4\": \"A checagem mostrou que o texto é vago e não cita nomes ou registros reais.\"}"
  },
  "busca": {
   "2ef93bd5764a4ddf": {
@@ -101,6 +100,144 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "e2129579f820bda5": [
+   {
+    "unidade_id": "ad3b65d166-00",
+    "fragmento_id": "ad3b65d166-00-00",
+    "score": 0.7825806736946106,
+    "score_lexico": 75.59331512451172,
+    "score_denso": 0.9099765419960022,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-28",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
+    "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "Boato – O marido da Simone, médico de Sorocaba, disse que a vacina contra febre amarela paralisa o fígado, que o governo quer matar as pessoas sem elas perceberem e que ninguém deve, de jeito nenhum, tomar a vacina.Atualmente, dois assuntos têm dominado o noticiário brasileiro: a condenação de Lula no TRF-4 e o surto de febre amarela no Sudeste. É claro que a grande maioria dos boatos que surgem na web estão relacionados a um dos dois assuntos. No caso de hoje, a história está relacionada à febre amarela.Circula na internet um alerta que seria “da minha prima Simone, que mora em Sorocaba”. De acordo com o texto, um médico do hospital da cidade (marido da Simone) teria falado para ninguém tomar a vacina contra febre amarela. De acordo com a mensagem, a vacina “paralisa o fígado” e será sendo usada pelo governo para matar as pessoas."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-02",
+    "score": 0.7198721766471863,
+    "score_lexico": 59.00989532470703,
+    "score_denso": 0.8829622864723206,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "tra febre amarela não é segura. Além disso, ela também afirmava que a vacina só era dada, porque era melhor se vacinar do que morrer de febre amarela. O fato da mulher usar o nome do Instituto Butantan e até trazer alguns fatos verdadeiros sobre o assunto confundiu muita gente. Apesar disso, a história não passou de boato. A vacina é segura sim, basta ficar de olho na lista do grupo de risco.4) Médico de Sorocaba diz que vacina paralisa o fígadoE parece que os médicos “gostaram” de falar sobre a vacina da febre amarela. Nessa história, a esposa de um médico de Sorocaba afirma que o marido alertou para os riscos de se tomar a vacina da febre amarela. De acordo com o médico, a vacina paralisa o fígado. E tem mais, ele também acusa o governo de usar essa manobra para matar a população sem que ela perceba. A teoria da conspiração é tão doida, que só a equipe do Boatos.org para desvendar a história."
+   },
+   {
+    "unidade_id": "ad3b65d166-00",
+    "fragmento_id": "ad3b65d166-00-01",
+    "score": 0.7457767724990845,
+    "score_lexico": 68.31715393066406,
+    "score_denso": 0.892287015914917,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-28",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
+    "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "uém tomar a vacina contra febre amarela. De acordo com a mensagem, a vacina “paralisa o fígado” e será sendo usada pelo governo para matar as pessoas. Leia:A minha prima Simone mora em Sorocaba o marido dela é médico ,trabalha no hospital de Sorocaba, pediu pra ela avisar nossa família e amigos, de jeito nenhum tomar a vacina da febre amarela é para nos proteger com repelente , inseticida, tela nas janelas, mas jamais tomar esta vacina , ela paralisa o fígado e já morreu muitas pessoas e não estão divulgando.Falou que p tomar cuidado que o governo tem suas manobras p matar a população sem perceberem *** ESTOU REPASSANDO, ACABEI DE RECEBER ***Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba?Assim como em outros alertas contra e a favor da vacina da febre amarela, a história acabou sendo muito compartilhada. Mas será mesmo que a vacina “destrói” o fígado e não se deve tomá-la de jeito nenhum? A resposta é não. Vamos aos fatos.De fato, a vacina contra febre amarela (assim como todas as medicações) podem produzir efeitos colaterais."
+   },
+   {
+    "unidade_id": "ad3b65d166-00",
+    "fragmento_id": "ad3b65d166-00-04",
+    "score": 0.7311798930168152,
+    "score_lexico": 44.30632400512695,
+    "score_denso": 0.8884031176567078,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-28",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
+    "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "é utilizada em um boato. Depois da enfermeira de São Paulo, a enfermeira de Belo Horizonte, a médica do Butantan, agora é a vez do médico de Sorocaba. Assim como nas outras vezes, o “Dr.” não tem nome, não é dito qual hospital de Sorocaba ele é e nem qualquer registro de que algum médico tenha falado no assunto.Quarto ponto: o texto carrega as principais características de boatos online. É vago (afinal, não diz sequer o nome do médico), tem erros de português, alarmista e tem pedido de compartilhamento. Quem acompanha o Boatos.org sabe que devemos desconfiar (e muito) de textos assim.Resumindo: essas campanhas de desinformação em relação à vacina da febre amarela que têm aparecido na internet são gravíssimas. E, ao contrário do que diz o texto que circula online, a vacina não “destrói o fígado” e nenhum médico seria maluco de falar esse tipo de sandice.Ps.: Esse artigo é uma sugestão de leitores do Boatos.org."
+   },
+   {
+    "unidade_id": "ad3b65d166-00",
+    "fragmento_id": "ad3b65d166-00-05",
+    "score": 0.7155870199203491,
+    "score_lexico": 45.33271408081055,
+    "score_denso": 0.8825795650482178,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-28",
+    "url": "https://www.boatos.org/saude/vacina-febre-amarela-figado-sorocaba.html",
+    "alegacao": "Vacina contra febre amarela paralisa o fígado, diz médico de Sorocaba #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "a vacina não “destrói o fígado” e nenhum médico seria maluco de falar esse tipo de sandice.Ps.: Esse artigo é uma sugestão de leitores do Boatos.org. Se você quiser sugerir um tema ao Boatos.org, entre em contato com a gente pelo site, Facebook e WhatsApp no telefone (61) 994325485.Jornalista e caçador de falcatruas na internet"
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-06",
+    "score": 0.5529688000679016,
+    "score_lexico": 18.28250503540039,
+    "score_denso": 0.8498684167861938,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato. No caso da primeira, se tratou apenas de uma confusão de quem ouviu a entrevista. No caso da segunda, foi apenas má fé, já que o tal instituto nem existe."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-01",
+    "score": 0.5519092082977295,
+    "score_lexico": 20.260011672973633,
+    "score_denso": 0.8494056463241577,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "a febre amarela ser transmitida, é necessário um vetor, ou seja, um mosquito. Macacos não transmitem a doença para humanos e nem para outros macacos. E vale lembrar que matar animais silvestres é considerado crime ambiental.2) Febre amarela é uma farsa criada para vender vacinasEssa afirmação não é nova. Sempre que o surto de uma doença é registrado, teorias de que a doença é uma farsa e só foi inventada para que a indústria farmacêutica venda vacinas ou medicamentos começam a pipocar pela internet. No caso da febre amarela, o vídeo afirmava que a doença teria sido criada pelo governo para desviar recursos. A história é tão sem pé nem cabeça, que os fatos apresentados pela pessoa que aparece no vídeo são simplesmente mentiras. Ou seja, boato.3) Médica do Butantan alerta contra febre amarelaEsse foi um áudio muito divulgado no Whatsapp e enganou muita gente. No áudio, uma suposta médica do Instituto Butantan teria dito que a vacina contra febre amarela não é segura. Além disso, ela também afirmava que a vacina só era dada, porque era melhor se vacinar do que morrer de febre amarela."
+   },
+   {
+    "unidade_id": "7f62165646-00",
+    "fragmento_id": "7f62165646-00-03",
+    "score": 0.5514494180679321,
+    "score_lexico": 17.983623504638672,
+    "score_denso": 0.8497012853622437,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2018-01-30",
+    "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
+    "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "essa manobra para matar a população sem que ela perceba. A teoria da conspiração é tão doida, que só a equipe do Boatos.org para desvendar a história. E, claro, colocá-la no lugar onde ela merece: na estante de boatos.5) Enfermeira de MG diz que ninguém deve tomar a vacinaE nem só da classe médica vivem os boatos envolvendo a febre amarela ou a vacina contra a doença. Nessa história, uma enfermeira de Belo Horizonte (MG) teria afirmado que a vacina é uma farsa inventada pelo governo e que ninguém deve se vacinar. Novamente, uma teoria da conspiração contra o governo foi levantada. Entretanto, a história apresenta tantos equívocos e traz tanta desinformação, que não foi difícil mostrar que se tratava apenas de um boato.6) Enfermeira do HC fala sobre epidemia na cidade de São PauloE os boatos envolvendo pessoas da área da saúde opinando sobre a vacina da febre amarela e sobre a doença não pararam por aí."
+   }
+  ]
  }
 }

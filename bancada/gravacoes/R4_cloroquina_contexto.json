@@ -1,22 +1,21 @@
 {
  "chat": {
-  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma notícia sobre política de saúde pública.\"}",
-  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"O prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
+  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer verificar a veracidade de uma notícia sobre política de saúde pública.\"}",
+  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"o prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
   "fd1b58b7a333f1bc": "{\n  \"fatos\": [\n    \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "fe22050d6929ba1b": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\"], \"criterio\": \"A agência classificou como boato a afirmação de que o prefeito Bruno Covas teria acabado de liberar a cloroquina em 2021, esclarecendo que ele já havia anunciado a inclusão do medicamento como opção de tratamento em abril de 2020.\"}",
-  "8382ff6e22121eee": "{\"bloco1\": [{\"frase\": \"A informação sobre a liberação recente é falsa.\", \"trecho\": \"T1\"}], \"bloco2\": [{\"frase\": \"O prefeito já havia anunciado o uso do remédio em abril de 2020.\", \"trecho\": \"T1\"}], \"bloco3\": \"Técnica: fora de contexto. O vídeo é antigo e foi usado para contar uma história nova.\", \"bloco4\": \"Verifique a data da publicação original antes de compartilhar vídeos.\"}",
-  "769edaea9d7d1d72": "{\"bloco1\": \"Foram buscadas informações sobre a liberação da cloroquina pelo prefeito.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique o site oficial da prefeitura ou portais de notícias confiáveis.\", \"bloco4\": \"Procure em sites governamentais e agências de checagem conhecidas.\"}"
+  "8b2e931e4b27110e": "{\"rotulo\": \"verdadeiro fora de contexto ou exagerado\", \"trechos\": [\"T1\", \"T3\"], \"criterio\": \"Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina como opção de tratamento em abril de 2020, mas a alegação usa 'acabou de' para um evento ocorrido há anos e omite que o uso dependia de prescrição médica.\"}",
+  "62908f39b4614688": "{\"bloco1\": [{\"frase\": \"O vídeo mostra um anúncio feito em abril de 2020.\", \"trecho\": \"T3\"}],\n \"bloco2\": [{\"frase\": \"A prefeitura incluiu o remédio como opção sob prescrição médica.\", \"trecho\": \"T2\"}, {\"frase\": \"Não há comprovação científica da eficácia do medicamento contra a Covid-19.\", \"trecho\": \"T3\"}],\n \"bloco3\": \"Técnica: fora de contexto, manchete exagerada. A mensagem usa um vídeo antigo como se fosse atual e omite que o uso era apenas com receita médica.\",\n \"bloco4\": \"Verifique a data da publicação original do vídeo antes de compartilhar.\"}"
  },
  "busca": {
-  "cc7de47bc11cf233": {
+  "ad6b7d129ebb7b03": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "73fd0f67bb-00",
      "fragmento_id": "73fd0f67bb-00-00",
-     "score": 0.714712917804718,
+     "score": 0.7118890881538391,
      "score_lexico": 33.769866943359375,
-     "score_denso": 0.9053514003753662,
+     "score_denso": 0.907903254032135,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -31,9 +30,9 @@
     {
      "unidade_id": "dc429bdfc1-00",
      "fragmento_id": "dc429bdfc1-00-00",
-     "score": 0.7006698846817017,
+     "score": 0.6997487545013428,
      "score_lexico": 31.02199363708496,
-     "score_denso": 0.8992341756820679,
+     "score_denso": 0.902712881565094,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -48,9 +47,9 @@
     {
      "unidade_id": "e1320a8aaf-00",
      "fragmento_id": "e1320a8aaf-00-01",
-     "score": 0.6802047491073608,
+     "score": 0.6774696111679077,
      "score_lexico": 26.425039291381836,
-     "score_denso": 0.8915815353393555,
+     "score_denso": 0.8942699432373047,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "aos fatos",
@@ -65,9 +64,9 @@
     {
      "unidade_id": "9678877505-00",
      "fragmento_id": "9678877505-00-02",
-     "score": 0.6785768866539001,
+     "score": 0.677006721496582,
      "score_lexico": 22.259658813476562,
-     "score_denso": 0.8922828435897827,
+     "score_denso": 0.8954479694366455,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "COMPROVA",
@@ -82,9 +81,9 @@
     {
      "unidade_id": "b8f19a0568-00",
      "fragmento_id": "b8f19a0568-00-01",
-     "score": 0.6640893816947937,
+     "score": 0.663156270980835,
      "score_lexico": 19.323041915893555,
-     "score_denso": 0.8876985311508179,
+     "score_denso": 0.8910980224609375,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "ESTADAO_VERIFICA",
@@ -101,6 +100,144 @@
    "consultados": [
     "pt-BR"
    ]
-  }
+  },
+  "8f9e11f033f0c10c": [
+   {
+    "unidade_id": "73fd0f67bb-00",
+    "fragmento_id": "73fd0f67bb-00-00",
+    "score": 0.7118890881538391,
+    "score_lexico": 33.769866943359375,
+    "score_denso": 0.907903254032135,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2021-01-31",
+    "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
+    "alegacao": "Bruno Covas acaba (em 2021) de liberar cloroquina para tratamento da Covid-19 #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "A vacinação contra a Covid-19 já começou aqui no Brasil e em outros países do mundo, mas quando o assunto é a cloroquina, medicamento que teve seu uso como alvo de discussões (inclusive, políticas) logo no início da pandemia, a internet não para. E é sobre isso que muitos internautas vêm debatendo nas redes sociais nos últimos dias depois uma publicação que começou circular online.De acordo com uma postagem no Facebook, o prefeito de São Paulo, Bruno Covas, teria acabado de liberar (isso em 2021) a cloroquina para tratamento da Covid-19. Em vídeo que está sendo compartilhado, gravado no que parece ser uma coletiva de imprensa, Covas aparece explicando que a Secretaria Municipal de Saúde teria concordado que o remédio poderia ser usado, mesmo sem comprovação científica sobre sua eficácia, desde que sob prescrição médica e com consentimento dos pacientes ou familiares destes.Mais que isso, o prefeito fala que também teria liberado a compra de mais cápsulas de cloroquina, já que, até então, eles teriam em estoque cerca de 6 mil cápsulas, compreendendo que, como cada paciente precisa de"
+   },
+   {
+    "unidade_id": "e1320a8aaf-00",
+    "fragmento_id": "e1320a8aaf-00-01",
+    "score": 0.6774696111679077,
+    "score_lexico": 26.425039291381836,
+    "score_denso": 0.8942699432373047,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "aos fatos",
+    "data_publicacao": "2020-06-25",
+    "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
+    "alegacao": "Bruno Covas não proibiu nem disse que usou cloroquina",
+    "veredito_original": "falso",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": true,
+    "trecho": "édio que negou ao povo. Quantas pessoas que nem sofriam de câncer, como ele, morreram e quantas poderiam ter sido salvas se tivessem sido medicadas.\n\nPostagens que circulam nas redes sociais afirmam que o prefeito de São Paulo, Bruno Covas (PSDB), proibiu o uso de hidroxicloroquina para o tratamento de Covid-19, e depois admitiu ter tomado o medicamento quando foi diagnosticado com a doença. As duas alegações são falsas — a cloroquina nunca foi proibida na cidade e Covas disse apenas que tomou o antibiótico azitromicina.\nNão só o prefeito não impediu o uso da droga como anunciou, no dia 9 de abril, que a Secretaria Municipal de Saúde a incluiria como opção de tratamento para Covid-19 nos hospitais municipais. À época, a prefeitura já tinha 6 mil cápsulas de cloroquina à disposição, mas o prefeito ressaltou que o uso dependeria da prescrição médica e autorização da família e paciente. A medida foi anunciada poucos dias depois de o Ministério da Saúde ter publicado um protocolo para o uso da droga em casos graves."
+   },
+   {
+    "unidade_id": "73fd0f67bb-00",
+    "fragmento_id": "73fd0f67bb-00-04",
+    "score": 0.6801667809486389,
+    "score_lexico": 28.93776512145996,
+    "score_denso": 0.8946980237960815,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2021-01-31",
+    "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
+    "alegacao": "Bruno Covas acaba (em 2021) de liberar cloroquina para tratamento da Covid-19 #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "ia da cloroquina no tratamento contra a Covid-19.No entanto, como sabemos hoje, a informação de que a cloroquina não cura a doença veio à tona depois. E a Prefeitura de São Paulo, apesar não proibir, não endossa o uso, como é explicado em detalhes neste manual técnico da Secretaria Municipal de Saúde, de junho de 2020.Por fim, vale lembrar que, com recomendação de alguns governos ou não, o uso da cloroquina não tem nenhuma comprovação científica em relação à cura da Covid-19. Inclusive, nós explicamos toda a trajetória de fake news que surgiram durante a pandemia sobre a suposta cura do medicamento na nossa seção “A Semana em Fakes”, que traz um histórico dos desmentidos sobre o assunto do primeiro boato até o mais recente.Resumindo: A publicação que dá conta de que Bruno Covas teria liberado (em 2021) o uso da cloroquina no tratamento contra a Covid-19 é falsa. O vídeo que está sendo compartilhado com a fala do prefeito é antigo, de abril de 2020, quando ainda se acreditava na eficácia do medicamento contra a doença."
+   },
+   {
+    "unidade_id": "73fd0f67bb-00",
+    "fragmento_id": "73fd0f67bb-00-05",
+    "score": 0.679593563079834,
+    "score_lexico": 27.83968162536621,
+    "score_denso": 0.8947464227676392,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2021-01-31",
+    "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
+    "alegacao": "Bruno Covas acaba (em 2021) de liberar cloroquina para tratamento da Covid-19 #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "que está sendo compartilhado com a fala do prefeito é antigo, de abril de 2020, quando ainda se acreditava na eficácia do medicamento contra a doença. Além disso, o anúncio de Covas sequer poderia ser recente, já que ele está licenciado do cargo atualmente para nova etapa de tratamento do câncer.Ps.: Esse artigo é uma sugestão de leitores do Boatos.org. Se você quiser sugerir um tema ao Boatos.org, entre em contato com a gente pelo site, Facebook e WhatsApp no telefone (61)99177-9164."
+   },
+   {
+    "unidade_id": "73fd0f67bb-00",
+    "fragmento_id": "73fd0f67bb-00-01",
+    "score": 0.6741600036621094,
+    "score_lexico": 34.69342041015625,
+    "score_denso": 0.8911048173904419,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "boatos",
+    "data_publicacao": "2021-01-31",
+    "url": "https://www.boatos.org/politica/bruno-covas-libera-cloroquina-em-2021.html",
+    "alegacao": "Bruno Covas acaba (em 2021) de liberar cloroquina para tratamento da Covid-19 #boato",
+    "veredito_original": "boato",
+    "veredito_chave": "boato",
+    "cobre_multiplas_alegacoes": false,
+    "trecho": "a de mais cápsulas de cloroquina, já que, até então, eles teriam em estoque cerca de 6 mil cápsulas, compreendendo que, como cada paciente precisa de 6, os hospitais teriam capacidade de tratar mil pacientes. Confira, a seguir, as versões do texto original das publicações que estão compartilhando o vídeo:Versão 1: Por que esperou morreu tanta gente a política é uma coisa maligna e assassina poucos sãos o que realmente se incomoda com pobre e com sofrimento Quantos paulistanos nesse mais de meio ano que Covas levou para disponibilizar o medicamento? APÓS 2.106 ÓBITOS, A CAPITAL PAULISTA INCLUI CLOROQUINA EM TRATAMENTO DA COVID-19 Por que não fez isso antes, Bruno Covas? #BolsonaroEstavaCerto Versão 2: Depois de MATAR muita gente, essa corja libera o uso da HIDROXICLOROQUINA. São uns CRIMINOSOS Versão 3: BRUNO COVAS LIBERA CLOROQUINA NO TRATAMENTO DA GRIPE AGORA PODEBruno Covas acabou (em 2021) de liberar cloroquina para tratamento da Covid-19?A publicação com o vídeo da fala de Bruno Covas viralizou rapidamente nas redes sociais."
+   },
+   {
+    "unidade_id": "e1320a8aaf-00",
+    "fragmento_id": "e1320a8aaf-00-00",
+    "score": 0.6685516834259033,
+    "score_lexico": 25.21360206604004,
+    "score_denso": 0.8910910487174988,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "aos fatos",
+    "data_publicacao": "2020-06-25",
+    "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
+    "alegacao": "Bruno Covas não proibiu nem disse que usou cloroquina",
+    "veredito_original": "falso",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": true,
+    "trecho": "Não é verdade que o prefeito de São Paulo, Bruno Covas (PSDB), proibiu o uso da hidroxicloroquina nem que ele admitiu ter tomado o medicamento depois de ser diagnosticado com Covid-19. Na verdade, ao contrário do que afirmam publicações em redes sociais (veja aqui), Covas chegou a anunciar em abril que a droga seria utilizada em hospitais municipais da cidade, mesmo sem haver comprovação científica de sua eficácia. Além disso, o único medicamento que ele já afirmou ter tomado em seu tratamento é a azitromicina, um antibiótico.\nAs publicações das peças de desinformação sobre uso de cloroquina pelo prefeito contavam com ao menos 4.100 compartilhamentos no Facebook nesta quinta-feira (25). Todas foram marcadas com o selo FALSO na ferramenta de monitoramento da rede social (saiba como funciona).\n\n\nE o prefeito que deixou muita gente morrer a míngua ao proibir a Hidroxicloroquina, agora confessa à mídia que fez uso do remédio que negou ao povo. Quantas pessoas que nem sofriam de câncer, como ele, morreram e quantas poderiam ter sido salvas se tivessem sido medicadas."
+   },
+   {
+    "unidade_id": "e1320a8aaf-00",
+    "fragmento_id": "e1320a8aaf-00-02",
+    "score": 0.665155827999115,
+    "score_lexico": 23.747783660888672,
+    "score_denso": 0.8902355432510376,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "aos fatos",
+    "data_publicacao": "2020-06-25",
+    "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
+    "alegacao": "Bruno Covas não proibiu nem disse que usou cloroquina",
+    "veredito_original": "falso",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": true,
+    "trecho": "amília e paciente. A medida foi anunciada poucos dias depois de o Ministério da Saúde ter publicado um protocolo para o uso da droga em casos graves.\nTambém não consta no Diário Oficial da cidade de São Paulo nenhuma decisão da prefeitura proibindo o uso da cloroquina ou da hidroxicloroquina. Por telefone, a Secretaria de Comunicação de São Paulo ainda negou que a substância tenha sido banida na cidade. Segundo a pasta, a prefeitura segue as orientações do Ministério da Saúde para o uso de medicamentos.\nTampouco é verdade que Covas tenha dito que tomou cloroquina durante o tratamento de Covid-19. Aos Fatos não encontrou nenhuma declaração pública de Covas, seja discurso ou entrevista, em que ele afirme estar usando cloroquina ou hidroxicloroquina. O prefeito foi diagnosticado com Covid-19 no dia 13 junho e tem publicado atualizações sobre sua saúde em conta do Instagram. No dia 15, ele publicou um vídeo no qual relata que estava fazendo tratamento com azitromicina, um antibiótico."
+   },
+   {
+    "unidade_id": "e1320a8aaf-00",
+    "fragmento_id": "e1320a8aaf-00-04",
+    "score": 0.5858460068702698,
+    "score_lexico": 19.95625114440918,
+    "score_denso": 0.8671416640281677,
+    "idioma": "pt-BR",
+    "apto_citacao": true,
+    "agencia": "aos fatos",
+    "data_publicacao": "2020-06-25",
+    "url": "https://www.aosfatos.org/noticias/prefeito-de-sao-paulo-nao-proibiu-uso-de-hidroxicloroquina-nem-disse-que-tomou-medicamento/",
+    "alegacao": "Bruno Covas não proibiu nem disse que usou cloroquina",
+    "veredito_original": "falso",
+    "veredito_chave": "falso",
+    "cobre_multiplas_alegacoes": true,
+    "trecho": "o das duas substâncias é recomendada pelo Ministério da Saúde, mas não há evidências científica de que elas sejam eficazes contra o novo coronavírus.\nNo entanto, como é um antibiótico, a azitromicina pode ser usada para combater ou prevenir infecções bacterianas. Questionada sobre por que a droga foi usada por Covas, a Secom respondeu apenas repetiu o remédio foi receitado por seu médico.\nReferências:\n1. Aos Fatos\n2. Agência Brasil\n3. Estadão\n4. CNN Brasil\n5. Jovem Pan\n6. UOL (Fontes 1 e 2)\n7. Fiocruz\n8. Ministério da Saúde (Fontes 1 e 2)\n9. The BMJ\n10. Instagram do Bruno Covas (Fontes 1 e 2)\n11. Diário Oficial da cidade de São Paulo\nDe acordo com nossos esforços para alcançar mais pessoas com informação verificada, Aos Fatos libera esta reportagem para livre republicação com atribuição de crédito e link para este site."
+   }
+  ]
  }
 }
