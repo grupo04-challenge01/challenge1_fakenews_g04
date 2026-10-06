@@ -94,3 +94,63 @@ def sem_suporte(frase, trecho):
 
 def ancorada(frase, trecho):
     return trecho.get("apto_citacao") is True and not sem_suporte(frase, trecho)
+
+
+# ---- bloco inteiro ----------------------------------------------------------
+#
+# O modelo marca a âncora no fim de cada frase, no estilo de citação:
+# "Nenhum estudo mostra isso [T1]." A marca sai do texto visível. Frase sem
+# marca, com marca para trecho que não existe ou inapto, ou com termo que
+# nenhum dos trechos marcados contém, é descartada. A única frase que pode ficar
+# sem marca é a que separa a opinião da mensagem, e só quando a decomposição
+# achou opinião: ela não afirma fato, diz que aquela parte não se checa.
+
+MARCA = re.compile(r"\s*\[(T[1-9]\d*)\]")
+_MARCA_APOS_PONTO = re.compile(r"([.!?])((?:\s*\[T[1-9]\d*\])+)")
+
+
+def _frases(texto):
+    texto = _MARCA_APOS_PONTO.sub(r"\2\1", texto)
+    return [f.strip() for f in re.split(r"(?<=[.!?])\s+|\n+", texto) if f.strip()]
+
+
+def _limpa(frase):
+    return re.sub(r"\s+([.!?,;:])", r"\1", MARCA.sub("", frase)).strip()
+
+
+def conferir(frase, marcas, trechos):
+    """Motivo do descarte, ou `None` se a frase está ancorada nos trechos marcados."""
+    if not marcas:
+        return "sem âncora"
+    fontes = []
+    for m in marcas:
+        n = int(m[1:])
+        if n > len(trechos):
+            return f"âncora inexistente: {m}"
+        if trechos[n - 1].get("apto_citacao") is not True:
+            return f"trecho inapto a citação: {m}"
+        fontes.append(trechos[n - 1])
+    faltam = [t for t in termos(frase) if all(t in sem_suporte(frase, f) for f in fontes)]
+    return f"termo fora do trecho: {', '.join(faltam)}" if faltam else None
+
+
+def ancorar_bloco(texto, trechos, opiniao=False):
+    """Frases que ficam (sem a marca), frases descartadas com o motivo, e
+    quantas das que ficam estão ancoradas — a de opinião fica, mas não conta.
+
+    `trechos` é a lista na ordem em que foi numerada T1, T2... para o modelo.
+    """
+    mantidas, descartadas, ancoradas = [], [], 0
+    for bruta in _frases(texto or ""):
+        marcas = MARCA.findall(bruta)
+        frase = _limpa(bruta)
+        if not marcas and opiniao and "opini" in frase.lower():
+            mantidas.append(frase)
+            continue
+        motivo = conferir(frase, marcas, trechos)
+        if motivo:
+            descartadas.append({"frase": frase, "motivo": motivo})
+        else:
+            mantidas.append(frase)
+            ancoradas += 1
+    return mantidas, descartadas, ancoradas

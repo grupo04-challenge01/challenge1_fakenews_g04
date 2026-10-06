@@ -10,7 +10,7 @@ sem esses termos passa: a conferência pega o detalhe inventado, não o sentido.
 Os trechos abaixo são excertos literais do índice, dos casos da sonda da
 resposta (decisão 18).
 """
-from prototipo.resposta.ancoragem import ancorada, sem_suporte, termos
+from prototipo.resposta.ancoragem import ancorada, ancorar_bloco, sem_suporte, termos
 
 JATOBA = {"agencia": "aos fatos", "data_publicacao": "2021-01-08", "apto_citacao": True,
           "trecho": "Não existe um alimento comprovadamente capaz de prevenir ou curar a "
@@ -109,3 +109,61 @@ def test_trecho_inapto_nao_ancora_nem_frase_sem_termo():
 def test_trecho_sem_a_marca_nao_ancora():
     sem_marca = {k: v for k, v in JATOBA.items() if k != "apto_citacao"}
     assert not ancorada("Nenhum alimento cura essa doença.", sem_marca)
+
+
+# Bloco inteiro: marca inline, frase a frase ----------------------------------
+
+
+def test_marca_sai_do_texto_e_frase_ancorada_fica():
+    mantidas, descartadas, _ = ancorar_bloco(
+        "O exame saiu uma semana depois [T1]. O caixão era lacrado por padrão [T1].", [CAIXAO])
+    assert mantidas == ["O exame saiu uma semana depois.", "O caixão era lacrado por padrão."]
+    assert descartadas == []
+
+
+def test_marca_depois_do_ponto_tambem_vale():
+    mantidas, _, _ = ancorar_bloco("O exame saiu uma semana depois. [T1]", [CAIXAO])
+    assert mantidas == ["O exame saiu uma semana depois."]
+
+
+def test_frase_sem_marca_cai():
+    mantidas, descartadas, _ = ancorar_bloco(
+        "O caixão era lacrado [T1]. Isso acontece em todo o país.", [CAIXAO])
+    assert mantidas == ["O caixão era lacrado."]
+    assert descartadas == [{"frase": "Isso acontece em todo o país.", "motivo": "sem âncora"}]
+
+
+def test_frase_com_termo_fora_do_trecho_cai_com_o_termo_no_motivo():
+    _, descartadas, _ = ancorar_bloco("O exame saiu dois dias depois [T1].", [CAIXAO])
+    assert descartadas == [{"frase": "O exame saiu dois dias depois.",
+                            "motivo": "termo fora do trecho: dois dias"}]
+
+
+def test_marca_de_trecho_que_nao_existe_cai():
+    _, descartadas, _ = ancorar_bloco("O caixão era lacrado [T2].", [CAIXAO])
+    assert descartadas[0]["motivo"] == "âncora inexistente: T2"
+
+
+def test_duas_marcas_somam_as_fontes():
+    # "Touros" está no CAIXAO; "abril" no COVAS. Cada termo precisa estar em alguma das duas.
+    mantidas, _, _ = ancorar_bloco("Em Touros, como em abril [T1][T2].", [CAIXAO, COVAS])
+    assert mantidas == ["Em Touros, como em abril."]
+
+
+def test_marca_em_trecho_inapto_cai():
+    _, descartadas, _ = ancorar_bloco("Nenhum alimento cura [T1].", [dict(JATOBA, apto_citacao=False)])
+    assert descartadas[0]["motivo"] == "trecho inapto a citação: T1"
+
+
+def test_frase_de_opiniao_sem_marca_fica_so_quando_ha_opiniao():
+    texto = "Nenhum alimento cura [T1]. A parte sobre laboratórios é opinião."
+    com, _, ancoradas = ancorar_bloco(texto, [JATOBA], opiniao=True)
+    sem, descartadas, _ = ancorar_bloco(texto, [JATOBA], opiniao=False)
+    assert com == ["Nenhum alimento cura.", "A parte sobre laboratórios é opinião."]
+    assert ancoradas == 1  # a de opinião fica, mas não sustenta nada
+    assert sem == ["Nenhum alimento cura."]
+    assert descartadas[0]["motivo"] == "sem âncora"
+
+
+def test_bloco_vazio_nao_tem_frase():
+    assert ancorar_bloco("  ", [JATOBA]) == ([], [], 0)

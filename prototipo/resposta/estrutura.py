@@ -17,14 +17,25 @@ Divisão do trabalho:
   inversão do catálogo na forma sem evidência e os tetos de
   `acessibilidade-leitura`. Defeito não derruba a resposta; fica em
   `Resposta.defeitos` para quem chama decidir. Ver decisão 18 do design.md.
+
+Task 1.6, ancoragem trecho a afirmação (`recuperacao-evidencia`, Rastreabilidade
+da evidência). Na forma com evidência, cada frase dos blocos 1 e 2 leva a marca
+do trecho que a sustenta, `[T1]`, e `ancoragem.py` confere. Frase que não passa
+sai da resposta e fica em `Resposta.descartadas`. Ao contrário dos defeitos, o
+descarte age: se a frase do bloco 1 cai, ou se o bloco 2 fica sem frase
+ancorada, o veredito cai para `evidência insuficiente` e a resposta é refeita na
+forma sem evidência, com uma segunda chamada ao modelo. Os blocos 3 e 4 falam da
+técnica e do que observar, não de fato sobre o mundo, e não passam pela
+ancoragem.
 """
 import json
 import re
 from dataclasses import dataclass, field
 
 from prototipo.resposta import catalogo as catalogo_mod
+from prototipo.resposta.ancoragem import ancorar_bloco
 from prototipo.resposta.mito import verificar_mito
-from prototipo.verificacao.guarda import INSUFICIENTE
+from prototipo.verificacao.guarda import INSUFICIENTE, Veredito
 from prototipo.verificacao.modelo import chat_ollama, ler_json
 
 COM = ["VEREDITO:", "O QUE SE SABE:", "POR QUE ESSA MENSAGEM ENGANA:",
@@ -55,7 +66,12 @@ O VEREDITO já foi decidido e vem na mensagem. NÃO mude o veredito.
 Afirme SOMENTE o que os TRECHOS sustentam. NUNCA use o que você sabe de medicina.
 NUNCA dê orientação clínica individual.
 Frases curtas, de no máximo 15 palavras. Palavras do dia a dia. A resposta inteira
-cabe em 90 palavras. NÃO escreva "T1", "T2": os trechos aparecem em outra tela.
+cabe em 90 palavras.
+
+Nos blocos 1 e 2 da forma com evidência, termine CADA frase com o trecho que a
+sustenta, entre colchetes, antes do ponto: "Nenhum estudo mostra isso [T1]."
+Frase sem trecho que a sustente é apagada. Nos blocos 3 e 4, e na forma sem
+evidência, NÃO escreva "T1", "T2": os trechos aparecem em outra tela.
 
 A mensagem traz o ESTADO DA RECUPERAÇÃO. Ele decide o que vai em cada bloco.
 
@@ -64,7 +80,8 @@ Se o estado for `com evidência`:
   NÃO repita o veredito: ele já abre o bloco. NÃO conte o que a mensagem diz;
   diga o que a checagem encontrou.
 - "bloco2": o que se sabe sobre o assunto, pelos trechos. Se a mensagem tiver
-  OPINIÃO, diga que aquela parte é opinião e não se checa.
+  OPINIÃO, diga, numa frase sem colchetes, que aquela parte é opinião e não se
+  checa.
 - "bloco3": comece com "Técnica: " e o rótulo, escrito igual a um desta lista:
 {_LISTA}
   Se a mensagem tiver mais de um sinal, escreva até dois rótulos separados por
@@ -105,6 +122,10 @@ class Resposta:
     blocos: list
     detalhe: list = field(default_factory=list)
     defeitos: list = field(default_factory=list)
+    # Task 1.6: frases que a ancoragem tirou, e o motivo do rebaixamento, se houve.
+    descartadas: list = field(default_factory=list)
+    rebaixada_por: str | None = None
+    veredito: Veredito | None = None
 
     @property
     def texto(self):
@@ -208,6 +229,28 @@ def _defeitos_sem(r, catalogo):
     return achados
 
 
+def _ancorar(gerados, veredito, decomposicao):
+    """Blocos 1 e 2 sem as frases não ancoradas, as descartadas e o motivo do
+    rebaixamento — `None` quando o veredito se sustenta."""
+    opiniao = bool(decomposicao and decomposicao.get("opinioes"))
+    m1, d1, _ = ancorar_bloco(gerados[0], veredito.trechos)
+    m2, d2, ancoradas2 = ancorar_bloco(gerados[1], veredito.trechos, opiniao=opiniao)
+    descartadas = [{"bloco": 1, **d} for d in d1] + [{"bloco": 2, **d} for d in d2]
+    motivo = None
+    if d1:
+        motivo = f"bloco 1: {d1[0]['motivo']}"
+    elif not ancoradas2:
+        motivo = "bloco 2 sem frase ancorada"
+    return " ".join(m1), " ".join(m2), descartadas, motivo
+
+
+def _rebaixado(veredito, motivo):
+    return Veredito(INSUFICIENTE, "Nenhuma afirmação essencial da resposta ficou ancorada em trecho.",
+                    rebaixado_por=f"ancoragem: {motivo}",
+                    original={"rotulo": veredito.rotulo, "criterio": veredito.criterio},
+                    referencias=list(veredito.referencias))
+
+
 def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
               chat=chat_ollama, catalogo=None):
     """Monta a resposta de quatro blocos a partir do veredito da guarda.
@@ -228,13 +271,24 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     dados = ler_json(bruto)
     gerados = [str((dados or {}).get(f"bloco{n}") or "").strip() for n in range(1, 5)]
 
+    descartadas = []
+    if com and dados is not None:
+        gerados[0], gerados[1], descartadas, motivo = _ancorar(gerados, veredito, decomposicao)
+        if motivo:
+            rebaixado = _rebaixado(veredito, motivo)
+            r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo)
+            r.descartadas = descartadas
+            r.rebaixada_por = rebaixado.rebaixado_por
+            return r
+
     blocos = list(gerados)
     blocos[0] = f"{_abertura(veredito, estado, lacuna)} {gerados[0]}".strip()
     if estado == LACUNA:
         blocos[3] = _ponteiro(lacuna)
     if ponteiro:
         blocos[1] = BLOCO_2_COM_PONTEIRO
-    r = Resposta("com evidência" if com else "sem evidência", titulos, blocos, _detalhe(veredito))
+    r = Resposta("com evidência" if com else "sem evidência", titulos, blocos, _detalhe(veredito),
+                 descartadas=descartadas, veredito=veredito)
 
     if dados is None:
         r.defeitos = ["saída não é JSON"]

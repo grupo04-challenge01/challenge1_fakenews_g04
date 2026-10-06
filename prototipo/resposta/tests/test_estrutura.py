@@ -20,7 +20,8 @@ MENSAGEM = "Repassem! A casca do jatobá triturada cura o câncer, um médico co
 TRECHO = {"fragmento_id": "c7a4591df5-00-00", "agencia": "aos fatos",
           "url": "https://www.aosfatos.org/jatoba", "data_publicacao": "2021-01-08",
           "veredito_original": "falso",
-          "trecho": "Não há estudo que mostre que o jatobá cure câncer.", "score": 0.8}
+          "trecho": "Não há estudo que mostre que o jatobá cure câncer.", "score": 0.8,
+          "apto_citacao": True}
 
 FALSO = Veredito("falso", "O trecho T1 diz que não há estudo sobre o jatobá e o câncer.", [TRECHO])
 VERDADEIRO = Veredito("verdadeiro", "O trecho T1 confirma.", [TRECHO])
@@ -28,9 +29,10 @@ SEM_TRECHO = Veredito(INSUFICIENTE, "Nenhum trecho recuperado cobre a alegação
                       rebaixado_por="nenhum trecho recuperado")
 
 BLOCOS_FALSO = {
-    "bloco1": "Nenhum estudo mostra isso.",
-    "bloco2": "As checagens não acharam estudo sobre o jatobá e o câncer. "
-              "Não é verdade que a casca do jatobá cura o câncer.",
+    # Blocos 1 e 2 levam a âncora inline (task 1.6); o código a tira do texto.
+    "bloco1": "Nenhum estudo mostra isso [T1].",
+    "bloco2": "As checagens não acharam estudo sobre o jatobá e o câncer [T1]. "
+              "Não é verdade que a casca do jatobá cura o câncer [T1].",
     "bloco3": "Técnica: cura milagrosa. A mensagem promete curar doença grave com algo caseiro.",
     "bloco4": "Desconfie de promessa de cura simples. Pergunte quem fez o estudo.",
 }
@@ -123,13 +125,13 @@ def test_quatro_blocos_em_ordem_com_os_titulos():
 ])
 def test_bloco_1_abre_com_o_veredito_da_classificacao(rotulo, abertura):
     v = Veredito(rotulo, "critério", [TRECHO])
-    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(_com(bloco1="Uma frase.")))
+    r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(_com(bloco1="Uma frase [T1].")))
     assert r.blocos[0].startswith(abertura)
 
 
 def test_modelo_nao_muda_o_veredito():
     # O modelo pode escrever "verdadeiro" no bloco 1; o rótulo da abertura é o da guarda.
-    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(bloco1="Verdadeiro.")))
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(bloco1="Verdadeiro [T1].")))
     assert r.blocos[0].startswith("Falso.")
 
 
@@ -182,8 +184,9 @@ def test_saida_que_nao_e_json_e_defeito():
     assert r.defeitos == ["saída não é JSON"]
 
 
-@pytest.mark.parametrize("bloco", ["bloco2", "bloco3", "bloco4"])
+@pytest.mark.parametrize("bloco", ["bloco3", "bloco4"])
 def test_bloco_vazio_e_defeito(bloco):
+    # Bloco 2 vazio na forma com evidência rebaixa o veredito (task 1.6); ver abaixo.
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(**{bloco: " "})))
     assert f"{bloco} vazio" in r.defeitos
 
@@ -238,14 +241,14 @@ def test_bloco_3_sem_evidencia_que_diz_que_engana_e_defeito():
 
 
 def test_mito_sem_marcacao_e_defeito_no_falso():
-    blocos = _com(bloco2="Muita gente diz que a casca do jatobá triturada cura o câncer.")
+    blocos = _com(bloco2="Muita gente diz que a casca do jatobá triturada cura o câncer [T1].")
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos))
     assert any(d.startswith("mito: menção sem marcação de falso") for d in r.defeitos)
 
 
 def test_identificador_de_trecho_na_camada_visivel_e_defeito():
     r = responder(MENSAGEM, ALEGACAO, FALSO,
-                  chat=_chat(_com(bloco2="O trecho T1 diz que não há estudo.")))
+                  chat=_chat(_com(bloco2="O trecho T1 diz que não há estudo [T1].")))
     assert "identificador de trecho na camada visível: T1" in r.defeitos
 
 
@@ -308,3 +311,93 @@ def test_sem_ponteiro_o_bloco_2_ainda_pode_dizer_que_nao_e_desmentir():
     # A regra da decisão 5 vale só com ponteiro; sem ele, vale o bloco 2 da spec.
     r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=_chat(BLOCOS_SEM))
     assert r.defeitos == []
+
+
+# ---- ancoragem trecho a afirmação: task 1.6 --------------------------------
+
+def _chat_em_sequencia(*saidas):
+    """Uma saída por chamada: a segunda é a da forma sem evidência, no rebaixamento."""
+    chamadas = []
+
+    def chat(sistema, usuario):
+        chamadas.append((sistema, usuario))
+        return json.dumps(saidas[len(chamadas) - 1], ensure_ascii=False)
+    chat.chamadas = chamadas
+    return chat
+
+
+def test_marca_de_ancora_nao_aparece_na_camada_visivel():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO))
+    assert "[T1]" not in r.texto
+    assert r.blocos[1] == ("As checagens não acharam estudo sobre o jatobá e o câncer. "
+                           "Não é verdade que a casca do jatobá cura o câncer.")
+    assert r.descartadas == [] and r.rebaixada_por is None
+
+
+def test_frase_sem_ancora_some_do_bloco_2_e_fica_registrada():
+    blocos = _com(bloco2="Não há estudo sobre o jatobá [T1]. Um médico de Goiânia foi punido.")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos))
+    assert r.forma == "com evidência"
+    assert "Goiânia" not in r.texto
+    assert r.descartadas == [{"bloco": 2, "frase": "Um médico de Goiânia foi punido.",
+                              "motivo": "sem âncora"}]
+
+
+def test_termo_inventado_com_marca_tambem_some():
+    blocos = _com(bloco2="Não há estudo sobre o jatobá [T1]. O Inca testou 300 pacientes [T1].")
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(blocos))
+    assert "300" not in r.texto
+    assert r.descartadas[0]["motivo"] == "termo fora do trecho: inca, 300"
+
+
+def test_bloco_1_sem_ancora_rebaixa_para_a_forma_sem_evidencia():
+    chat = _chat_em_sequencia(_com(bloco1="A checagem foi feita em 2019."), BLOCOS_SEM)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert r.forma == "sem evidência" and r.titulos == SEM
+    assert r.blocos[0].startswith("Evidência insuficiente.")
+    assert r.rebaixada_por == "ancoragem: bloco 1: sem âncora"
+    assert r.descartadas == [{"bloco": 1, "frase": "A checagem foi feita em 2019.",
+                              "motivo": "sem âncora"}]
+    assert len(chat.chamadas) == 2
+    assert f"ESTADO DA RECUPERAÇÃO: {INSUFICIENTE}" in chat.chamadas[1][1]
+    assert r.detalhe == []
+
+
+def test_bloco_2_sem_frase_ancorada_rebaixa():
+    chat = _chat_em_sequencia(_com(bloco2="Isso nunca foi estudado."), BLOCOS_SEM)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert r.forma == "sem evidência"
+    assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
+
+
+def test_bloco_2_vazio_rebaixa():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat_em_sequencia(_com(bloco2=" "), BLOCOS_SEM))
+    assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
+
+
+def test_bloco_2_so_com_opiniao_rebaixa():
+    decomposicao = {"fatos": [], "evidencias": [], "opinioes": ["os médicos escondem isso"],
+                    "conclusao": None}
+    chat = _chat_em_sequencia(_com(bloco2="Que os médicos escondem isso é opinião."), BLOCOS_SEM)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, decomposicao=decomposicao, chat=chat)
+    assert r.rebaixada_por == "ancoragem: bloco 2 sem frase ancorada"
+
+
+def test_rebaixamento_leva_as_referencias_do_veredito():
+    ref = {"agencia": "lupa", "data_publicacao": "2020-01-01", "url": "https://l/1",
+           "veredito_original": "falso"}
+    v = Veredito("falso", "critério", [TRECHO], referencias=[ref])
+    chat = _chat_em_sequencia(_com(bloco1="Sem marca."), BLOCOS_SEM)
+    r = responder(MENSAGEM, ALEGACAO, v, chat=chat)
+    assert r.rebaixada_por is not None
+    assert r.veredito.referencias == [ref]
+
+
+def test_forma_sem_evidencia_nao_passa_pela_ancoragem():
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=_chat(BLOCOS_SEM))
+    assert r.descartadas == [] and r.rebaixada_por is None
+    assert r.blocos[1] == BLOCOS_SEM["bloco2"]
+
+
+def test_prompt_pede_a_ancora_nos_blocos_1_e_2():
+    assert "[T1]" in estrutura.SISTEMA
