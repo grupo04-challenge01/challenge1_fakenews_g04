@@ -4,7 +4,7 @@
   "cpu": false,
   "tentativas": 3,
   "corte_acervo": "2021",
-  "gerado_em": "2026-10-01 15:57",
+  "gerado_em": "2026-10-06 09:47",
   "sondas": [
     {
       "id": "R1_falso",
@@ -16,51 +16,77 @@
       "tentativas": [
         {
           "n": 1,
-          "passou": true,
-          "segundos": 19.4,
-          "forma": "com evidência",
-          "palavras": 73,
+          "passou": false,
+          "segundos": 31.8,
+          "forma": "sem evidência",
+          "palavras": 59,
           "palavras_por_bloco": [
+            14,
+            10,
             13,
-            12,
-            19,
-            13
+            0
           ],
-          "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "defeitos": [
+            "bloco4 vazio"
+          ],
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Nenhum alimento pode prevenir ou curar essa doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre a casca do jatobá no tratamento de câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde. Procure por estudos científicos publicados.\n\nONDE PROCURAR:"
         },
         {
           "n": 2,
-          "passou": true,
-          "segundos": 9.4,
-          "forma": "com evidência",
-          "palavras": 73,
+          "passou": false,
+          "segundos": 20.2,
+          "forma": "sem evidência",
+          "palavras": 65,
           "palavras_por_bloco": [
-            13,
-            12,
-            19,
-            13
+            14,
+            9,
+            11,
+            9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Nenhum alimento pode prevenir ou curar essa doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas sobre a casca do jatobá no tratamento de câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que algo seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde ou órgãos reguladores.\n\nONDE PROCURAR: Procure por estudos científicos publicados em revistas médicas confiáveis."
         },
         {
           "n": 3,
-          "passou": true,
-          "segundos": 9.5,
-          "forma": "com evidência",
-          "palavras": 73,
+          "passou": false,
+          "segundos": 19.1,
+          "forma": "sem evidência",
+          "palavras": 55,
           "palavras_por_bloco": [
-            13,
-            12,
-            19,
-            13
+            10,
+            10,
+            8,
+            5
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Órgãos de saúde afirmam que nenhum alimento previne ou cura essa doença.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um médico sem identificação.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde antes de compartilhar."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Nenhum alimento pode prevenir ou curar essa doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre a casca do jatobá.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites de saúde oficiais.\n\nONDE PROCURAR: Procure por fontes médicas reconhecidas."
         }
       ],
-      "passou": 3
+      "passou": 0
     },
     {
       "id": "R2_falso_com_opiniao",
@@ -72,51 +98,77 @@
       "tentativas": [
         {
           "n": 1,
-          "passou": true,
-          "segundos": 20.4,
-          "forma": "com evidência",
-          "palavras": 69,
+          "passou": false,
+          "segundos": 21.2,
+          "forma": "sem evidência",
+          "palavras": 68,
           "palavras_por_bloco": [
             13,
-            15,
-            15,
-            10
+            12,
+            12,
+            9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca de jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que curem ou previnam essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem promete cura para uma doença grave com um produto natural.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Não existe alimento que cure a doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre a casca do jatobá tratar o câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que ele seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites de saúde oficiais ou órgãos de pesquisa.\n\nONDE PROCURAR: Procure por estudos científicos publicados em revistas médicas confiáveis."
         },
         {
           "n": 2,
-          "passou": true,
-          "segundos": 10.1,
-          "forma": "com evidência",
-          "palavras": 70,
+          "passou": false,
+          "segundos": 21.8,
+          "forma": "sem evidência",
+          "palavras": 69,
           "palavras_por_bloco": [
+            14,
             13,
-            15,
-            15,
-            11
+            11,
+            9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que previnam ou curem essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa. A mensagem promete cura para uma doença grave com um alimento simples.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação tem apoio de órgãos oficiais de saúde."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Não existe alimento que cure a doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre a casca do jatobá no tratamento do câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre o assunto não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites de saúde confiáveis ou órgãos oficiais.\n\nONDE PROCURAR: Procure por estudos científicos publicados em revistas médicas conhecidas."
         },
         {
           "n": 3,
-          "passou": true,
-          "segundos": 11.2,
-          "forma": "com evidência",
-          "palavras": 73,
+          "passou": false,
+          "segundos": 22.9,
+          "forma": "sem evidência",
+          "palavras": 68,
           "palavras_por_bloco": [
+            14,
             13,
-            15,
             19,
-            10
+            0
           ],
-          "defeitos": [],
-          "resposta": "VEREDITO: Falso. A checagem confirmou que a casca do jatobá não cura o câncer.\n\nO QUE SE SABE: Não existem alimentos que previnam ou curem essa doença. A parte sobre laboratórios é opinião.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: cura milagrosa, fonte sem nome. A mensagem promete cura com algo natural e cita um segredo sem nomes.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique se a informação vem de órgãos oficiais de saúde."
+          "defeitos": [
+            "bloco4 vazio"
+          ],
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "Não existe alimento que cure ou previna a doença.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre a casca do jatobá no tratamento de câncer.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre o assunto não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites de órgãos de saúde oficiais. Verifique se há estudos científicos publicados sobre o fruto.\n\nONDE PROCURAR:"
         }
       ],
-      "passou": 3
+      "passou": 0
     },
     {
       "id": "R3_verdadeiro_contraintuitivo",
@@ -129,50 +181,70 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 24.6,
+          "segundos": 12.8,
           "forma": "com evidência",
-          "palavras": 76,
+          "palavras": 62,
           "palavras_por_bloco": [
-            15,
-            14,
-            14,
-            16
+            11,
+            11,
+            13,
+            10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado e testou negativo.\n\nO QUE SE SABE: O procedimento de lacrar a urna era padrão para casos com suspeita de covid-19.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parecia difícil de acreditar por envolver um relato muito forte e triste.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação foi baseada em notícias que detalharam o caso ocorrido no Rio Grande do Norte."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO: Verdadeiro. A história sobre a criança no caixão lacrado é real.\n\nO QUE SE SABE: O exame negativo só foi divulgado uma semana após o enterro.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parece difícil de acreditar porque envolve um erro grave de procedimento.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: O relato foi confirmado por documentos e vídeos da época."
         },
         {
           "n": 2,
-          "passou": true,
-          "segundos": 13.1,
-          "forma": "com evidência",
-          "palavras": 77,
+          "passou": false,
+          "segundos": 17.3,
+          "forma": "sem evidência",
+          "palavras": 59,
           "palavras_por_bloco": [
-            12,
-            22,
-            13,
-            13
+            9,
+            10,
+            10,
+            8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para casos com suspeita de covid-19. O exame negativo só saiu uma semana depois.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem parecia difícil de acreditar por envolver um caso trágico e polêmico.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação foi baseada em relatos sobre o ocorrido na cidade de Touros."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "O procedimento de lacrar o caixão era padrão para casos com suspeita de coronavírus.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre esse caso específico.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a história seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode buscar notícias em sites de veículos jornalísticos conhecidos.\n\nONDE PROCURAR: Procure por fontes oficiais de saúde e segurança."
         },
         {
           "n": 3,
-          "passou": true,
-          "segundos": 10.4,
-          "forma": "com evidência",
-          "palavras": 65,
+          "passou": false,
+          "segundos": 21.9,
+          "forma": "sem evidência",
+          "palavras": 51,
           "palavras_por_bloco": [
-            12,
-            20,
-            4,
-            12
+            9,
+            10,
+            10,
+            0
           ],
-          "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro. A checagem confirmou que uma criança foi enterrada em caixão lacrado.\n\nO QUE SE SABE: O procedimento de lacrar o caixão era padrão para suspeitas de coronavírus. O exame negativo só saiu uma semana depois.\n\nPOR QUE PARECIA DIFÍCIL DE ACREDITAR: A mensagem não engana.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: A confirmação veio do relato sobre a abertura da urna pela família."
+          "defeitos": [
+            "bloco4 vazio"
+          ],
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "O procedimento de lacrar o caixão era padrão para casos com suspeita de coronavírus.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre esse caso específico.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a história seja mentira.\n\nO QUE VOCÊ PODE CONFERIR: Você pode procurar por notícias em sites de jornal conhecidos.\n\nONDE PROCURAR:"
         }
       ],
-      "passou": 3
+      "passou": 1
     },
     {
       "id": "R4_fora_de_contexto",
@@ -185,51 +257,77 @@
       "tentativas": [
         {
           "n": 1,
-          "passou": true,
+          "passou": false,
           "segundos": 27.1,
-          "forma": "com evidência",
-          "palavras": 70,
+          "forma": "sem evidência",
+          "palavras": 60,
           "palavras_por_bloco": [
-            17,
+            10,
+            9,
             11,
-            15,
-            11
+            8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez esse anúncio em abril de 2020, não agora.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo é antigo e foi postado como se fosse atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data da publicação antes de compartilhar vídeos de políticos."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "A mensagem contém uma opinião sobre política e saúde que não pode ser checada.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas sobre esse anúncio do prefeito.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que algo seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Verifique o site oficial da prefeitura ou canais de notícias confiáveis.\n\nONDE PROCURAR: Procure por notas oficiais em portais de saúde."
         },
         {
           "n": 2,
-          "passou": true,
-          "segundos": 11.3,
-          "forma": "com evidência",
-          "palavras": 78,
+          "passou": false,
+          "segundos": 27.5,
+          "forma": "sem evidência",
+          "palavras": 62,
           "palavras_por_bloco": [
-            17,
-            17,
-            18,
-            10
-          ],
-          "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez esse anúncio em abril de 2020. A mensagem dá a entender que foi agora.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. O vídeo é de outra época e foi usado para contar uma história atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data da publicação antes de compartilhar vídeos antigos."
-        },
-        {
-          "n": 3,
-          "passou": true,
-          "segundos": 11.8,
-          "forma": "com evidência",
-          "palavras": 79,
-          "palavras_por_bloco": [
-            17,
-            22,
-            15,
+            10,
+            10,
+            11,
             9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO: Verdadeiro, mas fora de contexto ou exagerado. A checagem confirmou que o vídeo mostra um anúncio antigo.\n\nO QUE SE SABE: O prefeito fez o anúncio em abril de 2020, não agora. O uso da cloroquina já era permitido desde maio daquele ano.\n\nPOR QUE ESSA MENSAGEM ENGANA: Técnica: fora de contexto. A mensagem usa um vídeo de outra época para parecer atual.\n\nO QUE OBSERVAR DA PRÓXIMA VEZ: Verifique a data original do vídeo antes de compartilhar."
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "A mensagem usa uma fala antiga para parecer atual.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas por informações sobre esse anúncio.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Verifique o site oficial da prefeitura ou canais de notícias confiáveis.\n\nONDE PROCURAR: Procure por comunicados oficiais do governo estadual e municipal."
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 27.8,
+          "forma": "sem evidência",
+          "palavras": 54,
+          "palavras_por_bloco": [
+            10,
+            10,
+            12,
+            0
+          ],
+          "defeitos": [
+            "bloco4 vazio"
+          ],
+          "rebaixada_por": "ancoragem: bloco 2 sem frase ancorada",
+          "descartadas": [
+            {
+              "bloco": 2,
+              "frase": "A mensagem contém uma opinião sobre política e saúde que não pode ser checada.",
+              "motivo": "sem âncora"
+            }
+          ],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas sobre esse anúncio do prefeito.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que o fato seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode conferir os sites oficiais da prefeitura ou órgãos de saúde.\n\nONDE PROCURAR:"
         }
       ],
-      "passou": 3
+      "passou": 0
     },
     {
       "id": "S1_evidencia_insuficiente",
@@ -240,47 +338,53 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 17.8,
+          "segundos": 9.9,
           "forma": "sem evidência",
-          "palavras": 65,
+          "palavras": 61,
           "palavras_por_bloco": [
-            14,
+            12,
             10,
-            11,
-            8
+            8,
+            9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscado por informações sobre o chá de goiabeira e a dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde ou órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais de saúde pública."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas por informações sobre o chá de goiabeira.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde.\n\nONDE PROCURAR: Procure orientações em órgãos como o Ministério da Saúde."
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 9.2,
+          "segundos": 7.0,
           "forma": "sem evidência",
-          "palavras": 66,
+          "palavras": 61,
           "palavras_por_bloco": [
-            13,
+            12,
             10,
-            11,
-            10
+            8,
+            9
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscado por informações sobre o chá de goiabeira na dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais como o Ministério da Saúde."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram feitas buscas por estudos sobre o chá de goiabeira.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde.\n\nONDE PROCURAR: Procure orientações em órgãos como o Ministério da Saúde."
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 9.1,
+          "segundos": 7.2,
           "forma": "sem evidência",
-          "palavras": 65,
+          "palavras": 62,
           "palavras_por_bloco": [
-            14,
+            12,
             10,
-            11,
-            8
+            8,
+            10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foi buscada informação sobre o chá de goiabeira para tratar a dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde ou órgãos governamentais.\n\nONDE PROCURAR: Procure por orientações em portais de saúde pública."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Evidência insuficiente. Foram buscadas informações sobre o chá de goiabeira na dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde.\n\nONDE PROCURAR: Procure por orientações em órgãos como o Ministério da Saúde."
         }
       ],
       "passou": 3
@@ -294,47 +398,53 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 15.8,
+          "segundos": 8.8,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 76,
           "palavras_por_bloco": [
-            21,
+            18,
             16,
-            11,
+            10,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a composição da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode ler os dados oficiais nos sites do governo.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 7.2,
+          "segundos": 5.6,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 78,
           "palavras_por_bloco": [
-            21,
+            18,
             16,
-            11,
+            12,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a composição da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode ler os dados oficiais nos sites do Ministério da Saúde.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 7.3,
+          "segundos": 6.2,
           "forma": "sem evidência",
-          "palavras": 80,
+          "palavras": 76,
           "palavras_por_bloco": [
-            21,
+            18,
             16,
-            11,
+            10,
             10
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode pesquisar em sites oficiais de saúde e órgãos reguladores.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a composição da vacina.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: O acervo consultado aqui não cobre esta mensagem. Não achar nele não confirma nem desmente nada.\n\nO QUE VOCÊ PODE CONFERIR: Você pode ler os dados oficiais do Ministério da Saúde.\n\nONDE PROCURAR: Checagem localizada: Aos Fatos, 02/02/2024, veredito da agência: falso. https://www.aosfatos.org/noticias/falso-drauzio-varella-vacina-dengue-cancer/"
         }
       ],
       "passou": 3
@@ -348,47 +458,53 @@
         {
           "n": 1,
           "passou": true,
-          "segundos": 16.9,
+          "segundos": 10.9,
           "forma": "sem evidência",
-          "palavras": 82,
+          "palavras": 79,
           "palavras_por_bloco": [
-            25,
+            22,
             13,
             14,
             8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre a relação entre o vírus Oropouche e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para verificar as doenças transmitidas por mosquitos.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram buscadas informações sobre o vírus Oropouche e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados sobre um assunto não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para ver as doenças transmitidas por mosquitos.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
         },
         {
           "n": 2,
           "passou": true,
-          "segundos": 6.2,
+          "segundos": 5.6,
           "forma": "sem evidência",
-          "palavras": 67,
+          "palavras": 66,
           "palavras_por_bloco": [
             19,
-            10,
+            9,
             8,
             8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi feita uma busca por informações sobre essa proteção.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar dados não significa que a informação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde pública.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a relação entre os vírus.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que algo seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde pública.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
         },
         {
           "n": 3,
           "passou": true,
-          "segundos": 8.3,
+          "segundos": 6.2,
           "forma": "sem evidência",
-          "palavras": 79,
+          "palavras": 66,
           "palavras_por_bloco": [
-            25,
-            10,
-            14,
+            19,
+            9,
+            8,
             8
           ],
           "defeitos": [],
-          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foi buscado conteúdo sobre a relação entre o vírus Oropouche e a vacina da dengue.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que a afirmação seja falsa.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde para ver as doenças cobertas pela vacina.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
+          "rebaixada_por": null,
+          "descartadas": [],
+          "resposta": "VEREDITO E O QUE FOI PROCURADO: Lacuna de acervo. As checagens consultadas vão só até 2021. Foram feitas buscas sobre a relação entre os vírus.\n\nPOR QUE ISSO NÃO QUER DIZER QUE É FALSO: Não encontrar informações não significa que algo seja falso.\n\nO QUE VOCÊ PODE CONFERIR: Você pode consultar sites oficiais de saúde pública.\n\nONDE PROCURAR: Não foi localizada checagem em português sobre isso."
         }
       ],
       "passou": 3
