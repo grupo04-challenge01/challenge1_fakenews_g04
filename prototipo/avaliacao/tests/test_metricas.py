@@ -2,7 +2,7 @@
 `avaliacao-instrumento` em mvp-copiloto-verificacao.
 
 Cada taxa sai como {"n", "de", "taxa"}: com 2 a 30 participantes a fração
-importa mais que o percentual. Definições operacionais na decisão 25 do
+importa mais que o percentual. Definições operacionais na decisão 27 do
 design.md e em `specs/avaliacao-instrumento/instrumento-coleta-metricas.md`.
 """
 import pytest

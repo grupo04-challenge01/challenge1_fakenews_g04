@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "registro_sessao.json",
   "title": "Registro de sessão de avaliação com participante",
-  "description": "Task 6.5 de mvp-copiloto-verificacao. Um arquivo por sessão, preenchido pelo pesquisador durante a sessão e antes do debriefing. Requirement Métricas de resultado e de guarda, de avaliacao-instrumento. Definições operacionais na decisão 25 do design.md e em specs/avaliacao-instrumento/instrumento-coleta-metricas.md.",
+  "description": "Task 6.5 de mvp-copiloto-verificacao. Um arquivo por sessão, preenchido pelo pesquisador durante a sessão e antes do debriefing. Requirement Métricas de resultado e de guarda, de avaliacao-instrumento. Definições operacionais na decisão 27 do design.md e em specs/avaliacao-instrumento/instrumento-coleta-metricas.md.",
   "versao": "1.0.0",
   "type": "object",
   "additionalProperties": false,

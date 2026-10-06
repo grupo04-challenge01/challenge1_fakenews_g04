@@ -15,7 +15,7 @@ a decisão sobre o que é aceitável é do grupo, depois do piloto. Toda taxa é
 `{"n", "de", "taxa"}`: com 2 a 30 participantes a fração diz mais que o
 percentual, e denominador zero dá `taxa` nula em vez de 0.
 
-Definições operacionais: decisão 25 do design.md.
+Definições operacionais: decisão 27 do design.md.
 """
 from __future__ import annotations
 
