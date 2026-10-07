@@ -152,12 +152,14 @@ class Resposta:
     rebaixada_por: str | None = None
     veredito: Veredito | None = None
     bruto: str = ""  # saída do modelo, para a sonda ler o que ele de fato escreveu
+    # add-entrada-por-link, D7: aviso de leitura parcial, entre o bordão e o bloco 1.
+    aviso: str | None = None
 
     @property
     def texto(self):
-        """Camada visível: o bordão e os quatro blocos com os títulos, nesta ordem."""
+        """Camada visível: o bordão, o aviso se houver e os quatro blocos com os títulos."""
         blocos = [f"{t} {b}".strip() for t, b in zip(self.titulos, self.blocos)]
-        return "\n\n".join([BORDAO, *blocos])
+        return "\n\n".join([BORDAO, *([self.aviso] if self.aviso else []), *blocos])
 
 
 def _estado(veredito, lacuna):
@@ -318,14 +320,16 @@ def _rebaixado(veredito, motivo):
 
 
 def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
-              chat=chat_ollama, catalogo=None, expandir=None):
+              chat=chat_ollama, catalogo=None, expandir=None, aviso=None):
     """Monta a resposta de quatro blocos a partir do veredito da guarda.
 
     `veredito` é o `guarda.Veredito`. `lacuna`, quando a pauta é posterior ao
     acervo, traz `corte` e, se o índice de checagens recentes achou, `ponteiro`
     com agência, data, veredito e endereço. `expandir` recebe os trechos do
     veredito e os devolve na frente, com os fragmentos vizinhos depois
-    (`Recuperador.expandir`, decisão 29).
+    (`Recuperador.expandir`, decisão 29). `aviso`, quando a página do link só
+    foi lida em parte, entra entre o bordão e o bloco 1 e conta no teto
+    (add-entrada-por-link, D7); o modelo não o vê.
     """
     catalogo = catalogo or catalogo_mod.carregar_catalogo()
     estado = _estado(veredito, lacuna)
@@ -359,7 +363,8 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
                     crus, trechos, decomposicao, usadas)
         if motivo:
             rebaixado = _rebaixado(veredito, motivo)
-            r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo)
+            r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo,
+                          aviso=aviso)
             r.descartadas = descartadas
             r.rebaixada_por = rebaixado.rebaixado_por
             r.bruto = f"{bruto}\n\n--- refeita na forma sem evidência ---\n\n{r.bruto}"
@@ -380,7 +385,7 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     vizinhos = [trechos[i - 1] for i in sorted(usadas) if n < i <= len(trechos)]
     r = Resposta("com evidência" if com else "sem evidência", titulos, blocos,
                  _detalhe(veredito, vizinhos),
-                 descartadas=descartadas, veredito=veredito, bruto=bruto)
+                 descartadas=descartadas, veredito=veredito, bruto=bruto, aviso=aviso)
 
     if dados is None:
         r.defeitos = ["saída não é JSON"]

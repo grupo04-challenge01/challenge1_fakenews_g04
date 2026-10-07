@@ -8,6 +8,10 @@ Sem `--offline`, usa Ollama e o índice local e grava as saídas em
 `bancada/gravacoes/`. Com `--offline`, reproduz essas gravações; caso sem
 gravação, ou com prompt alterado, sai com erro no rastro.
 O relatório vai para `bancada/relatorios/AAAAMMDD-HHMMSS.json`.
+
+Caso com link traz `pagina`, o nome de um arquivo de
+`prototipo/entrada/tests/paginas/`: a busca devolve esse arquivo. A bancada
+nunca acessa a rede, nem no modo real (add-entrada-por-link, task 6.1).
 """
 import argparse
 import json
@@ -18,20 +22,41 @@ import time
 from bancada import gravacao
 from bancada.avaliacao import avaliar
 from bancada.pipeline import executar
+from prototipo.entrada import rede
 from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
 
 AQUI = pathlib.Path(__file__).parent
 CASOS = AQUI / "casos.json"
 RELATORIOS = AQUI / "relatorios"
+PAGINAS = AQUI.parent / "prototipo/entrada/tests/paginas"
 
 
 def carregar_casos(arquivo=CASOS):
     return json.loads(pathlib.Path(arquivo).read_text(encoding="utf-8"))
 
 
+def buscar_do_caso(caso):
+    """Busca que devolve a página gravada do caso, depois das regras de URL de `rede`.
+
+    Sem `pagina`, toda busca é recusada: link de caso sem página gravada nunca
+    sai para a rede.
+    """
+    indice = json.loads((PAGINAS / "indice.json").read_text(encoding="utf-8"))
+
+    def buscar(url):
+        rede.validar_url(url)
+        if "pagina" not in caso:
+            raise rede.Recusa("sem página gravada")
+        info = indice.get(caso["pagina"], {})
+        corpo = (PAGINAS / f"{caso['pagina']}.html").read_bytes()
+        return rede.Pagina(corpo, info.get("url_final", url),
+                           info.get("tipo", "text/html; charset=utf-8"))
+    return buscar
+
+
 def rodar_caso(caso, chat, recuperador, **parametros):
     rastro = executar(caso["mensagem"], recuperador, chat=chat,
-                      lacuna=caso.get("lacuna"), **parametros)
+                      lacuna=caso.get("lacuna"), buscar=buscar_do_caso(caso), **parametros)
     checks = avaliar(caso, rastro)
     return {"id": caso["id"], "origem": caso.get("origem"), "nota": caso.get("nota"),
             "passou": all(c["ok"] for c in checks), "checks": checks, "rastro": rastro}
