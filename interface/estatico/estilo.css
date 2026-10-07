@@ -36,6 +36,14 @@
   font-size: 112.5%;
 }
 
+/* iOS: o Safari só segue o tamanho de texto do sistema com -apple-system-body,
+   que vale 17px no tamanho padrão; 1,0588rem dá os 18px da spec e cresce junto.
+   Só no iOS (-webkit-touch-callout): no Safari do Mac a mesma fonte vale 13px. */
+@supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  :root { font: -apple-system-body; }
+  body { font-size: 1.0588rem; }
+}
+
 * { box-sizing: border-box; }
 
 body {

@@ -264,3 +264,37 @@ def test_movimento_reduzido_desliga_animacoes(page, servidor_uso):
                        return s.animationName !== 'none' && s.animationDuration !== '0s'; })
         .length""")
     assert animadas == 0
+
+
+# ---- contexto não seguro (achado da task 6.2) -----------------------------------------
+# No celular a página abre por http://<ip da rede>, que não é contexto seguro, e o
+# navegador não oferece crypto.randomUUID. Aqui ele é removido antes da página.
+
+def test_funciona_fora_de_contexto_seguro(page, servidor_uso):
+    page.add_init_script("delete Crypto.prototype.randomUUID;")
+    erros = []
+    page.on("pageerror", lambda e: erros.append(str(e)))
+    page.goto(servidor_uso)
+    assert page.evaluate("typeof crypto.randomUUID") == "undefined"
+    enviar(page, MENSAGEM)
+    expect(resposta(page).get_by_role("button", name="4 a 6")).to_be_visible()
+    botao = resposta(page).get_by_role("button", name="Ver fontes e detalhes")
+    botao.click()
+    expect(resposta(page).locator(".fonte").first).to_be_visible()
+    assert erros == []
+
+
+# ---- tamanho de texto do iOS (achado da task 6.2, iPhone 11 com Safari) ---------------
+# O Safari do iOS só segue o tamanho de texto do sistema com a fonte
+# -apple-system-body. O Chromium dos testes não a conhece; o teste confere a regra,
+# e a verificação de fato é no aparelho.
+
+def test_ios_acompanha_o_tamanho_de_texto_do_sistema(page, servidor_uso):
+    page.goto(servidor_uso)
+    regras = page.evaluate("""[...document.styleSheets].flatMap(s => [...s.cssRules])
+        .filter(r => r instanceof CSSSupportsRule).map(r => r.cssText)""")
+    ios = [r for r in regras if "-apple-system-body" in r]
+    assert len(ios) == 1
+    assert "-webkit-touch-callout" in ios[0]  # só iOS: no Safari do Mac a fonte vale 13px
+    assert re.search(r"font:\s*-apple-system-body", ios[0])
+    assert re.search(r"font-size:\s*1\.0588rem", ios[0])  # 17px padrão do iOS → 18px

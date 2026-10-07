@@ -71,9 +71,16 @@ Pré-requisito: `add-identidade-dona-checa` aplicado antes da seção 4.
 
 - [x] 6.1 Página em `docs/` com como subir em modo uso e em modo piloto, como
       abrir no celular da mesma rede e o aviso sobre `0.0.0.0`
-- [ ] 6.2 Verificação manual pela checklist de
+- [x] 6.2 Verificação manual pela checklist de
       `mvp-copiloto-verificacao/specs/acessibilidade-leitura/checklist.md` num
       celular real, com resultado registrado
+      — 07/10/2026, iPhone 11 com Safari, servidor com o fluxo falso dos
+      testes: leitura sem zoom (e sem óculos), contraste, botões, teclado sem
+      esconder o envio e rolagem lateral só com zoom: ok. Dois achados
+      corrigidos com teste: `crypto.randomUUID` não existe fora de contexto
+      seguro (`http://<ip>`) e derrubava pergunta e detalhe; a fonte não
+      seguia o tamanho de texto do iOS, agora segue (`-apple-system-body`),
+      conferido no aparelho
 - [x] 6.3 Rodar as suítes de `interface/`, `bancada/` e `prototipo/` e
       registrar o resultado
       — 07/10/2026, sobre o conteúdo exato do commit: `pytest` 523 passando,

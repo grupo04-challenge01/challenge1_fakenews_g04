@@ -36,6 +36,14 @@ function criar(tag, classe, texto) {
   return el;
 }
 
+// Ids por contador: crypto.randomUUID só existe em contexto seguro, e no celular
+// a página abre por http://<ip da rede>.
+let ultimoId = 0;
+function novoId(prefixo) {
+  ultimoId += 1;
+  return `${prefixo}-${ultimoId}`;
+}
+
 function paragrafo(texto, classe) {
   return criar("p", classe, texto);
 }
@@ -197,7 +205,7 @@ function pergunta({ pergunta: texto, opcoes }) {
   const grupo = criar("div", "pergunta");
   grupo.setAttribute("role", "group");
   const rotulo = paragrafo(texto);
-  rotulo.id = `pergunta-${crypto.randomUUID()}`;
+  rotulo.id = novoId("pergunta");
   grupo.setAttribute("aria-labelledby", rotulo.id);
   const botoes = criar("div", "opcoes");
   const anotado = criar("p", "anotado");
@@ -252,7 +260,7 @@ function data(iso) {
 
 function detalhe(bolha, fontes) {
   const painel = criar("div", "detalhe");
-  painel.id = `detalhe-${crypto.randomUUID()}`;
+  painel.id = novoId("detalhe");
   painel.hidden = true;
   for (const fonte of fontes) {
     const cartao = criar("article", "fonte");
