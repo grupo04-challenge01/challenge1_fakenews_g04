@@ -1,0 +1,7 @@
+# Pilha do chat web da Dona Checa (change add-interface-chat-web).
+# Servidor FastAPI sobre o fluxo do protótipo; página em HTML, CSS e JS puros, sem build.
+
+-r requirements-rag.txt
+fastapi>=0.115            # aplicação e resposta em streaming (decisões 1 e 3 do design)
+uvicorn>=0.30             # servidor ASGI
+httpx2                    # TestClient do Starlette nos testes do servidor (substitui httpx)

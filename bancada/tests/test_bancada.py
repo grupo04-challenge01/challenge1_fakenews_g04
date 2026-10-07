@@ -169,3 +169,24 @@ def test_casos_tem_id_unico_e_chaves_conhecidas():
 def test_caso_roda_com_modelo_fixo(caso):
     r = rodar_caso(caso, chat_fixo(), Recuperador())
     assert r["rastro"]["etapas"]
+
+
+# ---- aviso por etapa (decisão 4 de add-interface-chat-web) ---------------------------
+
+def test_ao_etapa_avisa_cada_etapa_na_ordem_com_o_registro_do_rastro():
+    avisos = []
+    rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat_fixo(),
+                      ao_etapa=avisos.append)
+    assert [a["etapa"] for a in avisos] == [
+        "fronteira", "extracao", "decomposicao", "recuperacao", "guarda", "resposta"]
+    assert avisos == rastro["etapas"]
+
+
+def test_ao_etapa_avisa_tambem_a_etapa_que_errou():
+    def quebra(sistema, usuario):
+        raise ConnectionError("ollama fora do ar")
+    avisos = []
+    rastro = executar("msg", Recuperador(), chat=quebra, ao_etapa=avisos.append)
+    assert rastro["motivo"] == "erro"
+    assert avisos == rastro["etapas"]
+    assert "erro" in avisos[-1]

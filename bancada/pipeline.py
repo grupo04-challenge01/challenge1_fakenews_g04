@@ -55,8 +55,13 @@ def _recuperar(recuperador, alegacao, k, modo, idioma):
 
 
 def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibrida",
-             alfa=None, limiar=LIMIAR_EVIDENCIA, lacuna=None, idioma=True):
-    """Rastro do fluxo: parâmetros, etapas na ordem, onde parou e a resposta."""
+             alfa=None, limiar=LIMIAR_EVIDENCIA, lacuna=None, idioma=True, ao_etapa=None):
+    """Rastro do fluxo: parâmetros, etapas na ordem, onde parou e a resposta.
+
+    `ao_etapa`, se dado, recebe o registro de cada etapa assim que ele entra no
+    rastro, inclusive o da etapa que errou: é por ele que a interface mostra o
+    andamento (decisão 4 de add-interface-chat-web).
+    """
     if alfa is not None:
         recuperador.alfa = alfa
     rastro = {
@@ -82,10 +87,16 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
             registro.update(erro=f"{type(e).__name__}: {e}",
                             segundos=round(time.perf_counter() - inicio, 3))
             rastro["etapas"].append(registro)
+            avisar(registro)
             parar(nome, "erro")
         registro.update(saida=resumo(valor), segundos=round(time.perf_counter() - inicio, 3))
         rastro["etapas"].append(registro)
+        avisar(registro)
         return valor
+
+    def avisar(registro):
+        if ao_etapa is not None:
+            ao_etapa(registro)
 
     def parar(nome, motivo):
         rastro["parou_em"], rastro["motivo"] = nome, motivo
