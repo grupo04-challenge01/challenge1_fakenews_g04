@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dona Checa</title>
+<link rel="icon" href="/estatico/dona-checa.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/estatico/estilo.css">
+<script type="application/json" id="config"><!--CONFIG--></script>
+<script type="module" src="/estatico/chat.js"></script>
+</head>
+<body>
+<header class="cabecalho">
+  <img class="avatar" src="/estatico/dona-checa.svg" alt="" width="48" height="48">
+  <div>
+    <h1>Dona Checa</h1>
+    <p class="subtitulo">confere a fonte com você</p>
+  </div>
+</header>
+
+<main class="conversa-area">
+  <p class="chamada" id="chamada"></p>
+  <div class="conversa" id="conversa" role="log" aria-live="polite" aria-label="Conversa com a Dona Checa"></div>
+</main>
+
+<form class="envio" id="envio" aria-label="Mensagem para a Dona Checa">
+  <label class="so-leitor" for="mensagem">Cole aqui o que você recebeu</label>
+  <textarea id="mensagem" name="mensagem" rows="1" placeholder="Cole aqui o que você recebeu"></textarea>
+  <button type="submit" class="enviar" aria-label="Enviar">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+  </button>
+</form>
+<!--RODAPE-->
+</body>
+</html>

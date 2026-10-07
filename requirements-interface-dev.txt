@@ -1,0 +1,6 @@
+# Testes da página do chat web (change add-interface-chat-web, decisão 11 do design).
+# Depois de instalar: `python -m playwright install chromium` (uma vez, só em desenvolvimento).
+
+-r requirements-interface.txt
+playwright>=1.45
+pytest-playwright>=0.5

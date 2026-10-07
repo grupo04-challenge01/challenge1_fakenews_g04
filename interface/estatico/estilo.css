@@ -1,0 +1,245 @@
+/* Chat web da Dona Checa (add-interface-chat-web).
+   Paleta e contraste: docs/identidade/paleta.md. Coral só em elemento gráfico.
+   Tamanhos em rem sobre base de 18px (112,5%), que acompanha a fonte do sistema. */
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/estatico/fontes/dm-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("/estatico/fontes/dm-sans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/estatico/fontes/bricolage-grotesque-800.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+
+:root {
+  --verde: #0F5E63;
+  --coral: #E0573B;
+  --creme: #FFE7A8;
+  --tinta: #1C2B2E;
+  --tinta-suave: #3D4F52;
+  --fundo: #EEF3F2;
+  --bolha-pessoa: #D3ECE8;
+  --borda: #C3D3D0;
+  --alerta-fundo: #FFF1EE;
+  --alerta-borda: #B3341C;
+  --alvo: 2.75rem;
+  font-size: 112.5%;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--verde);
+  color: #FFFFFF;
+}
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cabecalho h1 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.subtitulo { margin: 0; font-size: 0.875rem; }
+
+.conversa-area {
+  flex: 1;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.chamada {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--verde);
+}
+.conversa { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.bolha {
+  max-width: min(36rem, 92%);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  overflow-wrap: anywhere;
+}
+.bolha:focus { outline: 3px solid var(--verde); outline-offset: 2px; }
+.bolha p { margin: 0 0 0.5rem; }
+.bolha p:last-child { margin-bottom: 0; }
+.bolha.dona {
+  align-self: flex-start;
+  background: #FFFFFF;
+  border-bottom-left-radius: 0.25rem;
+}
+.bolha.pessoa {
+  align-self: flex-end;
+  background: var(--bolha-pessoa);
+  border-bottom-right-radius: 0.25rem;
+  white-space: pre-wrap;
+}
+.bolha.alerta {
+  max-width: 100%;
+  background: var(--alerta-fundo);
+  border: 2px solid var(--alerta-borda);
+}
+.bolha ul { margin: 0 0 0.5rem; padding-left: 1.25rem; }
+
+.bordao {
+  font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  font-weight: 800;
+  color: var(--verde);
+}
+.andamento { color: var(--tinta-suave); font-style: italic; }
+
+.pergunta { margin: 0.5rem 0 0.75rem; }
+.pergunta p { margin-bottom: 0.5rem; }
+.opcoes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.opcao, .secundario {
+  min-height: var(--alvo);
+  min-width: var(--alvo);
+  padding: 0 1rem;
+  border-radius: calc(var(--alvo) / 2);
+  border: 2px solid var(--verde);
+  background: #FFFFFF;
+  color: var(--verde);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.opcao[aria-pressed="true"] { background: var(--verde); color: #FFFFFF; }
+.anotado { color: var(--tinta-suave); font-size: 0.875rem; }
+
+.bloco strong { color: var(--verde); }
+.acoes { margin-top: 0.75rem; }
+
+.detalhe { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.detalhe[hidden] { display: none; }
+.fonte {
+  padding: 0.75rem;
+  border: 1px solid var(--borda);
+  border-radius: 0.75rem;
+  background: var(--fundo);
+}
+.fonte h2 { margin: 0 0 0.25rem; font-size: 1rem; }
+.fonte .meta { margin: 0 0 0.5rem; color: var(--tinta-suave); font-size: 0.875rem; }
+.fonte blockquote { margin: 0 0 0.5rem; padding-left: 0.75rem; border-left: 3px solid var(--verde); }
+.fonte a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo);
+  color: var(--verde);
+  font-weight: 700;
+}
+
+a { color: var(--verde); }
+.ligar { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.botao-ligar {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo);
+  padding: 0 1.25rem;
+  border-radius: calc(var(--alvo) / 2);
+  background: var(--verde);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+}
+.botao-ligar:focus-visible { outline: 3px solid var(--tinta); outline-offset: 2px; }
+
+.envio {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 1rem;
+  background: var(--fundo);
+  border-top: 1px solid var(--borda);
+}
+.envio textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--alvo);
+  max-height: 10rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 1.375rem;
+  background: #FFFFFF;
+  color: var(--tinta);
+  font: inherit;
+  resize: none;
+}
+.envio textarea:focus { outline: 3px solid var(--verde); outline-offset: 1px; }
+.enviar {
+  width: var(--alvo);
+  height: var(--alvo);
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.enviar:focus-visible, .opcao:focus-visible, .secundario:focus-visible {
+  outline: 3px solid var(--tinta);
+  outline-offset: 2px;
+}
+
+.modo-piloto {
+  padding: 0.25rem 1rem 0.75rem;
+  text-align: center;
+  color: var(--tinta-suave);
+  font-size: 0.875rem;
+}
+.modo-piloto p { margin: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .andamento { animation: respira 1.6s ease-in-out infinite; }
+  @keyframes respira { 50% { opacity: 0.55; } }
+}
