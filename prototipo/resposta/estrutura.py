@@ -40,6 +40,7 @@ import json
 import re
 from dataclasses import dataclass, field, replace
 
+from prototipo.identidade import textos
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.ancoragem import ancorar_bloco, texto_do_bloco
 from prototipo.resposta.mito import verificar_mito
@@ -64,6 +65,9 @@ LACUNA = "lacuna de acervo"
 
 TETO_PALAVRAS = 120  # acessibilidade-leitura, camada visível
 TETO_FRASE = 20
+# Bordão da Dona Checa (add-identidade-dona-checa): lido da spec, posto pelo
+# código antes do bloco 1 e contado no teto. O modelo não o escreve.
+BORDAO = textos("resposta-formativa")["bordao"]
 
 CATALOGO = json.loads(catalogo_mod.ARQUIVO.read_text(encoding="utf-8"))["tecnicas"]
 _LISTA = "\n".join(f'  - "{t["rotulo"]}": {t["sinal"]}' for t in CATALOGO)
@@ -151,8 +155,9 @@ class Resposta:
 
     @property
     def texto(self):
-        """Camada visível: os quatro blocos com os títulos, nesta ordem."""
-        return "\n\n".join(f"{t} {b}".strip() for t, b in zip(self.titulos, self.blocos))
+        """Camada visível: o bordão e os quatro blocos com os títulos, nesta ordem."""
+        blocos = [f"{t} {b}".strip() for t, b in zip(self.titulos, self.blocos)]
+        return "\n\n".join([BORDAO, *blocos])
 
 
 def _estado(veredito, lacuna):
