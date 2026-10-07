@@ -249,7 +249,7 @@ function responder(estado, evento) {
       }
       bolha.append(p);
     }
-    if (evento.detalhe.length) detalhe(bolha, evento.detalhe);
+    if (evento.detalhe.length || evento.origem) detalhe(bolha, evento.detalhe, evento.origem);
   });
 }
 
@@ -258,10 +258,27 @@ function data(iso) {
   return casa ? `${casa[3]}/${casa[2]}/${casa[1]}` : "data não informada";
 }
 
-function detalhe(bolha, fontes) {
+// Cartão de origem: a página que a Dona Checa leu, para a pessoa conferir que foi
+// lido o que ela mandou (add-entrada-por-link, requirement Mensagem com link).
+function cartaoOrigem(origem) {
+  const cartao = criar("article", "origem");
+  cartao.append(paragrafo(config.textos.origem, "rotulo"));
+  cartao.append(criar("h2", "", origem.titulo || origem.url));
+  const meta = [origem.veiculo, origem.data ? data(origem.data) : null].filter(Boolean);
+  if (meta.length) cartao.append(paragrafo(meta.join(" · "), "meta"));
+  const link = criar("a", "", "Abrir a página lida");
+  link.href = origem.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  cartao.append(link);
+  return cartao;
+}
+
+function detalhe(bolha, fontes, origem) {
   const painel = criar("div", "detalhe");
   painel.id = novoId("detalhe");
   painel.hidden = true;
+  if (origem) painel.append(cartaoOrigem(origem));
   for (const fonte of fontes) {
     const cartao = criar("article", "fonte");
     cartao.append(criar("h2", "", fonte.agencia || "Fonte"));

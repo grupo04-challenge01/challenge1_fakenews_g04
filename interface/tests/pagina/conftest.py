@@ -13,6 +13,7 @@ import uvicorn
 from interface import fluxo
 from interface.app import criar_app
 from interface.config import Config
+from prototipo.entrada.leitura import AVISO_PARCIAL
 from prototipo.resposta.estrutura import BORDAO
 from prototipo.verificacao.fronteira import carregar_respostas
 
@@ -35,6 +36,10 @@ DETALHE = [
 ]
 
 
+ORIGEM = {"titulo": "Chá de jatobá cura câncer", "veiculo": "Blog Exemplo",
+          "data": "2026-09-20", "url": "https://blog.exemplo/cura"}
+
+
 def verificar_falso(texto, emitir, *, recuperador, chat):
     t = fluxo.textos()
     padrao = carregar_respostas()
@@ -51,6 +56,19 @@ def verificar_falso(texto, emitir, *, recuperador, chat):
     if "futebol" in texto:
         emitir({"tipo": "aviso", "chave": "sem_alegacao", "texto": t["sem_alegacao"]})
         return
+    if "youtu.be" in texto:
+        emitir({"tipo": "andamento", "etapa": "leitura", "frase": t["andamento"]["leitura"]})
+        emitir({"tipo": "aviso", "chave": "video", "texto": t["video"]})
+        return
+    if "blog.exemplo" in texto:
+        emitir({"tipo": "andamento", "etapa": "leitura", "frase": t["andamento"]["leitura"]})
+        time.sleep(PASSO * 5)  # tempo para a página mostrar "Abrindo o link…"
+        partes = RESPOSTA.split("\n\n")
+        if "parcial" in texto:
+            partes.insert(1, AVISO_PARCIAL)
+        emitir({"tipo": "resposta", "forma": "com evidência", "texto": "\n\n".join(partes),
+                "detalhe": DETALHE, "redirecionamentos": [], "origem": ORIGEM})
+        return
     if "quebra" in texto:
         emitir({"tipo": "erro", "texto": t["erro"]})
         return
@@ -58,7 +76,8 @@ def verificar_falso(texto, emitir, *, recuperador, chat):
         time.sleep(PASSO)
         emitir({"tipo": "andamento", "etapa": etapa, "frase": frase})
     emitir({"tipo": "resposta", "forma": "com evidência", "texto": RESPOSTA, "detalhe": DETALHE,
-            "redirecionamentos": [padrao["conduta_individual"]["web"]] if conduta else []})
+            "redirecionamentos": [padrao["conduta_individual"]["web"]] if conduta else [],
+            "origem": None})
 
 
 def _porta_livre():
