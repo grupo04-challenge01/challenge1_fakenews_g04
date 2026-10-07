@@ -36,6 +36,9 @@ CANAIS = ("web", "whatsapp")
 RAIZ = pathlib.Path(__file__).parents[2]
 SPEC = [RAIZ / "openspec/changes/mvp-copiloto-verificacao/specs/fronteira-orientacao-saude/spec.md",
         RAIZ / "openspec/specs/fronteira-orientacao-saude/spec.md"]
+# Respostas na voz da Dona Checa, por cima da base enquanto o change não é arquivado.
+SOBREPOSICAO = [RAIZ / "openspec/changes/add-identidade-dona-checa/specs/"
+                       "fronteira-orientacao-saude/spec.md"]
 REQUISITOS = {  # começo do título do requirement na spec -> chave
     "Recusa de orientação clínica": "conduta_individual",
     "Prioridade e bypass em sinal de risco": "risco_imediato",
@@ -152,10 +155,27 @@ def classificar(texto, chat=chat_ollama):
 
 
 def carregar_respostas():
-    """{chave: {canal: texto}} a partir dos blocos "Resposta Padrão" da spec."""
-    spec = next((p for p in SPEC if p.exists()), None)
-    if spec is None:
+    """{chave: {canal: texto}} a partir dos blocos "Resposta Padrão" da spec.
+
+    A base é a spec de mvp-copiloto-verificacao ou, arquivada, a principal. Por
+    cima vêm as respostas do delta de add-identidade-dona-checa, canal a canal;
+    as que o delta não traz (urgência, sofrimento psíquico) ficam as da base.
+    Arquivados os dois changes, a sobreposição some e a principal já traz o
+    texto novo (decisão 2 do design de add-identidade-dona-checa).
+    """
+    base = next((p for p in SPEC if p.exists()), None)
+    if base is None:
         raise FileNotFoundError("spec fronteira-orientacao-saude não encontrada")
+    respostas = ler_respostas(base)
+    for spec in SOBREPOSICAO:
+        if spec.exists():
+            for chave, canais in ler_respostas(spec).items():
+                respostas.setdefault(chave, {}).update(canais)
+    return respostas
+
+
+def ler_respostas(spec):
+    """{chave: {canal: texto}} dos blocos "Resposta Padrão" de um arquivo de spec."""
     respostas, chave, canais, linhas = {}, None, None, None
 
     def fechar():

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-labelledby="t">
+<title id="t">Dona Checa (retrato original)</title>
+<circle cx="100" cy="34" r="22" fill="#0F5E63"/>
+<ellipse cx="100" cy="96" rx="64" ry="60" fill="#0F5E63"/>
+<ellipse cx="100" cy="112" rx="48" ry="54" fill="#FFD3B0"/>
+<circle cx="72" cy="142" r="7" fill="#E0573B" fill-opacity="0.45"/>
+<circle cx="128" cy="142" r="7" fill="#E0573B" fill-opacity="0.45"/>
+<path d="M68 88 Q80 82 92 88" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M108 80 Q121 66 135 77" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="81" cy="101" r="4.5" fill="#1C2B2E"/>
+<circle cx="121" cy="99" r="4.5" fill="#1C2B2E"/>
+<rect x="60" y="112" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+<rect x="104" y="112" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+<path d="M96 122 Q100 117 104 122" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M90 152 Q101 158 112 149" stroke="#1C2B2E" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+</svg>

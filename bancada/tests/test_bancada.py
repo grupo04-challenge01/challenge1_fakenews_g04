@@ -67,7 +67,7 @@ def test_fluxo_completo_registra_todas_as_etapas():
     assert rastro["parou_em"] is None
     assert etapa_de(rastro, "guarda")["saida"]["rotulo"] == "falso"
     assert rastro["resposta"]["forma"] == "com evidência"
-    assert rastro["resposta"]["texto"].startswith("VEREDITO: Falso.")
+    assert rastro["resposta"]["texto"].startswith(f"{estrutura.BORDAO}\n\nVEREDITO: Falso.")
     assert rastro["resposta"]["defeitos"] == []
 
 
