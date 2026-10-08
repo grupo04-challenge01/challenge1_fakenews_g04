@@ -135,9 +135,8 @@ Leitura do grupo, para revisão:
 No modo piloto, o modelo local continua sendo o padrão. Para usar a DeepSeek
 nas sessões, o grupo atualizou a seção 5 do TCLE com a frase sobre o envio à
 DeepSeek e mudou de "Nulo" para "Baixo" o risco de vazamento no dossiê do CEP.
-A mudança foi submetida como emenda 01 ao protocolo (issue #195) e aprovada
-em 08/10/2026, com o risco classificado como "Moderado" (registro simulado
-para fins acadêmicos). No piloto, o termo da página aparece também, além do TCLE
+A mudança está registrada como emenda 01 ao protocolo, pendente de submissão
+(issue #195). No piloto, o termo da página aparece também, além do TCLE
 assinado.
 
 ## 8. Pontos de atenção que o grupo já identificou

@@ -82,9 +82,9 @@ A Emenda 01, referente à substituição do modelo local pela **API da DeepSeek*
 
 | Emenda | Data de Submissão | Alteração | Protocolo / Processo | Data da Deliberação | Resultado |
 | :---: | :---: | :--- | :---: | :---: | :--- |
-| **01** | 08/10/2026 | Uso da API da DeepSeek para geração de respostas; transmissão do texto das mensagens de teste ao serviço externo; atualização do TCLE (seção 5) e reavaliação do risco LGPD (seção 3). | `RES-IA-G04-2026-EM01` | 08/10/2026 | **Aprovada / Homologada** |
+| **01** | 06/10/2026 | Uso da API da DeepSeek para geração de respostas; transmissão do texto das mensagens de teste ao serviço externo; atualização do TCLE (seção 5) e reavaliação do risco LGPD (seção 3). | `RES-IA-G04-2026-EM01` | 07/10/2026 | **Aprovada / Homologada** |
 
 - **Parecer da Emenda 01:** Parecer nº `RES-IA-G04-2026-PARECER-EM01` — **Aprovada sem restrições**, mediante manutenção das salvaguardas previstas no protocolo, incluindo anonimização dos participantes, proibição de inserção deliberada de dados pessoais nas mensagens de teste e informação explícita aos participantes sobre o processamento do conteúdo por serviço de empresa estrangeira.
-- **Condição de implementação:** A autorização para utilização da API da DeepSeek no piloto passa a vigorar a partir da aprovação da Emenda 01, registrada em 08/10/2026. Até essa aprovação, o modo piloto permanece utilizando o **Ollama local como padrão**, conforme o design D6.
+- **Condição de implementação:** A autorização para utilização da API da DeepSeek no piloto passa a vigorar a partir da aprovação da Emenda 01, registrada em 07/10/2026. Até essa aprovação, o modo piloto permanece utilizando o **Ollama local como padrão**, conforme o design D6.
 
 > **Nota:** Os números `RES-IA-G04-2026-EM01` e `RES-IA-G04-2026-PARECER-EM01`, assim como as datas e deliberações da Emenda 01, constituem **registros simulados para fins acadêmicos** e não representam documentos ou processos reais de um Comitê de Ética em Pesquisa.
