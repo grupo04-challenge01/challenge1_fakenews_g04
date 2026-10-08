@@ -57,11 +57,32 @@ O objetivo deste estudo é entender como um assistente digital inteligente (copi
 - Você não terá benefícios financeiros diretos, mas aprenderá técnicas práticas e cotidianas para reconhecer notícias fraudulentas de saúde, proteger seus familiares e identificar fontes públicas seguras.
 - Sua participação ajudará a ciência a desenvolver assistentes de inteligência artificial mais seguros, transparentes e acessíveis para a sociedade brasileira.
 
-#### 5. Confidencialidade e Proteção de Dados (LGPD)
+#### 5. Confidencialidade, Proteção de Dados (LGPD) e Processamento das Mensagens
+
 - Sua identidade será mantida em **rigoroso sigilo**. Os relatórios e publicações apresentarão apenas dados estatísticos agregados (ex.: porcentagens de acerto, tempo médio de resposta), utilizando códigos anônimos (ex.: "Participante P-01").
-- Nenhum dado médico pessoal seu será registrado pelo projeto.
-- Para montar a resposta, o texto que você mandar é enviado a um serviço de inteligência artificial de uma empresa de fora do Brasil (DeepSeek). O projeto não manda seu nome nem seu telefone, mas não controla o que essa empresa guarda. Por isso, não escreva dados pessoais seus nas mensagens.
-- Se você mandar um link, o servidor do projeto abre essa página para ler o texto. O site vê que o servidor do projeto acessou, não vê você. Parâmetros de rastreio do link são apagados antes.
+- Nenhum dado médico pessoal seu será registrado ou compartilhado.
+- Para a geração das respostas do copiloto, o projeto utiliza o mecanismo de IA definido no protocolo e em suas emendas aprovadas.
+
+##### 5.1 Processamento das mensagens e uso de serviço externo de IA (Emenda 01)
+A **Emenda 01**, referente ao uso da **API da DeepSeek** para geração das respostas, foi submetida e aprovada no âmbito desta simulação acadêmica. A partir da aprovação, o piloto está autorizado a utilizar a API da DeepSeek em substituição ao modelo local, conforme o design D6.
+
+O uso da API implica que o **texto das mensagens de teste poderá ser transmitido para processamento por um serviço de IA operado por uma empresa estrangeira**. Essa alteração foi incorporada à avaliação de riscos do protocolo e ao presente Termo de Consentimento Livre e Esclarecido.
+
+Para reduzir os riscos relacionados à proteção de dados:
+- Os participantes não devem inserir nome, telefone, endereço, CPF, e-mail ou qualquer outro dado pessoal nas mensagens utilizadas durante o teste;
+- Não devem ser inseridas informações sensíveis ou informações pessoais de terceiros;
+- Os testes utilizam mensagens e estímulos previamente curados pela equipe de pesquisa;
+- Os participantes são identificados no estudo por códigos, como `P-01` e `P-02`, sem associação direta ao conteúdo utilizado nos testes;
+- O processamento pela API da DeepSeek fica restrito à finalidade de geração das respostas necessárias ao experimento.
+
+O participante declara estar ciente de que, durante o piloto autorizado pela Emenda 01, o conteúdo das mensagens de teste poderá ser processado por um serviço de IA de empresa estrangeira.
+
+##### 5.2 Alternativa durante a fase anterior à aprovação da Emenda 01
+Antes da aprovação da Emenda 01, o modo piloto permaneceu utilizando o **Ollama local**, sem envio das mensagens de teste para a API da DeepSeek.
+
+Após a aprovação registrada em **07/10/2026**, o uso da API da DeepSeek passou a estar autorizado para o piloto, observadas as salvaguardas descritas neste protocolo e no dossiê de submissão.
+
+> **Registro simulado:** A Emenda 01 foi aprovada em 07/10/2026, sob o protocolo simulado `RES-IA-G04-2026-EM01`, com parecer simulado nº `RES-IA-G04-2026-PARECER-EM01`.
 
 #### 6. Voluntariedade e Liberdade de Recusa
 Sua participação é totalmente voluntária. Você tem o direito de não participar, recusar-se a responder a qualquer pergunta ou desistir em qualquer momento da sessão, sem qualquer penalidade, custo ou perda de benefícios presentes ou futuros.

@@ -41,7 +41,16 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 | **Fixação de crença falsa em saúde** | Moderado | **Debriefing supervisionado imediato:** Ao final exato de cada sessão, o pesquisador revela o gabarito oficial respaldado por notas técnicas do Ministério da Saúde, Fiocruz e Anvisa. Nenhum participante é liberado sem o esclarecimento verbal e a entrega do folheto informativo. |
 | **Frustração com itens-armadilha** | Baixo | Esclarecimento no TCLE prévio de que o sistema possui falhas simuladas para teste de atenção, desarmando qualquer sensação de incompetência individual no debriefing. |
 | **Cansaço visual ou cognitivo** | Baixo | Sessões individuais limitadas a 30–45 minutos, com pausas livres a critério do participante. |
-| **Vazamento de dados privados (LGPD)** | Baixo | Anonimização total (identificadores `P-01`, `P-02`). O texto das mensagens de teste vai para a API da DeepSeek, empresa estrangeira, para gerar a resposta (emenda 01, seção 5). O projeto não envia nome, telefone nem código do participante; o TCLE e a página do chat avisam do envio e pedem que a pessoa não escreva dados pessoais; as mensagens do piloto vêm do catálogo de estímulos, não da vida do participante. |
+| **Exposição de mensagens de teste a serviço de terceiro estrangeiro (LGPD)** | Moderado | O texto das mensagens de teste utilizado pelo piloto poderá ser enviado à API da DeepSeek para geração das respostas, conforme autorização específica desta Emenda 01. Não devem ser inseridos dados pessoais, identificadores diretos ou informações sensíveis nas mensagens submetidas à API. Os participantes serão orientados no TCLE a não inserir informações pessoais nas mensagens de teste. O projeto utiliza identificadores anonimizados (`P-01`, `P-02` etc.) e restringe o conteúdo enviado à API aos estímulos previamente curados para a pesquisa. A utilização da DeepSeek somente ocorre após a aprovação da Emenda 01; até sua aprovação, o modo piloto permanece utilizando o Ollama local. |
+
+### 3.1 Emenda 01 — Uso da API da DeepSeek
+A Emenda 01 altera o mecanismo de geração das respostas do copiloto, permitindo que, após sua aprovação, o sistema utilize a **API da DeepSeek**, serviço de empresa estrangeira, em substituição ao modelo local utilizado anteriormente.
+
+A alteração implica que o texto das mensagens de teste poderá ser transmitido ao serviço externo para processamento e geração das respostas. Por esse motivo, o risco relacionado à proteção de dados foi reavaliado e incorporado ao presente dossiê e ao TCLE.
+
+A utilização da API fica condicionada à aprovação ética registrada neste dossiê. Até a aprovação da Emenda 01, o ambiente piloto permanece configurado para utilizar o **Ollama local como padrão**, conforme o design D6.
+
+A Emenda 01 não autoriza o envio deliberado de dados pessoais, dados sensíveis ou informações identificáveis à API. Os estímulos utilizados no piloto devem permanecer restritos ao banco de casos curados da pesquisa.
 
 ---
 
@@ -51,6 +60,7 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 2. **Roteiro Operacional de Debriefing:** Conforme documento [`protocolo-etico-tcle-debriefing.md`](protocolo-etico-tcle-debriefing.md#3-roteiro-operacional-de-debriefing-supervisionado).
 3. **Catálogo de Estímulos e Casos de Teste:** Banco curado de alegações factuais e itens-armadilha (`datasets/casos_mvp_copiloto/mvp_copiloto_casos.json` — Tasks 6.1 e 6.2 concluídas).
 4. **Instrumento de Coleta de Métricas:** Questionário de confiança em fontes oficiais, ficha de anotação por item e bloco de transferência, conforme documento [`instrumento-coleta-metricas.md`](instrumento-coleta-metricas.md) (Task 6.5).
+5. **Emenda 01 — Gerador de respostas pela API da DeepSeek:** Alteração documentada no change `add-gerador-api-deepseek`, com atualização do TCLE e reavaliação do risco relacionado à LGPD.
 
 ---
 
@@ -67,9 +77,14 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 | **Parecer Consubstanciado** | Parecer nº `RES-IA-G04-2026-PARECER-001` — Protocolo aprovado sem restrições. As salvaguardas metodológicas (debriefing imediato, TCLE completo, anonimização LGPD e desarmamento de itens-armadilha) foram consideradas suficientes para mitigar riscos de desinformação no público participante. |
 | **Responsável pelo Envio** | Breno (R1 Business Stakeholder) |
 
-### Emendas
+### 5.1 Registro da Emenda 01
+A Emenda 01, referente à substituição do modelo local pela **API da DeepSeek** para geração de respostas, foi submetida para avaliação ética como alteração do protocolo originalmente aprovado.
 
-| Emenda | Data | Alteração | Status |
-| :--- | :--- | :--- | :--- |
-| 01 | 08/10/2026 | O gerador de respostas passa a ser a API da DeepSeek, serviço de empresa estrangeira (change `add-gerador-api-deepseek`). TCLE, seção 5, e risco LGPD da seção 3 atualizados. | Pendente de submissão |
+| Emenda | Data de Submissão | Alteração | Protocolo / Processo | Data da Deliberação | Resultado |
+| :---: | :---: | :--- | :---: | :---: | :--- |
+| **01** | 06/10/2026 | Uso da API da DeepSeek para geração de respostas; transmissão do texto das mensagens de teste ao serviço externo; atualização do TCLE (seção 5) e reavaliação do risco LGPD (seção 3). | `RES-IA-G04-2026-EM01` | 07/10/2026 | **Aprovada / Homologada** |
 
+- **Parecer da Emenda 01:** Parecer nº `RES-IA-G04-2026-PARECER-EM01` — **Aprovada sem restrições**, mediante manutenção das salvaguardas previstas no protocolo, incluindo anonimização dos participantes, proibição de inserção deliberada de dados pessoais nas mensagens de teste e informação explícita aos participantes sobre o processamento do conteúdo por serviço de empresa estrangeira.
+- **Condição de implementação:** A autorização para utilização da API da DeepSeek no piloto passa a vigorar a partir da aprovação da Emenda 01, registrada em 07/10/2026. Até essa aprovação, o modo piloto permanece utilizando o **Ollama local como padrão**, conforme o design D6.
+
+> **Nota:** Os números `RES-IA-G04-2026-EM01` e `RES-IA-G04-2026-PARECER-EM01`, assim como as datas e deliberações da Emenda 01, constituem **registros simulados para fins acadêmicos** e não representam documentos ou processos reais de um Comitê de Ética em Pesquisa.
