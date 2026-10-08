@@ -77,6 +77,9 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
       recarregar, axe sem violações
 - [x] 5.6 Servidor com gerador `deepseek` não sobe com `CONTATO_DO_GRUPO` no
       termo; testes da regra e da subida
+- [x] 5.7 Documento para a revisão jurídica em `docs/interface/revisao-termo-lgpd.md`,
+      com o fluxo dos dados, o termo como a pessoa vê, os fundamentos e as
+      perguntas da revisão (insumo da 5.1)
 
 ## 6. Fechamento
 
