@@ -109,7 +109,7 @@ Quando a extração não achar alegação de saúde verificável, a página SHAL
 responder com o texto abaixo, sem bordão.
 
 ##### Texto — sem_alegacao
-> Meu bem, não achei nessa mensagem nada de saúde pra conferir. Se for outra coisa, cola aqui o trecho que te deixou na dúvida.
+> Meu bem, não achei nessa mensagem nada de saúde pra conferir. Assunto fora da saúde eu não sei responder. Se tiver algo de saúde aí, cola aqui o trecho que te deixou na dúvida.
 
 #### Scenario: Mensagem sem saúde
 - **GIVEN** uma mensagem sobre futebol

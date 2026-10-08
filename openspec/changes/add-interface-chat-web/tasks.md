@@ -87,3 +87,11 @@ Pré-requisito: `add-identidade-dona-checa` aplicado antes da seção 4.
       2 pulados (testes do índice real, que não vai ao git); interface 65
       passando, entre eles 26 no Chromium com axe-core; bancada offline 17/17
 - [x] 6.4 `openspec validate add-interface-chat-web --strict` limpo
+
+## 7. Ajustes depois da entrega
+
+- [x] 7.1 Texto `sem_alegacao` deixa claro que assunto fora da saúde não tem
+      resposta, por sugestão do grupo na revisão das telas; teste da página
+      confere a frase nova
+      — 08/10/2026: interface 83 passando; `openspec validate
+      add-interface-chat-web --strict` limpo

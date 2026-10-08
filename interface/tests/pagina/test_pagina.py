@@ -107,6 +107,7 @@ def test_mensagem_sem_saude_mostra_aviso_sem_bordao(page, servidor_uso):
     page.goto(servidor_uso)
     enviar(page, "Quem ganhou o futebol ontem?")
     expect(resposta(page)).to_contain_text("não achei nessa mensagem nada de saúde")
+    expect(resposta(page)).to_contain_text("Assunto fora da saúde eu não sei responder.")
     expect(page.get_by_text(BORDAO)).to_have_count(0)
 
 
