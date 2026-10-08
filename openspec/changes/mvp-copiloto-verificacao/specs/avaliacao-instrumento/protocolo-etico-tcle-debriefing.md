@@ -60,7 +60,6 @@ O objetivo deste estudo é entender como um assistente digital inteligente (copi
 #### 5. Confidencialidade e Proteção de Dados (LGPD)
 - Sua identidade será mantida em **rigoroso sigilo**. Os relatórios e publicações apresentarão apenas dados estatísticos agregados (ex.: porcentagens de acerto, tempo médio de resposta), utilizando códigos anônimos (ex.: "Participante P-01").
 - Nenhum dado médico pessoal seu será registrado ou compartilhado. Os modelos de computador utilizados funcionam em ambiente fechado de pesquisa e não repassam informações a empresas comerciais de internet.
-- Se você mandar um link, o servidor do projeto abre essa página para ler o texto. O site vê que o servidor do projeto acessou, não vê você. Parâmetros de rastreio do link são apagados antes.
 
 #### 6. Voluntariedade e Liberdade de Recusa
 Sua participação é totalmente voluntária. Você tem o direito de não participar, recusar-se a responder a qualquer pergunta ou desistir em qualquer momento da sessão, sem qualquer penalidade, custo ou perda de benefícios presentes ou futuros.

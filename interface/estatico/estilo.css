@@ -162,20 +162,16 @@ body {
 
 .detalhe { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .detalhe[hidden] { display: none; }
-.fonte, .origem {
+.fonte {
   padding: 0.75rem;
   border: 1px solid var(--borda);
   border-radius: 0.75rem;
   background: var(--fundo);
-  overflow-wrap: anywhere;
 }
-/* Cartão de origem (add-entrada-por-link): a página que foi lida, antes das fontes. */
-.origem { border-left: 4px solid var(--verde); }
-.origem .rotulo { margin: 0 0 0.25rem; color: var(--tinta-suave); font-size: 0.875rem; }
-.fonte h2, .origem h2 { margin: 0 0 0.25rem; font-size: 1rem; }
-.fonte .meta, .origem .meta { margin: 0 0 0.5rem; color: var(--tinta-suave); font-size: 0.875rem; }
+.fonte h2 { margin: 0 0 0.25rem; font-size: 1rem; }
+.fonte .meta { margin: 0 0 0.5rem; color: var(--tinta-suave); font-size: 0.875rem; }
 .fonte blockquote { margin: 0 0 0.5rem; padding-left: 0.75rem; border-left: 3px solid var(--verde); }
-.fonte a, .origem a {
+.fonte a {
   display: inline-flex;
   align-items: center;
   min-height: var(--alvo);

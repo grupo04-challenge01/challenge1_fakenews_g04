@@ -7,9 +7,7 @@ Chaves aceitas em `esperado`, todas opcionais:
 - `alegacao_contem`: palavras que a alegação selecionada tem de ter;
 - `unidade_no_topo`: `unidade_id` (ou lista de equivalentes) que a recuperação tem de trazer no top-k;
 - `rotulo`: rótulo da guarda, ou lista de rótulos aceitos;
-- `forma`: forma da resposta (`com evidência`, `sem evidência`, `fronteira`, `leitura`);
-- `leitura`: causa da falha de leitura (`nao_abriu`, `fechada`, `video`, `vazia`) ou,
-  quando a página foi lida, `completa` ou `parcial` (add-entrada-por-link).
+- `forma`: forma da resposta (`com evidência`, `sem evidência`, `fronteira`).
 
 Resposta com defeito e etapa com erro reprovam sempre, sem precisar de chave.
 """
@@ -64,20 +62,10 @@ def avaliar(caso, rastro):
         checks.append(_check("guarda", "rótulo", aceitos, rotulo, rotulo in aceitos))
 
     resposta = rastro.get("resposta")
-    if "leitura" in esp:
-        origem = rastro.get("origem") or {}
-        if (resposta or {}).get("forma") == "leitura":
-            obtido = resposta["causa"]
-        elif origem.get("tipo") == "pagina":
-            obtido = "parcial" if origem.get("parcial") else "completa"
-        else:
-            obtido = origem.get("tipo")
-        checks.append(_check("leitura", "leitura", esp["leitura"], obtido,
-                             obtido == esp["leitura"]))
     if "forma" in esp:
         forma = (resposta or {}).get("forma")
         checks.append(_check("resposta", "forma", esp["forma"], forma, forma == esp["forma"]))
-    if resposta and resposta.get("forma") not in ("fronteira", "leitura"):
+    if resposta and resposta.get("forma") != "fronteira":
         checks.append(_check("resposta", "sem defeitos", [], resposta["defeitos"],
                              not resposta["defeitos"]))
     return checks
