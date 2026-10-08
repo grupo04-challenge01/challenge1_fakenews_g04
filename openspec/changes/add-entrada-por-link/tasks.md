@@ -5,7 +5,7 @@ Nenhum teste acessa a rede.
 
 ## 0. Prioridade fora do código
 
-- [ ] 0.1 Inserir a frase de D9 na seção 5 do TCLE
+- [x] 0.1 Inserir a frase de D9 na seção 5 do TCLE
       (`mvp-copiloto-verificacao/specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md`)
       e avisar o responsável pela 6.4 antes da submissão ao CEP; verificar
       com `grep -n "servidor do projeto abre" ` no arquivo

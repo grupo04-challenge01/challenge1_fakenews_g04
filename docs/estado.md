@@ -358,9 +358,9 @@ da URL vai a disco ou ao log.
 
 Pendências do change:
 
-- **TCLE:** a frase sobre o servidor abrir o link já está na minuta; falta
-  avisar o responsável pela submissão ao CEP (task 6.4 de
-  `mvp-copiloto-verificacao`) antes de submeter.
+- **TCLE:** a frase sobre o servidor abrir o link está na minuta, e o
+  responsável pela submissão ao CEP (task 6.4 de `mvp-copiloto-verificacao`)
+  foi avisado em 08/10/2026.
 - **Ordem de arquivamento:** `mvp-copiloto-verificacao`, depois
   `add-interface-chat-web`, depois `add-entrada-por-link`, porque os deltas
   deste modificam specs que só existem naqueles (decisão D10).

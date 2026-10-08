@@ -289,8 +289,8 @@ primária, com extensão para WhatsApp. O bloco não tem mais bloqueio de decis�
 
 A entrada por link, exigida por `acessibilidade-leitura` / "Entrada sem
 barreira", está em `add-entrada-por-link`. A bancada com modelo real foi gravada em
-08/10 (tasks 6.1 e 6.2, resultado em [Estado](estado.md)). Pende o aviso ao
-responsável pelo CEP sobre a frase nova do TCLE (task 0.1). Arquivamento só
+08/10 (tasks 6.1 e 6.2, resultado em [Estado](estado.md)), e o responsável
+pelo CEP foi avisado da frase nova do TCLE (task 0.1). Arquivamento só
 depois de `mvp-copiloto-verificacao` e `add-interface-chat-web` (decisão D10).
 
 ### Bloco 6 — Avaliação (6)
