@@ -214,8 +214,8 @@ function tratar(estado, evento) {
     case "resposta":
       responder(estado, evento);
       break;
-    case "aviso":
-      terminar(estado, () => bolha.replaceChildren(paragrafo(evento.texto)));
+    case "aviso":  // markdown: o texto de conduta tem mais de um parágrafo
+      terminar(estado, () => bolha.replaceChildren(markdown(evento.texto)));
       break;
     case "erro":
       terminar(estado, () => erro(estado, evento.texto));

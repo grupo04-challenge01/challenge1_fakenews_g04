@@ -149,3 +149,11 @@ def test_duas_saidas_com_defeito_levantam():
     with pytest.raises(ValueError, match="saída não é JSON"):
         extrair("texto", chat=chat)
     assert len(pedidos) == 2
+
+
+def test_prompt_trata_pergunta_com_afirmacao_como_alegacao():
+    # fix-pergunta-e-conduta, D1: "Suco detox cura gripe?" é alegação.
+    assert "Opinião, desabafo e pedido não são alegação." in SISTEMA_EXTRACAO
+    assert '"Suco detox cura gripe?"' in SISTEMA_EXTRACAO
+    assert '"O que devo fazer?"' in SISTEMA_EXTRACAO
+    assert "pergunta e pedido não são alegação" not in SISTEMA_EXTRACAO

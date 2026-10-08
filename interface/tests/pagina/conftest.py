@@ -51,6 +51,11 @@ def verificar_falso(texto, emitir, *, recuperador, chat):
         emitir({"tipo": "fronteira", "desfecho": "sofrimento",
                 "texto": padrao["sofrimento_psiquico"]["web"]})
         return
+    if "remédio de pressão amanhã" in texto:  # conduta sem alegação (fix-pergunta-e-conduta)
+        emitir({"tipo": "fronteira", "desfecho": "conduta", "texto": None})
+        emitir({"tipo": "aviso", "chave": "conduta",
+                "texto": padrao["conduta_individual"]["web"]})
+        return
     conduta = "parar meu remédio" in texto
     emitir({"tipo": "fronteira", "desfecho": "conduta" if conduta else "segue", "texto": None})
     if "futebol" in texto:

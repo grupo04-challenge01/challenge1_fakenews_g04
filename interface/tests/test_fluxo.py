@@ -121,3 +121,15 @@ def test_falha_numa_etapa_do_meio_registra_a_etapa(caplog):
     assert eventos[-1]["tipo"] == "erro"
     assert "extracao" in caplog.text and "TimeoutError" in caplog.text
     assert "Zélia" not in caplog.text
+
+
+def test_conduta_sem_alegacao_mostra_a_conduta_e_nao_sem_alegacao():
+    # fix-pergunta-e-conduta, D2: o texto de conduta não pode se perder.
+    chat = chat_fixo({**SAIDAS, fronteira.SISTEMA: {"categorias": ["conduta_individual"],
+                                                    "motivo": "teste"},
+                      extracao.SISTEMA: {"alegacoes": [], "opiniao": None}})
+    eventos = _eventos("Posso parar meu remédio de pressão amanhã?", chat=chat)
+    assert eventos[0] == {"tipo": "fronteira", "desfecho": "conduta", "texto": None}
+    assert eventos[-1] == {"tipo": "aviso", "chave": "conduta",
+                           "texto": fronteira.carregar_respostas()["conduta_individual"]["web"]}
+    assert all(e.get("chave") != "sem_alegacao" for e in eventos)

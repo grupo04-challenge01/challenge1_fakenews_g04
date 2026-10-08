@@ -14,7 +14,10 @@ RISCOS = ("alto", "medio", "baixo")
 SISTEMA = """Você lê mensagens que as pessoas recebem sobre saúde e separa as alegações que podem ser verificadas.
 
 Alegação verificável é uma afirmação sobre o mundo que uma checagem pode confirmar
-ou desmentir. Opinião, desabafo, pergunta e pedido não são alegação.
+ou desmentir. Opinião, desabafo e pedido não são alegação. Pergunta que traz
+uma afirmação ("Suco detox cura gripe?", "É verdade que a vacina causa
+autismo?") tem como alegação a afirmação, escrita como frase ("Suco detox cura
+gripe."). Pergunta sem afirmação ("O que devo fazer?") não é alegação.
 
 Para cada alegação da mensagem, escreva:
 - "texto": a alegação em uma frase curta, com as palavras da mensagem. Não corrija

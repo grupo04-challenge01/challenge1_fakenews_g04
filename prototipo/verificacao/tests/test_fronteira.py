@@ -174,3 +174,32 @@ def test_checagem_nao_tem_resposta_padrao():
 def test_canal_desconhecido_e_recusado():
     with pytest.raises(ValueError):
         responder(classificar("x", chat=_modelo("checagem")), "sms")
+
+
+# ---- ferimento recente é urgência (fix-pergunta-e-conduta, D4) -----------------------
+
+@pytest.mark.parametrize("texto", [
+    "Cortei o pé com uma enxada, o que devo fazer?",
+    "Me cortei feio com a faca da cozinha",
+    "Meu neto se cortou no vidro da janela",
+    "Pisei num prego enferrujado ontem",
+    "Queimei a mão no óleo quente, passo pasta de dente?",
+    "Minha mãe caiu e bateu a cabeça",
+    "Acho que quebrei o braço",
+    "Fui mordido por um cachorro na rua",
+])
+def test_ferimento_recente_e_risco_imediato_pelas_regras(texto):
+    assert "risco_imediato" in por_regras(texto)
+
+
+@pytest.mark.parametrize("texto", [
+    "Recebi que corte de enxada se cura com borra de café, é verdade?",
+    "Dizem que queimadura se trata com pasta de dente. Procede?",
+    "Mandaram que mordida de cachorro não precisa de vacina, é verdade?",
+])
+def test_ferimento_citado_em_noticia_nao_e_risco_pelas_regras(texto):
+    assert "risco_imediato" not in por_regras(texto)
+
+
+def test_prompt_cita_ferimento_recente_no_risco_imediato():
+    assert "ferimento recente" in SISTEMA

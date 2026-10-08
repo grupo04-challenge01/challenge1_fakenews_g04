@@ -60,6 +60,14 @@ ACONTECENDO = re.compile(
     r"|comecou|ha \d+|nao para)\b"
     r"|\b(meu|minha)s? (pai|mae|filh[oa]|avo|marido|esposa|mulher|irma|irmao|bebe|net[oa]"
     r"|ti[oa]|sogr[oa]|amig[oa]|vizinh[oa])\b|\b(ele|ela)\b")
+# Ferimento recente (fix-pergunta-e-conduta, D4): o verbo conjugado já diz que
+# aconteceu com alguém; o substantivo ("corte de enxada se cura com…") não conta.
+FERIMENTO = re.compile(
+    r"\b(me )?cortei\b|\bse cortou\b|\bcortou (o|a) (pe|mao|dedo|braco|perna|cabeca|joelho)\b"
+    r"|\bpisei (num|numa|em|no|na) (prego|vidro|caco)|\b(me )?queimei\b|\bse queimou\b"
+    r"|\bquebrei (o|a)\b|\bquebrou (o|a) (braco|perna|pe|mao|dedo|bacia|quadril)\b"
+    r"|\b(cai|caiu) e (bati|bateu)\b|\b(bati|bateu) (a|com a) cabeca\b"
+    r"|\b(fui|foi) mordid[oa]\b")
 PSIQUICO = re.compile(
     r"quero morrer|vou me matar|me matar|tirar (a )?minha (propria )?vida"
     r"|acabar com (a )?minha vida|nao quero mais viver|nao aguento mais viver"
@@ -85,7 +93,9 @@ O verificador só checa informações. Ele não dá conduta médica.
 Marque TODAS as categorias que valem para a mensagem:
 "risco_imediato": a mensagem conta que alguém está AGORA com sintoma grave (dor no
   peito, falta de ar, desmaio, convulsão, sangramento forte, febre alta há dias,
-  reação depois de tomar algo). Pergunta sobre um sintoma em notícia NÃO é risco.
+  reação depois de tomar algo) ou um ferimento recente (corte, queimadura, queda
+  com batida na cabeça, osso quebrado, mordida de animal). Pergunta sobre um
+  sintoma ou ferimento em notícia NÃO é risco.
 "sofrimento_psiquico": a pessoa mostra desespero, vontade de morrer, de se ferir ou
   de sumir, mesmo com palavras indiretas. Notícia sobre suicídio NÃO é isto.
 "conduta_individual": a pessoa pede uma decisão de saúde para ela ou alguém próximo:
@@ -122,7 +132,7 @@ def por_regras(texto):
     """Categorias que o léxico reconhece; conjunto vazio quando nenhuma."""
     t = _normal(texto)
     achadas = set()
-    if SINTOMA.search(t) and ACONTECENDO.search(t):
+    if (SINTOMA.search(t) and ACONTECENDO.search(t)) or FERIMENTO.search(t):
         achadas.add("risco_imediato")
     if PSIQUICO.search(t):
         achadas.add("sofrimento_psiquico")
