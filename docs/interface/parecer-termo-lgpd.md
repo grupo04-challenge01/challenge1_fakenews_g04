@@ -138,5 +138,10 @@ Coletar dados pessoais (como IP ou cookies) exclusivamente para "provar o aceite
     Lupa, Aos Fatos e Fato ou Fake são empresas privadas.
   - **Rodapé:** recebeu "Serviço para maiores de 18 anos", como pede a
     resposta 9.
-- **Log do aceite:** o log registra "consentimento versão 2" com data e hora,
-  o que equivale ao `consent_v1_granted` da resposta 5.
+- **Versão 3:** a política da DeepSeek prevê treino com os dados e não fixa
+  prazo de retenção (task 5.2, #197). Conforme a resposta 10, o termo passou
+  a dizer "A DeepSeek pode guardar esse texto pelo tempo que considerar
+  necessário. A DeepSeek pode utilizar o texto enviado para aprimoramento dos
+  seus sistemas."
+- **Log do aceite:** o log registra "consentimento versão N" com data e hora
+  (hoje, versão 3), o que equivale ao `consent_v1_granted` da resposta 5.

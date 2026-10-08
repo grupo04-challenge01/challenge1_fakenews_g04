@@ -45,8 +45,9 @@ SHALL usar o gerador `ollama`.
 > Nós apagamos automaticamente números de telefone, CPF e e-mail antes de
 > enviar. Porém, como nomes próprios no meio do texto não são apagados
 > automaticamente, pedimos que você não inclua seu nome, telefone, CPF ou
-> informações sobre sua saúde. A DeepSeek recebe e trata o texto conforme as
-> regras do serviço dela. Do nosso lado, nada fica guardado: ao fechar ou
+> informações sobre sua saúde. A DeepSeek pode guardar esse texto pelo tempo
+> que considerar necessário. A DeepSeek pode utilizar o texto enviado para
+> aprimoramento dos seus sistemas. Do nosso lado, nada fica guardado: ao fechar ou
 > recarregar a página, a conversa apaga. Este serviço é mantido pela
 > Residência em IA (UnB / Instituto Eldorado — Grupo 04). Se tiver dúvidas,
 > fale conosco em donacheca@checatudo.com. Você aceita que o texto da sua

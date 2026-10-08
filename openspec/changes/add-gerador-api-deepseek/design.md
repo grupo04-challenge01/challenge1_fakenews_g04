@@ -314,7 +314,7 @@ dos arts. 11, I, e 33, VIII.
 - O termo é um diálogo na abertura, não o rodapé. O rodapé de D6 continua,
   como lembrete.
 - A página manda `consentimento` com a versão do termo (`TERMO_VERSAO`, hoje
-  `2`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
+  `3`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
   A página não é a única barreira.
 - Prova do aceite: o log registra "consentimento versão N", com data e hora, a cada verificação,
   sem identificador. É prova fraca, escolhida para não ferir "Nada guardado";
@@ -378,9 +378,44 @@ cidade.
 - [Dado de saúde sai do país] → termo de consentimento (D8), minimização
   (D9), aviso no rodapé e TCLE no piloto (D6). Revisão jurídica pendente
   (task 5.1).
-- [Termos da DeepSeek mudam o que ela guarda ou se treina com os dados] → o
-  termo diz que ela "pode guardar pelas regras dela"; a task 5.2 confere a
-  política atual antes de publicar.
+- [O que a DeepSeek faz com os dados] → conferido na task 5.2 (abaixo); o
+  termo, na versão 3, diz o que a política prevê.
+
+**Política de dados da DeepSeek (task 5.2, issue #197), consultada em
+08/10/2026:**
+
+- **Fontes:**
+  - [DeepSeek Privacy Policy](https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html),
+    atualizada em 10/02/2026;
+  - [DeepSeek Open Platform Terms of Service](https://cdn.deepseek.com/policies/en-US/deepseek-open-platform-terms-of-service.html),
+    em vigor desde 29/04/2026.
+- **Política separada para a API:** não existe. Os termos da plataforma não
+  falam de treino nem de retenção e remetem à política de privacidade geral.
+  As páginas `platform.deepseek.com/privacy` e `/terms` recusam acesso
+  automático (HTTP 403).
+- **Treino:** a política prevê usar os dados pessoais coletados para treinar e
+  aprimorar modelos de aprendizado de máquina. Ela lista o direito de recusar
+  esse uso (opt-out), sem dizer como pedir. O grupo decidiu não pedir: o
+  projeto é trabalho acadêmico, não produto.
+- **Retenção:** sem prazo fixo, "for as long as necessary" para as
+  finalidades da coleta.
+- **Local:** República Popular da China, sob a Hangzhou DeepSeek Artificial
+  Intelligence Co., Ltd.; os termos se regem pela lei da China continental.
+- **Afirmações descartadas:** um primeiro levantamento afirmou que a API não
+  treina com os dados e que os guarda por até 30 dias. Nenhum dos dois
+  documentos traz esses trechos, e o próprio levantamento corrigiu isso
+  depois. Esses compromissos são de outros provedores de API.
+- **Ressalva:** as citações foram lidas por ferramenta automática. As duas
+  leituras feitas pelo grupo divergem levemente na redação, mas não no
+  sentido. Antes de citar em documento externo, conferir o texto exato no
+  navegador.
+- **Efeito no termo (versão 3):** "A DeepSeek pode guardar esse texto pelo
+  tempo que considerar necessário. A DeepSeek pode utilizar o texto enviado
+  para aprimoramento dos seus sistemas." A segunda frase é a que o parecer
+  previu na resposta 10 para o caso de treino. Ela substitui "recebe e trata
+  o texto conforme as regras do serviço dela". A minimização (D9) e o pedido
+  para não escrever nome e dado de saúde ganham peso, porque não há garantia
+  de que o texto fique fora do treino.
 
 ## Migration Plan
 

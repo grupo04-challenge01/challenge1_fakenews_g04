@@ -10,8 +10,8 @@ grupo fez da LGPD para desenhar o fluxo. Não são parecer, e é exatamente o qu
 pedimos que seja revisto.
 
 **Resultado:** [parecer de 08/10/2026](parecer-termo-lgpd.md). Os textos da
-seção 4 abaixo são a versão 1, enviada para revisão; a versão em uso é a 2,
-do parecer.
+seção 4 abaixo são a versão 1, enviada para revisão. A versão em uso é a 3:
+a do parecer, mais o aviso sobre treino e retenção da DeepSeek (issue #197).
 
 ## 1. O serviço
 
