@@ -251,7 +251,7 @@ a { color: var(--verde); }
   color: var(--tinta-suave);
   font-size: 1rem;
 }
-.rodape p { margin: 0; }
+.rodape p { margin: 0; overflow-wrap: anywhere; }  /* e-mail do contato quebra em 320px */
 .rodape p + p { margin-top: 0.25rem; }
 
 @media (prefers-reduced-motion: no-preference) {
