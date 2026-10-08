@@ -1,0 +1,106 @@
+{
+    "versao_instrumento": "1.0.0",
+    "participante": "P-02",
+    "tipo": "piloto",
+    "data": "2026-10-07",
+    "faixa_etaria": "40-59",
+    "casos_sha256": "5b017d5a251136ee1afc1c96bf97809d03f95f9ba13b5b1c5d9a3210c56749db",
+    "tcle_assinado": true,
+    "confianca_fontes": {
+        "inicio": {
+            "ministerio_saude": 4,
+            "fiocruz": 4,
+            "anvisa": 4
+        },
+        "fim": {
+            "ministerio_saude": 4,
+            "fiocruz": 4,
+            "anvisa": 4
+        }
+    },
+    "itens": [
+        {
+            "caso_id": "3562ed9e-e15a-4711-8e36-d2ac792be598",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T17:00:00-03:00",
+            "decisao": "2026-10-07T17:01:20-03:00",
+            "rotulo_exibido": "falso",
+            "expressou_duvida": false,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "confianca_ferramenta"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": false,
+            "abandono": null,
+            "observacao": "Fernanda aceitou o rótulo da ferramenta indicando que a vacina da gripe não causa autismo em 1m20s (80s). Não realizou busca externa."
+        },
+        {
+            "caso_id": "f17c292d-f4ae-4a79-97d0-e4384e12bd62",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T17:01:30-03:00",
+            "decisao": "2026-10-07T17:02:40-03:00",
+            "rotulo_exibido": "verdadeiro",
+            "expressou_duvida": false,
+            "julgamento": "confiavel",
+            "criterios_citados": [
+                "confianca_ferramenta"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": false,
+            "abandono": null,
+            "observacao": "Visualizou os detalhes da ferramenta sobre os benefícios do café e tomou a decisão em 1m10s (70s), sem checar em outras fontes."
+        },
+        {
+            "caso_id": "c39a780a-b585-4e16-85cb-9bd0b42e9aae",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T17:03:00-03:00",
+            "decisao": "2026-10-07T17:04:15-03:00",
+            "rotulo_exibido": "falso",
+            "expressou_duvida": true,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "ausencia_comprovacao"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": false,
+            "abandono": null,
+            "observacao": "Item-armadilha: apoiou-se no rótulo da ferramenta para julgar a alegação sobre vitamina C em 1m15s (75s). Manteve o padrão de não pesquisar fora."
+        },
+        {
+            "caso_id": "77d18fce-b99c-4032-bb04-8764658dd52c",
+            "bloco": "transferencia",
+            "inicio": "2026-10-07T17:04:30-03:00",
+            "decisao": "2026-10-07T17:05:15-03:00",
+            "rotulo_exibido": null,
+            "expressou_duvida": null,
+            "julgamento": "confiavel",
+            "criterios_citados": [
+                "conhecimento_previo"
+            ],
+            "abriu_detalhe": false,
+            "consultou_fonte_externa": false,
+            "abandono": null,
+            "observacao": "Caso 4 de transferência (45s): Fernanda considerou a mensagem verdadeira por já conhecer a informação sobre HPV e câncer de colo de útero. Sabia que seria ideal pesquisar, mas não foi atrás."
+        },
+        {
+            "caso_id": "496ecb51-4f1a-42dc-8e49-5807ba324bea",
+            "bloco": "transferencia",
+            "inicio": "2026-10-07T17:05:30-03:00",
+            "decisao": "2026-10-07T17:06:20-03:00",
+            "rotulo_exibido": null,
+            "expressou_duvida": null,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "desconhecimento",
+                "ausencia_fonte_oficial"
+            ],
+            "abriu_detalhe": false,
+            "consultou_fonte_externa": false,
+            "abandono": null,
+            "observacao": "Caso 5 de transferência (50s): Avaliou como mais falso por não conhecer o tema (leite/asma) e pela ausência de links oficiais conhecidos. Sabia que deveria pesquisar, mas não pesquisou."
+        }
+    ],
+    "abandono_sessao": null,
+    "debriefing_realizado": true
+}

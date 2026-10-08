@@ -1,0 +1,320 @@
+{
+    "gerado_em": "2026-10-08T08:00:00-03:00",
+    "versao_instrumento": "1.0.0",
+    "casos": {
+        "arquivo": "datasets\\casos_mvp_copiloto\\mvp_copiloto_casos.json",
+        "sha256": "5b017d5a251136ee1afc1c96bf97809d03f95f9ba13b5b1c5d9a3210c56749db"
+    },
+    "agregado": {
+        "piloto": {
+            "sessoes": 2,
+            "resultado": {
+                "discernimento": {
+                    "n": 4,
+                    "de": 4,
+                    "taxa": 1.0
+                },
+                "transferencia": {
+                    "n": 4,
+                    "de": 4,
+                    "taxa": 1.0
+                },
+                "transferencia_com_criterio": {
+                    "n": 4,
+                    "de": 4,
+                    "taxa": 1.0
+                },
+                "criterios_transferencia": {
+                    "portal_governo": 1,
+                    "consenso_noticioso": 1,
+                    "busca_fonte_oficial": 1,
+                    "artigos_especializados": 1,
+                    "conhecimento_previo": 1,
+                    "ausencia_fonte_oficial": 1,
+                    "desconhecimento": 1
+                },
+                "tempo_decisao_fundamentada_s": {
+                    "com_ferramenta": {
+                        "mediana": 137.5,
+                        "n": 6
+                    },
+                    "transferencia": {
+                        "mediana": 80.5,
+                        "n": 4
+                    }
+                },
+                "consulta_fonte_externa": {
+                    "com_ferramenta": {
+                        "n": 3,
+                        "de": 6,
+                        "taxa": 0.5
+                    },
+                    "transferencia": {
+                        "n": 2,
+                        "de": 4,
+                        "taxa": 0.5
+                    }
+                },
+                "abriu_camada_detalhe": {
+                    "n": 6,
+                    "de": 6,
+                    "taxa": 1.0
+                }
+            },
+            "guarda": {
+                "aceitacao_cega": {
+                    "armadilhas": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    },
+                    "todos_erros": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    }
+                },
+                "falso_positivo_legitimo": {
+                    "participante_com_ferramenta": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    },
+                    "participante_transferencia": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    },
+                    "sistema": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    }
+                },
+                "confianca_fontes": {
+                    "sessoes_com_queda": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    },
+                    "delta_medio": 0.5
+                },
+                "abandono_atrito": {
+                    "sessoes": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    },
+                    "itens": {
+                        "n": 0,
+                        "de": 10,
+                        "taxa": 0.0
+                    }
+                }
+            }
+        }
+    },
+    "sessoes": [
+        {
+            "participante": "P-01",
+            "tipo": "piloto",
+            "resultado": {
+                "discernimento": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "transferencia": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "transferencia_com_criterio": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "criterios_transferencia": {
+                    "portal_governo": 1,
+                    "consenso_noticioso": 1,
+                    "busca_fonte_oficial": 1,
+                    "artigos_especializados": 1
+                },
+                "tempo_decisao_fundamentada_s": {
+                    "com_ferramenta": {
+                        "mediana": 195.0,
+                        "n": 3
+                    },
+                    "transferencia": {
+                        "mediana": 144.5,
+                        "n": 2
+                    }
+                },
+                "consulta_fonte_externa": {
+                    "com_ferramenta": {
+                        "n": 3,
+                        "de": 3,
+                        "taxa": 1.0
+                    },
+                    "transferencia": {
+                        "n": 2,
+                        "de": 2,
+                        "taxa": 1.0
+                    }
+                },
+                "abriu_camada_detalhe": {
+                    "n": 3,
+                    "de": 3,
+                    "taxa": 1.0
+                }
+            },
+            "guarda": {
+                "aceitacao_cega": {
+                    "armadilhas": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    },
+                    "todos_erros": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    }
+                },
+                "falso_positivo_legitimo": {
+                    "participante_com_ferramenta": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    },
+                    "participante_transferencia": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    },
+                    "sistema": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    }
+                },
+                "confianca_fontes": {
+                    "inicio": 4,
+                    "fim": 5,
+                    "delta_medio": 1,
+                    "queda": false
+                },
+                "abandono_atrito": {
+                    "itens": {
+                        "n": 0,
+                        "de": 5,
+                        "taxa": 0.0
+                    },
+                    "sessao": false
+                }
+            }
+        },
+        {
+            "participante": "P-02",
+            "tipo": "piloto",
+            "resultado": {
+                "discernimento": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "transferencia": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "transferencia_com_criterio": {
+                    "n": 2,
+                    "de": 2,
+                    "taxa": 1.0
+                },
+                "criterios_transferencia": {
+                    "conhecimento_previo": 1,
+                    "ausencia_fonte_oficial": 1,
+                    "desconhecimento": 1
+                },
+                "tempo_decisao_fundamentada_s": {
+                    "com_ferramenta": {
+                        "mediana": 75.0,
+                        "n": 3
+                    },
+                    "transferencia": {
+                        "mediana": 47.5,
+                        "n": 2
+                    }
+                },
+                "consulta_fonte_externa": {
+                    "com_ferramenta": {
+                        "n": 0,
+                        "de": 3,
+                        "taxa": 0.0
+                    },
+                    "transferencia": {
+                        "n": 0,
+                        "de": 2,
+                        "taxa": 0.0
+                    }
+                },
+                "abriu_camada_detalhe": {
+                    "n": 3,
+                    "de": 3,
+                    "taxa": 1.0
+                }
+            },
+            "guarda": {
+                "aceitacao_cega": {
+                    "armadilhas": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    },
+                    "todos_erros": {
+                        "n": 0,
+                        "de": 0,
+                        "taxa": null
+                    }
+                },
+                "falso_positivo_legitimo": {
+                    "participante_com_ferramenta": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    },
+                    "participante_transferencia": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    },
+                    "sistema": {
+                        "n": 0,
+                        "de": 1,
+                        "taxa": 0.0
+                    }
+                },
+                "confianca_fontes": {
+                    "inicio": 4,
+                    "fim": 4,
+                    "delta_medio": 0,
+                    "queda": false
+                },
+                "abandono_atrito": {
+                    "itens": {
+                        "n": 0,
+                        "de": 5,
+                        "taxa": 0.0
+                    },
+                    "sessao": false
+                }
+            }
+        }
+    ],
+    "excluidos": [],
+    "avisos": [
+        "P-01.json: item 3 (c39a780a-b585-4e16-85cb-9bd0b42e9aae): item-armadilha em que a ferramenta exibiu 'falso', sem contradizer o gabarito; não entra na aceitação cega"
+    ]
+}
