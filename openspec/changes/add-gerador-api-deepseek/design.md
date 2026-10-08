@@ -314,20 +314,47 @@ dos arts. 11, I, e 33, VIII.
 - O termo é um diálogo na abertura, não o rodapé. O rodapé de D6 continua,
   como lembrete.
 - A página manda `consentimento` com a versão do termo (`TERMO_VERSAO`, hoje
-  `1`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
+  `2`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
   A página não é a única barreira.
-- Prova do aceite: o log registra "consentimento versão 1" a cada verificação,
+- Prova do aceite: o log registra "consentimento versão N", com data e hora, a cada verificação,
   sem identificador. É prova fraca, escolhida para não ferir "Nada guardado";
   o piloto tem o TCLE assinado como prova forte.
 - Recusa: sem alternativa, o texto `recusa` aponta agências de checagem. Com
   `DONA_CHECA_ALTERNATIVA_LOCAL=sim`, a recusa usa o Ollama, para que o
   consentimento seja livre de fato. A página manda `consentimento: "recusado"`
   e o servidor escolhe `chat_ollama`.
-- `CONTATO_DO_GRUPO` no texto é marcador: o grupo preenche antes de publicar.
+- `CONTATO_DO_GRUPO` no texto era marcador, trocado pelo contato indicado no
+  parecer (abaixo).
   Com gerador `deepseek`, o servidor não sobe enquanto o marcador estiver no
   termo, em qualquer modo. Um teste vermelho na suíte travaria o trabalho do
   grupo sem impedir a publicação; a recusa na subida impede.
 - Nada disso substitui revisão jurídica; ver task 5.1.
+
+**Parecer de 08/10/2026** (`docs/interface/parecer-termo-lgpd.md`), sobre o
+documento `docs/interface/revisao-termo-lgpd.md`:
+
+- O termo atende aos arts. 11, I, e 33, VIII, com correções. A frase "sem seu
+  nome e sem seu telefone" saiu, porque prometia uma anonimização que não
+  existe; o termo agora diz que nomes no meio do texto não são apagados.
+- Controlador: "Residência em IA (UnB / Instituto Eldorado — Grupo 04)".
+  Contato: `donacheca@checatudo.com`, no termo e no rodapé.
+- O tom da personagem não compromete o consentimento.
+- O registro do aceite sem identidade basta; coletar IP ou cookie só para
+  provar o aceite feriria a minimização.
+- A alternativa local é boa prática, não obrigação.
+- O consentimento basta para a transferência internacional, sem
+  cláusulas-padrão.
+- No piloto, TCLE e termo da página coexistem.
+- O rodapé avisa que o serviço é para maiores de 18 anos (art. 14).
+- Se a política da DeepSeek (task 5.2) indicar treino com os dados da API, o
+  termo ganha a frase "A DeepSeek pode utilizar o texto enviado para
+  aprimoramento dos seus sistemas."
+
+Com os textos novos, `TERMO_VERSAO` passou a `2`: quem aceitou a versão 1
+aceita de novo. Desvios do texto do parecer: sem negrito e itálico, que a
+página mostraria como asteriscos, e "agências de checagem" no lugar de
+"agências públicas", porque Lupa, Aos Fatos e Fato ou Fake são empresas
+privadas.
 
 ### D9. Minimização
 

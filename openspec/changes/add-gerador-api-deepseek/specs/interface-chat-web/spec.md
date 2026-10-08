@@ -10,9 +10,9 @@ o gerador for `ollama`, a página MUST NOT mostrar o texto. O texto SHALL vir
 do servidor, como o modo de execução.
 
 ##### Texto — servico-externo
-> Para te responder, eu mando sua mensagem para um serviço de inteligência
-> artificial de fora do Brasil. Não coloque seu nome, telefone ou dados de
-> saúde seus na mensagem.
+> Para responder, sua mensagem é enviada a um serviço de IA na China. Não
+> digite nomes, números de telefone, CPF ou dados de saúde. Serviço para
+> maiores de 18 anos. Contato: donacheca@checatudo.com.
 
 #### Scenario: Gerador remoto
 - **GIVEN** o servidor com gerador `deepseek`
@@ -40,23 +40,27 @@ página SHALL mostrar o texto `recusa-local`, e as verificações dessa página
 SHALL usar o gerador `ollama`.
 
 ##### Texto — termo-servico-externo
-> Antes de começar, meu bem: para te responder, eu mando o texto da sua
-> mensagem para a DeepSeek, uma empresa de inteligência artificial da China.
-> Ela recebe só o texto, sem seu nome e sem seu telefone, e pode guardar esse
-> texto pelas regras dela. Aqui do nosso lado nada fica guardado: fechou a
-> página, a conversa some. Por isso, não escreva dados seus, como nome,
-> telefone, CPF ou doença que você tem. Quem responde por este serviço é o
-> grupo 04 da Residência em IA, pelo contato CONTATO_DO_GRUPO. Você aceita que
-> sua mensagem vá para a DeepSeek?
+> Antes de começar, meu bem: para checar sua mensagem, eu envio o texto dela
+> para a DeepSeek, um serviço de inteligência artificial localizado na China.
+> Nós apagamos automaticamente números de telefone, CPF e e-mail antes de
+> enviar. Porém, como nomes próprios no meio do texto não são apagados
+> automaticamente, pedimos que você não inclua seu nome, telefone, CPF ou
+> informações sobre sua saúde. A DeepSeek recebe e trata o texto conforme as
+> regras do serviço dela. Do nosso lado, nada fica guardado: ao fechar ou
+> recarregar a página, a conversa apaga. Este serviço é mantido pela
+> Residência em IA (UnB / Instituto Eldorado — Grupo 04). Se tiver dúvidas,
+> fale conosco em donacheca@checatudo.com. Você aceita que o texto da sua
+> mensagem seja enviado para a DeepSeek?
 
 ##### Texto — recusa
-> Tudo bem, meu bem. Sem esse aceite eu não consigo checar por aqui. Você pode
-> procurar a checagem no site de uma agência, como a Lupa, o Aos Fatos ou o
-> Fato ou Fake.
+> Tudo bem, meu bem. Sem o seu aceite eu não consigo checar a mensagem por
+> aqui. Você pode pesquisar a checagem diretamente nos sites de agências de
+> checagem, como a Lupa, o Aos Fatos ou o Fato ou Fake.
 
 ##### Texto — recusa-local
 > Tudo bem, meu bem. Vou checar aqui no computador do projeto, sem mandar sua
-> mensagem para fora. Só que demora mais, uns dois minutos.
+> mensagem para fora. Essa opção é mais privativa, mas pode demorar cerca de
+> dois minutos.
 
 #### Scenario: Termo antes do primeiro envio
 - **GIVEN** o servidor com gerador `deepseek`

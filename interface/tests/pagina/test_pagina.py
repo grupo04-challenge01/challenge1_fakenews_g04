@@ -135,7 +135,7 @@ def test_piloto_nao_tem_pergunta_e_marca_o_rodape(page, servidor_piloto):
 def test_gerador_remoto_avisa_no_rodape_antes_do_primeiro_envio(page, servidor_deepseek):
     page.goto(servidor_deepseek)
     rodape = page.get_by_role("contentinfo")
-    expect(rodape).to_contain_text("fora do Brasil")
+    expect(rodape).to_contain_text("serviço de IA na China")
     expect(rodape).not_to_contain_text("modo piloto")
     page.get_by_role("button", name="Aceito", exact=True).click()
     enviar(page, MENSAGEM)

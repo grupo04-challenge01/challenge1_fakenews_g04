@@ -9,6 +9,10 @@ O grupo não tem formação jurídica. As seções 6 e 8 trazem a leitura que o
 grupo fez da LGPD para desenhar o fluxo. Não são parecer, e é exatamente o que
 pedimos que seja revisto.
 
+**Resultado:** [parecer de 08/10/2026](parecer-termo-lgpd.md). Os textos da
+seção 4 abaixo são a versão 1, enviada para revisão; a versão em uso é a 2,
+do parecer.
+
 ## 1. O serviço
 
 A Dona Checa é um chat web de checagem de mensagens de saúde, pensado para

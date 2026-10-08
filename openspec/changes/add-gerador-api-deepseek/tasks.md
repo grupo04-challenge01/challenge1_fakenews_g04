@@ -63,7 +63,7 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
 
 ## 5. Consentimento e minimização (D8, D9)
 
-- [ ] 5.1 **Vitor** Revisão do termo e de D8 pelo jurídico ou DPO da instituição;
+- [x] 5.1 **Vitor** Revisão do termo e de D8 pelo jurídico ou DPO da instituição;
       preencher `CONTATO_DO_GRUPO`
 - [ ] 5.2 **Vitor** Ler a política de privacidade e os termos da API da DeepSeek
       (retenção e uso para treino) e ajustar o texto do termo se preciso
