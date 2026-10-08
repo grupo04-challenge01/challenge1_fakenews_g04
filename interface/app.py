@@ -8,13 +8,14 @@ responde 503 até a carga terminar (decisão 6).
 `POST /verificar` responde em streaming, um evento JSON por linha `data:`. O
 texto vai no corpo, nunca na URL (decisão 3). Uma verificação por vez, com
 tempo máximo; passado o tempo, a página recebe `erro` e a thread termina
-sozinha, segurando a vez até acabar (decisão 5). Mensagem com link segue para o
-fluxo, que busca a página (add-entrada-por-link; substitui a decisão 10).
+sozinha, segurando a vez até acabar (decisão 5). Mensagem que é só link recebe
+o aviso `so_link` sem chamar o fluxo (decisão 10).
 """
 import asyncio
 import json
 import logging
 import pathlib
+import re
 import threading
 from contextlib import asynccontextmanager
 
@@ -28,6 +29,7 @@ from prototipo import identidade
 from prototipo.verificacao.modelo import chat_ollama
 
 ESTATICO = pathlib.Path(__file__).parent / "estatico"
+SO_LINK = re.compile(r"https?://\S+")
 FIM = object()
 
 log = logging.getLogger("dona_checa")
@@ -55,8 +57,7 @@ def _pagina(config, textos):
         "modo": config.modo,
         "textos": {"abertura": persona["abertura"], "chamada": persona["chamada"],
                    "bordao": identidade.textos("resposta-formativa")["bordao"],
-                   "lendo": textos["lendo"], "erro": textos["erro"],
-                   "origem": textos["origem"]},
+                   "lendo": textos["lendo"], "erro": textos["erro"]},
         "pergunta": identidade.pergunta_confianca(piloto=config.piloto),
     }
     bruto = json.dumps(dados, ensure_ascii=False).replace("</", "<\\/")
@@ -102,6 +103,9 @@ def criar_app(config, *, carregar_recuperador=_carregar_recuperador_real, chat=c
         return JSONResponse({"pronto": pronto}, status_code=200 if pronto else 503)
 
     async def eventos(texto):
+        if SO_LINK.fullmatch(texto.strip()):
+            yield _sse({"tipo": "aviso", "chave": "so_link", "texto": textos["so_link"]})
+            return
         recuperador = estado["recuperador"]
         if recuperador is None:
             yield _sse(erro)

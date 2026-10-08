@@ -104,17 +104,16 @@ def test_recuperador_ainda_carregando_vira_erro():
     assert ler_eventos(r) == [{"tipo": "erro", "texto": fluxo.textos()["erro"]}]
 
 
-# ---- mensagem com link (add-entrada-por-link, task 7.1) --------------------------------
+# ---- só link (task 2.6) --------------------------------------------------------------
 
 @pytest.mark.parametrize("texto", ["https://exemplo.com.br/noticia",
                                    "  http://bit.ly/abc123 \n"])
-def test_mensagem_so_com_link_vai_ao_fluxo(texto):
-    chamado = []
-
-    def registra(texto, emitir, *, recuperador, chat):
-        chamado.append(texto)
-    _cliente(registra).post("/verificar", json={"texto": texto})
-    assert chamado == [texto]
+def test_mensagem_so_com_link_pede_o_texto_sem_chamar_o_fluxo(texto):
+    def explode(*a, **k):
+        raise AssertionError("o fluxo não pode ser chamado")
+    r = _cliente(explode).post("/verificar", json={"texto": texto})
+    assert ler_eventos(r) == [{"tipo": "aviso", "chave": "so_link",
+                               "texto": fluxo.textos()["so_link"]}]
 
 
 def test_texto_com_link_junto_vai_ao_fluxo():

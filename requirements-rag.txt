@@ -9,5 +9,3 @@ sentence-transformers>=3.0 # embeddings; traz torch
 ollama>=0.4                # cliente do gerador local (Gemma 4 12B QAT)
 pytest>=8                  # testes de prototipo/resposta e prototipo/verificacao
 jsonschema>=3.2           # esquema de indexação (task 1.1 de mvp-copiloto-verificacao)
-httpx>=0.28                # busca de página com bloqueio de SSRF (change add-entrada-por-link, D4)
-trafilatura>=2.0           # extração de texto e metadados da página (add-entrada-por-link, D3)

@@ -63,7 +63,7 @@ class Recuperador:
 def test_fluxo_completo_registra_todas_as_etapas():
     rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat_fixo())
     assert [e["etapa"] for e in rastro["etapas"]] == [
-        "fronteira", "leitura", "extracao", "decomposicao", "recuperacao", "guarda", "resposta"]
+        "fronteira", "extracao", "decomposicao", "recuperacao", "guarda", "resposta"]
     assert rastro["parou_em"] is None
     assert etapa_de(rastro, "guarda")["saida"]["rotulo"] == "falso"
     assert rastro["resposta"]["forma"] == "com evidência"
@@ -160,8 +160,7 @@ def test_casos_tem_id_unico_e_chaves_conhecidas():
     casos = carregar_casos()
     ids = [c["id"] for c in casos]
     assert len(ids) == len(set(ids))
-    conhecidas = {"fronteira", "verificavel", "alegacao_contem", "unidade_no_topo", "rotulo", "forma",
-                  "leitura"}
+    conhecidas = {"fronteira", "verificavel", "alegacao_contem", "unidade_no_topo", "rotulo", "forma"}
     for c in casos:
         assert c["mensagem"] and set(c["esperado"]) <= conhecidas, c["id"]
 
@@ -179,7 +178,7 @@ def test_ao_etapa_avisa_cada_etapa_na_ordem_com_o_registro_do_rastro():
     rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat_fixo(),
                       ao_etapa=avisos.append)
     assert [a["etapa"] for a in avisos] == [
-        "fronteira", "leitura", "extracao", "decomposicao", "recuperacao", "guarda", "resposta"]
+        "fronteira", "extracao", "decomposicao", "recuperacao", "guarda", "resposta"]
     assert avisos == rastro["etapas"]
 
 

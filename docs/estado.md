@@ -344,29 +344,6 @@ pronto para receber o mapa quando ele existir, sem reindexar.
 A lista completa de tasks pendentes, separada por fase do CBL, está em
 [Tasks pendentes](pendencias.md).
 
-### Entrada por link (`add-entrada-por-link`, 07/10/2026)
-
-A pessoa pode mandar o link da notícia em vez do texto. O servidor busca a
-página com bloqueio de acesso à rede interna, extrai título, veículo, data e
-texto, e verifica a página quando o texto da pessoa tem menos de 30 palavras ou
-não traz alegação de saúde. Paywall que entrega o texto no HTML é lido inteiro;
-leitura só de título e começo segue com o aviso "Li só o título e o começo
-dessa notícia."; vídeo, página fechada, página vazia e link que não abre viram
-resposta na voz da Dona Checa pedindo o texto. A interface mostra "Abrindo o
-link…" e um cartão com a página lida na camada de detalhe. Nada da página nem
-da URL vai a disco ou ao log.
-
-Pendências do change:
-
-- **TCLE:** a frase sobre o servidor abrir o link já está na minuta; falta
-  avisar o responsável pela submissão ao CEP (task 6.4 de
-  `mvp-copiloto-verificacao`) antes de submeter.
-- **Bancada com modelo real (6.1 e 6.2):** os dez casos `L01`–`L10` existem,
-  mas a gravação precisa do índice reconstruído e da pilha do RAG instalada.
-- **Ordem de arquivamento:** `mvp-copiloto-verificacao`, depois
-  `add-interface-chat-web`, depois `add-entrada-por-link`, porque os deltas
-  deste modificam specs que só existem naqueles (decisão D10).
-
 ### Lacuna de escopo
 
 **"Identificar vieses" tem cobertura parcial desde 17/09/2026.** A capability
