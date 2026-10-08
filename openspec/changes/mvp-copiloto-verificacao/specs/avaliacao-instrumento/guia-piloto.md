@@ -60,7 +60,7 @@ Antes de submeter o copiloto à coleta de campo com 20 a 30 usuários, o piloto 
 - Registrar se o participante utilizou espontaneamente os critérios aprendidos (procurar a fonte original, suspeitar de autoridades sem nome, verificar se há corte de vídeo).
 
 ### Bloco D — Debriefing Supervisionado e Encerramento (10 min)
-- Conduzir o roteiro de debriefing de forma calorosa (seguir o roteiro completo em [`protocolo-etico-tcle-debriefing.md`](../openspec/changes/mvp-copiloto-verificacao/specs/avaliacao-instrumento/protocolo-etico-tcle-debriefing.md#3-roteiro-operacional-de-debriefing-supervisionado)):
+- Conduzir o roteiro de debriefing de forma calorosa (seguir o roteiro completo em [`protocolo-etico-tcle-debriefing.md`](protocolo-etico-tcle-debriefing.md#3-roteiro-operacional-de-debriefing-supervisionado)):
   1. Revelar o gabarito oficial de todas as mensagens.
   2. Revelar a presença do item-armadilha: *"Essa resposta propositalmente veio incompleta porque faz parte do nosso teste científico medir se a ferramenta é confiável demais ou se a pessoa mantém o senso crítico. Você percebeu algo?"*.
   3. Tirar todas as dúvidas de saúde do participante.
