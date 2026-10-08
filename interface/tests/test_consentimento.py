@@ -103,3 +103,34 @@ def test_com_alternativa_a_recusa_e_o_texto_local():
                                     alternativa_local=True))
     assert termo["alternativa"] is True
     assert termo["recusa"] == _junto(textos()["recusa-local"])
+
+
+# ---- textos revistos pelo parecer de 08/10/2026 (task 5.1) ---------------------------
+
+CONTATO = "donacheca@checatudo.com"
+
+
+def test_termo_v3_sem_marcador_nem_marcacao_e_com_contato():
+    t = textos()
+    assert TERMO_VERSAO == "3"
+    for chave in ("termo-servico-externo", "recusa", "recusa-local", "servico-externo"):
+        assert "CONTATO_DO_GRUPO" not in t[chave] and "*" not in t[chave]
+    assert CONTATO in t["termo-servico-externo"] and CONTATO in t["servico-externo"]
+
+
+def test_termo_nao_promete_que_o_nome_nao_vai():
+    termo = _junto(textos()["termo-servico-externo"])
+    assert "sem seu nome" not in termo
+    assert "nomes próprios no meio do texto não são apagados" in termo
+
+
+def test_rodape_avisa_maioridade():
+    assert "maiores de 18 anos" in textos()["servico-externo"]
+
+
+def test_termo_avisa_treino_e_retencao_da_deepseek():
+    # Task 5.2: a política de privacidade da DeepSeek prevê treino e não fixa prazo.
+    termo = _junto(textos()["termo-servico-externo"])
+    assert "A DeepSeek pode utilizar o texto enviado para aprimoramento dos seus sistemas." in termo
+    assert "pelo tempo que considerar necessário" in termo
+    assert "não usa" not in termo and "30 dias" not in termo

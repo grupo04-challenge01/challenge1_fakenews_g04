@@ -63,9 +63,9 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
 
 ## 5. Consentimento e minimização (D8, D9)
 
-- [ ] 5.1 **Vitor** Revisão do termo e de D8 pelo jurídico ou DPO da instituição;
+- [x] 5.1 **Vitor** Revisão do termo e de D8 pelo jurídico ou DPO da instituição;
       preencher `CONTATO_DO_GRUPO`
-- [ ] 5.2 **Vitor** Ler a política de privacidade e os termos da API da DeepSeek
+- [x] 5.2 **Vitor** Ler a política de privacidade e os termos da API da DeepSeek
       (retenção e uso para treino) e ajustar o texto do termo se preciso
 - [x] 5.3 Teste e implementação de `prototipo/entrada/minimizar.py` e da
       chamada no fluxo antes da fronteira, só com gerador `deepseek`
@@ -77,6 +77,9 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
       recarregar, axe sem violações
 - [x] 5.6 Servidor com gerador `deepseek` não sobe com `CONTATO_DO_GRUPO` no
       termo; testes da regra e da subida
+- [x] 5.7 Documento para a revisão jurídica em `docs/interface/revisao-termo-lgpd.md`,
+      com o fluxo dos dados, o termo como a pessoa vê, os fundamentos e as
+      perguntas da revisão (insumo da 5.1)
 
 ## 6. Fechamento
 

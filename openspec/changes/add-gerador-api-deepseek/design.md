@@ -314,20 +314,47 @@ dos arts. 11, I, e 33, VIII.
 - O termo é um diálogo na abertura, não o rodapé. O rodapé de D6 continua,
   como lembrete.
 - A página manda `consentimento` com a versão do termo (`TERMO_VERSAO`, hoje
-  `1`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
+  `3`) em cada `POST /verificar`. O servidor confere antes de chamar o gerador.
   A página não é a única barreira.
-- Prova do aceite: o log registra "consentimento versão 1" a cada verificação,
+- Prova do aceite: o log registra "consentimento versão N", com data e hora, a cada verificação,
   sem identificador. É prova fraca, escolhida para não ferir "Nada guardado";
   o piloto tem o TCLE assinado como prova forte.
 - Recusa: sem alternativa, o texto `recusa` aponta agências de checagem. Com
   `DONA_CHECA_ALTERNATIVA_LOCAL=sim`, a recusa usa o Ollama, para que o
   consentimento seja livre de fato. A página manda `consentimento: "recusado"`
   e o servidor escolhe `chat_ollama`.
-- `CONTATO_DO_GRUPO` no texto é marcador: o grupo preenche antes de publicar.
+- `CONTATO_DO_GRUPO` no texto era marcador, trocado pelo contato indicado no
+  parecer (abaixo).
   Com gerador `deepseek`, o servidor não sobe enquanto o marcador estiver no
   termo, em qualquer modo. Um teste vermelho na suíte travaria o trabalho do
   grupo sem impedir a publicação; a recusa na subida impede.
 - Nada disso substitui revisão jurídica; ver task 5.1.
+
+**Parecer de 08/10/2026** (`docs/interface/parecer-termo-lgpd.md`), sobre o
+documento `docs/interface/revisao-termo-lgpd.md`:
+
+- O termo atende aos arts. 11, I, e 33, VIII, com correções. A frase "sem seu
+  nome e sem seu telefone" saiu, porque prometia uma anonimização que não
+  existe; o termo agora diz que nomes no meio do texto não são apagados.
+- Controlador: "Residência em IA (UnB / Instituto Eldorado — Grupo 04)".
+  Contato: `donacheca@checatudo.com`, no termo e no rodapé.
+- O tom da personagem não compromete o consentimento.
+- O registro do aceite sem identidade basta; coletar IP ou cookie só para
+  provar o aceite feriria a minimização.
+- A alternativa local é boa prática, não obrigação.
+- O consentimento basta para a transferência internacional, sem
+  cláusulas-padrão.
+- No piloto, TCLE e termo da página coexistem.
+- O rodapé avisa que o serviço é para maiores de 18 anos (art. 14).
+- Se a política da DeepSeek (task 5.2) indicar treino com os dados da API, o
+  termo ganha a frase "A DeepSeek pode utilizar o texto enviado para
+  aprimoramento dos seus sistemas."
+
+Com os textos novos, `TERMO_VERSAO` passou a `2`: quem aceitou a versão 1
+aceita de novo. Desvios do texto do parecer: sem negrito e itálico, que a
+página mostraria como asteriscos, e "agências de checagem" no lugar de
+"agências públicas", porque Lupa, Aos Fatos e Fato ou Fake são empresas
+privadas.
 
 ### D9. Minimização
 
@@ -351,9 +378,44 @@ cidade.
 - [Dado de saúde sai do país] → termo de consentimento (D8), minimização
   (D9), aviso no rodapé e TCLE no piloto (D6). Revisão jurídica pendente
   (task 5.1).
-- [Termos da DeepSeek mudam o que ela guarda ou se treina com os dados] → o
-  termo diz que ela "pode guardar pelas regras dela"; a task 5.2 confere a
-  política atual antes de publicar.
+- [O que a DeepSeek faz com os dados] → conferido na task 5.2 (abaixo); o
+  termo, na versão 3, diz o que a política prevê.
+
+**Política de dados da DeepSeek (task 5.2, issue #197), consultada em
+08/10/2026:**
+
+- **Fontes:**
+  - [DeepSeek Privacy Policy](https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html),
+    atualizada em 10/02/2026;
+  - [DeepSeek Open Platform Terms of Service](https://cdn.deepseek.com/policies/en-US/deepseek-open-platform-terms-of-service.html),
+    em vigor desde 29/04/2026.
+- **Política separada para a API:** não existe. Os termos da plataforma não
+  falam de treino nem de retenção e remetem à política de privacidade geral.
+  As páginas `platform.deepseek.com/privacy` e `/terms` recusam acesso
+  automático (HTTP 403).
+- **Treino:** a política prevê usar os dados pessoais coletados para treinar e
+  aprimorar modelos de aprendizado de máquina. Ela lista o direito de recusar
+  esse uso (opt-out), sem dizer como pedir. O grupo decidiu não pedir: o
+  projeto é trabalho acadêmico, não produto.
+- **Retenção:** sem prazo fixo, "for as long as necessary" para as
+  finalidades da coleta.
+- **Local:** República Popular da China, sob a Hangzhou DeepSeek Artificial
+  Intelligence Co., Ltd.; os termos se regem pela lei da China continental.
+- **Afirmações descartadas:** um primeiro levantamento afirmou que a API não
+  treina com os dados e que os guarda por até 30 dias. Nenhum dos dois
+  documentos traz esses trechos, e o próprio levantamento corrigiu isso
+  depois. Esses compromissos são de outros provedores de API.
+- **Ressalva:** as citações foram lidas por ferramenta automática. As duas
+  leituras feitas pelo grupo divergem levemente na redação, mas não no
+  sentido. Antes de citar em documento externo, conferir o texto exato no
+  navegador.
+- **Efeito no termo (versão 3):** "A DeepSeek pode guardar esse texto pelo
+  tempo que considerar necessário. A DeepSeek pode utilizar o texto enviado
+  para aprimoramento dos seus sistemas." A segunda frase é a que o parecer
+  previu na resposta 10 para o caso de treino. Ela substitui "recebe e trata
+  o texto conforme as regras do serviço dela". A minimização (D9) e o pedido
+  para não escrever nome e dado de saúde ganham peso, porque não há garantia
+  de que o texto fique fora do treino.
 
 ## Migration Plan
 

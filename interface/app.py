@@ -33,7 +33,7 @@ from prototipo import identidade
 from prototipo.entrada.minimizar import minimizar
 from prototipo.verificacao.modelo import chat_ollama
 
-TERMO_VERSAO = "1"
+TERMO_VERSAO = "3"  # 2: parecer de 08/10/2026 (task 5.1); 3: treino e retenção da DeepSeek (5.2)
 RECUSADO = "recusado"
 
 ESTATICO = pathlib.Path(__file__).parent / "estatico"

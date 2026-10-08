@@ -109,7 +109,7 @@ def test_gerador_remoto_mostra_o_aviso_no_rodape():
 
 
 def test_gerador_local_nao_mostra_o_aviso():
-    assert "fora do Brasil" not in _html(Config(modo="uso", gerador="ollama"))
+    assert "serviço de IA na China" not in _html(Config(modo="uso", gerador="ollama"))
 
 
 def test_piloto_com_gerador_remoto_tem_um_rodape_so_com_os_dois_textos():
