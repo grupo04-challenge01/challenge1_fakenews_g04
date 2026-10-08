@@ -1,21 +1,21 @@
 {
  "chat": {
-  "1e1d725c794cdefd": "{\"categorias\": [], \"motivo\": \"A mensagem não contém nenhuma informação ou pergunta para triagem.\"}",
-  "4e5c3aa0abc04459": "{\"alegacoes\": [\n  {\"texto\": \"Um plano de parto é um direito da gestante\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O ácido fólico, tomado de 30 a 90 dias antes das começar a tentar, reduz em até 70% o risco de malformações do tubo neural\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A vacina tríplice viral é contraindicada durante a gestação\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"as alterações hormonais favorecem sangramento na gengiva e cáries\", \"saude\": true, \"risco\": \"medio\"},\n  {\"texto\": \"Duas a três porções de peixe por semana são recomendáveis, especialmente de espécies como salmão e sardinha, evitando predadores como cação e peixe-espada, que têm mais mercúrio\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A suplementação de ferro, sempre prescrita, vale para toda a gestação e até três meses após o parto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Álcool atravessa a placenta e prejudica o feto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"é recomendado evitar derivados de cannabis\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Contra a toxoplasmose, lave bem frutas e verduras e evite carne crua ou mal passada\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"O exercício físico, com liberação do obstetra, reduz os riscos de diabetes, pré-eclâmpsia e depressão pós-parto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Ioga para gestante e meditação também são benéficos\", \"saude\": true, \"risco\": \"baixo\"},\n  {\"texto\": \"O sexo está liberado durante toda a gestação, salvo contraindicações como sangramento, placenta prévia ou risco de parto prematuro\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Sentir o bebê mexer é sinal de bem-estar\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A hora de ir para a maternidade é quando as contrações vêm a cada cinco minutos e duram cerca de um minuto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Quem trabalha com carteira assinada pode sair para no mínimo seis consultas sem desconto no salário, e tem estabilidade da confirmação da gravidez até cinco meses após o parto\", \"saude\": false, \"risco\": \"baixo\"}\n], \"opiniao\": \"Sugiro dois critérios essenciais. O primeiro, evitar candidatos associados ao crime organizado. Simples assim. O segundo: verifiquem o histórico dos candidatos e seus partidos nas causas que afetam a infância: evite se votaram contra a proteção ambiental, contra políticas de educação, de transferência de renda, de apoio às mães, contra o fim da escala 6X1. Evite se são contra o SUS ou o ECA, se seus programas falam em corte drástico de políticas sociais, em fomento às armas e não aos livros.\"}",
-  "4e5ce23ce49572b6": "{\n  \"fatos\": [\n    \"O plano de parto é um direito da gestante.\",\n    \"O ácido fólico reduz em até 70% o risco de malformações do tubo neural quando tomado antes da concepção.\",\n    \"A vacina tríplice viral é contraindicada durante a gestação.\",\n    \"Alterações hormonais na gravidez favorecem sangramento na gengiva e cáries.\",\n    \"O álcool atravessa a placenta e prejudica o feto.\",\n    \"Exercício físico com liberação médica reduz riscos de diabetes, pré-eclâmpsia e depressão pós-parto.\",\n    \"A presença de uma doula resulta em partos mais curtos, menos analgesia e menos cesáreas.\",\n    \"Trabalhadoras com carteira assinada têm direito a no mínimo seis consultas sem desconto no salário.\",\n    \"Trabalhadoras com carteira assinada têm estabilidade desde a confirmação da gravidez até cinco meses após o parto.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"reduz em até 70% o risco de malformações do tubo neural\",\n      \"forca\": \"forte\"\n    },\n    {\n      \"texto\": \"A gravidez chega acompanhada de uma avalanche de conselhos e palpites, além de muita desinformação nas redes sociais.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Vou reunir aqui algumas orientações que fazem diferença para a saúde da mãe e do bebê.\",\n    \"Vale a regra de ouro: priorizar comida de verdade e deixar de lado os ultraprocessados.\",\n    \"Medo, angústia e dúvida são comuns e podem conviver com a alegria.\",\n    \"Quando a angústia pesar demais, é hora de procurar ajuda.\",\n    \"Simples assim.\",\n    \"Bom voto a todos.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas.\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta a afirmação como um resultado direto sem citar o estudo ou documento que comprove essa correlação específica.\"\n  }\n}",
-  "a45e8a7507c5c578": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados aborda o uso de ácido fólico para prevenção de malformações do tubo neural.\"}",
-  "27fbe8e25dc41caf": "{\"bloco1\": \"Foram buscadas informações sobre o uso de ácido fólico na gravidez.\",\n\"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\",\n\"bloco3\": \"Você pode consultar sites oficiais de saúde ou órgãos públicos.\",\n\"bloco4\": \"Procure em portais do Ministério da Saúde ou sociedades médicas.\"}"
+  "1e1d725c794cdefd": "{\"categorias\": [\"checagem\"], \"motivo\": \"A pessoa quer saber se uma informação é verdadeira.\"}",
+  "7e2a1a705d64a84b": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O ácido fólico, tomado de 30 a 90 dias antes de começar a tentar, reduz em até 70% o risco de malformações do tubo neural\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"A vacina tríplice viral é contraindicada durante a gestação\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"As alterações hormonais da gravidez favorecem sangramento na gengiva e cáries\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"Duas a três porções de peixe por semana são recomendáveis, especialmente de espécies como salmão e sardinha, evitando predadores como cação e peixe-espada, que têm mais mercúrio\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A suplementação de ferro, sempre prescrita, vale para toda a gestação e até três meses após o parto\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Álcool está fora em qualquer quantidade e fase da gravidez, porque atravessa a placenta e prejudica o feto\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"O exercício físico, com liberação do obstetra, reduz os riscos de diabetes, pré-eclâmpsia e depressão pós-parto\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": \"No domingo, peço que votem por nossas crianças. Todas elas. Sugiro dois critérios essenciais. O primeiro, evitar candidatos associados ao crime organizado. Simples assim. O segundo: verifiquem o histórico dos candidatos e seus partidos nas causas que afetam a infância: evite se votaram contra a proteção ambiental, contra políticas de educação, de transferência de renda, de apoio às mães, contra o fim da escala 6X1. Evite se são contra o SUS ou o ECA, se seus programas falam em corte drástico de políticas sociais, em fomento às armas e não aos livros.\"\n}",
+  "6e7906383b0be9d7": "{\n  \"fatos\": [\n    \"O ácido fólico, tomado de 30 a 90 dias antes de começar a tentar, reduz em até 70% o risco de malformações do tubo neural.\",\n    \"A vacina tríplice viral é contraindicada durante a gestação.\",\n    \"As alterações hormonais favorecem sangramento na gengiva e cáries.\",\n    \"Duas a três porções de peixe por semana são recomendáveis, especialmente de espécies como salmão e sardinha, evitando predadores como cação e peixe-espada, que têm mais mercúrio.\",\n    \"A suplementação de ferro, sempre prescrita, vale para toda a gestação e até três meses após o parto.\",\n    \"Álcool atravessa a placenta e prejudica o feto.\",\n    \"O exercício físico, com liberação do obstetra, reduz os riscos de diabetes, pré-eclâmpsia e depressão pós-parto.\",\n    \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas.\",\n    \"Quem trabalha com carteira assinada pode sair para no mínimo seis consultas sem desconto no salário, e tem estabilidade da confirmação da gravidez até cinco meses após o parto.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Vou reunir aqui algumas orientações que fazem diferença para a saúde da mãe e do bebê.\",\n    \"Vale a regra de ouro: priorizar comida de verdade e deixar de lado os ultraprocessados.\",\n    \"Álcool está fora em qualquer quantidade e fase da gravidez.\",\n    \"O sexo está liberado durante toda a gestação, salvo contraindicações como sangramento, placenta prévia ou risco de parto prematuro.\",\n    \"A saúde mental pede a mesma atenção.\",\n    \"Sentir o bebê mexer é sinal de bem-estar.\",\n    \"Gravidez de alto risco exige mais consultas e exames, e em situações específicas pode indicar a cesárea.\",\n    \"Na reta final, saber diferenciar as contrações irregulares do fim da gestação do trabalho de parto evita intervenções desnecessárias.\",\n    \"Por fim, conheça seus direitos.\",\n    \"No domingo, peço que votem por nossas crianças. Todas elas.\",\n    \"Sugiro dois critérios essenciais.\",\n    \"O primeiro, evitar candidatos associados ao crime organizado. Simples assim.\",\n    \"O segundo: verifiquem o histórico dos candidatos e seus partidos nas causas que afetam a infância: evite se votaram contra a proteção ambiental, contra políticas de educação, de transferência de renda, de apoio às mães, contra o fim da escala 6X1. Evite se são contra o SUS ou o ECA, se seus programas falam em corte drástico de políticas sociais, em fomento às armas e não aos livros.\",\n    \"Bom voto a todos.\"\n  ],\n  \"conclusao\": null\n}",
+  "3f3e4a140274c247": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho fala sobre ácido fólico e redução de risco de malformações do tubo neural.\"\n}",
+  "6620761ea3c8ae53": "{\n  \"bloco1\": \"Não encontramos estudos sobre o ácido fólico reduzir em até 70% o risco de malformações do tubo neural.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Procure fontes confiáveis, como sites de sociedades médicas ou do Ministério da Saúde, para confirmar essa informação.\",\n  \"bloco4\": \"Você pode buscar em bases de dados como PubMed ou consultar um profissional de saúde.\"\n}"
  },
  "busca": {
-  "1c3c05f5f8b1163d": {
+  "1bd755e59bf741b0": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "f946c8a102-00",
      "fragmento_id": "f946c8a102-00-05",
-     "score": 0.6002355813980103,
+     "score": 0.6008775234222412,
      "score_lexico": 2.2574803829193115,
-     "score_denso": 0.8417012691497803,
+     "score_denso": 0.8416905999183655,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "75ca0c74e0-00",
      "fragmento_id": "75ca0c74e0-00-01",
-     "score": 0.5988464951515198,
+     "score": 0.5977080464363098,
      "score_lexico": 19.58538818359375,
-     "score_denso": 0.8322746753692627,
+     "score_denso": 0.8319703340530396,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -47,9 +47,9 @@
     {
      "unidade_id": "886d543a07-00",
      "fragmento_id": "886d543a07-00-01",
-     "score": 0.5842447280883789,
+     "score": 0.5847801566123962,
      "score_lexico": 7.121770858764648,
-     "score_denso": 0.8338848352432251,
+     "score_denso": 0.8338514566421509,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -64,9 +64,9 @@
     {
      "unidade_id": "071980d9ac-00",
      "fragmento_id": "071980d9ac-00-04",
-     "score": 0.5809842348098755,
+     "score": 0.58087557554245,
      "score_lexico": 7.110088348388672,
-     "score_denso": 0.8333366513252258,
+     "score_denso": 0.8331949710845947,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -81,9 +81,9 @@
     {
      "unidade_id": "8a67a65141-01",
      "fragmento_id": "8a67a65141-01-01",
-     "score": 0.5805612802505493,
+     "score": 0.5792927742004395,
      "score_lexico": 2.4066176414489746,
-     "score_denso": 0.8374580144882202,
+     "score_denso": 0.8370792865753174,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
