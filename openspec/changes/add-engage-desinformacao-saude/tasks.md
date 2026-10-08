@@ -1,6 +1,6 @@
 # Tasks — add-engage-desinformacao-saude
 
-Donos das tasks em aberto: **Breno** 1 (7.1).
+Donos das tasks em aberto: **Breno** 0.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -102,7 +102,8 @@ Vigência: 08/09 a 11/09.
 
 ## 7. Fechamento
 
-- [ ] 7.1 **Breno** Consolidar o portfólio de pesquisa (fichas + método + datasets)
+- [x] 7.1 **Breno** Consolidar o portfólio de pesquisa (fichas + método + datasets)
+      — entregue em `docs/engage/portfolio-engage.md`, consolidando os seis casos forenses, o protocolo de leitura lateral, a análise de custo cognitivo, o pacote de datasets e a Matriz de Confiança versão 1
 - [x] 7.2 **Breno** Consolidar a matriz de confiança versão 1
       — entregue como Matriz de Confiança (Versão 1), `docs/engage/kit-matriz-confianca.md`, PR #104, 01/10/2026
 - [x] 7.3 Rodar `openspec validate add-engage-desinformacao-saude --strict` — limpo em 20/09/2026

@@ -1,6 +1,6 @@
 # Tasks
 
-Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 0, **Wingrid** 1, **Breno** 1.
+Donos das tasks em aberto: **Vitor** 0, **Jhessica** 0, **Samara** 0, **Wingrid** 0, **Breno** 1.
 
 Divisão de 24/09/2026, por papel do artigo de MLOps (Kreuzberger et al.,
 2023): R1 Breno, R2 Wingrid, R3 modelagem Vitor, R3 avaliação Jhessica,
@@ -125,5 +125,6 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       `matriz-confianca` da fase Engage
       — mapeamento 1-para-1 dos 7 rótulos e reserva da 8ª vaga contra as 4
       dimensões empíricas da matriz; decisão 22 do `design.md`, 01/10/2026
-- [ ] 8.2 **Wingrid** `openspec validate mvp-copiloto-verificacao --strict` limpo
+- [x] 8.2 **Wingrid** `openspec validate mvp-copiloto-verificacao --strict` limpo
+      — validado com sucesso em 06/10/2026 (`Change 'mvp-copiloto-verificacao' is valid`)
 
