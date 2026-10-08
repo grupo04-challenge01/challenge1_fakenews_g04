@@ -41,7 +41,7 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 | **Fixação de crença falsa em saúde** | Moderado | **Debriefing supervisionado imediato:** Ao final exato de cada sessão, o pesquisador revela o gabarito oficial respaldado por notas técnicas do Ministério da Saúde, Fiocruz e Anvisa. Nenhum participante é liberado sem o esclarecimento verbal e a entrega do folheto informativo. |
 | **Frustração com itens-armadilha** | Baixo | Esclarecimento no TCLE prévio de que o sistema possui falhas simuladas para teste de atenção, desarmando qualquer sensação de incompetência individual no debriefing. |
 | **Cansaço visual ou cognitivo** | Baixo | Sessões individuais limitadas a 30–45 minutos, com pausas livres a critério do participante. |
-| **Vazamento de dados privados (LGPD)** | Nulo | Anonimização total (identificadores `P-01`, `P-02`); o protótipo não transita mensagens nem dados pessoais por APIs comerciais de terceiros. |
+| **Vazamento de dados privados (LGPD)** | Baixo | Anonimização total (identificadores `P-01`, `P-02`). O texto das mensagens de teste vai para a API da DeepSeek, empresa estrangeira, para gerar a resposta (emenda 01, seção 5). O projeto não envia nome, telefone nem código do participante; o TCLE e a página do chat avisam do envio e pedem que a pessoa não escreva dados pessoais; as mensagens do piloto vêm do catálogo de estímulos, não da vida do participante. |
 
 ---
 
@@ -66,4 +66,10 @@ Por envolver alegações médicas enganosas e itens-armadilha no teste de usabil
 | **Status Atual** | **Aprovado / Homologado (Simulação Acadêmica da Residência)** |
 | **Parecer Consubstanciado** | Parecer nº `RES-IA-G04-2026-PARECER-001` — Protocolo aprovado sem restrições. As salvaguardas metodológicas (debriefing imediato, TCLE completo, anonimização LGPD e desarmamento de itens-armadilha) foram consideradas suficientes para mitigar riscos de desinformação no público participante. |
 | **Responsável pelo Envio** | Breno (R1 Business Stakeholder) |
+
+### Emendas
+
+| Emenda | Data | Alteração | Status |
+| :--- | :--- | :--- | :--- |
+| 01 | 08/10/2026 | O gerador de respostas passa a ser a API da DeepSeek, serviço de empresa estrangeira (change `add-gerador-api-deepseek`). TCLE, seção 5, e risco LGPD da seção 3 atualizados. | Pendente de submissão |
 
