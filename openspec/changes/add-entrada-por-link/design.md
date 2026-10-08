@@ -194,6 +194,19 @@ Os deltas de `acessibilidade-leitura` (MODIFIED) e `interface-chat-web`
 `add-interface-chat-web`, depois este. Mesma situação já registrada em
 `add-identidade-dona-checa`.
 
+### D11. Tempo máximo padrão de 300 s
+
+Página completa entra no fluxo com até 800 palavras, e extração e decomposição
+crescem com o texto. Na bancada de 08/10 (`gemma4:12b-it-qat`, MacBook Air
+M4), `L01` levou 206 s e `L02` 136 s; no servidor real, o mesmo link de `L01`
+passou dos 180 s e a pessoa recebeu a mensagem de erro. O padrão de
+`DONA_CHECA_TEMPO_MAX`, definido em `add-interface-chat-web`, passa de 180 para
+300 s. A variável continua valendo para quem quiser outro valor.
+
+Alternativa descartada por ora: baixar o corte de 800 palavras de D6. Mexe em
+limiar da spec e no que a página entrega para verificação; fica para depois do
+piloto, se o tempo seguir alto.
+
 ## Risks / Trade-offs
 
 - [Muitos sites brasileiros montam o texto por JavaScript] → cai em `vazia`

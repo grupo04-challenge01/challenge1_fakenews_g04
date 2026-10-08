@@ -21,7 +21,7 @@ def test_modo_fora_dos_valores_aceitos_e_erro(valor):
 
 def test_padroes_seguros():
     assert carregar({"DONA_CHECA_MODO": "uso"}) == Config(
-        modo="uso", host="127.0.0.1", porta=8000, tempo_max=180)
+        modo="uso", host="127.0.0.1", porta=8000, tempo_max=300)
 
 
 def test_piloto_e_valores_explicitos():

@@ -19,7 +19,7 @@ class Config:
     modo: str
     host: str = "127.0.0.1"
     porta: int = 8000
-    tempo_max: int = 180
+    tempo_max: int = 300
 
     @property
     def piloto(self):
@@ -47,4 +47,4 @@ def carregar(ambiente=os.environ):
     return Config(modo=modo,
                   host=ambiente.get("DONA_CHECA_HOST", "127.0.0.1"),
                   porta=_inteiro_positivo(ambiente, "DONA_CHECA_PORTA", 8000),
-                  tempo_max=_inteiro_positivo(ambiente, "DONA_CHECA_TEMPO_MAX", 180))
+                  tempo_max=_inteiro_positivo(ambiente, "DONA_CHECA_TEMPO_MAX", 300))

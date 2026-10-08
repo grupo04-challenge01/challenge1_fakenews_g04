@@ -114,6 +114,9 @@ Depende de `interface/` existir em `main` (`add-interface-chat-web`).
       passando com o cartão de origem aberto
 - [x] 7.6 Teste: depois de três buscas, nenhum HTML, URL ou texto extraído
       no diretório de trabalho nem no log do servidor
+- [x] 7.7 Teste e implementação: padrão de `DONA_CHECA_TEMPO_MAX` em 300 s
+      (D11), com a tabela de variáveis de `add-interface-chat-web` e
+      `docs/interface/chat-web.md` atualizadas
 
 ## 8. Fechamento
 
