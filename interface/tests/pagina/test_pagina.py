@@ -131,6 +131,17 @@ def test_piloto_nao_tem_pergunta_e_marca_o_rodape(page, servidor_piloto):
     expect(page.get_by_role("button", name="4 a 6")).to_have_count(0)
 
 
+def test_gerador_remoto_avisa_no_rodape_antes_do_primeiro_envio(page, servidor_deepseek):
+    page.goto(servidor_deepseek)
+    rodape = page.get_by_role("contentinfo")
+    expect(rodape).to_contain_text("fora do Brasil")
+    expect(rodape).not_to_contain_text("modo piloto")
+    page.get_by_role("button", name="Aceito", exact=True).click()
+    enviar(page, MENSAGEM)
+    expect(resposta(page)).to_contain_text("Veredito:")
+    expect(rodape).to_be_visible()
+
+
 def test_escolha_da_pergunta_nao_sai_do_navegador(page, servidor_uso):
     corpos = []
     page.on("request", lambda r: corpos.append(r.post_data or "") if r.method == "POST" else None)
@@ -187,6 +198,9 @@ def test_recarregar_mostra_so_a_abertura(page, servidor_uso):
 
 def _resposta_com_detalhe_aberto(page, url):
     page.goto(url)
+    aceitar = page.get_by_role("button", name="Aceito", exact=True)
+    if aceitar.count():  # gerador remoto: termo antes do campo (add-gerador-api-deepseek)
+        aceitar.click()
     enviar(page, MENSAGEM)
     resposta(page).get_by_role("button", name="Ver fontes e detalhes").click()
     expect(resposta(page).locator(".fonte").first).to_be_visible()
@@ -212,7 +226,7 @@ def test_alvos_de_toque_de_44px(page, servidor_uso):
     assert pequenos == []
 
 
-@pytest.mark.parametrize("url", ["servidor_uso", "servidor_piloto"])
+@pytest.mark.parametrize("url", ["servidor_uso", "servidor_piloto", "servidor_deepseek"])
 def test_axe_sem_violacoes(page, url, request):
     _resposta_com_detalhe_aberto(page, request.getfixturevalue(url))
     page.add_script_tag(content=AXE)

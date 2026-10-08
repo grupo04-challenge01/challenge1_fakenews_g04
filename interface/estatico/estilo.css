@@ -154,6 +154,8 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
+.enviar:disabled, textarea:disabled { opacity: 0.5; cursor: not-allowed; }
+
 .opcao[aria-pressed="true"] { background: var(--verde); color: #FFFFFF; }
 .anotado { color: var(--tinta-suave); font-size: 0.875rem; }
 
@@ -243,13 +245,14 @@ a { color: var(--verde); }
   outline-offset: 2px;
 }
 
-.modo-piloto {
+.rodape {
   padding: 0.25rem 1rem 0.75rem;
   text-align: center;
   color: var(--tinta-suave);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
-.modo-piloto p { margin: 0; }
+.rodape p { margin: 0; }
+.rodape p + p { margin-top: 0.25rem; }
 
 @media (prefers-reduced-motion: no-preference) {
   .andamento { animation: respira 1.6s ease-in-out infinite; }

@@ -105,3 +105,47 @@ def test_saida_malformada_e_defeito(bruto, defeito):
 def test_extrair_passa_pelo_modelo_injetado():
     chat = _falso_chat(_bruto([{"texto": "X cura Y.", "saude": True, "risco": "alto"}]))
     assert extrair("qualquer texto", chat=chat).selecionada["texto"] == "X cura Y."
+
+
+# ---- teto e nova tentativa (fix-qualidade-gerador-remoto, D6) ------------------------
+
+from prototipo.verificacao.extracao import SISTEMA as SISTEMA_EXTRACAO, extrair  # noqa: E402
+
+BOA = json.dumps({"alegacoes": [{"texto": "Chá de boldo cura hepatite.", "saude": True,
+                                 "risco": "alto"}], "opiniao": None}, ensure_ascii=False)
+CORTADA = '{"alegacoes": [{"texto": "Chá de boldo cura hepatite.", "saude": true, "ri'
+
+
+def _sequencia(*saidas):
+    pedidos, fila = [], list(saidas)
+
+    def chat(sistema, usuario):
+        pedidos.append(usuario)
+        return fila.pop(0)
+    return chat, pedidos
+
+
+def test_prompt_pede_no_maximo_8_alegacoes_com_as_de_saude_primeiro():
+    assert "no máximo 8 alegações" in SISTEMA_EXTRACAO
+    assert "as de saúde primeiro" in SISTEMA_EXTRACAO
+
+
+def test_saida_cortada_tem_nova_tentativa_com_o_defeito_informado():
+    chat, pedidos = _sequencia(CORTADA, BOA)
+    e = extrair("Chá de boldo cura hepatite, e muito mais.", chat=chat)
+    assert e.selecionada["texto"] == "Chá de boldo cura hepatite."
+    assert len(pedidos) == 2 and pedidos[1].startswith(pedidos[0])
+    assert "saída não é JSON" in pedidos[1] and "no máximo 8" in pedidos[1]
+
+
+def test_saida_boa_nao_pede_de_novo():
+    chat, pedidos = _sequencia(BOA)
+    extrair("Chá de boldo cura hepatite.", chat=chat)
+    assert len(pedidos) == 1
+
+
+def test_duas_saidas_com_defeito_levantam():
+    chat, pedidos = _sequencia(CORTADA, CORTADA)
+    with pytest.raises(ValueError, match="saída não é JSON"):
+        extrair("texto", chat=chat)
+    assert len(pedidos) == 2

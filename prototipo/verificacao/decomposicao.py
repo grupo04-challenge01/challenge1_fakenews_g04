@@ -34,6 +34,10 @@ Separe em:
   Se a mensagem não tira conclusão, use null.
 
 Cada frase da mensagem vai para um lugar só: o que é opinião não entra em fatos.
+Pergunta ou exclamação de quem mandou a mensagem ("Isso é verdade?",
+"Absurdo!") não é fato, opinião nem conclusão: deixe de fora.
+O salto explica o que falta entre fato e conclusão.
+Não diga se algo é verdadeiro ou falso nele.
 
 NÃO diga se os fatos são verdadeiros ou falsos. NÃO use as palavras "falso",
 "verdadeiro", "mentira" ou "boato" para julgar. Opinião não é indício de que a
@@ -55,6 +59,7 @@ class Decomposicao:
     evidencias: list
     opinioes: list
     conclusao: dict | None
+    refeita_por: str | None = None
 
 
 def mensagem(texto):
@@ -141,5 +146,20 @@ def interpretar(bruto):
     return Decomposicao(d["fatos"], d["evidencias"], d["opinioes"], _conclusao(d))
 
 
+def _aviso(achados):
+    return ("AVISO DA CONFERÊNCIA: a decomposição anterior foi recusada.\n"
+            + "\n".join(f"- {a}" for a in achados)
+            + "\nRefaça seguindo as regras, no mesmo formato JSON.")
+
+
 def decompor(texto, chat=chat_ollama):
-    return interpretar(chat(SISTEMA, mensagem(texto)))
+    """Uma nova tentativa com os defeitos informados, como em `estrutura.responder`
+    (fix-qualidade-gerador-remoto, D2). A segunda saída com defeito levanta."""
+    pedido = mensagem(texto)
+    bruto = chat(SISTEMA, pedido)
+    achados = defeitos(bruto)
+    if not achados:
+        return interpretar(bruto)
+    d = interpretar(chat(SISTEMA, f"{pedido}\n\n{_aviso(achados)}"))
+    d.refeita_por = "; ".join(achados)
+    return d

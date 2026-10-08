@@ -191,3 +191,116 @@ def test_ao_etapa_avisa_tambem_a_etapa_que_errou():
     assert rastro["motivo"] == "erro"
     assert avisos == rastro["etapas"]
     assert "erro" in avisos[-1]
+
+
+# ---- gerador da bancada (add-gerador-api-deepseek, task 4.1) -------------------------
+
+def test_gerador_ollama_e_o_padrao_e_registra_o_modelo_local():
+    from bancada.__main__ import descrever_gerador, escolher_gerador
+    from prototipo.verificacao.modelo import MODELO, chat_ollama
+    chat = escolher_gerador("ollama")
+    assert chat is chat_ollama
+    assert descrever_gerador("ollama", chat) == {"gerador": "ollama", "modelo": MODELO}
+
+
+def test_gerador_deepseek_registra_o_modelo_devolvido_pela_api(monkeypatch):
+    from bancada.__main__ import descrever_gerador, escolher_gerador
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "sk-teste")
+    chat = escolher_gerador("deepseek")
+    chat.modelo_servido = "deepseek-v4.1-flash"
+    chat.uso = {"chamadas": 90, "entrada": 120000, "entrada_cache": 80000, "saida": 12000}
+    assert descrever_gerador("deepseek", chat) == {
+        "gerador": "deepseek", "modelo": "deepseek-v4.1-flash",
+        "uso": {"chamadas": 90, "entrada": 120000, "entrada_cache": 80000, "saida": 12000}}
+
+
+def test_offline_registra_gerador_gravado(tmp_path, monkeypatch):
+    import argparse
+    import json
+
+    from bancada import __main__ as bancada_main
+    monkeypatch.setattr(bancada_main, "RELATORIOS", tmp_path)
+    args = argparse.Namespace(offline=True, caso=["S1_goiabeira"], canal="web", k=5,
+                              modo="hibrida", alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
+                              sem_idioma=False, gerador="deepseek")
+    bancada_main.rodar(args)
+    (relatorio,) = tmp_path.glob("*.json")
+    parametros = json.loads(relatorio.read_text(encoding="utf-8"))["parametros"]
+    assert (parametros["gerador"], parametros["modelo"]) == ("gravacao", None)
+
+
+def test_gerador_que_falha_no_teste_inicial_para_a_rodada_sem_regravar(tmp_path, monkeypatch):
+    """Chave recusada não pode sobrescrever as gravações caso a caso (08/10/2026)."""
+    import argparse
+
+    from bancada import __main__ as bancada_main
+    from prototipo.verificacao.modelo import ErroGerador
+
+    def recusar(sistema, usuario):
+        raise ErroGerador("DeepSeek respondeu 401")
+
+    gravadas = []
+    monkeypatch.setattr(bancada_main, "RELATORIOS", tmp_path)
+    monkeypatch.setattr(bancada_main, "escolher_gerador", lambda nome: recusar)
+    monkeypatch.setattr("prototipo.rag.__main__.carregar", lambda: object())
+    monkeypatch.setattr(gravacao, "gravar", lambda *a: gravadas.append(a))
+    args = argparse.Namespace(offline=False, caso=None, canal="web", k=5, modo="hibrida",
+                              alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
+                              sem_idioma=False, gerador="deepseek")
+    assert bancada_main.rodar(args) == 2
+    assert gravadas == [] and list(tmp_path.iterdir()) == []
+
+
+# ---- critério por tipo de falha (add-gerador-api-deepseek, D10 revisto) --------------
+
+def _falha(id_, *checks):
+    return {"id": id_, "passou": False,
+            "checks": [{"etapa": e, "check": c, "esperado": None, "obtido": o, "ok": False}
+                       for e, c, o in checks]}
+
+
+def test_tipos_de_falha_e_criterio():
+    from bancada.__main__ import resumir
+    resultados = [
+        {"id": "ok", "passou": True, "checks": []},
+        _falha("T1", ("resposta", "sem defeitos", ["camada visível com 121 palavras, teto 120"])),
+        _falha("T2", ("resposta", "sem defeitos", ["frase com mais de 20 palavras: x"])),
+        _falha("A1", ("resposta", "forma", "sem evidência")),
+    ]
+    r = resumir(resultados)
+    assert r["por_tipo"] == {"tamanho": ["T1", "T2"], "acerto": ["A1"]}
+    assert r["criterio"] == {"eliminatorias": [], "demais": ["A1", "T1", "T2"], "cumpre": True}
+
+
+def test_mito_rotulo_erro_e_fronteira_sao_eliminatorios():
+    from bancada.__main__ import resumir
+    resultados = [
+        _falha("M", ("resposta", "sem defeitos",
+                     ["mito: menção sem marcação de falso: y", "camada visível com 130 palavras, teto 120"])),
+        _falha("R", ("guarda", "rótulo", "falso")),
+        _falha("E", ("extracao", "sem erro", "ValueError: saída não é JSON")),
+        _falha("F", ("fronteira", "primeira categoria", "checagem")),
+        _falha("V", ("resposta", "sem defeitos", ["técnica nomeada sem evidência: cura milagrosa"])),
+    ]
+    r = resumir(resultados)
+    assert r["criterio"]["eliminatorias"] == ["E", "F", "M", "R", "V"]
+    assert r["criterio"]["cumpre"] is False
+    assert r["por_tipo"]["mito"] == ["M"] and r["por_tipo"]["tamanho"] == ["M"]
+
+
+def test_quatro_falhas_nao_eliminatorias_nao_cumprem():
+    from bancada.__main__ import resumir
+    resultados = [_falha(f"T{n}", ("resposta", "sem defeitos", ["camada visível com 121 palavras, teto 120"]))
+                  for n in range(4)]
+    assert resumir(resultados)["criterio"]["cumpre"] is False
+
+
+def test_resumo_conta_casos_com_corte():
+    # fix-teto-resposta, task 2.1.
+    from bancada.__main__ import resumir
+
+    def caso(id_, cortadas):
+        return {"id": id_, "passou": True, "checks": [], "rastro": {"etapas": [
+            {"etapa": "resposta", "saida": {"cortadas": cortadas}}]}}
+    r = resumir([caso("A", ["Dica."]), caso("B", []), {"id": "C", "passou": True, "checks": []}])
+    assert r["cortes"] == ["A"]

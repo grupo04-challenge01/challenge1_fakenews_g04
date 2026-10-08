@@ -85,3 +85,39 @@ def test_url_nao_muda_o_modo():
     with TestClient(criar_app(Config(modo="piloto"), carregar_recuperador=object)) as c:
         html = c.get("/", params={"modo": "uso", "DONA_CHECA_MODO": "uso"}).text
     assert '"pergunta": null' in html
+
+
+# ---- aviso de serviço externo (add-gerador-api-deepseek, task 3.2) -------------------
+
+from interface.fluxo import textos as textos_interface  # noqa: E402
+
+
+def _html(config):
+    with TestClient(criar_app(config, carregar_recuperador=object)) as c:
+        return c.get("/").text
+
+
+def _aviso():
+    return " ".join(textos_interface()["servico-externo"].split())
+
+
+def test_gerador_remoto_mostra_o_aviso_no_rodape():
+    html = _html(Config(modo="uso", gerador="deepseek", chave="sk-teste"))
+    rodape = re.search(r"<footer[^>]*>(.*?)</footer>", html, re.S)[1]
+    assert _aviso() in " ".join(rodape.split())
+    assert "modo piloto" not in rodape
+
+
+def test_gerador_local_nao_mostra_o_aviso():
+    assert "fora do Brasil" not in _html(Config(modo="uso", gerador="ollama"))
+
+
+def test_piloto_com_gerador_remoto_tem_um_rodape_so_com_os_dois_textos():
+    html = _html(Config(modo="piloto", gerador="deepseek", chave="sk-teste"))
+    assert html.count("<footer") == 1
+    assert "modo piloto" in html and _aviso() in " ".join(html.split())
+
+
+def test_chave_nunca_vai_para_a_pagina():
+    assert "sk-teste-0123" not in _html(Config(modo="uso", gerador="deepseek",
+                                               chave="sk-teste-0123"))
