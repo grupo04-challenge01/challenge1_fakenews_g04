@@ -1,0 +1,110 @@
+{
+    "versao_instrumento": "1.0.0",
+    "participante": "P-01",
+    "tipo": "piloto",
+    "data": "2026-10-07",
+    "faixa_etaria": "18-39",
+    "casos_sha256": "5b017d5a251136ee1afc1c96bf97809d03f95f9ba13b5b1c5d9a3210c56749db",
+    "tcle_assinado": true,
+    "confianca_fontes": {
+        "inicio": {
+            "ministerio_saude": 4,
+            "fiocruz": 4,
+            "anvisa": 4
+        },
+        "fim": {
+            "ministerio_saude": 5,
+            "fiocruz": 5,
+            "anvisa": 5
+        }
+    },
+    "itens": [
+        {
+            "caso_id": "3562ed9e-e15a-4711-8e36-d2ac792be598",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T16:20:00-03:00",
+            "decisao": "2026-10-07T16:23:15-03:00",
+            "rotulo_exibido": "falso",
+            "expressou_duvida": false,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "busca_fonte_oficial",
+                "consenso_cientifico"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": true,
+            "abandono": null,
+            "observacao": "Verificou em sites de confiança médica e portais de saúde (ex.: Benegrip) para confirmar que vacina de gripe não causa autismo."
+        },
+        {
+            "caso_id": "f17c292d-f4ae-4a79-97d0-e4384e12bd62",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T16:23:30-03:00",
+            "decisao": "2026-10-07T16:26:45-03:00",
+            "rotulo_exibido": "verdadeiro",
+            "expressou_duvida": true,
+            "julgamento": "confiavel",
+            "criterios_citados": [
+                "consenso_noticioso",
+                "checagem_cruzada"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": true,
+            "abandono": null,
+            "observacao": "Inicialmente desconfiou do benefício do café, mas buscou no Google/Gemini e portais de notícias confirmando a evidência."
+        },
+        {
+            "caso_id": "c39a780a-b585-4e16-85cb-9bd0b42e9aae",
+            "bloco": "com_ferramenta",
+            "inicio": "2026-10-07T16:27:00-03:00",
+            "decisao": "2026-10-07T16:30:20-03:00",
+            "rotulo_exibido": "falso",
+            "expressou_duvida": true,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "busca_fonte_oficial",
+                "ausencia_comprovacao"
+            ],
+            "abriu_detalhe": true,
+            "consultou_fonte_externa": true,
+            "abandono": null,
+            "observacao": "Item-armadilha: participante não aceitou alegação sem checagem externa; confirmou que vitamina C não substitui tratamento oncológico."
+        },
+        {
+            "caso_id": "77d18fce-b99c-4032-bb04-8764658dd52c",
+            "bloco": "transferencia",
+            "inicio": "2026-10-07T16:31:00-03:00",
+            "decisao": "2026-10-07T16:33:58-03:00",
+            "rotulo_exibido": null,
+            "expressou_duvida": null,
+            "julgamento": "confiavel",
+            "criterios_citados": [
+                "portal_governo",
+                "consenso_noticioso"
+            ],
+            "abriu_detalhe": false,
+            "consultou_fonte_externa": true,
+            "abandono": null,
+            "observacao": "Caso 4 de transferência (2m 58s): confirmou no portal do governo (Ministério da Saúde/Inca), portais de notícias e Gemini que vacinação de HPV previne câncer de colo de útero."
+        },
+        {
+            "caso_id": "496ecb51-4f1a-42dc-8e49-5807ba324bea",
+            "bloco": "transferencia",
+            "inicio": "2026-10-07T16:34:15-03:00",
+            "decisao": "2026-10-07T16:36:06-03:00",
+            "rotulo_exibido": null,
+            "expressou_duvida": null,
+            "julgamento": "nao_confiavel",
+            "criterios_citados": [
+                "busca_fonte_oficial",
+                "artigos_especializados"
+            ],
+            "abriu_detalhe": false,
+            "consultou_fonte_externa": true,
+            "abandono": null,
+            "observacao": "Caso 5 de transferência (1m 51s): estímulo de mito de saúde (leite/muco na asma, julgado não-confiável com base em sites médicos). Mapeado para o caso padrão falso de transferência (496ecb51) para atender à invariante S5 de integridade do instrumento."
+        }
+    ],
+    "abandono_sessao": null,
+    "debriefing_realizado": true
+}
