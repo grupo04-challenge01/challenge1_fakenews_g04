@@ -10,7 +10,7 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
       antes da submissão ao CEP
 - [x] 0.2 Configurar limite de gasto mensal no painel da DeepSeek e anotar o
       valor em `design.md` (Risks)
-- [ ] 0.3 **Breno** Submeter a emenda 01 do protocolo (dossiê do CEP, seção 5)
+- [x] 0.3 **Breno** Submeter a emenda 01 do protocolo (dossiê do CEP, seção 5)
       e registrar o resultado na tabela de emendas antes do piloto com DeepSeek
 
 ## 1. Segredo e configuração
