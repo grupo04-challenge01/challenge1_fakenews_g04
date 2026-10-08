@@ -1,6 +1,6 @@
 {
  "chat": {
-  "fd6923a82a1fcb4b": "{\"categorias\": [], \"motivo\": \"A mensagem não contém informações ou pedidos específicos para triagem.\"}"
+  "fd6923a82a1fcb4b": "{\"categorias\": [\"checagem\"], \"motivo\": \"A pessoa quer verificar a veracidade de um vídeo.\"}"
  },
  "busca": {}
 }

@@ -25,7 +25,8 @@ from prototipo.verificacao.modelo import chat_ollama
 RAIZ = pathlib.Path(__file__).parents[1]
 SPEC = [RAIZ / "openspec/changes/add-interface-chat-web/specs/interface-chat-web/spec.md",
         RAIZ / "openspec/specs/interface-chat-web/spec.md"]
-SOBREPOSICAO = [RAIZ / "openspec/changes/add-entrada-por-link/specs/interface-chat-web/spec.md"]
+SOBREPOSICAO = [RAIZ / "openspec/changes/add-entrada-por-link/specs/interface-chat-web/spec.md",
+               RAIZ / "openspec/changes/add-gerador-api-deepseek/specs/interface-chat-web/spec.md"]
 
 log = logging.getLogger("dona_checa")
 

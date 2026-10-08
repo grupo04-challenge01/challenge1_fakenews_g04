@@ -1,21 +1,21 @@
 {
  "chat": {
-  "e26841fbd973beee": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário deseja confirmar a veracidade de uma informação sobre saúde.\"}",
-  "06960f8d89c589d8": "{\"alegacoes\": [{\"texto\": \"A febre oropouche passa pelo mosquito da dengue\", \"saude\": true, \"risco\": \"medio\"}, {\"texto\": \"a vacina da dengue protege contra a febre oropouche\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
-  "f5eb4808686433fa": "{\n  \"fatos\": [\n    \"A febre oropouche passa pelo mosquito da dengue.\",\n    \"A vacina da dengue protege contra a febre oropouche.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
-  "828f8f5e25ed738d": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho nos textos fornecidos que mencione a febre oropouche ou a eficácia da vacina da dengue contra ela.\"}",
-  "ce93c2fd53eeca5f": "{\"bloco1\": \"Foram buscadas informações sobre a proteção da vacina da dengue contra o vírus Oropouche.\", \"bloco2\": \"Não encontrar dados sobre um assunto não significa que a informação seja falsa.\", \"bloco3\": \"Você pode verificar se existem estudos científicos recentes sobre essa interação específica.\", \"bloco4\": \"\"}"
+  "e26841fbd973beee": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A pessoa quer saber se a informação sobre a vacina da dengue proteger contra febre oropouche é verdadeira.\"\n}",
+  "a58e7ef5e55182ae": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A febre oropouche passa pelo mosquito da dengue\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    },\n    {\n      \"texto\": \"A vacina da dengue protege contra a febre oropouche\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "4d6a225483b8a1d6": "{\n  \"fatos\": [\n    \"A febre oropouche passa pelo mosquito da dengue.\",\n    \"A vacina da dengue protege contra a febre oropouche.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "dac1c200780969ca": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona a febre oropouche ou a vacina da dengue em relação a ela.\"\n}",
+  "e630393bfafd4deb": "{\n  \"bloco1\": \"Não encontramos estudos sobre a vacina da dengue proteger contra a febre oropouche.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Você pode perguntar a um profissional de saúde ou buscar fontes oficiais.\",\n  \"bloco4\": \"\"\n}"
  },
  "busca": {
-  "db7da0c55ed62cf8": {
+  "b02874eb1ac8c989": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "e15e0b36c8-00",
      "fragmento_id": "e15e0b36c8-00-08",
-     "score": 0.6576553583145142,
+     "score": 0.656536340713501,
      "score_lexico": 23.188018798828125,
-     "score_denso": 0.8827871084213257,
+     "score_denso": 0.8788012862205505,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "COMPROVA",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "7b7af76e45-00",
      "fragmento_id": "7b7af76e45-00-01",
-     "score": 0.6310405731201172,
+     "score": 0.6160768270492554,
      "score_lexico": 20.7048282623291,
-     "score_denso": 0.8735347986221313,
+     "score_denso": 0.8685837984085083,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -45,11 +45,28 @@
      "trecho": "a diluído em água ou suco. O própolis entra na corrente sanguínea e seu cheiro é expelido pelos poros, os mosquitos não suportam o cheiro e não picam. Divulgue!Própolis afasta mosquito da febre amarela e da dengue?A história circulou muito na internet, principalmente com textos que condenam a vacina contra a febre amarela (como esse). Mas será mesmo que é só tomar umas gotas de própolis para espantar o mosquito da febre amarela e da dengue? A resposta é não. Vamos aos fatos.Para começar, o texto parte de um pressuposto errado. Apesar de a febre amarela ser possível de ser transmitida pelo mosquito da dengue (o aedes aegypti), a doença tem sido transmitida, no Brasil, pelo mosquito haemagogus. Ou seja, o texto já erra ao dar uma receita para as duas doenças.Além disso, o “caminho” do própolis no corpo humano citado pelo texto é, no mínimo, estranho. Imagine: três gotas de própolis ingeridas."
     },
     {
+     "unidade_id": "b8cae08b9d-00",
+     "fragmento_id": "b8cae08b9d-00-03",
+     "score": 0.6085509657859802,
+     "score_lexico": 16.062549591064453,
+     "score_denso": 0.868051290512085,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-01-21",
+     "url": "https://www.boatos.org/saude/febre-amarela-farsa-governo.html",
+     "alegacao": "Febre amarela é uma farsa criada pelo governo para vender vacina #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "s, aves e humanos. A transmissão acontece pelo ar ou pelo contato direto com secreções de pacientes infectados. E mais: não foi um surto só no Brasil. Em 2009, a Organização Mundial da Saúde (OMS) declarou uma pandemia global da gripe suína.Sobre a dengue e a chikungunya, em nenhum dos casos houve vacinação massiva. A vacina contra a dengue foi registrada no Brasil em dezembro de 2015, e começou a ser vendida apenas na rede privada, em agosto de 2016.  A vacina contra a chikungunya ainda está em fase experimental. Só isso já é o suficiente para provar que o pastor não está tão preparado para falar sobre esse assunto. Ou seja, não dá para acreditar que a acusação dele seja baseada em fatos, pelo menos, não nos fatos apresentados no vídeo.Agora, vamos ao texto. O primeiro ponto está na própria mensagem. Afinal, o texto faz parte de uma história comprovadamente falsa. Só isso já faz o texto perder a credibilidade.Além disso, não faz sentido a tese de que o governo tenha um estoque alto e está para vencer."
+    },
+    {
      "unidade_id": "5db9f418f0-00",
      "fragmento_id": "5db9f418f0-00-04",
-     "score": 0.6041250228881836,
+     "score": 0.6053719520568848,
      "score_lexico": 16.562623977661133,
-     "score_denso": 0.8661757707595825,
+     "score_denso": 0.8671563863754272,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -62,38 +79,21 @@
      "trecho": "udanças genéticas no vírus da febre amarela em circulação no país. – Foram identificadas mutações no vírus. Esses resultados foram publicados em 2017. – Conforme divulgado textualmente na própria comunicação original efetuada pela Fiocruz em 2017, não há qualquer impacto destas mutações para a eficácia da vacina.Já deu para ver que a informação que aponta que a mutação do vírus causou a ineficácia da vacina não procede. Porém, gostaríamos de deixar uma última explicação: a vacina contra a febre amarela tem, de acordo com a Organização Mundial da Saúde, 99% de eficácia.É um índice alto. Mas vale dizer que o conselho de continuar se cuidando com o mosquito mesmo depois de tomar a vacina é válido. Nessa história, só tem uma coisa que não é válida: deixar de tomar a vacina se você estiver em uma área de risco. Neste caso, o seu 99% de proteção vai cair para 0%. E ninguém quer isso, não é verdade?Ps.: Esse artigo é uma sugestão de leitores do Boatos.org."
     },
     {
-     "unidade_id": "7f62165646-00",
-     "fragmento_id": "7f62165646-00-05",
-     "score": 0.5943418145179749,
-     "score_lexico": 19.409587860107422,
-     "score_denso": 0.8622579574584961,
+     "unidade_id": "34ad67b9fc-00",
+     "fragmento_id": "34ad67b9fc-00-02",
+     "score": 0.6042588949203491,
+     "score_lexico": 9.222909927368164,
+     "score_denso": 0.8701680898666382,
      "idioma": "pt-BR",
      "apto_citacao": true,
-     "agencia": "boatos",
-     "data_publicacao": "2018-01-30",
-     "url": "https://www.boatos.org/saude/7-boatos-febre-amarela.html",
-     "alegacao": "7 boatos sobre a febre amarela que sempre enganam os menos informados",
-     "veredito_original": "boato",
-     "veredito_chave": "boato",
+     "agencia": "lupa",
+     "data_publicacao": "2020-09-11",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/09/11/verificamos-polio-sudao-vacina/",
+     "alegacao": "Vacina provoca surto de poliomielite no Sudão",
+     "veredito_original": "EXAGERADO",
+     "veredito_chave": "exagerado",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "ação é simples: beber de 3 a 6 gotas de própolis por dia iria fazer com que o seu corpo produzisse um cheiro desagradável para o mosquito transmissor. O fato é que própolis é muito bom, mas não pra espantar o mosquito transmissor da febre amarela e da dengue. Vale lembrar que a história já circulou em 2008, quando falava só da dengue, e em 2016, quando falava da Zika.Bônus – Vacina tem 50% de letalidade e causa perda de visãoDe todos os boatos sobre a febre amarela que circularam pelas redes sociais, alguns alertavam para perigos sobre a doença e também sobre a vacina, outros pediam para as pessoas não se vacinarem devido aos efeitos colaterais da vacina e outros apresentavam um certo teor apocalíptico.E os dois boatos (bônus) que trazemos hoje se enquadram na última descrição. No primeiro, um dermatologista teria dito em um programa de rádio que a vacina contra febre amarela mata em 50% dos casos. Já a segunda, afirma que um estudo do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato."
-    },
-    {
-     "unidade_id": "b8cae08b9d-00",
-     "fragmento_id": "b8cae08b9d-00-03",
-     "score": 0.5937783718109131,
-     "score_lexico": 16.062549591064453,
-     "score_denso": 0.8632549047470093,
-     "idioma": "pt-BR",
-     "apto_citacao": true,
-     "agencia": "boatos",
-     "data_publicacao": "2018-01-21",
-     "url": "https://www.boatos.org/saude/febre-amarela-farsa-governo.html",
-     "alegacao": "Febre amarela é uma farsa criada pelo governo para vender vacina #boato",
-     "veredito_original": "boato",
-     "veredito_chave": "boato",
-     "cobre_multiplas_alegacoes": false,
-     "trecho": "s, aves e humanos. A transmissão acontece pelo ar ou pelo contato direto com secreções de pacientes infectados. E mais: não foi um surto só no Brasil. Em 2009, a Organização Mundial da Saúde (OMS) declarou uma pandemia global da gripe suína.Sobre a dengue e a chikungunya, em nenhum dos casos houve vacinação massiva. A vacina contra a dengue foi registrada no Brasil em dezembro de 2015, e começou a ser vendida apenas na rede privada, em agosto de 2016.  A vacina contra a chikungunya ainda está em fase experimental. Só isso já é o suficiente para provar que o pastor não está tão preparado para falar sobre esse assunto. Ou seja, não dá para acreditar que a acusação dele seja baseada em fatos, pelo menos, não nos fatos apresentados no vídeo.Agora, vamos ao texto. O primeiro ponto está na própria mensagem. Afinal, o texto faz parte de uma história comprovadamente falsa. Só isso já faz o texto perder a credibilidade.Além disso, não faz sentido a tese de que o governo tenha um estoque alto e está para vencer."
+     "trecho": "ma não é com a vacina em si, mas com a baixa cobertura vacinal.\nEmbora seja rara, a circulação de vírus derivado de vacina não é um evento inesperado. O cientista Daniel Santos Mansur, pesquisador de virologia e imunologia da Universidade Federal de Santa Catarina (UFSC), explicou por WhatsApp que vacinas contra a pólio ou a febre amarela, por exemplo, têm a característica de serem feitas a partir do próprio vírus atenuado, ou seja, uma versão enfraquecida do patógeno que causa a doença. “Essas são as vacinas mais efetivas que temos até hoje. A pessoa que tomou vai ficar imune, mas ela vai excretar esse vírus nas fezes, da mesma forma que excretaria o selvagem”, explica.\nNo caso específico da vacina oral contra a poliomielite (VOP), conhecida no Brasil como vacina da “gotinha”, quando uma pessoa é imunizada, o vírus vacinal enfraquecido se replica no intestino por um período limitado, desenvolvendo imunidade por meio da acumulação de anticorpos. Durante este tempo, o vírus da vacina é excretado por meio de fezes."
     }
    ],
    "coberto": true,

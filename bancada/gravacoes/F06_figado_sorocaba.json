@@ -1,21 +1,21 @@
 {
  "chat": {
-  "0a090a8e4f2976c4": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem apresenta uma afirmação sobre efeitos colaterais de uma vacina que precisa ser verificada.\"}",
-  "7c966d66dbf902a5": "{\"alegacoes\": [{\"texto\": \"o marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela paralisa o fígado\", \"saude\": true, \"risco\": \"alto\"}, {\"texto\": \"a vacina da febre amarela já matou gente\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": \"É o governo querendo matar a população. Não tomem!\"}",
-  "0da07dd4f3193e1e": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado\",\n    \"A vacina da febre amarela já matou gente\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"marido dela, médico em Sorocaba\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população.\",\n    \"Não tomem!\"\n  ],\n  \"conclusao\": null\n}",
-  "c9f52ef001c727d9": "{\"rotulo\": \"falso\", \"trechos\": [\"T1\", \"T2\"], \"criterio\": \"Os trechos identificam a alegação como boato, esclarecendo que a história sobre o médico de Sorocaba e a vacina paralisando o fígado é falsa.\"}",
-  "b582b7bd4fcbe6fb": "{\"bloco1\": [{\"frase\": \"A história do médico de Sorocaba é um boato.\", \"trecho\": \"T1\"}],\n \"bloco2\": [{\"frase\": \"A vacina não destrói o fígado.\", \"trecho\": \"T5\"}, {\"frase\": \"Não há registro de nenhum médico que tenha falado isso.\", \"trecho\": \"T4\"}, {\"frase\": \"Aquela parte é opinião e não se checa.\", \"trecho\": \"É o governo querendo matar a população. Não tomem!\"}],\n \"bloco3\": \"Técnica: fonte sem nome, cura milagrosa. A mensagem usa um médico fictício para espalhar medo e pedir que as pessoas não se vacinem.\",\n \"bloco4\": \"A checagem mostrou que o texto é vago e não cita nomes ou registros reais.\"}"
+  "0a090a8e4f2976c4": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A mensagem afirma que a vacina da febre amarela paralisa o fígado e já matou gente, pedindo implicitamente para não tomar, o que é uma alegação verificável.\"\n}",
+  "0f63c597df79570e": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela paralisa o fígado\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"O marido da Simone, médico em Sorocaba, alertou que a vacina da febre amarela já matou gente\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"O governo quer matar a população\",\n      \"saude\": false,\n      \"risco\": \"medio\"\n    }\n  ],\n  \"opiniao\": \"Não tomem!\"\n}",
+  "9df459fe911889f4": "{\n  \"fatos\": [\n    \"A vacina da febre amarela paralisa o fígado\",\n    \"A vacina da febre amarela já matou gente\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"O marido dela, médico em Sorocaba, alertou\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"É o governo querendo matar a população\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Não tomem!\",\n    \"decorre\": false,\n    \"salto\": \"A conclusão de não tomar a vacina vai além dos fatos apresentados, pois não há evidência suficiente de que a vacina cause danos generalizados ou que o governo tenha intenção de matar a população.\"\n  }\n}",
+  "8aea167433b9533c": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\"],\n  \"criterio\": \"Os trechos T1 e T2 mostram que a alegação de que a vacina da febre amarela paralisa o fígado foi verificada como boato pela agência.\"\n}",
+  "c69b220bc06c8a3c": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"A checagem encontrou que a história é um boato.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"A vacina não paralisa o fígado.\",\n      \"trecho\": \"T4\"\n    },\n    {\n      \"frase\": \"O médico não tem nome nem hospital identificado.\",\n      \"trecho\": \"T4\"\n    },\n    {\n      \"frase\": \"A parte sobre o governo querer matar é opinião e não se checa.\",\n      \"trecho\": \"\"\n    }\n  ],\n  \"bloco3\": \"Técnica: fonte sem nome, urgência fabricada. A mensagem cita um médico sem nome e pede para repassar.\",\n  \"bloco4\": \"Desconfie de alertas de saúde sem fonte clara e com pedido de compartilhamento.\"\n}"
  },
  "busca": {
-  "2ef93bd5764a4ddf": {
+  "b1b645cbe74a2447": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "ad3b65d166-00",
      "fragmento_id": "ad3b65d166-00-00",
-     "score": 0.7825806736946106,
+     "score": 0.7835581302642822,
      "score_lexico": 75.59331512451172,
-     "score_denso": 0.9099765419960022,
+     "score_denso": 0.9039829969406128,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "7f62165646-00",
      "fragmento_id": "7f62165646-00-02",
-     "score": 0.7198721766471863,
+     "score": 0.7207521200180054,
      "score_lexico": 59.00989532470703,
-     "score_denso": 0.8829622864723206,
+     "score_denso": 0.8766346573829651,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -47,9 +47,9 @@
     {
      "unidade_id": "8b7db64d0e-00",
      "fragmento_id": "8b7db64d0e-00-01",
-     "score": 0.6636495590209961,
+     "score": 0.6643691658973694,
      "score_lexico": 25.11038589477539,
-     "score_denso": 0.8699363470077515,
+     "score_denso": 0.8634523153305054,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -63,10 +63,10 @@
     },
     {
      "unidade_id": "4ebed93208-00",
-     "fragmento_id": "4ebed93208-00-00",
-     "score": 0.6183481812477112,
-     "score_lexico": 23.82247543334961,
-     "score_denso": 0.8599716424942017,
+     "fragmento_id": "4ebed93208-00-02",
+     "score": 0.6186884641647339,
+     "score_lexico": 20.167709350585938,
+     "score_denso": 0.8540095090866089,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -76,24 +76,24 @@
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "Depois da confirmação de três casos de febre amarela no Rio de Janeiro, o governo do estado começou uma campanha de vacinação para prevenir a população de um surto. Como quase sempre acontece em casos de alertas contra doenças, diversas informações falsas começam a circular na internet. Há poucos dias desmentimos um caso que aponta que a vacina causava cegueira. Hoje, o alerta é mais grave ainda.Em um áudio que circula por WhatsApp, uma mulher afirma que uma dermatologista foi ao programa do Roberto Canazio, na Rádio Globo, e alertou que a vacina contra a febre amarela tem índice de letalidade de 50%. Ou seja, metade das pessoas que tomam a vacina vêm a óbito. Leia a transcrição do áudio:Meninas, boa tarde. Estava aqui em casa escutando o Roberto Canazio. Até estou tentando entrar no site da rádio Globo para ver se eu consigo pegar essa entrevista dele. Se vocês conseguirem, entra no Roberto Canazio. Ele entrevistou hoje a dermatologista falando sobre a vacina da febre amarela. Gente, ela é muito perigosa. Ela falou que quem tomar vai ter a reação. Não tem essa será que vai ter."
+     "trecho": "ondições de acolher tanta gente.Então, vê se vocês conseguem, até o Cristiano que tem muito jeito com internet, entrar no programa do Roberto Canázio. Ele entrevistou hoje uma dermatologista que falou sobre a vacina da febre amarela. Antes de dar a vacina nas nossas crianças, vamos observar bem, vamos estudar bem. A minha opinião hoje, nesse momento, é não vou dar, não vou deixar o meu marido tomar também. Meu pai não pode, minha mãe não pode pela idade deles. Se meu pai tomar, ele morre.Outra coisa que ela falou: as pessoas que vão sair do Rio de Janeiro pensar bem se vão tomar essa vacina. Só as pessoas que vão sair daqui mesmo para locais de risco… então me ajudem aí gente. Eu tentei procurar lá, mas não tenho intimidade com isso. É roberto Canázio, rádio Globo, programa dele foi agora, 12h20, 12h30. Que foi a entrevista dele com essa dermatologista. Dão essa ajudinha até para a gente conseguir espalhar esse áudio."
     },
     {
-     "unidade_id": "5db9f418f0-00",
-     "fragmento_id": "5db9f418f0-00-03",
-     "score": 0.5950486660003662,
-     "score_lexico": 17.8580265045166,
-     "score_denso": 0.8567104935646057,
+     "unidade_id": "f92716b056-00",
+     "fragmento_id": "f92716b056-00-00",
+     "score": 0.6045928001403809,
+     "score_lexico": 20.41329574584961,
+     "score_denso": 0.8512306213378906,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2018-02-27",
-     "url": "https://www.boatos.org/saude/virus-febre-amarela-mutacao.html",
-     "alegacao": "Vírus da febre amarela sofreu uma mutação e vacina não protege mais #boato",
+     "data_publicacao": "2017-03-20",
+     "url": "https://www.boatos.org/saude/vacina-febre-amarela-cegueira.html",
+     "alegacao": "Vacina contra febre amarela causa perda de visão (cegueira) #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "fricano. Além disso, as alterações detectadas no estudo não afetam as proteínas do envelope do vírus, que são centrais para o funcionamento da vacina. Eles ressaltam que as sequências genéticas completas dos vírus analisados no estudo já foram publicadas no GenBank, de modo a estarem disponíveis para comparações que possam ser realizadas por outros cientistas do Brasil e do mundo.A mesma informação foi confirmada quando entramos em contato com a Fiocruz, que produziu a seguinte nota de esclarecimento sobre o caso no dia 27/02/2018:Em relação aos boatos que têm circulado em mídias sociais sugerindo que a vacina para febre amarela supostamente não seria eficaz por conta de mutações identificadas no vírus, a Fundação Oswaldo Cruz (Fiocruz) esclarece que:– O Instituto Oswaldo Cruz (IOC/Fiocruz) realizou um estudo para acompanhar possíveis mudanças genéticas no vírus da febre amarela em circulação no país. – Foram identificadas mutações no vírus. Esses resultados foram publicados em 2017."
+     "trecho": "Depois da confirmação de casos de febre amarela no Rio de Janeiro, o governo do estado começou uma campanha de vacinação da população contra a doença. É claro que a ação ocasionou o aparecimento de boatos na internet.Um deles está em uma mensagem que está viralizando no WhatsApp. De acordo com o texto, assinado por um “médico David Malho Teixeira”, um estudo em Macapá comprovou que a vacina da febre amarela tem alto teor de cloridrato de sertralina e pode causar perda de visão. Leia o texto:Urgente! Preciso que esta notícia chegue a toda população do Rio de Janeiro.Após 15h de estudos iniciado  na manhã deste dia (16/03/2017) no instituto de imunologia estadual em Macapá, pode observar que o antivírus anunciado para a imunidade da febre amarela pode conter riscos.Foi detectado alto teor de cloridrato de sertralina em sua composição podendo gerar retardo do aparelho do glóbulo ocular, gerando a perda da visão definitivamente. Vamos passar essa informação ao máximo de pessoas, o governo sabe do risco, porém não quer anunciar."
     }
    ],
    "coberto": true,
@@ -101,13 +101,13 @@
     "pt-BR"
    ]
   },
-  "e2129579f820bda5": [
+  "e47f9c0d42feff2b": [
    {
     "unidade_id": "ad3b65d166-00",
     "fragmento_id": "ad3b65d166-00-00",
-    "score": 0.7825806736946106,
+    "score": 0.7835581302642822,
     "score_lexico": 75.59331512451172,
-    "score_denso": 0.9099765419960022,
+    "score_denso": 0.9039829969406128,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -122,9 +122,9 @@
    {
     "unidade_id": "7f62165646-00",
     "fragmento_id": "7f62165646-00-02",
-    "score": 0.7198721766471863,
+    "score": 0.7207521200180054,
     "score_lexico": 59.00989532470703,
-    "score_denso": 0.8829622864723206,
+    "score_denso": 0.8766346573829651,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -139,9 +139,9 @@
    {
     "unidade_id": "ad3b65d166-00",
     "fragmento_id": "ad3b65d166-00-01",
-    "score": 0.7457767724990845,
+    "score": 0.7446115016937256,
     "score_lexico": 68.31715393066406,
-    "score_denso": 0.892287015914917,
+    "score_denso": 0.8851874470710754,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -156,9 +156,9 @@
    {
     "unidade_id": "ad3b65d166-00",
     "fragmento_id": "ad3b65d166-00-04",
-    "score": 0.7311798930168152,
+    "score": 0.7340248227119446,
     "score_lexico": 44.30632400512695,
-    "score_denso": 0.8884031176567078,
+    "score_denso": 0.8829056024551392,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -173,9 +173,9 @@
    {
     "unidade_id": "ad3b65d166-00",
     "fragmento_id": "ad3b65d166-00-05",
-    "score": 0.7155870199203491,
+    "score": 0.7115349173545837,
     "score_lexico": 45.33271408081055,
-    "score_denso": 0.8825795650482178,
+    "score_denso": 0.8745639324188232,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -189,10 +189,10 @@
    },
    {
     "unidade_id": "7f62165646-00",
-    "fragmento_id": "7f62165646-00-06",
-    "score": 0.5529688000679016,
-    "score_lexico": 18.28250503540039,
-    "score_denso": 0.8498684167861938,
+    "fragmento_id": "7f62165646-00-04",
+    "score": 0.5530715584754944,
+    "score_lexico": 23.664278030395508,
+    "score_denso": 0.8424043655395508,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -202,14 +202,14 @@
     "veredito_original": "boato",
     "veredito_chave": "boato",
     "cobre_multiplas_alegacoes": false,
-    "trecho": "do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato. No caso da primeira, se tratou apenas de uma confusão de quem ouviu a entrevista. No caso da segunda, foi apenas má fé, já que o tal instituto nem existe."
+    "trecho": "ia na cidade de São PauloE os boatos envolvendo pessoas da área da saúde opinando sobre a vacina da febre amarela e sobre a doença não pararam por aí. E essa história, ao contrário das outras, fala sobre uma enfermeira que alertou para o perigo da epidemia e afirmou que todas as pessoas deveriam se vacinar, já que a vacina é a única precaução. Uma mistura certeira para criar pânico e confusão. Acontece que a dica dada pela tal enfermeira, além de irresponsável, é furada. A história é mentira e nem todo mundo precisa tomar a vacina.7) Própolis espanta o mosquito da febre amarelaE se as histórias da vacina não foram suficientes pra causar pânico e desinformação, por que não colocar as receitinhas da vovó no meio disso tudo? Pois bem, de acordo com essa história que andou circulando pelas redes sociais, o própolis ajudaria a afastar os mosquitos que transmitem febre amarela e dengue. A explicação é simples: beber de 3 a 6 gotas de própolis por dia iria fazer com que o seu corpo produzisse um cheiro desagradável para o mosquito transmissor."
    },
    {
     "unidade_id": "7f62165646-00",
     "fragmento_id": "7f62165646-00-01",
-    "score": 0.5519092082977295,
+    "score": 0.5530503392219543,
     "score_lexico": 20.260011672973633,
-    "score_denso": 0.8494056463241577,
+    "score_denso": 0.8428440690040588,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -223,10 +223,10 @@
    },
    {
     "unidade_id": "7f62165646-00",
-    "fragmento_id": "7f62165646-00-03",
-    "score": 0.5514494180679321,
-    "score_lexico": 17.983623504638672,
-    "score_denso": 0.8497012853622437,
+    "fragmento_id": "7f62165646-00-05",
+    "score": 0.5451446175575256,
+    "score_lexico": 20.289058685302734,
+    "score_denso": 0.8417295217514038,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -236,7 +236,7 @@
     "veredito_original": "boato",
     "veredito_chave": "boato",
     "cobre_multiplas_alegacoes": false,
-    "trecho": "essa manobra para matar a população sem que ela perceba. A teoria da conspiração é tão doida, que só a equipe do Boatos.org para desvendar a história. E, claro, colocá-la no lugar onde ela merece: na estante de boatos.5) Enfermeira de MG diz que ninguém deve tomar a vacinaE nem só da classe médica vivem os boatos envolvendo a febre amarela ou a vacina contra a doença. Nessa história, uma enfermeira de Belo Horizonte (MG) teria afirmado que a vacina é uma farsa inventada pelo governo e que ninguém deve se vacinar. Novamente, uma teoria da conspiração contra o governo foi levantada. Entretanto, a história apresenta tantos equívocos e traz tanta desinformação, que não foi difícil mostrar que se tratava apenas de um boato.6) Enfermeira do HC fala sobre epidemia na cidade de São PauloE os boatos envolvendo pessoas da área da saúde opinando sobre a vacina da febre amarela e sobre a doença não pararam por aí."
+    "trecho": "ação é simples: beber de 3 a 6 gotas de própolis por dia iria fazer com que o seu corpo produzisse um cheiro desagradável para o mosquito transmissor. O fato é que própolis é muito bom, mas não pra espantar o mosquito transmissor da febre amarela e da dengue. Vale lembrar que a história já circulou em 2008, quando falava só da dengue, e em 2016, quando falava da Zika.Bônus – Vacina tem 50% de letalidade e causa perda de visãoDe todos os boatos sobre a febre amarela que circularam pelas redes sociais, alguns alertavam para perigos sobre a doença e também sobre a vacina, outros pediam para as pessoas não se vacinarem devido aos efeitos colaterais da vacina e outros apresentavam um certo teor apocalíptico.E os dois boatos (bônus) que trazemos hoje se enquadram na última descrição. No primeiro, um dermatologista teria dito em um programa de rádio que a vacina contra febre amarela mata em 50% dos casos. Já a segunda, afirma que um estudo do Instituto de Imunologia de Macapá indica que a vacina da febre amarela pode causar cegueira.Ainda bem que as duas histórias não passaram de boato."
    }
   ]
  }

@@ -1,7 +1,7 @@
 {
  "chat": {
-  "a46f3541140b17da": "{\"categorias\": [], \"motivo\": \"A mensagem expressa uma reclamação política e desabafo pessoal, sem pedidos de conduta, riscos imediatos ou checagem de fatos.\"}",
-  "566b8465db9e608b": "{\"alegacoes\": [], \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"}"
+  "a46f3541140b17da": "{\"categorias\": [], \"motivo\": \"A mensagem expressa frustração, mas não se encaixa em nenhuma categoria.\"}",
+  "5f78945299b3aeab": "{\n  \"alegacoes\": [],\n  \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"\n}"
  },
  "busca": {}
 }

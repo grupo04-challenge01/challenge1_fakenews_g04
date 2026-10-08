@@ -94,3 +94,56 @@ def test_titulos_de_bloco_nao_contam_como_frase():
 def test_alegacao_sem_palavra_de_conteudo_e_recusada(alegacao):
     with pytest.raises(ValueError):
         verificar_mito("Falso.", alegacao)
+
+
+# ---- negação da evidência (fix-qualidade-gerador-remoto, D1) -------------------------
+# Frases das bancadas com a DeepSeek de 08/10/2026 e os negativos que continuam defeito.
+
+BOLDO = "Chá de boldo cura hepatite."
+GOIABEIRA = "Chá de folha de goiabeira cura a dengue em 24 horas."
+
+
+def _no_meio(frase):
+    return f"Falso. Nenhum chá trata doença do fígado. {frase}. Procure o posto de saúde."
+
+
+@pytest.mark.parametrize("frase, alegacao", [
+    ("Nenhum estudo mostra que chá de boldo cura hepatite", BOLDO),
+    ("Nenhuma pesquisa comprova que chá de boldo cura hepatite", BOLDO),
+    ("A checagem não encontrou nenhum estudo que mostre que a casca do jatobá cura o câncer",
+     ALEGACAO),
+    ("A checagem não achou prova de que a casca do jatobá trate câncer", ALEGACAO),
+    ("A mensagem promete curar câncer com algo simples e caseiro, sem estudo que mostre isso",
+     "A casca do jatobá cura o câncer."),
+])
+def test_negacao_da_evidencia_conta_como_marcacao(frase, alegacao):
+    assert verificar_mito(_no_meio(frase), alegacao) == []
+
+
+@pytest.mark.parametrize("frase, alegacao", [
+    ("Um estudo mostra que chá de boldo cura hepatite", BOLDO),
+    ("A mensagem promete curar dengue em 24 horas", GOIABEIRA),
+    ("Não encontrou ninguém que discorde: boldo cura hepatite", BOLDO),
+])
+def test_atribuicao_ou_afirmacao_sem_negacao_continua_defeito(frase, alegacao):
+    assert verificar_mito(_no_meio(frase), alegacao) == [f"menção sem marcação de falso: {frase}"]
+
+
+@pytest.mark.parametrize("frase, alegacao", [
+    ("O estudo que ligava vacina a autismo foi retratado", "Vacina causa autismo."),
+    ("A mensagem tira de contexto uma entrevista para afirmar que a vacina mata em 50% dos casos",
+     "A vacina da febre amarela mata em 50% dos casos."),
+    ("A mensagem usa fora de contexto a fala de que a vacina mata em 50% dos casos",
+     "A vacina da febre amarela mata em 50% dos casos."),
+])
+def test_retratado_e_fora_de_contexto_contam_como_marcacao(frase, alegacao):
+    assert verificar_mito(_no_meio(frase), alegacao) == []
+
+
+@pytest.mark.parametrize("frase, alegacao", [
+    ("A mensagem retrata a vacina como perigosa: vacina causa autismo", "Vacina causa autismo."),
+    ("Num contexto de medo, a vacina mata em 50% dos casos",
+     "A vacina da febre amarela mata em 50% dos casos."),
+])
+def test_retrata_e_contexto_sozinho_continuam_defeito(frase, alegacao):
+    assert verificar_mito(_no_meio(frase), alegacao) == [f"menção sem marcação de falso: {frase}"]

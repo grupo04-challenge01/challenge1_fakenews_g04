@@ -1,21 +1,21 @@
 {
  "chat": {
-  "3a2ed0c04c520e22": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer verificar a veracidade de uma notícia sobre política de saúde pública.\"}",
-  "49237fbfcaf82e33": "{\"alegacoes\": [{\"texto\": \"o prefeito Bruno Covas acabou de liberar a cloroquina para covid em São Paulo\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
-  "fd1b58b7a333f1bc": "{\n  \"fatos\": [\n    \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"vídeo\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "8b2e931e4b27110e": "{\"rotulo\": \"verdadeiro fora de contexto ou exagerado\", \"trechos\": [\"T1\", \"T3\"], \"criterio\": \"Os trechos confirmam que o prefeito anunciou a inclusão da cloroquina como opção de tratamento em abril de 2020, mas a alegação usa 'acabou de' para um evento ocorrido há anos e omite que o uso dependia de prescrição médica.\"}",
-  "62908f39b4614688": "{\"bloco1\": [{\"frase\": \"O vídeo mostra um anúncio feito em abril de 2020.\", \"trecho\": \"T3\"}],\n \"bloco2\": [{\"frase\": \"A prefeitura incluiu o remédio como opção sob prescrição médica.\", \"trecho\": \"T2\"}, {\"frase\": \"Não há comprovação científica da eficácia do medicamento contra a Covid-19.\", \"trecho\": \"T3\"}],\n \"bloco3\": \"Técnica: fora de contexto, manchete exagerada. A mensagem usa um vídeo antigo como se fosse atual e omite que o uso era apenas com receita médica.\",\n \"bloco4\": \"Verifique a data da publicação original do vídeo antes de compartilhar.\"}"
+  "3a2ed0c04c520e22": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A mensagem afirma que o prefeito liberou cloroquina, o que é uma informação verificável.\"\n}",
+  "1743997814373db5": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "2dfcabb432ae7d24": "{\n  \"fatos\": [\n    \"O prefeito Bruno Covas liberou a cloroquina para covid em São Paulo.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Olha o vídeo!\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "71b5b1f188d63add": "{\n  \"rotulo\": \"verdadeiro fora de contexto ou exagerado\",\n  \"trechos\": [\"T1\", \"T3\"],\n  \"criterio\": \"O T1 mostra que Covas liberou a cloroquina em 2021, mas a alegação omite que a liberação foi condicionada à prescrição médica e consentimento, e o T3 indica que a medida já havia sido anunciada em 2020.\"\n}",
+  "3aa9853d889086a6": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"A liberação não foi recente nem sem condições.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"Em 2020, a prefeitura anunciou a cloroquina como opção, com prescrição e consentimento.\",\n      \"trecho\": \"T2\"\n    },\n    {\n      \"frase\": \"O vídeo é de abril de 2020, não de 2021.\",\n      \"trecho\": \"T3\"\n    }\n  ],\n  \"bloco3\": \"Técnica: fora de contexto. A mensagem usa um vídeo antigo como se fosse atual.\",\n  \"bloco4\": \"Veja a data do vídeo e se a notícia cita condições para o uso.\"\n}"
  },
  "busca": {
-  "ad6b7d129ebb7b03": {
+  "9784683ef3fea57b": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "73fd0f67bb-00",
      "fragmento_id": "73fd0f67bb-00-00",
-     "score": 0.7118890881538391,
-     "score_lexico": 33.769866943359375,
-     "score_denso": 0.907903254032135,
+     "score": 0.7060256004333496,
+     "score_lexico": 26.026470184326172,
+     "score_denso": 0.905013382434845,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "dc429bdfc1-00",
      "fragmento_id": "dc429bdfc1-00-00",
-     "score": 0.6997487545013428,
+     "score": 0.6964956521987915,
      "score_lexico": 31.02199363708496,
-     "score_denso": 0.902712881565094,
+     "score_denso": 0.8988604545593262,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -47,9 +47,9 @@
     {
      "unidade_id": "e1320a8aaf-00",
      "fragmento_id": "e1320a8aaf-00-01",
-     "score": 0.6774696111679077,
+     "score": 0.6830045580863953,
      "score_lexico": 26.425039291381836,
-     "score_denso": 0.8942699432373047,
+     "score_denso": 0.8940753936767578,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "aos fatos",
@@ -64,9 +64,9 @@
     {
      "unidade_id": "9678877505-00",
      "fragmento_id": "9678877505-00-02",
-     "score": 0.677006721496582,
+     "score": 0.6764597296714783,
      "score_lexico": 22.259658813476562,
-     "score_denso": 0.8954479694366455,
+     "score_denso": 0.8926821947097778,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "COMPROVA",
@@ -81,9 +81,9 @@
     {
      "unidade_id": "b8f19a0568-00",
      "fragmento_id": "b8f19a0568-00-01",
-     "score": 0.663156270980835,
+     "score": 0.662259578704834,
      "score_lexico": 19.323041915893555,
-     "score_denso": 0.8910980224609375,
+     "score_denso": 0.8880854249000549,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "ESTADAO_VERIFICA",
@@ -101,13 +101,13 @@
     "pt-BR"
    ]
   },
-  "8f9e11f033f0c10c": [
+  "c194ee1d8a5e9217": [
    {
     "unidade_id": "73fd0f67bb-00",
     "fragmento_id": "73fd0f67bb-00-00",
-    "score": 0.7118890881538391,
-    "score_lexico": 33.769866943359375,
-    "score_denso": 0.907903254032135,
+    "score": 0.7060256004333496,
+    "score_lexico": 26.026470184326172,
+    "score_denso": 0.905013382434845,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -122,9 +122,9 @@
    {
     "unidade_id": "e1320a8aaf-00",
     "fragmento_id": "e1320a8aaf-00-01",
-    "score": 0.6774696111679077,
+    "score": 0.6830045580863953,
     "score_lexico": 26.425039291381836,
-    "score_denso": 0.8942699432373047,
+    "score_denso": 0.8940753936767578,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",
@@ -139,9 +139,9 @@
    {
     "unidade_id": "73fd0f67bb-00",
     "fragmento_id": "73fd0f67bb-00-04",
-    "score": 0.6801667809486389,
-    "score_lexico": 28.93776512145996,
-    "score_denso": 0.8946980237960815,
+    "score": 0.6744750142097473,
+    "score_lexico": 23.665380477905273,
+    "score_denso": 0.8913491368293762,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -156,9 +156,9 @@
    {
     "unidade_id": "73fd0f67bb-00",
     "fragmento_id": "73fd0f67bb-00-05",
-    "score": 0.679593563079834,
-    "score_lexico": 27.83968162536621,
-    "score_denso": 0.8947464227676392,
+    "score": 0.6656471490859985,
+    "score_lexico": 21.052913665771484,
+    "score_denso": 0.8887178897857666,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -173,9 +173,9 @@
    {
     "unidade_id": "73fd0f67bb-00",
     "fragmento_id": "73fd0f67bb-00-01",
-    "score": 0.6741600036621094,
-    "score_lexico": 34.69342041015625,
-    "score_denso": 0.8911048173904419,
+    "score": 0.6625104546546936,
+    "score_lexico": 23.264366149902344,
+    "score_denso": 0.886717677116394,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "boatos",
@@ -190,9 +190,9 @@
    {
     "unidade_id": "e1320a8aaf-00",
     "fragmento_id": "e1320a8aaf-00-00",
-    "score": 0.6685516834259033,
+    "score": 0.665047824382782,
     "score_lexico": 25.21360206604004,
-    "score_denso": 0.8910910487174988,
+    "score_denso": 0.8871004581451416,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",
@@ -207,9 +207,9 @@
    {
     "unidade_id": "e1320a8aaf-00",
     "fragmento_id": "e1320a8aaf-00-02",
-    "score": 0.665155827999115,
+    "score": 0.6634837985038757,
     "score_lexico": 23.747783660888672,
-    "score_denso": 0.8902355432510376,
+    "score_denso": 0.8869379162788391,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",
@@ -224,9 +224,9 @@
    {
     "unidade_id": "e1320a8aaf-00",
     "fragmento_id": "e1320a8aaf-00-04",
-    "score": 0.5858460068702698,
+    "score": 0.5926885008811951,
     "score_lexico": 19.95625114440918,
-    "score_denso": 0.8671416640281677,
+    "score_denso": 0.8656644821166992,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",

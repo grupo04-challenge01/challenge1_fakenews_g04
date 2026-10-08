@@ -284,7 +284,8 @@ def test_identificador_de_trecho_na_camada_visivel_e_defeito():
 
 
 def test_mais_de_120_palavras_e_defeito():
-    longo = " ".join(["Confira a fonte antes de repassar."] * 25)
+    # Uma frase só: o corte de fix-teto-resposta não tem o que tirar, e o defeito fica.
+    longo = " ".join(["Confira a fonte antes de repassar"] * 25) + "."
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(_com(bloco4=longo)))
     assert any(d.startswith("camada visível com") and "120" in d for d in r.defeitos)
 

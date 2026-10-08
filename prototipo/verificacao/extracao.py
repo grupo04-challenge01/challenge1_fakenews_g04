@@ -35,6 +35,8 @@ separe quem afirmou do que foi afirmado.
 
 Se a mensagem tiver opinião, copie a opinião em "opiniao". Se não tiver, use null.
 Se a mensagem não tiver nenhuma alegação, devolva a lista vazia.
+Liste no máximo 8 alegações, as de saúde primeiro, na ordem em que aparecem
+na mensagem.
 
 Responda só com JSON, neste formato:
 {"alegacoes": [{"texto": "...", "saude": true, "risco": "alto"}], "opiniao": null}"""
@@ -94,5 +96,18 @@ def interpretar(bruto):
     return Extracao(selecionada=escolhida, demais=demais, opiniao=dados.get("opiniao"))
 
 
+def _aviso(achados):
+    return ("AVISO DA CONFERÊNCIA: a extração anterior foi recusada.\n"
+            + "\n".join(f"- {a}" for a in achados)
+            + "\nRefaça no mesmo formato JSON, com no máximo 8 alegações.")
+
+
 def extrair(texto, chat=chat_ollama):
-    return interpretar(chat(SISTEMA, mensagem(texto)))
+    """Uma nova tentativa com o defeito informado; JSON cortado é o caso comum
+    (fix-qualidade-gerador-remoto, D6). A segunda saída com defeito levanta."""
+    pedido = mensagem(texto)
+    bruto = chat(SISTEMA, pedido)
+    achados = defeitos(bruto)
+    if not achados:
+        return interpretar(bruto)
+    return interpretar(chat(SISTEMA, f"{pedido}\n\n{_aviso(achados)}"))

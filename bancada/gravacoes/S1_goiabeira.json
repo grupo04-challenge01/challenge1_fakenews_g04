@@ -1,21 +1,21 @@
 {
  "chat": {
-  "2d8e5050c9399bca": "{\"categorias\": [\"checagem\"], \"motivo\": \"O usuário quer confirmar a veracidade de uma informação sobre um tratamento natural.\"}",
-  "4b5aec17242224d6": "{\"alegacoes\": [{\"texto\": \"Chá de folha de goiabeira cura a dengue em 24 horas\", \"saude\": true, \"risco\": \"alto\"}], \"opiniao\": null}",
-  "88c3b9a2659b0717": "{\n  \"fatos\": [\n    \"Chá de folha de goiabeira cura a dengue em 24 horas.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"É verdade?\"\n  ],\n  \"conclusao\": null\n}",
-  "b5648730760ab791": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados menciona o uso de chá de folha de goiabeira para o tratamento da dengue.\"}",
-  "c8fb16cc1272ef7d": "{\"bloco1\": \"Foram buscadas informações sobre o chá de goiabeira na dengue.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Procure por orientações em sites oficiais de saúde. Verifique se há estudos científicos reais.\", \"bloco4\": \"Consulte órgãos como o Ministério da Saúde ou a Anvisa.\"}"
+  "2d8e5050c9399bca": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A pessoa quer saber se a informação sobre o chá curar dengue é verdadeira.\"\n}",
+  "d788fc0c5ee6d328": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Chá de folha de goiabeira cura a dengue em 24 horas.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "06c15bf120a196cd": "{\n  \"fatos\": [\"Chá de folha de goiabeira cura a dengue em 24 horas.\"],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "fafc3fee43d60641": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona chá de folha de goiabeira ou cura da dengue em 24 horas. Os trechos falam de suco de inhame, chá de erva-doce e COVID-19.\"\n}",
+  "9f42f4e88501275b": "{\n  \"bloco1\": \"Não encontramos estudos confiáveis sobre chá de goiabeira curando dengue em 24 horas.\",\n  \"bloco2\": \"Não encontrar evidência não significa que a afirmação seja falsa.\",\n  \"bloco3\": \"Procure informações em fontes oficiais de saúde ou pergunte a um profissional.\",\n  \"bloco4\": \"Você pode buscar em sites de instituições como o Ministério da Saúde ou a OMS.\"\n}"
  },
  "busca": {
-  "61698a2ade6e877a": {
+  "9e9070ed02816d53": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "c5d4b94adb-00",
      "fragmento_id": "c5d4b94adb-00-01",
-     "score": 0.6724535226821899,
+     "score": 0.6530717015266418,
      "score_lexico": 14.593414306640625,
-     "score_denso": 0.8648998737335205,
+     "score_denso": 0.8440403938293457,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "fato-ou-fake",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "50cb17dd68-00",
      "fragmento_id": "50cb17dd68-00-00",
-     "score": 0.6509451270103455,
+     "score": 0.6407554745674133,
      "score_lexico": 15.159010887145996,
-     "score_denso": 0.8583757281303406,
+     "score_denso": 0.8411749005317688,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -47,9 +47,9 @@
     {
      "unidade_id": "f308f09db9-00",
      "fragmento_id": "f308f09db9-00-02",
-     "score": 0.6155400276184082,
+     "score": 0.6204414367675781,
      "score_lexico": 12.395315170288086,
-     "score_denso": 0.8507890701293945,
+     "score_denso": 0.8380604386329651,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -64,9 +64,9 @@
     {
      "unidade_id": "c7822447bb-00",
      "fragmento_id": "c7822447bb-00-02",
-     "score": 0.6077952980995178,
+     "score": 0.6079740524291992,
      "score_lexico": 12.311470031738281,
-     "score_denso": 0.849120557308197,
+     "score_denso": 0.8358050584793091,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -79,21 +79,21 @@
      "trecho": "ma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições. Um infectologista do hospital São Domingos, recomenda tomar de 12 em 12/horas o chá de erva doce, pois ele mata o vírus da influenza. É da erva-doce que é feito o TAMIFLU. * Repasse para seus famíliares e amigos pois é muito importante.Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu?Em meio a apreensão que o planeta está passando em relação ao Coronavírus é claro que a história iria viralizar. Mas será mesmo que o diretor do HC fez o tal alerta sobre a “nova gripe” e a tal recomendação do chá de erva-doce? A resposta é não. Vamos aos fatos.Como falamos lá no início do texto, essa história é a junção de duas notícias falsas já desmentidas. A história que falava do alerta do diretor do Hospital das Clínicas é de 2018. A do chá de erva-doce no lugar de Tamiflu também é de 2018. A história do diretor surgiu em um contexto diferente."
     },
     {
-     "unidade_id": "be7e3207a4-00",
-     "fragmento_id": "be7e3207a4-00-02",
-     "score": 0.60258948802948,
-     "score_lexico": 17.534231185913086,
-     "score_denso": 0.846373975276947,
+     "unidade_id": "f946c8a102-00",
+     "fragmento_id": "f946c8a102-00-05",
+     "score": 0.605160117149353,
+     "score_lexico": 7.541126728057861,
+     "score_denso": 0.8374876976013184,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2020-02-10",
-     "url": "https://www.boatos.org/saude/cha-folhas-abacate-hortela-cura-previne-coronavirus.html",
-     "alegacao": "Chá de folhas de abacate com hortelã cura e previne o coronavírus #boato",
+     "data_publicacao": "2020-08-24",
+     "url": "https://www.boatos.org/saude/centro-epidemiologia-milao-texto-tratamento-covid-19-fevereiro-agosto.html",
+     "alegacao": "Centro de Epidemiologia de Milão escreve texto comparando tratamento contra Covid-19 em fevereiro e agosto de 2020 #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "crescente 6 folhas de abacate e folhas de hortelã (A quantidade das folhas de hortelã é o tanto que enche um copo de 200 ml) Tampe e desligue o fogão. Se estiver Calor tome o chá Gelado e se estiver tempo Frio tome o chá quenteVersão 2: ALERTA VERMELHO NO PLANETA!!! A CURA NATURAL da epidemia do “CoronaVírus” e suas mutações!!! MULHER SIMPLES E HUMILDE DO POVO, senhora católica… …SONHOU COM A MÃE DE JESUS… na roupagem de NOSSA SENHORA DO CARMO… e divulga mensagem de CHÁ SIMPLES DE FOLHAS: – DE *ABACATE* + FOLHAS DE *HORTELÃ* TEM PODER DE ELIMINAR O “CoronaVírus” + suas mutações e tbm outros vírus patogênicos. Chá de IMUNIZAÇÃO que elimina o “CoronaVírus” + mutações!!! […]COMO TOMAR??? * tomar um copo de 100ml de 1 em 1 hora. * total 1.000ml para 10 (dez) horas seguidas de tratamento até o desaparecimento total dos sintomas e + 3 dias de prevenção, se houver chá disponível.Chá de folhas de abacate com hortelã cura e previne o coronavírus?A mensagem em questão já deixou muita gente curiosa com a suposta eficácia do chá de abacate contra o coronavírus."
+     "trecho": "s pacientes.5. Agora também sabemos que as pessoas com hipóxia melhoram apenas fazendo com que deitem de bruços, o que é conhecido como posição prona. Além disso, alguns dias atrás, cientistas israelenses descobriram que uma substância química conhecida como Alpha Defensin, produzida pelos glóbulos brancos, pode causar micro coágulos nos vasos sanguíneos dos pulmões e isso poderia ser prevenido por um medicamento chamado Colchicina, usado por muitas décadas no tratamento da gota.Portanto, agora sabemos, com certeza, que os pacientes têm uma chance melhor de sobreviver à infecção por COVID-19 em agosto de 2020 do que em fevereiro de 2020. Continue tomando precauções. Saia apenas para o essencial! Não há festa, chá de bebê ou formatura do jardim de infância essencial !!!!!!!!!!! Vamos parar de ser superficiais! É melhor estar infectado daqui a mais 6 meses do que agora."
     }
    ],
    "coberto": true,

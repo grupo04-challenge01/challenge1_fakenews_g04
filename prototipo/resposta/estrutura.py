@@ -77,8 +77,8 @@ SISTEMA = f"""Você explica a uma pessoa comum o resultado da checagem de uma me
 O VEREDITO já foi decidido e vem na mensagem. NÃO mude o veredito.
 Afirme SOMENTE o que os TRECHOS sustentam. NUNCA use o que você sabe de medicina.
 NUNCA dê orientação clínica individual.
-Frases curtas, de no máximo 15 palavras. Palavras do dia a dia. A resposta inteira
-cabe em 90 palavras.
+Frases curtas, de no máximo 15 palavras. Palavras do dia a dia.
+Os quatro blocos somam no máximo 80 palavras.
 
 Na forma com evidência, os blocos 1 e 2 são LISTAS de frases. Cada frase vem
 com o trecho que a sustenta: {{"frase": "Nenhum estudo mostra isso.", "trecho": "T1"}}.
@@ -154,6 +154,9 @@ class Resposta:
     bruto: str = ""  # saída do modelo, para a sonda ler o que ele de fato escreveu
     # add-entrada-por-link, D7: aviso de leitura parcial, entre o bordão e o bloco 1.
     aviso: str | None = None
+    # fix-teto-resposta: blocos que o corte pode encurtar (índices) e frases tiradas.
+    cortaveis: list = field(default_factory=lambda: [2, 3])
+    cortadas: list = field(default_factory=list)
 
     @property
     def texto(self):
@@ -284,6 +287,46 @@ def _defeitos_sem(r, catalogo):
     return achados
 
 
+def _defeitos_conteudo(r, alegacao, decomposicao, catalogo):
+    """Defeitos que dependem do texto dos blocos, recalculados depois do corte."""
+    if r.forma == "com evidência":
+        achados = _defeitos_com(r, r.veredito, alegacao, decomposicao, catalogo)
+    else:
+        achados = _defeitos_sem(r, catalogo)
+    return achados + _defeitos_legibilidade(r)
+
+
+ELIMINATORIOS = ("mito:", "técnica nomeada", "bloco 3 da forma sem evidência afirma")
+
+
+def _cortar(r, alegacao, decomposicao, catalogo):
+    """Teto garantido em código (fix-teto-resposta): tira a última frase do bloco
+    cortável com mais frases, deixando uma em cada, até caber. Blocos 1 e 2 nunca.
+    Corte que cria defeito eliminatório é desfeito (D3)."""
+    if len(r.texto.split()) <= TETO_PALAVRAS or "saída não é JSON" in r.defeitos:
+        return r
+    catalogo = catalogo or catalogo_mod.carregar_catalogo()
+    antes = _defeitos_conteudo(r, alegacao, decomposicao, catalogo)
+    fixos = [d for d in r.defeitos if d not in antes]
+    blocos, cortadas = list(r.blocos), []
+    frases = {i: _frases(blocos[i]) for i in r.cortaveis}
+    while len(replace(r, blocos=blocos).texto.split()) > TETO_PALAVRAS:
+        candidatos = [i for i in r.cortaveis if len(frases[i]) > 1]
+        if not candidatos:
+            break
+        i = max(candidatos, key=lambda i: (len(frases[i]), i))
+        cortadas.append(frases[i].pop())
+        blocos[i] = " ".join(frases[i])
+    if not cortadas:
+        return r
+    novo = replace(r, blocos=blocos, cortadas=cortadas)
+    depois = _defeitos_conteudo(novo, alegacao, decomposicao, catalogo)
+    if any(d.startswith(ELIMINATORIOS) and d not in antes for d in depois):
+        return r
+    novo.defeitos = fixos + depois
+    return novo
+
+
 def _ancorar(crus, trechos, decomposicao, usadas):
     """Blocos 1 e 2 sem as frases não ancoradas, as descartadas e o motivo do
     rebaixamento — `None` quando o veredito se sustenta. `usadas` recebe o
@@ -319,8 +362,44 @@ def _rebaixado(veredito, motivo):
                     referencias=list(veredito.referencias))
 
 
+REFEITA_ANCORA = "--- refeita com o aviso da conferência ---"
+REFEITA_DEFEITO = "--- refeita por defeito da resposta ---"
+
+
+def _aviso_defeitos(r):
+    """Defeitos da primeira resposta, para a segunda tentativa (fix-qualidade-gerador-remoto,
+    D5). Passando do teto, diz quantas palavras cortar dos blocos (D7)."""
+    linhas = ["AVISO DA CONFERÊNCIA: a resposta anterior saiu com defeitos."]
+    linhas += [f"- {d}" for d in r.defeitos]
+    total = len(r.texto.split())
+    if total > TETO_PALAVRAS:
+        linhas.append(f"A camada visível teve {total} palavras; o teto é {TETO_PALAVRAS}. "
+                      f"Corte pelo menos {total - TETO_PALAVRAS + 10} palavras dos blocos.")
+    linhas.append(f"Nenhuma frase passa de {TETO_FRASE} palavras. Toda menção à alegação "
+                  "falsa diz que ela é falsa.")
+    return "\n".join(linhas)
+
+
 def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
               chat=chat_ollama, catalogo=None, expandir=None, aviso=None):
+    """Monta a resposta de quatro blocos a partir do veredito da guarda.
+
+    Resposta com defeito tem uma nova tentativa, com os defeitos no pedido, se a
+    ancoragem ainda não gastou a sua; vale a saída com menos defeitos
+    (fix-qualidade-gerador-remoto, D5). Demais parâmetros em `_montar`.
+    """
+    args = (texto, alegacao, veredito, decomposicao, lacuna, chat, catalogo, expandir, aviso)
+    r = _montar(*args)
+    if not r.defeitos or REFEITA_ANCORA in r.bruto or r.rebaixada_por:
+        return _cortar(r, alegacao, decomposicao, catalogo)
+    nova = _montar(*args, aviso_defeitos=_aviso_defeitos(r))
+    escolhida = nova if len(nova.defeitos) <= len(r.defeitos) else r
+    escolhida.bruto = f"{r.bruto}\n\n{REFEITA_DEFEITO}\n\n{nova.bruto}"
+    return _cortar(escolhida, alegacao, decomposicao, catalogo)
+
+
+def _montar(texto, alegacao, veredito, decomposicao=None, lacuna=None,
+            chat=chat_ollama, catalogo=None, expandir=None, aviso=None, aviso_defeitos=None):
     """Monta a resposta de quatro blocos a partir do veredito da guarda.
 
     `veredito` é o `guarda.Veredito`. `lacuna`, quando a pauta é posterior ao
@@ -343,6 +422,8 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     if com and expandir is not None:
         trechos = expandir(veredito.trechos)
     pedido = mensagem(texto, alegacao, replace(veredito, trechos=trechos), estado, decomposicao)
+    if aviso_defeitos:
+        pedido = f"{pedido}\n\n{aviso_defeitos}"
     bruto = chat(SISTEMA, pedido)
     dados = ler_json(bruto)
     crus = [(dados or {}).get(f"bloco{n}") for n in range(1, 5)]
@@ -354,7 +435,7 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
         if motivo:
             # Uma tentativa a mais antes de rebaixar (decisão 29).
             refeito = chat(SISTEMA, f"{pedido}\n\n{_aviso(motivo, descartadas)}")
-            bruto = f"{bruto}\n\n--- refeita com o aviso da conferência ---\n\n{refeito}"
+            bruto = f"{bruto}\n\n{REFEITA_ANCORA}\n\n{refeito}"
             novos = ler_json(refeito)
             if novos is not None:
                 dados, crus = novos, [novos.get(f"bloco{n}") for n in range(1, 5)]
@@ -363,8 +444,8 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
                     crus, trechos, decomposicao, usadas)
         if motivo:
             rebaixado = _rebaixado(veredito, motivo)
-            r = responder(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo,
-                          aviso=aviso)
+            r = _montar(texto, alegacao, rebaixado, decomposicao, None, chat, catalogo,
+                        aviso=aviso)
             r.descartadas = descartadas
             r.rebaixada_por = rebaixado.rebaixado_por
             r.bruto = f"{bruto}\n\n--- refeita na forma sem evidência ---\n\n{r.bruto}"
@@ -392,9 +473,7 @@ def responder(texto, alegacao, veredito, decomposicao=None, lacuna=None,
         return r
     obrigatorios = (2, 3, 4) if estado != LACUNA else (3,) if ponteiro else (2, 3)
     r.defeitos = [f"bloco{n} vazio" for n in obrigatorios if not gerados[n - 1]]
-    if com:
-        r.defeitos += _defeitos_com(r, veredito, alegacao, decomposicao, catalogo)
-    else:
-        r.defeitos += _defeitos_sem(r, catalogo)
-    r.defeitos += _defeitos_legibilidade(r)
+    r.defeitos += _defeitos_conteudo(r, alegacao, decomposicao, catalogo)
+    if estado == LACUNA:
+        r.cortaveis = [2]  # o bloco 4 é o ponteiro, escrito pelo código
     return r

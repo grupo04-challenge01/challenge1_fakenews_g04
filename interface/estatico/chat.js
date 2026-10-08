@@ -3,19 +3,28 @@
 // A resposta à pergunta de confiança fica só em memória, nesta página: nunca
 // vai ao servidor nem a armazenamento do navegador (requirement Pergunta de
 // confiança só no navegador).
+// Com gerador remoto, o termo de consentimento vem antes do campo; a escolha
+// também fica só nesta página e vai em cada pedido (add-gerador-api-deepseek, D8).
 
 const config = JSON.parse(document.getElementById("config").textContent);
 const conversa = document.getElementById("conversa");
 const formulario = document.getElementById("envio");
 const campo = document.getElementById("mensagem");
+const botaoEnviar = formulario.querySelector('button[type="submit"]');
+let consentimento = null;
+let ultimoId = 0;
 
 document.getElementById("chamada").textContent = config.textos.chamada;
 bolhaDona().append(paragrafo(config.textos.abertura));
+if (config.termo) {
+  bloquear(true);
+  termo(config.termo);
+}
 
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
   const texto = campo.value;
-  if (!texto.trim()) return;
+  if (!texto.trim() || (config.termo && !consentimento)) return;
   campo.value = "";
   verificar(texto);
 });
@@ -37,8 +46,7 @@ function criar(tag, classe, texto) {
 }
 
 // Ids por contador: crypto.randomUUID só existe em contexto seguro, e no celular
-// a página abre por http://<ip da rede>.
-let ultimoId = 0;
+// a página abre por http://<ip da rede>. `ultimoId` fica no topo do arquivo.
 function novoId(prefixo) {
   ultimoId += 1;
   return `${prefixo}-${ultimoId}`;
@@ -115,6 +123,47 @@ function markdown(texto) {
   return destino;
 }
 
+// ---- termo de consentimento ----------------------------------------------------------
+
+function bloquear(sim) {
+  campo.disabled = sim;
+  botaoEnviar.disabled = sim;
+}
+
+function termo({ versao, texto, recusa, alternativa }) {
+  const bolha = bolhaDona("termo");
+  const grupo = criar("div", "pergunta");
+  grupo.setAttribute("role", "group");
+  const rotulo = paragrafo(texto);
+  rotulo.id = novoId("termo");
+  grupo.setAttribute("aria-labelledby", rotulo.id);
+  const botoes = criar("div", "opcoes");
+  const aceito = criar("button", "opcao", "Aceito");
+  const naoAceito = criar("button", "opcao", "Não aceito");
+  for (const botao of [aceito, naoAceito]) {
+    botao.type = "button";
+    botoes.append(botao);
+  }
+  aceito.addEventListener("click", () => {
+    consentimento = versao;
+    botoes.replaceWith(paragrafo("Combinado. Pode mandar a mensagem.", "anotado"));
+    bloquear(false);
+    campo.focus();
+  });
+  naoAceito.addEventListener("click", () => {
+    botoes.remove();
+    const resposta = bolhaDona();
+    resposta.append(paragrafo(recusa));
+    if (alternativa) {
+      consentimento = "recusado";
+      bloquear(false);
+    }
+    focar(resposta);
+  });
+  grupo.append(rotulo, botoes);
+  bolha.append(grupo);
+}
+
 // ---- verificação --------------------------------------------------------------------
 
 async function verificar(texto) {
@@ -127,7 +176,7 @@ async function verificar(texto) {
     const resposta = await fetch("/verificar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ texto }),
+      body: JSON.stringify(consentimento ? { texto, consentimento } : { texto }),
     });
     if (!resposta.ok || !resposta.body) throw new Error(`HTTP ${resposta.status}`);
     const leitor = resposta.body.pipeThrough(new TextDecoderStream()).getReader();

@@ -1,6 +1,6 @@
 {
  "chat": {
-  "115e9013f3458bf0": "{\"alegacoes\": [{\"texto\": \"A Advocacia-Geral da União (AGU) defendeu nesta terça-feira (6) ao Supremo Tribunal Federal (STF) a proibição das empresas de apostas virtuais (bets) no Brasil\", \"saude\": false, \"risco\": \"baixo\"}, {\"texto\": \"Advocacia-geral considera ‘falha’ a legislação que regulamenta bets\", \"saude\": false, \"risco\": \"baixo\"}], \"opiniao\": null}"
+  "6cb10218f10a6355": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A Advocacia-Geral da União defendeu a proibição das empresas de apostas virtuais (bets) no Brasil\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A Advocacia-Geral da União considera falha a legislação que regulamenta bets\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A Advocacia-Geral da União defendeu uma nova audiência sobre o tema\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
  },
  "busca": {}
 }

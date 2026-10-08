@@ -86,9 +86,9 @@ def _porta_livre():
         return s.getsockname()[1]
 
 
-def _subir(modo):
+def _subir(modo, **extra):
     porta = _porta_livre()
-    app = criar_app(Config(modo=modo, porta=porta), carregar_recuperador=object,
+    app = criar_app(Config(modo=modo, porta=porta, **extra), carregar_recuperador=object,
                     verificar=verificar_falso)
     servidor = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=porta,
                                              log_level="warning"))
@@ -111,5 +111,21 @@ def servidor_uso():
 @pytest.fixture(scope="session")
 def servidor_piloto():
     servidor, url = _subir("piloto")
+    yield url
+    servidor.should_exit = True
+
+
+@pytest.fixture(scope="session")
+def servidor_deepseek():
+    """Gerador remoto só muda a página pelo aviso; o fluxo continua falso, sem rede."""
+    servidor, url = _subir("uso", gerador="deepseek", chave="sk-teste")
+    yield url
+    servidor.should_exit = True
+
+
+@pytest.fixture(scope="session")
+def servidor_deepseek_local():
+    """Gerador remoto com alternativa local para quem recusa o termo (D8)."""
+    servidor, url = _subir("uso", gerador="deepseek", chave="sk-teste", alternativa_local=True)
     yield url
     servidor.should_exit = True

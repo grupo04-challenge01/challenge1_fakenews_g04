@@ -22,10 +22,18 @@ VAZIAS = {"para", "pelo", "pela", "pelos", "pelas", "como", "mais", "muito", "is
           "todas", "cada", "mesmo", "mesma", "seja", "será", "foram", "está", "estão",
           "tem", "têm", "sendo", "numa", "num", "dos", "das", "uma", "uns", "umas"}
 
-# Marcação de falso na própria frase. Aplicada ao texto sem acento.
+# Marcação de falso na própria frase. Aplicada ao texto sem acento. Negar que
+# exista evidência conta como marcação ("nenhum estudo mostra", "a checagem não
+# encontrou prova"); atribuir sem negar ("a mensagem promete") não conta
+# (fix-qualidade-gerador-remoto, D1). Fonte retratada e mensagem que tira de
+# contexto também contam; "retrata" (mostra) e "contexto" sozinho não (D7).
+EVIDENCIA = r"(prova|comprovacao|evidencia|estudo|pesquisa|dado)s?"
 MARCA = re.compile(
     r"\bfals(?:[oa]s?|amente)\b|nao e verdade|nao (ha|existe|tem) (\w+ )?(prova|comprovacao|evidencia|estudo)"
-    r"|sem (prova|comprovacao|evidencia)|\bboato|\bmentira|desmentid|nao se sustenta|\bengan")
+    rf"|sem {EVIDENCIA}\b|\bnenhum[a]? (\w+ )?{EVIDENCIA} (mostra|comprova|confirma|indica|sustenta)"
+    rf"|\bnao (encontrou|achou|encontramos|achamos|encontrei|achei) (\w+ ){{0,2}}{EVIDENCIA}\b"
+    r"|\bretratad[oa]s?\b|\bfora de contexto|\btira(m)? (\w+ ){0,3}de contexto"
+    r"|\bboato|\bmentira|desmentid|nao se sustenta|\bengan")
 
 TITULO = re.compile(r"^\s*[A-ZÀ-Ý][A-ZÀ-Ý ]{2,}:\s*", re.MULTILINE)
 

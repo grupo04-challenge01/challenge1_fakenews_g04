@@ -120,3 +120,47 @@ def test_saida_malformada_e_defeito(bruto, defeito):
 
 def test_decompor_passa_pelo_modelo_injetado():
     assert decompor("qualquer", chat=lambda s, u: CASO_MISTO).opinioes == ["Remédio de farmácia só faz mal."]
+
+
+# ---- nova tentativa e pergunta da pessoa (fix-qualidade-gerador-remoto, D2 e D3) -----
+
+REPETIDA = _bruto(fatos=["Depois o exame deu negativo."],
+                  opinioes=["Absurdo: depois o exame deu negativo."])
+
+
+def _chat_em_sequencia(*saidas):
+    pedidos = []
+    fila = list(saidas)
+
+    def chat(sistema, usuario):
+        pedidos.append(usuario)
+        return fila.pop(0)
+    return chat, pedidos
+
+
+def test_saida_com_defeito_tem_nova_tentativa_com_o_defeito_informado():
+    chat, pedidos = _chat_em_sequencia(REPETIDA, CASO_MISTO)
+    d = decompor("Absurdo: depois o exame deu negativo.", chat=chat)
+    assert d.fatos == ["O jejum de três dias limpa o fígado."]
+    assert len(pedidos) == 2
+    assert "opinião repetida como fato: Depois o exame deu negativo." in pedidos[1]
+    assert pedidos[1].startswith(pedidos[0])
+    assert d.refeita_por == "opinião repetida como fato: Depois o exame deu negativo."
+
+
+def test_saida_sem_defeito_nao_pede_de_novo():
+    chat, pedidos = _chat_em_sequencia(CASO_MISTO)
+    assert decompor("texto", chat=chat).refeita_por is None
+    assert len(pedidos) == 1
+
+
+def test_duas_saidas_com_defeito_levantam_value_error():
+    chat, pedidos = _chat_em_sequencia(REPETIDA, "não é json")
+    with pytest.raises(ValueError, match="saída não é JSON"):
+        decompor("texto", chat=chat)
+    assert len(pedidos) == 2
+
+
+def test_prompt_deixa_de_fora_pergunta_e_exclamacao_e_salto_sem_veredito():
+    assert "Isso é verdade?" in SISTEMA and "não é fato, opinião nem conclusão" in SISTEMA
+    assert "Não diga se algo é verdadeiro ou falso nele." in SISTEMA
