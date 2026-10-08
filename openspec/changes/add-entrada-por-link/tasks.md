@@ -119,6 +119,6 @@ Depende de `interface/` existir em `main` (`add-interface-chat-web`).
 
 - [x] 8.1 Atualizar `docs/estado.md` e `docs/pendencias.md` com a entrada por
       link e a ordem de arquivamento de D10
-- [ ] 8.2 Rodar `pytest prototipo bancada interface` e verificar suíte verde
-- [ ] 8.3 Rodar `openspec validate add-entrada-por-link --strict` e verificar
+- [x] 8.2 Rodar `pytest prototipo bancada interface` e verificar suíte verde
+- [x] 8.3 Rodar `openspec validate add-entrada-por-link --strict` e verificar
       saída limpa
