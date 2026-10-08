@@ -82,6 +82,8 @@ Nenhum teste acessa a rede; a API entra simulada com `httpx.MockTransport`.
       perguntas da revisão (insumo da 5.1)
 - [x] 5.8 `docs/interface/chat-web.md` atualizado: gerador, chave, variáveis
       novas, termo de consentimento, piloto com a emenda 01 e problemas comuns
+- [x] 5.9 Rodapé sem rolagem horizontal em 320px com fonte em 200%: o e-mail
+      do contato quebra (achado do teste do MVP de 08/10/2026)
 
 ## 6. Fechamento
 
