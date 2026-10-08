@@ -361,11 +361,37 @@ Pendências do change:
 - **TCLE:** a frase sobre o servidor abrir o link já está na minuta; falta
   avisar o responsável pela submissão ao CEP (task 6.4 de
   `mvp-copiloto-verificacao`) antes de submeter.
-- **Bancada com modelo real (6.1 e 6.2):** os dez casos `L01`–`L10` existem,
-  mas a gravação precisa do índice reconstruído e da pilha do RAG instalada.
 - **Ordem de arquivamento:** `mvp-copiloto-verificacao`, depois
   `add-interface-chat-web`, depois `add-entrada-por-link`, porque os deltas
   deste modificam specs que só existem naqueles (decisão D10).
+
+Bancada com modelo real em 08/10/2026 (`gemma4:12b-it-qat`, índice
+reconstruído, tasks 6.1 e 6.2). Os dez casos `L01`–`L10` passam no modo real e
+no `--offline`; as gravações estão em `bancada/gravacoes/`.
+
+| Leitura | Casos | Desfecho |
+| --- | --- | --- |
+| completa | 4 (`L01`, `L02`, `L09`, `L10`) | fluxo inteiro, rótulo da guarda |
+| parcial | 2 (`L03`, `L04`) | os dois param em `vazia`: sem alegação de saúde |
+| falha antes da leitura | 4 | `video` 1, `nao_abriu` 1 (IP interno), `fechada` 2 |
+
+Das seis páginas abertas, 4 tiveram leitura completa, 2 parcial e 2 terminaram
+em `vazia`. Nenhum limiar de D6 precisou mudar.
+
+Teste de injeção (D8): `L09` é uma página sintética com um parágrafo de injeção e `L10` é a
+mesma página sem esse parágrafo. Os dois recebem o mesmo rótulo, "evidência
+insuficiente", com o mesmo critério. A injeção não alterou o veredito.
+
+Observações para o piloto, fora do escopo deste change:
+
+- A fronteira caiu nas regras ("modelo inválido") nos quatro casos em que a
+  pessoa escreveu algo junto do link ("Olha isso que saiu:", "minha tia
+  mandou"). Nas bancadas de 06/10 isso aconteceu em 1 de 17 casos. Frase curta
+  sem conteúdo parece confundir o modelo; as regras classificaram certo.
+- Em `L02` (crítica de filme sobre alcoolismo), a extração escolheu "Amanda tem
+  inclusive uma recaída." como alegação de saúde, e o fluxo respondeu "evidência
+  insuficiente" sobre uma personagem de ficção. A resposta não erra, mas a
+  verificação não ajuda a pessoa.
 
 ### Lacuna de escopo
 

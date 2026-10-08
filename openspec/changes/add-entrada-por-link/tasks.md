@@ -89,11 +89,11 @@ Nenhum teste acessa a rede.
 
 ## 6. Bancada
 
-- [ ] 6.1 Adicionar a `bancada/casos.json` casos com link (blog completo,
+- [x] 6.1 Adicionar a `bancada/casos.json` casos com link (blog completo,
       paywall mole, parcial, só-JS, vídeo, IP interno, injeção) com `buscar`
       gravado, e gravações de modelo em `bancada/gravacoes/`; verificar com
       `python -m bancada` que todos rodam offline
-- [ ] 6.2 Rodar a bancada com modelo real nos casos de 6.1 e registrar em
+- [x] 6.2 Rodar a bancada com modelo real nos casos de 6.1 e registrar em
       `docs/` a taxa de leitura completa, parcial e `vazia`; se algum limiar
       de D6 precisar mudar, atualizar spec e design antes do código
 

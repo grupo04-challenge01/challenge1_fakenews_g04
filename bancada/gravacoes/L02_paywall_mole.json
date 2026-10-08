@@ -1,0 +1,104 @@
+{
+ "chat": {
+  "08d161d38ff55965": "{\"alegacoes\": [\n  {\n    \"texto\": \"Amanda tem inclusive uma recaída.\",\n    \"saude\": true,\n    \"risco\": \"baixo\"\n  }\n], \"opiniao\": \"Um Banho de Vida retrata alcoolismo sem heroísmo nem glamour; Me reconheci nessa personagem, principalmente quando ela inventa o amor; Essa cena me atingiu de um jeito que talvez seja difícil explicar para quem nunca precisou sentar numa sala dessas; É por isso que gosto tanto de \\\"Um Banho de Vida\\\".\"}",
+  "b391061316efce06": "{\n  \"fatos\": [\n    \"O filme 'Um Banho de Vida' é uma comédia dramática francesa.\",\n    \"A personagem Amanda, no filme, tem um histórico de alcoolismo e perdas.\",\n    \"Amanda frequenta uma sala de Alcoólicos Anônimos (AA).\",\n    \"No filme, a personagem Amanda sofre uma recaída.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um Banho de Vida, comédia dramática francesa\",\n      \"forca\": \"forte\"\n    },\n    {\n      \"texto\": \"Amanda volta para uma sala de AA (Alcoólicos Anônimos)\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Me reconheci nessa personagem, principalmente quando ela inventa o amor.\",\n    \"Há uma coisa muito particular no alcoolismo, que é inventar histórias, ficar parada em uma estação do passado.\",\n    \"Essa cena me atingiu de um jeito que talvez seja difícil explicar para quem nunca precisou sentar numa sala dessas.\",\n    \"Voltar. Essa palavra talvez seja uma das mais importantes da recuperação.\",\n    \"É por isso que gosto tanto de 'Um Banho de Vida'.\",\n    \"Talvez seja essa a parte que mais me toca como alcoólatra em recuperação: pertencimento.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"A sobriedade não muda o passado.\",\n    \"decorre\": false,\n    \"salto\": \"O texto apresenta isso como uma reflexão pessoal sobre a experiência da recuperação e não como uma conclusão lógica derivada dos fatos do filme.\"\n  }\n}",
+  "3b58079b1274bfac": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho nos textos fornecidos que mencione uma pessoa chamada Amanda ou qualquer informação sobre recaídas relacionadas a ela.\"}",
+  "00b57b00bc055e24": "{\"bloco1\": \"Foi buscado conteúdo sobre a personagem Amanda no filme.\", \"bloco2\": \"Não encontrar informações não significa que o fato seja falso.\", \"bloco3\": \"Você pode assistir ao filme para conferir a cena mencionada.\", \"bloco4\": \"Procure por críticas ou sinopses detalhadas da obra em sites de cinema.\"}"
+ },
+ "busca": {
+  "cbd0018e42d0ec9a": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "4e2fa32890-00",
+     "fragmento_id": "4e2fa32890-00-04",
+     "score": 0.612657368183136,
+     "score_lexico": 2.765866994857788,
+     "score_denso": 0.8237893581390381,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-10-10",
+     "url": "https://www.boatos.org/tecnologia/bebe-leucemia-r-1-whatsapp.html",
+     "alegacao": "Bebê com leucemia vai ganhar R$ 1 por vídeo repassado no WhatsApp #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "o contra a Ame!Uma doença degenerativa tão cruel e devastadora que acaba com tudo que está à sua frente e que vai matando os neurônios de minha filha. Hoje meu grande sonho se chama SPINRAZA, o único remédio que pode salvar a vida da Ayla. O remédio mais caro do mundo! Preciso de ajuda para manter meu sonho vivo, e salvar minha filha, meu primeiro grande sonho. Peço que me ajudem a lutar contra a AME. Por Deus, não me deixem sozinha!!Peço que ajudem Ayla como puderem… Orem, curtam, divulguem, doem um 1 real que seja, mais doem por favor!!A publicação tem, inclusive, o número da conta bancária para que Ayla receba doações. Se, de fato, você quer ajudar, não compartilhe o vídeo apenas. Doe para uma das contas que estão na postagem.Resumindo: a história circula na internet é falsa. O bebê do vídeo não vai receber R$ 1 por compartilhamento de vídeo no WhatsApp, ele está pedindo algo (doações) e a doença não é leucemia, é AME. História esclarecida, vamos para a próxima.PS: Esse artigo é uma sugestão de leitores do Boatos.org."
+    },
+    {
+     "unidade_id": "6151782b35-00",
+     "fragmento_id": "6151782b35-00-04",
+     "score": 0.5889381170272827,
+     "score_lexico": 2.712874174118042,
+     "score_denso": 0.8203022480010986,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-02-05",
+     "url": "https://www.boatos.org/brasil/juiza-estaciona-balneario-camboriu.html",
+     "alegacao": "Juíza federal estaciona em lugar proibido e “arma barraco” em Balneário Camboriú (SC) #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": ", primeira vice-presidente da AMC (Associação dos Magistrados Catarinenses)”.E se você acha que essa história acabou por aí, senta que vem mais bomba. Alguns veículos de comunicação catarinenses dizem que conseguiram descobrir a verdadeira identidade da mulher. De acordo com eles, ela mora na cidade de Balneário Piçarras, litoral catarinense, e é ré em processos criminais, na comarca de Joinville, por roubo e furto.E, bom, sendo juíza ou não, estacionar em local proibido gera multa e pontos na carteira. Se você observar bem, vai ver que o local que serviu de estacionamento para as pessoas no vídeo (inclusive pra mulher que se dizia juíza) é uma área de carga e descarga. Segundo o Conselho Nacional de Trânsito (Contran), estacionar em vaga de carga/descarga é uma infração grave, com multa de R$195,23 e 5 pontos na CNH.Portanto, a mulher que aparece no vídeo não é juíza. Ela tenta jogar uma história para ganhar a discussão, mas foi desmascarada pela AMC. Além de não ser juíza, também estava estacionada em local proibido. Cuidado ao sair por aí dizendo ser quem não é."
+    },
+    {
+     "unidade_id": "51b381f51c-00",
+     "fragmento_id": "51b381f51c-00-03",
+     "score": 0.5831581950187683,
+     "score_lexico": 2.755103588104248,
+     "score_denso": 0.8194518089294434,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-07-02",
+     "url": "https://www.boatos.org/mundo/primeira-ministra-australia-fingiu-tomar-vacina-chinesa-covid-19-video.html",
+     "alegacao": "Primeira-ministra da Austrália fingiu tomar vacina chinesa contra Covid-19, mostra vídeo #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "de português e não citam fontes confiáveis.Para além disso, fake news de vídeos retirados de contexto têm sido comuns durante a pandemia da Covid-19. Já teve história falsa relacionada a “falso paciente”, “médicos comemorando o fim do coronavírus” e “previsão do vírus chinês”. Essas características e esse histórico já nos fazem ficar desconfiados.Não demorou muito para percebermos que as informações em questão estão completamente erradas. Ao buscar pelo vídeo em questão, já conseguimos achar dois erros. O primeiro é que a pessoa em questão não é a “primeira-ministra” da Austrália (país que, por sinal, tem um primeiro-ministro homem, Scott Morisson). A pessoa do vídeo é a primeira-ministra de Queensland, um estado da Austrália, Annastacia Palaszczuk.O segundo erro da mensagem é referente ao tipo de vacina que está sendo tomada no vídeo. A filmagem foi feita no final de abril e, inclusive, publicada nas redes sociais de Annastacia Palaszczuk. A própria política afirma que se trata de uma vacina para a gripe comum (influenza). “Hoje eu tomei minha vacina contra a gripe."
+    },
+    {
+     "unidade_id": "46f3fbde05-00",
+     "fragmento_id": "46f3fbde05-00-06",
+     "score": 0.5662940144538879,
+     "score_lexico": 0.0,
+     "score_denso": 0.8239615559577942,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "COMPROVA",
+     "data_publicacao": "2020-09-18",
+     "url": "https://projetocomprova.com.br/publica%C3%A7%C3%B5es/post-diz-que-governo-liberou-r-12-milhoes-para-tratamento-de-crianca-mas-omite-que-se-trata-de-ordem-judicial/",
+     "alegacao": "Post diz que governo liberou R$ 12 milhões para tratamento de criança, mas omite que se trata de ordem judicial",
+     "veredito_original": "Enganoso",
+     "veredito_chave": "enganoso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "al de Vigilância Sanitária (Anvisa), a atrofia muscular espinhal (AME) é uma doença genética que interfere na produção de uma proteína pelo organismo. Sem ela, os neurônios motores morrem e os portadores vão perdendo a capacidade de se mover e utilizar os músculos. Isso afeta os movimentos, incluindo a mastigação e a respiração.\nDegenerativa, a doença rara tem incidência de um caso para cada 6 a 11 mil nascidos vivos. Conforme a própria bula do remédio Zolgensma, ele precisa ser aplicado em crianças com até dois anos de idade. A menina que receberá o tratamento está, atualmente, com um ano e dez meses, de acordo com o próprio pai.\nA página de publicação\nProcurada, a Gazeta Brasil afirmou que a matéria em questão teve como base a reportagem de título parecido, feita pelo jornal Metrópoles e que ela não é enganosa, porque consta a informação da Justiça. Porém, diferentemente do Metrópoles, o texto cita a decisão judicial apenas no final do terceiro parágrafo, em vez da primeira linha da reportagem."
+    },
+    {
+     "unidade_id": "cec76d2d9c-00",
+     "fragmento_id": "cec76d2d9c-00-00",
+     "score": 0.5535972714424133,
+     "score_lexico": 0.0,
+     "score_denso": 0.8219860196113586,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2019-12-10",
+     "url": "https://piaui.folha.uol.com.br/lupa/2019/12/10/verificamos-historia-tragica-jovem-florianopolis-drogas/",
+     "alegacao": "#Verificamos: É falsa a história trágica de jovem que morreu em Florianópolis após sucumbir às drogas",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais um post com a história trágica de uma jovem de família de classe média alta de Florianópolis, chamada Patrícia, que teria se tornado dependente química de drogas como maconha e cocaína. Para sustentar o vício, ela teria se prostituído e contraiu o vírus da aids. O texto diz ainda que, quando estava à beira da morte, Patrícia pediu à enfermeira Danelise, do Hospital Universitário de Florianópolis, para que redigisse uma carta com o relato sobre a sua vida e a endereçasse aos jovens de todo o Brasil. Ela teria morrido 14 horas depois. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Meu nome é Patrícia, tenho 17 anos, e encontro-me no momento quase sem forças, mas pedi para a enfermeira Dane minha amiga, para escrever esta carta que será endereçada aos jovens de todo o Brasil, antes que seja tarde demais."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

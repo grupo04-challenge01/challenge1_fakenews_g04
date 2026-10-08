@@ -288,8 +288,8 @@ A decisão de canal saiu em 25/09 (task 7.1, decisão 5 do design): web
 primária, com extensão para WhatsApp. O bloco não tem mais bloqueio de decisão.
 
 A entrada por link, exigida por `acessibilidade-leitura` / "Entrada sem
-barreira", está em `add-entrada-por-link`. Pendem a gravação da bancada com
-modelo real (tasks 6.1 e 6.2, dependem do índice reconstruído) e o aviso ao
+barreira", está em `add-entrada-por-link`. A bancada com modelo real foi gravada em
+08/10 (tasks 6.1 e 6.2, resultado em [Estado](estado.md)). Pende o aviso ao
 responsável pelo CEP sobre a frase nova do TCLE (task 0.1). Arquivamento só
 depois de `mvp-copiloto-verificacao` e `add-interface-chat-web` (decisão D10).
 
