@@ -91,3 +91,15 @@ def test_axe_sem_violacoes_com_o_termo_aberto(page, servidor_deepseek):
     violacoes = page.evaluate("axe.run().then(r => r.violations.map(v => v.id + ': ' + "
                               "v.nodes.map(n => n.target.join(' ')).join(', ')))")
     assert violacoes == []
+
+
+def test_320px_com_fonte_em_200_por_cento_termo_e_rodape_sem_rolagem(page, servidor_deepseek):
+    # Teste do MVP de 08/10/2026: o e-mail do rodapé, palavra única, estourava a tela.
+    page.set_viewport_size({"width": 320, "height": 640})
+    page.goto(servidor_deepseek)
+    page.add_style_tag(content="html { font-size: 225% !important; }")
+    expect(_termo(page)).to_be_visible()
+    sobra = "document.documentElement.scrollWidth - document.documentElement.clientWidth"
+    assert page.evaluate(sobra) <= 0
+    page.get_by_role("button", name="Aceito", exact=True).click()
+    assert page.evaluate(sobra) <= 0
