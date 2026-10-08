@@ -44,6 +44,8 @@ prototipo/indice/vocabulario.json
 .env
 *.env
 !*.env.example
+# Explícito: dados sensíveis do Engage, nunca versionar.
+docs/engage/.env
 
 # Bases novas de 19/09/2026 (change add-ampliacao-corpus-ptbr).
 # Brutos nao versionados, pelo mesmo motivo dos demais: tamanho, licenca de
