@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "1e1d725c794cdefd": "{\"categorias\": [], \"motivo\": \"A mensagem não contém nenhuma informação ou pergunta para triagem.\"}",
+  "4e5c3aa0abc04459": "{\"alegacoes\": [\n  {\"texto\": \"Um plano de parto é um direito da gestante\", \"saude\": false, \"risco\": \"baixo\"},\n  {\"texto\": \"O ácido fólico, tomado de 30 a 90 dias antes das começar a tentar, reduz em até 70% o risco de malformações do tubo neural\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A vacina tríplice viral é contraindicada durante a gestação\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"as alterações hormonais favorecem sangramento na gengiva e cáries\", \"saude\": true, \"risco\": \"medio\"},\n  {\"texto\": \"Duas a três porções de peixe por semana são recomendáveis, especialmente de espécies como salmão e sardinha, evitando predadores como cação e peixe-espada, que têm mais mercúrio\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A suplementação de ferro, sempre prescrita, vale para toda a gestação e até três meses após o parto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Álcool atravessa a placenta e prejudica o feto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"é recomendado evitar derivados de cannabis\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Contra a toxoplasmose, lave bem frutas e verduras e evite carne crua ou mal passada\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"O exercício físico, com liberação do obstetra, reduz os riscos de diabetes, pré-eclâmpsia e depressão pós-parto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Ioga para gestante e meditação também são benéficos\", \"saude\": true, \"risco\": \"baixo\"},\n  {\"texto\": \"O sexo está liberado durante toda a gestação, salvo contraindicações como sangramento, placenta prévia ou risco de parto prematuro\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Sentir o bebê mexer é sinal de bem-estar\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"A hora de ir para a maternidade é quando as contrações vêm a cada cinco minutos e duram cerca de um minuto\", \"saude\": true, \"risco\": \"alto\"},\n  {\"texto\": \"Quem trabalha com carteira assinada pode sair para no mínimo seis consultas sem desconto no salário, e tem estabilidade da confirmação da gravidez até cinco meses após o parto\", \"saude\": false, \"risco\": \"baixo\"}\n], \"opiniao\": \"Sugiro dois critérios essenciais. O primeiro, evitar candidatos associados ao crime organizado. Simples assim. O segundo: verifiquem o histórico dos candidatos e seus partidos nas causas que afetam a infância: evite se votaram contra a proteção ambiental, contra políticas de educação, de transferência de renda, de apoio às mães, contra o fim da escala 6X1. Evite se são contra o SUS ou o ECA, se seus programas falam em corte drástico de políticas sociais, em fomento às armas e não aos livros.\"}",
+  "4e5ce23ce49572b6": "{\n  \"fatos\": [\n    \"O plano de parto é um direito da gestante.\",\n    \"O ácido fólico reduz em até 70% o risco de malformações do tubo neural quando tomado antes da concepção.\",\n    \"A vacina tríplice viral é contraindicada durante a gestação.\",\n    \"Alterações hormonais na gravidez favorecem sangramento na gengiva e cáries.\",\n    \"O álcool atravessa a placenta e prejudica o feto.\",\n    \"Exercício físico com liberação médica reduz riscos de diabetes, pré-eclâmpsia e depressão pós-parto.\",\n    \"A presença de uma doula resulta em partos mais curtos, menos analgesia e menos cesáreas.\",\n    \"Trabalhadoras com carteira assinada têm direito a no mínimo seis consultas sem desconto no salário.\",\n    \"Trabalhadoras com carteira assinada têm estabilidade desde a confirmação da gravidez até cinco meses após o parto.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"reduz em até 70% o risco de malformações do tubo neural\",\n      \"forca\": \"forte\"\n    },\n    {\n      \"texto\": \"A gravidez chega acompanhada de uma avalanche de conselhos e palpites, além de muita desinformação nas redes sociais.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"Vou reunir aqui algumas orientações que fazem diferença para a saúde da mãe e do bebê.\",\n    \"Vale a regra de ouro: priorizar comida de verdade e deixar de lado os ultraprocessados.\",\n    \"Medo, angústia e dúvida são comuns e podem conviver com a alegria.\",\n    \"Quando a angústia pesar demais, é hora de procurar ajuda.\",\n    \"Simples assim.\",\n    \"Bom voto a todos.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"O apoio de uma doula antes e durante o nascimento resulta em partos mais curtos, menos analgesia e menos cesáreas.\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem apresenta a afirmação como um resultado direto sem citar o estudo ou documento que comprove essa correlação específica.\"\n  }\n}",
+  "a45e8a7507c5c578": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Nenhum dos trechos recuperados aborda o uso de ácido fólico para prevenção de malformações do tubo neural.\"}",
+  "27fbe8e25dc41caf": "{\"bloco1\": \"Foram buscadas informações sobre o uso de ácido fólico na gravidez.\",\n\"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\",\n\"bloco3\": \"Você pode consultar sites oficiais de saúde ou órgãos públicos.\",\n\"bloco4\": \"Procure em portais do Ministério da Saúde ou sociedades médicas.\"}"
+ },
+ "busca": {
+  "1c3c05f5f8b1163d": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "f946c8a102-00",
+     "fragmento_id": "f946c8a102-00-05",
+     "score": 0.6002355813980103,
+     "score_lexico": 2.2574803829193115,
+     "score_denso": 0.8417012691497803,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-08-24",
+     "url": "https://www.boatos.org/saude/centro-epidemiologia-milao-texto-tratamento-covid-19-fevereiro-agosto.html",
+     "alegacao": "Centro de Epidemiologia de Milão escreve texto comparando tratamento contra Covid-19 em fevereiro e agosto de 2020 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "s pacientes.5. Agora também sabemos que as pessoas com hipóxia melhoram apenas fazendo com que deitem de bruços, o que é conhecido como posição prona. Além disso, alguns dias atrás, cientistas israelenses descobriram que uma substância química conhecida como Alpha Defensin, produzida pelos glóbulos brancos, pode causar micro coágulos nos vasos sanguíneos dos pulmões e isso poderia ser prevenido por um medicamento chamado Colchicina, usado por muitas décadas no tratamento da gota.Portanto, agora sabemos, com certeza, que os pacientes têm uma chance melhor de sobreviver à infecção por COVID-19 em agosto de 2020 do que em fevereiro de 2020. Continue tomando precauções. Saia apenas para o essencial! Não há festa, chá de bebê ou formatura do jardim de infância essencial !!!!!!!!!!! Vamos parar de ser superficiais! É melhor estar infectado daqui a mais 6 meses do que agora."
+    },
+    {
+     "unidade_id": "75ca0c74e0-00",
+     "fragmento_id": "75ca0c74e0-00-01",
+     "score": 0.5988464951515198,
+     "score_lexico": 19.58538818359375,
+     "score_denso": 0.8322746753692627,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2020-10-05",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/10/05/verificamos-cha-casca-limao/",
+     "alegacao": "#Verificamos: É falso que chá da casca do limão previne câncer e elimina gordura do fígado",
+     "veredito_original": "EXAGERADO",
+     "veredito_chave": "exagerado",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "ão a casos bem leves de ansiedade leve, pode agir funcionar um pouco. O óleo essencial de limão, extraído farmaceuticamente pode ter mais propriedade. Eliminar gordura do fígado? Não elimina, mas ajuda no metabolismo de gorduras e é complementar para digestão de gorduras. Para tratar a esteatose hepática [conhecida como ‘gordura no fígado’], precisa ir além da casca de limão, eliminando gorduras e ter tratamento completo”, diz Vanderli, em entrevista por telefone.\nO texto analisado pela Lupa também afirma que o limão é uma das melhores fontes de vitamina C, ácido fólico e potássio e que ainda possui grande quantidade de “fotoquímicos” ativos que são benéficos para a saúde.\nVanderli confirma que o limão é considerado uma das melhores fontes de vitamina C, ácido fólico e potássio, mas não tem “fotoquímicos”. “Tem fitoquímicos ativos, que são substâncias biologicamente ativas que são beneficamente ativas para a saúde, como o limoneno, presente no limão”. \nO conteúdo do link também cita o limoneno como uma substância capaz de aliviar sintomas de azia e refluxo."
+    },
+    {
+     "unidade_id": "886d543a07-00",
+     "fragmento_id": "886d543a07-00-01",
+     "score": 0.5842447280883789,
+     "score_lexico": 7.121770858764648,
+     "score_denso": 0.8338848352432251,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-02-13",
+     "url": "https://www.boatos.org/saude/medico-oncologista-rafael-sato-recomenda-limao-cancer.html",
+     "alegacao": "Médico oncologista Rafael Sato recomenda comer limão para curar câncer #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "UEL), possui residência em Cirurgia Geral pela Faculdade de Medicina de Marília (FAMEMA) e em Cirurgia Oncológica pelo Hospital de Câncer de Barretos. *PRESTE ATENÇÃO NA FALA DO MÉDICO*Transcrição: Daqui a pouco eu vou falar do nosso organismo trilhões e trilhões de células células boas milhões e milhões de células doentes defeituosas cancerígenas o nosso organismo […]Ok conseguiu entender? então os tumores desaparecem devido o julgamento aglomeração de mil milhões células na nossa corrente sanguínea para que essas células doentes elas estão à vontade numa boa para crescer desenvolver e multiplicar ela precisa de um ambiente favorável e esse ambiente favorável para as células doentes elas cancerígenas se chama o sangue ácido existem o tipo de sangue o ácido e o sangue alcalino. O sangue alcalino não é bom para que as células defeituosas."
+    },
+    {
+     "unidade_id": "071980d9ac-00",
+     "fragmento_id": "071980d9ac-00-04",
+     "score": 0.5809842348098755,
+     "score_lexico": 7.110088348388672,
+     "score_denso": 0.8333366513252258,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-03-30",
+     "url": "https://www.boatos.org/saude/revista-virologia-ph-coronavirus-acido-comer-alimentos-alcalinos.html",
+     "alegacao": "Revista de Virologia afirma que pH do novo coronavírus é ácido e que devemos comer alimentos alcalinos #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "volve o material genético (que pode ser o DNA, o RNA ou os dois juntos). Vale ressaltar que o vírus é um ser acelular, isto é, ele não possui células. Por isso, necessita de uma célula hospedeira para poder se reproduzir (após invadir e dominar o sistema de auto-reprodução celular).O pH, por sua vez, é o que chamamos de potencial Hidrogêniônico, uma escala que mede o grau de acidez, neutralidade ou alcalinidade de uma solução. A medida é feita com base na quantidade relativa de íons hidrogênio (H+) e íons hidroxila (OH-) presentes na mistura. Quanto maior o número de H+, mais ácida será a solução (na escala, o valor será de 7 a 1). Quanto maior a presença do íon hidroxila (OH-), mais alcalina será a solução (na escala, o valor será de 7 a 14). Quando a quantidade desses íons forem iguais em uma solução, significa que a mistura é neutra (pH 7).Nas células humanas, o pH fica em torno de 6,8. Enquanto o do nosso sangue fica próximo do 7,4. Valores extremos de pH, próximo de 0 ou de 14, são considerados desfavoráveis para a vida."
+    },
+    {
+     "unidade_id": "8a67a65141-01",
+     "fragmento_id": "8a67a65141-01-01",
+     "score": 0.5805612802505493,
+     "score_lexico": 2.4066176414489746,
+     "score_denso": 0.8374580144882202,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2020-11-06",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/11/06/verificamos-tratamento-precoce-covid-19/",
+     "alegacao": "Sabemos que a profilaxia, que é a pessoa que não está doente, passe a tomar o medicamento, para que ela não fique doente (…) fazer a profilaxia (…) é algo que vai evitar que as pessoas adoeçam",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "camento amplamente conhecido no tratamento de verminoses, pediculose, infestação por carrapatos e pulgas, e parece ter efeitos anti-virais in vitro. \nUm estudo realizado por um consórcio público-privado liderado pelo Instituto de Pesquisa de Doenças Tropicais e divulgado pelo governo argentino observou que a administração da substância em uma dose de 0,6 miligramas por quilograma de peso (três vezes a quantidade usual) produz efeito sobre o vírus, mas os resultados ainda não foram publicados em qualquer periódico científico e, portanto, não foram analisados pela comunidade médica. Além disso, a análise foi feita com apenas 30 pacientes, uma quantidade muito pequena.\nExistem ainda outros medicamentos sendo avaliados para a profilaxia pré e pós-exposição, como a cloroquina, lopinavir/ritonavir, nitazoxanida, remdesivir, plasma convalescente, porém ainda sem resultados, como informa a plataforma do Programa Telessaúde Brasil Redes, do Departamento de Atenção Básica (DAB) do Ministério da Saúde em parceira com a Universidade Federal do Rio Grande do Sul (UFRGS)."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "4826562a726702a5": "{\"categorias\": [], \"motivo\": \"A mensagem não contém nenhuma informação ou solicitação para triagem.\"}",
+  "4d62faae97edda72": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Chá de casca de jatobá cura diabetes em sete dias\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"tomar três xícaras por dia do chá feito com a casca fervida faz a glicose voltar ao normal em apenas sete dias\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Dona Maria, de Goiás, conta que parou de tomar a insulina depois de duas semanas de chá e nunca mais precisou ir ao médico\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Quem tem diabetes tipo 1 também pode se beneficiar, segundo o nosso especialista em medicina natural\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"plantas do cerrado que ajudam a controlar o açúcar no sangue\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "adaad1d3d26f7ff3": "{\n  \"fatos\": [\n    \"A casca do jatobá é usada para fazer chá.\",\n    \"O preparo consiste em ferver dois pedaços de casca em um litro de água por vinte minutos.\",\n    \"Dona Maria parou de tomar insulina após duas semanas de chá e não foi ao médico.\",\n    \"Quem tem diabetes tipo 1 pode se beneficiar do chá.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"relatos de leitores do nosso blog\",\n      \"forca\": \"fraca\"\n    },\n    {\n      \"texto\": \"Dona Maria, de Goiás, conta que parou de tomar a insulina\",\n      \"forca\": \"fraca\"\n    },\n    {\n      \"texto\": \"segundo o nosso especialista em medicina natural\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"a indústria farmacêutica não quer que você conheça\",\n    \"Eles merecem conhecer essa cura natural antes que ela seja proibida\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"Chá de casca de jatobá cura diabetes em sete dias\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem não apresenta estudos clínicos ou dados técnicos que comprovem a cura em um prazo específico, baseando-se apenas em relatos anedóticos.\"\n  }\n}",
+  "3a47ffda778053a6": "{\"rotulo\": \"evidência insuficiente\", \"trechos\": [], \"criterio\": \"Não há nenhum trecho que mencione o uso de chá de casca de jatobá para o tratamento ou cura da diabetes.\"}",
+  "2aa7910467231fa6": "{\"bloco1\": \"Foram buscadas informações sobre o chá de jatobá e diabetes.\", \"bloco2\": \"Não encontrar dados não significa que a informação seja falsa.\", \"bloco3\": \"Verifique se há estudos científicos reais antes de acreditar em curas rápidas.\", \"bloco4\": \"Procure em sites de saúde oficiais ou órgãos de regulação médica.\"}"
+ },
+ "busca": {
+  "b6b10900f5a8f0a3": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "c7a4591df5-00",
+     "fragmento_id": "c7a4591df5-00-00",
+     "score": 0.6704568266868591,
+     "score_lexico": 29.14678382873535,
+     "score_denso": 0.8624762296676636,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2021-01-08",
+     "url": "https://www.aosfatos.org/noticias/e-falso-que-casca-triturada-do-fruto-do-jatoba-seja-capaz-de-curar-o-cancer/",
+     "alegacao": "É falso que a casca triturada do fruto do jatobá seja capaz de curar o câncer",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, conforme afirmam postagens nas redes (veja aqui). Não existe um alimento comprovadamente capaz de prevenir ou curar a doença, segundo o Ministério da Saúde, o Inca (Instituto Nacional do Câncer) e um oncologista ouvido por Aos Fatos.\nO conteúdo enganoso reunia ao menos 172 mil compartilhamentos no Facebook nesta sexta-feira (8) e foi marcado com o selo FALSO na ferramenta de verificação da rede social (entenda como funciona).\n\nMédico em Goiânia revoluciona o tratamento de câncer: casca do fruto do jatobá triturada\n\nÉ enganoso que a casca triturada do fruto do jatobá cura o câncer, conforme afirmam postagens nas redes sociais. O falso tratamento foi desmentido pelo Ministério da Saúde e por uma cartilha do Programa de Educação Tutorial da UFMT (Universidade Federal do Mato Grosso). Não existem alimentos capazes de prevenir ou curar a doença, segundo o Inca (Instituto Nacional do Câncer).\n“Não tenho qualquer conhecimento sobre o tema."
+    },
+    {
+     "unidade_id": "a5d095f782-00",
+     "fragmento_id": "a5d095f782-00-01",
+     "score": 0.618094801902771,
+     "score_lexico": 14.672003746032715,
+     "score_denso": 0.8520742058753967,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2018-07-17",
+     "url": "https://www.aosfatos.org/noticias/nao-e-verdade-que-foi-encontrada-cura-para-diabetes-tipo-2/",
+     "alegacao": "Não é verdade que foi encontrada a cura para diabetes tipo 2",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "“é possível curar a doença apenas com uma sessão de terapia genética”.\nJuntas, as duas matérias já somam mais de 35 mil compartilhamentos no Facebook. O conteúdo do Saúde Online foi publicado pelas páginas Histologia, Fisiologia & Anatomia Humana e Sociedade Racionalista, enquanto o do Portal Enf foi compartilhado por páginas como O Farmacêutico Gestor e GRUPO DE APOIO AO DR SÉRGIO MORO- JUIZ DA OPERAÇÃO “LAVA JATO E FFAA. Os links para esses textos foram denunciados como notícia falsa por usuários do Facebook (entenda como funciona).\nVeja, abaixo, o que Aos Fatos checou.\n\nFoi encontrada a cura para a diabetes tipo 2\nA informação de que a cura para a diabetes tipo 2 foi encontrada é FALSA por três motivos: 1. a pesquisa citada realizou o tratamento apenas em ratos; 2. não é possível afirmar que ele possa ser aplicado a humanos; e 3. o título não condiz com o conteúdo do texto.\nO início dos textos do Portal Enf e do Saúde Online já contradiz a informação do próprio título: “Dia histórico para a medicina. Foi encontrada a cura para a diabetes tipo 2”."
+    },
+    {
+     "unidade_id": "954f9a7418-00",
+     "fragmento_id": "954f9a7418-00-02",
+     "score": 0.6135605573654175,
+     "score_lexico": 10.172501564025879,
+     "score_denso": 0.8530535697937012,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2017-05-04",
+     "url": "https://www.boatos.org/saude/vacina-diabetes-anunciada.html",
+     "alegacao": "Vacina contra diabetes foi anunciada e vai ser usada nas pessoas #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "a vacina para evita-la e nenhum tratamento milagroso para se livrar da doença. Mas é possível levar uma vida normal e manter os sintomas sob controle. E a receita para isso ainda é a mesma: alimentação balanceada, prática de exercícios físicos e medicação.A título de conhecimento saiba que o Diabetes Mellitus é uma doença do metabolismo da glicose (açúcar presente no sangue) que interfere na maneira como o organismo transforma a glicose em energia, que pode ser causada pela falta ou dificuldade na ação insulina.Existem três tipos de diabetes: tipo 1 – quando o pâncreas não produz insulina o suficiente, tipo 2 – quando o pâncreas produz insulina, mas sua ação é prejudicada, principalmente, pela obesidade, que pode ser definida como resistência insulínica, uma das causas da hiperglicemia e a diabetes gestacional – ocorre quando a taxa de glicose no sangue fica elevada durante a gravidez.O que acontece, na realidade, é que existe um estudo nos Estados Unidos para reversão do diabetes tipo 1 usando a vacina contra tuberculose. Atente-se para o fato de que ainda está em fases de testes."
+    },
+    {
+     "unidade_id": "03d3a75824-00",
+     "fragmento_id": "03d3a75824-00-02",
+     "score": 0.6114798784255981,
+     "score_lexico": 11.93590259552002,
+     "score_denso": 0.8516384363174438,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-07-22",
+     "url": "https://www.boatos.org/saude/cascas-laranja-limao-contem-ivermectina-cloroquina-curam-covid-19.html",
+     "alegacao": "Cascas de laranja e limão contêm ivermectina e cloroquina e curam a Covid-19 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "le em pedaços, com casca e tudo, que o princípio ativo dos dois remédios, do ivermectina e do cloroquina, tá na laranja e no limão, na casca dos dois. Então, a gente vai cortar com tudo, pedaços e colocar dentro do liquidificador, com um copo de água e uma colher de mel ou de açúcar, à sua preferência, porque ele amarga um pouquinho. Vai bater, vai fazer um suco. Se você não tem o Covid-19, você vai tomar dois copos por dia, um de manhã e um à tarde. Se você já está com o Covid-19, você vai tomar quatro copos, dois de manhã e dois de tarde. Aqui tá o princípio ativo desses medicamentos que são usados nos hospitais que os médicos estão passando, tá? Vamos fazer o uso em casa. Passe pro máximo de pessoas que você conhece, pois isso nós não podemos ser egoístas. Se nós temos o remédio caseiro, barato, em casa, vamos fazer o uso dele. Isso, durante uma semana, você vai fazer, tá? Todos os dias. Não fica caro, é baratinho e dá pra gente fazer e evitar um mal maior. Vamos acabar com esse vírus, o mais rápido possível. Tá aqui, em nossas mãos, a cura."
+    },
+    {
+     "unidade_id": "1c1f45107b-00",
+     "fragmento_id": "1c1f45107b-00-00",
+     "score": 0.6046317219734192,
+     "score_lexico": 11.50627326965332,
+     "score_denso": 0.8502610325813293,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "lupa",
+     "data_publicacao": "2020-04-23",
+     "url": "https://piaui.folha.uol.com.br/lupa/2020/04/23/verificamos-alho-jambu-coronavirus/",
+     "alegacao": "#Verificamos: É falso que chá de limão, alho e jambu cura a Covid-19",
+     "veredito_original": "FALSO",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Circula pelas redes sociais um post com uma receita de chá natural contra a Covid-19, doença causada pelo novo coronavírus (SARS-CoV-2). Segundo o texto, basta beber uma infusão de limão com dois dentes de alho, algumas folhas e a flor de jambu, planta comum na região Norte do país, para sentir alívio nos sintomas e ficar curado. Por meio do projeto de verificação de notícias, usuários do Facebook solicitaram que esse material fosse analisado. Confira a seguir o trabalho de verificação da Lupa:\n\n“Chá de limão com alho e jambu está matando os sintomas do coronavírus. Muitas pessoas ficaram boas sem precisar ir para o hospital, porque lá é pior. Deus está curando muita gente através desse chá. Quem não quiser morrer e só fazer esse chá, e tomar morno, e Deus fará o milagre. Um limão, 2 dentes de alho e algumas folhas e flor de jambu, quanto mais forte o chá melhor. Ouvi testemunhos!”\nTexto de post do Facebook que, até as 15h30 de 23 de abril de 2020, tinha mais de 2,1 mil compartilhamentos\n\n\nA informação analisada pela Lupa é falsa."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

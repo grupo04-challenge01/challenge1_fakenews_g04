@@ -110,12 +110,6 @@ def test_mensagem_sem_saude_mostra_aviso_sem_bordao(page, servidor_uso):
     expect(page.get_by_text(BORDAO)).to_have_count(0)
 
 
-def test_so_link_pede_o_texto(page, servidor_uso):
-    page.goto(servidor_uso)
-    enviar(page, "https://exemplo.com.br/noticia")
-    expect(resposta(page)).to_contain_text("ainda não consigo abrir link")
-
-
 def test_erro_tem_tentar_de_novo_que_reenvia_a_mesma_mensagem(page, servidor_uso):
     page.goto(servidor_uso)
     enviar(page, "isso quebra tudo")

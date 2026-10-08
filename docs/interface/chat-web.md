@@ -41,7 +41,7 @@ responder `{"pronto": true}`.
 | `DONA_CHECA_MODO` | obrigatória | `uso` ou `piloto` |
 | `DONA_CHECA_HOST` | `127.0.0.1` | `0.0.0.0` para abrir no celular |
 | `DONA_CHECA_PORTA` | `8000` | porta do servidor |
-| `DONA_CHECA_TEMPO_MAX` | `180` | segundos até a página mostrar erro |
+| `DONA_CHECA_TEMPO_MAX` | `300` | segundos até a página mostrar erro |
 | `OLLAMA_HOST` | do cliente `ollama` | Ollama em outra máquina |
 
 ## Abrir no celular

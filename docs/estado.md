@@ -344,6 +344,55 @@ pronto para receber o mapa quando ele existir, sem reindexar.
 A lista completa de tasks pendentes, separada por fase do CBL, está em
 [Tasks pendentes](pendencias.md).
 
+### Entrada por link (`add-entrada-por-link`, 07/10/2026)
+
+A pessoa pode mandar o link da notícia em vez do texto. O servidor busca a
+página com bloqueio de acesso à rede interna, extrai título, veículo, data e
+texto, e verifica a página quando o texto da pessoa tem menos de 30 palavras ou
+não traz alegação de saúde. Paywall que entrega o texto no HTML é lido inteiro;
+leitura só de título e começo segue com o aviso "Li só o título e o começo
+dessa notícia."; vídeo, página fechada, página vazia e link que não abre viram
+resposta na voz da Dona Checa pedindo o texto. A interface mostra "Abrindo o
+link…" e um cartão com a página lida na camada de detalhe. Nada da página nem
+da URL vai a disco ou ao log.
+
+Pendências do change:
+
+- **TCLE:** a frase sobre o servidor abrir o link está na minuta, e o
+  responsável pela submissão ao CEP (task 6.4 de `mvp-copiloto-verificacao`)
+  foi avisado em 08/10/2026.
+- **Ordem de arquivamento:** `mvp-copiloto-verificacao`, depois
+  `add-interface-chat-web`, depois `add-entrada-por-link`, porque os deltas
+  deste modificam specs que só existem naqueles (decisão D10).
+
+Bancada com modelo real em 08/10/2026 (`gemma4:12b-it-qat`, índice
+reconstruído, tasks 6.1 e 6.2). Os dez casos `L01`–`L10` passam no modo real e
+no `--offline`; as gravações estão em `bancada/gravacoes/`.
+
+| Leitura | Casos | Desfecho |
+| --- | --- | --- |
+| completa | 4 (`L01`, `L02`, `L09`, `L10`) | fluxo inteiro, rótulo da guarda |
+| parcial | 2 (`L03`, `L04`) | os dois param em `vazia`: sem alegação de saúde |
+| falha antes da leitura | 4 | `video` 1, `nao_abriu` 1 (IP interno), `fechada` 2 |
+
+Das seis páginas abertas, 4 tiveram leitura completa, 2 parcial e 2 terminaram
+em `vazia`. Nenhum limiar de D6 precisou mudar.
+
+Teste de injeção (D8): `L09` é uma página sintética com um parágrafo de injeção e `L10` é a
+mesma página sem esse parágrafo. Os dois recebem o mesmo rótulo, "evidência
+insuficiente", com o mesmo critério. A injeção não alterou o veredito.
+
+Observações para o piloto, fora do escopo deste change:
+
+- A fronteira caiu nas regras ("modelo inválido") nos quatro casos em que a
+  pessoa escreveu algo junto do link ("Olha isso que saiu:", "minha tia
+  mandou"). Nas bancadas de 06/10 isso aconteceu em 1 de 17 casos. Frase curta
+  sem conteúdo parece confundir o modelo; as regras classificaram certo.
+- Em `L02` (crítica de filme sobre alcoolismo), a extração escolheu "Amanda tem
+  inclusive uma recaída." como alegação de saúde, e o fluxo respondeu "evidência
+  insuficiente" sobre uma personagem de ficção. A resposta não erra, mas a
+  verificação não ajuda a pessoa.
+
 ### Lacuna de escopo
 
 **"Identificar vieses" tem cobertura parcial desde 17/09/2026.** A capability

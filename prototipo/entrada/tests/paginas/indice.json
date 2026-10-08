@@ -1,0 +1,32 @@
+{
+  "blog_oglobo_completo": {
+    "url": "https://oglobo.globo.com/blogs/daniel-becker/post/2026/10/a-gravidez-e-o-futuro.ghtml",
+    "url_final": "https://oglobo.globo.com/blogs/daniel-becker/post/2026/10/a-gravidez-e-o-futuro.ghtml",
+    "tipo": "text/html; charset=UTF-8",
+    "coleta": "2026-10-07"
+  },
+  "folha_paywall_mole": {
+    "url": "https://www1.folha.uol.com.br/blogs/vida-de-alcoolatra/2026/10/um-banho-de-vida-retrata-alcoolismo-sem-heroismo-nem-glamour.shtml",
+    "url_final": "https://www1.folha.uol.com.br/blogs/vida-de-alcoolatra/2026/10/um-banho-de-vida-retrata-alcoolismo-sem-heroismo-nem-glamour.shtml",
+    "tipo": "text/html",
+    "coleta": "2026-10-07"
+  },
+  "valor_titulo_lead": {
+    "url": "https://valor.globo.com/brasil/noticia/2026/10/07/agu-defende-proibicao-de-empresas-de-aposta-on-line.ghtml",
+    "url_final": "https://valor.globo.com/brasil/noticia/2026/10/07/agu-defende-proibicao-de-empresas-de-aposta-on-line.ghtml",
+    "tipo": "text/html; charset=UTF-8",
+    "coleta": "2026-10-07"
+  },
+  "excalidraw_so_js": {
+    "url": "https://excalidraw.com/",
+    "url_final": "https://excalidraw.com/",
+    "tipo": "text/html; charset=utf-8",
+    "coleta": "2026-10-07"
+  },
+  "instagram_login": {
+    "url": "https://www.instagram.com/minsaude/",
+    "url_final": "https://www.instagram.com/minsaude/",
+    "tipo": "text/html; charset=\"utf-8\"",
+    "coleta": "2026-10-07"
+  }
+}

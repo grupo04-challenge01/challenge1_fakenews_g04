@@ -57,7 +57,7 @@ aprovado nem controlarem alvo de toque e ação primária única.
 | `DONA_CHECA_MODO` | sim | — | `uso` ou `piloto` |
 | `DONA_CHECA_HOST` | não | `127.0.0.1` | `0.0.0.0` para celular na mesma rede |
 | `DONA_CHECA_PORTA` | não | `8000` | |
-| `DONA_CHECA_TEMPO_MAX` | não | `180` | segundos até o erro por tempo |
+| `DONA_CHECA_TEMPO_MAX` | não | `300` | segundos até o erro por tempo; era 180, mudou em `add-entrada-por-link` D11 |
 | `OLLAMA_HOST` | não | do cliente `ollama` | lido pelo próprio cliente |
 
 O padrão `127.0.0.1` evita expor o servidor na rede sem querer; abrir para o
