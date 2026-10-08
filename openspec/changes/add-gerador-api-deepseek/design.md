@@ -169,10 +169,11 @@ TCLE, e o servidor sobe com `DONA_CHECA_GERADOR=deepseek` explícito:
 **Decisão do grupo, 08/10/2026:** a DeepSeek pode ser usada no piloto. A
 frase entrou na seção 5 do TCLE no lugar da frase que dizia que os modelos
 não repassam informações a empresas comerciais, que deixou de ser verdade. O
-risco LGPD do dossiê do CEP passou de «Nulo» para «Baixo». Como o protocolo
-já tinha parecer (06/10), a mudança foi registrada como emenda 01, pendente de
-submissão (task 0.3). O padrão do modo `piloto` continua `ollama`; o piloto
-usa a DeepSeek com `DONA_CHECA_GERADOR=deepseek` explícito, depois da emenda.
+risco LGPD do dossiê do CEP deixou de ser «Nulo». Como o protocolo já tinha
+parecer (06/10), a mudança foi submetida como emenda 01 (task 0.3), aprovada
+em 08/10/2026 com o risco classificado como «Moderado» (parecer simulado
+`RES-IA-G04-2026-PARECER-EM01`). O padrão do modo `piloto` continua `ollama`;
+o piloto usa a DeepSeek com `DONA_CHECA_GERADOR=deepseek` explícito.
 
 ### D7. Bancada
 
