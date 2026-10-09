@@ -1,20 +1,20 @@
 {
  "chat": {
-  "24045f3184ff446f": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Amanda, personagem do filme 'Um Banho de Vida', tem uma recaída no alcoolismo.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A sobriedade não muda o passado.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"Ficar sóbria não obriga ninguém a nos perdoar.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O filme 'Um Banho de Vida' retrata alcoolismo sem heroísmo nem glamour.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"O filme 'Um Banho de Vida' fala de pessoas que chegaram a um ponto em que não sabem muito bem o que fazer com a própria vida.\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": \"O filme não transforma a recuperação numa sequência de pequenas vitórias.\"\n}",
-  "d628ea48fba5f969": "{\n  \"fatos\": [\n    \"O filme 'Um Banho de Vida' é uma comédia dramática francesa.\",\n    \"O filme acompanha um grupo de homens de meia-idade que praticam nado sincronizado.\",\n    \"A personagem Amanda tem uma história de alcoolismo e perdas.\",\n    \"Amanda tem uma recaída no filme.\",\n    \"Amanda volta para uma sala de Alcoólicos Anônimos.\",\n    \"A autora do texto se identifica como alcoólatra em recuperação.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"A autora relata sua experiência pessoal com alcoolismo e recuperação.\",\n      \"forca\": \"fraca\"\n    },\n    {\n      \"texto\": \"A autora menciona que a cena da reunião de AA a atingiu de um jeito difícil de explicar para quem nunca precisou sentar numa sala dessas.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"O filme retrata alcoolismo sem heroísmo nem glamour.\",\n    \"A cena da reunião de AA é impactante para quem já precisou sentar numa sala dessas.\",\n    \"A sobriedade não muda o passado, e isso é difícil de aceitar.\",\n    \"O filme fala de pessoas que não sabem o que fazer com a própria vida.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"O filme 'Um Banho de Vida' retrata o alcoolismo de forma realista, sem heroísmo ou glamour, e aborda temas como pertencimento e recuperação.\",\n    \"decorre\": false,\n    \"salto\": \"A conclusão de que o filme retrata o alcoolismo de forma realista é baseada na interpretação pessoal da autora e em sua experiência, mas não é uma afirmação objetiva verificável; a mensagem não apresenta evidências externas que comprovem essa representação.\"\n  }\n}",
-  "400d6c7002ee31fa": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona Amanda, o filme 'Um Banho de Vida' ou recaída no alcoolismo.\"\n}",
-  "352994de750050d8": "{\n  \"bloco1\": \"Não encontramos informações sobre a personagem Amanda ou sobre o filme.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Você pode buscar o filme em sites de cinema ou perguntar a alguém que o tenha assistido.\",\n  \"bloco4\": \"Procure em sites de crítica de cinema ou na página oficial do filme.\"\n}"
+  "24045f3184ff446f": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Amanda, personagem de 'Um Banho de Vida', tem uma história de alcoolismo e perdas.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"Amanda tem uma recaída no filme.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"Amanda volta para uma sala de Alcoólicos Anônimos.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"Ficar sóbria não obriga ninguém a nos perdoar.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A sobriedade não muda o passado.\",\n      \"saude\": true,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": \"O filme 'Um Banho de Vida' retrata alcoolismo sem heroísmo nem glamour.\"\n}",
+  "d628ea48fba5f969": "{\n  \"fatos\": [\n    \"O filme 'Um Banho de Vida' é uma comédia dramática francesa.\",\n    \"O filme acompanha um grupo de homens de meia-idade que praticam nado sincronizado.\",\n    \"A personagem Amanda é uma professora que tenta se reorganizar depois de uma história de alcoolismo e perdas.\",\n    \"Amanda tem uma recaída no filme.\",\n    \"Amanda volta para uma sala de Alcoólicos Anônimos após a recaída.\",\n    \"A autora do texto se identifica como alcoólatra em recuperação.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"A autora relata sua experiência pessoal com alcoolismo e recuperação.\",\n      \"forca\": \"fraca\"\n    },\n    {\n      \"texto\": \"A autora menciona cenas específicas do filme, como a recaída de Amanda e sua volta ao AA.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [\n    \"O filme retrata o alcoolismo sem heroísmo nem glamour.\",\n    \"A cena da volta de Amanda ao AA é difícil de explicar para quem nunca precisou sentar numa sala dessas.\",\n    \"A palavra 'voltar' é uma das mais importantes da recuperação.\",\n    \"A parte que mais toca a autora como alcoólatra em recuperação é o pertencimento.\"\n  ],\n  \"conclusao\": {\n    \"texto\": \"O filme 'Um Banho de Vida' retrata o alcoolismo de forma realista e sem glamour, e a recuperação é um processo contínuo que envolve voltar e pertencer.\",\n    \"decorre\": false,\n    \"salto\": \"A conclusão extrapola a descrição do filme ao generalizar a experiência da personagem para a recuperação do alcoolismo em geral, baseando-se principalmente na experiência pessoal da autora e não em evidências objetivas.\"\n  }\n}",
+  "78cded1b0dc8f991": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona Amanda, 'Um Banho de Vida', alcoolismo ou perdas.\"\n}",
+  "146b632eb8a5a847": "{\n  \"bloco1\": \"Não encontramos informações que confirmem ou neguem a história da personagem Amanda.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Procure o filme em sites de cinema ou no site oficial do filme.\",\n  \"bloco4\": \"Você pode buscar em sites de crítica de cinema ou na página do filme na Wikipédia.\"\n}"
  },
  "busca": {
-  "ead22a62342bfddb": {
+  "a4bd0d2692ce1d35": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "93dd81ca0c-00",
      "fragmento_id": "93dd81ca0c-00-00",
-     "score": 0.6185132265090942,
-     "score_lexico": 3.0840816497802734,
-     "score_denso": 0.8229533433914185,
+     "score": 0.6171420812606812,
+     "score_lexico": 4.462463855743408,
+     "score_denso": 0.8191669583320618,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -29,9 +29,9 @@
     {
      "unidade_id": "cec76d2d9c-00",
      "fragmento_id": "cec76d2d9c-00-00",
-     "score": 0.6140166521072388,
-     "score_lexico": 3.172935962677002,
-     "score_denso": 0.8219794034957886,
+     "score": 0.616508960723877,
+     "score_lexico": 5.219195365905762,
+     "score_denso": 0.8183467984199524,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -46,9 +46,9 @@
     {
      "unidade_id": "5f92f2b65d-00",
      "fragmento_id": "5f92f2b65d-00-02",
-     "score": 0.6100972890853882,
-     "score_lexico": 5.179108619689941,
-     "score_denso": 0.8191606998443604,
+     "score": 0.601647675037384,
+     "score_lexico": 7.132556438446045,
+     "score_denso": 0.814569890499115,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -61,38 +61,38 @@
      "trecho": "eada por eu falar. Se vc quiser pesquisa depois sobre essas bonequinha.Mas não parou por aí. Em meio a toda essa história surgiu um áudio “revelador”. De acordo com a pessoa que narra o texto, o ritual é uma bruxaria que “veio da França, do Canadá e da Holanda”, faz menina virar menino, faz matar, roubar e atrapalha a vida do casal. Leia a transcrição e escute a história.Não é para colocar irmã. Peço para que não coloque. Isso daí é um ritual de magia das bruxa, que elas lançaram isso daí falando que é para ajudar o Hospital Infantil do Câncer. Não é mãe. Isso daí é pra destruição da família, do lar, da vida sentimental… isso aí é uma destruição para as crianças também, irmã. É meninos vira menina. Menina vira menino pra tá matando, pra roubando, pra tá mentindo… é, os adultos… a vida do casal para cair em conflito, em destruição.Alerta o pessoal aí que não é para colocar essa foto da das tema da Disney no perfil e nem nos status, que isso é uma magia de bruxaria que veio da França, do Canadá, da Holanda… para tomar muito cuidado, fica atento."
     },
     {
-     "unidade_id": "ada335a5ef-00",
-     "fragmento_id": "ada335a5ef-00-04",
-     "score": 0.58255934715271,
-     "score_lexico": 9.32187557220459,
-     "score_denso": 0.8128820657730103,
-     "idioma": "pt-BR",
-     "apto_citacao": true,
-     "agencia": "fato-ou-fake",
-     "data_publicacao": "2020-08-20",
-     "url": "https://g1.globo.com/fato-ou-fake/noticia/2020/08/20/e-fake-mensagem-que-diz-que-iniciar-o-banho-pela-cabeca-pode-provocar-ataque-cardiaco.ghtml",
-     "alegacao": "É #FAKE mensagem que diz que iniciar o banho pela cabeça pode provocar ataque cardíaco",
-     "veredito_original": "fake",
-     "veredito_chave": "fake",
-     "cobre_multiplas_alegacoes": false,
-     "trecho": ".\"É possível que se tenha um fator de confusão entre uma maior incidência de infarto agudo do miocárdio durante o banho, que não existe, com o acontecimento de síncopes (desmaios) no banheiro.\"Ainda de acordo com o médico, a associação é mais comum por existirem desmaios relacionados ao ato de urinar, ao banho com água muito quente e ao estímulo do seio carotídeo ao se barbear. \"Mas esses episódios tendem a ser rápidos e totalmente reversíveis sem relação com infarto ou óbito.\"O que protege de infartos, segundo o médico, são medidas de comportamento amplamente conhecidas, como se alimentar de forma saudável, fazer exercício físico, não fumar, evitar sobrepeso, além de cuidar da pressão arterial, do colesterol e de diabetes.\"Do jeito que está escrito é fake\", atesta o médico Nabil Ghorayeb, professor de cardiologia e medicina do esporte."
-    },
-    {
-     "unidade_id": "fbed2c729d-00",
-     "fragmento_id": "fbed2c729d-00-00",
-     "score": 0.5695650577545166,
-     "score_lexico": 4.551403045654297,
-     "score_denso": 0.8134922981262207,
+     "unidade_id": "6151782b35-00",
+     "fragmento_id": "6151782b35-00-04",
+     "score": 0.5935999155044556,
+     "score_lexico": 1.9424351453781128,
+     "score_denso": 0.818317174911499,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2018-11-21",
-     "url": "https://www.boatos.org/ciencia/yamamoto-professor-imagem-cansado.html",
-     "alegacao": "Dr. Yamamoto, professor de neurologia, criou imagem que mostra se você está cansado #boato",
+     "data_publicacao": "2018-02-05",
+     "url": "https://www.boatos.org/brasil/juiza-estaciona-balneario-camboriu.html",
+     "alegacao": "Juíza federal estaciona em lugar proibido e “arma barraco” em Balneário Camboriú (SC) #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "A vida nos dias de hoje anda complicada. O stress do trabalho, do trânsito agitado e das mil e uma obrigações da vida adulta acabam, muitas vezes, prejudicando a saúde de muitas pessoas.Mas e como contornar essa questão? E o mais importante, como saber quando é a hora de parar e respirar? Segundo a história de hoje, a resposta é bem simples e está na observação de uma imagem.Segundo a publicação, uma imagem criada pelo professor de Neurologia, Dr. Yamamoto, conseguiria identificar quando uma pessoa está cansada, estressada ou saudável. A explicação estaria na movimentação da imagem. Se ela se move, significa que você está cansado ou estressado. Confira:Esta imagem foi criada pelo Professor de Neurologia Dr Yamamoto: .. Se ela não se movimenta, significa que você está saudável e dormiu bem. .. Se ela está se movimentando bem devagar, mostra que você está estressado ou cansado… Se ela está se movendo continuamente e rápido, mostra que você está muito estressado, e pode haver alterações de ordem psicológica.Dr."
+     "trecho": ", primeira vice-presidente da AMC (Associação dos Magistrados Catarinenses)”.E se você acha que essa história acabou por aí, senta que vem mais bomba. Alguns veículos de comunicação catarinenses dizem que conseguiram descobrir a verdadeira identidade da mulher. De acordo com eles, ela mora na cidade de Balneário Piçarras, litoral catarinense, e é ré em processos criminais, na comarca de Joinville, por roubo e furto.E, bom, sendo juíza ou não, estacionar em local proibido gera multa e pontos na carteira. Se você observar bem, vai ver que o local que serviu de estacionamento para as pessoas no vídeo (inclusive pra mulher que se dizia juíza) é uma área de carga e descarga. Segundo o Conselho Nacional de Trânsito (Contran), estacionar em vaga de carga/descarga é uma infração grave, com multa de R$195,23 e 5 pontos na CNH.Portanto, a mulher que aparece no vídeo não é juíza. Ela tenta jogar uma história para ganhar a discussão, mas foi desmascarada pela AMC. Além de não ser juíza, também estava estacionada em local proibido. Cuidado ao sair por aí dizendo ser quem não é."
+    },
+    {
+     "unidade_id": "4e2fa32890-00",
+     "fragmento_id": "4e2fa32890-00-04",
+     "score": 0.5875241160392761,
+     "score_lexico": 4.981992244720459,
+     "score_denso": 0.8137682676315308,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-10-10",
+     "url": "https://www.boatos.org/tecnologia/bebe-leucemia-r-1-whatsapp.html",
+     "alegacao": "Bebê com leucemia vai ganhar R$ 1 por vídeo repassado no WhatsApp #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "o contra a Ame!Uma doença degenerativa tão cruel e devastadora que acaba com tudo que está à sua frente e que vai matando os neurônios de minha filha. Hoje meu grande sonho se chama SPINRAZA, o único remédio que pode salvar a vida da Ayla. O remédio mais caro do mundo! Preciso de ajuda para manter meu sonho vivo, e salvar minha filha, meu primeiro grande sonho. Peço que me ajudem a lutar contra a AME. Por Deus, não me deixem sozinha!!Peço que ajudem Ayla como puderem… Orem, curtam, divulguem, doem um 1 real que seja, mais doem por favor!!A publicação tem, inclusive, o número da conta bancária para que Ayla receba doações. Se, de fato, você quer ajudar, não compartilhe o vídeo apenas. Doe para uma das contas que estão na postagem.Resumindo: a história circula na internet é falsa. O bebê do vídeo não vai receber R$ 1 por compartilhamento de vídeo no WhatsApp, ele está pedindo algo (doações) e a doença não é leucemia, é AME. História esclarecida, vamos para a próxima.PS: Esse artigo é uma sugestão de leitores do Boatos.org."
     }
    ],
    "coberto": true,

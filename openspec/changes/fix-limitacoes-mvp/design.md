@@ -85,3 +85,17 @@ outra alegação, e a conferência barrou.
   bancada mostra quantas; se o rebaixamento crescer, revisar o prompt.
 - [Latência] → medida na bancada; o critério de mediana de D10 de
   `add-gerador-api-deepseek` continua valendo.
+
+## Resultado
+
+- **Bancada real** `20261009-164300` (`deepseek-v4-pro`), depois de D4: 28/30,
+  sem falha eliminatória, mediana de 11,1 s, contra 10,7 s antes da
+  conferência. Cumpre D10 de `add-gerador-api-deepseek`. A conferência tirou
+  frases em 5 casos, todas sem base ("Vacinas são seguras e eficientes",
+  "contraindicada durante a gestação", o bloco 1 do X2). As duas falhas (R3,
+  L01) são de forma: bloco 3 de uma frase só, apontada pelo juiz e mantida com
+  o defeito registrado. As gravações dessa rodada são as da bancada offline.
+- **Teste de ponta a ponta no modo uso**, com o servidor real: 22/22. O termo
+  aparece em seis parágrafos, e a resposta do F01 não traz mais "50% se
+  refere a casos raros" nem "a vacina é segura para a maioria".
+

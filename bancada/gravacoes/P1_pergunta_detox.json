@@ -4,7 +4,7 @@
   "053586b98324105d": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Suco detox cura gripe.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
   "ca8fdaea867ed284": "{\n  \"fatos\": [],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
   "84b614a1fc852a6e": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona suco detox ou sua relação com a cura da gripe.\"\n}",
-  "3a7d87d2a7fcc8fe": "{\n  \"bloco1\": \"Não encontramos estudos sobre suco detox curar gripe.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Procure fontes confiáveis, como sites de saúde ou médicos.\",\n  \"bloco4\": \"Você pode buscar em sites de universidades ou órgãos de saúde.\"\n}"
+  "3a7d87d2a7fcc8fe": "{\n  \"bloco1\": \"Não achamos estudo que mostre que suco detox cura gripe.\",\n  \"bloco2\": \"Não achar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Pergunte a um médico ou procure em sites de saúde confiáveis.\",\n  \"bloco4\": \"Você pode buscar em sites de universidades ou do Ministério da Saúde.\"\n}"
  },
  "busca": {
   "6f0198785166a726": {
