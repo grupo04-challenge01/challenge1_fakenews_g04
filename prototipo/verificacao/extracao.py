@@ -5,6 +5,7 @@ lista as alegações e dá a cada uma um nível de risco; a seleção da alegaç
 maior risco é feita em código, para que a regra de desempate seja fixa e testável.
 Ver decisão 8 do design.md.
 """
+import json
 from dataclasses import dataclass, field
 
 from prototipo.verificacao.modelo import chat_ollama, ler_json
@@ -77,6 +78,8 @@ def defeitos(bruto):
             achados.append(f"alegação {n} sem `saude` booleano")
         if a.get("risco") not in RISCOS:
             achados.append(f"alegação {n} com risco fora de alto/medio/baixo")
+        if str(a.get("texto") or "").strip().endswith("?"):
+            achados.append(f"{PERGUNTA} {n} é pergunta: {a['texto'].strip()}")
     return achados
 
 
@@ -99,18 +102,42 @@ def interpretar(bruto):
     return Extracao(selecionada=escolhida, demais=demais, opiniao=dados.get("opiniao"))
 
 
+PERGUNTA = "alegação"  # prefixo do defeito "alegação N é pergunta" (fix-pergunta-e-conduta, D5)
+
+
+def _so_pergunta(achados):
+    return bool(achados) and all(" é pergunta: " in a for a in achados)
+
+
+def _sem_perguntas(bruto):
+    """A saída sem as alegações em forma de pergunta (D5)."""
+    dados = ler_json(bruto)
+    dados["alegacoes"] = [a for a in dados["alegacoes"]
+                          if not str(a.get("texto") or "").strip().endswith("?")]
+    return json.dumps(dados, ensure_ascii=False)
+
+
 def _aviso(achados):
-    return ("AVISO DA CONFERÊNCIA: a extração anterior foi recusada.\n"
-            + "\n".join(f"- {a}" for a in achados)
-            + "\nRefaça no mesmo formato JSON, com no máximo 8 alegações.")
+    linhas = ["AVISO DA CONFERÊNCIA: a extração anterior foi recusada."]
+    linhas += [f"- {a}" for a in achados]
+    if any(" é pergunta: " in a for a in achados):
+        linhas.append("Alegação não é pergunta: escreva a afirmação como frase, e tire da "
+                      "lista a pergunta que não traz afirmação.")
+    linhas.append("Refaça no mesmo formato JSON, com no máximo 8 alegações.")
+    return "\n".join(linhas)
 
 
 def extrair(texto, chat=chat_ollama):
     """Uma nova tentativa com o defeito informado; JSON cortado é o caso comum
-    (fix-qualidade-gerador-remoto, D6). A segunda saída com defeito levanta."""
+    (fix-qualidade-gerador-remoto, D6). A segunda saída com defeito levanta, exceto
+    se o único defeito for alegação em forma de pergunta: essas saem da lista
+    (fix-pergunta-e-conduta, D5)."""
     pedido = mensagem(texto)
     bruto = chat(SISTEMA, pedido)
     achados = defeitos(bruto)
     if not achados:
         return interpretar(bruto)
-    return interpretar(chat(SISTEMA, f"{pedido}\n\n{_aviso(achados)}"))
+    refeito = chat(SISTEMA, f"{pedido}\n\n{_aviso(achados)}")
+    if _so_pergunta(defeitos(refeito)):
+        refeito = _sem_perguntas(refeito)
+    return interpretar(refeito)

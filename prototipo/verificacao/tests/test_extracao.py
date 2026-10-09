@@ -157,3 +157,36 @@ def test_prompt_trata_pergunta_com_afirmacao_como_alegacao():
     assert '"Suco detox cura gripe?"' in SISTEMA_EXTRACAO
     assert '"O que devo fazer?"' in SISTEMA_EXTRACAO
     assert "pergunta e pedido não são alegação" not in SISTEMA_EXTRACAO
+
+
+# ---- alegação que ainda é pergunta (fix-pergunta-e-conduta, D5) ----------------------
+
+def _saida(*textos):
+    return json.dumps({"alegacoes": [{"texto": t, "saude": True, "risco": "alto"} for t in textos],
+                       "opiniao": None}, ensure_ascii=False)
+
+
+def test_alegacao_em_pergunta_e_defeito():
+    assert defeitos(_saida("Posso parar meu remédio de pressão amanhã?")) == [
+        "alegação 1 é pergunta: Posso parar meu remédio de pressão amanhã?"]
+
+
+def test_pergunta_pede_nova_tentativa_e_a_frase_vale():
+    chat, pedidos = _sequencia(_saida("Suco detox cura gripe?"), _saida("Suco detox cura gripe."))
+    e = extrair("Suco detox cura gripe?", chat=chat)
+    assert e.selecionada["texto"] == "Suco detox cura gripe."
+    assert "é pergunta" in pedidos[1] and "escreva a afirmação como frase" in pedidos[1]
+
+
+def test_segunda_saida_com_pergunta_perde_a_pergunta_em_vez_de_virar_erro():
+    pergunta = "Posso parar meu remédio de pressão amanhã?"
+    chat, _ = _sequencia(_saida(pergunta), _saida(pergunta))
+    e = extrair(pergunta, chat=chat)
+    assert e.selecionada is None and e.demais == []
+
+
+def test_segunda_saida_mantem_a_afirmacao_e_tira_so_a_pergunta():
+    chat, _ = _sequencia(_saida("Boldo cura hepatite.", "Posso parar o remédio?"),
+                         _saida("Boldo cura hepatite.", "Posso parar o remédio?"))
+    e = extrair("texto", chat=chat)
+    assert e.selecionada["texto"] == "Boldo cura hepatite." and e.demais == []

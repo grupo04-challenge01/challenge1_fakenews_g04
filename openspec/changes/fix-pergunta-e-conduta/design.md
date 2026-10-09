@@ -65,6 +65,23 @@ Decisão do grupo em 08/10/2026. Duas camadas, como o resto da fronteira:
 A resposta é a de urgência que já existe. Ela fala em "sintomas" e em
 "receitas caseiras", o que serve também para ferimento.
 
+### D5. Alegação que ainda é pergunta
+
+Na bancada de 09/10/2026 (`20261009-141724.json`), o C2 ("Posso parar meu
+remédio de pressão amanhã?") voltou da extração com a própria pergunta como
+alegação, apesar de D1. A pessoa recebeu o texto de conduta, como devia, mas
+também uma "checagem" da pergunta, com veredito de evidência insuficiente.
+
+Conferência em código, sem depender só do prompt:
+
+- Alegação cujo texto termina em "?" é defeito da extração ("alegação N é
+  pergunta"), e entra na nova tentativa de D6 de
+  `fix-qualidade-gerador-remoto`, com o aviso de escrever a afirmação como
+  frase e tirar da lista a pergunta sem afirmação.
+- Se a segunda saída só tiver esse defeito, o código tira da lista as
+  alegações em forma de pergunta, em vez de transformar em erro. Sem
+  alegação restante, o fluxo para na extração, e a conduta aparece (D2).
+
 ## Risks / Trade-offs
 
 - [A extração passa a tratar como alegação perguntas que não são] → o exemplo
