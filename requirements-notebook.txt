@@ -1,0 +1,6 @@
+# Execução de exploracao/avaliacao_modelo.ipynb (change add-notebook-avaliacao-modelo).
+# Instale por cima de requirements-rag.txt.
+nbformat>=5.10
+nbclient>=0.10
+ipykernel>=6.29
+matplotlib>=3.9
