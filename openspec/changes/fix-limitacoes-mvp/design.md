@@ -63,6 +63,22 @@ Depois de esgotar os blocos 3 e 4, `_cortar` tira frases do fim do bloco 2,
 mantendo pelo menos uma. A frase sobre opinião, quando existir, fica. A regra
 de desfazer o corte que cria defeito eliminatório continua.
 
+### D4. Ajuste do juiz depois da primeira bancada
+
+Bancada `20261009-163535`: 24/30, sem eliminatória, mas com seis falhas de
+forma criadas pela conferência. O juiz tirou:
+
+- a frase do modelo sobre a opinião da mensagem no bloco 2 (F01, F04, F06,
+  R2), conferida contra os trechos, que nunca falam disso. Ela passa a ser
+  conferida como frase sobre a mensagem;
+- paráfrase do trecho (R1) e interpretação que decorre da mensagem (X2, R3).
+  O prompt passa a aceitar resumo do trecho e interpretação da mensagem, e
+  deixa de mandar marcar "na dúvida".
+
+No X2, o juiz rebaixou certo: os trechos eram sobre boldo e **covid**, e a
+alegação, sobre boldo e hepatite. A guarda tinha dado "falso" com evidência de
+outra alegação, e a conferência barrou.
+
 ## Risks / Trade-offs
 
 - [O juiz também erra e tira frase boa] → a frase tirada fica no rastro, e a

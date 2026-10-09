@@ -124,3 +124,20 @@ def test_forma_sem_evidencia_nao_e_conferida():
 def test_prompt_proibe_conhecimento_proprio_e_aceita_so_trecho_ou_mensagem():
     assert "O que você sabe de medicina não conta" in conferencia.SISTEMA
     assert "inverte" in conferencia.SISTEMA and '"sem_base"' in conferencia.SISTEMA
+
+
+# ---- ajustes depois da bancada de 09/10/2026 (frase de opinião e juiz rígido) ---------
+
+def test_frase_do_bloco_2_sobre_opiniao_e_conferida_contra_a_mensagem():
+    opiniao = "A parte que manda não confiar no médico é opinião, e não se checa."
+    com_opiniao = {**BLOCOS_FALSO, "bloco2": BLOCOS_FALSO["bloco2"] + [{"frase": opiniao, "trecho": "T1"}]}
+    r = _resposta(com_opiniao, decomposicao={"opinioes": ["Não confiem no médico."]})
+    pedidos = []
+    conferencia.aplicar(r, MENSAGEM, chat=_juiz([], pedidos), refazer=_refazer_proibido)
+    linha = next(l for l in pedidos[0][1].splitlines() if "é opinião" in l)
+    assert "(mensagem)" in linha
+
+
+def test_prompt_aceita_interpretacao_e_nao_manda_marcar_na_duvida():
+    assert "Na dúvida" not in conferencia.SISTEMA
+    assert "interpretação que decorre do que a mensagem diz tem base" in conferencia.SISTEMA

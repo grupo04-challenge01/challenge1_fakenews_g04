@@ -27,17 +27,25 @@ Você recebe TRECHOS de checagens publicadas (T1, T2…), a MENSAGEM que a pesso
 recebeu e FRASES numeradas da resposta (F1, F2…), cada uma com um tipo:
 - (fato): só tem base se algum trecho diz isso, ou algo que implica isso
   diretamente. O que você sabe de medicina não conta. Frase que distorce,
-  exagera ou inverte o que o trecho diz não tem base.
-- (mensagem): descreve a mensagem recebida, o que ela diz ou como tenta
-  convencer. Só tem base se a mensagem traz o que a frase descreve.
+  exagera ou inverte o que o trecho diz não tem base. Resumir ou dizer com
+  outras palavras o que o trecho diz tem base.
+- (mensagem): descreve a mensagem recebida, o que ela diz, como tenta
+  convencer ou qual parte dela é opinião. Uma interpretação que decorre do que a mensagem diz tem base.
+  Não tem base a frase que atribui à mensagem algo que ela não traz.
 
-Na dúvida entre ter e não ter base, marque como sem base.
+Marque só as frases em que você consegue apontar o que falta ou o que está
+errado.
 
 Responda só com JSON, neste formato:
 {"sem_base": [{"n": 2, "motivo": "uma frase curta"}]}
 Se todas as frases têm base, responda {"sem_base": []}."""
 
 TIPO = {0: "fato", 1: "fato", 2: "mensagem"}
+
+
+def _tipo(indice, frase):
+    """A frase do bloco 2 sobre a opinião da mensagem descreve a mensagem."""
+    return "mensagem" if indice == 1 and "opini" in frase.lower() else TIPO[indice]
 
 
 def _conferivel(indice, frase):
@@ -51,7 +59,7 @@ def _pedido(trechos, mensagem, frases):
     for n, t in enumerate(trechos, 1):
         linhas.append(f"[T{n}] {t.get('agencia')}, {t.get('data_publicacao')}\n\"\"\"{t.get('trecho') or ''}\"\"\"")
     linhas += ["", f"MENSAGEM:\n\"\"\"{mensagem}\"\"\"", "", "FRASES:"]
-    linhas += [f"[F{n}] ({TIPO[b]}) {f}" for n, (b, f) in enumerate(frases, 1)]
+    linhas += [f"[F{n}] ({_tipo(b, f)}) {f}" for n, (b, f) in enumerate(frases, 1)]
     return "\n".join(linhas)
 
 
