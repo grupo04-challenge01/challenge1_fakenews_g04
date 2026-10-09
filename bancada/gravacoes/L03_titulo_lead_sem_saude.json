@@ -1,6 +1,6 @@
 {
  "chat": {
-  "6cb10218f10a6355": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A Advocacia-Geral da União defendeu a proibição das empresas de apostas virtuais (bets) no Brasil\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A Advocacia-Geral da União considera falha a legislação que regulamenta bets\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    },\n    {\n      \"texto\": \"A Advocacia-Geral da União defendeu uma nova audiência sobre o tema\",\n      \"saude\": false,\n      \"risco\": \"baixo\"\n    }\n  ],\n  \"opiniao\": null\n}"
+  "f3b8c80ae8ee2aff": "{\n  \"alegacoes\": [],\n  \"opiniao\": null\n}"
  },
  "busca": {}
 }

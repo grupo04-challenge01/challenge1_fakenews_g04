@@ -1,6 +1,6 @@
 {
  "chat": {
-  "fd6923a82a1fcb4b": "{\"categorias\": [\"checagem\"], \"motivo\": \"A pessoa quer verificar a veracidade de um vídeo.\"}"
+  "36e2509c128d3acc": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem pede para ver um vídeo, sem contexto de risco, sofrimento ou conduta individual.\"}"
  },
  "busca": {}
 }

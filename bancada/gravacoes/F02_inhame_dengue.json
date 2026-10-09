@@ -1,21 +1,21 @@
 {
  "chat": {
-  "48317649ab4ff8e8": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A mensagem afirma que um estudo da UFMG comprova que suco de inhame cru corta os efeitos da dengue em 4 horas, pedindo compartilhamento urgente.\"\n}",
-  "c261fdf0939ad87e": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
-  "45f6f168a5783c22": "{\n  \"fatos\": [\n    \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": \"Compartilhem urgente, vamos ajudar as pessoas!\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem conclama a compartilhar com urgência, mas não apresenta detalhes do estudo (como metodologia, amostra, publicação) que sustentem a eficácia do suco de inhame em 4 horas.\"\n  }\n}",
-  "16b94a49811c7142": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\"],\n  \"criterio\": \"Os trechos T1 e T2 mostram que a UFMG não realizou estudo sobre o suco de inhame contra a dengue e que a alegação é falsa.\"\n}",
-  "d229408c15b74537": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"A UFMG não fez estudo sobre suco de inhame contra dengue.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"A universidade diz que não existe pesquisa assim.\",\n      \"trecho\": \"T1\"\n    },\n    {\n      \"frase\": \"Especialista afirma que não há comprovação de eficácia.\",\n      \"trecho\": \"T2\"\n    },\n    {\n      \"frase\": \"O Ministério da Saúde não indica solução caseira para dengue.\",\n      \"trecho\": \"T4\"\n    }\n  ],\n  \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com algo caseiro e pede compartilhamento urgente.\",\n  \"bloco4\": \"Desconfie de promessas de cura rápida e pedidos de compartilhamento urgente.\"\n}"
+  "0709be6107f32e7b": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem afirma um estudo e pede compartilhamento, sem pedir conduta individual.\"}",
+  "db1065fca00c5a9b": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "34e6d3e785bdfe92": "{\n  \"fatos\": [\n    \"Estudo da UFMG: suco de inhame cru batido com água corta os efeitos da dengue em apenas 4 horas.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Estudo da UFMG\",\n      \"forca\": \"forte\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": \"Compartilhem urgente, vamos ajudar as pessoas!\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem conclama a compartilhar com urgência, mas não apresenta detalhes do estudo, como metodologia, amostra ou publicação, que permitam avaliar a eficácia e segurança do suco de inhame cru para dengue.\"\n  }\n}",
+  "cbeddbf7fe243d85": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\"],\n  \"criterio\": \"Os trechos T1 e T2 mostram que a alegação é falsa: a UFMG não realizou estudo sobre suco de inhame contra dengue e não há comprovação de eficácia.\"\n}",
+  "968fb5e591df49c7": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"A UFMG não fez estudo sobre suco de inhame contra dengue.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"Não existe estudo que comprove eficácia do suco de inhame na dengue.\",\n      \"trecho\": \"T2\"\n    },\n    {\n      \"frase\": \"O Ministério da Saúde não recomenda solução caseira para dengue.\",\n      \"trecho\": \"T4\"\n    }\n  ],\n  \"bloco3\": \"Técnica: cura milagrosa, urgência fabricada. A mensagem promete cura rápida com algo caseiro e pede compartilhamento urgente.\",\n  \"bloco4\": \"Desconfie de promessas de cura rápida e pedidos urgentes de compartilhamento.\"\n}"
  },
  "busca": {
-  "070facc943de3c8d": {
+  "f0a43d950bc784cd": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "50cb17dd68-00",
      "fragmento_id": "50cb17dd68-00-00",
-     "score": 0.7851542830467224,
+     "score": 0.7775353789329529,
      "score_lexico": 89.85535430908203,
-     "score_denso": 0.9256025552749634,
+     "score_denso": 0.8868820667266846,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "c5d4b94adb-00",
      "fragmento_id": "c5d4b94adb-00-01",
-     "score": 0.7761020660400391,
+     "score": 0.7681498527526855,
      "score_lexico": 78.86619567871094,
-     "score_denso": 0.9199079871177673,
+     "score_denso": 0.8828009963035583,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "fato-ou-fake",
@@ -47,9 +47,9 @@
     {
      "unidade_id": "20c161dc3d-00",
      "fragmento_id": "20c161dc3d-00-04",
-     "score": 0.6139216423034668,
+     "score": 0.6075890064239502,
      "score_lexico": 28.615419387817383,
-     "score_denso": 0.8595187067985535,
+     "score_denso": 0.8409188985824585,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -64,9 +64,9 @@
     {
      "unidade_id": "e3a2f57b38-00",
      "fragmento_id": "e3a2f57b38-00-01",
-     "score": 0.5891222953796387,
+     "score": 0.575206995010376,
      "score_lexico": 12.109095573425293,
-     "score_denso": 0.8579654693603516,
+     "score_denso": 0.8385852575302124,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -79,21 +79,21 @@
      "trecho": "é o suficiente. Ele é expelido pelas glândulas sudoríparas, ou seja, pelo suor e afugenta o mosquitinho. Quem puder repasse para amigos e familiares. É uma solução simples, barata e pode salvar muitas vidas.’Essa receita caseira que promete proteger as pessoas de forma prática e fácil se espalhou feito o Aedes aegypti por aí. Porém, diferente do mosquito, que infelizmente é uma realidade, essa história não procede.Primeiramente, não é de agora que circula pela internet que o própolis atua contra o Aedes aegypti. Quando lá em 2008 nos preocupávamos ‘apenas’ com a dengue, essa receita já circulava. Inclusive, nessa época a notícia foi repassada como um estudo realizado pela Unicamp, que a instituição desmentiu e esclareceu.Assim como a citronela, a vitamina B ou a mistura de cravo-da-índia e cânfora, não existe comprovação científica sobre a efetividade do própolis na prevenção do mosquito. Especialistas já discutiram o assunto e o veredito é o mesmo – não há provas de que funcione."
     },
     {
-     "unidade_id": "a8a33a7bd2-00",
-     "fragmento_id": "a8a33a7bd2-00-00",
-     "score": 0.5745217800140381,
-     "score_lexico": 18.8575496673584,
-     "score_denso": 0.8526370525360107,
+     "unidade_id": "03d3a75824-00",
+     "fragmento_id": "03d3a75824-00-02",
+     "score": 0.5674622654914856,
+     "score_lexico": 7.489230632781982,
+     "score_denso": 0.8392491340637207,
      "idioma": "pt-BR",
      "apto_citacao": true,
-     "agencia": "fato-ou-fake",
-     "data_publicacao": "2020-05-26",
-     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/26/e-fake-que-formula-caseira-com-maca-inhame-e-agua-de-coco-proteja-do-coronavirus.ghtml",
-     "alegacao": "É #FAKE que fórmula caseira com maçã, inhame e água de coco proteja do coronavírus",
-     "veredito_original": "fake",
-     "veredito_chave": "fake",
+     "agencia": "boatos",
+     "data_publicacao": "2020-07-22",
+     "url": "https://www.boatos.org/saude/cascas-laranja-limao-contem-ivermectina-cloroquina-curam-covid-19.html",
+     "alegacao": "Cascas de laranja e limão contêm ivermectina e cloroquina e curam a Covid-19 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "Circula pelas redes sociais mais uma receita caseira para combater a Covid-19. A mensagem diz que a combinação de maçã, inhame e água de coco é eficaz contra o novo coronavírus. É #FAKE.A mensagem diz que se trata de um “remédio caseiro para o coronavírus” e que “não há contraindicação.” Mas não há qualquer evidência científica de que a fruta, o tubérculo e a bebida combatam o vírus, juntas ou separadas.A receita ensina a pessoa a bater no liquidificador uma maçã, um pedaço de inhame e um copo de água de coco. A recomendação dada é que se beba a mistura uma vez ao dia. “Tente salvar sua vida, porque a única coisa que podemos fazer é a receita de quem fez e deu certo”, afirma a mensagem, que ainda diz que “a fé é o ingrediente principal”.O inhame é uma raiz cheia de vitaminas, usualmente tratada como benéfica para a imunidade do organismo, assim como a maçã; por sua vez, a água de coco tem poder hidratante. Ou seja, os três fazem bem à saúde."
+     "trecho": "le em pedaços, com casca e tudo, que o princípio ativo dos dois remédios, do ivermectina e do cloroquina, tá na laranja e no limão, na casca dos dois. Então, a gente vai cortar com tudo, pedaços e colocar dentro do liquidificador, com um copo de água e uma colher de mel ou de açúcar, à sua preferência, porque ele amarga um pouquinho. Vai bater, vai fazer um suco. Se você não tem o Covid-19, você vai tomar dois copos por dia, um de manhã e um à tarde. Se você já está com o Covid-19, você vai tomar quatro copos, dois de manhã e dois de tarde. Aqui tá o princípio ativo desses medicamentos que são usados nos hospitais que os médicos estão passando, tá? Vamos fazer o uso em casa. Passe pro máximo de pessoas que você conhece, pois isso nós não podemos ser egoístas. Se nós temos o remédio caseiro, barato, em casa, vamos fazer o uso dele. Isso, durante uma semana, você vai fazer, tá? Todos os dias. Não fica caro, é baratinho e dá pra gente fazer e evitar um mal maior. Vamos acabar com esse vírus, o mais rápido possível. Tá aqui, em nossas mãos, a cura."
     }
    ],
    "coberto": true,
@@ -101,13 +101,13 @@
     "pt-BR"
    ]
   },
-  "313a66f6611b5464": [
+  "ad3c64079acb555c": [
    {
     "unidade_id": "50cb17dd68-00",
     "fragmento_id": "50cb17dd68-00-00",
-    "score": 0.7851542830467224,
+    "score": 0.7775353789329529,
     "score_lexico": 89.85535430908203,
-    "score_denso": 0.9256025552749634,
+    "score_denso": 0.8868820667266846,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "lupa",
@@ -122,9 +122,9 @@
    {
     "unidade_id": "c5d4b94adb-00",
     "fragmento_id": "c5d4b94adb-00-01",
-    "score": 0.7761020660400391,
+    "score": 0.7681498527526855,
     "score_lexico": 78.86619567871094,
-    "score_denso": 0.9199079871177673,
+    "score_denso": 0.8828009963035583,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "fato-ou-fake",
@@ -139,9 +139,9 @@
    {
     "unidade_id": "50cb17dd68-00",
     "fragmento_id": "50cb17dd68-00-01",
-    "score": 0.738592267036438,
+    "score": 0.7268874645233154,
     "score_lexico": 60.781978607177734,
-    "score_denso": 0.8992469310760498,
+    "score_denso": 0.8672145009040833,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "lupa",
@@ -156,9 +156,9 @@
    {
     "unidade_id": "50cb17dd68-00",
     "fragmento_id": "50cb17dd68-00-02",
-    "score": 0.6931594610214233,
+    "score": 0.6790891885757446,
     "score_lexico": 37.99525451660156,
-    "score_denso": 0.8819438219070435,
+    "score_denso": 0.8548572659492493,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "lupa",
@@ -173,9 +173,9 @@
    {
     "unidade_id": "c5d4b94adb-00",
     "fragmento_id": "c5d4b94adb-00-00",
-    "score": 0.7666767835617065,
+    "score": 0.763802170753479,
     "score_lexico": 64.75727081298828,
-    "score_denso": 0.9148772358894348,
+    "score_denso": 0.8816284537315369,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "fato-ou-fake",

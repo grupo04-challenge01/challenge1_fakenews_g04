@@ -1,7 +1,7 @@
 {
  "chat": {
-  "a46f3541140b17da": "{\"categorias\": [], \"motivo\": \"A mensagem expressa frustração, mas não se encaixa em nenhuma categoria.\"}",
-  "5f78945299b3aeab": "{\n  \"alegacoes\": [],\n  \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"\n}"
+  "09779353acf4e15c": "{\"categorias\": [], \"motivo\": \"A mensagem expressa opinião e frustração, sem pedido de checagem ou conduta individual.\"}",
+  "5de7a03134d00f01": "{\n  \"alegacoes\": [],\n  \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"\n}"
  },
  "busca": {}
 }

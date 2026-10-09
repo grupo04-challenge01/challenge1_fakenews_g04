@@ -105,3 +105,16 @@ mostrar a mensagem de erro.
   negativo fica no prompt, e o caso `C1` cobre pergunta sem afirmação.
 - [Regravar a bancada] → uma rodada real; os critérios de D10 de
   `add-gerador-api-deepseek` valem para ela.
+
+## Resultado
+
+- **Bancada real** de 09/10/2026 (`20261009-160052.json`, `deepseek-v4-pro`):
+  29/30, sem falha eliminatória, mediana de 10,7 s. Cumpre D10 de
+  `add-gerador-api-deepseek`. P1, C1 e C2 passaram. A única falha foi o R3,
+  com 121 palavras na camada visível, e o corte de teto não atuou porque os
+  blocos 3 e 4 tinham uma frase cada. Nenhuma decomposição foi omitida. As
+  gravações dessa rodada são as da bancada offline.
+- **Teste de ponta a ponta no modo uso**, com o servidor real e o mesmo
+  código: 22/22. O link da Wikipédia, que terminava em erro, e o pedido de
+  conduta sem alegação passaram a responder certo.
+
