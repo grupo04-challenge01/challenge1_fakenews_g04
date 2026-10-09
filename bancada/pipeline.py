@@ -15,7 +15,7 @@ from dataclasses import asdict, is_dataclass
 from prototipo.entrada import leitura, link
 from prototipo.entrada.rede import buscar as buscar_rede
 from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
-from prototipo.resposta import estrutura
+from prototipo.resposta import conferencia, estrutura
 from prototipo.verificacao import decomposicao, extracao, fronteira, guarda
 from prototipo.verificacao.modelo import chat_ollama
 
@@ -188,11 +188,18 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
                                                             limiar=limiar))
         # Decisão 29: a resposta vê os fragmentos vizinhos das checagens citadas.
         expandir = lambda ts: recuperador.expandir(alegacao, ts, modo=modo)  # noqa: E731
-        resp = etapa("resposta", lambda: estrutura.responder(
-            alvo, alegacao, veredito,
-            decomposicao=None if isinstance(dec, dict) else asdict(dec), lacuna=lacuna, chat=chat,
-            expandir=expandir, aviso=aviso),
-            lambda r: {**asdict(r), "texto": r.texto})
+        dec_plana = None if isinstance(dec, dict) else asdict(dec)
+
+        def responder(v):
+            return estrutura.responder(alvo, alegacao, v, decomposicao=dec_plana, lacuna=lacuna,
+                                       chat=chat, expandir=expandir, aviso=aviso)
+
+        def responder_conferido():
+            # Conferência de sustentação depois da resposta (fix-limitacoes-mvp, D1).
+            return conferencia.aplicar(responder(veredito), alvo, chat=chat, refazer=responder,
+                                       alegacao=alegacao, decomposicao=dec_plana)
+
+        resp = etapa("resposta", responder_conferido, lambda r: {**asdict(r), "texto": r.texto})
         rastro["resposta"] = {"forma": resp.forma, "texto": resp.texto,
                               "defeitos": resp.defeitos}
     except _Parar:

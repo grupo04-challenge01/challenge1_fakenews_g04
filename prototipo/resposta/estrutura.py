@@ -157,6 +157,10 @@ class Resposta:
     # fix-teto-resposta: blocos que o corte pode encurtar (índices) e frases tiradas.
     cortaveis: list = field(default_factory=lambda: [2, 3])
     cortadas: list = field(default_factory=list)
+    # fix-limitacoes-mvp, D1: frases tiradas pela conferência de sustentação e o
+    # estado dela ("ok", "não rodou: <tipo>", ou None quando não se aplica).
+    sem_base: list = field(default_factory=list)
+    conferencia: str | None = None
 
     @property
     def texto(self):
@@ -301,8 +305,10 @@ ELIMINATORIOS = ("mito:", "técnica nomeada", "bloco 3 da forma sem evidência a
 
 def _cortar(r, alegacao, decomposicao, catalogo):
     """Teto garantido em código (fix-teto-resposta): tira a última frase do bloco
-    cortável com mais frases, deixando uma em cada, até caber. Blocos 1 e 2 nunca.
-    Corte que cria defeito eliminatório é desfeito (D3)."""
+    cortável com mais frases, deixando uma em cada, até caber. Esgotados os blocos
+    3 e 4, tira do fim do bloco 2, deixando uma frase e a frase sobre opinião
+    (fix-limitacoes-mvp, D3); na lacuna de acervo o bloco 2 é texto fixo e fica.
+    O bloco 1 nunca. Corte que cria defeito eliminatório é desfeito (D3)."""
     if len(r.texto.split()) <= TETO_PALAVRAS or "saída não é JSON" in r.defeitos:
         return r
     catalogo = catalogo or catalogo_mod.carregar_catalogo()
@@ -312,11 +318,17 @@ def _cortar(r, alegacao, decomposicao, catalogo):
     frases = {i: _frases(blocos[i]) for i in r.cortaveis}
     while len(replace(r, blocos=blocos).texto.split()) > TETO_PALAVRAS:
         candidatos = [i for i in r.cortaveis if len(frases[i]) > 1]
-        if not candidatos:
+        if candidatos:
+            i = max(candidatos, key=lambda i: (len(frases[i]), i))
+            cortadas.append(frases[i].pop())
+            blocos[i] = " ".join(frases[i])
+            continue
+        frases2 = _frases(blocos[1])
+        de_fato = [n for n, f in enumerate(frases2) if f != FRASE_OPINIAO]
+        if 3 not in r.cortaveis or len(de_fato) <= 1:
             break
-        i = max(candidatos, key=lambda i: (len(frases[i]), i))
-        cortadas.append(frases[i].pop())
-        blocos[i] = " ".join(frases[i])
+        cortadas.append(frases2.pop(de_fato[-1]))
+        blocos[1] = " ".join(frases2)
     if not cortadas:
         return r
     novo = replace(r, blocos=blocos, cortadas=cortadas)
@@ -355,11 +367,16 @@ def _aviso(motivo, descartadas):
     return "\n".join(linhas)
 
 
-def _rebaixado(veredito, motivo):
+def rebaixar(veredito, rebaixado_por):
+    """Veredito insuficiente no lugar de um que a resposta não conseguiu sustentar."""
     return Veredito(INSUFICIENTE, "Nenhuma afirmação essencial da resposta ficou ancorada em trecho.",
-                    rebaixado_por=f"ancoragem: {motivo}",
+                    rebaixado_por=rebaixado_por,
                     original={"rotulo": veredito.rotulo, "criterio": veredito.criterio},
                     referencias=list(veredito.referencias))
+
+
+def _rebaixado(veredito, motivo):
+    return rebaixar(veredito, f"ancoragem: {motivo}")
 
 
 REFEITA_ANCORA = "--- refeita com o aviso da conferência ---"
@@ -467,6 +484,7 @@ def _montar(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     r = Resposta("com evidência" if com else "sem evidência", titulos, blocos,
                  _detalhe(veredito, vizinhos),
                  descartadas=descartadas, veredito=veredito, bruto=bruto, aviso=aviso)
+    r.trechos_vistos = trechos  # para a conferência de sustentação; fora do asdict
 
     if dados is None:
         r.defeitos = ["saída não é JSON"]

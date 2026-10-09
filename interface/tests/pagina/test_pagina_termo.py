@@ -28,7 +28,9 @@ def _corpos(page):
 
 
 def _termo(page):
-    return page.get_by_role("group", name=_junto(textos()["termo-servico-externo"]))
+    # Nome acessível: o primeiro parágrafo; os demais descrevem o grupo (fix-limitacoes-mvp, D2).
+    primeiro = textos()["termo-servico-externo"].split("\n\n")[0]
+    return page.get_by_role("group", name=_junto(primeiro))
 
 
 def test_termo_aparece_e_o_campo_fica_bloqueado_ate_a_escolha(page, servidor_deepseek):
@@ -103,3 +105,11 @@ def test_320px_com_fonte_em_200_por_cento_termo_e_rodape_sem_rolagem(page, servi
     assert page.evaluate(sobra) <= 0
     page.get_by_role("button", name="Aceito", exact=True).click()
     assert page.evaluate(sobra) <= 0
+
+
+def test_termo_aparece_em_seis_paragrafos(page, servidor_deepseek):
+    page.goto(servidor_deepseek)
+    termo = _termo(page)
+    expect(termo.locator("p")).to_have_count(6)
+    todos = _junto(textos()["termo-servico-externo"])
+    assert _junto(" ".join(termo.locator("p").all_inner_texts())) == todos

@@ -6,7 +6,7 @@ from bancada import gravacao
 from bancada.__main__ import carregar_casos, rodar_caso
 from bancada.avaliacao import avaliar
 from bancada.pipeline import etapa_de, executar
-from prototipo.resposta import estrutura
+from prototipo.resposta import conferencia, estrutura
 from prototipo.verificacao import classificacao, decomposicao, extracao, fronteira
 
 TRECHO = {"unidade_id": "u1-00", "fragmento_id": "u1-00-00", "score": 0.9,
@@ -29,6 +29,8 @@ SAIDAS = {
                                     "trecho": "T1"}],
                         "bloco3": "Técnica: cura milagrosa. Promete cura simples.",
                         "bloco4": "Desconfie de cura fácil."},
+    # fix-limitacoes-mvp, D1: a conferência de sustentação, sem frase apontada.
+    conferencia.SISTEMA: {"sem_base": []},
 }
 
 
@@ -322,3 +324,31 @@ def test_decomposicao_que_falha_duas_vezes_segue_sem_ela():
     registro = etapa_de(rastro, "decomposicao")
     assert "erro" not in registro
     assert registro["saida"] == {"omitida": "saída não é JSON"}
+
+
+# ---- conferência de sustentação no pipeline (fix-limitacoes-mvp, D1) -----------------
+
+def test_conferencia_roda_na_resposta_e_tira_a_frase_apontada():
+    base = chat_fixo()
+
+    def chat(sistema, usuario):
+        if sistema == conferencia.SISTEMA:
+            n = next(int(l.split("]")[0][2:]) for l in usuario.splitlines()
+                     if "Técnica" not in l and "(mensagem)" in l)
+            return json.dumps({"sem_base": [{"n": n, "motivo": "a mensagem não diz isso"}]})
+        return base(sistema, usuario)
+    rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat)
+    saida = etapa_de(rastro, "resposta")["saida"]
+    assert saida["conferencia"] == "ok"
+    assert saida["sem_base"] and saida["sem_base"][0]["bloco"] == 3
+    assert saida["sem_base"][0]["frase"] not in rastro["resposta"]["texto"]
+
+
+def test_resumo_conta_casos_com_frase_tirada_pela_conferencia():
+    from bancada.__main__ import resumir
+
+    def caso(id_, sem_base):
+        return {"id": id_, "passou": True, "checks": [], "rastro": {"etapas": [
+            {"etapa": "resposta", "saida": {"cortadas": [], "sem_base": sem_base}}]}}
+    r = resumir([caso("A", [{"bloco": 2, "frase": "x", "motivo": "y"}]), caso("B", [])])
+    assert r["sem_base"] == ["A"]

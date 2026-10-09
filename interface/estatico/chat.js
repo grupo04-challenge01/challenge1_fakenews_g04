@@ -134,9 +134,15 @@ function termo({ versao, texto, recusa, alternativa }) {
   const bolha = bolhaDona("termo");
   const grupo = criar("div", "pergunta");
   grupo.setAttribute("role", "group");
-  const rotulo = paragrafo(texto);
+  // Um parágrafo por assunto: o primeiro nomeia o grupo, os outros o descrevem.
+  const [primeiro, ...resto] = texto.split("\n\n");
+  const rotulo = paragrafo(primeiro);
   rotulo.id = novoId("termo");
   grupo.setAttribute("aria-labelledby", rotulo.id);
+  const descricao = criar("div");
+  descricao.id = novoId("termo-texto");
+  for (const p of resto) descricao.append(paragrafo(p));
+  grupo.setAttribute("aria-describedby", descricao.id);
   const botoes = criar("div", "opcoes");
   const aceito = criar("button", "opcao", "Aceito");
   const naoAceito = criar("button", "opcao", "Não aceito");
@@ -160,7 +166,7 @@ function termo({ versao, texto, recusa, alternativa }) {
     }
     focar(resposta);
   });
-  grupo.append(rotulo, botoes);
+  grupo.append(rotulo, descricao, botoes);
   bolha.append(grupo);
 }
 

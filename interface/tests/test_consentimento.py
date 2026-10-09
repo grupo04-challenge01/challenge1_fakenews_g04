@@ -86,6 +86,10 @@ def _termo_da_pagina(config):
     return json.loads(bruto[1])["termo"]
 
 
+def _paragrafos(t):
+    return "\n\n".join(_junto(p) for p in t.split("\n\n"))
+
+
 def _junto(t):
     return " ".join(t.split())
 
@@ -93,7 +97,7 @@ def _junto(t):
 def test_pagina_recebe_o_termo_so_com_gerador_remoto():
     t = textos()
     assert _termo_da_pagina(REMOTO) == {
-        "versao": TERMO_VERSAO, "texto": _junto(t["termo-servico-externo"]),
+        "versao": TERMO_VERSAO, "texto": _paragrafos(t["termo-servico-externo"]),
         "recusa": _junto(t["recusa"]), "alternativa": False}
     assert _termo_da_pagina(Config(modo="uso", gerador="ollama")) is None
 
@@ -134,3 +138,13 @@ def test_termo_avisa_treino_e_retencao_da_deepseek():
     assert "A DeepSeek pode utilizar o texto enviado para aprimoramento dos seus sistemas." in termo
     assert "pelo tempo que considerar necessário" in termo
     assert "não usa" not in termo and "30 dias" not in termo
+
+
+def test_termo_em_seis_paragrafos_com_as_palavras_da_versao_3():
+    # fix-limitacoes-mvp, D2: só a quebra em parágrafos muda; a versão continua 3.
+    termo = textos()["termo-servico-externo"]
+    paragrafos = [p for p in termo.split("\n\n") if p.strip()]
+    assert len(paragrafos) == 6 and TERMO_VERSAO == "3"
+    assert paragrafos[0].startswith("Antes de começar, meu bem")
+    assert paragrafos[-1] == "Você aceita que o texto da sua mensagem seja enviado para a DeepSeek?"
+    assert _termo_da_pagina(REMOTO)["texto"].count("\n\n") == 5

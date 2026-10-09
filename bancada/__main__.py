@@ -105,6 +105,13 @@ def _cortou(resultado):
                for e in etapas)
 
 
+def _conferencia_tirou(resultado):
+    """Caso em que a conferência de sustentação tirou frase (fix-limitacoes-mvp, D1)."""
+    etapas = (resultado.get("rastro") or {}).get("etapas") or []
+    return any(e["etapa"] == "resposta" and (e.get("saida") or {}).get("sem_base")
+               for e in etapas)
+
+
 def resumir(resultados):
     por_tipo, eliminatorias, demais = {}, [], []
     for r in resultados:
@@ -125,6 +132,7 @@ def resumir(resultados):
             "por_etapa": {e: f"{ok}/{total}" for e, (ok, total) in por_etapa.items()},
             "por_tipo": {t: sorted(ids) for t, ids in sorted(por_tipo.items())},
             "cortes": sorted(r["id"] for r in resultados if _cortou(r)),
+            "sem_base": sorted(r["id"] for r in resultados if _conferencia_tirou(r)),
             "criterio": {"eliminatorias": sorted(eliminatorias), "demais": sorted(demais),
                          "cumpre": not eliminatorias and len(demais) <= LIMITE_DEMAIS}}
 
@@ -208,6 +216,7 @@ def rodar(args):
     print(f"critério: eliminatórias {c['eliminatorias'] or 'nenhuma'}, demais {len(c['demais'])}"
           f"/{LIMITE_DEMAIS} {c['demais']}  →  {'cumpre' if c['cumpre'] else 'NÃO cumpre'}")
     print(f"corte de teto: {len(resumo['cortes'])} casos {resumo['cortes']}")
+    print(f"conferência tirou frase: {len(resumo['sem_base'])} casos {resumo['sem_base']}")
     if "uso" in gerador:
         u = gerador["uso"]
         print(f"tokens: {u['chamadas']} chamadas, entrada {u['entrada']} "
