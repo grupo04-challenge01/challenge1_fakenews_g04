@@ -307,3 +307,15 @@ def test_ios_acompanha_o_tamanho_de_texto_do_sistema(page, servidor_uso):
     assert "-webkit-touch-callout" in ios[0]  # só iOS: no Safari do Mac a fonte vale 13px
     assert re.search(r"font:\s*-apple-system-body", ios[0])
     assert re.search(r"font-size:\s*1\.0588rem", ios[0])  # 17px padrão do iOS → 18px
+
+
+def test_conduta_sem_alegacao_mostra_a_conduta_em_paragrafos(page, servidor_uso):
+    # fix-pergunta-e-conduta, task 2.2.
+    from prototipo.verificacao.fronteira import carregar_respostas
+    conduta = carregar_respostas()["conduta_individual"]["web"]
+    page.goto(servidor_uso)
+    enviar(page, "Posso parar meu remédio de pressão amanhã?")
+    bolha = resposta(page)
+    paragrafos = [p.strip() for p in conduta.split("\n\n") if p.strip()]
+    expect(bolha.locator("p")).to_have_count(len(paragrafos))
+    expect(bolha).not_to_contain_text("nada de saúde")

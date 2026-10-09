@@ -114,6 +114,11 @@ def verificar(texto, emitir, *, recuperador, chat=chat_ollama, canal="web",
     elif rastro["parou_em"] == "leitura":
         causa = rastro["motivo"]
         emitir({"tipo": "aviso", "chave": causa, "texto": t[causa]})
+    elif rastro["parou_em"] == "extracao" and rastro["redirecionamentos"]:
+        # Pedido de conduta sem alegação: a conduta não pode se perder
+        # (fix-pergunta-e-conduta, D2).
+        emitir({"tipo": "aviso", "chave": "conduta",
+                "texto": "\n\n".join(rastro["redirecionamentos"])})
     elif rastro["parou_em"] == "extracao":
         emitir({"tipo": "aviso", "chave": "sem_alegacao", "texto": t["sem_alegacao"]})
     else:

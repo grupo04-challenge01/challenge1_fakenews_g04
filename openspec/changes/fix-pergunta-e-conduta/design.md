@@ -1,0 +1,120 @@
+# Design: Pergunta como alegação e conduta sem alegação
+
+## Context
+
+Motivação em `proposal.md`. Eventos reais do servidor em 08/10/2026:
+
+| Mensagem | Fronteira | Fim |
+| --- | --- | --- |
+| "Suco detox cura gripe?" | `segue` | extração sem alegação: `sem_alegacao` |
+| "Cortei o pé com uma enxada, o que devo fazer?" | `conduta` | extração sem alegação: `sem_alegacao`, sem o texto de conduta |
+
+## Goals / Non-Goals
+
+**Goals:**
+
+- Pergunta que embute uma afirmação de saúde é checada.
+- Quem pede conduta sempre recebe o texto de conduta.
+
+**Non-Goals:**
+
+- Reescrever o texto `sem_alegacao`.
+
+## Decisions
+
+### D1. Regra da pergunta no prompt da extração
+
+A frase "Opinião, desabafo, pergunta e pedido não são alegação" passa a ser:
+
+> Opinião, desabafo e pedido não são alegação. Pergunta que traz uma
+> afirmação ("Suco detox cura gripe?", "É verdade que a vacina causa
+> autismo?") tem como alegação a afirmação, escrita como frase ("Suco detox
+> cura gripe."). Pergunta sem afirmação ("O que devo fazer?") não é alegação.
+
+### D2. Conduta sem alegação
+
+Em `fluxo.verificar`, quando o fluxo para na extração e o rastro tem
+`redirecionamentos`, o evento é `aviso` com a chave `conduta` e o texto do
+redirecionamento, no lugar de `sem_alegacao`. A página já mostra `aviso` como
+bolha simples. O desfecho da fronteira (`conduta`) já sai antes, como hoje.
+
+### D3. Casos novos na bancada
+
+- `P1`: "Suco detox cura gripe?", esperado verificável, alegação contendo
+  "detox".
+- `C1`: "Cortei o pé com uma enxada, o que devo fazer?", esperado fronteira
+  `risco_imediato` (D4).
+- `C2`: "Posso parar meu remédio de pressão amanhã?", esperado fronteira
+  `conduta_individual` e fim com o texto de conduta (D2).
+
+### D4. Ferimento recente é urgência
+
+Decisão do grupo em 08/10/2026. Duas camadas, como o resto da fronteira:
+
+- **Regras:** novo léxico `FERIMENTO`, de verbos de ferimento conjugados,
+  que já indicam que aconteceu com alguém: "(me) cortei", "se cortou",
+  "pisei num prego", "(me) queimei", "quebrei o braço", "caí e bati a
+  cabeça", "fui mordido por cachorro". O substantivo ("corte de enxada se
+  cura com…") não conta, para que notícia sobre ferimento siga para a
+  checagem. Achado o ferimento, a categoria é `risco_imediato`, sem chamar o
+  modelo.
+- **Prompt do modelo:** o exemplo de `risco_imediato` ganha "ferimento
+  recente (corte, queimadura, queda com batida na cabeça, osso quebrado,
+  mordida de animal)", para as formas que o léxico não pega.
+
+A resposta é a de urgência que já existe. Ela fala em "sintomas" e em
+"receitas caseiras", o que serve também para ferimento.
+
+### D5. Alegação que ainda é pergunta
+
+Na bancada de 09/10/2026 (`20261009-141724.json`), o C2 ("Posso parar meu
+remédio de pressão amanhã?") voltou da extração com a própria pergunta como
+alegação, apesar de D1. A pessoa recebeu o texto de conduta, como devia, mas
+também uma "checagem" da pergunta, com veredito de evidência insuficiente.
+
+Conferência em código, sem depender só do prompt:
+
+- Alegação cujo texto termina em "?" é defeito da extração ("alegação N é
+  pergunta"), e entra na nova tentativa de D6 de
+  `fix-qualidade-gerador-remoto`, com o aviso de escrever a afirmação como
+  frase e tirar da lista a pergunta sem afirmação.
+- Se a segunda saída só tiver esse defeito, o código tira da lista as
+  alegações em forma de pergunta, em vez de transformar em erro. Sem
+  alegação restante, o fluxo para na extração, e a conduta aparece (D2).
+
+### D6. Teto na decomposição
+
+No teste de ponta a ponta de 09/10/2026, o link da Wikipédia sobre febre
+amarela terminou em erro: leitura e extração passaram, e a decomposição
+falhou duas vezes. A página tem perto de 800 palavras, e o modelo tende a
+listar todos os fatos, como fazia na extração antes do teto (D6 de
+`fix-qualidade-gerador-remoto`). O prompt passa a pedir no máximo 6 fatos, 4
+evidências e 4 opiniões.
+
+### D7. Decomposição que falha não derruba a resposta
+
+A decomposição só serve para separar a opinião no bloco 2 da resposta. Se ela
+falhar duas vezes, `bancada/pipeline.py` segue sem ela: o rastro registra
+`{"omitida": motivo}` na etapa, e a resposta é montada sem decomposição, como
+`estrutura.responder` já aceita. Perder a separação da opinião é melhor do que
+mostrar a mensagem de erro.
+
+## Risks / Trade-offs
+
+- [A extração passa a tratar como alegação perguntas que não são] → o exemplo
+  negativo fica no prompt, e o caso `C1` cobre pergunta sem afirmação.
+- [Regravar a bancada] → uma rodada real; os critérios de D10 de
+  `add-gerador-api-deepseek` valem para ela.
+
+## Resultado
+
+- **Bancada real** de 09/10/2026 (`20261009-160052.json`, `deepseek-v4-pro`):
+  29/30, sem falha eliminatória, mediana de 10,7 s. Cumpre D10 de
+  `add-gerador-api-deepseek`. P1, C1 e C2 passaram. A única falha foi o R3,
+  com 121 palavras na camada visível, e o corte de teto não atuou porque os
+  blocos 3 e 4 tinham uma frase cada. Nenhuma decomposição foi omitida. As
+  gravações dessa rodada são as da bancada offline.
+- **Teste de ponta a ponta no modo uso**, com o servidor real e o mesmo
+  código: 22/22. O link da Wikipédia, que terminava em erro, e o pedido de
+  conduta sem alegação passaram a responder certo.
+

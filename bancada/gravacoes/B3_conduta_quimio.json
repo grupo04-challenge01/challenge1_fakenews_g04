@@ -1,21 +1,21 @@
 {
  "chat": {
-  "544919e9f0d78ac1": "{\n  \"categorias\": [\"conduta_individual\", \"checagem\"],\n  \"motivo\": \"Pede opinião sobre largar quimioterapia e questiona veracidade de informação.\"\n}",
-  "7f5a673da50b4a7b": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A quimioterapia mata mais que o câncer\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": \"Minha mãe está pensando em largar a quimio, o que você acha?\"\n}",
-  "bdb7f7e629f76a6e": "{\n  \"fatos\": [\"A quimioterapia mata mais que o câncer.\"],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "f5e282559d575246": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho aborda diretamente a alegação de que a quimioterapia mata mais que o câncer; os trechos tratam de alegações sobre graviola e limão serem mais fortes que a quimioterapia, mas não comparam mortalidade da quimioterapia com a do câncer.\"\n}",
-  "ac1e6e860fb58597": "{\n  \"bloco1\": \"Não encontramos estudos que comparem mortes por quimioterapia e por câncer.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Converse com o médico da sua mãe sobre os riscos e benefícios do tratamento.\",\n  \"bloco4\": \"Procure informações em sites de instituições de saúde, como o INCA ou a Sociedade Brasileira de Oncologia.\"\n}"
+  "438f1ead2dd4d5c4": "{\n  \"categorias\": [\"conduta_individual\"],\n  \"motivo\": \"Pede opinião sobre decisão de saúde da mãe (largar quimio).\"\n}",
+  "7992f492ea32e2b4": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A quimioterapia mata mais que o câncer.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "31a0a9ee02f12377": "{\n  \"fatos\": [\n    \"A quimioterapia mata mais que o câncer.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Minha mãe está pensando em largar a quimio.\"\n  ],\n  \"conclusao\": null\n}",
+  "42d98fce5110c1c1": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho aborda diretamente a alegação de que a quimioterapia mata mais que o câncer; os trechos tratam de alegações sobre graviola e limão serem mais eficazes que a quimioterapia, mas não comparam mortalidade da quimioterapia com a do câncer.\"\n}",
+  "92a4978d7756b6c9": "{\n  \"bloco1\": \"Não encontramos estudos que comparem mortes por quimioterapia e por câncer.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Converse com o médico oncologista da sua mãe antes de qualquer decisão.\",\n  \"bloco4\": \"Procure informações em sites de instituições como o INCA ou a Sociedade Brasileira de Oncologia Clínica.\"\n}"
  },
  "busca": {
-  "c5fe04ec15708a3e": {
+  "3619645b84753a9f": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "35f0e96098-00",
      "fragmento_id": "35f0e96098-00-01",
-     "score": 0.6823838949203491,
+     "score": 0.6652833223342896,
      "score_lexico": 15.961397171020508,
-     "score_denso": 0.8836574554443359,
+     "score_denso": 0.8474234342575073,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -30,9 +30,9 @@
     {
      "unidade_id": "c304b62cc6-01",
      "fragmento_id": "c304b62cc6-01-00",
-     "score": 0.6605256199836731,
+     "score": 0.6496997475624084,
      "score_lexico": 13.195988655090332,
-     "score_denso": 0.8770076036453247,
+     "score_denso": 0.8445143103599548,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "lupa",
@@ -45,28 +45,28 @@
      "trecho": "Post feito no Facebook e que já tinha mais de 203 mil compartilhamentos às 20h do dia 14 de janeiro de 2019\n\n\nEssa informação falsa circula nas redes desde, pelo menos, 2011. Inicialmente, essa “pesquisa” era atribuída ao Instituto de Ciências da Saúde de Baltimore, que, segundo o site americano de fact-checking Snopes, negou ter publicado levantamento dizendo que limão é melhor do que quimioterapia.\nO que, de fato, se sabe é que há estudos que apontam que o consumo de limão e de outras frutas cítricas pode ajudar a prevenir o câncer. Entretanto, não há qualquer estudo científico que comprove que o limão ajuda a “matar” células de câncer ou tenha qualquer propriedade que sirva de remédio para pessoas que já foram diagnosticadas com a doença."
     },
     {
-     "unidade_id": "ecee0343da-00",
-     "fragmento_id": "ecee0343da-00-04",
-     "score": 0.638959527015686,
-     "score_lexico": 12.517951011657715,
-     "score_denso": 0.8703246116638184,
+     "unidade_id": "c59290949f-00",
+     "fragmento_id": "c59290949f-00-00",
+     "score": 0.630917489528656,
+     "score_lexico": 14.67821979522705,
+     "score_denso": 0.8397865295410156,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2013-07-23",
-     "url": "https://www.boatos.org/saude/limao-congeladocura-cancer-hoax.html",
-     "alegacao": "Limão congelado cura câncer e é mais forte que quimioterapia #boato",
+     "data_publicacao": "2014-05-27",
+     "url": "https://www.boatos.org/saude/hoax-graviola-cura-cancer-e-e-mais-eficiente-que-quimioterapia.html",
+     "alegacao": "Graviola cura câncer e é mais eficiente que quimioterapia #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "s surpreendentes do limão: O limão (citrus) é um fruto milagroso para matar as células cancerígenas. É 10 000 vezes mais forte do que a quimioterapia. Porque é que não sabíamos nada disto? Porque existem laboratórios interessados em fazer uma versão sintética, que lhes dará enormes lucros. Você pode ajudar um amigo ao informá-lo que o sumo de limão é vantajoso no tratamento do cancro. O seu sabor é agradável e não provoca os efeitos secundários da quimioterapia.Quantas pessoas morrem, enquanto este segredo é mantido para não pôr em perigo os interesses milionários da indústria farmacêutica? Como sabemos, o limoeiro é conhecido pela sua variedade de limões e limas. Você pode comer as frutas de diferentes maneiras: a polpa, o sumo, preparação de bebidas, sorvetes, bolos, etc… Apesar de um leque variado de benefícios do consumo do limão, o mais interessante é o efeito que produz sobre os quistos e tumores. O limão é uma solução comprovada para todas as variantes do cancro.Ele é considerado também um espectro anti-microbiano contra infecções bacterianas e fungos."
+     "trecho": "Você já deve ter ouvido falar em vários alimentos que previnem o câncer, e também outros que causam a doença. Desde aquela sua vizinha que diz que você deve consumir determinado produto, até aqueles textos na internet com dicas bizarras. O boato da vez fala que o câncer tem cura e que a solução é a graviola.Um texto que se espalha pela internet diz que a graviola é um produto capaz de matar células cancerosas e é mais eficaz que quimioterapia. A cura mágica ou a prevenção seria pelo suco de graviola. Quem precisasse, deveria plantar a árvore de graviola em sua casa, pois outras partes da fruta também seriam úteis.O texto diz que a fonte da informação era um dos maiores fabricantes de medicamentos do mundo, que teria feito mais de 20 testes de laboratórios que revelaram que o alimento destrói as células malignas em 12 tipos cancros, como cólon, mama, próstata, pulmão, pâncreas entre outras.O texto reforça que o sabor da fruta é agradável e que não produz efeitos colaterais como, por exemplo, na quimioterapia."
     },
     {
      "unidade_id": "f1e11d9eff-00",
      "fragmento_id": "f1e11d9eff-00-01",
-     "score": 0.6385499835014343,
+     "score": 0.6270495057106018,
      "score_lexico": 19.498626708984375,
-     "score_denso": 0.8675803542137146,
+     "score_denso": 0.8378751277923584,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -79,21 +79,21 @@
      "trecho": "de graviola como uma arma para tratar o câncer. Leia a mensagem que circula online, escute o áudio e leia a transcrição.Texto: Dr. Rafael Onuki Sato. ONCOLOGISTA EM LONDRINA Formado em Medicina pela Universidade Estadual de Londrina (UEL), possui residência em Cirurgia Geral pela Faculdade de Medicina de Marília (FAMEMA) e em Cirurgia Oncológica pelo Hospital de Câncer de Barretos.Transcrição: repito, acetogeninas contidas nas folhas e no fruto de graviola mata células cancerosas 10 mil vezes mais do que a própria quimioterapia. Hoje o que temos de melhor dentro da medicina é a quimioterapia e a radioterapia. Agora você se depara com a natureza e os médicos descobrem que a graviola, ela, tem uma extraordinária capacidade de destruir, de fagocitar. Ou seja, matar células cancerosas dez mil vezes mais rápido do que a própria quimioterapia."
     },
     {
-     "unidade_id": "c59290949f-00",
-     "fragmento_id": "c59290949f-00-00",
-     "score": 0.6356217265129089,
-     "score_lexico": 14.67821979522705,
-     "score_denso": 0.8683117628097534,
+     "unidade_id": "d4f3766b39-00",
+     "fragmento_id": "d4f3766b39-00-02",
+     "score": 0.6213797926902771,
+     "score_lexico": 9.304778099060059,
+     "score_denso": 0.8399089574813843,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2014-05-27",
-     "url": "https://www.boatos.org/saude/hoax-graviola-cura-cancer-e-e-mais-eficiente-que-quimioterapia.html",
-     "alegacao": "Graviola cura câncer e é mais eficiente que quimioterapia #boato",
+     "data_publicacao": "2018-07-29",
+     "url": "https://www.boatos.org/saude/limao-mata-cancer-medico.html",
+     "alegacao": "Limão combate e mata as células do câncer, diz médico oncologista #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "Você já deve ter ouvido falar em vários alimentos que previnem o câncer, e também outros que causam a doença. Desde aquela sua vizinha que diz que você deve consumir determinado produto, até aqueles textos na internet com dicas bizarras. O boato da vez fala que o câncer tem cura e que a solução é a graviola.Um texto que se espalha pela internet diz que a graviola é um produto capaz de matar células cancerosas e é mais eficaz que quimioterapia. A cura mágica ou a prevenção seria pelo suco de graviola. Quem precisasse, deveria plantar a árvore de graviola em sua casa, pois outras partes da fruta também seriam úteis.O texto diz que a fonte da informação era um dos maiores fabricantes de medicamentos do mundo, que teria feito mais de 20 testes de laboratórios que revelaram que o alimento destrói as células malignas em 12 tipos cancros, como cólon, mama, próstata, pulmão, pâncreas entre outras.O texto reforça que o sabor da fruta é agradável e que não produz efeitos colaterais como, por exemplo, na quimioterapia."
+     "trecho": "amento contra a doença só para usar o limão porque um médico recomendou, calma lá. A pessoa do vídeo não é um médico oncologista.O nome do próprio Dr. Rafael já foi utilizado em outro boato desmentido por aqui: o que fala que o chá da folha de graviola cura o câncer. À época, o próprio médico não só desmentiu que havia gravado um áudio recomendando o uso do chá da fruta contra o câncer como falou a que era contra receitas alternativas. Leia o que ele falou na época:Gostaria também de enfatizar neste documento que na qualidade de Cirurgião Oncológico, sou totalmente contra o conteúdo veiculado no audio, e para referências futuras, contra qualquer tipo de medicina alternativa ao tratamento convencional como substituição ao tratamento do câncer, a menos que devidamente testada e aprovada por órgãos competentes e com extensos trabalhos científicos e pesquisas, com a ressalva óbvia dos protocolos de pesquisa cientifica das grandes instituições de referência no assunto.Já deu para ver que não foi o Dr."
     }
    ],
    "coberto": true,

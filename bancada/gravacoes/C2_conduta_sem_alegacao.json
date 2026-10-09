@@ -1,0 +1,8 @@
+{
+ "chat": {
+  "8c74865604a2e0bb": "{\"categorias\":[\"conduta_individual\"],\"motivo\":\"Pergunta sobre parar medicação pessoal.\"}",
+  "ff2b259fd8ee21f0": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Posso parar meu remédio de pressão amanhã?\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "16cfd839a0550d94": "{\n  \"alegacoes\": [],\n  \"opiniao\": null\n}"
+ },
+ "busca": {}
+}

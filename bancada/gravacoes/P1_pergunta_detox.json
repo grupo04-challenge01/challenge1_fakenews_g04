@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "ff3e4e2dc2e8abd0": "{\"categorias\": [\"checagem\"], \"motivo\": \"Pergunta se uma informação é verdadeira.\"}",
+  "053586b98324105d": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Suco detox cura gripe.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "ca8fdaea867ed284": "{\n  \"fatos\": [],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "84b614a1fc852a6e": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona suco detox ou sua relação com a cura da gripe.\"\n}",
+  "3a7d87d2a7fcc8fe": "{\n  \"bloco1\": \"Não encontramos estudos sobre suco detox curar gripe.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Procure fontes confiáveis, como sites de saúde ou médicos.\",\n  \"bloco4\": \"Você pode buscar em sites de universidades ou órgãos de saúde.\"\n}"
+ },
+ "busca": {
+  "6f0198785166a726": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "1958051c4b-00",
+     "fragmento_id": "1958051c4b-00-00",
+     "score": 0.6189574003219604,
+     "score_lexico": 10.48610782623291,
+     "score_denso": 0.8455091714859009,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-04-06",
+     "url": "https://www.boatos.org/saude/cha-erva-doce-cura-h1n1-formula-tamiflu.html",
+     "alegacao": "Chá de erva-doce cura a gripe H1N1 e é a fórmula do Tamiflu #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Boato – Tomar chá de erva-doce é a melhor forma de se curar da gripe H1N1 já que a fórmula do Tamiflu, principal remédio para o tratamento dos sintomas, é feita da planta.O outono começou não faz muito tempo e em algumas regiões do país, como Sul e Sudeste, já dá para sentir a queda da temperatura. Com a chegada do friozinho e, muito em breve, do inverno que dizem será o mais rigoroso da última década, já começam a se manifestar por aí as preocupações com doenças sazonais como a gripe.Na internet, o receio paira especialmente ao redor da H1N1, que segundo diversos áudios circulando via WhatsApp, já está infectando e matando muita gente no Brasil. Nesse contexto, uma corrente está ganhando força no aplicativo ao informar que o chá de erva-doce é a cura para a H1N1 e que a fórmula do medicamento Tamiflu (um dos principais no tratamento dos sintomas) é justamente a erva-doce. Confira:Confira o desmentido em vídeo:O chá de erva-doce tem a mesma substância que o medicamento TAMIFLU, remédio que todas as vítimas da gripe A – H1N1 toma."
+    },
+    {
+     "unidade_id": "c7822447bb-00",
+     "fragmento_id": "c7822447bb-00-01",
+     "score": 0.6176096200942993,
+     "score_lexico": 5.777321815490723,
+     "score_denso": 0.8494229316711426,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-01-27",
+     "url": "https://www.boatos.org/saude/diretor-do-hc-preocupado-nova-gripe-recomenda-cha-de-erva-doce.html",
+     "alegacao": "Diretor do HC, preocupado com nova gripe, recomenda chá de erva-doce no lugar de Tamiflu #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "mão do chá de erva-doce. Ele seria um remédio que poderia substituir o Tamiflu para matar o vírus Influenza e deveria ser bebido “como se fosse café”. Leia a mensagem que circula online.Cuidado com a desinformação em relação coronavírus (confira 7 fake news no vídeo:<span data-mce-type=\"bookmark\" style=\"display: inline-block; width: 0px; overflow: hidden; line-height: 0;\" class=\"mce_SELRES_start\">﻿</span>Diretor do HC (Hospital das Clínicas) preocupado com a nova gripe, faz as seguintes recomendações: – Fazer do álcool gel o nossso aliado. – Começar a tomar vitamina C urgente, cuidar das crianças. – Lavar as mãos muitas vezes ao dia. – evitar locais onde haja multidão; – tomar vitamina C; – comer fígado de boi; – ingerir sucos de acerola e laranja. – Tomar chá de erva-doce duas vezes ao dia.ERVA-DOCE O chá de erva-doce tem a mesma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições."
+    },
+    {
+     "unidade_id": "5231a0bf09-00",
+     "fragmento_id": "5231a0bf09-00-01",
+     "score": 0.6140828728675842,
+     "score_lexico": 6.58558988571167,
+     "score_denso": 0.8473536968231201,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2019-04-24",
+     "url": "https://g1.globo.com/fato-ou-fake/noticia/2019/04/24/e-fake-que-diretor-do-hc-mandou-mensagem-com-dicas-para-evitar-gripe-e-que-tamiflu-e-feito-de-erva-doce.ghtml",
+     "alegacao": "É #FAKE que diretor do HC mandou mensagem com dicas para evitar gripe e que Tamiflu é feito de erva-doce",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Roche, é composto por fosfato de oseltamivir – princípio ativo que consta em bula aprovada no Brasil pela Agência Nacional de Vigilância Sanitária –, além de alguns excipientes, que são substâncias complementares à massa ou volume especificados em produtos farmacêuticos. Deste modo, não há, na composição de Tamiflu®, o anis estrelado ou a erva-doce\", diz a nota.As recomendações contidas na nota como se fossem do diretor do HC (e não são) também não são totalmente verdadeiras, de acordo com a infectologista Regia Damous, do Hospital e Maternidade São Luiz Itaim.Segundo ela, por exemplo, não existe comprovação cientifica de que comer fígado de boi seja um aliado no combate à gripe. Sobre a vitamina C, ela diz: \"A vitamina C, na verdade, é aliada da saúde, pode amenizar os sintomas da gripe, mas não é o remédio correto para as doenças. Como a gripe é uma doença que tem um período limitado e determinado – que chamamos de autolimitada – na maioria dos casos basta o tratamento de suporte, com analgésicos, antitérmicos, repouso e hidratação."
+    },
+    {
+     "unidade_id": "1723fa79aa-00",
+     "fragmento_id": "1723fa79aa-00-04",
+     "score": 0.6113033890724182,
+     "score_lexico": 9.951950073242188,
+     "score_denso": 0.8436859846115112,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2018-07-02",
+     "url": "https://www.boatos.org/saude/mel-nao-estraga-cura-doencas.html",
+     "alegacao": "Mel é o único alimento que não estraga e cura quase todas doenças #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": ", quando o assunto é gripe. Pois bem, o mel vai agir aliviando os sintomas, mas isso não significa a cura, isso porque a gripe é causada por um vírus. Neste caso, só serve para ameniz os sintomas da doença porque ela é autolimitada, ou seja, irá embora naturalmente após cumprir seu ciclo.No caso das outras doenças, a própria descrição do texto já mostra o contrário. Afinal, um dos exemplos são as doenças cardíacas. A própria descrição aponta o mel como um agente de prevenção (reduzindo o colesterol, por exemplo) e não de cura.  Nem precisamos dizer que o mesmo pode ser dito sobre outras doenças citadas na mensagem.Some tudo isso ao fato de que a fonte citada na mensagem é um site chamado “Weekly World News” (escrito erroneamente como New) que, inclusive, é conhecido por publicar notícias falsas. Vale dizer que o Snopes, site estrangeiro que desmente boatos na internet, classificou a “informação” como exagerada.Resumindo: a história de que o mel é o único alimento que não estraga e, com canela, cura quase todas doenças é falsa."
+    },
+    {
+     "unidade_id": "f308f09db9-00",
+     "fragmento_id": "f308f09db9-00-01",
+     "score": 0.6098984479904175,
+     "score_lexico": 9.538991928100586,
+     "score_denso": 0.8435697555541992,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-02-07",
+     "url": "https://www.boatos.org/saude/cha-erva-doce-cura-novo-coronavirus-diretor-hc.html",
+     "alegacao": "Chá de erva-doce cura o novo coronavírus, diz diretor do HC #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "eria componentes da fórmula do Tamiflu (remédio utilizado em tratamentos contra doenças como o H1N1 e gripe aviária). No final, pede compartilhamento. Leia a mensagem que circula online:Atenção! Não acredite em cura milagrosa do novo coronavírusCuidado com a desinformação em relação coronavírus (confira 7 fake news no vídeo:<span data-mce-type=\"bookmark\" style=\"display: inline-block; width: 0px; overflow: hidden; line-height: 0;\" class=\"mce_SELRES_start\">﻿</span>Diretor do Hospital das Clínicas (HC) preocupado com a nova gripe (coronavírus), faz as seguintes *recomendações*: – Fazer do álcool gel o nossso aliado. – Começar a tomar vitamina C urgente. – Lavar as mãos muitas vezes ao dia. – Evitar locais onde haja multidão; – Comer fígado de boi; – Ingerir sucos de acerola e laranja. – Tomar chá de erva-doce duas vezes ao dia._ERVA-DOCE_ O chá de erva-doce tem a mesma substância que o medicamento TAMIFLU, o remédio usado para tratar a gripe A – H1N1. Aconselha-se tomar o chá como se fosse café, após as refeições."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

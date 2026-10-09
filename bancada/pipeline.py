@@ -173,7 +173,15 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
         alegacao = ext.selecionada["texto"]
         aviso = leitura.AVISO_PARCIAL if lido is not None and lido.parcial else None
 
-        dec = etapa("decomposicao", lambda: decomposicao.decompor(alvo, chat=chat))
+        def decompor():
+            # A decomposição só separa a opinião no bloco 2: falhando duas vezes,
+            # a resposta segue sem ela, em vez de virar erro (fix-pergunta-e-conduta, D7).
+            try:
+                return decomposicao.decompor(alvo, chat=chat)
+            except ValueError as e:
+                return {"omitida": str(e)}
+
+        dec = etapa("decomposicao", decompor)
         trechos, _ = etapa("recuperacao", lambda: _recuperar(recuperador, alegacao, k, modo, idioma),
                            lambda par: par[1])
         veredito = etapa("guarda", lambda: guarda.verificar(alegacao, trechos, chat=chat,
@@ -181,7 +189,8 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
         # Decisão 29: a resposta vê os fragmentos vizinhos das checagens citadas.
         expandir = lambda ts: recuperador.expandir(alegacao, ts, modo=modo)  # noqa: E731
         resp = etapa("resposta", lambda: estrutura.responder(
-            alvo, alegacao, veredito, decomposicao=asdict(dec), lacuna=lacuna, chat=chat,
+            alvo, alegacao, veredito,
+            decomposicao=None if isinstance(dec, dict) else asdict(dec), lacuna=lacuna, chat=chat,
             expandir=expandir, aviso=aviso),
             lambda r: {**asdict(r), "texto": r.texto})
         rastro["resposta"] = {"forma": resp.forma, "texto": resp.texto,

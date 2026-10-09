@@ -34,6 +34,8 @@ Separe em:
   Se a mensagem não tira conclusão, use null.
 
 Cada frase da mensagem vai para um lugar só: o que é opinião não entra em fatos.
+Liste no máximo 6 fatos, 4 evidências e 4 opiniões, as que mais importam para o
+que a mensagem quer convencer.
 Pergunta ou exclamação de quem mandou a mensagem ("Isso é verdade?",
 "Absurdo!") não é fato, opinião nem conclusão: deixe de fora.
 O salto explica o que falta entre fato e conclusão.
