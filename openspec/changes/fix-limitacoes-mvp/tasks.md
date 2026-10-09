@@ -22,5 +22,5 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 ## 4. Verificação
 
 - [x] 4.1 Rodada real da bancada, que regrava as gravações e cumpre D10
-- [ ] 4.2 Teste de ponta a ponta nos modos uso e piloto
+- [x] 4.2 Teste de ponta a ponta nos modos uso e piloto
 - [x] 4.3 Suíte verde e `openspec validate fix-limitacoes-mvp --strict`

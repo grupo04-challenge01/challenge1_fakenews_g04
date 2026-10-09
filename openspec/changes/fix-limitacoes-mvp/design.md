@@ -95,7 +95,7 @@ outra alegação, e a conferência barrou.
   "contraindicada durante a gestação", o bloco 1 do X2). As duas falhas (R3,
   L01) são de forma: bloco 3 de uma frase só, apontada pelo juiz e mantida com
   o defeito registrado. As gravações dessa rodada são as da bancada offline.
-- **Teste de ponta a ponta no modo uso**, com o servidor real: 22/22. O termo
+- **Teste de ponta a ponta**, com o servidor real: modo uso 22/22, modo piloto 9/9. O termo
   aparece em seis parágrafos, e a resposta do F01 não traz mais "50% se
   refere a casos raros" nem "a vacina é segura para a maioria".
 
