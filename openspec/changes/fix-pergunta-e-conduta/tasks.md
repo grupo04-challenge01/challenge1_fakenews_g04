@@ -24,6 +24,10 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
       tentativa; a segunda saída com pergunta perde essas alegações em vez de
       virar erro
 
+- [x] 3.4 Teto de 6 fatos, 4 evidências e 4 opiniões no prompt da decomposição (D6)
+- [x] 3.5 Teste e implementação de D7: decomposição que falha duas vezes vira
+      `{"omitida": motivo}`, e a resposta segue
+
 ## 4. Bancada
 
 - [x] 4.1 Casos `P1`, `C1` e `C2` em `bancada/casos.json` (D3)

@@ -164,3 +164,8 @@ def test_duas_saidas_com_defeito_levantam_value_error():
 def test_prompt_deixa_de_fora_pergunta_e_exclamacao_e_salto_sem_veredito():
     assert "Isso é verdade?" in SISTEMA and "não é fato, opinião nem conclusão" in SISTEMA
     assert "Não diga se algo é verdadeiro ou falso nele." in SISTEMA
+
+
+def test_prompt_limita_fatos_evidencias_e_opinioes():
+    # fix-pergunta-e-conduta, D6: página longa cortava a saída no limite de tokens.
+    assert "no máximo 6 fatos, 4 evidências e 4 opiniões" in SISTEMA

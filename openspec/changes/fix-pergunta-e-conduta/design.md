@@ -82,6 +82,23 @@ Conferência em código, sem depender só do prompt:
   alegações em forma de pergunta, em vez de transformar em erro. Sem
   alegação restante, o fluxo para na extração, e a conduta aparece (D2).
 
+### D6. Teto na decomposição
+
+No teste de ponta a ponta de 09/10/2026, o link da Wikipédia sobre febre
+amarela terminou em erro: leitura e extração passaram, e a decomposição
+falhou duas vezes. A página tem perto de 800 palavras, e o modelo tende a
+listar todos os fatos, como fazia na extração antes do teto (D6 de
+`fix-qualidade-gerador-remoto`). O prompt passa a pedir no máximo 6 fatos, 4
+evidências e 4 opiniões.
+
+### D7. Decomposição que falha não derruba a resposta
+
+A decomposição só serve para separar a opinião no bloco 2 da resposta. Se ela
+falhar duas vezes, `bancada/pipeline.py` segue sem ela: o rastro registra
+`{"omitida": motivo}` na etapa, e a resposta é montada sem decomposição, como
+`estrutura.responder` já aceita. Perder a separação da opinião é melhor do que
+mostrar a mensagem de erro.
+
 ## Risks / Trade-offs
 
 - [A extração passa a tratar como alegação perguntas que não são] → o exemplo

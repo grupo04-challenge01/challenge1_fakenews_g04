@@ -120,10 +120,11 @@ def test_limiar_derruba_para_insuficiente():
 
 
 def test_erro_de_etapa_fica_no_rastro_e_para():
-    saidas = {**SAIDAS, decomposicao.SISTEMA: {"nada": 1}}
+    # A decomposição deixou de parar o fluxo (fix-pergunta-e-conduta, D7); a guarda para.
+    saidas = {**SAIDAS, classificacao.SISTEMA: {"nada": 1}}
     rastro = executar("msg", Recuperador(), chat=chat_fixo(saidas))
-    assert rastro["parou_em"] == "decomposicao" and rastro["motivo"] == "erro"
-    assert "ValueError" in etapa_de(rastro, "decomposicao")["erro"]
+    assert rastro["parou_em"] == "guarda" and rastro["motivo"] == "erro"
+    assert "ValueError" in etapa_de(rastro, "guarda")["erro"]
     checks = avaliar({"esperado": {}}, rastro)
     assert any(c["check"] == "sem erro" and not c["ok"] for c in checks)
 
@@ -304,3 +305,20 @@ def test_resumo_conta_casos_com_corte():
             {"etapa": "resposta", "saida": {"cortadas": cortadas}}]}}
     r = resumir([caso("A", ["Dica."]), caso("B", []), {"id": "C", "passou": True, "checks": []}])
     assert r["cortes"] == ["A"]
+
+
+# ---- decomposição que falha não derruba a resposta (fix-pergunta-e-conduta, D7) -------
+
+def test_decomposicao_que_falha_duas_vezes_segue_sem_ela():
+    base = chat_fixo()
+
+    def chat(sistema, usuario):
+        if sistema == decomposicao.SISTEMA:
+            return '{"fatos": ["cortado no meio'
+        return base(sistema, usuario)
+    rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat)
+    assert rastro["motivo"] != "erro"
+    assert rastro["resposta"]["forma"] == "com evidência"
+    registro = etapa_de(rastro, "decomposicao")
+    assert "erro" not in registro
+    assert registro["saida"] == {"omitida": "saída não é JSON"}

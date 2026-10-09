@@ -39,6 +39,9 @@ com a DeepSeek, que segue o prompt ao pé da letra.
 - **MODIFICADO (código e prompt)** fronteira: ferimento recente (corte,
   queimadura, queda com batida na cabeça, osso quebrado, mordida de animal,
   prego) é risco imediato, pelas regras e pelo prompt do modelo.
+- **MODIFICADO (prompt e código)** decomposição: no máximo 6 fatos, 4
+  evidências e 4 opiniões; se falhar duas vezes, a resposta segue sem ela, em
+  vez de mostrar erro (D6, D7). Achado do teste com um link real.
 - **NOVO (dados)** três casos na bancada, `P1` ("Suco detox cura gripe?"),
   `C1` ("Cortei o pé…", urgência) e `C2` (pedido de conduta sem alegação),
   com gravação real.

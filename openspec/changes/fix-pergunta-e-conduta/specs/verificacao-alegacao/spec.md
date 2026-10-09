@@ -33,3 +33,49 @@ afirmação como alegação; pergunta sem afirmação MUST NOT virar alegação.
 - **WHEN** a extração roda
 - **THEN** a alegação selecionada é "Suco detox cura gripe." ou equivalente
 - **AND** a verificação segue para a recuperação
+
+### Requirement: Separação entre tipo de afirmação e valor de verdade
+
+O sistema SHALL decompor a mensagem distinguindo **fato** (afirmação
+verificável), **evidência** (o que sustenta a afirmação, e com que força) e
+**opinião** (juízo que não se resolve por verificação). A decomposição SHALL
+aparecer no bloco 2 da resposta, definido em `resposta-formativa`, e SHALL ser
+independente do veredito: o sistema MUST NOT tratar presença de opinião como
+indício de falsidade, nem evidência fraca como veredito `falso`. Pergunta ou
+exclamação de quem mandou a mensagem MUST NOT entrar como fato, opinião ou
+conclusão. Decomposição com defeito SHALL ter uma nova tentativa, com os
+defeitos informados ao modelo. Se a segunda saída também tiver defeito, a
+resposta SHALL seguir sem a decomposição, e MUST NOT virar erro para a pessoa.
+A decomposição SHALL listar no máximo 6 fatos, 4 evidências e 4 opiniões.
+
+#### Scenario: Mensagem que mistura os três
+- **WHEN** a mensagem combina fato verificável, evidência frágil e opinião no
+  mesmo texto
+- **THEN** o sistema mostra qual parte é fato, qual é a evidência apresentada e
+  qual é opinião
+- **AND** verifica apenas a parte factual
+- **AND** explica que a parte de opinião não é objeto de verificação
+
+#### Scenario: Fato verdadeiro sustentando conclusão que não decorre
+- **WHEN** a mensagem apoia-se em fato verdadeiro para concluir algo que a
+  evidência não sustenta
+- **THEN** o sistema confirma o fato
+- **AND** aponta que o salto está entre a evidência e a conclusão, não no fato
+- **AND** não classifica a mensagem inteira como `verdadeiro`
+
+#### Scenario: Pergunta de quem mandou
+- **GIVEN** a mensagem "Absurdo: enterraram uma menina em caixão lacrado como covid e depois o exame deu negativo. Isso é verdade?"
+- **WHEN** a decomposição roda
+- **THEN** "Isso é verdade?" não aparece em fatos, opiniões nem conclusão
+
+#### Scenario: Nova tentativa
+- **GIVEN** uma primeira saída com opinião repetida como fato
+- **WHEN** a decomposição roda
+- **THEN** o modelo recebe um segundo pedido com o defeito listado
+- **AND** a segunda saída sem defeito é usada
+
+#### Scenario: Decomposição que falha duas vezes
+- **GIVEN** uma página longa cuja decomposição sai cortada nas duas tentativas
+- **WHEN** a verificação roda
+- **THEN** a resposta sai, sem a separação da opinião no bloco 2
+- **AND** o rastro registra a decomposição como omitida, com o motivo
