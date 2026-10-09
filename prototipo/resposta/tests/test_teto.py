@@ -54,7 +54,9 @@ def test_corte_alterna_pelo_bloco_com_mais_frases_e_deixa_uma_em_cada():
 
 def test_sem_frase_para_tirar_o_defeito_de_tamanho_fica():
     gigante = " ".join(["palavra"] * 130) + "."
-    longa = {**BLOCOS_FALSO, "bloco3": "Técnica: cura milagrosa.", "bloco4": gigante}
+    # Bloco 2 com uma frase só: depois de fix-limitacoes-mvp (D3) ele também é cortável.
+    longa = {**BLOCOS_FALSO, "bloco2": BLOCOS_FALSO["bloco2"][:1],
+             "bloco3": "Técnica: cura milagrosa.", "bloco4": gigante}
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_sempre(longa))
     assert r.cortadas == []
     assert any(d.startswith("camada visível") for d in r.defeitos)
@@ -83,3 +85,17 @@ def test_corte_roda_depois_da_nova_tentativa():
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
     assert len(pedidos) == 2
     assert _palavras(r) <= TETO_PALAVRAS and r.cortadas
+
+
+# ---- corte no bloco 2 (fix-limitacoes-mvp, D3) ---------------------------------------
+
+def test_blocos_3_e_4_curtos_cortam_o_fim_do_bloco_2_e_nunca_o_bloco_1():
+    frase = {"frase": "As checagens não acharam estudo sobre o jatobá e o câncer.", "trecho": "T1"}
+    longa = {**BLOCOS_FALSO, "bloco2": [frase] * 9, "bloco3": "Técnica: cura milagrosa.",
+             "bloco4": "Desconfie de promessa de cura simples."}
+    sem_corte_b1 = responder(MENSAGEM, ALEGACAO, FALSO, chat=_sempre(BLOCOS_FALSO)).blocos[0]
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_sempre(longa))
+    assert _palavras(r) <= TETO_PALAVRAS
+    assert r.blocos[0] == sem_corte_b1
+    assert r.blocos[1].count("As checagens") >= 1
+    assert r.cortadas and all("As checagens" in f for f in r.cortadas)

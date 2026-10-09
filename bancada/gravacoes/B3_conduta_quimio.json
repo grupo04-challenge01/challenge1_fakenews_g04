@@ -1,10 +1,10 @@
 {
  "chat": {
-  "438f1ead2dd4d5c4": "{\n  \"categorias\": [\"conduta_individual\"],\n  \"motivo\": \"Pede opinião sobre decisão de saúde da mãe (largar quimio).\"\n}",
+  "438f1ead2dd4d5c4": "{\n  \"categorias\": [\"conduta_individual\", \"checagem\"],\n  \"motivo\": \"Pede opinião sobre interromper quimioterapia da mãe e questiona veracidade de afirmação.\"\n}",
   "7992f492ea32e2b4": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A quimioterapia mata mais que o câncer.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
-  "31a0a9ee02f12377": "{\n  \"fatos\": [\n    \"A quimioterapia mata mais que o câncer.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [\n    \"Minha mãe está pensando em largar a quimio.\"\n  ],\n  \"conclusao\": null\n}",
-  "42d98fce5110c1c1": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho aborda diretamente a alegação de que a quimioterapia mata mais que o câncer; os trechos tratam de alegações sobre graviola e limão serem mais eficazes que a quimioterapia, mas não comparam mortalidade da quimioterapia com a do câncer.\"\n}",
-  "92a4978d7756b6c9": "{\n  \"bloco1\": \"Não encontramos estudos que comparem mortes por quimioterapia e por câncer.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Converse com o médico oncologista da sua mãe antes de qualquer decisão.\",\n  \"bloco4\": \"Procure informações em sites de instituições como o INCA ou a Sociedade Brasileira de Oncologia Clínica.\"\n}"
+  "31a0a9ee02f12377": "{\n  \"fatos\": [\n    \"A quimioterapia mata mais que o câncer.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "42d98fce5110c1c1": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho aborda a alegação de que a quimioterapia mata mais que o câncer; os trechos tratam de alegações sobre graviola e limão serem mais eficazes que a quimioterapia.\"\n}",
+  "e4379b79c75c009f": "{\n  \"bloco1\": \"Procurei estudos que comparassem mortes por quimioterapia e por câncer.\",\n  \"bloco2\": \"Não encontrar estudos não é o mesmo que desmentir a afirmação.\",\n  \"bloco3\": \"Converse com o oncologista da sua mãe sobre os riscos e benefícios do tratamento.\",\n  \"bloco4\": \"Procure informações em sites de instituições como o INCA ou a Sociedade Brasileira de Oncologia Clínica.\"\n}"
  },
  "busca": {
   "3619645b84753a9f": {

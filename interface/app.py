@@ -67,7 +67,8 @@ def _termo(config, textos):
     if config.gerador != "deepseek":
         return None
     recusa = textos["recusa-local"] if config.alternativa_local else textos["recusa"]
-    return {"versao": TERMO_VERSAO, "texto": _junto(textos["termo-servico-externo"]),
+    paragrafos = textos["termo-servico-externo"].split("\n\n")  # fix-limitacoes-mvp, D2
+    return {"versao": TERMO_VERSAO, "texto": "\n\n".join(_junto(p) for p in paragrafos),
             "recusa": _junto(recusa), "alternativa": config.alternativa_local}
 
 

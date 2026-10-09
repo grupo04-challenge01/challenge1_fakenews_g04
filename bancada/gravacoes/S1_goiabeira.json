@@ -1,10 +1,10 @@
 {
  "chat": {
-  "eedea8230a1deb8f": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"Pergunta se uma informação é verdadeira\"\n}",
+  "eedea8230a1deb8f": "{\"categorias\": [\"checagem\"], \"motivo\": \"Pergunta se uma informação é verdadeira.\"}",
   "e12bbde08decff2e": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Chá de folha de goiabeira cura a dengue em 24 horas.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
   "7e2a2bdc42e35f39": "{\n  \"fatos\": [\"Chá de folha de goiabeira cura a dengue em 24 horas.\"],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
   "fafc3fee43d60641": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona chá de folha de goiabeira ou cura da dengue em 24 horas.\"\n}",
-  "9f42f4e88501275b": "{\n  \"bloco1\": \"Não encontramos estudos confiáveis sobre chá de folha de goiabeira curando dengue em 24 horas.\",\n  \"bloco2\": \"Não encontrar evidência não é o mesmo que desmentir a mensagem.\",\n  \"bloco3\": \"Pergunte a um médico ou profissional de saúde sobre tratamentos para dengue. Desconfie de promessas de cura rápida.\",\n  \"bloco4\": \"Procure em sites de instituições de saúde, como o Ministério da Saúde ou a OMS.\"\n}"
+  "9f42f4e88501275b": "{\n  \"bloco1\": \"Não encontramos estudos que mostrem que chá de folha de goiabeira cura a dengue em 24 horas.\",\n  \"bloco2\": \"Não encontrar estudos não é o mesmo que desmentir a mensagem.\",\n  \"bloco3\": \"Você pode perguntar a um médico ou profissional de saúde sobre tratamentos para dengue.\",\n  \"bloco4\": \"Procure informações em sites de saúde confiáveis, como o Ministério da Saúde ou a Organização Mundial da Saúde.\"\n}"
  },
  "busca": {
   "9e9070ed02816d53": {

@@ -1,21 +1,22 @@
 {
  "chat": {
-  "05ba5f5274a56aec": "{\"categorias\":[\"checagem\"],\"motivo\":\"A mensagem afirma que a casca do jatobá cura o câncer, o que é uma informação de saúde a ser verificada.\"}",
-  "3b56d5380db43734": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A casca do jatobá triturada cura o câncer\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Um médico do interior confirmou que a casca do jatobá triturada cura o câncer\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
-  "fed613f58271bb53": "{\n  \"fatos\": [\n    \"A casca do jatobá triturada cura o câncer.\",\n    \"Um médico do interior confirmou.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico do interior confirmou.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": {\n    \"texto\": \"A casca do jatobá triturada cura o câncer.\",\n    \"decorre\": false,\n    \"salto\": \"A mensagem afirma que a casca do jatobá cura o câncer, mas não apresenta evidências científicas ou estudos que comprovem essa eficácia; a confirmação de um médico sem identificação não é suficiente para estabelecer a cura.\"\n  }\n}",
-  "b9a16c94a31c5a1e": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\"],\n  \"criterio\": \"O trecho T1 afirma que é falso que a casca triturada do jatobá cure o câncer, desmentido pelo Ministério da Saúde e Inca.\"\n}",
-  "bfa5ec77bae77ac5": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"Nenhum estudo mostra que a casca do jatobá cura o câncer.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"O Ministério da Saúde e o Inca dizem que não existe alimento que cure ou previna o câncer.\",\n      \"trecho\": \"T1\"\n    },\n    {\n      \"frase\": \"Um oncologista afirma que não há composto desse tipo com efeito contra células tumorais.\",\n      \"trecho\": \"T2\"\n    },\n    {\n      \"frase\": \"A parte do médico do interior é opinião e não se checa.\",\n      \"trecho\": \"\"\n    }\n  ],\n  \"bloco3\": \"Técnica: cura milagrosa. A mensagem promete curar câncer com algo simples e caseiro, sem estudo que mostre isso.\",\n  \"bloco4\": \"Desconfie de promessas de cura fácil para doenças graves. Procure informações em órgãos de saúde.\"\n}"
+  "05ba5f5274a56aec": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A mensagem afirma que a casca do jatobá cura o câncer, uma informação de saúde que precisa ser verificada.\"\n}",
+  "3b56d5380db43734": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A casca do jatobá triturada cura o câncer.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    },\n    {\n      \"texto\": \"Um médico do interior confirmou que a casca do jatobá triturada cura o câncer.\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "fed613f58271bb53": "{\n  \"fatos\": [\n    \"A casca do jatobá triturada cura o câncer.\"\n  ],\n  \"evidencias\": [\n    {\n      \"texto\": \"Um médico do interior confirmou.\",\n      \"forca\": \"fraca\"\n    }\n  ],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "ba43a2709e5aa153": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\"],\n  \"criterio\": \"O trecho T1 afirma que é falso que a casca triturada do jatobá cure o câncer, conforme verificado pela agência Aos Fatos.\"\n}",
+  "df6feb300c46e7c3": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"A checagem não encontrou prova de que a casca cure câncer.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"Nenhum alimento comprovadamente previne ou cura câncer.\",\n      \"trecho\": \"T1\"\n    },\n    {\n      \"frase\": \"Oncologista diz que não há composto desse tipo com efeito contra tumor.\",\n      \"trecho\": \"T2\"\n    },\n    {\n      \"frase\": \"A parte do médico do interior é opinião e não se checa.\",\n      \"trecho\": \"\"\n    }\n  ],\n  \"bloco3\": \"Técnica: cura milagrosa. A mensagem promete cura de doença grave com algo simples, sem estudo que mostre isso.\",\n  \"bloco4\": \"Desconfie de promessas de cura fácil para doenças sérias.\"\n}",
+  "3965aae130dfc6ec": "{\n  \"sem_base\": []\n}"
  },
  "busca": {
-  "817606959578d8de": {
+  "d3d3fa070d651c22": {
    "idioma": "pt-BR",
    "resultados": [
     {
      "unidade_id": "c7a4591df5-00",
      "fragmento_id": "c7a4591df5-00-00",
-     "score": 0.7470971345901489,
+     "score": 0.7440628409385681,
      "score_lexico": 51.2878303527832,
-     "score_denso": 0.9013576507568359,
+     "score_denso": 0.8719006776809692,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "aos fatos",
@@ -28,11 +29,28 @@
      "trecho": "Não é verdade que o consumo da casca triturada do fruto do jatobá sirva como tratamento contra o câncer, conforme afirmam postagens nas redes (veja aqui). Não existe um alimento comprovadamente capaz de prevenir ou curar a doença, segundo o Ministério da Saúde, o Inca (Instituto Nacional do Câncer) e um oncologista ouvido por Aos Fatos.\nO conteúdo enganoso reunia ao menos 172 mil compartilhamentos no Facebook nesta sexta-feira (8) e foi marcado com o selo FALSO na ferramenta de verificação da rede social (entenda como funciona).\n\nMédico em Goiânia revoluciona o tratamento de câncer: casca do fruto do jatobá triturada\n\nÉ enganoso que a casca triturada do fruto do jatobá cura o câncer, conforme afirmam postagens nas redes sociais. O falso tratamento foi desmentido pelo Ministério da Saúde e por uma cartilha do Programa de Educação Tutorial da UFMT (Universidade Federal do Mato Grosso). Não existem alimentos capazes de prevenir ou curar a doença, segundo o Inca (Instituto Nacional do Câncer).\n“Não tenho qualquer conhecimento sobre o tema."
     },
     {
+     "unidade_id": "5e3388a7a8-00",
+     "fragmento_id": "5e3388a7a8-00-00",
+     "score": 0.6198752522468567,
+     "score_lexico": 11.547162055969238,
+     "score_denso": 0.8430341482162476,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2019-12-25",
+     "url": "https://www.boatos.org/ciencia/cura-cancer-foi-encontrada-disponivel-inicio-2020.html",
+     "alegacao": "Cura definitiva do câncer foi encontrada e estará disponível até o início de 2020 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "O câncer é uma doença que atinge milhares de pessoas ao redor do mundo. De acordo com a estimativa do Instituto Nacional de Câncer José Alencar Gomes (Inca), são esperados 600 mil novos casos da doença entre 2018 e 2019. Nas últimas semanas, o prefeito de São Paulo Bruno Covas foi diagnosticado com câncer no trato digestivo e precisou se submeter a sessões de quimioterapia, mostrando que o câncer pode atingir qualquer um.Entretanto, parece que a humanidade tem motivos para comemorar a luta contra a doença. Segundo uma publicação que está circulando nas redes sociais, uma empresa israelense teria encontrado a cura do câncer. De acordo com uma reportagem que acompanha a publicação, a cura definitiva para o câncer estaria disponível em até um ano para as pessoas, com preço acessível e poucos efeitos colaterais. Ainda segundo as imagens, proteínas específicas seriam injetadas nos pacientes e elas começariam a atacar as células cancerígenas. Confira:Versão 1: “Cura definitiva do Câncer”."
+    },
+    {
      "unidade_id": "988af04acc-00",
      "fragmento_id": "988af04acc-00-04",
-     "score": 0.6123461723327637,
+     "score": 0.6170862317085266,
      "score_lexico": 8.570998191833496,
-     "score_denso": 0.8612022995948792,
+     "score_denso": 0.8439575433731079,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "aos fatos",
@@ -47,9 +65,9 @@
     {
      "unidade_id": "f1e11d9eff-00",
      "fragmento_id": "f1e11d9eff-00-00",
-     "score": 0.6080120205879211,
+     "score": 0.6127257943153381,
      "score_lexico": 10.260809898376465,
-     "score_denso": 0.8588579297065735,
+     "score_denso": 0.8421399593353271,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
@@ -62,38 +80,21 @@
      "trecho": "Boato – Dr. Rafael Onuki Sato, médico oncologista em Londrina (PR), gravou um áudio afirmando que o chá das folhas de graviola cura o câncer porque a acetogenina (substância presente na graviola) mata as células cancerígenas.Um dos caminhos para se checar os boatos que circulam na internet, principalmente os relacionados à saúde, é buscar por especialistas que atestem ou refutem uma tese. Há alguns anos (quase cinco), desmentimos uma história que apontava que a graviola cura câncer. Um dos motivos apresentados foi o fato de que ninguém na medicina endossava essa tese.Porém, uma mensagem que circula no WhatsApp aponta que a situação mudou. De acordo com a postagem, o Dr. Rafael Onuki Sato, médico oncologista, teria gravado um áudio apontando os motivos que credenciam o chá de graviola como uma arma para tratar o câncer. Leia a mensagem que circula online, escute o áudio e leia a transcrição.Texto: Dr. Rafael Onuki Sato."
     },
     {
-     "unidade_id": "5e3388a7a8-00",
-     "fragmento_id": "5e3388a7a8-00-00",
-     "score": 0.599506676197052,
-     "score_lexico": 11.547162055969238,
-     "score_denso": 0.8559857606887817,
+     "unidade_id": "886d543a07-00",
+     "fragmento_id": "886d543a07-00-00",
+     "score": 0.6005889177322388,
+     "score_lexico": 14.8826265335083,
+     "score_denso": 0.8381927013397217,
      "idioma": "pt-BR",
      "apto_citacao": true,
      "agencia": "boatos",
-     "data_publicacao": "2019-12-25",
-     "url": "https://www.boatos.org/ciencia/cura-cancer-foi-encontrada-disponivel-inicio-2020.html",
-     "alegacao": "Cura definitiva do câncer foi encontrada e estará disponível até o início de 2020 #boato",
+     "data_publicacao": "2020-02-13",
+     "url": "https://www.boatos.org/saude/medico-oncologista-rafael-sato-recomenda-limao-cancer.html",
+     "alegacao": "Médico oncologista Rafael Sato recomenda comer limão para curar câncer #boato",
      "veredito_original": "boato",
      "veredito_chave": "boato",
      "cobre_multiplas_alegacoes": false,
-     "trecho": "O câncer é uma doença que atinge milhares de pessoas ao redor do mundo. De acordo com a estimativa do Instituto Nacional de Câncer José Alencar Gomes (Inca), são esperados 600 mil novos casos da doença entre 2018 e 2019. Nas últimas semanas, o prefeito de São Paulo Bruno Covas foi diagnosticado com câncer no trato digestivo e precisou se submeter a sessões de quimioterapia, mostrando que o câncer pode atingir qualquer um.Entretanto, parece que a humanidade tem motivos para comemorar a luta contra a doença. Segundo uma publicação que está circulando nas redes sociais, uma empresa israelense teria encontrado a cura do câncer. De acordo com uma reportagem que acompanha a publicação, a cura definitiva para o câncer estaria disponível em até um ano para as pessoas, com preço acessível e poucos efeitos colaterais. Ainda segundo as imagens, proteínas específicas seriam injetadas nos pacientes e elas começariam a atacar as células cancerígenas. Confira:Versão 1: “Cura definitiva do Câncer”."
-    },
-    {
-     "unidade_id": "faf0434651-00",
-     "fragmento_id": "faf0434651-00-07",
-     "score": 0.5949239730834961,
-     "score_lexico": 9.620702743530273,
-     "score_denso": 0.8559277057647705,
-     "idioma": "pt-BR",
-     "apto_citacao": true,
-     "agencia": "boatos",
-     "data_publicacao": "2020-03-21",
-     "url": "https://www.boatos.org/saude/eua-cura-novo-coronavirus-teste-hospital-stanford.html",
-     "alegacao": "EUA encontraram a cura para o novo coronavírus após teste no Hospital de Stanford #boato",
-     "veredito_original": "boato",
-     "veredito_chave": "boato",
-     "cobre_multiplas_alegacoes": false,
-     "trecho": "a para algumas pessoas com câncer. Muita gente largou o tratamento convencional contra o câncer por acreditar que a substância poderia curar o câncer. Depois de muita discussão, o governo brasileiro autorizou uma pesquisa para compreender a eficácia da substância no tratamento contra o câncer. Em 2017, os resultados foram categóricos: a ação da substância não era suficiente para combater as células cancerígenas. E, infelizmente, nesse período, muita gente já havia deixado a quimioterapia de lado para se dedicar, exclusivamente, ao tratamento com fosfoetanolamina e tiveram piora em seus quadros.Voltando à nossa história, o segundo ponto é mais claro. Não foram os pesquisadores dos Estados Unidos que “descobriram” a cura. Apesar da publicação apontar que a pesquisa foi desenvolvida nos Estados Unidos (em alguns casos, há um áudio atribuindo o estudo ao pesquisador Cláudio Lottenberg, do Hospital Albert Einstein), os testes foram realizados na França."
+     "trecho": "Seguindo a nossa saga de “relembrar” alguns boatos que já foram desmentidos por aqui, vamos falar de uma história que volta e meia aparece com uma “roupagem nova”: a que relaciona o limão com a cura do câncer. No caso de hoje vamos falar de um vídeo que circulou com força na internet em 2018 e está sendo atribuído ao médico oncologista Rafael Onuki Sato.Um vídeo de um homem falando que a “receita para curar o câncer” seria comer dois limões com casca por dia está circulando junto com uma biografia do Dr. Rafael. De acordo com o vídeo (que não vamos exibir aqui), o segredo da cura seria o fato do limão deixar o “sangue alcalino”. Leia a mensagem que circula online e leia trechos das transcrição (feita automaticamente):Mensagem: Dr. Rafael Onuki Sato *ONCOLOGISTA EM LONDRINA* Formado em Medicina pela Universidade Estadual de Londrina (UEL), possui residência em Cirurgia Geral pela Faculdade de Medicina de Marília (FAMEMA) e em Cirurgia Oncológica pelo Hospital de Câncer de Barretos."
     }
    ],
    "coberto": true,
@@ -101,13 +102,13 @@
     "pt-BR"
    ]
   },
-  "d20a234f163ccfe9": [
+  "1de3b2dd9e466897": [
    {
     "unidade_id": "c7a4591df5-00",
     "fragmento_id": "c7a4591df5-00-00",
-    "score": 0.7470971345901489,
+    "score": 0.7440628409385681,
     "score_lexico": 51.2878303527832,
-    "score_denso": 0.9013576507568359,
+    "score_denso": 0.8719006776809692,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",
@@ -122,9 +123,9 @@
    {
     "unidade_id": "c7a4591df5-00",
     "fragmento_id": "c7a4591df5-00-01",
-    "score": 0.7123782634735107,
+    "score": 0.7113977670669556,
     "score_lexico": 35.40766906738281,
-    "score_denso": 0.88629549741745,
+    "score_denso": 0.8615086078643799,
     "idioma": "pt-BR",
     "apto_citacao": true,
     "agencia": "aos fatos",
