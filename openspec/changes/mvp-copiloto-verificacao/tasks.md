@@ -118,6 +118,14 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       `datasets/relatorios_mvp_copiloto/relatorios_metricas.json`: discernimento
       4/4, transferência 4/4, transferência com critério 4/4; com n = 2, sem
       conclusão sobre efeito; confirmado pelo grupo em 13/10/2026
+- [x] 6.7 **Vitor** Tirar do registro de sessão o nome da participante, que o
+      esquema proíbe (`participante` só aceita `P-NN`)
+      — o primeiro nome aparecia em duas `observacao` de
+      `datasets/sessoes_mvp_copiloto/P-02.json`, trocado por «a participante»
+      em 13/10/2026; `python -m prototipo.avaliacao validar` ok nas duas
+      sessões e `metricas` reproduz o agregado já commitado. O nome segue no
+      histórico do git (commit `e8c17ab7`). Reescrever o histórico exige
+      force-push e fica para decisão do grupo
 
 ## 7. Decisões pendentes
 - [x] 7.1 **Breno** Definir o canal de entrega e registrar a decisão em `design.md`

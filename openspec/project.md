@@ -147,6 +147,6 @@ Estado em 13/10/2026. Contagem viva em `docs/estado.md`.
 | `fix-limitacoes-mvp` | Act | completo |
 | `add-notebook-avaliacao-modelo` | Act | completo |
 | `add-cobertura-alegacao-ampla` | Act | bloqueado, fora da `main` |
-| `add-portfolio-showcase` | Showcase | completo; apresentação e reflexão a definir |
+| `add-portfolio-showcase` | Showcase | em andamento: portfólio feito; demo, apresentação e reflexão |
 
 Nenhum está arquivado. A ordem de arquivamento está em `docs/pendencias.md`.

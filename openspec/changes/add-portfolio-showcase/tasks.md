@@ -19,3 +19,40 @@
 - [x] 2.1 Contagens do site conferidas contra os `tasks.md` da `main`
 - [x] 2.2 `mkdocs build` sem `WARNING`
 - [x] 2.3 `openspec validate add-portfolio-showcase --strict`
+
+## 3. Demonstração
+
+- [x] 3.1 Registrar em `docs/pendencias.md` a versão da demo e o congelamento
+      do arquivamento até a apresentação (D5, D6)
+- [ ] 3.2 Escrever o roteiro de demo com preparação, aquecimento, casos e
+      plano B (D7)
+- [ ] 3.3 Ensaiar a demo cronometrada a partir de um checkout limpo e gravar o
+      vídeo de backup
+- [ ] 3.4 Criar a tag `showcase-demo` no commit ensaiado da `main` (D5)
+
+## 4. Documentação
+
+- [x] 4.1 Publicar a tabela-resumo da rodada da bancada da demo (D8)
+- [x] 4.2 Atualizar latência e custo em `docs/interface/chat-web.md` com a
+      rodada da demo
+- [x] 4.3 Reescrever `README.md`: portfólio, entregáveis, como subir a demo,
+      onde estão os changes
+- [x] 4.4 Completar as limitações da avaliação em `docs/pendencias.md`: a
+      armadilha não separou aceitação cega (0 de 0), o estímulo leite/asma foi
+      registrado com o id de outro caso e as sessões têm data 07/10 no
+      registro e 08/10 no site
+- [x] 4.5 Preencher a ficha do piloto em `guia-piloto.md` com os dados das
+      sessões, declarando o que não foi registrado e a armadilha não exercida
+
+## 5. Apresentação e reflexão
+
+- [ ] 5.1 Slides da apresentação, com números só da tabela da 4.1 e das
+      páginas do portfólio
+- [ ] 5.2 Texto de reflexão no portfólio: a revisão de 10/09, o caso jacaré e
+      os limites da avaliação
+
+## 6. Verificação final
+
+- [ ] 6.1 Contagens do site conferidas de novo contra os `tasks.md` da `main`
+- [ ] 6.2 `mkdocs build` sem `WARNING`
+- [ ] 6.3 `openspec validate add-portfolio-showcase --strict`

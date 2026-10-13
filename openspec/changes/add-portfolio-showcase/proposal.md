@@ -18,6 +18,23 @@ em 01/10:
 
 O Showcase não tinha change, e a metodologia pede um por fase.
 
+Ainda em 13/10, a revisão do que falta para a apresentação de 16/10 achou
+riscos que o portfólio sozinho não resolve:
+
+- não havia versão definida para a demonstração. O branch
+  `act-cobertura-alegacao-ampla` liga a cobertura ampla por padrão, e o
+  change dele está bloqueado pelo caso jacaré;
+- o chat lê textos da interface, da fronteira e da identidade de
+  `openspec/changes/` em tempo de execução. Arquivar um change antes da
+  apresentação muda esses caminhos;
+- não havia roteiro de demo. O índice denso só carrega na primeira consulta,
+  e a falha de carga do índice não derruba o servidor;
+- os relatórios da bancada estão no `.gitignore` e só existem na máquina de
+  quem rodou;
+- o `README.md` tinha duas linhas, e o guia do chat cita latência e custo
+  anteriores às rodadas de 09/10 em diante;
+- a apresentação e a reflexão não tinham task.
+
 ## What Changes
 
 - `docs/estado.md`: resumo do estado em 13/10, tabela dos 16 changes e
@@ -33,6 +50,15 @@ O Showcase não tinha change, e a metodologia pede um por fase.
 - `openspec/project.md`: tabela de changes atualizada.
 - `mvp-copiloto-verificacao`, task 6.6: marcada com a evidência do piloto de
   08/10/2026, confirmado pelo grupo em 13/10/2026.
+- A demonstração roda da `main`, marcada pela tag `showcase-demo`, e nenhum
+  change é arquivado antes da apresentação (D5 e D6). A decisão vai para
+  `docs/pendencias.md`.
+- **NOVO** roteiro de demo, com preparação, aquecimento, casos e plano B (D7).
+- **NOVO** tabela-resumo versionada da rodada da bancada usada na demo (D8).
+- `README.md` reescrito como porta de entrada do repositório.
+- `docs/interface/chat-web.md`: latência e custo das rodadas atuais.
+- Limitações da avaliação completadas em `docs/pendencias.md`.
+- **NOVO** slides da apresentação e texto de reflexão no portfólio.
 
 ## Capabilities
 
@@ -52,13 +78,17 @@ Nenhuma.
   apresentação e reflexão, que passam a ter onde buscar os números.
 - Nenhum código de `prototipo/`, `interface/`, `bancada/` ou `tratamento/`
   muda.
+- O merge de `act-cobertura-alegacao-ampla` na `main` fica suspenso até depois
+  da apresentação.
 - O deploy do site roda no merge para a `main` (`.github/workflows/deploy.yml`).
 
 ## Out of Scope
 
-- A apresentação e a reflexão em si. Entram neste change em tasks próprias,
-  quando o grupo definir o formato.
-- Arquivar changes ou promover specs para `openspec/specs/`.
+- Arquivar changes ou promover specs para `openspec/specs/`. Fica para depois
+  da apresentação de 16/10 (D6).
+- Corrigir código para a demo: timeout do cliente Ollama, veredito sem blocos
+  de critério quando a saída do modelo não é JSON, `.env.example` e nome das
+  agências na exibição. Pede um change `fix-*` próprio.
 - Desbloquear `add-cobertura-alegacao-ampla`.
 - Corrigir `NAO_LIGADO` em `bancada/pipeline.py`, que ainda lista a 1.6 como
   desligada. É código e pede change próprio.
