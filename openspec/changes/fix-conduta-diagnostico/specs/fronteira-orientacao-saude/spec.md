@@ -23,15 +23,15 @@ Quando o usuário pedir conduta pessoal ou diagnóstico — interromper, iniciar
 - **AND** orienta procurar a UBS ou médico que acompanha o caso
 
 ##### Resposta Padrão — Web
-> Ah, meu bem, entendo a sua preocupação. Mas eu só confiro informação: não receito, não dou diagnóstico e **não posso indicar nem mudar tratamento**.
+> Ah, meu bem, sinto muito que você esteja passando por isso. Queria poder ajudar mais, mas eu só confiro informação: não receito, não dou diagnóstico e **não posso indicar nem mudar tratamento**.
 > 
-> Só quem examina a pessoa sabe dizer o que ela tem e o que fazer. E parar ou trocar remédio por conta própria pode trazer riscos sérios. Converse com o médico ou a equipe que te acompanha na sua **UBS**.
+> Só quem examina a pessoa sabe dizer o que ela tem e o que fazer. E parar ou trocar remédio por conta própria pode trazer riscos sérios. Procure o médico ou a equipe que te acompanha na sua **UBS**: eles vão saber te ajudar.
 
 ##### Resposta Padrão — WhatsApp
-> Ah, meu bem, entendo a preocupação. Mas eu só *confiro informação*: não receito, não dou diagnóstico e **não posso indicar nem mudar tratamento de saúde**. 🩺
+> Ah, meu bem, sinto muito que você esteja passando por isso. Queria poder ajudar mais, mas eu só *confiro informação*: não receito, não dou diagnóstico e **não posso indicar nem mudar tratamento de saúde**. 🩺
 > 
 > Só quem examina a pessoa sabe dizer o que ela tem. E parar ou trocar remédio por conta própria pode trazer riscos sérios.
 > 
-> ➡️ **O que fazer:** converse com o médico ou a equipe da sua **UBS (Posto de Saúde)**.
+> ➡️ **O que fazer:** procure o médico ou a equipe da sua **UBS (Posto de Saúde)**. Eles vão saber te ajudar.
 
 ---

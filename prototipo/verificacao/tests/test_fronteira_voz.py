@@ -57,3 +57,11 @@ def test_recusa_de_conduta_vale_para_diagnostico(canal):
     texto = carregar_respostas()["conduta_individual"][canal]
     assert "esse remédio" not in texto
     assert "Só quem examina a pessoa sabe dizer o que ela tem" in texto
+
+
+@pytest.mark.parametrize("canal", CANAIS)
+def test_recusa_de_conduta_acolhe_antes_de_recusar(canal):
+    # fix-conduta-diagnostico, D1: a primeira versão soou ríspida no teste do grupo.
+    texto = carregar_respostas()["conduta_individual"][canal]
+    assert texto.index("sinto muito") < texto.index("não receito")
+    assert "Queria poder ajudar mais" in texto

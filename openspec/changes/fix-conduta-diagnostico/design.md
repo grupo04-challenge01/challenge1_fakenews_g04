@@ -36,16 +36,23 @@ doença". A spec e o texto da resposta só cobrem o remédio.
 O requirement passa a dizer "conduta pessoal ou diagnóstico", e os textos
 ficam assim:
 
-- Web: abre com "entendo a sua preocupação", diz que a Dona Checa não receita,
+- Web: abre com "sinto muito que você esteja passando por isso" e "queria
+  poder ajudar mais", diz que a Dona Checa não receita,
   não dá diagnóstico e não indica tratamento, e diz que só quem examina a
   pessoa sabe o que ela tem. Mantém o aviso sobre mudar remédio por conta
-  própria e a UBS.
+  própria e fecha com a UBS: "eles vão saber te ajudar".
 - WhatsApp: mesma mudança, no formato do canal.
 
 As obrigações do cenário atual continuam: nenhum parecer, a declaração de que
 só confere informação, o aviso de risco, a UBS e "meu bem" no máximo uma vez.
 A frase "não posso indicar nem mudar tratamento", que o teste de página
 procura, fica no texto.
+
+A primeira versão abria com "entendo a sua preocupação" e soou ríspida no
+teste do grupo em 13/10/2026, para quem conta que está passando mal. O
+acolhimento ("sinto muito", "queria poder ajudar mais") entra antes da
+recusa. "Passando por isso" serve também para quem pergunta de remédio ou de
+outra pessoa.
 
 ### D2. Relato de sintoma não é alegação
 
