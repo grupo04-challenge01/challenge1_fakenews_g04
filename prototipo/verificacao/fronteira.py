@@ -86,13 +86,15 @@ PSIQUICO = re.compile(
 CONDUTA = re.compile(
     r"\b(posso|pode|podem|devo|deve|devemos|preciso|precisa|da pra|da para|e seguro)\b(\s+\w+){0,4}?\s+"
     r"(parar|tomar|trocar|substituir|suspender|largar|interromper|diminuir|aumentar|dobrar"
-    r"|misturar|comecar|usar|vacinar)\b"
+    r"|misturar|comecar|usar)\b"
     r"|\b(qual|quanto|quantos|quantas)( a| o)? (dose|mg|miligramas|gotas|comprimidos)\b"
     r"|\b(meu|minha|o meu|a minha) (exame|resultado|glicemia|pressao)\b.*\b(deu|mostrou|esta|veio)\b"
     r"|\b(o que|que) (significa|quer dizer) (o |meu |esse )?(exame|resultado)"
     r"|\bsera que (eu |ele |ela )?(tenho|tem|estou|esta com)")
+# Vacina fica com o modelo (fix-conduta-diagnostico, D7): "devo tomar a vacina"
+# pode ser idade de vacina (pergunta geral) ou o caso da pessoa (conduta).
 OBJETO_CLINICO = re.compile(
-    r"remedio|medicament|medicac|tratamento|dose|comprimid|insulina|quimio|antibiotic|vacin"
+    r"remedio|medicament|medicac|tratamento|dose|comprimid|insulina|quimio|antibiotic"
     r"|capsula|pressao|anticoncepcional|antidepressiv|\bmg\b|gotas|chas?\b|cha de|exame|glicemia"
     r"|diabet|ivermectina|cloroquina|dipirona|paracetamol")
 
