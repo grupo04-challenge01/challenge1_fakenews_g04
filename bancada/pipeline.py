@@ -74,7 +74,7 @@ def _origem(lido=None, url=None, ignorados=()):
 
 def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibrida",
              alfa=None, limiar=LIMIAR_EVIDENCIA, lacuna=None, idioma=True, ao_etapa=None,
-             buscar=buscar_rede):
+             buscar=buscar_rede, cobertura_ampla=True):
     """Rastro do fluxo: parâmetros, etapas na ordem, onde parou e a resposta.
 
     `ao_etapa`, se dado, recebe o registro de cada etapa assim que ele entra no
@@ -88,7 +88,8 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
         "parametros": {"canal": canal, "k": k, "modo": modo,
                        "alfa": getattr(recuperador, "alfa", None),
                        "limiar": limiar, "lacuna": lacuna,
-                       "prioridade_idioma": idioma},
+                       "prioridade_idioma": idioma,
+                       "cobertura_ampla": cobertura_ampla},
         "nao_ligado": list(NAO_LIGADO),
         "etapas": [],
         "parou_em": None,
@@ -185,7 +186,8 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
         trechos, _ = etapa("recuperacao", lambda: _recuperar(recuperador, alegacao, k, modo, idioma),
                            lambda par: par[1])
         veredito = etapa("guarda", lambda: guarda.verificar(alegacao, trechos, chat=chat,
-                                                            limiar=limiar))
+                                                            limiar=limiar,
+                                                            ampla=cobertura_ampla))
         # Decisão 29: a resposta vê os fragmentos vizinhos das checagens citadas.
         expandir = lambda ts: recuperador.expandir(alegacao, ts, modo=modo)  # noqa: E731
         dec_plana = None if isinstance(dec, dict) else asdict(dec)

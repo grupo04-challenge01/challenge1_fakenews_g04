@@ -304,7 +304,9 @@ function responder(estado, evento) {
       }
       bolha.append(p);
     }
-    if (evento.detalhe.length || evento.origem) detalhe(bolha, evento.detalhe, evento.origem);
+    if (evento.detalhe.length || evento.origem) {
+      detalhe(bolha, evento.detalhe, evento.origem, evento.ponte);
+    }
   });
 }
 
@@ -329,10 +331,22 @@ function cartaoOrigem(origem) {
   return cartao;
 }
 
-function detalhe(bolha, fontes, origem) {
+// Veredito por alegação mais ampla (add-cobertura-alegacao-ampla, D6): a ponte vem
+// antes das fontes, e cada fonte mostra a alegação que a agência checou, literal,
+// para a pessoa conferir a ligação e poder discordar dela.
+function cartaoPonte(ponte) {
+  const cartao = criar("div", "ponte");
+  cartao.append(
+    paragrafo("Por que esta checagem vale para a sua mensagem:", "rotulo"),
+    paragrafo(ponte));
+  return cartao;
+}
+
+function detalhe(bolha, fontes, origem, ponte) {
   const painel = criar("div", "detalhe");
   painel.id = novoId("detalhe");
   painel.hidden = true;
+  if (ponte) painel.append(cartaoPonte(ponte));
   if (origem) painel.append(cartaoOrigem(origem));
   for (const fonte of fontes) {
     const cartao = criar("article", "fonte");
@@ -340,6 +354,9 @@ function detalhe(bolha, fontes, origem) {
     cartao.append(paragrafo(
       `${data(fonte.data_publicacao)} · veredito da agência: ${fonte.veredito_original || "não informado"}`,
       "meta"));
+    if (fonte.alegacao_checada) {
+      cartao.append(paragrafo(`Alegação checada pela agência: ${fonte.alegacao_checada}`, "checada"));
+    }
     if (fonte.trecho) {
       cartao.append(criar("blockquote", "", fonte.trecho));
     } else {

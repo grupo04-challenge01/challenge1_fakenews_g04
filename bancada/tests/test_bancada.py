@@ -225,9 +225,9 @@ def test_offline_registra_gerador_gravado(tmp_path, monkeypatch):
     monkeypatch.setattr(bancada_main, "RELATORIOS", tmp_path)
     args = argparse.Namespace(offline=True, caso=["S1_goiabeira"], canal="web", k=5,
                               modo="hibrida", alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
-                              sem_idioma=False, gerador="deepseek")
+                              sem_idioma=False, gerador="deepseek", sem_cobertura_ampla=False)
     bancada_main.rodar(args)
-    (relatorio,) = tmp_path.glob("*.json")
+    (relatorio,) = [p for p in tmp_path.glob("*.json") if not p.stem.endswith("-pontes")]
     parametros = json.loads(relatorio.read_text(encoding="utf-8"))["parametros"]
     assert (parametros["gerador"], parametros["modelo"]) == ("gravacao", None)
 
@@ -249,7 +249,7 @@ def test_gerador_que_falha_no_teste_inicial_para_a_rodada_sem_regravar(tmp_path,
     monkeypatch.setattr(gravacao, "gravar", lambda *a: gravadas.append(a))
     args = argparse.Namespace(offline=False, caso=None, canal="web", k=5, modo="hibrida",
                               alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
-                              sem_idioma=False, gerador="deepseek")
+                              sem_idioma=False, gerador="deepseek", sem_cobertura_ampla=False)
     assert bancada_main.rodar(args) == 2
     assert gravadas == [] and list(tmp_path.iterdir()) == []
 
@@ -352,3 +352,78 @@ def test_resumo_conta_casos_com_frase_tirada_pela_conferencia():
             {"etapa": "resposta", "saida": {"cortadas": [], "sem_base": sem_base}}]}}
     r = resumir([caso("A", [{"bloco": 2, "frase": "x", "motivo": "y"}]), caso("B", [])])
     assert r["sem_base"] == ["A"]
+
+
+# ---- add-cobertura-alegacao-ampla, task 4.2 (D5): chave desce até a guarda -------
+
+GERAIS = [{**TRECHO, "agencia": "boatos", "veredito_chave": "boato",
+           "alegacao": "Casca do jatobá cura qualquer doença"},
+          {**TRECHO, "agencia": "aos fatos", "veredito_chave": "falso", "url": "https://y",
+           "alegacao": "Casca do jatobá cura qualquer doença"}]
+SAIDAS_AMPLA = {**SAIDAS, classificacao.SISTEMA: {
+    "rotulo": "falso", "trechos": ["T1", "T2"], "criterio": "A geral é falsa.",
+    "cobertura": "ampla", "ponte": "Câncer é uma doença.", "sujeito": "casca do jatobá"}}
+
+
+def test_cobertura_ampla_desligada_rebaixa_no_fluxo_e_fica_nos_parametros():
+    rastro = executar("A casca do jatobá cura o câncer!", Recuperador(GERAIS),
+                      chat=chat_fixo(SAIDAS_AMPLA), cobertura_ampla=False)
+    assert rastro["parametros"]["cobertura_ampla"] is False
+    assert etapa_de(rastro, "guarda")["saida"]["rebaixado_por"] == "cobertura ampla desligada"
+
+
+def test_cobertura_ampla_ligada_por_padrao_no_fluxo():
+    rastro = executar("A casca do jatobá cura o câncer!", Recuperador(), chat=chat_fixo())
+    assert rastro["parametros"]["cobertura_ampla"] is True
+
+
+def test_bancada_sem_cobertura_ampla_registra_o_parametro(tmp_path, monkeypatch):
+    import argparse
+
+    from bancada import __main__ as bancada_main
+    monkeypatch.setattr(bancada_main, "RELATORIOS", tmp_path)
+    args = argparse.Namespace(offline=True, caso=["S1_goiabeira"], canal="web", k=5,
+                              modo="hibrida", alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
+                              sem_idioma=False, gerador="deepseek", sem_cobertura_ampla=True)
+    bancada_main.rodar(args)
+    (relatorio,) = [p for p in tmp_path.glob("*.json") if not p.stem.endswith("-pontes")]
+    assert json.loads(relatorio.read_text(encoding="utf-8"))["parametros"]["cobertura_ampla"] is False
+
+
+# ---- add-cobertura-alegacao-ampla, task 6.2 (D7): lista de pontes da rodada -----
+
+def test_pontes_lista_cada_cobertura_ampla_com_o_que_a_revisao_precisa():
+    from bancada.__main__ import pontes
+    from prototipo.verificacao import implicacao
+    chat = chat_fixo({**SAIDAS_AMPLA, implicacao.SISTEMA: {"resposta": "sim"}})
+    ampla = {"id": "J1", "rastro": executar("A casca do jatobá cura o câncer!",
+                                            Recuperador(GERAIS), chat=chat)}
+    comum = {"id": "F1", "rastro": executar("A casca do jatobá cura o câncer!",
+                                            Recuperador(), chat=chat_fixo())}
+    assert pontes([ampla, comum]) == [{
+        "caso": "J1", "alegacao": "A casca do jatobá cura o câncer.",
+        "alegacoes_checadas": ["Casca do jatobá cura qualquer doença"] * 2,
+        "ponte": "Câncer é uma doença.", "implicacao": "sim",
+        "rotulo": "falso", "rebaixado_por": None}]
+
+
+def test_pontes_inclui_a_rebaixada_com_o_motivo():
+    from bancada.__main__ import pontes
+    r = {"id": "J2", "rastro": executar("A casca do jatobá cura o câncer!", Recuperador(GERAIS),
+                                        chat=chat_fixo(SAIDAS_AMPLA), cobertura_ampla=False)}
+    (p,) = pontes([r])
+    assert (p["rotulo"], p["rebaixado_por"], p["implicacao"]) == (
+        "evidência insuficiente", "cobertura ampla desligada", None)
+
+
+def test_rodada_grava_a_lista_de_pontes_ao_lado_do_relatorio(tmp_path, monkeypatch):
+    import argparse
+
+    from bancada import __main__ as bancada_main
+    monkeypatch.setattr(bancada_main, "RELATORIOS", tmp_path)
+    args = argparse.Namespace(offline=True, caso=["S1_goiabeira"], canal="web", k=5,
+                              modo="hibrida", alfa=None, limiar=bancada_main.LIMIAR_EVIDENCIA,
+                              sem_idioma=False, gerador="deepseek", sem_cobertura_ampla=False)
+    bancada_main.rodar(args)
+    (lista,) = tmp_path.glob("*-pontes.json")
+    assert json.loads(lista.read_text(encoding="utf-8")) == []

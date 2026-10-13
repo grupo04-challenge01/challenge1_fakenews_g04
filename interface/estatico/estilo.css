@@ -177,6 +177,18 @@ body {
 .fonte h2, .origem h2 { margin: 0 0 0.25rem; font-size: 1rem; }
 .fonte .meta, .origem .meta { margin: 0 0 0.5rem; color: var(--tinta-suave); font-size: 0.875rem; }
 .fonte blockquote { margin: 0 0 0.5rem; padding-left: 0.75rem; border-left: 3px solid var(--verde); }
+/* Veredito por alegação mais ampla (add-cobertura-alegacao-ampla): ponte e alegação checada. */
+.ponte {
+  padding: 0.75rem;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--verde);
+  border-radius: 0.75rem;
+  background: var(--fundo);
+  overflow-wrap: anywhere;
+}
+.ponte p { margin: 0; }
+.ponte .rotulo { margin: 0 0 0.25rem; color: var(--tinta-suave); font-size: 0.875rem; }
+.fonte .checada { margin: 0 0 0.5rem; font-weight: 700; }
 .fonte a, .origem a {
   display: inline-flex;
   align-items: center;

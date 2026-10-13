@@ -33,7 +33,7 @@ def _cliente(verificar, tempo_max=180, carregar_recuperador=object):
 
 
 def _fixo(*eventos):
-    def verificar(texto, emitir, *, recuperador, chat):
+    def verificar(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         for e in eventos:
             emitir(e)
     return verificar
@@ -61,7 +61,7 @@ def test_texto_nao_vai_na_url():
 
 
 def test_passado_o_tempo_maximo_sai_erro():
-    def lento(texto, emitir, *, recuperador, chat):
+    def lento(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         time.sleep(3)
     inicio = time.perf_counter()
     r = _cliente(lento, tempo_max=1).post("/verificar", json={"texto": "x"})
@@ -73,7 +73,7 @@ def test_uma_verificacao_por_vez():
     ativas, picos = [0], []
     trava = threading.Lock()
 
-    def contando(texto, emitir, *, recuperador, chat):
+    def contando(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         with trava:
             ativas[0] += 1
             picos.append(ativas[0])
@@ -111,7 +111,7 @@ def test_recuperador_ainda_carregando_vira_erro():
 def test_mensagem_so_com_link_vai_ao_fluxo(texto):
     chamado = []
 
-    def registra(texto, emitir, *, recuperador, chat):
+    def registra(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         chamado.append(texto)
     _cliente(registra).post("/verificar", json={"texto": texto})
     assert chamado == [texto]
@@ -120,7 +120,25 @@ def test_mensagem_so_com_link_vai_ao_fluxo(texto):
 def test_texto_com_link_junto_vai_ao_fluxo():
     chamado = []
 
-    def registra(texto, emitir, *, recuperador, chat):
+    def registra(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         chamado.append(texto)
     _cliente(registra).post("/verificar", json={"texto": "Vejam isso https://x.com cura tudo"})
     assert chamado == ["Vejam isso https://x.com cura tudo"]
+
+
+def test_rota_passa_a_chave_de_cobertura_ampla_da_config():
+    # add-cobertura-alegacao-ampla, task 4.2 (D5).
+    vistos = {}
+
+    def verificar(texto, emitir, *, recuperador, chat, cobertura_ampla):
+        vistos["cobertura_ampla"] = cobertura_ampla
+        emitir({"tipo": "erro", "texto": "x"})
+    app = criar_app(Config(modo="uso", cobertura_ampla=False),
+                    carregar_recuperador=object, verificar=verificar)
+    with TestClient(app) as c:
+        for _ in range(100):
+            if c.get("/saude").status_code == 200:
+                break
+            time.sleep(0.01)
+        c.post("/verificar", json={"texto": "A casca do jatobá cura o câncer!"})
+    assert vistos == {"cobertura_ampla": False}

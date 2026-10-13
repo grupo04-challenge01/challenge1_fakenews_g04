@@ -62,7 +62,7 @@ def _origem(rastro):
 
 
 def verificar(texto, emitir, *, recuperador, chat=chat_ollama, canal="web",
-              buscar=buscar_rede):
+              buscar=buscar_rede, cobertura_ampla=True):
     t = textos()
     desfecho = {}
     texto_pessoa, urls = link.separar(texto)
@@ -98,7 +98,7 @@ def verificar(texto, emitir, *, recuperador, chat=chat_ollama, canal="web",
 
     try:
         rastro = executar(texto, recuperador, chat=chat, canal=canal, ao_etapa=ao_etapa,
-                          buscar=buscar)
+                          buscar=buscar, cobertura_ampla=cobertura_ampla)
     except Exception as e:  # erro fora de etapa: nada do texto vai ao log
         log.error("fluxo falhou fora de etapa: %s", type(e).__name__)
         emitir({"tipo": "erro", "texto": t["erro"]})
@@ -126,5 +126,6 @@ def verificar(texto, emitir, *, recuperador, chat=chat_ollama, canal="web",
         resposta = next(e for e in rastro["etapas"] if e["etapa"] == "resposta")["saida"]
         emitir({"tipo": "resposta", "forma": rastro["resposta"]["forma"],
                 "texto": rastro["resposta"]["texto"], "detalhe": resposta["detalhe"],
+                "ponte": resposta.get("ponte"),  # add-cobertura-alegacao-ampla, D6
                 "redirecionamentos": list(rastro["redirecionamentos"]),
                 "origem": _origem(rastro)})

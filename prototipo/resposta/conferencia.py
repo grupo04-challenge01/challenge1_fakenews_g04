@@ -8,15 +8,16 @@ bloco 3 contra a mensagem. Frase apontada sai da resposta e fica em
 `Resposta.sem_base`. Bloco 1 ou 2 sem frase do modelo rebaixa a resposta pelo
 mesmo caminho da ancoragem. Falha da chamada deixa a resposta como estava.
 
-O que o código escreveu não é conferido: a abertura do bloco 1 ("Falso."), a
-frase sobre opinião e o rótulo da técnica ("Técnica: …").
+O que o código escreveu não é conferido: a abertura do bloco 1 ("Falso.", ou
+as duas frases da abertura ampla de add-cobertura-alegacao-ampla), a frase
+sobre opinião e o rótulo da técnica ("Técnica: …").
 """
 import logging
 from dataclasses import replace
 
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.estrutura import (
-    ABERTURA, FRASE_OPINIAO, _defeitos_conteudo, _frases, rebaixar)
+    ABERTURA, ABERTURA_AMPLA, FRASE_OPINIAO, _defeitos_conteudo, _frases, rebaixar)
 from prototipo.verificacao.modelo import ler_json
 
 log = logging.getLogger(__name__)
@@ -48,8 +49,12 @@ def _tipo(indice, frase):
     return "mensagem" if indice == 1 and "opini" in frase.lower() else TIPO[indice]
 
 
+# Frases que o código escreve no bloco 1 (a abertura ampla tem duas).
+FIXAS_BLOCO1 = {*ABERTURA.values(), *_frases(ABERTURA_AMPLA)}
+
+
 def _conferivel(indice, frase):
-    if indice == 0 and frase in ABERTURA.values():
+    if indice == 0 and frase in FIXAS_BLOCO1:
         return False
     return frase != FRASE_OPINIAO and not frase.startswith("Técnica:")
 

@@ -100,3 +100,16 @@ def test_armadilha_que_nao_exibiu_erro_e_aviso_nao_erro(casos):
     laudo = validar(registro, casos)
     assert laudo.erros == []
     assert any("A1" in a and "armadilha" in a for a in laudo.avisos)
+
+
+# add-cobertura-alegacao-ampla, task 6.1 (D7) ---------------------------------
+
+def test_cobertura_exibida_e_opcional_e_aceita_mesma_ou_ampla(casos):
+    registro = sessao([item("F1", cobertura_exibida="ampla"), item("F2", cobertura_exibida="mesma"),
+                       item("F3")])
+    assert _erros(registro, casos) == []
+
+
+def test_cobertura_exibida_fora_dos_valores_e_erro_de_forma(casos):
+    registro = sessao([item("F1", cobertura_exibida="parecida")])
+    assert any("cobertura_exibida" in e for e in _erros(registro, casos))

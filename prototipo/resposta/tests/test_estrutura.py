@@ -599,3 +599,80 @@ def test_prompt_tem_um_formato_por_estado():
         assert f"Estado {estado}" in estrutura.SISTEMA
     assert '"bloco3": "Técnica: rótulo.' in estrutura.SISTEMA
     assert '"bloco4": "Onde a pessoa pode procurar."' in estrutura.SISTEMA
+
+
+# ---- add-cobertura-alegacao-ampla, task 5.1 (D6) ---------------------------
+
+FRASE_AMPLA = ("Falso. Não achamos checagem desta versão, mas a ideia mais geral por trás "
+               "dela já foi checada como falsa.")
+AMPLA = Veredito("falso", "A alegação geral foi checada como falsa.", [TRECHO],
+                 cobertura="ampla", ponte="Curar câncer é caso de curar qualquer doença.",
+                 sujeito="casca do jatobá")
+
+
+def test_abertura_ampla_e_o_texto_da_spec():
+    assert estrutura.ABERTURA_AMPLA == FRASE_AMPLA
+
+
+def test_cobertura_ampla_abre_com_a_frase_fixa():
+    r = responder(MENSAGEM, ALEGACAO, AMPLA, chat=_chat(BLOCOS_FALSO))
+    assert r.forma == "com evidência"
+    assert r.blocos[0].startswith(FRASE_AMPLA)
+
+
+def test_cobertura_mesma_abre_com_falso_e_nao_com_a_frase_ampla():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO))
+    assert r.blocos[0].startswith("Falso.")
+    assert "Não achamos checagem desta versão" not in r.texto
+
+
+def test_cobertura_ampla_rebaixada_perde_a_frase_ampla():
+    falha = _com(bloco1="A checagem foi feita em 2019.")
+    r = responder(MENSAGEM, ALEGACAO, AMPLA, chat=_chat_em_sequencia(falha, falha, BLOCOS_SEM))
+    assert r.forma == "sem evidência"
+    assert "Não achamos checagem desta versão" not in r.texto
+
+
+# ---- add-cobertura-alegacao-ampla, task 5.2 (D6) ---------------------------
+
+GERAL = {**TRECHO, "alegacao": "Casca do jatobá cura qualquer doença"}
+AMPLA_G = Veredito("falso", "A alegação geral foi checada como falsa.", [GERAL],
+                   cobertura="ampla", ponte="Curar câncer é caso de curar qualquer doença.",
+                   sujeito="casca do jatobá")
+
+
+def test_pedido_ao_modelo_informa_cobertura_ampla_e_ponte():
+    chat = _chat(BLOCOS_FALSO)
+    responder(MENSAGEM, ALEGACAO, AMPLA_G, chat=chat)
+    pedido = chat.chamadas[0][1]
+    assert "COBERTURA: alegação mais ampla" in pedido
+    assert f"PONTE: {AMPLA_G.ponte}" in pedido
+    assert f"alegação checada pela agência: {GERAL['alegacao']}" in pedido
+
+
+def test_pedido_de_cobertura_mesma_nao_fala_de_cobertura():
+    chat = _chat(BLOCOS_FALSO)
+    responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert "COBERTURA" not in chat.chamadas[0][1]
+
+
+def test_prompt_manda_dizer_a_alegacao_geral_no_bloco_1():
+    assert "COBERTURA: alegação mais ampla" in estrutura.SISTEMA
+
+
+def test_detalhe_de_cobertura_ampla_traz_a_alegacao_checada_literal():
+    r = responder(MENSAGEM, ALEGACAO, AMPLA_G, chat=_chat(BLOCOS_FALSO))
+    assert r.detalhe[0]["alegacao_checada"] == "Casca do jatobá cura qualquer doença"
+    assert r.ponte == AMPLA_G.ponte
+
+
+def test_detalhe_de_cobertura_mesma_nao_muda():
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO))
+    assert "alegacao_checada" not in r.detalhe[0]
+    assert r.ponte is None
+
+
+def test_resposta_ampla_rebaixada_perde_a_ponte():
+    falha = _com(bloco1="A checagem foi feita em 2019.")
+    r = responder(MENSAGEM, ALEGACAO, AMPLA_G, chat=_chat_em_sequencia(falha, falha, BLOCOS_SEM))
+    assert r.ponte is None and r.detalhe == []

@@ -26,8 +26,19 @@ Escolha exatamente um rótulo, escrito igual:
 "verdadeiro fora de contexto ou exagerado": algum trecho mostra que a base da
   alegação existe, mas a alegação muda a data, corta o contexto ou afirma mais do
   que a base diz.
-"evidência insuficiente": nenhum trecho fala desta alegação. Use este rótulo
-  também quando o trecho for de assunto parecido, mas não da mesma alegação.
+"evidência insuficiente": nenhum trecho fala desta alegação, nem de uma
+  alegação mais geral da qual ela seja caso particular. Use este rótulo também
+  quando o trecho for de assunto parecido sem essa relação. Exemplo: um trecho
+  que desmente que a casca do jatobá cura o câncer não serve para a alegação
+  "chá de folha de goiabeira cura a dengue".
+
+Diga também a cobertura do trecho que sustenta o rótulo:
+"mesma": o trecho checa esta alegação, mesmo com outras palavras.
+"ampla": nenhum trecho checa esta alegação, mas algum trecho mostra que é falsa
+  uma alegação mais geral, da qual esta é caso particular:
+  se esta alegação fosse verdade, a mais geral também seria. Exemplo: "a vacina transforma
+  pessoas em jacaré" é caso particular de "a vacina altera o DNA de quem a
+  toma". Cobertura "ampla" só vale para o rótulo "falso".
 
 NUNCA use o que você sabe de medicina ou de notícias. Se você sabe a resposta,
 mas nenhum trecho a dá, o rótulo é "evidência insuficiente".
@@ -44,11 +55,22 @@ Escreva:
   Para "evidência insuficiente", use a lista vazia.
 - "criterio": em uma ou duas frases curtas, o que o trecho diz que decide o
   rótulo. Para "evidência insuficiente", diga o que não foi encontrado.
+- "cobertura": "mesma" ou "ampla".
+- "ponte": com cobertura "ampla", uma frase dizendo por que esta alegação é caso
+  particular da alegação checada. Com "mesma", deixe vazio.
+- "sujeito": com cobertura "ampla", o produto, a substância ou a intervenção de
+  que esta alegação fala, com as palavras dela. Com "mesma", deixe vazio.
 
 Responda só com JSON, neste formato:
-{"rotulo": "falso", "trechos": ["T1"], "criterio": "..."}"""
+{"rotulo": "falso", "trechos": ["T1"], "criterio": "...", "cobertura": "mesma", "ponte": "", "sujeito": ""}"""
 
 ID_TRECHO = re.compile(r"T[1-9]\d*")
+
+# add-cobertura-alegacao-ampla, D1: a classificação declara se o trecho checa a
+# mesma alegação ou uma mais geral. Ausente conta como `mesma`, o comportamento
+# anterior; quem decide se a cobertura ampla vale é a guarda.
+COBERTURAS = ("mesma", "ampla")
+INSUFICIENTE = "evidência insuficiente"
 
 
 @dataclass
@@ -56,6 +78,9 @@ class Classificacao:
     rotulo: str
     trechos: list
     criterio: str
+    cobertura: str = "mesma"
+    ponte: str = ""
+    sujeito: str = ""
 
 
 def mensagem(alegacao, trechos):
@@ -75,6 +100,14 @@ def _rotulo(dados):
     return str(dados.get("rotulo") or "").strip().lower()
 
 
+def _texto(dados, campo):
+    return str(dados.get(campo) or "").strip()
+
+
+def _cobertura(dados):
+    return _texto(dados, "cobertura").lower() or "mesma"
+
+
 def defeitos(bruto):
     """Defeitos de forma da saída do modelo; lista vazia quando está em ordem."""
     dados = ler_json(bruto)
@@ -90,6 +123,14 @@ def defeitos(bruto):
         achados.append("falta a lista `trechos`")
     elif not all(isinstance(t, str) and ID_TRECHO.fullmatch(t.strip()) for t in trechos):
         achados.append("trecho citado não é identificador T1, T2...")
+    if _rotulo(dados) != INSUFICIENTE:
+        cobertura = _cobertura(dados)
+        if cobertura not in COBERTURAS:
+            achados.append(f"cobertura fora de mesma e ampla: {dados.get('cobertura')}")
+        elif cobertura == "ampla":
+            for campo in ("ponte", "sujeito"):
+                if not _texto(dados, campo):
+                    achados.append(f"cobertura ampla sem {campo}")
     return achados
 
 
@@ -98,8 +139,16 @@ def interpretar(bruto):
     if achados:
         raise ValueError("; ".join(achados))
     dados = ler_json(bruto)
-    return Classificacao(_rotulo(dados), [t.strip() for t in dados["trechos"]],
-                         dados["criterio"].strip())
+    rotulo = _rotulo(dados)
+    if rotulo == INSUFICIENTE:
+        return Classificacao(rotulo, [t.strip() for t in dados["trechos"]],
+                             dados["criterio"].strip())
+    cobertura = _cobertura(dados)
+    ampla = cobertura == "ampla"
+    return Classificacao(rotulo, [t.strip() for t in dados["trechos"]],
+                         dados["criterio"].strip(), cobertura,
+                         _texto(dados, "ponte") if ampla else "",
+                         _texto(dados, "sujeito") if ampla else "")
 
 
 def classificar(alegacao, trechos, chat=chat_ollama):

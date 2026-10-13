@@ -133,3 +133,31 @@ def test_conduta_sem_alegacao_mostra_a_conduta_e_nao_sem_alegacao():
     assert eventos[-1] == {"tipo": "aviso", "chave": "conduta",
                            "texto": fronteira.carregar_respostas()["conduta_individual"]["web"]}
     assert all(e.get("chave") != "sem_alegacao" for e in eventos)
+
+
+def test_cobertura_ampla_desce_ate_o_executar(monkeypatch):
+    # add-cobertura-alegacao-ampla, task 4.2 (D5).
+    vistos = {}
+
+    def executar(texto, recuperador, **kw):
+        vistos.update(kw)
+        raise RuntimeError("parar aqui")
+    monkeypatch.setattr(fluxo, "executar", executar)
+    verificar(MENSAGEM, [].append, chat=chat_fixo(), recuperador=Recuperador(),
+              cobertura_ampla=False)
+    assert vistos["cobertura_ampla"] is False
+
+
+def test_resposta_de_cobertura_ampla_leva_a_ponte_e_a_alegacao_checada():
+    # add-cobertura-alegacao-ampla, task 5.3 (D6).
+    from bancada.tests.test_bancada import GERAIS, SAIDAS_AMPLA
+    from prototipo.verificacao import implicacao
+    chat = chat_fixo({**SAIDAS_AMPLA, implicacao.SISTEMA: {"resposta": "sim"}})
+    resposta = _eventos(MENSAGEM, chat=chat, recuperador=Recuperador(GERAIS))[-1]
+    assert resposta["texto"].split("\n\n")[1].startswith(f"VEREDITO: {estrutura.ABERTURA_AMPLA}")
+    assert resposta["ponte"] == "Câncer é uma doença."
+    assert resposta["detalhe"][0]["alegacao_checada"] == "Casca do jatobá cura qualquer doença"
+
+
+def test_resposta_comum_leva_ponte_nula():
+    assert _eventos(MENSAGEM)[-1]["ponte"] is None

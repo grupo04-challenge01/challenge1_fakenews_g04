@@ -1,0 +1,632 @@
+{
+  "gerador": "ollama",
+  "modelo": "gemma4:12b-it-qat",
+  "cpu": false,
+  "tentativas": 3,
+  "gerado_em": "2026-10-10 19:45",
+  "sondas": [
+    {
+      "id": "A1_jacare",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "falso",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "0328f83578-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 74.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de transformação em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA e transformaria humanos em seres geneticamente modificados.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos classificam como boato e falso o conteúdo de que as vacinas de mRNA alterariam o DNA humano ou transformariam pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de transformação em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA e transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 45.1,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA humano para criar seres geneticamente modificados.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos classificam como boato e falso a ideia de que as vacinas de mRNA alteram o DNA humano ou transformam pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA humano para criar seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 45.7,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA humano para criar seres geneticamente modificados.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos classificam como boato e falso a ideia de que as vacinas de mRNA alteram o DNA humano ou transformam pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da afirmação mais geral de que a vacina alteraria o DNA humano para criar seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 0
+    },
+    {
+      "id": "A2_chip_chines",
+      "alegacao": "Vacinas da COVID-19 têm chips chineses para nos monitorar",
+      "esperado": "falso",
+      "fragmentos": [
+        "f678c48f67-00-00",
+        "185954a72d-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 37.3,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 contêm chips (sejam eles nanochips 5G ou em forma líquida) para monitorar ou controlar a população.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 contêm chips (sejam eles nanochips 5G ou em forma líquida) para monitorar ou controlar a população.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 30.4,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 conteriam nanochips ou chips líquidos para monitorar ou controlar a população.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 conteriam nanochips ou chips líquidos para monitorar ou controlar a população.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 30.6,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 conteriam nanochips ou chips líquidos para monitorar ou controlar a população.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "As agências de checagem classificaram como boato e fake as afirmações de que as vacinas da Covid-19 conteriam nanochips ou chips líquidos para monitorar ou controlar a população.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N1_goiabeira_2ag",
+      "alegacao": "Chá de folha de goiabeira cura a dengue em 24 horas.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "c7a4591df5-00-00",
+        "f9eb4e5668-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 25.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 20.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 20.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não foram encontrados trechos que mencionem o chá de folha de goiabeira ou seu suposto efeito sobre a dengue.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N2_cloroquina_2ag",
+      "alegacao": "Tomar hidroxicloroquina toda semana previne a covid.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "6c68e7c0eb-00-00",
+        "3fe3ac1240-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 30.4,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que a FDA considera improvável que o medicamento seja eficaz contra a doença.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que a FDA considera improvável que o medicamento seja eficaz contra a doença.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 28.0,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que órgãos reguladores consideram improvável sua eficácia contra a doença.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que órgãos reguladores consideram improvável sua eficácia contra a doença.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 28.3,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que a FDA considera improvável que o medicamento seja eficaz contra a doença.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos indicam que estudos confiáveis apontam que a hidroxicloroquina não tem efeito sobre a Covid-19 e que a FDA considera improvável que o medicamento seja eficaz contra a doença.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 0
+    },
+    {
+      "id": "N3_autismo_dna",
+      "alegacao": "Vacinas causam autismo.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "0328f83578-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 20.4,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 22.6,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 22.4,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Não há nenhum trecho que mencione a relação entre vacinas e autismo.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N4_miocardite",
+      "alegacao": "A vacina da covid pode causar miocardite em alguns jovens.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "sintetico-coracao-1",
+        "sintetico-coracao-2"
+      ],
+      "sintetico": true,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 46.5,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos fornecidos tratam apenas da afirmação de que a vacina causa danos graves a todos ou problemas graves na maioria, mas não mencionam especificamente a ocorrência de miocardite em jovens.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Os trechos fornecidos tratam apenas da afirmação de que a vacina causa danos graves a todos ou problemas graves na maioria, mas não mencionam especificamente a ocorrência de miocardite em jovens.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 44.7,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos fornecidos negam que a vacina cause danos graves a todos e afirmam que casos de inflamação são raros, mas não confirmam nem negam especificamente a ocorrência de miocardite em jovens.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Os trechos fornecidos negam que a vacina cause danos graves a todos e afirmam que casos de inflamação são raros, mas não confirmam nem negam especificamente a ocorrência de miocardite em jovens.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 40.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos fornecidos negam que a vacina cause danos graves a todos, mas não mencionam especificamente a ocorrência de miocardite em jovens.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Os trechos fornecidos negam que a vacina cause danos graves a todos, mas não mencionam especificamente a ocorrência de miocardite em jovens.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N5_uma_agencia",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 40.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina de mRNA alteraria o DNA humano para criar seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 39.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria seres humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina de mRNA alteraria o DNA humano para criar seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria seres humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 39.1,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina de mRNA alteraria o DNA humano para criar seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "vacina contra a Covid-19 de mRNA"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N6_enganoso",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "9adea6a455-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 46.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina transformaria humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina contra a Covid-19 alteraria o DNA humano para transformar pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 42.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina contra a Covid-19 seria capaz de alterar o DNA humano e transformar pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A transformação em jacarés é um caso particular da alegação de que a vacina transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 42.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de transformação em jacarés é um caso particular da afirmação mais geral de que a vacina transformaria humanos em seres geneticamente modificados.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho classifica como boato a ideia de que a vacina contra a Covid-19 alteraria o DNA humano para transformar pessoas em seres geneticamente modificados.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de transformação em jacarés é um caso particular da afirmação mais geral de que a vacina transformaria humanos em seres geneticamente modificados.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    }
+  ],
+  "aceite": false
+}

@@ -40,7 +40,7 @@ import json
 import re
 from dataclasses import dataclass, field, replace
 
-from prototipo.identidade import textos
+from prototipo.identidade import RAIZ, ler_textos, textos
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.ancoragem import ancorar_bloco, texto_do_bloco
 from prototipo.resposta.mito import verificar_mito
@@ -68,6 +68,19 @@ TETO_FRASE = 20
 # Bordão da Dona Checa (add-identidade-dona-checa): lido da spec, posto pelo
 # código antes do bloco 1 e contado no teto. O modelo não o escreve.
 BORDAO = textos("resposta-formativa")["bordao"]
+
+
+def _texto_ampla():
+    """Abertura do veredito por alegação mais ampla (add-cobertura-alegacao-ampla, D6):
+    do delta do change e, depois do arquivamento, da spec principal."""
+    for spec in (RAIZ / "openspec/changes/add-cobertura-alegacao-ampla/specs/resposta-formativa/spec.md",
+                 RAIZ / "openspec/specs/resposta-formativa/spec.md"):
+        if spec.exists() and "abertura_ampla" in (t := ler_textos(spec)):
+            return t["abertura_ampla"]
+    raise FileNotFoundError("texto abertura_ampla de resposta-formativa não encontrado")
+
+
+ABERTURA_AMPLA = _texto_ampla()
 
 CATALOGO = json.loads(catalogo_mod.ARQUIVO.read_text(encoding="utf-8"))["tecnicas"]
 _LISTA = "\n".join(f'  - "{t["rotulo"]}": {t["sinal"]}' for t in CATALOGO)
@@ -107,6 +120,9 @@ Se o estado for `com evidência`:
   "verdadeiro", diga o que sustentou a confirmação.
 Se o veredito for "falso" e você precisar citar a alegação, escreva junto que
 ela é falsa. NÃO comece nenhum bloco repetindo a alegação.
+Se a mensagem trouxer "COBERTURA: alegação mais ampla", nenhuma checagem tratou
+desta versão: o "bloco1" diz qual alegação mais geral as agências checaram como
+falsa, e o "bloco2" pode usar a PONTE para explicar por que ela vale aqui.
 
 Se o estado for `evidência insuficiente` ou `lacuna de acervo`:
 - "bloco1": uma frase sobre o que foi procurado.
@@ -161,6 +177,9 @@ class Resposta:
     # estado dela ("ok", "não rodou: <tipo>", ou None quando não se aplica).
     sem_base: list = field(default_factory=list)
     conferencia: str | None = None
+    # add-cobertura-alegacao-ampla, D6: a ponte do veredito por alegação mais
+    # ampla, mostrada uma vez no detalhe; None nas demais respostas.
+    ponte: str | None = None
 
     @property
     def texto(self):
@@ -187,9 +206,15 @@ def mensagem(texto, alegacao, veredito, estado, decomposicao=None):
               f"ALEGAÇÃO CHECADA:\n{alegacao}"]
     if estado == "com evidência":
         partes.append(f"VEREDITO: {veredito.rotulo}\nCRITÉRIO: {veredito.criterio}")
+        ampla = veredito.cobertura == "ampla"
+        if ampla:
+            partes.append(f"COBERTURA: alegação mais ampla\nPONTE: {veredito.ponte}")
         linhas = ["TRECHOS:"]
         for n, t in enumerate(veredito.trechos, 1):
-            linhas.append(f"[T{n}] {t['agencia']}, {t['data_publicacao']}\n\"\"\"{t['trecho']}\"\"\"")
+            checada = (f"\nalegação checada pela agência: {t['alegacao']}"
+                       if ampla and t.get("alegacao") else "")
+            linhas.append(f"[T{n}] {t['agencia']}, {t['data_publicacao']}{checada}"
+                          f"\n\"\"\"{t['trecho']}\"\"\"")
         partes.append("\n\n".join(linhas))
     else:
         partes.append("TRECHOS: nenhum.")
@@ -205,6 +230,8 @@ def mensagem(texto, alegacao, veredito, estado, decomposicao=None):
 def _abertura(veredito, estado, lacuna):
     if estado == LACUNA:
         return f"Lacuna de acervo. As checagens consultadas vão só até {lacuna['corte']}."
+    if veredito.cobertura == "ampla":
+        return ABERTURA_AMPLA
     return ABERTURA[veredito.rotulo]
 
 
@@ -225,6 +252,10 @@ def _detalhe(veredito, vizinhos=()):
     """
     chaves = ("agencia", "data_publicacao", "url", "veredito_original", "trecho")
     citados = [{k: t[k] for k in chaves} for t in [*veredito.trechos, *vizinhos]]
+    if veredito.cobertura == "ampla":
+        # D6: a alegação que a agência checou, literal, para auditar a ponte.
+        for item, t in zip(citados, [*veredito.trechos, *vizinhos]):
+            item["alegacao_checada"] = t.get("alegacao")
     return citados + [{**{k: ref[k] for k in chaves[:-1]}, "trecho": None}
                       for ref in veredito.referencias]
 
@@ -483,7 +514,8 @@ def _montar(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     vizinhos = [trechos[i - 1] for i in sorted(usadas) if n < i <= len(trechos)]
     r = Resposta("com evidência" if com else "sem evidência", titulos, blocos,
                  _detalhe(veredito, vizinhos),
-                 descartadas=descartadas, veredito=veredito, bruto=bruto, aviso=aviso)
+                 descartadas=descartadas, veredito=veredito, bruto=bruto, aviso=aviso,
+                 ponte=veredito.ponte if com and veredito.cobertura == "ampla" else None)
     r.trechos_vistos = trechos  # para a conferência de sustentação; fora do asdict
 
     if dados is None:

@@ -173,3 +173,33 @@ def test_taxa_com_denominador_zero_e_nula(casos):
     registro = sessao([item("F1")])
     assert metricas_sessao(registro, casos)["guarda"]["aceitacao_cega"]["armadilhas"] == \
         {"n": 0, "de": 0, "taxa": None}
+
+
+# add-cobertura-alegacao-ampla, task 6.1 (D7): vereditos `ampla` à parte ---------
+
+def test_discernimento_separado_por_cobertura_e_sem_campo_conta_como_mesma(casos):
+    registro = sessao([
+        item("F1", julgamento="nao_confiavel", cobertura_exibida="ampla"),
+        item("F2", julgamento="confiavel"),
+        item("F3", julgamento="nao_confiavel", cobertura_exibida="mesma"),
+    ])
+    r = metricas_sessao(registro, casos)["resultado"]["discernimento_por_cobertura"]
+    assert (taxa(r["ampla"]), taxa(r["mesma"])) == ((1, 1), (1, 2))
+
+
+def test_aceitacao_cega_separada_por_cobertura(casos):
+    registro = sessao([
+        # A ferramenta mostrou "falso" para casos verdadeiros: erro da IA.
+        item("V1", rotulo_exibido="falso", julgamento="nao_confiavel", cobertura_exibida="ampla"),
+        item("V2", rotulo_exibido="falso", julgamento="confiavel", expressou_duvida=True),
+    ])
+    g = metricas_sessao(registro, casos)["guarda"]["aceitacao_cega"]["por_cobertura"]
+    assert (taxa(g["ampla"]), taxa(g["mesma"])) == ((1, 1), (0, 1))
+
+
+def test_agregado_soma_por_cobertura(casos):
+    a = sessao([item("F1", cobertura_exibida="ampla")])
+    b = sessao([item("F1", cobertura_exibida="ampla", julgamento="confiavel")], participante="P-02")
+    r = agregar([a, b], casos)["piloto"]
+    assert taxa(r["resultado"]["discernimento_por_cobertura"]["ampla"]) == (1, 2)
+    assert taxa(r["guarda"]["aceitacao_cega"]["por_cobertura"]["mesma"]) == (0, 0)

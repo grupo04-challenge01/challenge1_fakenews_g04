@@ -39,8 +39,19 @@ DETALHE = [
 ORIGEM = {"titulo": "Chá de jatobá cura câncer", "veiculo": "Blog Exemplo",
           "data": "2026-09-20", "url": "https://blog.exemplo/cura"}
 
+# add-cobertura-alegacao-ampla, task 5.3: veredito por alegação mais ampla.
+PONTE = "Virar jacaré exigiria que a vacina alterasse o DNA de quem a toma."
+DETALHE_AMPLO = [
+    {"agencia": "boatos", "data_publicacao": "2020-08-04", "url": "https://www.boatos.org/dna",
+     "veredito_original": "boato", "trecho": "É boato que a vacina vá modificar o DNA.",
+     "alegacao_checada": "Vacina contra a Covid-19 vai modificar o DNA das pessoas"},
+    {"agencia": "aos fatos", "data_publicacao": "2020-12-04", "url": "https://www.aosfatos.org/dna",
+     "veredito_original": "falso", "trecho": "Vacinas de RNA não alteram o DNA.",
+     "alegacao_checada": "Vacinas de RNA contra a Covid-19 não são capazes de alterar o DNA"},
+]
 
-def verificar_falso(texto, emitir, *, recuperador, chat):
+
+def verificar_falso(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
     t = fluxo.textos()
     padrao = carregar_respostas()
     if "peito" in texto:
@@ -73,6 +84,11 @@ def verificar_falso(texto, emitir, *, recuperador, chat):
             partes.insert(1, AVISO_PARCIAL)
         emitir({"tipo": "resposta", "forma": "com evidência", "texto": "\n\n".join(partes),
                 "detalhe": DETALHE, "redirecionamentos": [], "origem": ORIGEM})
+        return
+    if "jacaré" in texto:
+        emitir({"tipo": "resposta", "forma": "com evidência", "texto": RESPOSTA,
+                "detalhe": DETALHE_AMPLO, "ponte": PONTE, "redirecionamentos": [],
+                "origem": None})
         return
     if "quebra" in texto:
         emitir({"tipo": "erro", "texto": t["erro"]})

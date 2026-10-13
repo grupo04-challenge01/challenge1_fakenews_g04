@@ -7,6 +7,10 @@ seguro; `127.0.0.1` evita expor o servidor na rede sem querer.
 `DONA_CHECA_GERADOR` escolhe o modelo (add-gerador-api-deepseek, D3): padrão
 `deepseek` em `uso` e `ollama` em `piloto`. Com `deepseek`, `DEEPSEEK_API_KEY`
 é obrigatória e fica fora do `repr`, para não vazar em log nem em erro (D4).
+
+`DONA_CHECA_COBERTURA_AMPLA` (`sim` ou `nao`, padrão `sim`) liga o veredito por
+alegação mais ampla (add-cobertura-alegacao-ampla, D5); `nao` desliga sem
+mudar código.
 """
 import os
 from dataclasses import dataclass, field
@@ -31,6 +35,7 @@ class Config:
     chave: str | None = field(default=None, repr=False)
     modelo_remoto: str = MODELO_REMOTO
     alternativa_local: bool = False
+    cobertura_ampla: bool = True
 
     @property
     def piloto(self):
@@ -50,6 +55,13 @@ def _inteiro_positivo(ambiente, nome, padrao):
     return valor
 
 
+def _sim_ou_nao(ambiente, nome, padrao):
+    valor = ambiente.get(nome, padrao)
+    if valor not in ("sim", "nao"):
+        raise ErroConfig(f"{nome} precisa ser sim ou nao; veio {valor!r}")
+    return valor == "sim"
+
+
 def carregar(ambiente=os.environ):
     modo = ambiente.get("DONA_CHECA_MODO")
     if modo not in MODOS:
@@ -62,13 +74,12 @@ def carregar(ambiente=os.environ):
     chave = (ambiente.get("DEEPSEEK_API_KEY") or "").strip() or None
     if gerador == "deepseek" and chave is None:
         raise ErroConfig("DEEPSEEK_API_KEY é obrigatória com o gerador deepseek")
-    alternativa = ambiente.get("DONA_CHECA_ALTERNATIVA_LOCAL", "nao")
-    if alternativa not in ("sim", "nao"):
-        raise ErroConfig(f"DONA_CHECA_ALTERNATIVA_LOCAL precisa ser sim ou nao; veio {alternativa!r}")
+    alternativa = _sim_ou_nao(ambiente, "DONA_CHECA_ALTERNATIVA_LOCAL", "nao")
+    cobertura_ampla = _sim_ou_nao(ambiente, "DONA_CHECA_COBERTURA_AMPLA", "sim")
     return Config(modo=modo,
                   host=ambiente.get("DONA_CHECA_HOST", "127.0.0.1"),
                   porta=_inteiro_positivo(ambiente, "DONA_CHECA_PORTA", 8000),
                   tempo_max=_inteiro_positivo(ambiente, "DONA_CHECA_TEMPO_MAX", 300),
                   gerador=gerador, chave=chave if gerador == "deepseek" else None,
                   modelo_remoto=ambiente.get("DEEPSEEK_MODELO") or MODELO_REMOTO,
-                  alternativa_local=alternativa == "sim")
+                  alternativa_local=alternativa, cobertura_ampla=cobertura_ampla)

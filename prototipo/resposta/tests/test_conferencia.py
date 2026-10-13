@@ -141,3 +141,13 @@ def test_frase_do_bloco_2_sobre_opiniao_e_conferida_contra_a_mensagem():
 def test_prompt_aceita_interpretacao_e_nao_manda_marcar_na_duvida():
     assert "Na dúvida" not in conferencia.SISTEMA
     assert "interpretação que decorre do que a mensagem diz tem base" in conferencia.SISTEMA
+
+
+def test_abertura_ampla_escrita_pelo_codigo_nao_vai_a_conferencia():
+    # add-cobertura-alegacao-ampla, D6: as duas frases da abertura são fixas.
+    from prototipo.resposta.tests.test_estrutura import AMPLA
+    r = _resposta(veredito=AMPLA)
+    pedidos = []
+    conferencia.aplicar(r, MENSAGEM, chat=_juiz([], pedidos), refazer=_refazer_proibido)
+    frases = [l for l in pedidos[0][1].splitlines() if l.startswith("[F")]
+    assert not any("Não achamos checagem desta versão" in l or l.endswith("Falso.") for l in frases)

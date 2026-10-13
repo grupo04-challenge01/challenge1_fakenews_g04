@@ -85,6 +85,10 @@
           "enum": ["falso", "verdadeiro", "verdadeiro fora de contexto ou exagerado",
                    "evidência insuficiente", null]
         },
+        "cobertura_exibida": {
+          "description": "Cobertura do veredito mostrado: checagem da mesma alegação ou de alegação mais ampla (add-cobertura-alegacao-ampla). Opcional; ausente conta como mesma.",
+          "enum": ["mesma", "ampla", null]
+        },
         "expressou_duvida": {"type": ["boolean", "null"],
                              "description": "Questionou a saída em voz alta ou por gesto observável. Nulo na transferência."},
         "julgamento": {"enum": ["confiavel", "nao_confiavel", "nao_sei", null]},

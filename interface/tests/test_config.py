@@ -92,3 +92,18 @@ def test_alternativa_local_invalida_e_erro_que_nomeia_a_variavel():
     with pytest.raises(ErroConfig, match=r"DONA_CHECA_ALTERNATIVA_LOCAL.*sim.*nao"):
         carregar({"DONA_CHECA_MODO": "uso", "DEEPSEEK_API_KEY": CHAVE,
                   "DONA_CHECA_ALTERNATIVA_LOCAL": "talvez"})
+
+
+# add-cobertura-alegacao-ampla, task 4.1 (D5): chave de desligar.
+
+def test_cobertura_ampla_ligada_por_padrao_e_desligada_com_nao():
+    base = {"DONA_CHECA_MODO": "uso", "DEEPSEEK_API_KEY": CHAVE}
+    assert carregar(base).cobertura_ampla is True
+    assert carregar({**base, "DONA_CHECA_COBERTURA_AMPLA": "sim"}).cobertura_ampla is True
+    assert carregar({**base, "DONA_CHECA_COBERTURA_AMPLA": "nao"}).cobertura_ampla is False
+
+
+def test_cobertura_ampla_invalida_e_erro_que_nomeia_a_variavel():
+    with pytest.raises(ErroConfig, match=r"DONA_CHECA_COBERTURA_AMPLA.*sim.*nao"):
+        carregar({"DONA_CHECA_MODO": "uso", "DEEPSEEK_API_KEY": CHAVE,
+                  "DONA_CHECA_COBERTURA_AMPLA": "talvez"})

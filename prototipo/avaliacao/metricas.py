@@ -98,6 +98,19 @@ def aceitou_cegamente(item: dict, casos: dict) -> bool:
             and item["julgamento"] == polaridade(item["rotulo_exibido"]))
 
 
+COBERTURAS = ("mesma", "ampla")
+
+
+def cobertura(item: dict) -> str:
+    """Cobertura do veredito exibido (add-cobertura-alegacao-ampla, D7); ausente é `mesma`."""
+    return item.get("cobertura_exibida") or "mesma"
+
+
+def _por_cobertura(itens: list[dict], conta) -> dict:
+    return {c: fracao(sum(conta(i) for i in itens if cobertura(i) == c),
+                      sum(cobertura(i) == c for i in itens)) for c in COBERTURAS}
+
+
 def _mediana(valores: list[float]) -> dict:
     return {"mediana": statistics.median(valores) if valores else None, "n": len(valores)}
 
@@ -131,6 +144,7 @@ def metricas_sessao(registro: dict, casos: dict) -> dict:
         "tipo": registro["tipo"],
         "resultado": {
             "discernimento": fracao(sum(acertou(i, casos) for i in nao_armadilha), len(nao_armadilha)),
+            "discernimento_por_cobertura": _por_cobertura(nao_armadilha, lambda i: acertou(i, casos)),
             "transferencia": fracao(sum(acertou(i, casos) for i in transf_ok), len(transf_ok)),
             "transferencia_com_criterio": fracao(sum(bool(i["criterios_citados"]) for i in transf_ok),
                                                  len(transf_ok)),
@@ -149,6 +163,7 @@ def metricas_sessao(registro: dict, casos: dict) -> dict:
                 "armadilhas": fracao(sum(aceitou_cegamente(i, casos) for i in armadilhas_com_erro),
                                      len(armadilhas_com_erro)),
                 "todos_erros": fracao(sum(aceitou_cegamente(i, casos) for i in erros), len(erros)),
+                "por_cobertura": _por_cobertura(erros, lambda i: aceitou_cegamente(i, casos)),
             },
             "falso_positivo_legitimo": {
                 "participante_com_ferramenta": fracao(
@@ -185,6 +200,8 @@ def _agregar_grupo(registros: list[dict], sessoes: list[dict]) -> dict:
         "sessoes": len(sessoes),
         "resultado": {
             "discernimento": _soma([x["discernimento"] for x in r]),
+            "discernimento_por_cobertura": {
+                c: _soma([x["discernimento_por_cobertura"][c] for x in r]) for c in COBERTURAS},
             "transferencia": _soma([x["transferencia"] for x in r]),
             "transferencia_com_criterio": _soma([x["transferencia_com_criterio"] for x in r]),
             "criterios_transferencia": dict(criterios.most_common()),
@@ -193,7 +210,10 @@ def _agregar_grupo(registros: list[dict], sessoes: list[dict]) -> dict:
             "abriu_camada_detalhe": _soma([x["abriu_camada_detalhe"] for x in r]),
         },
         "guarda": {
-            "aceitacao_cega": {k: _soma([x["aceitacao_cega"][k] for x in g]) for k in ("armadilhas", "todos_erros")},
+            "aceitacao_cega": {
+                **{k: _soma([x["aceitacao_cega"][k] for x in g]) for k in ("armadilhas", "todos_erros")},
+                "por_cobertura": {c: _soma([x["aceitacao_cega"]["por_cobertura"][c] for x in g])
+                                  for c in COBERTURAS}},
             "falso_positivo_legitimo": {
                 k: _soma([x["falso_positivo_legitimo"][k] for x in g])
                 for k in ("participante_com_ferramenta", "participante_transferencia", "sistema")},

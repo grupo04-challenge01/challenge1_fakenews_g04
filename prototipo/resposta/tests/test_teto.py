@@ -99,3 +99,12 @@ def test_blocos_3_e_4_curtos_cortam_o_fim_do_bloco_2_e_nunca_o_bloco_1():
     assert r.blocos[0] == sem_corte_b1
     assert r.blocos[1].count("As checagens") >= 1
     assert r.cortadas and all("As checagens" in f for f in r.cortadas)
+
+
+def test_abertura_ampla_conta_no_teto():
+    # add-cobertura-alegacao-ampla, task 5.2: a abertura fixa é mais longa.
+    from prototipo.resposta.tests.test_estrutura import AMPLA_G
+    longa = {**BLOCOS_FALSO, "bloco4": " ".join([DICA] * 12)}
+    r = responder(MENSAGEM, ALEGACAO, AMPLA_G, chat=_sempre(longa))
+    assert _palavras(r) <= TETO_PALAVRAS
+    assert r.blocos[0].startswith("Falso. Não achamos checagem desta versão")

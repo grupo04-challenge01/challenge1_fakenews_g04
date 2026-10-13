@@ -149,7 +149,8 @@ def criar_app(config, *, carregar_recuperador=_carregar_recuperador_real, chat=c
 
         def rodar():
             try:
-                verificar(texto, entregar, recuperador=recuperador, chat=chat)
+                verificar(texto, entregar, recuperador=recuperador, chat=chat,
+                          cobertura_ampla=config.cobertura_ampla)
             except Exception as e:  # nada do texto vai ao log
                 log.error("verificação falhou: %s", type(e).__name__)
                 entregar(erro)

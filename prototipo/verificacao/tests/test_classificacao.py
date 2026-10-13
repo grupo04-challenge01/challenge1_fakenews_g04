@@ -80,6 +80,49 @@ def test_saida_malformada_e_defeito(bruto, defeito):
         interpretar(bruto)
 
 
+# add-cobertura-alegacao-ampla, task 1.1 (D1) ---------------------------------
+
+def _ampla(**campos):
+    dados = {"rotulo": "falso", "trechos": ["T1"], "criterio": "O trecho desmente a geral.",
+             "cobertura": "ampla", "ponte": "Virar jacaré exigiria alterar o DNA.",
+             "sujeito": "vacina de Covid-19"}
+    dados.update(campos)
+    return json.dumps(dados, ensure_ascii=False)
+
+
+def test_cobertura_ampla_e_lida_com_ponte_e_sujeito():
+    c = interpretar(_ampla())
+    assert (c.cobertura, c.ponte, c.sujeito) == (
+        "ampla", "Virar jacaré exigiria alterar o DNA.", "vacina de Covid-19")
+
+
+def test_cobertura_ausente_conta_como_mesma():
+    c = interpretar(_bruto())
+    assert (c.cobertura, c.ponte, c.sujeito) == ("mesma", "", "")
+
+
+def test_cobertura_mesma_dispensa_ponte_e_sujeito():
+    assert interpretar(_ampla(cobertura="Mesma", ponte="", sujeito="")).cobertura == "mesma"
+
+
+@pytest.mark.parametrize("campos, defeito", [
+    ({"cobertura": "parecida"}, "cobertura fora de mesma e ampla: parecida"),
+    ({"ponte": ""}, "cobertura ampla sem ponte"),
+    ({"sujeito": "  "}, "cobertura ampla sem sujeito"),
+])
+def test_cobertura_malformada_e_defeito(campos, defeito):
+    assert defeito in defeitos(_ampla(**campos))
+    with pytest.raises(ValueError):
+        interpretar(_ampla(**campos))
+
+
+def test_insuficiente_nao_exige_cobertura():
+    bruto = json.dumps({"rotulo": "evidência insuficiente", "trechos": [],
+                        "criterio": "Nada sobre isso.", "cobertura": "ampla"},
+                       ensure_ascii=False)
+    assert defeitos(bruto) == []
+
+
 def test_classificar_passa_pelo_modelo_injetado():
     visto = {}
 
@@ -89,3 +132,28 @@ def test_classificar_passa_pelo_modelo_injetado():
 
     assert classificar("Casca do jatobá cura câncer.", TRECHOS, chat=chat).rotulo == "falso"
     assert "[T1]" in visto["usuario"]
+
+
+# add-cobertura-alegacao-ampla, task 1.2 (D1) ---------------------------------
+
+def test_prompt_define_cobertura_ampla_por_implicacao():
+    assert '"ampla"' in SISTEMA
+    assert "caso particular" in SISTEMA
+    assert "se esta alegação fosse verdade, a mais geral também seria" in SISTEMA
+
+
+def test_prompt_define_cobertura_mesma():
+    assert '"mesma": o trecho checa esta alegação, mesmo com outras palavras' in SISTEMA
+
+
+def test_prompt_traz_goiabeira_diante_de_jatoba_como_exemplo_negativo():
+    assert "goiabeira" in SISTEMA and "jatobá" in SISTEMA
+
+
+def test_prompt_limita_cobertura_ampla_ao_falso():
+    assert 'Cobertura "ampla" só vale para o rótulo "falso"' in SISTEMA
+
+
+def test_prompt_pede_os_campos_novos_no_formato():
+    for campo in ('"cobertura"', '"ponte"', '"sujeito"'):
+        assert campo in SISTEMA

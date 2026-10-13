@@ -33,7 +33,7 @@ def _local(sistema, usuario):
 def _cliente(config=REMOTO):
     chamadas = []
 
-    def verificar(texto, emitir, *, recuperador, chat):
+    def verificar(texto, emitir, *, recuperador, chat, cobertura_ampla=True):
         chamadas.append((texto, chat))
         emitir(FIM)
 

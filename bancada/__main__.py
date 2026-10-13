@@ -21,7 +21,7 @@ import time
 
 from bancada import gravacao
 from bancada.avaliacao import avaliar
-from bancada.pipeline import executar
+from bancada.pipeline import etapa_de, executar
 from prototipo.entrada import rede
 from prototipo.rag.hibrida import LIMIAR_EVIDENCIA
 
@@ -112,6 +112,29 @@ def _conferencia_tirou(resultado):
                for e in etapas)
 
 
+def pontes(resultados):
+    """Vereditos de cobertura ampla da rodada, para a revisão humana das pontes
+    (add-cobertura-alegacao-ampla, D7). Entram também os rebaixados, com o motivo."""
+    lista = []
+    for r in resultados:
+        guarda = etapa_de(r["rastro"], "guarda")
+        v = (guarda or {}).get("saida") or {}
+        original = v.get("original") or {}
+        if "ampla" not in (v.get("cobertura"), original.get("cobertura")):
+            continue
+        extracao = (etapa_de(r["rastro"], "extracao") or {}).get("saida") or {}
+        lista.append({
+            "caso": r["id"],
+            "alegacao": (extracao.get("selecionada") or {}).get("texto"),
+            "alegacoes_checadas": [t.get("alegacao") for t in v.get("trechos") or []],
+            "ponte": v.get("ponte") or original.get("ponte"),
+            "implicacao": v.get("implicacao"),
+            "rotulo": v.get("rotulo"),
+            "rebaixado_por": v.get("rebaixado_por"),
+        })
+    return lista
+
+
 def resumir(resultados):
     por_tipo, eliminatorias, demais = {}, [], []
     for r in resultados:
@@ -181,7 +204,8 @@ def rodar(args):
         real_rec = carregar()
 
     parametros = {"canal": args.canal, "k": args.k, "modo": args.modo,
-                  "alfa": args.alfa, "limiar": args.limiar, "idioma": not args.sem_idioma}
+                  "alfa": args.alfa, "limiar": args.limiar, "idioma": not args.sem_idioma,
+                  "cobertura_ampla": not args.sem_cobertura_ampla}
     resultados = []
     for caso in casos:
         inicio = time.perf_counter()
@@ -205,7 +229,10 @@ def rodar(args):
     gerador = ({"gerador": "gravacao", "modelo": None} if args.offline
                else descrever_gerador(args.gerador, real_chat))
     RELATORIOS.mkdir(exist_ok=True)
-    destino = RELATORIOS / f"{time.strftime('%Y%m%d-%H%M%S')}.json"
+    carimbo = time.strftime('%Y%m%d-%H%M%S')
+    destino = RELATORIOS / f"{carimbo}.json"
+    (RELATORIOS / f"{carimbo}-pontes.json").write_text(
+        json.dumps(pontes(resultados), ensure_ascii=False, indent=1), encoding="utf-8")
     destino.write_text(json.dumps({"modo": "offline" if args.offline else "real",
                                    "parametros": {**parametros, **gerador},
                                    "resumo": resumo,
@@ -240,6 +267,8 @@ def main():
                    help=f"piso do score fundido (task 1.5, padrão {LIMIAR_EVIDENCIA})")
     r.add_argument("--sem-idioma", action="store_true",
                    help="ranking cru (`buscar`), sem a prioridade de idioma da task 1.4")
+    r.add_argument("--sem-cobertura-ampla", action="store_true",
+                   help="desliga o veredito por alegação mais ampla (add-cobertura-alegacao-ampla, D5)")
     args = p.parse_args()
     sys.exit(rodar(args))
 
