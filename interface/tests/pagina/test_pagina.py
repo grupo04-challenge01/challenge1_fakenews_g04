@@ -37,6 +37,17 @@ def test_inicial_mostra_cabecalho_chamada_e_abertura(page, servidor_uso):
     expect(page.get_by_role("button", name="Enviar")).to_be_visible()
 
 
+def test_cabecalho_fica_visivel_ao_rolar(page, servidor_uso):
+    page.set_viewport_size({"width": 390, "height": 600})
+    page.goto(servidor_uso)
+    enviar(page, MENSAGEM)
+    expect(resposta(page)).to_contain_text("Veredito: Falso.")
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    assert page.evaluate("window.scrollY") > 0
+    topo = page.get_by_role("banner").bounding_box()
+    assert topo["y"] == 0
+
+
 def test_mensagem_vazia_nao_e_enviada(page, servidor_uso):
     page.goto(servidor_uso)
     page.get_by_role("button", name="Enviar").click()

@@ -67,7 +67,14 @@ body {
   white-space: nowrap;
 }
 
+/* Cabeçalho fixo no topo ao rolar; o scroll-padding evita que a bolha
+   rolada até a vista (chat.js, scrollIntoView) fique escondida atrás dele. */
+html { scroll-padding-top: 5.5rem; }
+
 .cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 0.75rem;
