@@ -251,6 +251,15 @@ seguiram em "não" em todas as variantes. As revisões não entraram no código,
 porque não houve ganho medido e havia risco de deixar a verificação mais
 leniente.
 
+**Change bloqueado (decisão do grupo, 13/10/2026).** A regra fica como está,
+conservadora, e a spec não muda. Os cenários "Versão exagerada de alegação já
+checada" (`verificacao-alegacao`) e "Jacaré" (`resposta-formativa`) não são
+cumpridos pelo código atual. Por isso as tasks 7.2, 7.3, 7.4 e 8.1 seguem
+abertas, e o change não vai para merge como pronto. Na bancada de 13/10/2026
+(`deepseek-v4-pro`), os casos atuais ficaram em 28/30, a mesma contagem da
+rodada anterior. A1_jacare_ampla falhou pela implicação, e N3_autismo_sem_ampla
+passou.
+
 ## Risks / Trade-offs
 
 - [O modelo classifica como `mesma` um caso que é `ampla` e escapa das travas]
