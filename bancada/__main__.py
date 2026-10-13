@@ -126,7 +126,8 @@ def pontes(resultados):
         lista.append({
             "caso": r["id"],
             "alegacao": (extracao.get("selecionada") or {}).get("texto"),
-            "alegacoes_checadas": [t.get("alegacao") for t in v.get("trechos") or []],
+            "alegacoes_checadas": ([t.get("alegacao") for t in v.get("trechos") or []]
+                                   or original.get("alegacoes_checadas") or []),
             "ponte": v.get("ponte") or original.get("ponte"),
             "implicacao": v.get("implicacao"),
             "rotulo": v.get("rotulo"),

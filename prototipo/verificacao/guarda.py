@@ -143,6 +143,10 @@ def _classificar(alegacao, trechos, chat, ampla=True):
         return Veredito(c.rotulo, c.criterio, original=original)
 
     recuperados = {f"T{n}": t for n, t in enumerate(trechos, 1)}
+    if c.cobertura == "ampla":
+        # D7: G fica no rastro mesmo se uma trava rebaixar, para a revisão das pontes.
+        original["alegacoes_checadas"] = [recuperados[t].get("alegacao")
+                                          for t in c.trechos if t in recuperados]
     inventados = [t for t in c.trechos if t not in recuperados]
     resposta = None
     if not c.trechos:

@@ -427,6 +427,7 @@ def test_pontes_inclui_a_rebaixada_com_o_motivo():
     (p,) = pontes([r])
     assert (p["rotulo"], p["rebaixado_por"], p["implicacao"]) == (
         "evidência insuficiente", "cobertura ampla desligada", None)
+    assert p["alegacoes_checadas"] == ["Casca do jatobá cura qualquer doença"] * 2
 
 
 def test_rodada_grava_a_lista_de_pontes_ao_lado_do_relatorio(tmp_path, monkeypatch):

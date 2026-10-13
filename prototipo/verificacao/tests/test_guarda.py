@@ -305,6 +305,21 @@ def test_implicacao_recusada_rebaixa_e_fica_registrada():
     assert v.original["cobertura"] == "ampla"
 
 
+def test_rebaixada_guarda_as_alegacoes_checadas_para_a_revisao_das_pontes():
+    """D7: a revisão humana precisa ver G mesmo quando a trava rebaixa."""
+    v = verificar(JACARE, DUAS, chat=_chat_duplo("não"))
+    assert v.trechos == []
+    assert v.original["alegacoes_checadas"] == [t["alegacao"] for t in DUAS]
+
+
+def test_cobertura_mesma_nao_ganha_alegacoes_checadas():
+    def chat(sistema, usuario):
+        return json.dumps({"rotulo": "falso", "trechos": ["T1", "T2"],
+                           "criterio": "A geral é falsa.", "cobertura": "mesma"})
+    v = verificar(JACARE, DUAS, chat=chat)
+    assert "alegacoes_checadas" not in v.original
+
+
 def test_implicacao_usa_a_alegacao_checada_de_maior_score():
     alta = {**_geral("aos fatos", "falso", score=0.9), "alegacao": "Vacinas de RNA não alteram o DNA"}
     chat = _chat_duplo("sim")
