@@ -41,5 +41,6 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 
 - [x] 6.1 Suíte verde
 - [x] 6.2 `openspec validate fix-robustez-demo --strict`
-- [ ] 6.3 Rodada real da bancada com o gerador remoto, sem regressão contra a
-      rodada anterior
+- [x] 6.3 Rodada real da bancada com o gerador remoto, sem regressão contra a
+      rodada anterior: rodada 20261013-104226, `deepseek-v4-pro`, 29 de 30,
+      critério D10 cumprido; única falha F06, a mesma de antes
