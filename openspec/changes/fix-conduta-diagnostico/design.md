@@ -135,3 +135,12 @@ a pergunta de discernimento.
 - **Primeira rodada real** de 13/10/2026 (`20261013-151311.json`), com D1 a
   D3 na primeira versão: 30/32, sem falha eliminatória, C3 e C4 passaram.
   Fica como histórico; D4 a D6 pedem rodada nova.
+- **Rodada real** de 13/10/2026 (`20261013-155857.json`, `deepseek-v4-pro`),
+  com D1 a D6: 31/34, sem falha eliminatória, fronteira 10/10. Cumpre D10 de
+  `add-gerador-api-deepseek` no limite, com 3 das 3 falhas permitidas, todas
+  de forma e fora deste change: F03, que saiu na forma sem evidência; F06,
+  com o bloco 2 sem separar a opinião, a mesma das rodadas anteriores; e R3,
+  com uma frase de mais de 20 palavras. C3 saiu `diagnostico`, V1
+  `informacao_geral` e V2 `checagem`; C4 saiu `conduta_individual` e
+  `diagnostico` e foi checado, como D3 prevê. As gravações dessa rodada são
+  as da bancada offline, que dá o mesmo resultado.

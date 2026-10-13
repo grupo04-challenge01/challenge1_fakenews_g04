@@ -1,6 +1,6 @@
 {
  "chat": {
-  "36e2509c128d3acc": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem pede para ver um vídeo, sem detalhes, indicando possível checagem de conteúdo.\"}"
+  "881f308f88c3ff18": "{\"categorias\": [\"informacao_geral\"], \"motivo\": \"pedido para ver vídeo sem contexto de saúde\"}"
  },
  "busca": {}
 }

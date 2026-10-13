@@ -27,7 +27,7 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 ## 4. Bancada
 
 - [x] 4.1 Casos `C3`, `C4`, `V1` e `V2` em `bancada/casos.json` (D3)
-- [ ] 4.2 Rodada real com `--gerador deepseek`, que também regrava a bancada:
+- [x] 4.2 Rodada real com `--gerador deepseek`, que também regrava a bancada:
       C3, C4, V1 e V2 passam, e a rodada cumpre D10 de
       `add-gerador-api-deepseek`
-- [ ] 4.3 Suíte inteira verde e `openspec validate fix-conduta-diagnostico --strict`
+- [x] 4.3 Suíte inteira verde e `openspec validate fix-conduta-diagnostico --strict`
