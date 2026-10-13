@@ -7,18 +7,19 @@ Atualizado em **13/10/2026**, semana 6 (Showcase). Contagem de tasks feita nos
 
 O Act terminou com o produto de pé. A Dona Checa recebe texto ou link, roda o
 fluxo inteiro de verificação e responde em cerca de 11 segundos pelo chat web.
-Na `main` estão **15 changes**, com **347 de 349 tasks** feitas. Todos passam
+Na `main` estão **16 changes**, com **357 de 358 tasks** feitas. Todos passam
 `openspec validate --all --strict`, conferido em 13/10/2026.
 
 | Indicador | Valor em 13/10/2026 |
 | --- | --- |
-| Changes na `main` | 15, sendo 13 completos e 2 com uma task aberta cada |
-| Tasks | 347 de 349 |
+| Changes na `main` | 16, sendo 15 completos e 1 com uma task aberta |
+| Tasks | 357 de 358 |
 | Change fora da `main` | `add-cobertura-alegacao-ampla`, 13 de 18, bloqueado |
 | Testes automatizados | 861 passam, 2 pulados (precisam do índice local), 0 falham |
 | Bancada ponta a ponta | 28 de 30 casos, sem falha eliminatória, mediana de 11,1 s |
 | Recuperação híbrida | recall@5 1,00 e MRR 0,897 em 20 consultas reais |
-| Change de Showcase | não existe |
+| Piloto com 2 participantes | feito em 08/10; sem conclusão sobre efeito com n = 2 |
+| Change de Showcase | `add-portfolio-showcase`, 9 de 9 |
 
 O que falta está em [Tasks pendentes](pendencias.md). Como o protótipo
 funciona e o que a avaliação mediu está em
@@ -33,7 +34,7 @@ funciona e o que a avaliação mediu está em
 | `add-ampliacao-corpus-ptbr` | Investigate | **55 de 55** ✅ | FakeRecogna 2.0, WhaVax, Telegram, índice de checagens |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | **33 de 33** ✅ | modelo por papel, recuperação híbrida medida |
 | `fix-resposta-sem-evidencia` | Investigate → Act | **13 de 13** ✅ | forma própria para a resposta sem evidência |
-| `mvp-copiloto-verificacao` | Act | **30 de 31** | o copiloto: verificação, guarda, resposta, fronteira, avaliação |
+| `mvp-copiloto-verificacao` | Act | **31 de 31** ✅ | o copiloto: verificação, guarda, resposta, fronteira, avaliação |
 | `add-identidade-dona-checa` | Act | **19 de 19** ✅ | persona, voz, bordão, logo e paleta |
 | `add-interface-chat-web` | Act | **29 de 29** ✅ | chat web em FastAPI, modos `uso` e `piloto` |
 | `add-entrada-por-link` | Act | **34 de 34** ✅ | leitura de link, com bloqueio de rede interna |
@@ -43,6 +44,7 @@ funciona e o que a avaliação mediu está em
 | `fix-pergunta-e-conduta` | Act | **11 de 11** ✅ | alegação em forma de pergunta, ferimento como urgência |
 | `fix-limitacoes-mvp` | Act | **8 de 8** ✅ | conferência de sustentação, termo em parágrafos |
 | `add-notebook-avaliacao-modelo` | Act | **10 de 10** ✅ | notebook executado de avaliação da recuperação |
+| `add-portfolio-showcase` | Showcase | **9 de 9** ✅ | este portfólio atualizado para o Showcase |
 | `add-cobertura-alegacao-ampla` | Act | 13 de 18, **fora da `main`** | veredito por alegação mais ampla; bloqueado |
 
 Nenhum change foi arquivado. Em `openspec/specs/` só está `frescor-corpus`,
@@ -51,12 +53,12 @@ promovida em 19/09. A ordem de arquivamento e o que ela exige estão em
 
 ## O que foi entregue entre 02/10 e 13/10/2026
 
-O MVP saiu de 13 para 30 de 31 tasks, e nove changes novos foram abertos e
+O MVP saiu de 13 para 31 de 31 tasks, e nove changes novos foram abertos e
 fechados no Act. O resumo vai por tema, não por data.
 
 ### O copiloto completo (`mvp-copiloto-verificacao`)
 
-Fecharam os blocos de recuperação, interface e avaliação.
+Fecharam os blocos de recuperação, interface e avaliação, e o change ficou completo.
 
 | Entregue | Tasks | Onde |
 | --- | --- | --- |
@@ -71,6 +73,7 @@ Fecharam os blocos de recuperação, interface e avaliação.
 | 30 casos curados e 4 itens-armadilha | 6.1, 6.2 | `datasets/casos_mvp_copiloto/` |
 | Protocolo ético e dossiê de submissão | 6.4 | `specs/avaliacao-instrumento/dossie-submissao-cep.md` |
 | Instrumento de coleta das métricas | 6.5 | `prototipo/avaliacao/`, decisão 27 |
+| Piloto com 2 participantes, 08/10 | 6.6 | `datasets/relatorios_mvp_copiloto/relatorios_metricas.json` |
 | Catálogo de técnicas conferido contra a matriz | 8.1 | decisão 22 |
 
 O limiar mudou de natureza. Em 19/09 a medição dizia que ele não sairia do

@@ -136,7 +136,7 @@ Estado em 13/10/2026. Contagem viva em `docs/estado.md`.
 | `add-ampliacao-corpus-ptbr` | Investigate | completo |
 | `add-selecao-modelos-arquitetura-rag` | Investigate | completo |
 | `fix-resposta-sem-evidencia` | Investigate → Act | completo |
-| `mvp-copiloto-verificacao` | Act | ativo, falta a 6.6 |
+| `mvp-copiloto-verificacao` | Act | completo |
 | `add-identidade-dona-checa` | Act | completo |
 | `add-interface-chat-web` | Act | completo |
 | `add-entrada-por-link` | Act | completo |
@@ -147,6 +147,6 @@ Estado em 13/10/2026. Contagem viva em `docs/estado.md`.
 | `fix-limitacoes-mvp` | Act | completo |
 | `add-notebook-avaliacao-modelo` | Act | completo |
 | `add-cobertura-alegacao-ampla` | Act | bloqueado, fora da `main` |
-| Showcase | Showcase | não aberto |
+| `add-portfolio-showcase` | Showcase | completo; apresentação e reflexão a definir |
 
 Nenhum está arquivado. A ordem de arquivamento está em `docs/pendencias.md`.

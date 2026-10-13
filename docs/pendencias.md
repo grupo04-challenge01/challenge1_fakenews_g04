@@ -10,34 +10,29 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| `mvp-copiloto-verificacao` | Act | 30 | **1** |
-| 13 outros changes na `main` | Engage a Act | 283 | **0** ✅ |
-| **total na `main`** | | **347** | **2** |
+| 15 outros changes na `main` | Engage a Showcase | 323 | **0** ✅ |
+| **total na `main`** | | **357** | **1** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
-| Showcase | Showcase | — | *nenhum change existe* |
 
-Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 09/10 fecharam 21
-delas, e nove changes novos abriram e fecharam no Act.
+Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
+delas, e nove changes novos abriram e fecharam no Act. O Showcase tem o seu
+desde 13/10: `add-portfolio-showcase`.
 
-## As duas tasks abertas na `main`
+## A task aberta na `main`
 
 | Change | # | Task | Bloqueio | Dono |
 | --- | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | 5.4 | Validar a rubrica contra casos brasileiros e remover o que não discrimina | anotação humana dos casos | Jhessica |
-| `mvp-copiloto-verificacao` | 6.6 | Rodar piloto com 2 participantes antes da coleta | nenhum no repositório | Breno |
 
-**Sobre a 5.4.** O instrumento está entregue: seis critérios com rubrica de três
-níveis e cinco remoções com motivo. Falta a validação empírica. O proxy
-automático foi medido e reprovado: sob qualquer piso único, ele removeria
-`alarme` e `linguagem`, os dois critérios mais relevantes para desinformação.
+O instrumento está entregue: seis critérios com rubrica de três níveis e cinco
+remoções com motivo. Falta a validação empírica. O proxy automático foi medido
+e reprovado: sob qualquer piso único, ele removeria `alarme` e `linguagem`, os
+dois critérios mais relevantes para desinformação.
 
-**Sobre a 6.6.** A 6.4 (protocolo ético) e a 6.5 (instrumento de coleta)
-fecharam em 06/10, então nada no repositório impede o piloto. Em 08/10 entrou
-um registro de duas sessões em
-`datasets/relatorios_mvp_copiloto/relatorios_metricas.json`, com 4 de 4 em
-discernimento e em transferência. A task segue desmarcada. O grupo precisa
-decidir se essas sessões contam como o piloto. Com n = 2, o notebook de
-avaliação registra que elas não sustentam conclusão sobre efeito.
+**O piloto (6.6 do MVP) foi feito** em 08/10/2026, com duas sessões: 4 de 4 em
+discernimento, em transferência e em transferência com critério. O agregado
+está em `datasets/relatorios_mvp_copiloto/relatorios_metricas.json`. Com n = 2,
+ele valida o instrumento e o roteiro, não o efeito.
 
 !!! warning "O CEP é simulado"
     O dossiê da 6.4 e a emenda 01 declaram ser **registros simulados para fins
@@ -83,23 +78,24 @@ ordem. A ordem segura:
 1. Engage e Investigate: `add-engage-desinformacao-saude`,
    `add-ampliacao-corpus-ptbr`, `add-selecao-modelos-arquitetura-rag`,
    `add-tratamento-datasets-ptbr` (depois da 5.4).
-2. `mvp-copiloto-verificacao` (depois da 6.6), que cria as specs de produto.
+2. `mvp-copiloto-verificacao`, que cria as specs de produto.
 3. `add-interface-chat-web` e `add-identidade-dona-checa`.
 4. `add-entrada-por-link` (decisão D10 dele) e `add-gerador-api-deepseek`.
 5. Os `fix-*` e `add-notebook-avaliacao-modelo`.
+6. `add-portfolio-showcase`, no fim do Showcase.
 
-## Showcase — nenhum change existe
+## Showcase
 
-Estamos na semana 6 (12 a 16/10). A metodologia pede um change por fase, e o
-Showcase não tem. Os entregáveis «apresentação» e «reflexão» não têm task no
-repositório.
+Estamos na semana 6 (12 a 16/10). O change da fase é `add-portfolio-showcase`,
+aberto em 13/10 para atualizar este portfólio. Os entregáveis «apresentação» e
+«reflexão» ainda não têm task: entram nele quando o grupo definir o formato.
 
 | Entregável final | Situação |
 | --- | --- |
 | Portfólio de pesquisa | este site; atualizado em 13/10 |
 | Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
 | Solução/protótipo com suporte de IA | [protótipo](act/prototipo-avaliacao.md) funcionando, bancada em 28 de 30 |
-| Apresentação e reflexão | **sem change e sem task** |
+| Apresentação e reflexão | **sem task**; entra em `add-portfolio-showcase` |
 
 ## Decisões em aberto
 
@@ -111,7 +107,6 @@ apresentação.
 | 1 | Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | marcados «a confirmar pelo grupo» |
 | 2 | «Identificar vieses»: requisito ou *Out of Scope*? | cobertura parcial, ver abaixo |
 | 3 | `add-cobertura-alegacao-ampla`: fora da entrega ou spec revista? | bloqueado em 13/10 |
-| 4 | As duas sessões de 08/10 contam como o piloto da 6.6? | task desmarcada |
 
 **Sobre «identificar vieses».** É uma das três competências da Essential
 Question. A cobertura é parcial: `acervo-circulacao` trata procedência e
@@ -148,8 +143,8 @@ protótipo não faz.
 | --- | --- | --- | --- |
 | 1 | Engage | 07/09 a 11/09 | encerrada, 25 de 25 |
 | 2–3 | Investigate | 14/09 a 25/09 | encerrada, 135 de 136 |
-| 4–5 | Act | 28/09 a 09/10 | encerrada, 187 de 188 na `main` |
-| **6** | **Showcase** | **12/10 a 16/10** | **em curso, sem change** |
+| 4–5 | Act | 28/09 a 09/10 | encerrada, 188 de 188 na `main` |
+| **6** | **Showcase** | **12/10 a 16/10** | **em curso**, `add-portfolio-showcase` |
 
 As contagens por fase somam os changes de cada uma: Investigate inclui
 `fix-resposta-sem-evidencia`; o Act soma o MVP e os nove changes abertos

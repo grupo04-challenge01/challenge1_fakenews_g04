@@ -119,10 +119,21 @@ localmente. Incluem testes de página com Playwright e axe-core.
 ### Com pessoas
 
 O instrumento de coleta (`prototipo/avaliacao/`) mede discernimento,
-transferência sem a ferramenta e tempo até a decisão fundamentada. Há um
-registro de duas sessões, de 08/10. Com n = 2, ele **não sustenta conclusão
-sobre efeito**, e o piloto (task 6.6) segue aberto. A métrica primária do
-projeto, ganho de discernimento, ainda não foi medida.
+transferência sem a ferramenta e tempo até a decisão fundamentada. O piloto
+com 2 participantes (task 6.6) rodou em 08/10/2026. Agregado em
+`datasets/relatorios_mvp_copiloto/relatorios_metricas.json`:
+
+| Medida | Resultado |
+| --- | --- |
+| Discernimento | 4 de 4 |
+| Transferência, sem a ferramenta | 4 de 4 |
+| Transferência com critério declarado | 4 de 4 |
+| Abriu a camada de detalhe | 6 de 6 |
+| Tempo mediano até a decisão fundamentada | 137,5 s com a ferramenta; 80,5 s na transferência |
+
+Com n = 2, o piloto valida o instrumento e o roteiro, **não sustenta conclusão
+sobre efeito**. A métrica primária do projeto, ganho de discernimento, pede a
+coleta com mais participantes.
 
 ## Limites
 

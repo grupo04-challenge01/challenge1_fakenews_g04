@@ -113,7 +113,11 @@ R4+R6+R7 Samara. O nome em negrito no início de cada task em aberto é o dono
       `prototipo/avaliacao/tests/` 37/37; instrumento para o pesquisador e o CEP
       em `specs/avaliacao-instrumento/instrumento-coleta-metricas.md`; decisão 27
       do `design.md`, 06/10/2026
-- [ ] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta
+- [x] 6.6 **Breno** Rodar piloto com 2 participantes antes da coleta
+      — duas sessões em 08/10/2026, agregado em
+      `datasets/relatorios_mvp_copiloto/relatorios_metricas.json`: discernimento
+      4/4, transferência 4/4, transferência com critério 4/4; com n = 2, sem
+      conclusão sobre efeito; confirmado pelo grupo em 13/10/2026
 
 ## 7. Decisões pendentes
 - [x] 7.1 **Breno** Definir o canal de entrega e registrar a decisão em `design.md`
