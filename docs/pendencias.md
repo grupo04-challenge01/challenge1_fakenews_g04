@@ -10,9 +10,9 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| `add-portfolio-showcase` | Showcase | 13 | **10** |
+| `add-portfolio-showcase` | Showcase | 15 | **8** |
 | 14 outros changes na `main` | Engage a Act | 315 | **0** ✅ |
-| **total na `main`** | | **362** | **11** |
+| **total na `main`** | | **364** | **9** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
 Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
@@ -111,8 +111,8 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 | 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | aberta |
 | 3.3 | Ensaio cronometrado e vídeo de backup | aberta |
 | 3.4 | Tag `showcase-demo` no commit ensaiado | aberta |
-| 4.1 | Tabela-resumo da rodada da bancada da demo | aberta |
-| 4.2 | Latência e custo no guia do chat | aberta |
+| 4.1 | Tabela-resumo da rodada da bancada da demo | feita, [rodada de 13/10](act/prototipo-avaliacao.md#rodada-da-demo) |
+| 4.2 | Latência e custo no guia do chat | feita |
 | 4.3 | `README.md` como porta de entrada | feita |
 | 4.4 | Limitações da avaliação completadas | feita, ver [abaixo](#limitacoes-da-avaliacao) |
 | 4.5 | Ficha do piloto preenchida | feita |
@@ -124,7 +124,7 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 | --- | --- |
 | Portfólio de pesquisa | este site; atualizado em 13/10 |
 | Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
-| Solução/protótipo com suporte de IA | [protótipo](act/prototipo-avaliacao.md) funcionando, bancada em 28 de 30 |
+| Solução/protótipo com suporte de IA | [protótipo](act/prototipo-avaliacao.md) funcionando, bancada em 29 de 30 |
 | Apresentação e reflexão | tasks 5.1 e 5.2 de `add-portfolio-showcase`, abertas |
 
 ## Decisões em aberto

@@ -32,8 +32,8 @@
 
 ## 4. Documentação
 
-- [ ] 4.1 Publicar a tabela-resumo da rodada da bancada da demo (D8)
-- [ ] 4.2 Atualizar latência e custo em `docs/interface/chat-web.md` com a
+- [x] 4.1 Publicar a tabela-resumo da rodada da bancada da demo (D8)
+- [x] 4.2 Atualizar latência e custo em `docs/interface/chat-web.md` com a
       rodada da demo
 - [x] 4.3 Reescrever `README.md`: portfólio, entregáveis, como subir a demo,
       onde estão os changes

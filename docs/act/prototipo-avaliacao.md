@@ -95,9 +95,39 @@ veredito implícito, erro) reprova a rodada. Falha de forma é tolerada até 3.
 | 08/10, com as correções de qualidade | `deepseek-v4-pro` | 27 de 27 | 9,9 s |
 | 09/10, com pergunta e conduta | `deepseek-v4-pro` | 29 de 30 | 10,7 s |
 | 09/10, rodada final do MVP | `deepseek-v4-pro` | **28 de 30**, sem eliminatória | 11,1 s |
+| 13/10, rodada da demo | `deepseek-v4-pro` | **29 de 30**, sem eliminatória | 10,9 s |
 
-Cada rodada com a API custa cerca de US$ 0,05. Ponta a ponta com o servidor
-real, na rodada final: 22 de 22 no modo `uso` e 9 de 9 no modo `piloto`.
+Cada rodada com a API custa de US$ 0,05 a 0,12, conforme o horário. Ponta a
+ponta com o servidor real, na rodada final do MVP: 22 de 22 no modo `uso` e
+9 de 9 no modo `piloto`.
+
+#### Rodada da demo
+
+Rodada usada como referência na apresentação de 16/10 (decisão D8 de
+`add-portfolio-showcase`). O JSON bruto fica fora do git
+(`bancada/relatorios/20261013-104226.json`); os números abaixo saem dele.
+
+| Medida | Valor |
+| --- | --- |
+| Rodada | 13/10/2026, 10:42, relatório `20261013-104226` |
+| Código | branch `fix-robustez-demo`, commit `0e746719` (`main` de 13/10 com o `fix-robustez-demo`) |
+| Gerador | `deepseek-v4-pro`, canal web, recuperação híbrida, k = 5, limiar 0,55 |
+| Casos aprovados | **29 de 30**, sem falha eliminatória; critério de aceite cumprido |
+| Falha | F06 (fígado e médico de Sorocaba): o bloco 2 não separa a opinião da mensagem, falha de forma |
+| Acerto por etapa | fronteira 7/7, extração 36/36, recuperação 10/10, guarda 12/12, resposta 39/40, leitura 10/10 |
+| Veredito com fonte | 10 de 10 respostas com evidência trazem link da checagem em todas as fontes |
+| Conferência de sustentação | tirou frase sem base em 6 casos |
+| Latência, verificação completa (19 casos) | mediana 13,8 s, p90 18,7 s, máximo 30,0 s |
+| Latência, todos os casos | mediana 10,9 s |
+| Tokens | 117 chamadas; entrada 169.689 (119.680 em cache), saída 13.155 |
+| Custo da rodada | cerca de US$ 0,06 fora do pico e US$ 0,12 no pico |
+| Custo médio por caso | cerca de US$ 0,002 fora do pico e US$ 0,004 no pico |
+
+Custo calculado com os preços da DeepSeek consultados em 08/10/2026
+(`add-gerador-api-deepseek`, proposta): US$ 0,66 a 1,32 por milhão de tokens
+de entrada sem cache, 0,022 a 0,044 com cache e 1,98 a 3,96 de saída. Se o
+código da tag `showcase-demo` mudar depois desta rodada, a rodada é refeita e
+esta tabela trocada.
 
 ### Sondas por etapa
 

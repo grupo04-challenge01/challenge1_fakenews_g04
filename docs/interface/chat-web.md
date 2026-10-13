@@ -11,8 +11,10 @@ Changes `add-interface-chat-web` e `add-gerador-api-deepseek`; spec
    httpx), FastAPI e uvicorn.
 2. **Gerador**, o modelo que escreve as respostas. Há dois:
     - **DeepSeek**, padrão no modo uso. Precisa de uma chave da API em
-      `DEEPSEEK_API_KEY`. Responde em cerca de 10 segundos e custa perto de
-      US$ 0,003 por mensagem. A conta do grupo tem limite de gasto de US$ 5.
+      `DEEPSEEK_API_KEY`. Uma verificação completa leva mediana de 14 s
+      (p90 19 s) e custa de US$ 0,002 a 0,004 por mensagem, conforme o
+      horário (rodada de 13/10, [tabela](../act/prototipo-avaliacao.md#rodada-da-demo)).
+      A conta do grupo tem limite de gasto de US$ 5.
     - **Ollama local**, padrão no modo piloto, e alternativa para quem recusa
       o termo. Precisa do Ollama rodando com o modelo do protótipo
       (`ollama pull gemma4:12b-it-qat`). Responde em 1 a 4 minutos. Para usar
@@ -155,7 +157,7 @@ sobem o servidor com um fluxo falso e conferem no Chromium:
 - auditoria axe-core sem violações.
 
 Para medir a qualidade e o tempo com o modelo real, use a bancada. Ela
-imprime o critério de aceite e os tokens gastos, cerca de US$ 0,05 por rodada:
+imprime o critério de aceite e os tokens gastos, de US$ 0,06 a 0,12 por rodada:
 
 ```bash
 python -m bancada rodar --gerador deepseek
