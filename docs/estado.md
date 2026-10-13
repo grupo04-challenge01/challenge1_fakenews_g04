@@ -16,7 +16,7 @@ Na `main` estão **16 changes**, com **359 de 372 tasks** feitas. Todos passam
 | Tasks | 359 de 372 |
 | Change fora da `main` | `add-cobertura-alegacao-ampla`, 13 de 18, bloqueado |
 | Testes automatizados | 861 passam, 2 pulados (precisam do índice local), 0 falham |
-| Bancada ponta a ponta | 29 de 30 casos, sem falha eliminatória, mediana de 10,9 s (rodada de 13/10 com `fix-robustez-demo`, em revisão; ver [rodada da demo](act/prototipo-avaliacao.md#rodada-da-demo)) |
+| Bancada ponta a ponta | 29 de 30 casos, sem falha eliminatória, mediana de 10,9 s (rodada de 13/10 com `fix-robustez-demo`, integrado pelo #213; ver [rodada da demo](act/prototipo-avaliacao.md#rodada-da-demo)) |
 | Recuperação híbrida | recall@5 1,00 e MRR 0,897 em 20 consultas reais |
 | Piloto com 2 participantes | feito em 08/10; sem conclusão sobre efeito com n = 2 |
 | Change de Showcase | `add-portfolio-showcase`, 10 de 22: portfólio feito; demo, apresentação e reflexão em andamento |

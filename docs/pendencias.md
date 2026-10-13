@@ -94,6 +94,33 @@ ordem. A ordem segura:
 5. Os `fix-*` e `add-notebook-avaliacao-modelo`.
 6. `add-portfolio-showcase`, no fim do Showcase.
 
+### Plano para depois de 16/10
+
+Nada disto roda antes da apresentação (D6). O código lê textos de spec destes
+caminhos, sempre com o change primeiro e `openspec/specs/` como recuo:
+
+| Arquivo | Lê de |
+| --- | --- |
+| `interface/fluxo.py` | `add-interface-chat-web`; sobreposições de `add-entrada-por-link`, `add-gerador-api-deepseek` e `fix-limitacoes-mvp` |
+| `prototipo/verificacao/fronteira.py` | `mvp-copiloto-verificacao`; sobreposição de `add-identidade-dona-checa` |
+| `prototipo/identidade/__init__.py` | `add-identidade-dona-checa` (persona e bordão da `resposta-formativa`) |
+| `prototipo/entrada/leitura.py` | `add-entrada-por-link` |
+
+O risco não é só o arquivo sumir. A sobreposição que não existe mais é
+**pulada em silêncio**, e o texto volta à versão base se o delta não tiver
+sido aplicado na spec promovida.
+
+1. Abrir um change para o desacoplamento: o código passa a ler só de
+   `openspec/specs/`, sem sobreposição, e um teste confere que cada chave de
+   texto usada existe na spec promovida.
+2. Arquivar na ordem acima, **um change por vez**. Depois de cada um:
+   `openspec validate --all --strict`, `pytest`,
+   `python -m bancada rodar --offline` e subida do chat até `/saude` 200.
+3. Conferir na spec promovida que os textos da Dona Checa (bordão, fronteira,
+   termo em seis parágrafos) são os da última versão, não os da base.
+4. Só então aplicar o desacoplamento do passo 1 e apagar os caminhos de
+   `openspec/changes/` do código.
+
 ## Showcase
 
 Estamos na semana 6 (12 a 16/10). O change da fase é `add-portfolio-showcase`,
@@ -116,8 +143,8 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 | 4.3 | `README.md` como porta de entrada | feita |
 | 4.4 | Limitações da avaliação completadas | feita, ver [abaixo](#limitacoes-da-avaliacao) |
 | 4.5 | Ficha do piloto preenchida | feita |
-| 5.1 | Slides | aberta |
-| 5.2 | Reflexão no portfólio | aberta |
+| 5.1 | Slides | conteúdo em [Apresentação](showcase/apresentacao.md); falta montar |
+| 5.2 | Reflexão no portfólio | [rascunho](showcase/reflexao.md); falta o grupo reescrever |
 | 6.1 a 6.3 | Contagens, `mkdocs build` e `validate --strict` | abertas |
 
 | Entregável final | Situação |
