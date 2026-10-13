@@ -24,7 +24,7 @@
 
 - [x] 3.1 Registrar em `docs/pendencias.md` a versão da demo e o congelamento
       do arquivamento até a apresentação (D5, D6)
-- [ ] 3.2 Escrever o roteiro de demo com preparação, aquecimento, casos e
+- [x] 3.2 Escrever o roteiro de demo com preparação, aquecimento, casos e
       plano B (D7)
 - [ ] 3.3 Ensaiar a demo cronometrada a partir de um checkout limpo e gravar o
       vídeo de backup

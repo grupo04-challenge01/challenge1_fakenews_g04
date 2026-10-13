@@ -10,9 +10,9 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| `add-portfolio-showcase` | Showcase | 15 | **8** |
+| `add-portfolio-showcase` | Showcase | 16 | **7** |
 | 14 outros changes na `main` | Engage a Act | 315 | **0** ✅ |
-| **total na `main`** | | **364** | **9** |
+| **total na `main`** | | **365** | **8** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
 Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
@@ -108,7 +108,7 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 
 | # | Task | Situação |
 | --- | --- | --- |
-| 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | aberta |
+| 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | feita, [roteiro](showcase/roteiro-demo.md) |
 | 3.3 | Ensaio cronometrado e vídeo de backup | aberta |
 | 3.4 | Tag `showcase-demo` no commit ensaiado | aberta |
 | 4.1 | Tabela-resumo da rodada da bancada da demo | feita, [rodada de 13/10](act/prototipo-avaliacao.md#rodada-da-demo) |
