@@ -14,6 +14,7 @@ frase sobre opinião e o rótulo da técnica ("Técnica: …").
 import logging
 from dataclasses import replace
 
+from prototipo.resposta import agencias
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.estrutura import (
     ABERTURA, FRASE_OPINIAO, _defeitos_conteudo, _frases, rebaixar)
@@ -57,7 +58,7 @@ def _conferivel(indice, frase):
 def _pedido(trechos, mensagem, frases):
     linhas = ["TRECHOS:"]
     for n, t in enumerate(trechos, 1):
-        linhas.append(f"[T{n}] {t.get('agencia')}, {t.get('data_publicacao')}\n\"\"\"{t.get('trecho') or ''}\"\"\"")
+        linhas.append(f"[T{n}] {agencias.nome(t.get('agencia'))}, {t.get('data_publicacao')}\n\"\"\"{t.get('trecho') or ''}\"\"\"")
     linhas += ["", f"MENSAGEM:\n\"\"\"{mensagem}\"\"\"", "", "FRASES:"]
     linhas += [f"[F{n}] ({_tipo(b, f)}) {f}" for n, (b, f) in enumerate(frases, 1)]
     return "\n".join(linhas)

@@ -161,7 +161,7 @@ def test_lacuna_sem_ponteiro_declara_que_nao_localizou():
 
 def test_trechos_vao_para_a_camada_de_detalhe():
     r = responder(MENSAGEM, ALEGACAO, FALSO, chat=_chat(BLOCOS_FALSO))
-    assert r.detalhe == [{"agencia": "aos fatos", "data_publicacao": "2021-01-08",
+    assert r.detalhe == [{"agencia": "Aos Fatos", "data_publicacao": "2021-01-08",
                           "url": "https://www.aosfatos.org/jatoba",
                           "veredito_original": "falso", "trecho": TRECHO["trecho"]}]
     assert TRECHO["url"] not in r.texto
@@ -464,13 +464,15 @@ def test_lista_na_forma_sem_evidencia_vira_texto():
 
 REFERENCIA = {"agencia": "lupa", "data_publicacao": "2020-01-01", "url": "https://l/1",
               "veredito_original": "falso"}
+# Detalhe mostra o nome legível da agência (fix-robustez-demo, D4).
+REFERENCIA_NO_DETALHE = {**REFERENCIA, "agencia": "Agência Lupa", "trecho": None}
 
 
 def test_referencia_vai_ao_detalhe_depois_dos_trechos_e_sem_texto():
     v = Veredito("falso", "critério", [TRECHO], referencias=[REFERENCIA])
     r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(BLOCOS_FALSO))
     assert r.detalhe[0]["trecho"] == TRECHO["trecho"]
-    assert r.detalhe[1] == {**REFERENCIA, "trecho": None}
+    assert r.detalhe[1] == REFERENCIA_NO_DETALHE
     assert REFERENCIA["url"] not in r.texto
 
 
@@ -480,7 +482,7 @@ def test_so_referencias_vao_ao_detalhe_da_forma_sem_evidencia():
                  rebaixado_por="nenhum trecho apto a citação", referencias=[REFERENCIA])
     r = responder(MENSAGEM, ALEGACAO, v, chat=_chat(BLOCOS_SEM))
     assert r.forma == "sem evidência"
-    assert r.detalhe == [{**REFERENCIA, "trecho": None}]
+    assert r.detalhe == [REFERENCIA_NO_DETALHE]
 
 
 def test_referencia_continua_no_detalhe_depois_do_rebaixamento():
@@ -488,7 +490,7 @@ def test_referencia_continua_no_detalhe_depois_do_rebaixamento():
     falha = _com(bloco1="Sem marca.")
     r = responder(MENSAGEM, ALEGACAO, v, chat=_chat_em_sequencia(falha, falha, BLOCOS_SEM))
     assert r.rebaixada_por is not None
-    assert r.detalhe == [{**REFERENCIA, "trecho": None}]
+    assert r.detalhe == [REFERENCIA_NO_DETALHE]
 
 
 def test_saida_crua_do_modelo_fica_na_resposta():
@@ -599,3 +601,41 @@ def test_prompt_tem_um_formato_por_estado():
         assert f"Estado {estado}" in estrutura.SISTEMA
     assert '"bloco3": "Técnica: rótulo.' in estrutura.SISTEMA
     assert '"bloco4": "Onde a pessoa pode procurar."' in estrutura.SISTEMA
+
+
+# ---- veredito só com blocos de critério (fix-robustez-demo, D1) ----------------------
+
+def test_saida_nao_json_duas_vezes_rebaixa_sem_veredito():
+    chat = _chat_em_sequencia("Falso. A casca não cura.", "Falso.", BLOCOS_SEM)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert r.forma == "sem evidência" and r.titulos == SEM
+    assert r.blocos[0].startswith("Evidência insuficiente.")
+    assert r.rebaixada_por == "ancoragem: saída não é JSON"
+    assert len(chat.chamadas) == 3
+    assert "AVISO DA CONFERÊNCIA" in chat.chamadas[1][1]
+
+
+def test_saida_nao_json_corrigida_na_segunda_mantem_o_veredito():
+    chat = _chat_em_sequencia("Falso. A casca não cura.", BLOCOS_FALSO)
+    r = responder(MENSAGEM, ALEGACAO, FALSO, chat=chat)
+    assert r.forma == "com evidência" and r.rebaixada_por is None
+    assert r.blocos[1] and "Nenhum estudo mostra isso." in r.blocos[0]
+
+
+def test_saida_nao_json_na_forma_sem_evidencia_segue_como_defeito():
+    r = responder(MENSAGEM, ALEGACAO, SEM_TRECHO, chat=lambda s, u: "texto livre")
+    assert r.forma == "sem evidência" and r.defeitos == ["saída não é JSON"]
+
+
+# ---- agência com nome legível (fix-robustez-demo, D4) --------------------------------
+
+def test_detalhe_e_pedido_trazem_o_nome_da_agencia():
+    trecho = {**TRECHO, "agencia": "https:piaui.folha.uol.com.brlupa"}
+    ref = {"agencia": "https:apublica.org", "data_publicacao": "2020-01-01",
+           "url": "https://p/1", "veredito_original": "falso"}
+    v = Veredito("falso", FALSO.criterio, [trecho], referencias=[ref])
+    chat = _chat(BLOCOS_FALSO)
+    r = responder(MENSAGEM, ALEGACAO, v, chat=chat)
+    assert [d["agencia"] for d in r.detalhe] == ["Agência Lupa", "Agência Pública"]
+    assert "[T1] Agência Lupa, 2021-01-08" in chat.chamadas[0][1]
+    assert v.trechos[0]["agencia"] == "https:piaui.folha.uol.com.brlupa"

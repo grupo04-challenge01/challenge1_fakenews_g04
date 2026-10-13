@@ -147,3 +147,14 @@ def test_retratado_e_fora_de_contexto_contam_como_marcacao(frase, alegacao):
 ])
 def test_retrata_e_contexto_sozinho_continuam_defeito(frase, alegacao):
     assert verificar_mito(_no_meio(frase), alegacao) == [f"menção sem marcação de falso: {frase}"]
+
+
+# fix-robustez-demo, D5: o verbo conjugado marca como o particípio.
+@pytest.mark.parametrize("frase", [
+    "Ministério da Saúde e Inca desmentem o uso da casca de jatobá contra o câncer",
+    "O Inca desmente que a casca do jatobá cura o câncer",
+    "A agência desmentiu que a casca do jatobá cura o câncer",
+    "Foi desmentido que a casca do jatobá cura o câncer",
+])
+def test_verbo_desmentir_conta_como_marcacao(frase):
+    assert verificar_mito(_no_meio(frase), ALEGACAO) == []

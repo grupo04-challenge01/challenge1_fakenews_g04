@@ -29,6 +29,8 @@ não é pega aqui.
 import re
 import unicodedata
 
+from prototipo.resposta import agencias
+
 MESES = ("janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho", "agosto",
          "setembro", "outubro", "novembro", "dezembro")
 EXTENSO = ("dois", "duas", "tres", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez",
@@ -73,7 +75,9 @@ def termos(frase):
 
 
 def _fonte(trecho):
-    partes = [trecho.get("trecho") or "", trecho.get("agencia") or ""]
+    # Valor cru do índice e nome legível que o modelo vê (fix-robustez-demo, D4).
+    agencia = trecho.get("agencia") or ""
+    partes = [trecho.get("trecho") or "", agencia, agencias.nome(agencia)]
     data = str(trecho.get("data_publicacao") or "")
     m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", data)
     if m:

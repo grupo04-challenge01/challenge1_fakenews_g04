@@ -166,3 +166,41 @@ def test_saida_cortada_por_limite_vai_ao_log_sem_texto(caplog):
     assert _gerador([resposta])(SISTEMA, USUARIO) == '{"alegacoes": [{"tex'
     assert "limite de tokens" in caplog.text
     assert "alegacoes" not in caplog.text and USUARIO not in caplog.text
+
+
+# ---- gerador local com tempo-limite (fix-robustez-demo, D2) --------------------------
+
+class _ClienteOllama:
+    criados = []
+
+    def __init__(self, host=None, **kwargs):
+        self.kwargs = kwargs
+        self.erro = None
+        _ClienteOllama.criados.append(self)
+
+    def chat(self, **pedido):
+        if _ClienteOllama.erro is not None:
+            raise _ClienteOllama.erro
+        return {"message": {"content": '{"ok": true}'}}
+
+
+@pytest.fixture
+def ollama_falso(monkeypatch):
+    import ollama
+    _ClienteOllama.criados, _ClienteOllama.erro = [], None
+    monkeypatch.setattr(ollama, "Client", _ClienteOllama)
+    return _ClienteOllama
+
+
+def test_chat_ollama_passa_tempo_limite_ao_cliente(ollama_falso):
+    assert modelo.chat_ollama(SISTEMA, USUARIO) == '{"ok": true}'
+    assert ollama_falso.criados[-1].kwargs["timeout"] == modelo.TEMPO_LIMITE_LOCAL
+
+
+@pytest.mark.parametrize("erro", [httpx.ReadTimeout("lento"), ConnectionError("fora")])
+def test_chat_ollama_estouro_vira_erro_gerador_sem_texto(ollama_falso, erro):
+    ollama_falso.erro = erro
+    with pytest.raises(ErroGerador) as e:
+        modelo.chat_ollama(SISTEMA, USUARIO)
+    assert USUARIO not in str(e.value)
+    assert type(erro).__name__ in str(e.value)

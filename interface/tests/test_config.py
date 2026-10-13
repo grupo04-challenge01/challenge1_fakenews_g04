@@ -92,3 +92,17 @@ def test_alternativa_local_invalida_e_erro_que_nomeia_a_variavel():
     with pytest.raises(ErroConfig, match=r"DONA_CHECA_ALTERNATIVA_LOCAL.*sim.*nao"):
         carregar({"DONA_CHECA_MODO": "uso", "DEEPSEEK_API_KEY": CHAVE,
                   "DONA_CHECA_ALTERNATIVA_LOCAL": "talvez"})
+
+
+# ---- configuração de exemplo (fix-robustez-demo, task 3.1) -----------------------------
+
+def test_env_example_preenchido_com_modo_e_chave_sobe():
+    from pathlib import Path
+    exemplo = Path(__file__).resolve().parents[2] / ".env.example"
+    ambiente = {}
+    for linha in exemplo.read_text(encoding="utf-8").splitlines():
+        if linha.strip() and not linha.lstrip().startswith("#"):
+            nome, _, valor = linha.partition("=")
+            ambiente[nome.strip()] = valor.strip()
+    ambiente.update({"DONA_CHECA_MODO": "uso", "DEEPSEEK_API_KEY": CHAVE})
+    assert carregar(ambiente).gerador == "deepseek"

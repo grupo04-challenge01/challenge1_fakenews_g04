@@ -141,3 +141,11 @@ def test_frase_do_bloco_2_sobre_opiniao_e_conferida_contra_a_mensagem():
 def test_prompt_aceita_interpretacao_e_nao_manda_marcar_na_duvida():
     assert "Na dúvida" not in conferencia.SISTEMA
     assert "interpretação que decorre do que a mensagem diz tem base" in conferencia.SISTEMA
+
+
+def test_pedido_mostra_o_nome_legivel_da_agencia():
+    # fix-robustez-demo, D4: o mesmo nome que a resposta viu.
+    trecho = {"agencia": "https:piaui.folha.uol.com.brlupa", "data_publicacao": "2021-01-08",
+              "trecho": "Não há estudo."}
+    pedido = conferencia._pedido([trecho], "mensagem", [(1, "A Agência Lupa checou.")])
+    assert "[T1] Agência Lupa, 2021-01-08" in pedido
