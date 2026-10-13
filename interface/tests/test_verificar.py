@@ -124,3 +124,24 @@ def test_texto_com_link_junto_vai_ao_fluxo():
         chamado.append(texto)
     _cliente(registra).post("/verificar", json={"texto": "Vejam isso https://x.com cura tudo"})
     assert chamado == ["Vejam isso https://x.com cura tudo"]
+
+
+# ---- gerador local com tempo-limite (fix-robustez-demo, task 2.2) ----------------------
+
+def test_erro_do_gerador_libera_a_vez_para_o_pedido_seguinte():
+    from prototipo.verificacao.modelo import ErroGerador
+    chamadas = []
+
+    def falha_depois_responde(texto, emitir, *, recuperador, chat):
+        chamadas.append(texto)
+        if len(chamadas) == 1:
+            raise ErroGerador("Ollama sem resposta: ReadTimeout")
+        emitir({"tipo": "aviso", "chave": "x", "texto": "x"})
+
+    c = _cliente(falha_depois_responde, tempo_max=2)
+    primeira = ler_eventos(c.post("/verificar", json={"texto": "a"}))
+    inicio = time.perf_counter()
+    segunda = ler_eventos(c.post("/verificar", json={"texto": "b"}))
+    assert primeira == [{"tipo": "erro", "texto": fluxo.textos()["erro"]}]
+    assert segunda == [{"tipo": "aviso", "chave": "x", "texto": "x"}]
+    assert time.perf_counter() - inicio < 1

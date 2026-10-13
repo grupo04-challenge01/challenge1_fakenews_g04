@@ -17,15 +17,24 @@ import time
 
 MODELO = "gemma4:12b-it-qat"
 OPCOES = {"temperature": 0.2, "num_ctx": 8192, "num_predict": 1200}
+# fix-robustez-demo, D2: chamada presa não pode segurar a vez do chat.
+TEMPO_LIMITE_LOCAL = 120.0
 
 
 def chat_ollama(sistema, usuario, modelo=MODELO, cpu=False):
-    """Texto da resposta do modelo, pedido em modo JSON."""
+    """Texto da resposta do modelo, pedido em modo JSON. Estouro do tempo-limite
+    ou falha de conexão vira `ErroGerador`, só com o tipo da exceção."""
+    import httpx
     import ollama
-    resp = ollama.chat(model=modelo, think=False, format="json", messages=[
-        {"role": "system", "content": sistema},
-        {"role": "user", "content": usuario},
-    ], options={**OPCOES, **({"num_gpu": 0} if cpu else {})})
+    try:
+        resp = ollama.Client(timeout=TEMPO_LIMITE_LOCAL).chat(
+            model=modelo, think=False, format="json", messages=[
+                {"role": "system", "content": sistema},
+                {"role": "user", "content": usuario},
+            ], options={**OPCOES, **({"num_gpu": 0} if cpu else {})})
+    except (httpx.HTTPError, ConnectionError) as e:
+        log.error("ollama: %s", type(e).__name__)
+        raise ErroGerador(f"Ollama sem resposta: {type(e).__name__}") from None
     return resp["message"].get("content") or ""
 
 

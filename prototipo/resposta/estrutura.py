@@ -41,6 +41,7 @@ import re
 from dataclasses import dataclass, field, replace
 
 from prototipo.identidade import textos
+from prototipo.resposta import agencias
 from prototipo.resposta import catalogo as catalogo_mod
 from prototipo.resposta.ancoragem import ancorar_bloco, texto_do_bloco
 from prototipo.resposta.mito import verificar_mito
@@ -189,7 +190,7 @@ def mensagem(texto, alegacao, veredito, estado, decomposicao=None):
         partes.append(f"VEREDITO: {veredito.rotulo}\nCRITÉRIO: {veredito.criterio}")
         linhas = ["TRECHOS:"]
         for n, t in enumerate(veredito.trechos, 1):
-            linhas.append(f"[T{n}] {t['agencia']}, {t['data_publicacao']}\n\"\"\"{t['trecho']}\"\"\"")
+            linhas.append(f"[T{n}] {agencias.nome(t['agencia'])}, {t['data_publicacao']}\n\"\"\"{t['trecho']}\"\"\"")
         partes.append("\n\n".join(linhas))
     else:
         partes.append("TRECHOS: nenhum.")
@@ -225,8 +226,10 @@ def _detalhe(veredito, vizinhos=()):
     """
     chaves = ("agencia", "data_publicacao", "url", "veredito_original", "trecho")
     citados = [{k: t[k] for k in chaves} for t in [*veredito.trechos, *vizinhos]]
-    return citados + [{**{k: ref[k] for k in chaves[:-1]}, "trecho": None}
-                      for ref in veredito.referencias]
+    inaptas = [{**{k: ref[k] for k in chaves[:-1]}, "trecho": None}
+               for ref in veredito.referencias]
+    # fix-robustez-demo, D4: nome legível da agência só na saída.
+    return [{**d, "agencia": agencias.nome(d["agencia"])} for d in citados + inaptas]
 
 
 def _marcar(bloco3, catalogo):
@@ -447,8 +450,13 @@ def _montar(texto, alegacao, veredito, decomposicao=None, lacuna=None,
     gerados = [texto_do_bloco(c) for c in crus]
 
     descartadas, usadas = [], set()
-    if com and dados is not None:
-        gerados[0], gerados[1], descartadas, motivo = _ancorar(crus, trechos, decomposicao, usadas)
+    if com:
+        if dados is not None:
+            gerados[0], gerados[1], descartadas, motivo = _ancorar(
+                crus, trechos, decomposicao, usadas)
+        else:
+            # Sem JSON não há bloco 1 nem 2: veredito nunca nu (fix-robustez-demo, D1).
+            motivo = "saída não é JSON"
         if motivo:
             # Uma tentativa a mais antes de rebaixar (decisão 29).
             refeito = chat(SISTEMA, f"{pedido}\n\n{_aviso(motivo, descartadas)}")
