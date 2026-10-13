@@ -17,6 +17,12 @@ sozinha.
 O que medimos como sucesso não é a acurácia do sistema. É a **transferência**:
 o acerto da pessoa depois, sem a ferramenta.
 
+!!! success "Situação em 13/10/2026"
+    O protótipo funciona de ponta a ponta. A **Dona Checa** recebe texto ou
+    link pelo chat web e responde em cerca de 11 segundos. Na bancada de 30
+    casos, passa em 28, sem nenhuma falha eliminatória. Estamos na semana 6,
+    o Showcase.
+
 ## Por onde começar
 
 | Se você quer... | Vá para |
@@ -25,7 +31,9 @@ o acerto da pessoa depois, sem a ferramenta.
 | Entender como o grupo trabalha | [Metodologia](metodologia.md) |
 | Ver as perguntas que vamos investigar | [Guiding Questions](engage/guiding-questions.md) |
 | Saber quais dados temos e o que há de errado com eles | [Datasets e achados](engage/datasets.md) |
-| Saber o que está pronto e o que falta | [Estado do projeto](estado.md) |
+| Ver como o protótipo funciona e o que foi medido | [Protótipo e avaliação](act/prototipo-avaliacao.md) |
+| Subir o chat da Dona Checa | [Chat web](interface/chat-web.md) |
+| Saber o que está pronto e o que falta | [Estado do projeto](estado.md) e [Tasks pendentes](pendencias.md) |
 
 ## Onde as coisas moram no repositório
 
@@ -33,6 +41,11 @@ o acerto da pessoa depois, sem a ferramenta.
 docs/          este site (portfólio)
 openspec/      especificações: o que cada fase entrega e sob que critério
 datasets/      pacote de dados coletados, derivados e relatório de contagens
+tratamento/    leitura, vereditos, integridade e frescor dos datasets
+prototipo/     o copiloto: entrada, verificação, recuperação, resposta, avaliação
+interface/     chat web da Dona Checa (FastAPI)
+bancada/       teste ponta a ponta em 30 casos, com gravações
+exploracao/    notebooks de análise exploratória e de avaliação
 ```
 
 !!! note "Nada entra sem spec"

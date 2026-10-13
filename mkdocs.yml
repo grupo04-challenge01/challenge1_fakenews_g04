@@ -2,7 +2,7 @@ site_name: Challenge 1 — Desinformação em Saúde
 site_description: "Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA"
 
 repo_name: "challenge1_fakenews_g04"
-repo_url: "https://github.com/samarawwleticia/challenge1_fakenews_g04"
+repo_url: "https://github.com/grupo04-challenge01/challenge1_fakenews_g04"
 
 theme:
   name: material
@@ -65,6 +65,7 @@ nav:
       - Aferição da recuperação: investigate/afericao-recuperacao.md
       - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Fase Act:
+      - Protótipo e avaliação: act/prototipo-avaliacao.md
       - Identidade da Dona Checa: identidade/paleta.md
       - Chat web da Dona Checa: interface/chat-web.md
       - Revisão do termo (LGPD): interface/revisao-termo-lgpd.md

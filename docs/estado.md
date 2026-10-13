@@ -1,27 +1,240 @@
 # Estado do projeto
 
-Atualizado em **01/10/2026**.
+Atualizado em **13/10/2026**, semana 6 (Showcase). Contagem de tasks feita nos
+`tasks.md` de `origin/main` nesta data.
 
-## Os seis changes
+## Onde estamos
 
-| Change | Fase | Planejamento | Tasks |
+O Act terminou com o produto de pé. A Dona Checa recebe texto ou link, roda o
+fluxo inteiro de verificação e responde em cerca de 11 segundos pelo chat web.
+Na `main` estão **16 changes**, com **357 de 358 tasks** feitas. Todos passam
+`openspec validate --all --strict`, conferido em 13/10/2026.
+
+| Indicador | Valor em 13/10/2026 |
+| --- | --- |
+| Changes na `main` | 16, sendo 15 completos e 1 com uma task aberta |
+| Tasks | 357 de 358 |
+| Change fora da `main` | `add-cobertura-alegacao-ampla`, 13 de 18, bloqueado |
+| Testes automatizados | 861 passam, 2 pulados (precisam do índice local), 0 falham |
+| Bancada ponta a ponta | 28 de 30 casos, sem falha eliminatória, mediana de 11,1 s |
+| Recuperação híbrida | recall@5 1,00 e MRR 0,897 em 20 consultas reais |
+| Piloto com 2 participantes | feito em 08/10; sem conclusão sobre efeito com n = 2 |
+| Change de Showcase | `add-portfolio-showcase`, 9 de 9 |
+
+O que falta está em [Tasks pendentes](pendencias.md). Como o protótipo
+funciona e o que a avaliação mediu está em
+[Protótipo e avaliação](act/prototipo-avaliacao.md).
+
+## Os changes
+
+| Change | Fase | Tasks | Entregou |
 | --- | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | completo | **24 de 25** |
-| `add-tratamento-datasets-ptbr` | Investigate | completo | **32 de 35** |
-| `add-ampliacao-corpus-ptbr` | Investigate | completo | **55 de 55** ✅ |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | completo | **33 de 33** ✅ |
-| `fix-resposta-sem-evidencia` | Investigate → Act | completo | **12 de 13** |
-| `mvp-copiloto-verificacao` | Act | completo | **13 de 31** |
+| `add-engage-desinformacao-saude` | Engage | **25 de 25** ✅ | forense, guiding questions, matriz de confiança |
+| `add-tratamento-datasets-ptbr` | Investigate | **34 de 35** | contrato de leitura, mapa de vereditos, integridade, rubrica |
+| `add-ampliacao-corpus-ptbr` | Investigate | **55 de 55** ✅ | FakeRecogna 2.0, WhaVax, Telegram, índice de checagens |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | **33 de 33** ✅ | modelo por papel, recuperação híbrida medida |
+| `fix-resposta-sem-evidencia` | Investigate → Act | **13 de 13** ✅ | forma própria para a resposta sem evidência |
+| `mvp-copiloto-verificacao` | Act | **31 de 31** ✅ | o copiloto: verificação, guarda, resposta, fronteira, avaliação |
+| `add-identidade-dona-checa` | Act | **19 de 19** ✅ | persona, voz, bordão, logo e paleta |
+| `add-interface-chat-web` | Act | **29 de 29** ✅ | chat web em FastAPI, modos `uso` e `piloto` |
+| `add-entrada-por-link` | Act | **34 de 34** ✅ | leitura de link, com bloqueio de rede interna |
+| `add-gerador-api-deepseek` | Act | **28 de 28** ✅ | gerador `deepseek-v4-pro`, termo de consentimento, minimização |
+| `fix-qualidade-gerador-remoto` | Act | **12 de 12** ✅ | mito, decomposição e extração robustas ao gerador remoto |
+| `fix-teto-resposta` | Act | **6 de 6** ✅ | teto de 120 palavras garantido em código |
+| `fix-pergunta-e-conduta` | Act | **11 de 11** ✅ | alegação em forma de pergunta, ferimento como urgência |
+| `fix-limitacoes-mvp` | Act | **8 de 8** ✅ | conferência de sustentação, termo em parágrafos |
+| `add-notebook-avaliacao-modelo` | Act | **10 de 10** ✅ | notebook executado de avaliação da recuperação |
+| `add-portfolio-showcase` | Showcase | **9 de 9** ✅ | este portfólio atualizado para o Showcase |
+| `add-cobertura-alegacao-ampla` | Act | 13 de 18, **fora da `main`** | veredito por alegação mais ampla; bloqueado |
 
-Todos passam `openspec validate --strict`, conferido em 01/10/2026.
+Nenhum change foi arquivado. Em `openspec/specs/` só está `frescor-corpus`,
+promovida em 19/09. A ordem de arquivamento e o que ela exige estão em
+[Tasks pendentes](pendencias.md#arquivamento).
 
-## O que foi entregue entre 25/09 e 01/10/2026
+## O que foi entregue entre 02/10 e 13/10/2026
+
+O MVP saiu de 13 para 31 de 31 tasks, e nove changes novos foram abertos e
+fechados no Act. O resumo vai por tema, não por data.
+
+### O copiloto completo (`mvp-copiloto-verificacao`)
+
+Fecharam os blocos de recuperação, interface e avaliação, e o change ficou completo.
+
+| Entregue | Tasks | Onde |
+| --- | --- | --- |
+| Indexação do FACTCK.BR, só como fonte auxiliar (não citável) | 1.2 | `prototipo/rag/unidades.py`, esquema 1.1.0 |
+| Lista de fontes oficiais aceitas | 1.3 | `prototipo/indice/fontes_oficiais.json` |
+| Prioridade de idioma, PT-BR antes de EN | 1.4 | `prototipo/rag/` |
+| Limiar de `evidência insuficiente` em 0,55 sobre o score fundido | 1.5 | `prototipo/rag/hibrida.py`, decisão 27 |
+| Ancoragem do trecho à afirmação | 1.6 | `prototipo/resposta/ancoragem.py` |
+| Teste de regressão com verdadeiros contra-intuitivos | 2.4 | `prototipo/verificacao/tests/test_classificacao.py` |
+| Bateria adversarial da fronteira | 4.3 | `prototipo/verificacao/tests/test_fronteira_adversarial.py` |
+| Camadas visível e de detalhe, acessibilidade, fluxo sem cadastro, legibilidade | 5.1 a 5.4 | decisões 20 e 21; `specs/acessibilidade-leitura/checklist.md` |
+| 30 casos curados e 4 itens-armadilha | 6.1, 6.2 | `datasets/casos_mvp_copiloto/` |
+| Protocolo ético e dossiê de submissão | 6.4 | `specs/avaliacao-instrumento/dossie-submissao-cep.md` |
+| Instrumento de coleta das métricas | 6.5 | `prototipo/avaliacao/`, decisão 27 |
+| Piloto com 2 participantes, 08/10 | 6.6 | `datasets/relatorios_mvp_copiloto/relatorios_metricas.json` |
+| Catálogo de técnicas conferido contra a matriz | 8.1 | decisão 22 |
+
+O limiar mudou de natureza. Em 19/09 a medição dizia que ele não sairia do
+score fundido. Com α=0,9 e a sonda de 06/10, o menor alvo real pontua 0,5785.
+O limiar ficou em 0,55, e o modelo decide a cobertura dentro dessa faixa.
+
+!!! warning "O CEP é simulado"
+    A submissão da 6.4 e a emenda 01 (DeepSeek no piloto) são **registros
+    simulados para fins acadêmicos**, como declara o próprio dossiê. O parecer
+    `RES-IA-G04-2026-PARECER-001` não é de um comitê de ética real.
+
+### A Dona Checa ganhou cara e canal
+
+- **Identidade** (`add-identidade-dona-checa`, 07/10): persona, bordão posto
+  pelo código, recusas na voz dela, logo e paleta. Ver
+  [Identidade](identidade/paleta.md).
+- **Chat web** (`add-interface-chat-web`, 07/10): FastAPI com HTML e JS puros,
+  resposta em streaming, uma verificação por vez, nada guardado no servidor.
+  Testes de página com Playwright e axe-core. Ver [Chat web](interface/chat-web.md).
+- **Entrada por link** (`add-entrada-por-link`, 08/10): a pessoa manda o link
+  em vez do texto. Os dez casos `L01`–`L10` passam na bancada. Uma página com
+  injeção de prompt recebeu o mesmo rótulo e o mesmo critério da versão limpa.
+
+### Troca do gerador para a API da DeepSeek
+
+O Gemma 4 local levava mediana de 102 s por mensagem na bancada de 08/10.
+`add-gerador-api-deepseek` trocou o gerador por `deepseek-v4-pro` via API. A
+mediana caiu para cerca de 10 s, a US$ 0,003 por mensagem. Embeddings e
+índice continuam locais. O Gemma segue como alternativa e é o padrão do modo
+`piloto`.
+
+A troca veio com três proteções:
+
+1. **Minimização:** telefone, CPF e e-mail saem do texto antes do envio.
+2. **Termo de consentimento:** revisado por parecer jurídico e aceito antes do
+   primeiro envio. Avisa que a DeepSeek pode treinar com os dados e guardá-los
+   sem prazo. Ver [Revisão do termo](interface/revisao-termo-lgpd.md).
+3. **Critério de aceite revisto:** falha eliminatória reprova; falha de forma é
+   tolerada até 3 por rodada.
+
+Com as duas correções de qualidade abaixo aplicadas, a rodada `20261008-163734`
+fechou **27 de 27**, mediana de 9,9 s, contra 102,4 s do Gemma no mesmo dia.
+
+### Correções de qualidade, medidas na bancada
+
+| Change | O que corrigiu | Bancada depois |
+| --- | --- | --- |
+| `fix-qualidade-gerador-remoto` | negação do mito sem a palavra «falso»; nova tentativa na decomposição, na resposta e na extração | 27 de 27, junto com o teto |
+| `fix-teto-resposta` | corte de frases quando a resposta passa de 120 palavras | 27 de 27, junto com a qualidade |
+| `fix-pergunta-e-conduta` | «Suco detox cura gripe?» vira alegação; ferimento recente vira urgência (SAMU 192) | 29 de 30, mediana 10,7 s |
+| `fix-limitacoes-mvp` | conferência que tira frase sem base no trecho; corte alcança o bloco 2 | **28 de 30**, mediana 11,1 s |
+
+A rodada final de `fix-limitacoes-mvp` perdeu dois casos por defeito de forma,
+nenhum eliminatório. Ponta a ponta com o servidor real: 22 de 22 no modo `uso`
+e 9 de 9 no modo `piloto`.
+
+### Notebook de avaliação
+
+`exploracao/avaliacao_modelo.ipynb` (`add-notebook-avaliacao-modelo`, 09/10)
+reexecuta a aferição da recuperação e a varredura de α sobre o índice real, e
+reúne as métricas. O projeto não treina classificador de veredito: o «modelo»
+avaliado é o mecanismo de recuperação.
+
+### Em andamento: cobertura por alegação mais ampla
+
+`add-cobertura-alegacao-ampla` está no branch `act-cobertura-alegacao-ampla`,
+sem PR. A ideia: «vacina de Covid transforma pessoas em jacaré» é uma versão
+exagerada de «vacina altera o DNA», que tem checagem falsa. O change permite
+veredito `falso` por cobertura ampla, atrás de seis travas na guarda.
+
+**Bloqueado por decisão do grupo em 13/10/2026.** A sexta trava pergunta a um
+modelo se a alegação implica a checada. Os dois geradores responderam «não»
+para jacaré ⇒ DNA em todas as variantes testadas. A justificativa da DeepSeek
+foi que virar jacaré não exige alterar o DNA. A regra fica conservadora, a spec
+não muda e o change não vai para a `main` como pronto. Nenhum falso positivo
+apareceu nos casos negativos.
+
+### Fora de change
+
+- PR #210, 13/10: cabeçalho do chat fixo no topo ao rolar a conversa.
+
+## Capabilities
+
+### Engage
+
+| Capability | Entrega |
+| --- | --- |
+| `pesquisa-investigativa` | protocolo da forense de casos, com ficha e medição de esforço — **seis fichas preenchidas** |
+| `matriz-confianca` | dimensões, sinais, limites e rubrica de três níveis — **versão 1, quatro dimensões** |
+| `guiding-questions` | backlog priorizado — **pronto** |
+
+### Investigate
+
+| Capability | Entrega |
+| --- | --- |
+| `normalizacao-rotulos` | contrato de leitura, parser de veredito, mapa por agência |
+| `integridade-textual` | fidelidade do trecho citado e reparo de acentuação |
+| `frescor-corpus` | cobertura declarada em quatro níveis e resposta para pauta fora dela |
+| `adaptacao-criterios-en` | travessia dos instrumentos em inglês |
+| `anotacao-especialista-ptbr` | o que se afirma a partir de rótulo clínico, e a faixa de empate |
+| `procedencia-substituicao` | condições para trocar uma base sem quebrar a auditoria |
+| `indice-checagens-recentes` | localizar checagem fora da janela, sem citar texto de terceiro |
+| `acervo-circulacao` | o que se afirma a partir de conteúdo de usuário sem rótulo de veracidade |
+| `selecao-modelo` | três papéis de modelo, critério por papel, descarte do MedGemma com motivo |
+| `arquitetura-recuperacao` | híbrido como linha de base, índice à escala real, unidade com proveniência |
+| `fronteira-treino-recuperacao` | o que mora em peso e o que MUST vir de trecho recuperado |
+| `uso-analise-sentimento` | emoção é explicativa e descritiva, nunca evidenciária |
+
+### Act
+
+| Capability | Entrega |
+| --- | --- |
+| `verificacao-alegacao` | extração da alegação, quatro rótulos, decomposição fato/evidência/opinião |
+| `recuperacao-evidencia` | RAG PT-BR antes de EN, tudo ancorado em trecho |
+| `resposta-formativa` | quatro blocos, catálogo fechado de técnicas, revelação progressiva |
+| `fronteira-orientacao-saude` | recusa de conduta clínica individual, urgência com SAMU 192 |
+| `acessibilidade-leitura` | 120 palavras na camada visível, contraste, fonte, sem cadastro, entrada por link |
+| `avaliacao-instrumento` | 30 casos, armadilhas, métricas de guarda, TCLE e protocolo ético |
+| `identidade-dona-checa` | persona, voz, bordão e recusas da Dona Checa |
+| `interface-chat-web` | chat web, modos `uso` e `piloto`, aviso e consentimento do serviço externo |
+| `entrada-por-link` | busca da página com bloqueio de rede interna, leitura parcial, falhas na voz da Dona Checa |
+| `gerador-modelo` | gerador por variável de ambiente, chave fora do repositório, minimização, critério de aceite |
+| `avaliacao-modelo` | notebook que reexecuta a aferição da recuperação |
+
+## Ordem de dependência
+
+```text
+Engage                Investigate                    Act
+------                -----------                    ---
+forense       -->     normalizacao-rotulos    -->    corpus e recuperacao
+matriz        -->     adaptacao-criterios-en  -->    resposta-formativa
+guiding q.    -->     frescor-corpus          -->    verificacao-alegacao
+                      integridade-textual
+```
+
+O tratamento dos datasets **bloqueava** as tasks 1.1 a 1.6 do MVP. Indexar antes
+de normalizar propaga o problema de rótulo para dentro do índice, onde ele fica
+caro de tirar. O tratamento fechou em 19/09, e a 1.1 em 29/09.
+
+A matriz de confiança, que bloqueava a 8.1 do Act e a reconferência da rubrica
+de `adaptacao-criterios-en`, existe desde 01/10.
+
+O índice de 18/09/2026 não viola isso, e a forma como não viola importa: ele
+guarda o veredito **com a grafia original da agência** e uma chave normalizada
+só por caixa e acento. Nenhum rótulo foi mapeado para os quatro de
+`verificacao-alegacao` — esse mapa é a task 2.3 do tratamento de datasets, e
+atribuí-lo por semelhança de string é vedado em texto expresso. O índice está
+pronto para receber o mapa quando ele existir, sem reindexar.
+
+## Histórico
+
+Registro do que foi entregue até 01/10/2026, mantido como estava. Números
+desta parte valem para a data de cada seção; os atuais estão acima.
+
+### O que foi entregue entre 25/09 e 01/10/2026
 
 Dezenove tasks em uma semana, pelos PRs #91 a #104. O Act saiu de zero. Em
 01/10, os PRs #106 e #107 fecharam mais cinco, e a correção de consistência
 fechou a 7.2 do Engage.
 
-### Act: de 0 para 13 de 31
+#### Act: de 0 para 13 de 31
 
 | Entregue | Tasks | Onde | Decisão do `design.md` |
 | --- | --- | --- | --- |
@@ -52,7 +265,7 @@ a matriz densa e os fragmentos têm tamanhos diferentes.
 `act-classificacao-guarda` pelo PR #105, com a decisão 17. O branch
 `act-factckbr-indexacao` a leva à `main`.
 
-### `fix-resposta-sem-evidencia`: de 6 para 12 de 13
+#### `fix-resposta-sem-evidencia`: de 6 para 12 de 13
 
 As 3.1 e 3.2 fecharam em 28/09, decisão 4 do change. O defeito que abriu o
 change não se repete: 0 de 12 respostas degeneraram. A falha que sobrou é
@@ -63,7 +276,7 @@ fixo, e a 3.2 fez isso (decisão 18 do MVP).
 Em 01/10, o PR #106 (Wingrid) fechou as 2.1, 2.2, 2.3 e 3.3. A conciliação está
 na decisão 5 do change. Resta a 2.4, de Samara.
 
-### Engage: de 18 para 24 de 25
+#### Engage: de 18 para 24 de 25
 
 | Entregue | Tasks |
 | --- | --- |
@@ -79,16 +292,16 @@ nenhum caso. Está em [Matriz de confiança](engage/kit-matriz-confianca.md).
 A 7.2 foi fechada citando o mesmo PR, que já entregou a matriz como «Versão 1».
 Resta a 7.1, a consolidação do portfólio.
 
-### Fora de task
+#### Fora de task
 
 - Notebook de análise exploratória, `exploracao/eda_datasets.ipynb` (PR #94).
   Coberto desde 01/10 pela task 6.4 de `add-tratamento-datasets-ptbr`,
   registrada depois do fato.
 - Remoção do arquivo duplicado do caso 02 (PR #101).
 
-## O que foi entregue em 24/09/2026
+### O que foi entregue em 24/09/2026
 
-### Engage: de 12 para 18 de 25
+#### Engage: de 12 para 18 de 25
 
 Fecharam o bloco 2 quase inteiro e o bloco 3 inteiro. O que destravou foi o
 grupo presente — eram as tasks que dependiam disso.
@@ -106,7 +319,7 @@ Jhessica Evelyn (02), Vitor Gonçalves (03), Wingrid Silva (04) e Breno (05 e
 de 22 min, máximo de 43 min. É a evidência quantitativa que o quadro Problema
 pede — falta levá-la para o board, que é a task 2.4, a última do bloco 2.
 
-### O caso 05 estava classificado errado
+#### O caso 05 estava classificado errado
 
 A seleção de 20/09 marcou o vídeo editado do presidente da Anvisa como **mídia
 sintética**. A ficha do caso mostrou que não há síntese: o material é autêntico
@@ -118,15 +331,15 @@ não quatro, e mídia sintética entrou como segunda lacuna ao lado de distorç�
 estatística. Três é exatamente o mínimo da capability `pesquisa-investigativa` —
 não há mais margem. Ver [Casos da forense](forense/casos-forense.md).
 
-## O que foi entregue em 20/09/2026
+### O que foi entregue em 20/09/2026
 
-### Calendário derivado, e o Investigate com cinco dias
+#### Calendário derivado, e o Investigate com cinco dias
 
 A proposta do challenge confirmou o cronograma. As datas derivadas mostram que
 o **Investigate encerra em 25/09** e o **Act começa em 28/09** — ver
 [Tasks pendentes](pendencias.md).
 
-### Engage: de 4 para 12 de 25
+#### Engage: de 4 para 12 de 25
 
 Fecharam as oito tasks que não exigiam o grupo presente. As 13 restantes
 exigem, sem exceção.
@@ -149,9 +362,9 @@ E um achado de taxonomia: as três funções de dataset nomeadas na task 6.2
 (raciocínio, comparação fonte-manchete, banco de estímulos) **não bastam**. O
 acervo de circulação não cabe em nenhuma, e virou a quarta.
 
-## O que foi entregue em 19/09/2026
+### O que foi entregue em 19/09/2026
 
-### Seleção de modelos e arquitetura RAG — de 12 para 27 tasks
+#### Seleção de modelos e arquitetura RAG — de 12 para 27 tasks
 
 | Entregue | Onde |
 | --- | --- |
@@ -179,7 +392,7 @@ Achado da decisão 13: a única ferramenta de emoção em PT-BR madura e de lice
 limpa (LeIA, MIT) faz **só polaridade** — exatamente o uso que a decisão 7
 proibiu. A via de emoção nomeada é prompt sobre o gerador local, não biblioteca.
 
-### Ampliação do corpus — change fechado, 55 de 55
+#### Ampliação do corpus — change fechado, 55 de 55
 
 Três bases novas baixadas, conferidas e integradas, e o acervo passou a ter
 quatro níveis. Registro completo em
@@ -204,7 +417,7 @@ classificador que só conta caracteres acerta 80,5%**.
 E três conferências bateram exatamente: 3.998.633 posts, 119 canais e 84
 empates, todos idênticos ao declarado pelas fontes.
 
-### Portão do índice de checagens recentes — bloco 1 fechado
+#### Portão do índice de checagens recentes — bloco 1 fechado
 
 A Fact Check Tools API foi sondada com chave própria e o resultado está
 versionado em `datasets/derivados/sonda_factcheck_api.json`: **928 checagens em
@@ -218,7 +431,7 @@ Achado que delimita a promessa: `oropouche` e `semaglutida` continuam em zero
 **no índice também**. Isso obriga um terceiro caso de teste de lacuna — pauta
 ausente dos dois níveis — que a task 8.2 ainda não previa.
 
-### Change de correção aberto — `fix-resposta-sem-evidencia`
+#### Change de correção aberto — `fix-resposta-sem-evidencia`
 
 O defeito de spec que a sonda T1 expôs em 18/09 virou change próprio.
 `resposta-formativa` exigia nomear técnica do catálogo mesmo sob `evidência
@@ -260,7 +473,7 @@ Três achados novos, nenhum previsto no change:
    para desinformação. As remoções se sustentam no argumento de unidade de
    análise; a validação empírica segue pendente de anotação humana.
 
-## O que foi entregue em 18/09/2026
+### O que foi entregue em 18/09/2026
 
 Primeiro código executável do projeto, em `prototipo/` — prova de conceito, não
 componente do MVP.
@@ -275,177 +488,3 @@ Dois defeitos encontrados por medição, ambos invisíveis sem ela: o gerador n�
 sustenta a fronteira clínica por prompt, e a primeira versão da fusão estava
 **anulando o braço denso** — somava um cosseno que varia 0,06 a um BM25 que
 varia 0 a 35, e a ordem final saía inteira do léxico.
-
-## Capabilities
-
-### Engage
-
-| Capability | Entrega |
-| --- | --- |
-| `pesquisa-investigativa` | protocolo da forense de casos, com ficha e medição de esforço — **seis fichas preenchidas** |
-| `matriz-confianca` | dimensões, sinais, limites e rubrica de três níveis — **versão 1, quatro dimensões** |
-| `guiding-questions` | backlog priorizado — **pronto** |
-
-### Investigate
-
-| Capability | Entrega |
-| --- | --- |
-| `normalizacao-rotulos` | contrato de leitura, parser de veredito, mapa por agência |
-| `integridade-textual` | fidelidade do trecho citado e reparo de acentuação |
-| `frescor-corpus` | cobertura declarada em quatro níveis e resposta para pauta fora dela |
-| `adaptacao-criterios-en` | travessia dos instrumentos em inglês |
-| `anotacao-especialista-ptbr` | o que se afirma a partir de rótulo clínico, e a faixa de empate |
-| `procedencia-substituicao` | condições para trocar uma base sem quebrar a auditoria |
-| `indice-checagens-recentes` | localizar checagem fora da janela, sem citar texto de terceiro |
-| `acervo-circulacao` | o que se afirma a partir de conteúdo de usuário sem rótulo de veracidade |
-| `selecao-modelo` | três papéis de modelo, critério por papel, descarte do MedGemma com motivo |
-| `arquitetura-recuperacao` | híbrido como linha de base, índice à escala real, unidade com proveniência |
-| `fronteira-treino-recuperacao` | o que mora em peso e o que MUST vir de trecho recuperado |
-| `uso-analise-sentimento` | emoção é explicativa e descritiva, nunca evidenciária |
-
-### Act
-
-| Capability | Entrega |
-| --- | --- |
-| `verificacao-alegacao` | extração da alegação, quatro rótulos, decomposição fato/evidência/opinião |
-| `recuperacao-evidencia` | RAG PT-BR antes de EN, tudo ancorado em trecho |
-| `resposta-formativa` | quatro blocos, catálogo fechado de técnicas, revelação progressiva |
-| `fronteira-orientacao-saude` | recusa de conduta clínica individual |
-| `acessibilidade-leitura` | 120 palavras na camada visível, contraste, fonte, sem cadastro |
-| `avaliacao-instrumento` | 20–30 casos, armadilhas, métricas de guarda, TCLE e CEP |
-
-## Ordem de dependência
-
-```text
-Engage                Investigate                    Act
-------                -----------                    ---
-forense       -->     normalizacao-rotulos    -->    corpus e recuperacao
-matriz        -->     adaptacao-criterios-en  -->    resposta-formativa
-guiding q.    -->     frescor-corpus          -->    verificacao-alegacao
-                      integridade-textual
-```
-
-O tratamento dos datasets **bloqueava** as tasks 1.1 a 1.6 do MVP. Indexar antes
-de normalizar propaga o problema de rótulo para dentro do índice, onde ele fica
-caro de tirar. O tratamento fechou em 19/09, e a 1.1 em 29/09.
-
-A matriz de confiança, que bloqueava a 8.1 do Act e a reconferência da rubrica
-de `adaptacao-criterios-en`, existe desde 01/10.
-
-O índice de 18/09/2026 não viola isso, e a forma como não viola importa: ele
-guarda o veredito **com a grafia original da agência** e uma chave normalizada
-só por caixa e acento. Nenhum rótulo foi mapeado para os quatro de
-`verificacao-alegacao` — esse mapa é a task 2.3 do tratamento de datasets, e
-atribuí-lo por semelhança de string é vedado em texto expresso. O índice está
-pronto para receber o mapa quando ele existir, sem reindexar.
-
-## Pendências conhecidas
-
-A lista completa de tasks pendentes, separada por fase do CBL, está em
-[Tasks pendentes](pendencias.md).
-
-### Entrada por link (`add-entrada-por-link`, 07/10/2026)
-
-A pessoa pode mandar o link da notícia em vez do texto. O servidor busca a
-página com bloqueio de acesso à rede interna, extrai título, veículo, data e
-texto, e verifica a página quando o texto da pessoa tem menos de 30 palavras ou
-não traz alegação de saúde. Paywall que entrega o texto no HTML é lido inteiro;
-leitura só de título e começo segue com o aviso "Li só o título e o começo
-dessa notícia."; vídeo, página fechada, página vazia e link que não abre viram
-resposta na voz da Dona Checa pedindo o texto. A interface mostra "Abrindo o
-link…" e um cartão com a página lida na camada de detalhe. Nada da página nem
-da URL vai a disco ou ao log.
-
-Pendências do change:
-
-- **TCLE:** a frase sobre o servidor abrir o link está na minuta, e o
-  responsável pela submissão ao CEP (task 6.4 de `mvp-copiloto-verificacao`)
-  foi avisado em 08/10/2026.
-- **Ordem de arquivamento:** `mvp-copiloto-verificacao`, depois
-  `add-interface-chat-web`, depois `add-entrada-por-link`, porque os deltas
-  deste modificam specs que só existem naqueles (decisão D10).
-
-Bancada com modelo real em 08/10/2026 (`gemma4:12b-it-qat`, índice
-reconstruído, tasks 6.1 e 6.2). Os dez casos `L01`–`L10` passam no modo real e
-no `--offline`; as gravações estão em `bancada/gravacoes/`.
-
-| Leitura | Casos | Desfecho |
-| --- | --- | --- |
-| completa | 4 (`L01`, `L02`, `L09`, `L10`) | fluxo inteiro, rótulo da guarda |
-| parcial | 2 (`L03`, `L04`) | os dois param em `vazia`: sem alegação de saúde |
-| falha antes da leitura | 4 | `video` 1, `nao_abriu` 1 (IP interno), `fechada` 2 |
-
-Das seis páginas abertas, 4 tiveram leitura completa, 2 parcial e 2 terminaram
-em `vazia`. Nenhum limiar de D6 precisou mudar.
-
-Teste de injeção (D8): `L09` é uma página sintética com um parágrafo de injeção e `L10` é a
-mesma página sem esse parágrafo. Os dois recebem o mesmo rótulo, "evidência
-insuficiente", com o mesmo critério. A injeção não alterou o veredito.
-
-Observações para o piloto, fora do escopo deste change:
-
-- A fronteira caiu nas regras ("modelo inválido") nos quatro casos em que a
-  pessoa escreveu algo junto do link ("Olha isso que saiu:", "minha tia
-  mandou"). Nas bancadas de 06/10 isso aconteceu em 1 de 17 casos. Frase curta
-  sem conteúdo parece confundir o modelo; as regras classificaram certo.
-- Em `L02` (crítica de filme sobre alcoolismo), a extração escolheu "Amanda tem
-  inclusive uma recaída." como alegação de saúde, e o fluxo respondeu "evidência
-  insuficiente" sobre uma personagem de ficção. A resposta não erra, mas a
-  verificação não ajuda a pessoa.
-
-### Lacuna de escopo
-
-**"Identificar vieses" tem cobertura parcial desde 17/09/2026.** A capability
-`acervo-circulacao` endereça procedência e alcance com dado medido, que é uma
-face do problema. As outras duas seguem descobertas — conflito de interesse da
-fonte e viés de confirmação de quem lê. O texto abaixo permanece como registro
-do diagnóstico original.
-
-**"Identificar vieses" não tinha cobertura.** É uma das três competências nomeadas
-na Essential Question, e nenhuma das quatorze capabilities a endereça. O
-catálogo de técnicas trata de técnica retórica do texto (`cura milagrosa`,
-`manchete exagerada`), o que é diferente de viés: quem publicou e o que ganha
-com isso, conflito de interesse da fonte, e o viés de confirmação de quem lê.
-
-Decisão pendente do grupo: virar requisito, ou sair como *Out of Scope* com
-justificativa escrita.
-
-### Questões em aberto registradas
-
-| Questão | Onde está registrada | Bloqueia |
-| --- | --- | --- |
-| ~~Canal de entrega (WhatsApp vs. web)~~ | **resolvido em 25/09/2026: web primária com extensão WhatsApp**, decisão 5 do MVP | — |
-| ~~Composição do catálogo de técnicas~~ | **resolvido em 28/09/2026: sete rótulos e uma vaga**, decisão 6 do MVP | — |
-| Limiar de `evidência insuficiente` | `mvp-copiloto-verificacao` | **medido em 19/09: não sai do score fundido, por motivo estrutural; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos** |
-| ~~Estrutura de quatro blocos sob `evidência insuficiente`~~ | **resolvido em 01/10/2026:** conferências e teste fechados pelo PR #106, decisão 5 do fix; implementada na 3.2 do MVP, decisão 18 | — |
-| Técnica em veredito `verdadeiro` | `mvp-copiloto-verificacao`, decisão 18 | redação da spec `resposta-formativa` |
-| ~~Necessidade de reranker~~ | **resolvido em 22/09/2026: não compensa.** Só 2 das 20 consultas caem fora do top-3 (posições 4 e 5); as outras 18 estão no top-2 | — |
-| ~~Qual conjunto de critérios do FakeHealth~~ | **resolvido em 19/09/2026: HealthStory como base** | — |
-| Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | `tratamento/mapa_vereditos.json` | confirmação do grupo |
-| Validação empírica da rubrica de seis critérios | `add-tratamento-datasets-ptbr`, task 5.4 | `avaliacao-instrumento` |
-| Compatibilidade da rubrica com a matriz versão 1 | `add-tratamento-datasets-ptbr`, task 5.7 | — |
-| Origem dos itens verdadeiros | `add-tratamento-datasets-ptbr` | teste com usuário |
-| ~~Sub-recorte dentro de saúde~~ | **resolvido em 17/09/2026: vacinação** | — |
-| ~~Local ou API para geração~~ | **resolvido em 17/09/2026: local, Gemma 4 12B QAT** | — |
-| ~~Provisionamento do ambiente~~ | **resolvido em 18/09/2026: Python 3.14.6, torch com MPS** | — |
-
-## Próximo trabalho na fila
-
-1. ~~Aferição do braço denso e do híbrido~~ (tasks 3.1 a 3.4) — **feita em
-   22/09/2026**, e ela fechou o change em 33 de 33. A híbrida em α=0,9 dá
-   recall@5 de 1,00 e MRR de 0,897. O defeito não era a arquitetura: era o
-   `ALFA_PADRAO` de 0,5, fixado sem medição. Ver decisão 15 do `design.md`.
-2. **Decidir o destino de `enganoso` e `impreciso`** no mapa de veredito — 218 e
-   64 ocorrências, marcadas como «a confirmar pelo grupo».
-5. ~~Tratamento dos datasets~~ — **feito em 19/09/2026.** O mapa de vocabulário
-   que o índice esperava existe, versionado, e o índice pode recebê-lo sem
-   reindexar.
-6. ~~Forense de casos~~ — **feita em 24/09/2026**, seis fichas. A 2.4 saiu em
-   25/09.
-7. ~~Matriz de confiança~~ — **feita em 01/10/2026**, bloco 4 do Engage e 7.2.
-   Resta a 7.1, consolidação do portfólio.
-8. Decisão sobre "identificar vieses".
-9. **Submeter o protocolo ao CEP** (6.4). A 6.3 fechou em 29/09.
-10. **Fundir a 1.2 na `main`**, pelo branch `act-factckbr-indexacao`. A 1.5
-    depende dela.
-11. Bloco 1 do Act — 1.3, 1.4 e 1.6. ~~A 3.2~~ fechou em 01/10, decisão 18.

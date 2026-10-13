@@ -1,468 +1,151 @@
-# Tasks pendentes, por fase
+# Tasks pendentes
 
-**Levantado em 20/09/2026, atualizado em 01/10/2026**, a partir dos `tasks.md`
-dos seis changes ativos.
-Companheiro de [Estado do projeto](estado.md), que conta o que já foi entregue;
-esta página conta o que falta.
+**Atualizado em 13/10/2026**, a partir dos `tasks.md` de `origin/main` e do
+branch `act-cobertura-alegacao-ampla`. Companheiro de
+[Estado do projeto](estado.md), que conta o que já foi entregue; esta página
+conta o que falta.
 
 ## Resumo
 
-| Fase | Change | Feitas | Pendentes |
+| Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
-| **Engage** | `add-engage-desinformacao-saude` | **24** | **1** |
-| **Investigate** | `add-tratamento-datasets-ptbr` | 32 | **3** |
-| **Investigate** | `add-ampliacao-corpus-ptbr` | 55 | **0** ✅ |
-| **Investigate** | `add-selecao-modelos-arquitetura-rag` | 33 | **0** ✅ |
-| **Investigate → Act** | `fix-resposta-sem-evidencia` | 12 | **1** |
-| **Act** | `mvp-copiloto-verificacao` | 13 | **18** |
-| **Showcase** | *nenhum change existe* | — | — |
-| | **total** | **169** | **23** |
+| `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
+| 15 outros changes na `main` | Engage a Showcase | 323 | **0** ✅ |
+| **total na `main`** | | **357** | **1** |
+| `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
-Contagem de `- [x]` e `- [ ]` nos `tasks.md` de `origin/main` em 01/10/2026,
-depois dos PRs #106 a #108 e da correção de consistência. Essa correção fechou a
-7.2 do Engage e abriu duas tasks no tratamento: a 5.7 e a 6.4 retroativa.
+Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
+delas, e nove changes novos abriram e fecharam no Act. O Showcase tem o seu
+desde 13/10: `add-portfolio-showcase`.
 
-Entre 25/09 e 01/10 fecharam 19 tasks. O Act saiu de zero: 12 de 31, quase
-todas de verificação, resposta e fronteira. O Engage fechou a matriz de
-confiança e ficou só com a consolidação. As 19 pendentes do Act continuam
-sendo a maior parte do produto.
+## A task aberta na `main`
 
-### Destravadas pelos merges recentes
+| Change | # | Task | Bloqueio | Dono |
+| --- | --- | --- | --- | --- |
+| `add-tratamento-datasets-ptbr` | 5.4 | Validar a rubrica contra casos brasileiros e remover o que não discrimina | anotação humana dos casos | Jhessica |
 
-| Task | Dono | O que destravou |
+O instrumento está entregue: seis critérios com rubrica de três níveis e cinco
+remoções com motivo. Falta a validação empírica. O proxy automático foi medido
+e reprovado: sob qualquer piso único, ele removeria `alarme` e `linguagem`, os
+dois critérios mais relevantes para desinformação.
+
+**O piloto (6.6 do MVP) foi feito** em 08/10/2026, com duas sessões: 4 de 4 em
+discernimento, em transferência e em transferência com critério. O agregado
+está em `datasets/relatorios_mvp_copiloto/relatorios_metricas.json`. Com n = 2,
+ele valida o instrumento e o roteiro, não o efeito.
+
+!!! warning "O CEP é simulado"
+    O dossiê da 6.4 e a emenda 01 declaram ser **registros simulados para fins
+    acadêmicos**. Nenhum comitê de ética real aprovou o protocolo. Teste com
+    pessoas fora do grupo precisa levar isso em conta.
+
+## `add-cobertura-alegacao-ampla` — bloqueado
+
+Branch `act-cobertura-alegacao-ampla`, sem PR. Bloqueado por decisão do grupo
+em 13/10/2026.
+
+| # | Task | Situação |
 | --- | --- | --- |
-| 8.1 do Act | Wingrid | matriz de confiança versão 1, PR #104 |
-| 1.4 e 1.6 do Act | Samara | esquema de indexação (1.1) e carga conferida do índice, PR #103 |
-| 3.2 do Act | Vitor | **fechada** em 01/10, PR #107, decisão 18 do design |
-| 4.3 do Act | Jhessica | classificador da fronteira, task 4.1 (decisão 15) |
-| 6.4 do Act | Breno | TCLE e roteiro de debriefing, task 6.3 (decisão 13) |
+| 7.2 | Sonda com o Gemma local, 3 rodadas | rodada feita; jacaré 0 de 3, aceite não cumprido |
+| 7.3 | Sonda com o gerador remoto | rodada feita; jacaré 0 de 3, aceite não cumprido |
+| 7.4 | Casos novos na bancada (jacaré e autismo vs DNA) | casos e gravações no branch; jacaré falha pela implicação |
+| 8.1 | Ponta a ponta no chat, modos `uso` e `piloto` | depende do jacaré passar |
+| 8.2 | Suíte verde e `openspec validate --strict` limpo | não conferida no branch |
 
-A 1.5 (Vitor) depende da 1.1, já fechada, e da 1.2, a indexação do FACTCK.BR.
-A 1.2 foi fundida no branch `act-classificacao-guarda` pelo PR #105, e não na
-`main`. O branch `act-factckbr-indexacao` a traz com a `main` já mesclada
-(decisão 17 antes da 18) e aguarda PR.
+O que trava é a sexta trava da guarda: um modelo confirma se a alegação nova
+implica a checada. Gemma e DeepSeek responderam «não» para jacaré ⇒ DNA em
+todas as variantes testadas. Os casos negativos não tiveram falso positivo.
 
-## O que bloqueia o quê
+O grupo precisa escolher um caminho:
 
-Toda pendência cai em uma de cinco categorias. Saber qual muda quem precisa
-fazer o quê.
+- **Deixar fora da entrega**, com o achado registrado. A regra conservadora já
+  está em vigor na `main`.
+- **Rever a spec**: aceitar outra forma de confirmar a implicação, ou tirar o
+  jacaré dos cenários. Exige mudar o change, não o código.
 
-| Bloqueio | Tasks | Quem resolve |
-| --- | --- | --- |
-| ~~**Máquina**~~ — precisava do ambiente com MPS | ~~4~~ **0** | feito em 22/09 |
-| ~~**Trabalho de grupo presencial**~~ — sessão, card sorting, forense | ~~11~~ **0** | forense e sessão em 24/09, matriz em 01/10 |
-| **Anotação e curadoria humana** — 5.4 do tratamento; 2.4, 6.1 e 6.2 do Act | 4 | Jhessica |
-| **Redação** — consolidação do portfólio, 7.1 do Engage | 1 | Breno |
-| ~~**Decisão de grupo**~~ — canal e catálogo | ~~4~~ **0** | canal em 25/09, catálogo em 28/09; restam três decisões sem task, ver abaixo |
-| **Processo externo** — CEP, coleta de rede | 3 | prazo de terceiro |
-| **Implementação e conferência** — código, prompt, teste | 15 | dono de cada task |
+## Arquivamento
 
-A tabela de 24/09 somava 53, não 47. A desta data soma 23.
+Nenhum change foi arquivado, e a definição de pronto do projeto pede specs em
+`openspec/specs/` quando a fase encerra. Hoje lá está só `frescor-corpus`.
+`openspec/specs/01-engage-problem.md` está vazio (0 bytes).
 
----
+A ordem importa. Sete changes modificam specs que só existem em outros changes
+ainda não arquivados: `acessibilidade-leitura`, `resposta-formativa`,
+`fronteira-orientacao-saude`, `interface-chat-web` e `verificacao-alegacao`.
+O `openspec validate` avisa que o arquivamento recusaria esses deltas fora de
+ordem. A ordem segura:
 
-## Engage — 1 pendente
+1. Engage e Investigate: `add-engage-desinformacao-saude`,
+   `add-ampliacao-corpus-ptbr`, `add-selecao-modelos-arquitetura-rag`,
+   `add-tratamento-datasets-ptbr` (depois da 5.4).
+2. `mvp-copiloto-verificacao`, que cria as specs de produto.
+3. `add-interface-chat-web` e `add-identidade-dona-checa`.
+4. `add-entrada-por-link` (decisão D10 dele) e `add-gerador-api-deepseek`.
+5. Os `fix-*` e `add-notebook-avaliacao-modelo`.
+6. `add-portfolio-showcase`, no fim do Showcase.
 
-**Change:** `add-engage-desinformacao-saude` · **Vigência declarada:** 07/09 a
-11/09 · **Status:** 24 de 25, vencida há 20 dias.
+## Showcase
 
-Em 20/09 fecharam oito tasks, em 24/09 mais seis. Em 25/09 saiu a 2.4 e em
-01/10 o bloco 4 inteiro e a 7.2. **O que resta é redação**: juntar o
-portfólio de pesquisa. Não exige mais o grupo reunido.
+Estamos na semana 6 (12 a 16/10). O change da fase é `add-portfolio-showcase`,
+aberto em 13/10 para atualizar este portfólio. Os entregáveis «apresentação» e
+«reflexão» ainda não têm task: entram nele quando o grupo definir o formato.
 
-### O que existe
-
-| Artefato | Serve a | Onde |
-| --- | --- | --- |
-| Seis casos selecionados, três tipos de manipulação | bloco 2 | [Casos da forense](forense/casos-forense.md) |
-| Template da ficha, oito campos e checklist | bloco 2 | [Ficha de caso](forense/ficha-de-caso.md) |
-| Seis fichas preenchidas, com tempo medido | bloco 2 | `docs/forense/caso-NN-*.md` |
-| Board dos cinco quadros, com os tempos no quadro Problema | blocos 2 e 3 | [Board do brainstorming](engage/board-brainstorming.md) |
-| Matriz de confiança, quatro dimensões e três remoções | bloco 4 | [Matriz de confiança](engage/kit-matriz-confianca.md) |
-
-### Bloco 2 — Investigação forense (0) ✅
-
-**Fechado em 25/09.** A 2.4 levou mínimo de 10 min, mediana de 22 min e
-máximo de 43 min para o quadro Problema do
-[board](engage/board-brainstorming.md) e para o Miro.
-
-Um achado do bloco: a ficha do caso 05 desmentiu a classificação da seleção. O
-vídeo do presidente da Anvisa foi **recortado**, não sintetizado, e virou
-recontextualização. O portfólio caiu de quatro tipos para três — exatamente o
-mínimo da spec, sem margem.
-
-### Bloco 3 — Sessão de brainstorming, ~90 min (0) ✅
-
-**Fechado em 24/09.** As três tasks saíram na sessão: quadros Problema e
-Público em modo privado, quadro Solução só como hipóteses, e as guiding
-questions plotadas na matriz impacto × incerteza.
-
-### Bloco 4 — Matriz de confiança (0) ✅
-
-**Fechado em 01/10, PR #104.** As tasks 4.1 a 4.4 saíram juntas, com Jhessica.
-O `kit-matriz-confianca.md` deixou de ser o kit do workshop e passou a ser a
-matriz versão 1.
-
-| Dimensão | Sinal observável |
+| Entregável final | Situação |
 | --- | --- |
-| Falsa autoridade ou fonte inexistente | autoridade sem nome, ou estudo de instituição real que não existe |
-| Recontextualização e edição de mídia | data da mídia diferente da do evento, ou corte que muda o sentido |
-| Distorção de documento real | documento real citado com ressalva omitida |
-| Enquadramento conspiratório | motivação secreta atribuída a autoridade, sem prova |
+| Portfólio de pesquisa | este site; atualizado em 13/10 |
+| Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
+| Solução/protótipo com suporte de IA | [protótipo](act/prototipo-avaliacao.md) funcionando, bancada em 28 de 30 |
+| Apresentação e reflexão | **sem task**; entra em `add-portfolio-showcase` |
 
-Cada dimensão tem papel da IA, limite e rubrica de três níveis. A 4.4 removeu
-três sinais: ausência genérica de link (variância zero nos seis casos), tom
-alarmista (emoção não é evidência, decisão 7 de
-`add-selecao-modelos-arquitetura-rag`) e o tema saúde (variância zero).
+## Decisões em aberto
 
-A quarta dimensão é a vaga que a decisão 6 do Act deixou para `conspiração`
-no catálogo. A conferência é a 8.1 do Act, agora destravada.
+Nenhuma bloqueia o protótipo. Todas aparecem se alguém perguntar na
+apresentação.
 
-### Bloco 7 — Fechamento (1)
-
-| # | Task | Bloqueio |
+| # | Decisão | Situação |
 | --- | --- | --- |
-| 7.1 | Consolidar o portfólio de pesquisa (fichas + método + datasets) | redação, Breno |
+| 1 | Destino de `enganoso` (218) e `impreciso` (64) no mapa de veredito | marcados «a confirmar pelo grupo» |
+| 2 | «Identificar vieses»: requisito ou *Out of Scope*? | cobertura parcial, ver abaixo |
+| 3 | `add-cobertura-alegacao-ampla`: fora da entrega ou spec revista? | bloqueado em 13/10 |
 
-As três partes da 7.1 existem: «datasets» pelo bloco 6, «fichas» em 24/09 e
-o «método» nos blocos 2 e 3. Falta juntá-las. A 7.2 foi fechada em 01/10: o
-PR #104 entregou a matriz já como «Versão 1», e a task passou a citá-lo.
+**Sobre «identificar vieses».** É uma das três competências da Essential
+Question. A cobertura é parcial: `acervo-circulacao` trata procedência e
+alcance, e o critério `conflito_de_interesse` da rubrica trata quem publicou e
+o que ganha com isso. O **viés de confirmação de quem lê** segue sem
+capability. É a face mais próxima da métrica primária do projeto, o ganho de
+discernimento do usuário.
 
-> **A 7.4 foi resolvida em 20/09/2026.** O change
-> `add-instrumento-avaliacao-ptbr` **não será aberto**: a capability
-> `avaliacao-instrumento` de `mvp-copiloto-verificacao` já cobre o escopo nos
-> seus quatro requirements, e o material de estímulo já veio do Investigate.
-> Escopo preservado, rastreamento realocado. Motivo registrado no `design.md`
-> do change do Engage.
+## Limitações conhecidas do protótipo
 
-## Investigate — 3 pendentes
+Achados da bancada e das sondas, para a apresentação não prometer o que o
+protótipo não faz.
 
-### `add-tratamento-datasets-ptbr` — 3 de 35
-
-| # | Task | Bloqueio |
-| --- | --- | --- |
-| 3.5 | Recoletar o FACTCK.BR pelos três feeds com o script reparado, registrando a perda histórica como irreversível | processo externo (coleta de rede) |
-| 5.4 | Validar a rubrica contra casos brasileiros e remover o que não discrimina | trabalho de grupo (anotação humana) |
-| 5.7 | Reconferir a rubrica de seis critérios contra a matriz de confiança versão 1 | concluída, JSON atualizado para (sinal ausente, fraco, forte) |
-
-A 6.4 entrou marcada em 01/10: registra o notebook `exploracao/eda_datasets.ipynb`,
-que chegou pelo PR #94 sem task que o cobrisse.
-
-**Sobre a 3.5.** O texto original pedia o impossível — regerar o derivado «a
-partir da fonte, com a correção» — quando a corrupção já está no `FACTCKBR.tsv`
-distribuído (`Ã` = 0 contra `ã` = 3.625 na própria fonte). A task foi reescrita
-para o que é executável: recoletar pelos feeds do Aos Fatos, Agência Pública e
-Lupa com o `update_factckbr.py` já corrigido. Traz só artigos recentes, não
-recompõe as 1.313 alegações históricas.
-
-**Sobre a 5.4.** O instrumento está entregue: seis critérios com rubrica de três
-níveis, e as cinco remoções com motivo por escrito. O que falta é a validação
-empírica, que exige anotação humana dos casos — e o proxy automático que
-tentamos foi **medido e reprovado**: sob qualquer piso único ele removeria
-`alarme` e `linguagem`, os dois critérios mais relevantes para desinformação.
-
-### `add-selecao-modelos-arquitetura-rag` — 0 de 33 ✅
-
-**Fechado em 22/09/2026.** As quatro dependiam da mesma matriz densa e fecharam
-juntas, como previsto. O que não estava previsto é o que a medição encontrou.
-
-| # | Task | Resultado |
-| --- | --- | --- |
-| 3.1 | Recall das três configurações | léxica 0,85 / densa 1,00 / **híbrida 1,00** de recall@5; MRR 0,725, 0,877 e **0,897** |
-| 3.2 | Registrar contra a decisão 4 | decisão 4 **se sustenta**, com duas correções — decisão 15 do `design.md` |
-| 3.3 | Comparar dois modelos | `e5-base` mantido; `e5-small` é mais barato em tudo e perde em `reformulada` |
-| 3.4 | Latência, indexação vs. consulta | 883,4 s contra 227,4 s de indexação; 13 ms contra 9 ms de consulta densa |
-
-**A previsão do levantamento de 20/09 se confirmou.** Estava escrito aqui que
-*se a densa não melhorar `reformulada`, a decisão 4 perde o sustento*. A densa
-levou `reformulada` de 0,70 para 1,00 de recall@5 e recuperou `a14`, `a16` e
-`a20`, as três consultas que o BM25 nunca achava.
-
-**O achado que não estava previsto.** A primeira execução concluiu que a híbrida
-perdia da densa pura, e a conclusão estava errada: o `ALFA_PADRAO` era 0,5,
-fixado em 18/09 sem medição por trás. Em 0,5 o ruído léxico empurrava para fora
-do top-10 os três documentos que o braço denso achava nas posições 5, 3 e 1. O
-padrão passou a 0,9, validado por platô (cinco valores de α dentro de 0,01 do
-topo) e por leave-one-out (MRR 0,8975 contra 0,8767 da densa pura). A varredura
-virou subcomando versionado: `python -m prototipo.rag varrer-alfa`.
-
-**O que não se transfere.** No `e5-small` o melhor α é 1,00 e a híbrida perde
-sob leave-one-out. A afirmação defensável é «α=0,9 com `e5-base`», não «híbrida
-supera densa». Trocar o modelo de embedding obriga a revarrer.
-
-Duas questões em aberto do change fecharam junto: **reranker** (só 2 das 20
-consultas caem fora do top-3, então um cross-encoder disputaria dois casos e
-custaria latência em vinte) e **tamanho do modelo de embedding** (descer não
-compensa; subir continua não medido).
-
----
-
-## Investigate → Act — 1 pendente
-
-### `fix-resposta-sem-evidencia` — 1 de 13
-
-Change de correção aberto em 19/09. Planejamento completo, specs escritas sob a
-saída A (forma própria para o caso sem evidência).
-
-| # | Task | Bloqueio |
-| --- | --- | --- |
-| 2.4 | Levar o terceiro estado à task 8.2 de `add-ampliacao-corpus-ptbr` | **já resolvido** na declaração de quatro níveis; confirmar, Samara |
-
-**As 2.1, 2.2, 2.3 e 3.3 fecharam em 01/10, PR #106, Wingrid.** A conciliação
-da 2.2 e da 2.3 está na decisão 5 do `design.md` do change. Ela também resolveu a
-questão aberta pela sonda E2: com ponteiro, o bloco 2 fala só do acervo
-consultado, e o veredito externo fica no ponteiro do bloco 4.
-
-**As 3.1 e 3.2 fecharam em 28/09, decisão 4 do `design.md` do change.** O
-defeito que abriu o change não se repete: 0 de 12 respostas degeneraram, e a T1
-de 18/09 ficou nas três tentativas na forma sem evidência. A falha que sobrou é
-outra: nas 9 respostas de lacuna de acervo o modelo omitiu a data de corte, 9
-vezes em 9. A recomendação para a 3.2 do MVP é compor a frase de corte por
-modelo fixo, sem depender do gerador.
-
-A sonda também mediu o orçamento: 65 a 85 palavras por resposta, abaixo do teto
-de 120. É material para a 2.1.
-
----
-
-## Act — 18 pendentes
-
-**Change:** `mvp-copiloto-verificacao` · **Cronograma declarado:** semanas 4–5 ·
-**Executadas até agora: 13 de 31.**
-
-Esta é a fase inteira do produto. O bloco 1 estava bloqueado pelo tratamento dos
-datasets — **e não está mais**.
-
-### Bloco 1 — Corpus e recuperação (5 abertas, 1 fechada)
-
-| # | Task | O que já existe |
-| --- | --- | --- |
-| 1.1 | Esquema de indexação do recorte de saúde do FactCenter | **fechada** em 29/09/2026: `prototipo/indice/esquema_indexacao.json` v1.0.0, validado por `prototipo/rag/esquema.py`, decisão 16 do design; 5.089 unidades e 22.463 fragmentos |
-| 1.2 | Indexar FACTCK.BR como fonte auxiliar, com rótulos normalizados | feita no branch `act-classificacao-guarda` (PR #105, decisão 17), **fora da `main`**; o branch `act-factckbr-indexacao` a leva à `main`; reprovado para citação (`apto_citacao` falso, decisão 16) |
-| 1.3 | Lista de fontes oficiais aceitas (Ministério da Saúde, Fiocruz, Anvisa) | nada |
-| 1.4 | Recuperação com prioridade de idioma (PT-BR antes de EN) | híbrida PT-BR pronta; campo `idioma` no esquema 1.0.0 |
-| 1.5 | Definir e calibrar o limiar de `evidência insuficiente` | **medido:** não sai do score fundido; sobre BM25 bruto, 27,2 rejeita todo o ruído e custa 40% dos positivos; espera a 1.2 |
-| 1.6 | Ancoragem trecho a afirmação e descarte de afirmação sem trecho | procedimento de auditoria em 5 passos na decisão 12; `tratamento.integridade.trecho_e_fiel` |
-
-### Bloco 2 — Verificação e veredito (1 aberta, 4 fechadas)
-
-| # | Task | Nota |
-| --- | --- | --- |
-| 2.1 | Prompt de extração de alegação, com seleção quando há várias | **fechada** em 29/09/2026: `prototipo/verificacao/extracao.py`, decisão 8 do design |
-| 2.2 | Prompt de classificação nos quatro rótulos | **fechada** em 29/09/2026: `prototipo/verificacao/classificacao.py`, decisão 11 do design |
-| 2.3 | Guarda contra veredito por conhecimento paramétrico | **fechada** em 29/09/2026: `prototipo/verificacao/guarda.py`, decisão 12 do design; valor do limiar pela 1.5 |
-| 2.4 | Teste de regressão com itens verdadeiros contra-intuitivos | **sem material:** 21 itens `verdadeiro` em 4.063, e a FakeRecogna 2.0 não resolve |
-| 2.5 | Prompt de decomposição fato / evidência / opinião | **fechada** em 29/09/2026: `prototipo/verificacao/decomposicao.py`, decisão 9 do design; os 245 registros `misto` seguem reservados para teste |
-
-### Bloco 3 — Resposta formativa (0 abertas, 4 fechadas) ✅
-
-| # | Task | Nota |
-| --- | --- | --- |
-| 3.1 | Fechar o catálogo de 6 a 8 técnicas | **fechada** em 28/09/2026: sete rótulos e uma vaga, decisão 6 do design |
-| 3.2 | Prompt da estrutura de quatro blocos | **fechada** em 01/10/2026: `prototipo/resposta/estrutura.py`, sonda 21/21, decisão 18 do design; data de corte e ponteiro compostos pelo código |
-| 3.3 | Validação automática: rótulo usado pertence ao catálogo | **fechada** em 28/09/2026: `prototipo/resposta/catalogo.py`, decisão 7 do design; confere pertinência, não adequação |
-| 3.4 | Verificar que a alegação falsa nunca abre a resposta sem marcação | **fechada** em 29/09/2026: `prototipo/resposta/mito.py`, decisão 14 do design; contrato com o prompt da 3.2 |
-
-### Bloco 4 — Fronteira de saúde (1 aberta, 2 fechadas)
-
-| # | Task | Nota |
-| --- | --- | --- |
-| 4.1 | Classificador de pedido de conduta clínica individual | **fechada** em 29/09/2026: `prototipo/verificacao/fronteira.py`, regras e modelo, decisão 15 do design; acerto fora da sonda é medido pela 4.3 |
-| 4.2 | Respostas de redirecionamento, incluindo caso de sinal de risco | **fechada** em 29/09/2026: diretrizes e respostas Web/WhatsApp, decisão 10 do design |
-| 4.3 | Bateria de testes adversariais de pedido de conduta | destravada pela 4.1, Jhessica |
-
-A 4.1 é o **único candidato a fine-tuning** hoje, e as quatro condições que o
-autorizam estão na decisão 12 do RAG. Falta a condição 2: conjunto de avaliação
-versionado.
-
-### Bloco 5 — Interface (4)
-
-| # | Task |
-| --- | --- |
-| 5.1 | Camada visível e camada de detalhe |
-| 5.2 | Checklist de acessibilidade: contraste, fonte, alvo de toque, ação primária |
-| 5.3 | Fluxo de primeira verificação sem cadastro |
-| 5.4 | Verificação de legibilidade da camada visível |
-
-A decisão de canal saiu em 25/09 (task 7.1, decisão 5 do design): web
-primária, com extensão para WhatsApp. O bloco não tem mais bloqueio de decisão.
-
-A entrada por link, exigida por `acessibilidade-leitura` / "Entrada sem
-barreira", está em `add-entrada-por-link`. A bancada com modelo real foi gravada em
-08/10 (tasks 6.1 e 6.2, resultado em [Estado](estado.md)), e o responsável
-pelo CEP foi avisado da frase nova do TCLE (task 0.1). Arquivamento só
-depois de `mvp-copiloto-verificacao` e `add-interface-chat-web` (decisão D10).
-
-### Bloco 6 — Avaliação (6)
-
-| # | Task | Bloqueio |
-| --- | --- | --- |
-| 6.1 | Curar 20 a 30 casos, com no mínimo 4 verdadeiros contra-intuitivos | grupo — e os verdadeiros são trabalho manual |
-| 6.2 | Configurar 4 a 6 itens-armadilha | grupo |
-| 6.3 | Redigir TCLE e roteiro de debriefing | **fechada** em 29/09/2026: minuta do TCLE e roteiro de debriefing, decisão 13 do design |
-| 6.4 | **Submeter protocolo ao comitê de ética** | **processo externo, com prazo próprio**; destravada pela 6.3, Breno |
-| 6.5 | Instrumentar coleta das métricas de resultado e de guarda | implementação |
-| 6.6 | Rodar piloto com 2 participantes antes da coleta | depende de 6.4 |
-
-> **A 6.4 é a pendência de maior risco de cronograma do projeto.** Submissão ao
-> CEP tem prazo que não depende do grupo, e as 6.6, o teste com usuário e a
-> métrica primária de sucesso dependem dela. A 6.3 fechou em 29/09, então
-> nada no repositório impede a submissão.
-
-O material de estímulo para a 6.1 e a 6.2 melhorou muito em 19/09: 950
-mensagens do WhaVax com veredito de quatro médicos, **84 delas empatadas** — que
-são casos difíceis já identificados —, mais 300 itens da FakeRecogna 2.0 e os
-245 registros `misto` do corpus.
-
-### Blocos 7 e 8 — Decisões e fechamento (2 abertas, 1 fechada)
-
-| # | Task | Bloqueio |
-| --- | --- | --- |
-| 7.1 | Definir o canal de entrega (WhatsApp vs. web) e registrar em `design.md` | **fechada** em 25/09/2026: web primária com extensão WhatsApp, decisão 5 do design |
-| 8.1 | Conferir consistência do catálogo de técnicas com as dimensões da matriz de confiança | destravada em 01/10 pelo Engage bloco 4, Wingrid |
-| 8.2 | `openspec validate mvp-copiloto-verificacao --strict` | **passa limpo** em 01/10; marca-se no fechamento |
-
----
-
-## Showcase — nenhum change existe
-
-**Cronograma declarado:** semana 6. **Nenhum change cobre esta fase.**
-
-A metodologia do projeto diz «um change por fase do CBL». Engage, Investigate e
-Act têm os seus; Showcase não. Os entregáveis finais do desafio incluem
-**apresentação e reflexão**, e hoje nenhuma task no repositório os cobre.
-
-Precisa ser aberto antes da semana 6, e a proposta natural é que ele cubra:
-
-- consolidação do portfólio de pesquisa como entregável apresentável;
-- a apresentação em si, e o que dela é evidência medida contra o que é
-  narrativa;
-- a reflexão sobre o que o grupo aprendeu, que o CBL trata como entregável e
-  não como epílogo.
-
----
+- **Pauta fora do acervo.** O corpus de checagens com texto integral vai até
+  maio de 2021. Para mpox, oropouche, Qdenga e semaglutida, o acervo tem zero
+  checagens. A resposta é «evidência insuficiente», com ponteiro quando o
+  índice de checagens recentes acha algo.
+- **Fontes oficiais fora do fluxo.** A lista da task 1.3
+  (`prototipo/indice/fontes_oficiais.json`) existe, mas o fluxo ainda não a usa.
+- **Lacuna detectada pelo caso, não pelo sistema.** O pipeline ainda não detecta
+  sozinho a lacuna de acervo. Na bancada, ela vem do caso.
+- **Variação exagerada de alegação checada.** Ver o bloqueio acima: o jacaré
+  recebe «evidência insuficiente».
+- **Dois casos da bancada com falha de forma** (`R3` e `L01`), nenhuma
+  eliminatória.
+- **Texto curto junto com link.** A fronteira por modelo erra com frases como
+  «Olha isso que saiu:», e as regras classificam certo.
+- **Ficção lida como alegação.** Numa crítica de filme, a extração tomou a fala
+  de uma personagem como alegação de saúde.
 
 ## Onde estamos no cronograma
 
-Datas derivadas da proposta do challenge em 20/09/2026 — ver
-`openspec/project.md`.
-
 | Semana | Fase | Datas | Situação |
 | --- | --- | --- | --- |
-| 1 | Engage | 07/09 a 11/09 | **vencida há 20 dias**, 24 de 25 tasks |
-| 2 | Investigate | 14/09 a 18/09 | encerrada |
-| 3 | Investigate | 21/09 a 25/09 | encerrada, 120 de 123 |
-| **4** | **Act** | **28/09 a 02/10** | **em curso — 13 de 31** |
-| 5 | Act | 05/10 a 09/10 | não começou |
-| 6 | Showcase | 12/10 a 16/10 | sem change |
+| 1 | Engage | 07/09 a 11/09 | encerrada, 25 de 25 |
+| 2–3 | Investigate | 14/09 a 25/09 | encerrada, 135 de 136 |
+| 4–5 | Act | 28/09 a 09/10 | encerrada, 188 de 188 na `main` |
+| **6** | **Showcase** | **12/10 a 16/10** | **em curso**, `add-portfolio-showcase` |
 
-**Hoje é quinta, 01/10.** A semana 4 encerra amanhã, 02/10. O Act encerra em
-09/10.
-
-### O que isso muda na leitura
-
-**O Investigate encerrou em 119 de 121 e está hoje em 120 de 123.** Duas
-pendentes são as mesmas de 24/09: a recoleta do FACTCK.BR (3.5), que depende de
-rede, e a validação da rubrica (5.4), que depende de anotação humana. A terceira,
-a 5.7, foi aberta em 01/10 para reconferir a rubrica contra a matriz.
-**Nenhuma das três é código.**
-
-**O Act começou na data.** Desde 25/09 saíram 13 tasks, quase todas de Vitor
-e Breno: verificação (2.1, 2.2, 2.3, 2.5), resposta (3.1, 3.3, 3.4),
-fronteira (4.1, 4.2), TCLE (6.3), canal (7.1), esquema de indexação (1.1, de
-Samara) e a estrutura de quatro blocos (3.2). O que resta é recuperação
-(bloco 1), a interface inteira (bloco 5) e a avaliação com usuário (bloco 6).
-
-**O Engage deixou de travar o Act.** A matriz saiu em 01/10 e destravou a 8.1.
-Resta a 7.1, que é redação.
-
-### O caminho crítico é o comitê de ética
-
-A cadeia é esta, e ela não tem folga:
-
-```text
-6.4 submeter ao CEP  →  6.6 piloto com 2 participantes  →  teste com usuário
-                                                        →  métrica primária
-```
-
-O Act encerra em **09/10** e o Showcase é de **12 a 16/10**. Da data de hoje até
-o fim do Act são **8 dias**. A 6.3 fechou em 29/09, então o TCLE e o roteiro de
-debriefing existem. **A submissão (6.4) ainda não está marcada.** Toda a
-avaliação com usuário — de onde sai a métrica primária, ganho de discernimento —
-está depois da aprovação do CEP.
-
-### Sugestão de ordem para as semanas 4 e 5
-
-1. **Agora:** submeter ao CEP (6.4). Já não depende de nada no repositório.
-2. **Agora:** fundir a 1.2 na `main`, pelo branch `act-factckbr-indexacao`. A
-   1.5 espera por ela.
-3. **Semana 4:** fechar o bloco 1 — 1.4 e 1.6 com Samara, 1.3 com Wingrid.
-4. **Semana 5:** interface (bloco 5), que não tem mais bloqueio de decisão, e
-   a bateria adversarial da fronteira (4.3).
-5. **Antes de 12/10:** abrir o change de Showcase.
-
-## A ordem das fases foi invertida, e isso tem custo
-
-O CBL prevê Engage (07/09 a 11/09) antes de Investigate (semanas 2–3). O que
-existia era o contrário: o Investigate encerrou em 119 de 121 com o Engage em
-18 de 25. Hoje o Engage está em **24 de 25**.
-
-**Por que aconteceu.** As pendentes do Engage eram quase todas trabalho de
-grupo presencial — forense com um caso por pessoa, sessão de brainstorming de
-90 minutos, card sorting da matriz. Nada disso se faz individualmente, e até
-24/09 o que avançava era só o que dava para avançar sozinho. A forense e o
-brainstorming saíram nesse dia; o card sorting e a matriz, em 01/10.
-
-**O que custou.** A ordem de dependência declarada em [Estado do
-projeto](estado.md) tem três cadeias, e elas não foram afetadas igualmente:
-
-| Cadeia | Respeitada? | Consequência |
-| --- | --- | --- |
-| `guiding q.` → `frescor-corpus` | **sim** | o bloco 5 do Engage estava pronto |
-| `forense` → `normalizacao-rotulos` | fora de ordem, sem dano | a normalização de rótulo não precisava das fichas de caso, que chegaram em 24/09 |
-| `matriz` → `adaptacao-criterios-en` | **não, com dívida** | ver abaixo |
-
-### A dívida da terceira cadeia
-
-A spec de `adaptacao-criterios-en` exige, em texto expresso, que a rubrica seja
-**«de três níveis compatível com a capability `matriz-confianca`»**.
-
-A rubrica de seis critérios foi entregue com três níveis cada. Até 01/10 a
-compatibilidade com `matriz-confianca` não tinha contra o que ser verificada.
-**Agora tem:** a matriz versão 1 saiu em 01/10, com quatro dimensões e rubrica
-de três níveis cada.
-
-A task 5.3 está marcada corretamente: ela pede a adaptação, e a adaptação foi
-feita. Mas o requirement da capability só se cumpre quando a compatibilidade for
-conferida. **A reconferência da rubrica contra a matriz foi concluída**, e
-pode exigir ajuste. Desde 01/10 ela tem task: a 5.7 do tratamento, com
-Jhessica.
-
-A mesma dependência alcança a task 8.1 do Act, que manda conferir a consistência
-do catálogo de técnicas com as dimensões da matriz. Essa tem dono: Wingrid.
-
-## Decisões que travam execução
-
-Eram cinco; duas saíram. Restam três, e nenhuma é trabalho — são escolhas.
-
-| # | Decisão | Destrava |
-| --- | --- | --- |
-| 1 | ~~**Canal de entrega** (WhatsApp vs. web)~~ | **decidido em 25/09/2026:** web primária com extensão WhatsApp, decisão 5 do MVP |
-| 2 | **Destino de `enganoso` (218) e `impreciso` (64)** no mapa de veredito | fecha o mapa versão 1.1 |
-| 3 | ~~**Composição do catálogo de 6 a 8 técnicas**~~ | **decidido em 28/09/2026:** sete rótulos e uma vaga, decisão 6 do MVP |
-| 4 | **Declaração de cobertura: dois níveis ou quatro?** | fecha a tensão entre as tasks 8.5 e 8.6 |
-| 5 | **«Identificar vieses» é requisito ou *Out of Scope*?** | cobertura de competência nomeada no enunciado |
-
-Sobre a 5: a competência tem cobertura **parcial** desde 17/09. `acervo-circulacao`
-endereça procedência e alcance; o critério `conflito_de_interesse` da rubrica
-endereça quem publicou e o que ganha com isso. Falta o **viés de confirmação de
-quem lê** — e essa é a face que mais se aproxima da métrica primária do projeto,
-que é ganho de discernimento do usuário.
-
-## Uma lacuna de estrutura
-
-**Ainda não existe change de Showcase.** Abrir antes da semana 6 (12 a 16/10).
-
-A outra lacuna — `add-instrumento-avaliacao-ptbr` — **foi fechada em
-20/09/2026**: o change não será aberto, e a capability `avaliacao-instrumento`
-de `mvp-copiloto-verificacao` responde pelo escopo.
+As contagens por fase somam os changes de cada uma: Investigate inclui
+`fix-resposta-sem-evidencia`; o Act soma o MVP e os nove changes abertos
+nele.
