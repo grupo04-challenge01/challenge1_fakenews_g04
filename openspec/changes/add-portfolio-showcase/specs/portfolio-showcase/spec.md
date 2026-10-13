@@ -42,3 +42,51 @@ nem de link interno quebrado.
 #### Scenario: Build
 - **WHEN** `mkdocs build` roda sobre a `main`
 - **THEN** a saída não traz `WARNING`
+
+### Requirement: Versão da demonstração fixada
+
+A demonstração da apresentação SHALL rodar do commit da `main` marcado pela
+tag `showcase-demo`. Ela MUST NOT rodar de branch com change não integrado à
+`main`.
+
+#### Scenario: Checkout para a demo
+- **GIVEN** a tag `showcase-demo` criada depois do ensaio
+- **WHEN** quem apresenta prepara a máquina da demo
+- **THEN** faz checkout da tag
+- **AND** o commit da tag está contido na `main`
+
+### Requirement: Roteiro de demonstração
+
+O portfólio SHALL ter um roteiro de demo com preparação, aquecimento, casos e
+plano B. Cada caso do roteiro MUST ter passado na rodada da bancada registrada
+para a versão da demo.
+
+#### Scenario: Escolha de um caso
+- **GIVEN** um caso listado no roteiro
+- **WHEN** o leitor procura o caso na tabela da rodada da bancada da demo
+- **THEN** encontra o caso marcado como aprovado
+
+#### Scenario: Aquecimento antes da plateia
+- **WHEN** quem apresenta segue o roteiro
+- **THEN** espera `/saude` responder 200 e faz uma consulta descartável antes
+  de abrir o chat para a plateia
+
+### Requirement: Números da bancada versionados
+
+O portfólio SHALL publicar uma tabela da rodada da bancada usada na demo, com
+data e hora da rodada, gerador, casos aprovados, acerto por etapa, latência e
+custo. A tabela MUST nomear o arquivo de relatório de origem.
+
+#### Scenario: Número da bancada nos slides
+- **WHEN** um slide cita um número da bancada
+- **THEN** o número está na tabela versionada
+- **AND** a tabela nomeia o relatório de origem
+
+### Requirement: Porta de entrada do repositório
+
+O `README.md` SHALL apontar para o portfólio publicado, mapear os quatro
+entregáveis finais, dizer como subir a demo e onde estão os changes.
+
+#### Scenario: Avaliador abre o repositório
+- **WHEN** alguém abre a página inicial do repositório
+- **THEN** encontra o link do portfólio e o caminho de cada entregável final

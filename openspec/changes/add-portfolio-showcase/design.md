@@ -51,9 +51,66 @@ As duas sessões de 08/10/2026 contam como o piloto da task 6.6 do MVP, por
 confirmação do grupo em 13/10/2026. O site registra o resultado com a ressalva
 de n = 2, que o notebook de avaliação já fazia.
 
+### D5. A demo roda da `main`, marcada por tag
+
+A demonstração de 16/10 roda de um commit da `main`, marcado pela tag
+`showcase-demo`. A tag é criada depois do merge do `fix-*` de 14/10 e do ensaio
+de 15/10, no commit ensaiado. Quem apresenta faz checkout da tag, não de um
+branch.
+
+O branch `act-cobertura-alegacao-ampla` fica fora. O change dele está
+bloqueado pelo caso jacaré, e o branch liga a cobertura ampla por padrão
+(`DONA_CHECA_COBERTURA_AMPLA`, padrão `sim` em `interface/config.py`). A
+`main` não tem essa variável, então a demo usa a regra conservadora sem
+configuração extra. O merge do branch fica suspenso até depois da
+apresentação.
+
+Alternativa descartada: demo pelo branch com a variável em `nao`. Depende de
+quem apresenta lembrar da variável, e o código do branch não passou pela
+suíte nem pelo `validate --strict` da task 8.2 dele.
+
+### D6. Nenhum change arquivado antes da apresentação
+
+O chat lê textos de specs em tempo de execução. Os caminhos apontam para
+`openspec/changes/<change>/specs/...`, com recuo para `openspec/specs/` só na
+spec base. As sobreposições existem só nos changes: `SOBREPOSICAO` em
+`interface/fluxo.py` e em `prototipo/verificacao/fronteira.py`.
+`prototipo/identidade/__init__.py` e `prototipo/entrada/leitura.py` também leem
+do change, com o mesmo recuo.
+
+Arquivar move a pasta do change para `openspec/changes/archive/`, e a subida
+do servidor nesse estado nunca foi testada. Até a apresentação de 16/10,
+ninguém roda `/opsx:archive` nem `openspec archive`. Depois dela, o
+arquivamento segue a ordem de `docs/pendencias.md`, e antes dele o código
+passa a ler de `openspec/specs/`.
+
+### D7. Roteiro de demo com aquecimento e casos da bancada
+
+O roteiro fixa:
+
+- **Preparação:** checkout da tag, `.env` conferido, porta livre (a 8000
+  conflita com `mkdocs serve`), saldo da conta da API conferido na véspera.
+- **Aquecimento:** esperar `/saude` responder 200. A carga do índice roda numa
+  thread, e se ela falhar o servidor segue no ar com `/saude` em 503. Depois,
+  uma consulta descartável, porque o modelo denso só carrega na primeira.
+- **Casos:** só casos que passaram na rodada da bancada da tag, cobrindo
+  veredito com fonte, link, fronteira e evidência insuficiente.
+- **Gerador:** DeepSeek. O cliente Ollama não tem timeout.
+- **Plano B:** vídeo gravado no ensaio e rede alternativa.
+
+### D8. Números da bancada versionados em tabela
+
+`bancada/relatorios/` está no `.gitignore`. A rodada usada na demo vira uma
+tabela no portfólio, com data e hora da rodada, gerador, casos aprovados,
+acerto por etapa, latência e custo. O JSON bruto segue fora do git.
+
 ## Risks / Trade-offs
 
 - [O site envelhece de novo até 16/10] → a data de atualização fica no topo de
   `estado.md` e `pendencias.md`.
 - [Número citado diverge da fonte] → cada número no site cita o arquivo ou a
   rodada de origem.
+- [Alguém arquiva um change ou faz merge do branch amplo antes de 16/10] → D5
+  e D6 também vão para `docs/pendencias.md` e são combinados com o grupo.
+- [A rodada da tag falha num caso do roteiro] → o roteiro troca o caso por
+  outro que passou na mesma rodada, sem mudar a regra para o caso passar.

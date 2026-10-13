@@ -10,15 +10,17 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| 15 outros changes na `main` | Engage a Showcase | 323 | **0** ✅ |
-| **total na `main`** | | **357** | **1** |
+| `add-portfolio-showcase` | Showcase | 10 | **12** |
+| 14 outros changes na `main` | Engage a Act | 315 | **0** ✅ |
+| **total na `main`** | | **359** | **13** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
 Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
 delas, e nove changes novos abriram e fecharam no Act. O Showcase tem o seu
-desde 13/10: `add-portfolio-showcase`.
+desde 13/10: `add-portfolio-showcase`, com as tasks da demo, da apresentação e
+da reflexão abertas na seção [Showcase](#showcase).
 
-## A task aberta na `main`
+## A task aberta fora do Showcase
 
 | Change | # | Task | Bloqueio | Dono |
 | --- | --- | --- | --- | --- |
@@ -65,6 +67,14 @@ O grupo precisa escolher um caminho:
 
 ## Arquivamento
 
+!!! danger "Nada é arquivado antes da apresentação de 16/10"
+    O chat lê textos de specs direto de `openspec/changes/` quando sobe
+    (`interface/fluxo.py`, `prototipo/verificacao/fronteira.py`,
+    `prototipo/identidade/`, `prototipo/entrada/leitura.py`). Arquivar move
+    essas pastas, e a subida nesse estado nunca foi testada. Ninguém roda
+    `openspec archive` nem `/opsx:archive` até depois da apresentação.
+    Decisão D6 de `add-portfolio-showcase`.
+
 Nenhum change foi arquivado, e a definição de pronto do projeto pede specs em
 `openspec/specs/` quando a fase encerra. Hoje lá está só `frescor-corpus`.
 `openspec/specs/01-engage-problem.md` está vazio (0 bytes).
@@ -87,15 +97,34 @@ ordem. A ordem segura:
 ## Showcase
 
 Estamos na semana 6 (12 a 16/10). O change da fase é `add-portfolio-showcase`,
-aberto em 13/10 para atualizar este portfólio. Os entregáveis «apresentação» e
-«reflexão» ainda não têm task: entram nele quando o grupo definir o formato.
+aberto em 13/10 para atualizar este portfólio e ampliado no mesmo dia com a
+demo, a apresentação e a reflexão.
+
+**Versão da demo.** A demo de 16/10 roda da `main`, no commit marcado pela tag
+`showcase-demo`. A tag é criada depois do ensaio de 15/10. O branch
+`act-cobertura-alegacao-ampla` fica fora da demo e não entra na `main` antes da
+apresentação: ele liga a cobertura ampla por padrão, e o change dele está
+bloqueado. Decisão D5 de `add-portfolio-showcase`.
+
+| # | Task | Situação |
+| --- | --- | --- |
+| 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | aberta |
+| 3.3 | Ensaio cronometrado e vídeo de backup | aberta |
+| 3.4 | Tag `showcase-demo` no commit ensaiado | aberta |
+| 4.1 | Tabela-resumo da rodada da bancada da demo | aberta |
+| 4.2 | Latência e custo no guia do chat | aberta |
+| 4.3 | `README.md` como porta de entrada | aberta |
+| 4.4 | Limitações da avaliação completadas | aberta |
+| 5.1 | Slides | aberta |
+| 5.2 | Reflexão no portfólio | aberta |
+| 6.1 a 6.3 | Contagens, `mkdocs build` e `validate --strict` | abertas |
 
 | Entregável final | Situação |
 | --- | --- |
 | Portfólio de pesquisa | este site; atualizado em 13/10 |
 | Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
 | Solução/protótipo com suporte de IA | [protótipo](act/prototipo-avaliacao.md) funcionando, bancada em 28 de 30 |
-| Apresentação e reflexão | **sem task**; entra em `add-portfolio-showcase` |
+| Apresentação e reflexão | tasks 5.1 e 5.2 de `add-portfolio-showcase`, abertas |
 
 ## Decisões em aberto
 

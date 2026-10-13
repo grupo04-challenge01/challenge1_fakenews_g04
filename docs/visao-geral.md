@@ -62,7 +62,7 @@ substituí-la.
 | Portfólio de pesquisa | este site, mais os caveats de dataset |
 | Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
 | Solução/protótipo com suporte de IA | a Dona Checa: [protótipo e avaliação](act/prototipo-avaliacao.md) |
-| Apresentação e reflexão | fase Showcase, ainda sem change |
+| Apresentação e reflexão | fase Showcase, tasks 5.1 e 5.2 de `add-portfolio-showcase` |
 
 ## Recorte adotado
 
