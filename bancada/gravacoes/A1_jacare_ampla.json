@@ -1,0 +1,106 @@
+{
+ "chat": {
+  "57ec1807159de301": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem afirma uma informação falsa sobre vacinas.\"}",
+  "3c3f4fecaae95c03": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Vacina de Covid-19 transformam pessoas em jacarés\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "21ce78ab26c99257": "{\n  \"fatos\": [\n    \"Vacina de Covid-19 transformam pessoas em jacarés\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "2c2d3104ae8054f9": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\", \"T3\", \"T4\"],\n  \"criterio\": \"Os trechos mostram que a alegação de que a vacina de Covid-19 transforma pessoas em jacarés é falsa, pois desmentem que a vacina modifica o DNA ou transforma pessoas em seres geneticamente modificados.\",\n  \"cobertura\": \"ampla\",\n  \"ponte\": \"A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA e transforma pessoas em seres geneticamente modificados.\",\n  \"sujeito\": \"Vacina de Covid-19\"\n}",
+  "25363e67dae36600": "{\"resposta\": \"não\"}",
+  "4e641842fd3e4ba0": "{\n  \"bloco1\": \"Não encontramos checagens sobre vacina transformar pessoas em jacarés.\",\n  \"bloco2\": \"Não encontrar checagem não é o mesmo que desmentir a mensagem.\",\n  \"bloco3\": \"Desconfie de alegações absurdas e procure fontes confiáveis.\",\n  \"bloco4\": \"Busque em sites de agências de checagem ou órgãos de saúde.\"\n}"
+ },
+ "busca": {
+  "65d0a56f037c42cf": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "b6cfb24bdd-00",
+     "fragmento_id": "b6cfb24bdd-00-02",
+     "score": 0.592451274394989,
+     "score_lexico": 5.271027565002441,
+     "score_denso": 0.8624269366264343,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-12-27",
+     "url": "https://www.boatos.org/opiniao/o-melhor-do-boatos-org-em-2020-por-kyene-becker.html",
+     "alegacao": "O melhor do Boatos.org em 2020, por Kyene Becker",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "tem como objetivo evitar grandes queimadas no futuro. Vale lembrar que esse tipo de manejo é amparado por lei e estava sendo feito da maneira correta. Para mais detalhes, clique aqui.4) Vacina contra a Covid-19 vai modificar o DNA das pessoas e nos transformar em seres geneticamente modificados #boatoNada mais atual do que as fake news sobre as vacinas contra a Covid-19. Além da doença ter tomado conta do mundo todo, ela também se tornou o assunto mais comentado no mundo das fake news. E as informações falsas sobre vacinas só vieram para ser a cereja do bolo, que contou com chás e curas milagrosas, orientações esdrúxulas e perigosas e delírios coletivos sobre evitar o uso de medidas protetivas.Em agosto de 2020, uma história dava conta que a vacina de mRNA contra a Covid-19 seria capaz de modificar o DNA das pessoas e nos transformar em seres geneticamente modificados (o que seria irreversível)."
+    },
+    {
+     "unidade_id": "7a0f573913-00",
+     "fragmento_id": "7a0f573913-00-00",
+     "score": 0.5916308760643005,
+     "score_lexico": 4.7963666915893555,
+     "score_denso": 0.8629459738731384,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-08-04",
+     "url": "https://www.boatos.org/saude/vacina-covid-modificar-dna-pessoas-transformar-seres-geneticamente-modificados.html",
+     "alegacao": "Vacina contra a Covid-19 vai modificar o DNA das pessoas e nos transformar em seres geneticamente modificados #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "Eu juro que ainda tenho fé na humanidade e espero sempre o melhor dos outros. Mas essa pandemia, infelizmente, tem mostrado exatamente o contrário, especialmente no que diz respeito às fake news. Todo dia nos deparamos com uma história mais absurda que a outra. E mesmo dando o nosso melhor e tentando levar a melhor explicação aos nossos leitores, uma história ainda mais desprovida de sensatez aparece no dia seguinte. É o caso de hoje.Nos últimos dias, uma publicação tem feito sucesso nas redes sociais. De acordo com ela, a vacina contra a Covid-19 de mRNA seria capaz de alterar o nosso DNA. Com isso, a vacina RNA nos transformaria em seres geneticamente modificados. Segundo a publicação, o bilionário Bill Gates estaría por trás do plano maligno. Todo a história tem como base um vídeo de mais de 20 minutos que poucos seres humanos teriam disposição (ou coragem) de assistir até o fim. No vídeo, a mulher (identificada como dra. Carrie Madej) afirma que as vacinas poderiam transformar linhas de células humanas em propriedade patenteável."
+    },
+    {
+     "unidade_id": "23737644d3-00",
+     "fragmento_id": "23737644d3-00-05",
+     "score": 0.5766927003860474,
+     "score_lexico": 4.410409450531006,
+     "score_denso": 0.859683632850647,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-08-11",
+     "url": "https://www.boatos.org/saude/vacina-mrna-covid-altera-dna-dano-genetico-irreversivel.html",
+     "alegacao": "Vacina mRNA contra a Covid-19 altera o DNA e causa dano genético irreversível #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "de bebês abortados.Há alguns dias, a equipe do Boatos.org já desmentiu uma fake news muito parecida (para não dizer idêntica) com a história de hoje. Na oportunidade, a publicação indicava que a vacina contra a Covid-19 seria capaz de modificar o DNA humano e nos transformar em seres geneticamente modificados.Assim como na outra história, o texto de hoje vomita desinformação. Já explicamos que a vacina do tipo mRNA não consegue alterar o DNA, uma vez que não promove alterações no núcleo da célula (onde se encontra o DNA). O mRNA é um tipo de RNA que tem como função levar a mensagem do DNA ao ribossomo para a correta síntese proteica. A vacina do tipo mRNA contém o mRNA do gene que codifica a proteína Spike (utilizada pelo novo coronavírus para se ligar e entrar nas células humanas). Relembre o que foi escrito:[…] E como essa vacina funciona no nosso organismo? Essa questão é facilmente respondida pelo canal de divulgação científica da Universidade Federal dos Vales do Jequitinhonha e Mucuri (UFVJM)."
+    },
+    {
+     "unidade_id": "384c01ea50-00",
+     "fragmento_id": "384c01ea50-00-02",
+     "score": 0.5754817724227905,
+     "score_lexico": 3.7527074813842773,
+     "score_denso": 0.860601007938385,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2020-12-04",
+     "url": "https://www.aosfatos.org/noticias/vacinas-de-rna-contra-covid-19-nao-sao-capazes-de-alterar-o-dna/",
+     "alegacao": "Vacinas de RNA contra a Covid-19 não são capazes de alterar o DNA",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": true,
+     "trecho": "up sugere, as vacinas de ácido nucleico não alteram o código genético humano, apenas inserem um gene do vírus no corpo para estimular o sistema imune. Ou seja, o que as farmacêuticas fazem é alterar o gene do vírus Sars-CoV-2 para torná-lo inofensivo antes de inoculá-lo no corpo humano.\nA única informação verdadeira sobre o assunto é que as vacinas de RNA nunca foram utilizadas em humanos. De fato, trata-se de uma nova tecnologia, que só tinha sido aplicada em imunizações de animais. Por causa da Covid-19, no entanto, alguns laboratórios, como a Pfizer e a Moderna, investiram nesse tipo de vacina por ela ter uma produção mais rápida.\nA médica diz ainda, no vídeo, que as vacinas transformariam as pessoas em “quimeras”. Segundo Laura de Freitas, farmacêutica e pesquisadora da USP (Universidade de São Paulo), a autora provavelmente se refere ao quimerismo genético, uma vez que Quimera é o nome do ser mitológico com cabeça de leão, corpo de cabra e cauda de serpente."
+    },
+    {
+     "unidade_id": "68b8a8571a-00",
+     "fragmento_id": "68b8a8571a-00-00",
+     "score": 0.571778416633606,
+     "score_lexico": 5.548848628997803,
+     "score_denso": 0.8568375706672668,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2021-02-16",
+     "url": "https://www.boatos.org/saude/idosa-dedos-amputados-reacao-vacina-contra-covid-19.html",
+     "alegacao": "Idosa tem dedos amputados em reação à vacina contra Covid-19 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "O ano de 2021 mal começou e já está voando. Nessa semana, o tão famoso carnaval brasileiro não vai acontecer devido à pandemia da Covid-19 e já deixou muita gente triste. Mas se existe algo que está motivando o brasileiro a seguir firme e sonhar com a próxima folia, essa é a vacinação contra a Covid-19. Até o momento, o Brasil já vacinou mais de 5 milhões de pessoas e já está sofrendo com o desabastecimento dos imunizantes. Mas a realidade é que nada tira a esperança do brasileiro.Entretanto, ao mesmo tempo que muitas pessoas andam animadas com a vacinação, outras estão desconfiadas. E isso tem uma explicação simples: as fake news. De acordo com uma história que está circulando nas redes sociais, uma idosa teria se vacinado contra a Covid-19 e, após tomar o imunizante, desenvolveu uma reação à vacina. Ainda segundo a história, a idosa teve necrose e precisou amputar três dedos. Confira:Versão 1: “Chinavirus: Idosa toma vacina e sofre amputação de três dedos devido ao efeito colateral grave”. Versão 2: “IDOSA TEM TRÊS DEDOS AMPUTADOS APÓS REAÇÃO RARA À COVID-19."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

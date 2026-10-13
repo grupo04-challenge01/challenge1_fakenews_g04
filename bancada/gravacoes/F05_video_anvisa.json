@@ -1,11 +1,11 @@
 {
  "chat": {
-  "eb9fe93404127815": "{\"categorias\":[\"checagem\"],\"motivo\":\"A mensagem pede verificação de uma afirmação sobre a vacina.\"}",
+  "eb9fe93404127815": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A mensagem afirma que o presidente da Anvisa admitiu que a vacinação contra covid é um risco sanitário grave, o que é uma alegação factual que pode ser verificada.\"\n}",
   "1a82602ad8867925": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"o presidente da Anvisa admitiu que a vacinação contra a covid é um risco sanitário grave para a população\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
   "ab4917a0029e7125": "{\n  \"fatos\": [\n    \"O presidente da Anvisa admitiu que a vacinação contra a covid é um risco sanitário grave para a população.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "c97c8f7f9ca007a7": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\", \"T4\"],\n  \"criterio\": \"Os trechos mostram que o vídeo foi editado e a fala de Barra Torres foi tirada de contexto; ele não disse que a vacinação é um risco sanitário grave, mas sim que a aprovação da MP seria um risco.\"\n}",
-  "98464dee34ad29c8": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"O vídeo foi editado e a fala tirada de contexto.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"Ele falava de uma medida provisória, não das vacinas.\",\n      \"trecho\": \"T3\"\n    },\n    {\n      \"frase\": \"As vacinas aprovadas são seguras e eficazes.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco3\": \"Técnica: fora de contexto. O vídeo usa um trecho verdadeiro, mas cortado, para contar outra história.\",\n  \"bloco4\": \"Veja se o vídeo mostra a pergunta completa e o que foi dito antes e depois.\"\n}",
-  "bb70bdbeec839b08": "{\n  \"sem_base\": []\n}"
+  "be1c75885aba265d": "{\n  \"rotulo\": \"falso\",\n  \"trechos\": [\"T1\", \"T2\", \"T4\"],\n  \"criterio\": \"Os trechos mostram que o vídeo foi editado e a fala de Barra Torres foi tirada de contexto; ele não admitiu que a vacinação é um risco sanitário grave, mas sim que a aprovação de uma medida específica (MP 1.003/2020) seria um risco sanitário grave.\",\n  \"cobertura\": \"mesma\",\n  \"ponte\": \"\",\n  \"sujeito\": \"\"\n}",
+  "2e9ca188a801b980": "{\n  \"bloco1\": [\n    {\n      \"frase\": \"O vídeo foi editado e a fala tirada de contexto.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco2\": [\n    {\n      \"frase\": \"Ele falava de uma medida provisória, não das vacinas.\",\n      \"trecho\": \"T3\"\n    },\n    {\n      \"frase\": \"As vacinas aprovadas são seguras e eficazes.\",\n      \"trecho\": \"T1\"\n    }\n  ],\n  \"bloco3\": \"Técnica: fora de contexto. O vídeo foi cortado para parecer que ele falava das vacinas.\",\n  \"bloco4\": \"Veja se o vídeo está completo e se a fala se refere ao que a legenda diz.\"\n}",
+  "898c3431eebe39a4": "{\n  \"sem_base\": []\n}"
  },
  "busca": {
   "45d2b087a51dbe6c": {

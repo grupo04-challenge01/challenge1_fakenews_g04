@@ -3,8 +3,8 @@
   "8fda3266c8d507d5": "{\n  \"categorias\": [\"checagem\"],\n  \"motivo\": \"A pessoa quer saber se a informação sobre a vacina da dengue proteger contra febre oropouche é verdadeira.\"\n}",
   "2f57e25a4a482d4f": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"A febre oropouche passa pelo mosquito da dengue\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    },\n    {\n      \"texto\": \"A vacina da dengue protege contra a febre oropouche\",\n      \"saude\": true,\n      \"risco\": \"alto\"\n    }\n  ],\n  \"opiniao\": null\n}",
   "b6eaafb2fc481406": "{\n  \"fatos\": [\n    \"A febre oropouche passa pelo mosquito da dengue.\",\n    \"A vacina da dengue protege contra a febre oropouche.\"\n  ],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
-  "dac1c200780969ca": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona a febre oropouche ou a vacina da dengue em relação a ela.\"\n}",
-  "e630393bfafd4deb": "{\n  \"bloco1\": \"Não encontramos estudos sobre a vacina da dengue proteger contra febre oropouche.\",\n  \"bloco2\": \"Não encontrar não é o mesmo que desmentir.\",\n  \"bloco3\": \"Você pode perguntar a um médico ou buscar em sites de saúde confiáveis.\",\n  \"bloco4\": \"\"\n}"
+  "b247165192b94f4e": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona a vacina da dengue protegendo contra a febre oropouche, nem uma alegação mais geral sobre vacinas da dengue protegendo contra outras doenças.\",\n  \"cobertura\": \"mesma\",\n  \"ponte\": \"\",\n  \"sujeito\": \"\"\n}",
+  "5d18f1f8c54a4bf0": "{\n  \"bloco1\": \"Não encontramos checagens sobre a vacina da dengue proteger contra febre oropouche.\",\n  \"bloco2\": \"Não encontrar checagens não significa que a afirmação seja falsa.\",\n  \"bloco3\": \"Você pode procurar informações em sites oficiais de saúde ou perguntar a um profissional de saúde.\",\n  \"bloco4\": \"\"\n}"
  },
  "busca": {
   "b02874eb1ac8c989": {

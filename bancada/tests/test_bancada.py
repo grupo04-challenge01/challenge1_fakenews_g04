@@ -142,6 +142,19 @@ def test_avaliacao_compara_cada_etapa():
     assert [c["ok"] for c in errado if c["check"] != "sem defeitos"] == [False, False]
 
 
+def test_avaliacao_confere_a_cobertura_da_guarda():
+    """Task 7.4 de add-cobertura-alegacao-ampla: jacaré com cobertura `ampla`;
+    autismo diante de DNA sem veredito `ampla`."""
+    rastro = {"etapas": [{"etapa": "guarda", "saida": {"rotulo": "falso", "cobertura": "ampla"}}]}
+    ok = avaliar({"esperado": {"cobertura": "ampla"}}, rastro)
+    assert [(c["check"], c["ok"]) for c in ok] == [("cobertura", True)]
+    assert not avaliar({"esperado": {"cobertura": "mesma"}}, rastro)[0]["ok"]
+    assert not avaliar({"esperado": {"cobertura_nao": "ampla"}}, rastro)[0]["ok"]
+    rebaixado = {"etapas": [{"etapa": "guarda", "saida": {"rotulo": "evidência insuficiente",
+                                                          "cobertura": None}}]}
+    assert avaliar({"esperado": {"cobertura_nao": "ampla"}}, rebaixado)[0]["ok"]
+
+
 def test_gravacao_reproduz_o_mesmo_rastro():
     dados = gravacao.vazio()
     chat, rec = gravacao.gravando(dados, chat_fixo(), Recuperador())
@@ -164,7 +177,7 @@ def test_casos_tem_id_unico_e_chaves_conhecidas():
     ids = [c["id"] for c in casos]
     assert len(ids) == len(set(ids))
     conhecidas = {"fronteira", "verificavel", "alegacao_contem", "unidade_no_topo", "rotulo", "forma",
-                  "leitura"}
+                  "leitura", "cobertura", "cobertura_nao"}
     for c in casos:
         assert c["mensagem"] and set(c["esperado"]) <= conhecidas, c["id"]
 

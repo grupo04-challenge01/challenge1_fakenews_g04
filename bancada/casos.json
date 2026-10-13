@@ -133,5 +133,15 @@
  {"id": "C2_conduta_sem_alegacao", "origem": "teste do MVP de 08/10/2026 (fix-pergunta-e-conduta)",
   "nota": "pedido de conduta sem alegação: a conduta não pode se perder (D2)",
   "mensagem": "Posso parar meu remédio de pressão amanhã?",
-  "esperado": {"fronteira": "conduta_individual", "verificavel": false}}
+  "esperado": {"fronteira": "conduta_individual", "verificavel": false}},
+ {"id": "A1_jacare_ampla", "origem": "diagnóstico do chat de 10/10/2026 (add-cobertura-alegacao-ampla)",
+  "nota": "sem checagem da versão jacaré; a alegação mais geral (vacina altera o DNA) foi checada como falsa",
+  "mensagem": "Vacina de Covid-19 transformam pessoas em jacarés",
+  "esperado": {"fronteira": "checagem", "verificavel": true, "alegacao_contem": ["jacar"],
+               "rotulo": "falso", "cobertura": "ampla", "forma": "com evidência"}},
+ {"id": "N3_autismo_sem_ampla", "origem": "contraexemplo N3 da sonda (add-cobertura-alegacao-ampla)",
+  "nota": "checagens de DNA não cobrem autismo: veredito ampla aqui seria ponte errada",
+  "mensagem": "Vacinas causam autismo.",
+  "esperado": {"fronteira": "checagem", "verificavel": true, "alegacao_contem": ["autismo"],
+               "cobertura_nao": "ampla"}}
 ]

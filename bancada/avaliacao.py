@@ -7,6 +7,9 @@ Chaves aceitas em `esperado`, todas opcionais:
 - `alegacao_contem`: palavras que a alegação selecionada tem de ter;
 - `unidade_no_topo`: `unidade_id` (ou lista de equivalentes) que a recuperação tem de trazer no top-k;
 - `rotulo`: rótulo da guarda, ou lista de rótulos aceitos;
+- `cobertura`: cobertura do veredito da guarda (`mesma` ou `ampla`);
+- `cobertura_nao`: cobertura que o veredito da guarda não pode ter
+  (add-cobertura-alegacao-ampla);
 - `forma`: forma da resposta (`com evidência`, `sem evidência`, `fronteira`, `leitura`);
 - `leitura`: causa da falha de leitura (`nao_abriu`, `fechada`, `video`, `vazia`) ou,
   quando a página foi lida, `completa` ou `parcial` (add-entrada-por-link).
@@ -62,6 +65,14 @@ def avaliar(caso, rastro):
         aceitos = esp["rotulo"] if isinstance(esp["rotulo"], list) else [esp["rotulo"]]
         rotulo = (saida.get("guarda") or {}).get("rotulo")
         checks.append(_check("guarda", "rótulo", aceitos, rotulo, rotulo in aceitos))
+    if "cobertura" in esp:
+        cobertura = (saida.get("guarda") or {}).get("cobertura")
+        checks.append(_check("guarda", "cobertura", esp["cobertura"], cobertura,
+                             cobertura == esp["cobertura"]))
+    if "cobertura_nao" in esp:
+        cobertura = (saida.get("guarda") or {}).get("cobertura")
+        checks.append(_check("guarda", "cobertura não é", esp["cobertura_nao"], cobertura,
+                             cobertura != esp["cobertura_nao"]))
 
     resposta = rastro.get("resposta")
     if "leitura" in esp:
