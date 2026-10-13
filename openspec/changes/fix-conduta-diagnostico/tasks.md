@@ -33,5 +33,5 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 - [x] 4.3 Suíte inteira verde e `openspec validate fix-conduta-diagnostico --strict`
 - [x] 4.4 Teste e implementação de D7: vacina fora do léxico de conduta; caso
       `V3` em `bancada/casos.json`
-- [ ] 4.5 Rodada real do caso `V3` com `--gerador deepseek`, que grava o caso:
+- [x] 4.5 Rodada real do caso `V3` com `--gerador deepseek`, que grava o caso:
       fronteira `informacao_geral`

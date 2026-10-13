@@ -162,3 +162,6 @@ fronteira `informacao_geral` e `verificavel: false`.
   `informacao_geral` e V2 `checagem`; C4 saiu `conduta_individual` e
   `diagnostico` e foi checado, como D3 prevê. As gravações dessa rodada são
   as da bancada offline, que dá o mesmo resultado.
+- **Caso `V3`**, depois de D7 (`20261013-164759.json`, `deepseek-v4-pro`):
+  fronteira `informacao_geral`, sem alegação. A bancada offline com todas as
+  gravações dá 32/35, as mesmas três falhas de forma, e cumpre D10.
