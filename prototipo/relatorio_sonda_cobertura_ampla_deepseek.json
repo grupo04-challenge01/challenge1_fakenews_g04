@@ -1,0 +1,632 @@
+{
+  "gerador": "deepseek",
+  "modelo": "deepseek",
+  "cpu": false,
+  "tentativas": 3,
+  "gerado_em": "2026-10-13 08:52",
+  "sondas": [
+    {
+      "id": "A1_jacare",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "falso",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "0328f83578-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": false,
+          "segundos": 4.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos mostram que a alegação de que vacinas de Covid-19 transformam pessoas em jacarés é falsa, pois desmentem que vacinas de mRNA alteram o DNA humano.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": false,
+          "segundos": 4.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos mostram que a alegação de que a vacina de Covid-19 transforma pessoas em jacarés é falsa, pois desmentem que a vacina altera o DNA humano.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+            "sujeito": "vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 4.1,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+          "implicacao": "não",
+          "rebaixado_por": "implicação não confirmada: não",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos mostram que a alegação de que a vacina de Covid-19 transforma pessoas em jacarés é falsa, pois desmentem que vacinas de mRNA alteram o DNA humano.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA humano, que é desmentida pelos trechos.",
+            "sujeito": "vacina de Covid-19"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 0
+    },
+    {
+      "id": "A2_chip_chines",
+      "alegacao": "Vacinas da COVID-19 têm chips chineses para nos monitorar",
+      "esperado": "falso",
+      "fragmentos": [
+        "f678c48f67-00-00",
+        "185954a72d-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 1.9,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato e fake.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato e fake.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 2.3,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato e fake.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato e fake.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.0,
+          "rotulo": "falso",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato/fake.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos desmentem a alegação de que vacinas da COVID-19 contêm chips para monitoramento, classificando-a como boato/fake.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N1_goiabeira_2ag",
+      "alegacao": "Chá de folha de goiabeira cura a dengue em 24 horas.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "c7a4591df5-00-00",
+        "f9eb4e5668-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 1.8,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre chá de folha de goiabeira ou cura da dengue.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre chá de folha de goiabeira ou cura da dengue.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 2.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre chá de folha de goiabeira ou cura da dengue.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre chá de folha de goiabeira ou cura da dengue.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho menciona chá de folha de goiabeira ou dengue; os trechos tratam de alegações sobre câncer com outros produtos.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho menciona chá de folha de goiabeira ou dengue; os trechos tratam de alegações sobre câncer com outros produtos.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N2_cloroquina_2ag",
+      "alegacao": "Tomar hidroxicloroquina toda semana previne a covid.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "17683b01f4-00-00",
+        "e1320a8aaf-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 2.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de um prefeito que teria tomado o medicamento após diagnóstico, mas não abordam a alegação de prevenção semanal.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de um prefeito que teria tomado o medicamento após diagnóstico, mas não abordam a alegação de prevenção semanal.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 2.7,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de declarações de um prefeito sobre ter tomado o medicamento, mas não abordam a alegação de prevenção semanal.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de declarações de um prefeito sobre ter tomado o medicamento, mas não abordam a alegação de prevenção semanal.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.6,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de um prefeito que teria tomado o medicamento após diagnóstico, mas não abordam a alegação de prevenção semanal.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre tomar hidroxicloroquina toda semana para prevenir a covid. Os trechos tratam de proibições de uso da cloroquina/hidroxicloroquina em hospitais e de um prefeito que teria tomado o medicamento após diagnóstico, mas não abordam a alegação de prevenção semanal.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N3_autismo_dna",
+      "alegacao": "Vacinas causam autismo.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "0328f83578-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 2.0,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre vacinas causarem autismo.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre vacinas causarem autismo.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 1.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre vacinas causarem autismo.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre vacinas causarem autismo.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.5,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Nenhum trecho fala sobre vacinas causarem autismo. Os trechos tratam de alegações sobre vacinas alterarem DNA, o que não é a mesma alegação nem uma alegação mais geral da qual a alegação sobre autismo seja caso particular.",
+          "modelo_disse": {
+            "rotulo": "evidência insuficiente",
+            "trechos": [],
+            "criterio": "Nenhum trecho fala sobre vacinas causarem autismo. Os trechos tratam de alegações sobre vacinas alterarem DNA, o que não é a mesma alegação nem uma alegação mais geral da qual a alegação sobre autismo seja caso particular.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N4_miocardite",
+      "alegacao": "A vacina da covid pode causar miocardite em alguns jovens.",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "sintetico-coracao-1",
+        "sintetico-coracao-2"
+      ],
+      "sintetico": true,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 3.3,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina pode causar miocardite em alguns jovens é um caso particular da alegação mais geral de que a vacina causa danos graves ao coração de todos que a tomam.",
+          "implicacao": null,
+          "rebaixado_por": "sujeito vacina da covid ausente de agencia sintetica B",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos afirmam que é falso que a vacina cause danos graves ao coração de todos que a tomam, e a alegação de que pode causar miocardite em alguns jovens é uma versão mais específica dessa afirmação falsa.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina pode causar miocardite em alguns jovens é um caso particular da alegação mais geral de que a vacina causa danos graves ao coração de todos que a tomam.",
+            "sujeito": "vacina da covid"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 3.2,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "Se a vacina causasse miocardite em alguns jovens, então ela causaria danos graves ao coração de pelo menos algumas pessoas, o que contradiz a negação de que cause danos graves a todos.",
+          "implicacao": null,
+          "rebaixado_por": "sujeito vacina da covid ausente de agencia sintetica B",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos desmentem que a vacina cause danos graves ao coração de todos os vacinados, mas a alegação fala de 'alguns jovens', o que é um subconjunto. Como os trechos negam a forma universal, eles implicam que a alegação específica também é falsa.",
+            "cobertura": "ampla",
+            "ponte": "Se a vacina causasse miocardite em alguns jovens, então ela causaria danos graves ao coração de pelo menos algumas pessoas, o que contradiz a negação de que cause danos graves a todos.",
+            "sujeito": "vacina da covid"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": false,
+          "segundos": 2.5,
+          "rotulo": "verdadeiro fora de contexto ou exagerado",
+          "cobertura": "mesma",
+          "ponte": "",
+          "implicacao": null,
+          "rebaixado_por": null,
+          "criterio": "Os trechos desmentem que a vacina cause danos graves ao coração de todos, mas não negam a possibilidade de miocardite em alguns jovens. A alegação original é mais específica e não é refutada pelos trechos.",
+          "modelo_disse": {
+            "rotulo": "verdadeiro fora de contexto ou exagerado",
+            "trechos": [
+              "T1",
+              "T2"
+            ],
+            "criterio": "Os trechos desmentem que a vacina cause danos graves ao coração de todos, mas não negam a possibilidade de miocardite em alguns jovens. A alegação original é mais específica e não é refutada pelos trechos.",
+            "cobertura": "mesma",
+            "ponte": "",
+            "sujeito": ""
+          },
+          "erro": null
+        }
+      ],
+      "passou": 2
+    },
+    {
+      "id": "N5_uma_agencia",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 2.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação que o trecho desmente.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho mostra que a alegação de que a vacina altera o DNA é falsa, e a transformação em jacarés é um caso particular dessa alegação mais geral.",
+            "cobertura": "ampla",
+            "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação que o trecho desmente.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 2.6,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação mais geral que o trecho desmente.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho desmente que a vacina de Covid-19 altera o DNA, o que é a base para a alegação de transformar pessoas em jacarés.",
+            "cobertura": "ampla",
+            "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação mais geral que o trecho desmente.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.7,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação que o trecho desmente.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho mostra que a alegação de que a vacina altera o DNA é falsa, e a transformação em jacarés é um caso particular dessa alegação mais geral.",
+            "cobertura": "ampla",
+            "ponte": "Se a vacina transformasse pessoas em jacarés, ela alteraria o DNA humano, alegação que o trecho desmente.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    },
+    {
+      "id": "N6_enganoso",
+      "alegacao": "Vacina de Covid-19 transformam pessoas em jacarés",
+      "esperado": "evidência insuficiente",
+      "fragmentos": [
+        "7a0f573913-00-00",
+        "9adea6a455-00-00"
+      ],
+      "sintetico": false,
+      "tentativas": [
+        {
+          "n": 1,
+          "passou": true,
+          "segundos": 2.5,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação de que a vacina altera o DNA, que foi desmentida.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho T1 mostra que a alegação de que a vacina de Covid-19 transforma pessoas em jacarés é falsa, pois a alegação mais geral de que a vacina altera o DNA foi desmentida.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação de que a vacina altera o DNA, que foi desmentida.",
+            "sujeito": "vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 2,
+          "passou": true,
+          "segundos": 2.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA, que é desmentida pelo trecho.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho T1 desmente que a vacina de mRNA altera o DNA, o que é a base da alegação de transformar pessoas em jacarés.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA, que é desmentida pelo trecho.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        },
+        {
+          "n": 3,
+          "passou": true,
+          "segundos": 2.9,
+          "rotulo": "evidência insuficiente",
+          "cobertura": "ampla",
+          "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA, que foi desmentida no trecho T1.",
+          "implicacao": null,
+          "rebaixado_por": "cobertura ampla com uma agência só",
+          "criterio": "Nenhum trecho recuperado cobre a alegação.",
+          "modelo_disse": {
+            "rotulo": "falso",
+            "trechos": [
+              "T1"
+            ],
+            "criterio": "O trecho T1 mostra que a alegação de que a vacina de Covid-19 transforma pessoas em jacarés é falsa, pois a alegação mais geral de que a vacina altera o DNA foi desmentida.",
+            "cobertura": "ampla",
+            "ponte": "A alegação de que a vacina transforma pessoas em jacarés é um caso particular da alegação mais geral de que a vacina altera o DNA, que foi desmentida no trecho T1.",
+            "sujeito": "Vacina de Covid-19"
+          },
+          "erro": null
+        }
+      ],
+      "passou": 3
+    }
+  ],
+  "aceite": false
+}

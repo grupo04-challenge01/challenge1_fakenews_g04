@@ -183,7 +183,7 @@ guarda inteira. Casos:
 | A1_jacare | Vacina de Covid-19 transformam pessoas em jacarés | Boatos.org DNA + Aos Fatos DNA | `falso`, `ampla` |
 | A2_chip_chines | Vacinas da COVID-19 têm chips chineses para nos monitorar | Boatos.org "nanochip 5G" + Fato ou Fake "chip líquido" | `falso` (`mesma` ou `ampla`) |
 | N1_goiabeira_2ag | Chá de folha de goiabeira cura a dengue em 24 horas | jatobá de duas agências | insuficiente |
-| N2_cloroquina_2ag | Tomar hidroxicloroquina toda semana previne a covid | cloroquina de duas agências | insuficiente |
+| N2_cloroquina_2ag | Tomar hidroxicloroquina toda semana previne a covid | cloroquina de duas agências, sem tratar de eficácia (Lupa "Doria proibiu" + Aos Fatos "Bruno Covas não proibiu") | insuficiente |
 | N3_autismo_dna | Vacinas causam autismo | Boatos.org DNA + Aos Fatos DNA | insuficiente |
 | N4_miocardite | A vacina da covid pode causar miocardite em alguns jovens | "vacina causa danos graves ao coração de todos" de duas agências | insuficiente |
 | N5_uma_agencia | Vacina de Covid-19 transformam pessoas em jacarés | só Boatos.org DNA | insuficiente (trava 4) |
@@ -194,10 +194,62 @@ falha da implicação. Aceite: A1 e A2 `falso` em 3 de 3 rodadas; N1 a N6
 insuficientes em 3 de 3 rodadas, sem exceção. Basta um falso positivo para
 reprovar.
 
+**Troca dos trechos do N2 (13/10/2026).** A primeira versão do N2 usava
+`6c68e7c0eb-00-00` (Aos Fatos, médica engana ao dizer que cloroquina cura) e
+`3fe3ac1240-00-00` (Lupa, cloroquina não é "100% eficiente"). Os dois dizem
+que a hidroxicloroquina não tem efeito sobre a Covid-19, o que refuta
+"previne" diretamente: o `falso` com cobertura `mesma` estava certo, e o caso
+não media a implicação. A sonda com o Gemma de 10/10/2026 expôs o problema
+(N2 0/3, `falso`/`mesma`; o prompt da `main` dá o mesmo resultado 3 de 3), e a
+rodada com o DeepSeek de 13/10/2026 repetiu (0/3, `falso`/`mesma`). Os trechos
+passaram a ser `17683b01f4-00-00` (Lupa, é falso que Doria proibiu cloroquina)
+e `e1320a8aaf-00-00` (Aos Fatos, Bruno Covas não proibiu cloroquina): mesmo
+remédio, duas agências, veredito `falso`, aptos, e nenhuma palavra sobre
+eficácia.
+
 O texto de cada trecho vem do índice (`unidades.jsonl`), escolhido pelo
 `unidade_id` e congelado na sonda, como na sonda da decisão 12. Para N4, se o
 acervo não tiver checagem com essa forma, o caso usa trecho escrito para a
 sonda e marcado como sintético.
+
+**Troca do texto sintético do N4 (13/10/2026).** O trecho dizia que "casos de
+inflamação no coração são raros e em geral leves", o que sustenta "pode causar
+miocardite em alguns jovens" diretamente. Com o DeepSeek, o prompt da `main`
+deu `verdadeiro` 3 de 3 nesse caso, e o do change deu `falso`/`mesma` uma vez.
+Os dois trechos passaram a negar só a alegação geral, sem dizer nada sobre a
+miocardite existir ou não.
+
+**Resultados de 13/10/2026** (trechos novos do N2 e do N4, prompts do commit
+`d0c4fb4b`):
+
+| caso | DeepSeek (`deepseek-v4-pro`) | Gemma (`gemma4:12b-it-qat`) |
+| --- | --- | --- |
+| A1_jacare | 0/3, `ampla`, implicação "não" 3/3 | 0/3, `ampla`, citou um trecho só (trava 4) |
+| A2_chip_chines | 3/3, `mesma` | 3/3, `mesma` |
+| N1_goiabeira_2ag | 3/3 | 3/3 |
+| N2_cloroquina_2ag | 3/3 | 3/3 |
+| N3_autismo_dna | 3/3 | 3/3 |
+| N4_miocardite | 2/3; 1 `verdadeiro fora de contexto` (`mesma`) | 3/3 |
+| N5_uma_agencia | 3/3 | 3/3 |
+| N6_enganoso | 3/3 | 3/3 |
+
+Aceite não cumprido nos dois geradores, só por A1. Nenhum `falso` em caso N, e
+nenhum veredito saiu pelo caminho `ampla`. A falha do N4 no DeepSeek não vem da
+cobertura: com os trechos novos, o prompt da `main` dá `verdadeiro fora de
+contexto` 5 de 5 no mesmo caso.
+
+**A implicação não confirma jacaré => DNA em nenhum dos dois modelos.** Em
+bancada isolada, só com a chamada de implicação, os dois responderam "não" em
+todas as tentativas. Testamos três formas de G: a alegação do Boatos.org, a do
+Aos Fatos e uma frase limpa ("A vacina contra a Covid-19 altera o DNA de quem a
+toma"). Testamos também a pergunta pela contrapositiva ("se B for falsa, A
+também tem de ser falsa?") e duas revisões do prompt: o que A exigiria, exemplo
+negativo autismo diante de DNA e proibição de mecanismo fora da ciência. Nada
+mudou o resultado. A justificativa pedida ao DeepSeek foi a mesma nas duas
+revisões: "transformar em jacaré não exige alteração de DNA". Os contraexemplos
+seguiram em "não" em todas as variantes. As revisões não entraram no código,
+porque não houve ganho medido e havia risco de deixar a verificação mais
+leniente.
 
 ## Risks / Trade-offs
 

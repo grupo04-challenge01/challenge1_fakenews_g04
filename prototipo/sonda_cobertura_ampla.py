@@ -33,11 +33,15 @@ CHIP_CHINA = "f678c48f67-00-00"     # boatos, 2020: nanochip 5G virá na vacina 
 CHIP_LIQUIDO = "185954a72d-00-00"   # fato-ou-fake, 2021: vacina não tem chip líquido para controle
 JATOBA = "c7a4591df5-00-00"         # aos fatos, 2021: casca do jatobá não cura câncer
 BICARBONATO = "f9eb4e5668-00-00"    # lupa: bicarbonato de sódio não cura câncer
-CLOROQ_CURA = "6c68e7c0eb-00-00"    # aos fatos, 2020: médica engana ao dizer que cloroquina cura Covid-19
-CLOROQ_100 = "3fe3ac1240-00-00"     # lupa, 2020: cloroquina não é "100% eficiente na cura"
+# Checagens de cloroquina que não falam de eficácia: um trecho que refuta a
+# eficácia refuta "previne" direto, e o N2 deixa de medir a implicação.
+CLOROQ_DORIA = "17683b01f4-00-00"   # lupa, 2020: é falso que Doria proibiu cloroquina
+CLOROQ_COVAS = "e1320a8aaf-00-00"   # aos fatos, 2020: Bruno Covas não proibiu cloroquina
 CORONAVAC_ENGANOSO = "9adea6a455-00-00"  # Comprova: enganoso, CoronaVac "protege pela metade"
 
-# Trechos escritos para a sonda (D8): o acervo não tem a checagem do N4.
+# Trechos escritos para a sonda (D8): o acervo não tem a checagem do N4. Nenhum
+# trecho diz que a miocardite existe: isso sustentaria a alegação direto, e o N4
+# deixaria de medir a implicação.
 SINTETICOS = {
     "sintetico-coracao-1": {
         "fragmento_id": "sintetico-coracao-1", "agencia": "agencia sintetica A",
@@ -45,14 +49,14 @@ SINTETICOS = {
         "veredito_original": "falso", "veredito_chave": "falso", "apto_citacao": True,
         "alegacao": "Vacina da covid causa danos graves ao coração de todos que a tomam",
         "trecho": "É falso que a vacina da covid cause danos graves ao coração de todos que a "
-                  "tomam. Casos de inflamação no coração são raros e em geral leves."},
+                  "tomam. O vídeo que circula nas redes não apresenta fonte para a afirmação."},
     "sintetico-coracao-2": {
         "fragmento_id": "sintetico-coracao-2", "agencia": "agencia sintetica B",
         "url": "https://sintetico/coracao-2", "data_publicacao": "2021-07-02",
         "veredito_original": "falso", "veredito_chave": "falso", "apto_citacao": True,
         "alegacao": "Todo vacinado contra a covid terá problema grave no coração",
         "trecho": "Não é verdade que todo vacinado contra a covid terá problema grave no "
-                  "coração. A vacina da covid é segura para a grande maioria."},
+                  "coração. A publicação distorce um estudo que não trata desse tema."},
 }
 
 JACARE = "Vacina de Covid-19 transformam pessoas em jacarés"
@@ -68,7 +72,7 @@ SONDAS = [
      "fragmentos": [JATOBA, BICARBONATO]},
     {"id": "N2_cloroquina_2ag", "esperado": INSUFICIENTE,
      "alegacao": "Tomar hidroxicloroquina toda semana previne a covid.",
-     "fragmentos": [CLOROQ_CURA, CLOROQ_100]},
+     "fragmentos": [CLOROQ_DORIA, CLOROQ_COVAS]},
     {"id": "N3_autismo_dna", "esperado": INSUFICIENTE, "alegacao": "Vacinas causam autismo.",
      "fragmentos": [DNA_BOATOS, DNA_AOSFATOS]},
     {"id": "N4_miocardite", "esperado": INSUFICIENTE, "sintetico": True,
