@@ -64,9 +64,15 @@ Agência Lupa; `COMPROVA` → Projeto Comprova; `aos fatos` e
 `fato-ou-fake` → Fato ou Fake; `https:apublica.org` → Agência Pública.
 Valor desconhecido passa como veio.
 
-A troca acontece em `_detalhe` (referências mostradas no painel) e em
-`mensagem` (trechos `[Tn]` do pedido ao modelo). O índice, a guarda e o
+A troca acontece em `_detalhe` (referências mostradas no painel), em
+`mensagem` (trechos `[Tn]` do pedido ao modelo) e no pedido da conferência
+de sustentação, para os dois modelos verem o mesmo nome. O índice, a guarda e o
 rastro da recuperação continuam com o valor cru.
+
+Como o modelo passa a ver o nome legível, ele o cita nas frases. A ancoragem
+aceita como fonte da frase tanto o valor cru quanto o nome legível; sem isso,
+«Agência Lupa» vira termo fora do trecho e o veredito é rebaixado. A primeira
+rodada real da bancada com o change (13/10) mostrou o efeito em F05 e R2.
 
 ## Risks / Trade-offs
 

@@ -29,8 +29,12 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 - [x] 4.1 Testes de `agencias.nome` e do detalhe da resposta
 - [x] 4.2 Implementação em `prototipo/resposta/agencias.py`, `_detalhe` e
       `mensagem`
+- [x] 4.3 Teste e implementação: a ancoragem aceita o nome legível da agência
+      como fonte da frase, e a conferência de sustentação vê o mesmo nome
 
 ## 5. Verificação
 
 - [x] 5.1 Suíte verde
 - [x] 5.2 `openspec validate fix-robustez-demo --strict`
+- [ ] 5.3 Rodada real da bancada com o gerador remoto, sem regressão contra a
+      rodada anterior

@@ -10,6 +10,8 @@ sem esses termos passa: a conferência pega o detalhe inventado, não o sentido.
 Os trechos abaixo são excertos literais do índice, dos casos da sonda da
 resposta (decisão 18).
 """
+import pytest
+
 from prototipo.resposta.ancoragem import ancorada, ancorar_bloco, sem_suporte, termos
 
 JATOBA = {"agencia": "aos fatos", "data_publicacao": "2021-01-08", "apto_citacao": True,
@@ -219,3 +221,16 @@ def test_texto_do_bloco_em_lista_ou_texto():
     assert texto_do_bloco([{"frase": "Uma [T1].", "trecho": "T1"}, {"frase": "Duas."}]) == "Uma. Duas."
     assert texto_do_bloco("  Só texto. ") == "Só texto."
     assert texto_do_bloco(None) == ""
+
+
+# ---- nome legível da agência (fix-robustez-demo, D4) ---------------------------------
+
+@pytest.mark.parametrize("cru, frase", [
+    ("lupa", "A Agência Lupa checou a mensagem."),
+    ("COMPROVA", "O Projeto Comprova checou a mensagem."),
+    ("ESTADAO_VERIFICA", "O Estadão Verifica checou a mensagem."),
+    ("https:piaui.folha.uol.com.brlupa", "A Agência Lupa checou a mensagem."),
+])
+def test_nome_legivel_da_agencia_ancora_como_o_cru(cru, frase):
+    trecho = {"trecho": "A mensagem é falsa.", "agencia": cru, "apto_citacao": True}
+    assert sem_suporte(frase, trecho) == []
