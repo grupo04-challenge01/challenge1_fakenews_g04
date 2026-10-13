@@ -37,7 +37,10 @@ RAIZ = pathlib.Path(__file__).parents[2]
 SPEC = [RAIZ / "openspec/changes/mvp-copiloto-verificacao/specs/fronteira-orientacao-saude/spec.md",
         RAIZ / "openspec/specs/fronteira-orientacao-saude/spec.md"]
 # Respostas na voz da Dona Checa, por cima da base enquanto o change não é arquivado.
+# A recusa de conduta que cobre diagnóstico vem por último (fix-conduta-diagnostico).
 SOBREPOSICAO = [RAIZ / "openspec/changes/add-identidade-dona-checa/specs/"
+                       "fronteira-orientacao-saude/spec.md",
+                RAIZ / "openspec/changes/fix-conduta-diagnostico/specs/"
                        "fronteira-orientacao-saude/spec.md"]
 REQUISITOS = {  # começo do título do requirement na spec -> chave
     "Recusa de orientação clínica": "conduta_individual",

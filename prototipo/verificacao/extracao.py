@@ -18,7 +18,11 @@ Alegação verificável é uma afirmação sobre o mundo que uma checagem pode c
 ou desmentir. Opinião, desabafo e pedido não são alegação. Pergunta que traz
 uma afirmação ("Suco detox cura gripe?", "É verdade que a vacina causa
 autismo?") tem como alegação a afirmação, escrita como frase ("Suco detox cura
-gripe."). Pergunta sem afirmação ("O que devo fazer?") não é alegação.
+gripe."). Pergunta sem afirmação ("O que devo fazer?") não é alegação. Relato
+de sintoma ou do estado de saúde de alguém ("Estou com bolinhas no corpo", "Meu
+vizinho está doente?") não é alegação. Se o relato trouxer uma afirmação
+("Estou com dor de cabeça, chá de boldo resolve?"), a alegação é a afirmação
+("Chá de boldo resolve dor de cabeça.").
 
 Para cada alegação da mensagem, escreva:
 - "texto": a alegação em uma frase curta, com as palavras da mensagem. Não corrija

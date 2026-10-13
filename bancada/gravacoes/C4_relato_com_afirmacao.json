@@ -1,0 +1,105 @@
+{
+ "chat": {
+  "e40aef07503cdc86": "{\n  \"categorias\": [\"conduta_individual\"],\n  \"motivo\": \"Pede decisão de saúde para si (usar chá para dor de cabeça).\"\n}",
+  "11e70af3eb8fc974": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Chá de boldo resolve dor de cabeça.\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    }\n  ],\n  \"opiniao\": null\n}",
+  "8f9dda465d95e4ef": "{\n  \"fatos\": [],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
+  "afc4f4a935baeb1b": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona o uso de chá de boldo para dor de cabeça; todos tratam de Covid-19.\"\n}",
+  "0de79cd6be9e8da6": "{\n  \"bloco1\": \"Não encontramos estudos confiáveis sobre chá de boldo para dor de cabeça.\",\n  \"bloco2\": \"Não encontrar estudos não significa que o chá não funcione.\",\n  \"bloco3\": \"Converse com um profissional de saúde sobre sua dor. Observe se outros sintomas aparecem.\",\n  \"bloco4\": \"Você pode buscar informações em sites de instituições de saúde, como o Ministério da Saúde.\"\n}"
+ },
+ "busca": {
+  "2ad2a2f2bb92173e": {
+   "idioma": "pt-BR",
+   "resultados": [
+    {
+     "unidade_id": "7d20dc1293-00",
+     "fragmento_id": "7d20dc1293-00-06",
+     "score": 0.6955280900001526,
+     "score_lexico": 18.722381591796875,
+     "score_denso": 0.8625377416610718,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2020-04-07",
+     "url": "https://www.boatos.org/saude/cha-folhas-boldo-cura-coronavirus.html",
+     "alegacao": "Chá de folhas de boldo é a cura do coronavírus #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "parte dos casos, são a hidratação e o repouso. Além disso, também sabemos que a cura da doença, em sua grande maioria, é apenas uma questão de tempo. A partir disso, podemos apontar que a tal “cura por chá de boldo” pode estar muito mais relacionada com o ciclo da doença e com hábitos, como beber bastante líquido (no caso, chá), do que pela planta citada.E mesmo que o boldo possa ter auxiliado no controle de alguns sintomas, como aqueles relacionados com o estômago (o que realmente pode ter acontecido), não é possível afirmar categoricamente que o chá seria capaz de matar o vírus.Como já repetimos em outros (muitos!) textos aqui no Boatos.org, experiência individual não é estudo científico. Auto-teste não é Ciência! É importante destacar aqui que um estudo científico passa por um processo bastante longo e rígido. E é isso que o difere do senso comum, por exemplo."
+    },
+    {
+     "unidade_id": "1ac2e37d9f-00",
+     "fragmento_id": "1ac2e37d9f-00-03",
+     "score": 0.683173656463623,
+     "score_lexico": 17.60565757751465,
+     "score_denso": 0.8590700626373291,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2020-05-14",
+     "url": "https://www.aosfatos.org/noticias/cha-de-boldo-nao-combate-sintomas-nem-cura-covid-19/",
+     "alegacao": "Chá de boldo não combate sintomas nem cura a Covid-19",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": true,
+     "trecho": "s humorísticos. Nessas primeiras publicações, o chá era apontado como o principal cuidado médico usado por avós para curar todos os tipos de doenças.\nCerca de dois meses mais tarde, um vídeo gravado por um homem que se identifica apenas como Alexandre e anuncia ter curado a si mesmo e a sua esposa com o chá passou a circular nas redes. Entre o fim de abril e o início de maio, postagens que traziam o conteúdo enganoso começaram a viralizar no formato de texto.\nVersões. Um áudio que também fazia referência às propriedades terapêuticas do boldo passou a circular nas redes com legenda enganosa que indicava que a infusão poderia tratar a Covid-19. De autoria do professor de química da Uema (Universidade Estadual do Maranhão) Antonio Frazão, o áudio também continha informações falsas sobre a composição química do boldo e de uma outra planta, a quina. O conteúdo foi desmentido por Aos Fatos em checagem.\nReferências:\n1. Ministério da Saúde\n2. OMS (Fontes 1 e 2)\n3. NCBI\n4. Fiocruz"
+    },
+    {
+     "unidade_id": "5b0d6e44bc-00",
+     "fragmento_id": "5b0d6e44bc-00-03",
+     "score": 0.6757044792175293,
+     "score_lexico": 16.785863876342773,
+     "score_denso": 0.8571677803993225,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "boatos",
+     "data_publicacao": "2021-04-28",
+     "url": "https://www.boatos.org/saude/cebola-alho-mel-mastruz-boldo-curam-covid-19.html",
+     "alegacao": "Cebola, alho, mel, mastruz e boldo curam a Covid-19 #boato",
+     "veredito_original": "boato",
+     "veredito_chave": "boato",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "para desmentir a informação. Ao longo da pandemia, muitos estudos buscaram identificar potenciais de tratamento ou cura das mais variadas substâncias. Até o momento, a Ciência conseguiu identificar medicamentos que podem amenizar quadros moderados e graves e aumentar as chances de vida de quem precisa passar por procedimentos invasivos, como intubações, ou apresenta o desenvolvimento de coágulos.Entretanto, pessoas que não apresentam sintomas graves ou estão passando por um quadro leve da doença não necessitam desse tipo de medicação. Na grande (esmagadora) maioria dos casos, essas pessoas vão se recuperar espontaneamente. Isso quer dizer que, tomando chá de boldo ou não, elas vão se recuperar da mesma forma. E é aí que muita gente surge com ideias mirabolantes de curas milagrosas na cabeça (e na internet), quando, na verdade, o que fez a pessoa se recuperar foi o próprio organismo que conseguiu combater a doença. Simples assim.Quanto ao suposto áudio do cinegrafista que acompanha a história de hoje, trata-se de mais uma fake news."
+    },
+    {
+     "unidade_id": "6f7579cdf2-00",
+     "fragmento_id": "6f7579cdf2-00-00",
+     "score": 0.6695090532302856,
+     "score_lexico": 17.18073272705078,
+     "score_denso": 0.8552935719490051,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "aos fatos",
+     "data_publicacao": "2020-05-21",
+     "url": "https://www.aosfatos.org/noticias/substancias-presentes-no-boldo-e-na-quina-nao-tratam-covid-19/",
+     "alegacao": "Substâncias presentes no boldo e na quina não tratam Covid-19",
+     "veredito_original": "falso",
+     "veredito_chave": "falso",
+     "cobre_multiplas_alegacoes": true,
+     "trecho": "Publicações nas redes sociais reúnem informações falsas ao sustentar que o chá de boldo e a quina teriam eficácia no tratamento da Covid-19 (veja aqui). A desinformação tem origem em um áudio gravado pelo professor de química da Uema (Universidade Estadual do Maranhão) Antonio Frazão, embora ele alegue que se referia genericamente a uma ação antiviral das plantas. Mesmo assim, especialistas ouvidos por Aos Fatos apontam erros no que é dito no áudio.\nEm resumo, o que checamos:\n1. O Ministério da Saúde e a Organização Mundial da Saúde afirmam que nenhum tipo de chá provou-se eficaz no tratamento da Covid-19. Adriano Andricopulo, professor de química medicinal e planejamento de fármacos da USP (Universidade de São Paulo), aponta que beber a infusão de boldo pode trazer algum alívio em sintomas, mas sem efeito terapêutico;\n2. A concentração de alcalóides nas folhas de boldo varia de 0,4% a 0,5%, segundo estudos farmacológicos, não de 20% a 22%, como indica o professor Frazão no áudio reproduzido nas redes sociais;\n3."
+    },
+    {
+     "unidade_id": "35d0300239-00",
+     "fragmento_id": "35d0300239-00-02",
+     "score": 0.666357159614563,
+     "score_lexico": 19.17748260498047,
+     "score_denso": 0.8538447618484497,
+     "idioma": "pt-BR",
+     "apto_citacao": true,
+     "agencia": "fato-ou-fake",
+     "data_publicacao": "2020-05-15",
+     "url": "https://g1.globo.com/fato-ou-fake/coronavirus/noticia/2020/05/15/e-fake-que-cha-de-boldo-combate-a-covid-19-em-tres-horas.ghtml",
+     "alegacao": "É #FAKE que chá de boldo combate a Covid-19 em três horas",
+     "veredito_original": "fake",
+     "veredito_chave": "fake",
+     "cobre_multiplas_alegacoes": false,
+     "trecho": "tomas, mas não têm ação sobre o vírus. Isso só se consegue com medicamentos específicos, chamados antivirais, que só podem ser prescritos por médicos. No caso da Covid-19, ainda estão em estudos medicamentos que possam ser eficazes.”O infectologista João Prats, médico da Beneficiência Portuguesa de São Paulo, explica que pacientes com quadros brandos da Covid-19 podem se sentir melhor depois de tomar chás, seja de boldo ou outro, mas ressalta que os sintomas já iam se dissipar naturalmente.“Não existe qualquer estudo científico que mostre que chá de boldo funcione para combater o vírus. A maior parte das pessoas infectadas tem um quadro leve; algumas nem sequer percebem que tiveram. Chá de boldo ou outro chá, com limão ou mel, além de vitamina C e substâncias para tosse podem ajudar a aliviar os sintomas. Mas essas pessoas já melhorariam, independentemente de tomar ou não. Não dá para dizer que houve causalidade."
+    }
+   ],
+   "coberto": true,
+   "consultados": [
+    "pt-BR"
+   ]
+  }
+ }
+}

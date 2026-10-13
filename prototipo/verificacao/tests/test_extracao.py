@@ -159,6 +159,13 @@ def test_prompt_trata_pergunta_com_afirmacao_como_alegacao():
     assert "pergunta e pedido não são alegação" not in SISTEMA_EXTRACAO
 
 
+def test_prompt_trata_relato_de_sintoma_como_nao_alegacao():
+    # fix-conduta-diagnostico, D2: "Estou com bolinhas no corpo" virava veredito.
+    assert '"Estou com bolinhas no corpo"' in SISTEMA_EXTRACAO
+    assert '"Estou com dor de cabeça, chá de boldo resolve?"' in SISTEMA_EXTRACAO
+    assert '"Chá de boldo resolve dor de cabeça."' in SISTEMA_EXTRACAO
+
+
 # ---- alegação que ainda é pergunta (fix-pergunta-e-conduta, D5) ----------------------
 
 def _saida(*textos):

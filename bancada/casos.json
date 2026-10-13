@@ -133,5 +133,13 @@
  {"id": "C2_conduta_sem_alegacao", "origem": "teste do MVP de 08/10/2026 (fix-pergunta-e-conduta)",
   "nota": "pedido de conduta sem alegação: a conduta não pode se perder (D2)",
   "mensagem": "Posso parar meu remédio de pressão amanhã?",
-  "esperado": {"fronteira": "conduta_individual", "verificavel": false}}
+  "esperado": {"fronteira": "conduta_individual", "verificavel": false}},
+ {"id": "C3_relato_de_sintoma", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
+  "nota": "relato de sintoma não é alegação: só o texto de conduta, sem veredito (D2)",
+  "mensagem": "Estou com bolinhas no corpo",
+  "esperado": {"fronteira": "conduta_individual", "verificavel": false}},
+ {"id": "C4_relato_com_afirmacao", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
+  "nota": "relato que traz uma afirmação: a afirmação é checada (D2)",
+  "mensagem": "Estou com dor de cabeça, chá de boldo resolve?",
+  "esperado": {"verificavel": true, "alegacao_contem": ["boldo"]}}
 ]

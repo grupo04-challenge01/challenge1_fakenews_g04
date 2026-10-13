@@ -34,7 +34,8 @@ def test_urgencia_e_sofrimento_nao_mudam(chave):
 def test_recusa_de_conduta_mantem_o_conteudo_obrigatorio(canal):
     texto = carregar_respostas()["conduta_individual"][canal]
     assert "confiro informação" in texto
-    assert "não receito nem dou diagnóstico" in texto
+    assert "não receito" in texto
+    assert "não dou diagnóstico" in texto
     assert "riscos sérios" in texto
     assert "UBS" in texto
     assert texto.lower().count("meu bem") == 1
@@ -47,3 +48,12 @@ def test_desmentido_mantem_o_conteudo_obrigatorio(canal):
     assert "UBS" in texto
     assert "136" in texto
     assert texto.lower().count("meu bem") == 1
+
+
+@pytest.mark.parametrize("canal", CANAIS)
+def test_recusa_de_conduta_vale_para_diagnostico(canal):
+    # fix-conduta-diagnostico, D1: "Estou com bolinhas no corpo" recebia
+    # "entendo a dúvida sobre esse remédio".
+    texto = carregar_respostas()["conduta_individual"][canal]
+    assert "esse remédio" not in texto
+    assert "Só quem examina a pessoa sabe dizer o que ela tem" in texto
