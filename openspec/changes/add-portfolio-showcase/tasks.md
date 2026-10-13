@@ -35,12 +35,14 @@
 - [ ] 4.1 Publicar a tabela-resumo da rodada da bancada da demo (D8)
 - [ ] 4.2 Atualizar latência e custo em `docs/interface/chat-web.md` com a
       rodada da demo
-- [ ] 4.3 Reescrever `README.md`: portfólio, entregáveis, como subir a demo,
+- [x] 4.3 Reescrever `README.md`: portfólio, entregáveis, como subir a demo,
       onde estão os changes
-- [ ] 4.4 Completar as limitações da avaliação em `docs/pendencias.md`: a
+- [x] 4.4 Completar as limitações da avaliação em `docs/pendencias.md`: a
       armadilha não separou aceitação cega (0 de 0), o estímulo leite/asma foi
       registrado com o id de outro caso e as sessões têm data 07/10 no
       registro e 08/10 no site
+- [x] 4.5 Preencher a ficha do piloto em `guia-piloto.md` com os dados das
+      sessões, declarando o que não foi registrado e a armadilha não exercida
 
 ## 5. Apresentação e reflexão
 

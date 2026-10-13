@@ -70,28 +70,34 @@ Antes de submeter o copiloto à coleta de campo com 20 a 30 usuários, o piloto 
 
 ## 4. Ficha de Registro dos Dados do Piloto
 
+Preenchida em 13/10/2026 a partir de `datasets/sessoes_mvp_copiloto/P-01.json`
+e `P-02.json` (change `add-portfolio-showcase`, task 4.5). Campo que a sessão
+não registrou fica declarado como «não registrado», em vez de inferido.
+
 ### Participante P-01
-- **Perfil Demográfico Sumário:** [Idade aprox., familiaridade com WhatsApp]
-- **Tempo Total da Sessão:** [XX] minutos
-- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  ( ) Desconfiou da resposta  ( ) Apontou incoerência
-- **Desempenho no Bloco de Transferência:** [Identificou sinais de não-confiança? Sim/Não/Parcial]
-- **Dificuldades de Usabilidade Observadas:** [Ex.: texto longo, botão pouco visível, etc.]
-- **Reação ao Debriefing:** [Compreendeu os gabaritos e ficou confortável?]
+- **Perfil Demográfico Sumário:** faixa etária 18–39. Familiaridade com WhatsApp: não registrado.
+- **Tempo Total da Sessão:** não registrado. Os cinco itens (blocos com ferramenta e de transferência) ocuparam 16 minutos, do início do primeiro à decisão do último.
+- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  (x) Desconfiou da resposta  ( ) Apontou incoerência. A ferramenta exibiu o rótulo correto (`falso`) no item da vitamina C; a participante checou fora antes de decidir. A armadilha não foi exercida: ver a seção 5.
+- **Desempenho no Bloco de Transferência:** Sim. Nos dois casos citou critério de fonte: portal do governo e consenso noticioso (HPV); busca em fonte oficial e artigos especializados (leite e asma).
+- **Dificuldades de Usabilidade Observadas:** não registrado.
+- **Reação ao Debriefing:** debriefing realizado; reação não registrada. A confiança declarada nas três fontes oficiais subiu de 4 para 5.
 
 ### Participante P-02
-- **Perfil Demográfico Sumário:** [Idade aprox., familiaridade com WhatsApp]
-- **Tempo Total da Sessão:** [XX] minutos
-- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  ( ) Desconfiou da resposta  ( ) Apontou incoerência
-- **Desempenho no Bloco de Transferência:** [Identificou sinais de não-confiança? Sim/Não/Parcial]
-- **Dificuldades de Usabilidade Observadas:** [Ex.: texto longo, botão pouco visível, etc.]
-- **Reação ao Debriefing:** [Compreendeu os gabaritos e ficou confortável?]
+- **Perfil Demográfico Sumário:** faixa etária 40–59. Familiaridade com WhatsApp: não registrado.
+- **Tempo Total da Sessão:** não registrado. Os cinco itens ocuparam 6 minutos, do início do primeiro à decisão do último.
+- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  ( ) Desconfiou da resposta  ( ) Apontou incoerência. Nenhuma opção se aplica: a ferramenta exibiu o rótulo correto (`falso`), e a participante se apoiou nele sem checar fora. Sem saída errada, não há como separar confiança cega de acerto.
+- **Desempenho no Bloco de Transferência:** Parcial. No caso do HPV, decidiu por conhecimento prévio; no de leite e asma, pela ausência de link oficial conhecido.
+- **Dificuldades de Usabilidade Observadas:** não registrado.
+- **Reação ao Debriefing:** debriefing realizado; reação não registrada. Confiança nas fontes oficiais estável em 4.
 
 ---
 
 ## 5. Síntese e Ajustes Recomendados para a Coleta Principal
 
-*(Preenchido após a aplicação com P-01 e P-02)*:
+*(Preenchido em 13/10/2026, após a aplicação com P-01 e P-02)*:
 
-- **Ajustes no tempo ou instruções:** 
-- **Ajustes na interface ou redação do copiloto:**
-- **Status do Instrumento:** *(marcar após validação)* Aprovado para a coleta massiva de 20 a 30 usuários.
+- **Ajustes no tempo ou instruções:** registrar a hora de início e de fim da sessão inteira e a familiaridade com WhatsApp; hoje só os itens têm hora.
+- **Ajustes na interface ou redação do copiloto:** registrar dificuldade de usabilidade e reação ao debriefing em campo próprio do registro, não só na observação livre.
+- **Item-armadilha:** nas duas sessões a ferramenta exibiu o rótulo correto no item-armadilha, e a aceitação cega ficou em 0 de 0. A forma de produzir a saída errada (resposta preparada servida no lugar da do sistema, ou instrução ao modelo) segue sem decisão, como registrado no `design.md` deste change. Precisa ser decidida antes da coleta principal.
+- **Registro:** o estímulo de leite e asma (caso 5 de transferência) foi registrado com o id de outro caso, e as sessões têm data 07/10 no registro e 08/10 no portfólio. Corrigir antes de qualquer agregado novo.
+- **Status do Instrumento:** **não aprovado** para a coleta de 20 a 30 usuários. Faltam a decisão da armadilha e os campos de registro acima. Com n = 2, o piloto valida o roteiro, não o efeito.

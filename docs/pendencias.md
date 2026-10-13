@@ -10,9 +10,9 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| `add-portfolio-showcase` | Showcase | 10 | **12** |
+| `add-portfolio-showcase` | Showcase | 13 | **10** |
 | 14 outros changes na `main` | Engage a Act | 315 | **0** ✅ |
-| **total na `main`** | | **359** | **13** |
+| **total na `main`** | | **362** | **11** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
 Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
@@ -113,8 +113,9 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 | 3.4 | Tag `showcase-demo` no commit ensaiado | aberta |
 | 4.1 | Tabela-resumo da rodada da bancada da demo | aberta |
 | 4.2 | Latência e custo no guia do chat | aberta |
-| 4.3 | `README.md` como porta de entrada | aberta |
-| 4.4 | Limitações da avaliação completadas | aberta |
+| 4.3 | `README.md` como porta de entrada | feita |
+| 4.4 | Limitações da avaliação completadas | feita, ver [abaixo](#limitacoes-da-avaliacao) |
+| 4.5 | Ficha do piloto preenchida | feita |
 | 5.1 | Slides | aberta |
 | 5.2 | Reflexão no portfólio | aberta |
 | 6.1 a 6.3 | Contagens, `mkdocs build` e `validate --strict` | abertas |
@@ -165,6 +166,30 @@ protótipo não faz.
   «Olha isso que saiu:», e as regras classificam certo.
 - **Ficção lida como alegação.** Numa crítica de filme, a extração tomou a fala
   de uma personagem como alegação de saúde.
+
+## Limitações da avaliação
+
+O que o piloto de 08/10 pode e não pode sustentar na apresentação. Fonte:
+`datasets/relatorios_mvp_copiloto/relatorios_metricas.json` e
+`datasets/sessoes_mvp_copiloto/`.
+
+- **n = 2, sem linha de base.** Os 4 de 4 em discernimento e transferência
+  validam o roteiro e o instrumento, não o efeito. Não há grupo sem a
+  ferramenta para comparar.
+- **A armadilha não separou aceitação cega.** Nas duas sessões a ferramenta
+  exibiu o rótulo correto no item-armadilha (vitamina C, `falso`). Sem saída
+  errada, a aceitação cega ficou em 0 de 0, sem taxa. A forma de produzir a
+  saída errada segue sem decisão (`design.md` de `mvp-copiloto-verificacao`).
+- **Estímulo registrado com o id de outro caso.** O caso 5 de transferência
+  foi um mito de leite e asma, registrado com o id `496ecb51`, que no banco de
+  casos é «beber água quente protege contra COVID-19». A própria observação da
+  sessão declara o mapeamento.
+- **Datas divergentes.** As sessões têm data 07/10 no registro e 08/10 neste
+  portfólio e no agregado.
+- **Campos não registrados.** Duração total da sessão, familiaridade com
+  WhatsApp, dificuldades de usabilidade e reação ao debriefing ficaram sem
+  registro. A ficha do piloto em `guia-piloto.md` declara cada um.
+- **CEP simulado.** Ver o aviso no topo desta página.
 
 ## Onde estamos no cronograma
 
