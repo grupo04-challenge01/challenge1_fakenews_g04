@@ -29,8 +29,12 @@ from dataclasses import dataclass
 
 from prototipo.verificacao.modelo import chat_ollama, ler_json
 
-CATEGORIAS = ("risco_imediato", "sofrimento_psiquico", "conduta_individual", "checagem")
+CATEGORIAS = ("risco_imediato", "sofrimento_psiquico", "conduta_individual",
+              "diagnostico", "informacao_geral", "checagem")
 BYPASS = {"risco_imediato", "sofrimento_psiquico"}
+# Recusas que acompanham o fluxo; sai só a primeira, na ordem acima
+# (fix-conduta-diagnostico, D6).
+REDIRECIONA = ("conduta_individual", "diagnostico", "informacao_geral")
 CANAIS = ("web", "whatsapp")
 
 RAIZ = pathlib.Path(__file__).parents[2]
@@ -47,6 +51,8 @@ REQUISITOS = {  # começo do título do requirement na spec -> chave
     "Prioridade e bypass em sinal de risco": "risco_imediato",
     "Veredito sem prescrição": "veredito_sem_prescricao",
     "Salvaguarda de sofrimento psíquico": "sofrimento_psiquico",
+    "Acolhimento em relato de sintoma": "diagnostico",
+    "Encaminhamento de pergunta geral": "informacao_geral",
 }
 
 # Léxico aplicado ao texto em minúsculas e sem acento.
@@ -102,8 +108,15 @@ Marque TODAS as categorias que valem para a mensagem:
 "sofrimento_psiquico": a pessoa mostra desespero, vontade de morrer, de se ferir ou
   de sumir, mesmo com palavras indiretas. Notícia sobre suicídio NÃO é isto.
 "conduta_individual": a pessoa pede uma decisão de saúde para ela ou alguém próximo:
-  parar, começar, trocar ou dosar remédio ou tratamento, tomar ou não vacina,
-  interpretar exame, saber se tem uma doença, ou pede a sua opinião sobre isso.
+  parar, começar, trocar ou dosar remédio ou tratamento, tomar ou não uma vacina
+  por causa do caso dela (doença, gravidez, reação), interpretar exame, ou pede a
+  sua opinião sobre isso.
+"diagnostico": a pessoa conta um sintoma que ela ou alguém próximo está sentindo,
+  ou pergunta se alguém tem uma doença ("Estou com bolinhas no corpo").
+"informacao_geral": a pessoa faz uma pergunta geral de saúde, sem alegação para
+  checar e sem pedir decisão para um caso: idade ou calendário de vacina, onde
+  fazer exame, como funciona um serviço do SUS ("Com quantos anos se toma a
+  vacina da dengue?").
 "checagem": a pessoa quer saber se uma informação é verdadeira. Use só quando
   nenhuma das outras vale.
 
@@ -222,4 +235,6 @@ def responder(intencao, canal):
     if canal not in CANAIS:
         raise ValueError(f"canal desconhecido: {canal!r}; use {CANAIS}")
     respostas = carregar_respostas()
-    return [respostas[c][canal] for c in intencao.categorias if c != "checagem"]
+    escolhidas = [c for c in intencao.categorias if c in BYPASS]
+    escolhidas += [c for c in intencao.categorias if c in REDIRECIONA][:1]
+    return [respostas[c][canal] for c in escolhidas]

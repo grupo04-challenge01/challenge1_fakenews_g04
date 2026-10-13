@@ -84,7 +84,8 @@ def test_nao_acordar_e_sofrimento_nao_sintoma():
 # --- classificação --------------------------------------------------------------------
 
 def test_categorias_na_ordem_de_prioridade():
-    assert CATEGORIAS == ("risco_imediato", "sofrimento_psiquico", "conduta_individual", "checagem")
+    assert CATEGORIAS == ("risco_imediato", "sofrimento_psiquico", "conduta_individual",
+                          "diagnostico", "informacao_geral", "checagem")
 
 
 def test_prompt_define_as_quatro_categorias():
@@ -165,6 +166,23 @@ def test_responder_empilha_na_ordem_de_prioridade():
     i = classificar("Tomei a cartela inteira pra acabar com tudo e estou com falta de ar", chat=_explode)
     r = carregar_respostas()
     assert responder(i, "web") == [r["risco_imediato"]["web"], r["sofrimento_psiquico"]["web"]]
+
+
+@pytest.mark.parametrize("categorias, chave", [
+    (("conduta_individual", "diagnostico"), "conduta_individual"),
+    (("diagnostico", "informacao_geral"), "diagnostico"),
+    (("conduta_individual", "informacao_geral"), "conduta_individual"),
+    (("informacao_geral",), "informacao_geral"),
+])
+def test_so_um_redirecionamento_entre_conduta_diagnostico_e_pergunta_geral(categorias, chave):
+    # fix-conduta-diagnostico, D6: dois textos de recusa seguidos seriam repetição.
+    i = classificar("x", chat=_modelo(*categorias))
+    assert responder(i, "web") == [carregar_respostas()[chave]["web"]]
+
+
+def test_prompt_separa_diagnostico_e_pergunta_geral():
+    assert "Com quantos anos" in SISTEMA
+    assert "Estou com bolinhas no corpo" in SISTEMA
 
 
 def test_checagem_nao_tem_resposta_padrao():

@@ -105,6 +105,14 @@ def test_conduta_redireciona_e_segue_a_checagem():
     assert rastro["parou_em"] is None
 
 
+@pytest.mark.parametrize("categoria", ["diagnostico", "informacao_geral"])
+def test_diagnostico_e_pergunta_geral_redirecionam(categoria):
+    # fix-conduta-diagnostico, D6.
+    saidas = {**SAIDAS, fronteira.SISTEMA: {"categorias": [categoria], "motivo": "x"}}
+    rastro = executar("Estou com bolinhas no corpo", Recuperador(), chat=chat_fixo(saidas))
+    assert rastro["redirecionamentos"] == [fronteira.carregar_respostas()[categoria]["web"]]
+
+
 def test_sem_alegacao_verificavel_para_na_extracao():
     saidas = {**SAIDAS, extracao.SISTEMA: {"alegacoes": [], "opiniao": "que vergonha"}}
     rec = Recuperador()

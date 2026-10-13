@@ -20,6 +20,7 @@ from bancada.pipeline import ETAPAS, PALAVRAS_TEXTO_CURTO, executar
 from prototipo.entrada import link
 from prototipo.entrada.rede import buscar as buscar_rede
 from prototipo.identidade import ler_textos
+from prototipo.verificacao import fronteira
 from prototipo.verificacao.modelo import chat_ollama
 
 RAIZ = pathlib.Path(__file__).parents[1]
@@ -51,7 +52,7 @@ def _desfecho(saida):
     categorias = saida["categorias"]
     if saida["bypass"]:
         return "urgencia" if "risco_imediato" in categorias else "sofrimento"
-    return "conduta" if "conduta_individual" in categorias else "segue"
+    return "conduta" if set(fronteira.REDIRECIONA) & set(categorias) else "segue"
 
 
 def _origem(rastro):
