@@ -27,7 +27,7 @@ doença". A spec e o texto da resposta só cobriam o remédio.
 
 - Responder pergunta geral de saúde com dado do corpus. O pipeline checa
   alegações; responder perguntas seria outro produto, a três dias da demo.
-- Mudar o léxico `CONDUTA`. As regras continuam marcando só
+- Mudar o léxico `CONDUTA` além de D7. As regras continuam marcando só
   `conduta_individual`, inclusive "será que tenho…" e leitura de exame.
 - Tratar sintoma de pele como urgência. O léxico `SINTOMA` fica como está.
 
@@ -118,6 +118,24 @@ pedido de decisão é o mais arriscado; pergunta geral vem por último.
 e `interface/fluxo.py` dá a elas o desfecho `conduta`, que já tira da página
 a pergunta de discernimento.
 
+### D7. Vacina sai do léxico de conduta
+
+No teste depois de D5, "Com que idade devo tomar a vacina tetra-valente"
+ainda recebeu o texto de conduta. Quem marcou foi o léxico: "devo … tomar"
+com "vacin" em `OBJETO_CLINICO`. A conduta vem antes na ordem de D6, então a
+pergunta geral nunca aparecia. O caso `V1`, com "tenho que", não passa pelo
+léxico e não mostrou o defeito.
+
+O léxico não tem como separar "devo tomar a vacina" por idade, que é
+pergunta geral, de "devo tomar a vacina se estou grávida", que é conduta.
+"vacin" sai de `OBJETO_CLINICO` e "vacinar" sai dos verbos de `CONDUTA`, e
+vacina fica com o modelo, cujo prompt já faz a distinção (D5). Se o modelo
+falhar, a mensagem sobre vacina segue como checagem, sem recusa. Remédio,
+dose, exame e tratamento continuam no léxico.
+
+Caso novo `V3`: "Com que idade devo tomar a vacina tetra-valente", esperado
+fronteira `informacao_geral` e `verificavel: false`.
+
 ## Risks / Trade-offs
 
 - [A extração deixa de checar uma afirmação dita junto com um relato] → o
@@ -144,3 +162,6 @@ a pergunta de discernimento.
   `informacao_geral` e V2 `checagem`; C4 saiu `conduta_individual` e
   `diagnostico` e foi checado, como D3 prevê. As gravações dessa rodada são
   as da bancada offline, que dá o mesmo resultado.
+- **Caso `V3`**, depois de D7 (`20261013-164759.json`, `deepseek-v4-pro`):
+  fronteira `informacao_geral`, sem alegação. A bancada offline com todas as
+  gravações dá 32/35, as mesmas três falhas de forma, e cumpre D10.

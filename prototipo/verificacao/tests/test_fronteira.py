@@ -185,6 +185,16 @@ def test_prompt_separa_diagnostico_e_pergunta_geral():
     assert "Estou com bolinhas no corpo" in SISTEMA
 
 
+@pytest.mark.parametrize("texto", [
+    "Com que idade devo tomar a vacina tetra-valente",
+    "Devo tomar a vacina da gripe se estou grávida?",
+])
+def test_vacina_fica_com_o_modelo(texto):
+    # fix-conduta-diagnostico, D7: as regras não separam idade de vacina, que é
+    # pergunta geral, de vacina no caso da pessoa, que é conduta.
+    assert por_regras(texto) == set()
+
+
 def test_checagem_nao_tem_resposta_padrao():
     assert responder(classificar("x", chat=_modelo("checagem")), "web") == []
 
