@@ -1,6 +1,6 @@
 {
  "chat": {
-  "36e2509c128d3acc": "{\"categorias\": [], \"motivo\": \"Sem conteúdo textual para classificar\"}"
+  "36e2509c128d3acc": "{\"categorias\": [\"checagem\"], \"motivo\": \"A mensagem pede para ver um vídeo, sem detalhes, indicando possível checagem de conteúdo.\"}"
  },
  "busca": {}
 }

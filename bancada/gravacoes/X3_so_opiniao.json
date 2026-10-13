@@ -1,7 +1,7 @@
 {
  "chat": {
-  "09779353acf4e15c": "{\"categorias\": [], \"motivo\": \"A mensagem expressa opinião política, sem pedido de checagem ou conduta de saúde.\"}",
-  "5de7a03134d00f01": "{\n  \"alegacoes\": [],\n  \"opiniao\": \"Esse governo não liga para a saúde de ninguém. Que vergonha, estou cansada de fila.\"\n}"
+  "09779353acf4e15c": "{\"categorias\": [], \"motivo\": \"Não se enquadra em nenhuma categoria\"}",
+  "ab22e97b89e5b28b": "{\n  \"alegacoes\": [],\n  \"opiniao\": \"Esse governo não liga para a saúde de ninguém.\"\n}"
  },
  "busca": {}
 }
