@@ -74,6 +74,18 @@ aceita como fonte da frase tanto o valor cru quanto o nome legível; sem isso,
 «Agência Lupa» vira termo fora do trecho e o veredito é rebaixado. A primeira
 rodada real da bancada com o change (13/10) mostrou o efeito em F05 e R2.
 
+### D5. Verbo «desmentir» conta como marcação de falso
+
+A verificação de mito (`prototipo/resposta/mito.py`) aceitava `desmentid`
+(«desmentido») e recusava o verbo conjugado. Na rodada de 13/10, R2 saiu com
+«Ministério da Saúde e Inca desmentem o uso da casca de jatobá contra o
+câncer», frase que marca o mito como falso, e foi reprovado por defeito
+eliminatório. A marcação passa a ser a raiz `\bdesment`, que cobre desmente,
+desmentem, desmentiu e desmentido.
+
+É a mesma raiz já aceita, não uma marcação nova. Decisão do grupo em
+13/10/2026, registrada aqui porque a mudança veio depois de um caso falhar.
+
 ## Risks / Trade-offs
 
 - [Rebaixamento a mais] → só quando o modelo erra o formato duas vezes; o

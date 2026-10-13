@@ -35,6 +35,8 @@ A revisão de 13/10 achou quatro defeitos que podem aparecer ao vivo:
   (D3).
 - **MODIFICADO (código)** nome de agência legível no detalhe da resposta e no
   pedido ao modelo; o índice não muda (D4).
+- **MODIFICADO (código)** verificação de mito aceita o verbo «desmentir»
+  conjugado como marcação de falso (D5).
 
 ## Capabilities
 

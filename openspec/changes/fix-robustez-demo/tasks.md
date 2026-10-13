@@ -32,9 +32,14 @@ TDD em toda task de código: teste falhando primeiro, depois a implementação.
 - [x] 4.3 Teste e implementação: a ancoragem aceita o nome legível da agência
       como fonte da frase, e a conferência de sustentação vê o mesmo nome
 
-## 5. Verificação
+## 5. Marcação de falso (D5)
 
-- [x] 5.1 Suíte verde
-- [x] 5.2 `openspec validate fix-robustez-demo --strict`
-- [ ] 5.3 Rodada real da bancada com o gerador remoto, sem regressão contra a
+- [x] 5.1 Teste e implementação: o verbo desmentir conjugado conta como
+      marcação na verificação de mito
+
+## 6. Verificação
+
+- [x] 6.1 Suíte verde
+- [x] 6.2 `openspec validate fix-robustez-demo --strict`
+- [ ] 6.3 Rodada real da bancada com o gerador remoto, sem regressão contra a
       rodada anterior
