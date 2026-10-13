@@ -20,7 +20,7 @@ o acerto da pessoa depois, sem a ferramenta.
 !!! success "Situação em 13/10/2026"
     O protótipo funciona de ponta a ponta. A **Dona Checa** recebe texto ou
     link pelo chat web e responde em cerca de 11 segundos. Na bancada de 30
-    casos, passa em 28, sem nenhuma falha eliminatória. Estamos na semana 6,
+    casos, passa em 29, sem nenhuma falha eliminatória. Estamos na semana 6,
     o Showcase.
 
 ## Por onde começar

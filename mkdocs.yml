@@ -70,6 +70,10 @@ nav:
       - Chat web da Dona Checa: interface/chat-web.md
       - Revisão do termo (LGPD): interface/revisao-termo-lgpd.md
       - Parecer sobre o termo (LGPD): interface/parecer-termo-lgpd.md
+  - Showcase:
+      - Roteiro da demo: showcase/roteiro-demo.md
+      - Apresentação: showcase/apresentacao.md
+      - Reflexão (rascunho): showcase/reflexao.md
   - Requisitos: requisitos.md
   - Estado do projeto: estado.md
   - Tasks pendentes: pendencias.md

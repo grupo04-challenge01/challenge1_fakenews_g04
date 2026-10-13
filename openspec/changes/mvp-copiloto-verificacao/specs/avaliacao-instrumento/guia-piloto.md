@@ -77,7 +77,7 @@ não registrou fica declarado como «não registrado», em vez de inferido.
 ### Participante P-01
 - **Perfil Demográfico Sumário:** faixa etária 18–39. Familiaridade com WhatsApp: não registrado.
 - **Tempo Total da Sessão:** não registrado. Os cinco itens (blocos com ferramenta e de transferência) ocuparam 16 minutos, do início do primeiro à decisão do último.
-- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  (x) Desconfiou da resposta  ( ) Apontou incoerência. A ferramenta exibiu o rótulo correto (`falso`) no item da vitamina C; a participante checou fora antes de decidir. A armadilha não foi exercida: ver a seção 5.
+- **Comportamento no Item-Armadilha:** ( ) Aceitou cegamente  (x) Desconfiou da resposta  ( ) Apontou incoerência. A ferramenta exibiu o rótulo correto (`falso`) no item da vitamina C; P-01 checou fora antes de decidir. A armadilha não foi exercida: ver a seção 5.
 - **Desempenho no Bloco de Transferência:** Sim. Nos dois casos citou critério de fonte: portal do governo e consenso noticioso (HPV); busca em fonte oficial e artigos especializados (leite e asma).
 - **Dificuldades de Usabilidade Observadas:** não registrado.
 - **Reação ao Debriefing:** debriefing realizado; reação não registrada. A confiança declarada nas três fontes oficiais subiu de 4 para 5.

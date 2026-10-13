@@ -10,9 +10,9 @@ conta o que falta.
 | Change | Fase | Feitas | Pendentes |
 | --- | --- | --- | --- |
 | `add-tratamento-datasets-ptbr` | Investigate | 34 | **1** |
-| `add-portfolio-showcase` | Showcase | 15 | **8** |
+| `add-portfolio-showcase` | Showcase | 16 | **7** |
 | 14 outros changes na `main` | Engage a Act | 315 | **0** ✅ |
-| **total na `main`** | | **364** | **9** |
+| **total na `main`** | | **365** | **8** |
 | `add-cobertura-alegacao-ampla` (fora da `main`) | Act | 13 | **5**, bloqueado |
 
 Em 01/10 eram 23 pendentes em 6 changes. Entre 02/10 e 13/10 fecharam 22
@@ -94,6 +94,33 @@ ordem. A ordem segura:
 5. Os `fix-*` e `add-notebook-avaliacao-modelo`.
 6. `add-portfolio-showcase`, no fim do Showcase.
 
+### Plano para depois de 16/10
+
+Nada disto roda antes da apresentação (D6). O código lê textos de spec destes
+caminhos, sempre com o change primeiro e `openspec/specs/` como recuo:
+
+| Arquivo | Lê de |
+| --- | --- |
+| `interface/fluxo.py` | `add-interface-chat-web`; sobreposições de `add-entrada-por-link`, `add-gerador-api-deepseek` e `fix-limitacoes-mvp` |
+| `prototipo/verificacao/fronteira.py` | `mvp-copiloto-verificacao`; sobreposição de `add-identidade-dona-checa` |
+| `prototipo/identidade/__init__.py` | `add-identidade-dona-checa` (persona e bordão da `resposta-formativa`) |
+| `prototipo/entrada/leitura.py` | `add-entrada-por-link` |
+
+O risco não é só o arquivo sumir. A sobreposição que não existe mais é
+**pulada em silêncio**, e o texto volta à versão base se o delta não tiver
+sido aplicado na spec promovida.
+
+1. Abrir um change para o desacoplamento: o código passa a ler só de
+   `openspec/specs/`, sem sobreposição, e um teste confere que cada chave de
+   texto usada existe na spec promovida.
+2. Arquivar na ordem acima, **um change por vez**. Depois de cada um:
+   `openspec validate --all --strict`, `pytest`,
+   `python -m bancada rodar --offline` e subida do chat até `/saude` 200.
+3. Conferir na spec promovida que os textos da Dona Checa (bordão, fronteira,
+   termo em seis parágrafos) são os da última versão, não os da base.
+4. Só então aplicar o desacoplamento do passo 1 e apagar os caminhos de
+   `openspec/changes/` do código.
+
 ## Showcase
 
 Estamos na semana 6 (12 a 16/10). O change da fase é `add-portfolio-showcase`,
@@ -108,7 +135,7 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 
 | # | Task | Situação |
 | --- | --- | --- |
-| 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | aberta |
+| 3.2 | Roteiro de demo: preparação, aquecimento, casos, plano B | feita, [roteiro](showcase/roteiro-demo.md) |
 | 3.3 | Ensaio cronometrado e vídeo de backup | aberta |
 | 3.4 | Tag `showcase-demo` no commit ensaiado | aberta |
 | 4.1 | Tabela-resumo da rodada da bancada da demo | feita, [rodada de 13/10](act/prototipo-avaliacao.md#rodada-da-demo) |
@@ -116,8 +143,8 @@ bloqueado. Decisão D5 de `add-portfolio-showcase`.
 | 4.3 | `README.md` como porta de entrada | feita |
 | 4.4 | Limitações da avaliação completadas | feita, ver [abaixo](#limitacoes-da-avaliacao) |
 | 4.5 | Ficha do piloto preenchida | feita |
-| 5.1 | Slides | aberta |
-| 5.2 | Reflexão no portfólio | aberta |
+| 5.1 | Slides | conteúdo em [Apresentação](showcase/apresentacao.md); falta montar |
+| 5.2 | Reflexão no portfólio | [rascunho](showcase/reflexao.md); falta o grupo reescrever |
 | 6.1 a 6.3 | Contagens, `mkdocs build` e `validate --strict` | abertas |
 
 | Entregável final | Situação |
