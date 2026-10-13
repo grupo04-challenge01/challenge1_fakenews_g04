@@ -125,13 +125,28 @@ prontas desde 11/09; o processo investigativo, não.
 - `specs/` está vazio por design: no dia 1 não há nenhuma capability
   estabelecida como verdade corrente.
 
-## Changes previstos
+## Changes
+
+Estado em 13/10/2026. Contagem viva em `docs/estado.md`.
 
 | Change | Fase | Estado |
 | --- | --- | --- |
-| `add-engage-desinformacao-saude` | Engage | ativo |
-| `add-tratamento-datasets-ptbr` | Investigate | ativo |
-| `add-ampliacao-corpus-ptbr` | Investigate | ativo |
-| `add-selecao-modelos-arquitetura-rag` | Investigate | ativo |
-| `fix-resposta-sem-evidencia` | Investigate → Act | proposto |
-| `mvp-copiloto-verificacao` | Act | proposto |
+| `add-engage-desinformacao-saude` | Engage | completo |
+| `add-tratamento-datasets-ptbr` | Investigate | ativo, falta a 5.4 |
+| `add-ampliacao-corpus-ptbr` | Investigate | completo |
+| `add-selecao-modelos-arquitetura-rag` | Investigate | completo |
+| `fix-resposta-sem-evidencia` | Investigate → Act | completo |
+| `mvp-copiloto-verificacao` | Act | ativo, falta a 6.6 |
+| `add-identidade-dona-checa` | Act | completo |
+| `add-interface-chat-web` | Act | completo |
+| `add-entrada-por-link` | Act | completo |
+| `add-gerador-api-deepseek` | Act | completo |
+| `fix-qualidade-gerador-remoto` | Act | completo |
+| `fix-teto-resposta` | Act | completo |
+| `fix-pergunta-e-conduta` | Act | completo |
+| `fix-limitacoes-mvp` | Act | completo |
+| `add-notebook-avaliacao-modelo` | Act | completo |
+| `add-cobertura-alegacao-ampla` | Act | bloqueado, fora da `main` |
+| Showcase | Showcase | não aberto |
+
+Nenhum está arquivado. A ordem de arquivamento está em `docs/pendencias.md`.

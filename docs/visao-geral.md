@@ -16,7 +16,7 @@ O enunciado nomeia **três competências**, e nenhuma é opcional:
 | Competência | Como o projeto responde |
 | --- | --- |
 | Investigar evidências | Recuperação sobre checagens brasileiras, com toda afirmação ancorada num trecho citado e rastreável até a fonte |
-| Identificar vieses | **Lacuna aberta.** Nenhuma capability cobre isso ainda — ver [Estado do projeto](estado.md) |
+| Identificar vieses | **Cobertura parcial.** Procedência e alcance (`acervo-circulacao`) e conflito de interesse da fonte (rubrica); o viés de confirmação de quem lê segue descoberto — ver [Tasks pendentes](pendencias.md#decisoes-em-aberto) |
 | Construir critérios de confiança | Matriz de confiança (dimensões, sinais, limites, rubrica) e o bloco "o que observar da próxima vez" na resposta |
 
 ## O que o enunciado exige, e o que não exige
@@ -49,9 +49,9 @@ substituí-la.
 | Fase | Período | Foco |
 | --- | --- | --- |
 | Engage | Semana 1 · 07/09 a 11/09 | Entender o desafio |
-| Investigate | Semanas 2–3 | Pesquisa e descoberta |
-| Act | Semanas 4–5 | Desenvolvimento |
-| Showcase | Semana 6 | Partilha de conhecimento |
+| Investigate | Semanas 2–3 · 14/09 a 25/09 | Pesquisa e descoberta |
+| Act | Semanas 4–5 · 28/09 a 09/10 | Desenvolvimento |
+| Showcase | Semana 6 · 12/10 a 16/10 | Partilha de conhecimento |
 
 07/09 é feriado; a semana operacional do Engage começa em 08/09.
 
@@ -60,9 +60,9 @@ substituí-la.
 | Entregável | Onde está sendo construído |
 | --- | --- |
 | Portfólio de pesquisa | este site, mais os caveats de dataset |
-| Estrutura de avaliação de confiança | capability `matriz-confianca` |
-| Solução/protótipo com suporte de IA | change `mvp-copiloto-verificacao` |
-| Apresentação e reflexão | fase Showcase |
+| Estrutura de avaliação de confiança | [matriz de confiança](engage/kit-matriz-confianca.md), versão 1 |
+| Solução/protótipo com suporte de IA | a Dona Checa: [protótipo e avaliação](act/prototipo-avaliacao.md) |
+| Apresentação e reflexão | fase Showcase, ainda sem change |
 
 ## Recorte adotado
 
@@ -71,5 +71,8 @@ evidência consultável — o que resolve "quem decide o que é confiável" sem 
 grupo precise arbitrar —, porque ler evidência de saúde é habilidade
 transferível, e porque o dano é imediato e documentado.
 
-Sub-recorte (vacinação, doença crônica, suplementos) segue em aberto para a fase
-Investigate.
+**Sub-recorte: vacinação**, decidido em 17/09/2026. Pesou o corpus de Telegram
+antivacina (jan/2020 a jun/2025), único material do projeto que mostra o que
+circulou, em que canal e quando. Alegação sobre outro tema de saúde continua
+verificável; o sub-recorte fixa onde se concentram a curadoria de casos e o
+teste com usuário.
