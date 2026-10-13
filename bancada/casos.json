@@ -137,9 +137,17 @@
  {"id": "C3_relato_de_sintoma", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
   "nota": "relato de sintoma não é alegação: só o texto de conduta, sem veredito (D2)",
   "mensagem": "Estou com bolinhas no corpo",
-  "esperado": {"fronteira": "conduta_individual", "verificavel": false}},
+  "esperado": {"fronteira": "diagnostico", "verificavel": false}},
  {"id": "C4_relato_com_afirmacao", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
   "nota": "relato que traz uma afirmação: a afirmação é checada (D2)",
   "mensagem": "Estou com dor de cabeça, chá de boldo resolve?",
-  "esperado": {"verificavel": true, "alegacao_contem": ["boldo"]}}
+  "esperado": {"verificavel": true, "alegacao_contem": ["boldo"]}},
+ {"id": "V1_pergunta_geral_vacina", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
+  "nota": "pergunta geral de saúde: encaminha para a UBS e o 136, sem responder nem checar (D5)",
+  "mensagem": "Com quantos anos tenho que tomar a vacina tetra-valente?",
+  "esperado": {"fronteira": "informacao_geral", "verificavel": false}},
+ {"id": "V2_pergunta_com_alegacao", "origem": "teste da demo de 13/10/2026 (fix-conduta-diagnostico)",
+  "nota": "pergunta com alegação continua checagem, não pergunta geral (D5)",
+  "mensagem": "É verdade que a vacina da gripe causa gripe?",
+  "esperado": {"fronteira": "checagem", "verificavel": true, "alegacao_contem": ["gripe"]}}
 ]

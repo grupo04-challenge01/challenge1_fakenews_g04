@@ -51,9 +51,30 @@ def test_desmentido_mantem_o_conteudo_obrigatorio(canal):
 
 
 @pytest.mark.parametrize("canal", CANAIS)
-def test_recusa_de_conduta_vale_para_diagnostico(canal):
-    # fix-conduta-diagnostico, D1: "Estou com bolinhas no corpo" recebia
-    # "entendo a dúvida sobre esse remédio".
+def test_recusa_de_conduta_nao_cita_um_remedio_e_negrita_a_recusa(canal):
+    # fix-conduta-diagnostico, D1: o pedido pode ser de vacina ou de exame.
     texto = carregar_respostas()["conduta_individual"][canal]
     assert "esse remédio" not in texto
+    assert "entendo a sua dúvida" in texto
+    assert "**não receito, não dou diagnóstico e não posso indicar nem mudar tratamento" in texto
+
+
+@pytest.mark.parametrize("canal", CANAIS)
+def test_diagnostico_acolhe_antes_de_recusar(canal):
+    # fix-conduta-diagnostico, D4: "estou com bolinhas no corpo".
+    texto = carregar_respostas()["diagnostico"][canal]
+    assert texto.startswith("Ah, meu bem, sinto muito")
+    assert texto.index("sinto muito") < texto.index("não dou diagnóstico")
     assert "Só quem examina a pessoa sabe dizer o que ela tem" in texto
+    assert "UBS" in texto and "UPA" in texto and "SAMU (192)" in texto
+    assert texto.lower().count("meu bem") == 1
+
+
+@pytest.mark.parametrize("canal", CANAIS)
+def test_pergunta_geral_encaminha_sem_responder(canal):
+    # fix-conduta-diagnostico, D5: idade de vacina não é conduta.
+    texto = carregar_respostas()["informacao_geral"][canal]
+    assert "sinto muito" not in texto
+    assert "UBS" in texto and "Disque Saúde (136)" in texto
+    assert "cola aqui" in texto
+    assert texto.lower().count("meu bem") == 1

@@ -1,10 +1,10 @@
 {
  "chat": {
-  "e40aef07503cdc86": "{\n  \"categorias\": [\"conduta_individual\"],\n  \"motivo\": \"Pede decisão de saúde para si (usar chá para dor de cabeça).\"\n}",
+  "19105b78702217f8": "{\n  \"categorias\": [\"diagnostico\", \"conduta_individual\"],\n  \"motivo\": \"Pessoa relata sintoma e pergunta se chá resolve.\"\n}",
   "11e70af3eb8fc974": "{\n  \"alegacoes\": [\n    {\n      \"texto\": \"Chá de boldo resolve dor de cabeça.\",\n      \"saude\": true,\n      \"risco\": \"medio\"\n    }\n  ],\n  \"opiniao\": null\n}",
   "8f9dda465d95e4ef": "{\n  \"fatos\": [],\n  \"evidencias\": [],\n  \"opinioes\": [],\n  \"conclusao\": null\n}",
   "afc4f4a935baeb1b": "{\n  \"rotulo\": \"evidência insuficiente\",\n  \"trechos\": [],\n  \"criterio\": \"Nenhum trecho menciona o uso de chá de boldo para dor de cabeça; todos tratam de Covid-19.\"\n}",
-  "0de79cd6be9e8da6": "{\n  \"bloco1\": \"Não encontramos estudos confiáveis sobre chá de boldo para dor de cabeça.\",\n  \"bloco2\": \"Não encontrar estudos não significa que o chá não funcione.\",\n  \"bloco3\": \"Converse com um profissional de saúde sobre sua dor. Observe se outros sintomas aparecem.\",\n  \"bloco4\": \"Você pode buscar informações em sites de instituições de saúde, como o Ministério da Saúde.\"\n}"
+  "0de79cd6be9e8da6": "{\n  \"bloco1\": \"Não encontramos estudos confiáveis sobre chá de boldo para dor de cabeça.\",\n  \"bloco2\": \"Não encontrar estudos não significa que o chá não funcione.\",\n  \"bloco3\": \"Converse com um profissional de saúde sobre sua dor. Observe se ela piora ou vem com outros sintomas.\",\n  \"bloco4\": \"Procure em sites de sociedades médicas ou no portal do Ministério da Saúde.\"\n}"
  },
  "busca": {
   "2ad2a2f2bb92173e": {

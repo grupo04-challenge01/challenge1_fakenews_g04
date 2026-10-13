@@ -85,6 +85,13 @@ def test_conduta_segue_o_fluxo_com_a_recusa_nos_redirecionamentos():
         fronteira.carregar_respostas()["conduta_individual"]["web"]]
 
 
+@pytest.mark.parametrize("categoria", ["diagnostico", "informacao_geral"])
+def test_diagnostico_e_pergunta_geral_tem_desfecho_de_conduta(categoria):
+    # fix-conduta-diagnostico, D6: sem a pergunta de discernimento depois da recusa.
+    assert _eventos("x", chat=_com_fronteira(categoria))[0] == {
+        "tipo": "fronteira", "desfecho": "conduta", "texto": None}
+
+
 @pytest.mark.parametrize("categorias", [["checagem"], []])
 def test_checagem_segue_sem_texto(categorias):
     assert _eventos(MENSAGEM, chat=_com_fronteira(*categorias))[0] == {

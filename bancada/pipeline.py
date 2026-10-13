@@ -148,7 +148,7 @@ def executar(texto, recuperador, chat=chat_ollama, canal="web", k=5, modo="hibri
             rastro["resposta"] = {"forma": "fronteira",
                                   "texto": "\n\n".join(fronteira.responder(intencao, canal))}
             parar("fronteira", "bypass")
-        if "conduta_individual" in intencao.categorias:
+        if set(fronteira.REDIRECIONA) & set(intencao.categorias):
             rastro["redirecionamentos"] = fronteira.responder(intencao, canal)
 
         lido = None
