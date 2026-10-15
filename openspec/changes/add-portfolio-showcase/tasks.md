@@ -64,11 +64,11 @@
       e papéis confirmados pelo grupo (D10)
 - [x] 7.2 Converter o relatório técnico v3 para `docs/act/relatorio-tecnico.md`
       e conferir os números contra o portfólio (D11)
-- [ ] 7.3 Cortar `docs/showcase/apresentacao.md` para no máximo 9 slides, na
+- [x] 7.3 Cortar `docs/showcase/apresentacao.md` para no máximo 9 slides, na
       ordem problema → solução → IA → demo → resultados (D12)
-- [ ] 7.4 Escrever `docs/showcase/roteiro-video.md` com fala, tempo e
+- [x] 7.4 Escrever `docs/showcase/roteiro-video.md` com fala, tempo e
       integrante de cada trecho (D13)
 - [ ] 7.5 Gravar o vídeo e publicar no YouTube
 - [ ] 7.6 Tabela da entrega final, link do repositório e link do vídeo no
       `README.md` (D9)
-- [ ] 7.7 Páginas novas na nav do `mkdocs.yml`
+- [x] 7.7 Páginas novas na nav do `mkdocs.yml`
