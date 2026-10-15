@@ -44,3 +44,17 @@ critério do portfólio: número sem origem não entra.
 
 Os slides 4, 5 e 7 reaproveitam os diagramas da página nova, para que slide e
 portfólio não divirjam.
+
+### D5. Mapa interativo como página estática
+
+Além dos diagramas Mermaid, o portfólio ganha `docs/mapa/arquitetura.html`.
+É um mapa navegável: arrastar, aproximar, clicar num card para ver entradas,
+saídas e motivos, seguir fluxos guiados e abrir a lista de decisões. O MkDocs
+copia o arquivo como está, e o GitHub Pages o publica junto com o site.
+
+A estrutura de interação (câmera, setas, fluxos guiados e painel de decisões)
+foi adaptada do mapa de arquitetura do grupo 5 (FOMO + VeritAI), com crédito
+no rodapé da página. Conteúdo, logo, paleta e fontes são da Dona Checa.
+
+Os dados ficam numa lista de cards e setas no próprio HTML, sem build e sem
+dependência externa além das fontes do Google Fonts.

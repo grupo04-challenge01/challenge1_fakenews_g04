@@ -16,6 +16,13 @@
 - [x] 3.1 Trocar o texto dos slides 4, 5 e 7 por diagramas, com no máximo
       três frases de apoio por slide (D4)
 
+## 5. Mapa interativo
+
+- [x] 5.1 Criar `docs/mapa/arquitetura.html`, mapa navegável com zonas, cards,
+      fluxos guiados e decisões, na identidade da Dona Checa (D5)
+- [x] 5.2 Ligar o mapa a partir de `docs/arquitetura.md`
+- [x] 5.3 Conferir os números do mapa contra o código e o manifesto
+
 ## 4. Verificação
 
 - [x] 4.1 Conferir cada componente, número e limiar dos diagramas contra o

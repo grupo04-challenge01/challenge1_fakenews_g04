@@ -30,6 +30,8 @@ seis itens. A banca é em 16/10/2026.
 - `docs/showcase/apresentacao.md`: slides 4, 5 e 7 passam a ter um diagrama
   como conteúdo principal, com no máximo três frases de apoio.
 - `mkdocs.yml`: página nova na nav.
+- `docs/mapa/arquitetura.html`: mapa interativo da arquitetura, com fluxos
+  guiados e decisões, ligado a partir da página de arquitetura.
 
 ## Impact
 

@@ -5,6 +5,11 @@ cita os arquivos de onde saiu; número ou limiar que aparece nele está no
 código citado. Change `add-arquitetura-diagramas`. Estado do código em
 15/10/2026.
 
+!!! tip "Mapa interativo"
+    Para navegar pela arquitetura inteira, com fluxos guiados e as decisões
+    de projeto, abra o [mapa da Dona Checa](mapa/arquitetura.html). Arraste
+    para mover, role para aproximar e clique em qualquer card.
+
 Legenda de cores usada em todos os diagramas:
 
 ```mermaid
