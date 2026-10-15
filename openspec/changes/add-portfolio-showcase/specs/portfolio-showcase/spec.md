@@ -90,6 +90,23 @@ entregáveis finais, dizer como subir a demo e onde estão os changes.
 #### Scenario: Avaliador abre o repositório
 - **WHEN** alguém abre a página inicial do repositório
 - **THEN** encontra o link do portfólio e o caminho de cada entregável final
+
+### Requirement: Mapa da arquitetura publicado
+
+O portfólio SHALL publicar o mapa da arquitetura em
+`docs/arquitetura/index.html`, servido como página autônoma no endereço
+`arquitetura/` do site e alcançável pela nav. Todo caminho de arquivo citado
+nos cards do mapa MUST existir na `main`.
+
+#### Scenario: Acesso pelo portfólio
+- **WHEN** o leitor escolhe a entrada do mapa na nav do portfólio
+- **THEN** abre o mapa no endereço `arquitetura/`
+- **AND** a página não traz o cabeçalho nem o menu do tema
+
+#### Scenario: Caminho citado num card
+- **GIVEN** um card do mapa que cita um arquivo do repositório
+- **WHEN** alguém procura esse caminho na `main`
+- **THEN** o arquivo existe
 - **AND** encontra o link do próprio repositório no GitHub
 
 ### Requirement: Entrega final mapeada

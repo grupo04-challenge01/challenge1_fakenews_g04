@@ -72,3 +72,15 @@
 - [ ] 7.6 Tabela da entrega final, link do repositório e link do vídeo no
       `README.md` (D9)
 - [x] 7.7 Páginas novas na nav do `mkdocs.yml`
+
+## 8. Mapa da arquitetura
+
+- [x] 8.1 Publicar o mapa em `docs/arquitetura/index.html` e corrigir no
+      comentário do arquivo a referência ao change, que citava um
+      `add-arquitetura-diagramas` inexistente (D9)
+- [x] 8.2 Tirar dos cards os caminhos que não existem na `main`:
+      `docs/act/relatorio-tecnico.md`, `docs/showcase/organizacao.md` e
+      `docs/showcase/roteiro-video.md` (D9)
+- [x] 8.3 Incluir a entrada do mapa na nav do Showcase em `mkdocs.yml`
+- [x] 8.4 `mkdocs build --strict` sem `WARNING`, `arquitetura/index.html`
+      presente no site construído e todo caminho citado existindo na `main`

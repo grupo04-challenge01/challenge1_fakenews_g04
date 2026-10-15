@@ -146,6 +146,27 @@ A mídia de destino é decisão do grupo. Se for o celular, o servidor sobe com
 local; o ensaio da 3.3 inclui esse acesso. Rede da sala instável cai no plano
 B do roteiro.
 
+### D15. Mapa da arquitetura como página autônoma no mesmo site
+
+O mapa da arquitetura é um HTML autocontido, com CSS e JS no próprio arquivo e
+só as fontes vindas do Google Fonts. O layout é de tela inteira, com navegação
+própria. Ele fica em `docs/arquitetura/index.html`. O MkDocs copia arquivos que
+não são Markdown sem passar pelo tema, então o mesmo `deploy.yml` publica o
+mapa em `<site>/arquitetura/`, sem o cabeçalho nem o menu do Material. A nav
+do Showcase ganha uma entrada que aponta para ele.
+
+Cada card do mapa cita os arquivos de onde saiu. O mapa só é publicado quando
+todo caminho citado existe na `main`. Citação de arquivo inexistente sai do
+card, em vez de ficar à espera de uma página que ninguém assumiu.
+
+Alternativas descartadas:
+
+- Repositório ou GitHub Pages separado: duplica deploy e endereço sem ganho.
+- Página `.md` com `iframe`: herda a largura do tema e perde a tela cheia do
+  mapa.
+- Commit direto no branch `gh-pages`: o `mkdocs gh-deploy --force` reescreve
+  o branch a cada push, e o arquivo sumiria.
+
 ## Risks / Trade-offs
 
 - [O site envelhece de novo até 16/10] → a data de atualização fica no topo de
@@ -156,6 +177,8 @@ B do roteiro.
   e D6 também vão para `docs/pendencias.md` e são combinados com o grupo.
 - [A rodada da tag falha num caso do roteiro] → o roteiro troca o caso por
   outro que passou na mesma rodada, sem mudar a regra para o caso passar.
+- [O mapa envelhece em relação ao código] → cada card cita o arquivo de
+  origem, e a verificação da seção 7 confere que todo caminho citado existe.
 - [Vídeo grava antes do corte do deck e conta outra história] → o roteiro do
   vídeo sai do mesmo conteúdo da apresentação de 10 minutos.
 - [Relatório técnico diverge do portfólio] → D11: o portfólio vence.

@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mapa da Dona Checa</title>
+<meta name="description" content="Mapa navegável da arquitetura da Dona Checa, em faixas: quem usa, tela, servidor, linha da verificação, bastidores, serviços externos, dados e infraestrutura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700;800&display=swap">
+<!--
+  Mapa da arquitetura da Dona Checa (change add-portfolio-showcase, D9).
+  Layout próprio: faixas horizontais, a verificação como linha de metrô com ramais
+  de saída, navegação lateral e fluxos narrados pela Dona Checa.
+  O motor de câmera, setas e destaque partiu do mapa do grupo 5, FOMO + VeritAI
+  (https://fomo-veritai.github.io/fomo/arquitetura.html).
+  Cada card cita o arquivo de onde saiu; número que aparece aqui está no código ou no manifesto.
+-->
+<style>
+:root{
+  --bg:#F3F7F6; --lane:#FFFFFF; --lane-alt:#EEF3F2; --paper:#FFFFFF; --ink:#1C2B2E; --muted:#3D4F52; --line:#C3D3D0;
+  --teal:#0F5E63; --coral:#E0573B; --amber:#F2A93B; --cream:#FFE7A8; --mint:#D3ECE8;
+  --shadow:0 6px 18px rgba(15,94,99,.12);
+  --font:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --display:'Bricolage Grotesque','DM Sans',system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1617; --lane:#122224; --lane-alt:#0E1C1E; --paper:#16292B; --ink:#EEF3F2; --muted:#A9BDBA; --line:#2E4A4C;
+  --teal:#5FB3B8; --coral:#F07A60; --mint:#1F3B3D; --shadow:0 6px 18px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1617; --lane:#122224; --lane-alt:#0E1C1E; --paper:#16292B; --ink:#EEF3F2; --muted:#A9BDBA; --line:#2E4A4C;
+  --teal:#5FB3B8; --coral:#F07A60; --mint:#1F3B3D; --shadow:0 6px 18px rgba(0,0,0,.35); color-scheme:dark}
+
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);overflow:hidden}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.app{height:100%;display:grid;grid-template-columns:268px 1fr}
+
+/* Barra lateral */
+.side{display:flex;flex-direction:column;gap:18px;min-height:0;overflow:auto;padding:20px 16px 16px;background:#0F5E63;color:#FFFFFF}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.brand svg{width:72px;height:72px;border-radius:50%;box-shadow:0 0 0 4px #FFE7A8}
+.brand h1{margin:0;font:800 25px/1.02 var(--display);letter-spacing:-.015em}
+.brand p{margin:0;font:500 12.5px/1.35 var(--font);color:#FFE7A8}
+.grp h2{margin:0 0 8px;font:800 11px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:#FFE7A8}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{display:flex;align-items:baseline;gap:10px;width:100%;padding:7px 10px;border:0;border-radius:10px;background:transparent;color:#FFFFFF;text-align:left;font:600 14px/1.25 var(--font)}
+.nav button:hover{background:rgba(255,255,255,.12)}
+.nav button[aria-current="true"]{background:#FFE7A8;color:#1C2B2E}
+.nav .n{font:800 12px/1 var(--mono);opacity:.75;min-width:18px}
+.nav small{display:block;font:500 11.5px/1.3 var(--font);opacity:.8}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;background:transparent;color:#FFFFFF;font:700 12.5px var(--font)}
+.pill:hover{background:rgba(255,255,255,.12)}
+.pill[aria-pressed="true"]{background:#FFFFFF;color:#0F5E63;border-color:#FFFFFF}
+.zoom{display:flex;align-items:center;gap:6px;margin-top:auto}
+.zoom button{width:32px;height:32px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;background:transparent;color:#FFFFFF;font:700 17px/1 var(--font)}
+.zoom output{flex:1;text-align:center;font:700 12px var(--mono);font-variant-numeric:tabular-nums}
+.credit{margin:0;font:500 11px/1.35 var(--font);color:rgba(255,255,255,.75)}
+.credit a{color:inherit}
+.menu{display:none}
+
+/* Palco */
+.stage{position:relative;min-width:0;min-height:0;overflow:hidden}
+#vp{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;background:var(--bg)}
+#vp.grabbing{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+#edges{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:1}
+
+/* Faixas */
+.lane{position:absolute;background:var(--lane);border-radius:28px;border:1px solid var(--line)}
+.lane.alt{background:var(--lane-alt)}
+.lane.dashed{border:2px dashed var(--line)}
+.lhead{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:220px;padding:0;border:0;background:none;text-align:left;color:var(--ink)}
+.lhead .ln{font:800 54px/.9 var(--display);color:var(--teal);letter-spacing:-.03em}
+.lhead b{font:800 24px/1.05 var(--display);letter-spacing:-.01em}
+.lhead small{font:500 12.5px/1.35 var(--font);color:var(--muted)}
+.lhead i{font:700 10.5px/1 var(--font);font-style:normal;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--mint);color:var(--ink)}
+.lhead:hover i{background:#FFE7A8;color:#1C2B2E}
+.far .lhead{transform:scale(2.4);transform-origin:0 0}
+.far .lhead small,.far .lhead i{display:none}
+
+/* Cards: cartões com faixa de cor no topo */
+.card{position:absolute;z-index:2;display:flex;flex-direction:column;gap:6px;padding:14px 16px 15px;text-align:left;
+  background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-top:6px solid var(--teal);border-radius:16px;box-shadow:var(--shadow);
+  transition:opacity .25s,transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px)}
+.card.sel{box-shadow:0 0 0 4px var(--coral),var(--shadow)}
+.card.dim{opacity:.18}
+.card > span{display:block}
+.eb{display:flex!important;align-items:center;gap:6px;font:700 10.5px/1.2 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eb svg{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ttl{font:800 17px/1.15 var(--font);letter-spacing:-.01em;text-wrap:balance}
+.tx{font:400 12.5px/1.45 var(--font)}
+.chips{display:flex!important;flex-wrap:wrap;gap:4px;margin-top:2px}
+.chip{font:600 10.5px/1 var(--mono);padding:4px 7px;border-radius:6px;background:var(--lane-alt);color:var(--ink)}
+.farl{display:none!important}
+
+.card.k-pessoa{flex-direction:row;align-items:flex-start;gap:12px;border:0;border-radius:999px 26px 26px 999px;background:#FFE7A8;color:#1C2B2E;padding:14px 20px 14px 14px}
+.card.k-pessoa .av{flex:none;width:52px;height:52px;border-radius:50%;background:#0F5E63;display:grid;place-items:center}
+.card.k-pessoa .av svg{width:28px;height:28px;stroke:#FFE7A8;fill:none;stroke-width:2}
+.card.k-pessoa .pb2{display:flex;flex-direction:column;gap:5px}
+.card.k-pessoa .eb{color:#3D4F52}
+.card.k-pessoa .chip{background:#FFFFFF;color:#1C2B2E}
+.card.k-tela{border-radius:20px 20px 20px 4px}
+.card.k-rota,.card.k-seg,.card.k-regra{border-top-color:var(--ink);border-radius:10px}
+.card.k-llm{border-top-color:var(--coral)}
+.card.k-llm .eb{color:var(--coral)}
+.card.k-comp{border-top-color:var(--teal)}
+.card.k-banco,.card.k-dados{background:var(--mint);border-top-color:var(--amber)}
+.card.k-infra{border-top-color:var(--muted);border-radius:10px}
+.card.k-externo{background:transparent;border:2px dashed var(--muted);box-shadow:none}
+.card.k-plano{border:2px dashed var(--amber);border-top:6px solid var(--amber);background:repeating-linear-gradient(135deg,var(--paper) 0 12px,var(--lane-alt) 12px 24px)}
+.card.k-saida{flex-direction:row;align-items:center;gap:10px;border:0;border-radius:999px;background:#F2A93B;color:#1C2B2E;padding:10px 18px 10px 12px;box-shadow:none}
+.card.k-saida .x{flex:none;width:30px;height:30px;border-radius:50%;background:#1C2B2E;color:#F2A93B;display:grid;place-items:center;font:800 15px/1 var(--font)}
+.card.k-saida .ttl{font-size:14px}
+.card.k-saida .tx{font-size:11.5px;line-height:1.3}
+.card.k-saida .sb{display:flex;flex-direction:column;gap:2px}
+
+/* Estações da linha */
+.card.k-etapa{align-items:center;gap:10px;padding:0;border:0;background:none;box-shadow:none}
+.card.k-etapa:hover{transform:none}
+.stop{display:grid!important;place-items:center;width:110px;height:110px;border-radius:50%;background:var(--paper);border:10px solid var(--teal);box-sizing:border-box;transition:transform .15s}
+.card.k-etapa.llm .stop{border-color:var(--coral)}
+.stop b{font:800 44px/1 var(--display);color:var(--ink)}
+.card.k-etapa:hover .stop{transform:scale(1.06)}
+.sbox{display:flex!important;flex-direction:column;gap:5px;width:100%;box-sizing:border-box;padding:12px 14px 13px;background:var(--paper);border:1.5px solid var(--line);border-radius:16px;box-shadow:var(--shadow);text-align:center}
+.sbox .eb{justify-content:center}
+.sbox .ttl{font:800 21px/1.05 var(--display)}
+.card.k-etapa.sel{box-shadow:none}
+.card.k-etapa.sel .stop{box-shadow:0 0 0 6px var(--coral)}
+
+.tbl{display:grid!important;grid-template-columns:auto 1fr;gap:4px 10px;margin-top:2px;font:500 11.5px/1.3 var(--font)}
+.tbl b{font-weight:800}
+.tbl code{font:600 11px var(--mono)}
+.tbl i{display:block;font-style:normal;color:var(--muted)}
+.flow{display:flex!important;flex-wrap:wrap;align-items:center;gap:4px;margin-top:2px}
+.st{font:700 11px/1 var(--font);padding:5px 8px;border-radius:999px;background:var(--lane-alt)}
+.st.pub{background:#0F5E63;color:#FFFFFF}
+.fa{font:700 12px/1 var(--font);color:var(--muted)}
+
+/* Zoom semântico */
+.far .card:not(.k-etapa) > :not(.farl){visibility:hidden}
+.far .card .farl{display:flex!important;position:absolute;inset:0;align-items:center;justify-content:center;padding:8px 14px;text-align:center;
+  font:800 40px/1.02 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.far .card.k-etapa .sbox{visibility:hidden}
+.far .card.k-etapa .farl{inset:auto 0 0 0;top:120px;align-items:flex-start;font-size:44px}
+.far .elabel{opacity:0}
+
+/* Setas */
+.edge{fill:none;stroke:var(--muted);stroke-width:1.8;transition:opacity .25s}
+.e-acao{stroke:var(--ink);stroke-width:3.2}
+.e-http{stroke:var(--ink);stroke-width:2.2}
+.e-dados{stroke:var(--teal);stroke-width:2.2;stroke-dasharray:8 6}
+.e-build{stroke:var(--muted);stroke-width:2.6;stroke-dasharray:1 7;stroke-linecap:round}
+.e-opcional{stroke:var(--muted);stroke-dasharray:6 6}
+.e-llm{stroke:var(--coral);stroke-width:2;stroke-dasharray:2 5;stroke-linecap:round}
+.e-trilho{stroke:var(--teal);stroke-width:14;stroke-linecap:round}
+.e-ramal{stroke:var(--amber);stroke-width:7;stroke-linecap:round}
+.edge.hot{stroke:var(--coral);stroke-width:3.4;stroke-dasharray:10 7;stroke-linecap:butt;animation:flow .9s linear infinite}
+.edge.e-trilho.hot,.edge.e-ramal.hot{stroke-width:14;stroke-dasharray:22 12}
+.edge.dim{opacity:.12}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.ah-ink path{fill:var(--ink)} .ah-muted path{fill:var(--muted)} .ah-teal path{fill:var(--teal)} .ah-hot path{fill:var(--coral)}
+.elabel{position:absolute;z-index:3;transform:translate(-50%,-50%);width:max-content;max-width:var(--lw,150px);padding:2px 7px;
+  background:var(--paper);border-radius:6px;font:600 italic 11.5px/1.28 var(--font);color:var(--muted);text-align:center;pointer-events:none;transition:opacity .25s}
+.elabel.hot{background:#FFE7A8;color:#1C2B2E;font-style:normal}
+.elabel.dim{opacity:.12}
+
+/* Ficha de detalhes */
+.panel{position:absolute;top:0;bottom:0;z-index:15;width:min(440px,100%);background:var(--paper);overflow:auto;overscroll-behavior:contain;box-shadow:-12px 0 30px rgba(0,0,0,.12)}
+#drawer{right:0}
+#decs{left:0;width:min(400px,100%);box-shadow:12px 0 30px rgba(0,0,0,.12)}
+.ph{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 20px;background:#0F5E63;color:#FFFFFF;z-index:1}
+.ph b{font:800 19px/1 var(--display)}
+.x-close{width:34px;height:34px;border:1.5px solid #FFFFFF;border-radius:50%;background:transparent;color:#FFFFFF;font:700 18px/1 var(--font)}
+.pb{padding:18px 22px 28px}
+.d-eb{margin:0 0 6px;font:700 11px/1.3 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pb h2{margin:0 0 10px;font:800 27px/1.05 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.lead{margin:0 0 6px;font:500 15px/1.5 var(--font)}
+.sec{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.sec h3{margin:0 0 8px;font:800 11px/1.2 var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.sec p{margin:0;font:400 14px/1.55 var(--font);max-width:62ch}
+.sec ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font:400 14px/1.5 var(--font)}
+.sec ul.num li{font-variant-numeric:tabular-nums}
+.sec code,.codes code{font:600 12px var(--mono);background:var(--lane-alt);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+.codes{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.io{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.io > div{min-width:0;background:var(--lane-alt);padding:10px 12px;border-radius:12px}
+.io ul{padding-left:16px;font-size:13px}
+.links{display:flex;flex-direction:column;gap:6px}
+.lk{display:flex;gap:8px;align-items:flex-start;width:100%;text-align:left;padding:8px 10px;border:0;border-radius:12px;background:var(--lane-alt)}
+.lk:hover{background:var(--mint)}
+.lk .dir{font:800 14px/1.2 var(--font);width:16px;flex:none;color:var(--teal)}
+.lk span{display:block;min-width:0}
+.lk b{display:block;font:700 13px/1.3 var(--font)}
+.lk small{display:block;font:500 12px/1.35 var(--font);color:var(--muted)}
+.tag{display:inline-block;font:700 10.5px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:#FFE7A8;color:#1C2B2E}
+.dgroup{margin-top:18px}
+.dgroup h3{margin:0 0 8px;font:800 18px/1 var(--display);color:var(--teal)}
+.ditem{display:block;width:100%;text-align:left;padding:10px 12px;margin-bottom:6px;border:0;border-left:5px solid var(--teal);border-radius:4px 12px 12px 4px;background:var(--lane-alt)}
+.ditem:hover{background:var(--mint)}
+.ditem b{display:block;font:800 14px/1.25 var(--font)}
+.ditem span{display:block;margin-top:3px;font:400 13px/1.45 var(--font);color:var(--muted)}
+
+/* Fluxo narrado pela Dona Checa */
+#guide{position:absolute;z-index:12;left:20px;right:20px;bottom:20px;display:flex;align-items:flex-end;gap:12px;max-width:760px;pointer-events:none}
+#guide > *{pointer-events:auto}
+#guide .gav{flex:none;width:64px;height:64px;border-radius:50%;box-shadow:0 0 0 4px #FFE7A8,var(--shadow)}
+.bubble{flex:1;min-width:0;background:var(--paper);border-radius:22px 22px 22px 6px;padding:14px 18px 14px;box-shadow:0 12px 30px rgba(0,0,0,.18);border:1.5px solid var(--line)}
+.bh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+.bh b{font:800 13px/1.2 var(--font);color:var(--teal)}
+.bh span{font:700 12px var(--mono);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.cap{margin:0 0 12px;font:500 16px/1.45 var(--font);max-width:66ch}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ctl .bar2{flex:1;min-width:60px;height:6px;border-radius:999px;background:var(--lane-alt);overflow:hidden}
+.ctl .bar2 i{display:block;height:100%;background:var(--coral);border-radius:999px;transition:width .3s}
+.gb{height:34px;padding:0 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);font:700 13px var(--font)}
+.gb:disabled{opacity:.4;cursor:default}
+.gb.primary{background:#0F5E63;color:#FFFFFF;border-color:#0F5E63}
+.gb.link{border:0;background:none;text-decoration:underline;text-underline-offset:3px}
+
+/* Legenda */
+#legend{position:absolute;z-index:13;right:16px;top:16px;width:280px;background:var(--paper);border-radius:18px;padding:14px 16px;box-shadow:0 12px 30px rgba(0,0,0,.18);font:500 12px/1.3 var(--font)}
+#legend h3{margin:0 0 8px;font:800 11px/1.2 var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.lg{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:6px 10px;margin-bottom:12px}
+.lg svg{width:44px;height:14px;overflow:visible}
+.sw{width:34px;height:18px;box-sizing:border-box;border-radius:6px;background:var(--paper);border:1.5px solid var(--line);border-top:5px solid var(--teal)}
+.sw.k-pessoa{border:0;border-radius:999px;background:#FFE7A8}
+.sw.k-rota{border-top-color:var(--ink)}
+.sw.k-llm{border-top-color:var(--coral)}
+.sw.k-dados{background:var(--mint);border-top-color:var(--amber)}
+.sw.k-externo{border:1.5px dashed var(--muted)}
+.sw.k-plano{border:1.5px dashed var(--amber);border-top:5px solid var(--amber)}
+.sw.k-saida{border:0;border-radius:999px;background:#F2A93B}
+.sw.k-etapa{width:18px;border-radius:50%;border:4px solid var(--teal)}
+.lgnote{margin:0;color:var(--muted);font-size:11.5px}
+
+@media (max-width:760px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .side{position:fixed;inset:0 25% 0 0;z-index:30;transform:translateX(-102%);transition:transform .25s;box-shadow:12px 0 30px rgba(0,0,0,.3)}
+  .side.open{transform:none}
+  .menu{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#0F5E63;color:#FFFFFF}
+  .menu button{height:36px;padding:0 14px;border:1.5px solid #FFFFFF;border-radius:999px;background:transparent;color:#FFFFFF;font:700 14px var(--font)}
+  .menu b{font:800 18px/1 var(--display)}
+  .panel{top:auto;height:64%;width:100%;border-radius:22px 22px 0 0}
+  #decs{width:100%}
+  #guide{left:10px;right:10px;bottom:10px}
+  #guide .gav{width:44px;height:44px}
+  .cap{font-size:14.5px}
+  #legend{right:8px;top:8px;width:240px}
+}
+@media (prefers-reduced-motion:reduce){.edge.hot{animation:none}.card,.stop{transition:none}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="100" fill="#0F5E63"/>
+    <g transform="translate(14 14) scale(0.86)">
+    <path d="M38 200 Q44 170 100 166 Q156 170 162 200 Z" fill="#F2A93B"/>
+    <circle cx="100" cy="30" r="22" fill="#16292B"/>
+    <path d="M80 20 L124 42" stroke="#F2A93B" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="124" cy="42" r="4" fill="#F2A93B"/>
+    <ellipse cx="100" cy="96" rx="64" ry="60" fill="#16292B"/>
+    <ellipse cx="100" cy="112" rx="48" ry="54" fill="#FFD3B0"/>
+    <path d="M52 96 Q58 50 100 48 Q142 50 148 96 Q134 66 100 64 Q70 66 52 96 Z" fill="#16292B"/>
+    <circle cx="53" cy="140" r="5" fill="#FFFFFF" stroke="#1C2B2E" stroke-width="2"/>
+    <circle cx="147" cy="140" r="5" fill="#FFFFFF" stroke="#1C2B2E" stroke-width="2"/>
+    <circle cx="72" cy="144" r="7" fill="#F2A93B" fill-opacity="0.4"/>
+    <circle cx="128" cy="144" r="7" fill="#F2A93B" fill-opacity="0.4"/>
+    <path d="M68 90 Q80 84 92 90" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M108 82 Q121 69 135 79" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="81" cy="102" r="4.5" fill="#1C2B2E"/>
+    <circle cx="121" cy="100" r="4.5" fill="#1C2B2E"/>
+    <path d="M60 128 Q46 164 62 196" stroke="#F2A93B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="0.1 6"/>
+    <path d="M140 128 Q154 164 138 196" stroke="#F2A93B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="0.1 6"/>
+    <path d="M60 116 L50 106 L68 113 Z" fill="#1C2B2E"/>
+    <path d="M140 116 L150 106 L132 113 Z" fill="#1C2B2E"/>
+    <rect x="60" y="113" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+    <rect x="104" y="113" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+    <path d="M96 123 Q100 118 104 123" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M90 153 Q101 159 112 150" stroke="#1C2B2E" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="app">
+  <div class="menu"><button type="button" id="bMenu" aria-expanded="false" aria-controls="side">☰ Menu</button><b>Mapa da Dona Checa</b></div>
+  <nav class="side" id="side" aria-label="Navegação do mapa">
+    <div class="brand">
+      <svg role="img" aria-label="Dona Checa"><use href="#logo"/></svg>
+      <h1>Mapa da Dona Checa</h1>
+      <p>Arquitetura do copiloto de verificação · Grupo 04 · Residência em IA</p>
+    </div>
+    <div class="grp"><h2>Faixas</h2><div class="nav" id="navLanes"></div></div>
+    <div class="grp"><h2>Fluxos guiados</h2><div class="nav" id="navTours"></div></div>
+    <div class="grp"><h2>Explorar</h2>
+      <div class="acts">
+        <button class="pill" id="bDecs" type="button" aria-pressed="false">Decisões <span id="nDecs"></span></button>
+        <button class="pill" id="bLeg" type="button" aria-pressed="false">Legenda</button>
+        <button class="pill" id="bFit" type="button">Ver tudo</button>
+        <button class="pill" id="bFull" type="button" hidden>Tela cheia</button>
+      </div>
+    </div>
+    <div class="zoom" role="group" aria-label="Zoom">
+      <button type="button" id="zOut" aria-label="Afastar">−</button>
+      <output id="zVal">100%</output>
+      <button type="button" id="zIn" aria-label="Aproximar">+</button>
+    </div>
+    <p class="credit">Arraste para mover, role para aproximar, clique nos cards. Estado do código em 15/10/2026. Motor de navegação a partir do mapa do grupo 5, <a href="https://fomo-veritai.github.io/fomo/arquitetura.html">FOMO + VeritAI</a>.</p>
+  </nav>
+
+  <div class="stage" id="stage">
+    <div id="vp" aria-label="Mapa da arquitetura. Arraste para mover e role para aproximar.">
+      <div id="world">
+        <svg id="edges" aria-hidden="true">
+          <defs>
+            <marker id="ah-ink" class="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="ah-muted" class="ah-muted" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="ah-teal" class="ah-teal" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="ah-hot" class="ah-hot" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div id="legend" hidden>
+      <h3>Cards</h3>
+      <div class="lg">
+        <span class="sw k-pessoa"></span><span>Pessoa</span>
+        <span class="sw"></span><span>Tela ou componente</span>
+        <span class="sw k-rota"></span><span>Rota, regra ou segurança do servidor</span>
+        <span class="sw k-llm"></span><span>Chama o modelo de linguagem</span>
+        <span class="sw k-etapa"></span><span>Estação da verificação (coral: usa o modelo)</span>
+        <span class="sw k-saida"></span><span>Saída antecipada</span>
+        <span class="sw k-dados"></span><span>Dado, índice ou documento</span>
+        <span class="sw k-externo"></span><span>Serviço externo</span>
+        <span class="sw k-plano"></span><span>Planejado, ainda não implantado</span>
+      </div>
+      <h3>Linhas</h3>
+      <div class="lg" id="lgEdges"></div>
+      <p class="lgnote">A seta vai de quem envia para quem recebe. O rótulo diz o que passa.</p>
+    </div>
+
+    <aside class="panel" id="decs" hidden aria-label="Decisões de arquitetura">
+      <div class="ph"><b>Decisões</b><button class="x-close" type="button" data-close="decs" aria-label="Fechar decisões">×</button></div>
+      <div class="pb" id="decsBody"></div>
+    </aside>
+
+    <aside class="panel" id="drawer" hidden aria-label="Detalhes">
+      <div class="ph"><b id="drawerKind">Detalhes</b><button class="x-close" type="button" data-close="drawer" aria-label="Fechar detalhes">×</button></div>
+      <div class="pb" id="drawerBody"></div>
+    </aside>
+
+    <section id="guide" hidden aria-live="polite"></section>
+  </div>
+</div>
+
+<script>
+(() => {
+'use strict';
+const W = 3560, H = 3800;
+
+const ZONES = {
+  pessoas: {n:'01', y:40,   h:360, t:'Quem usa', s:'pessoas e papéis', st:['Navegador comum, sem instalar nada','Sem conta e sem login','Modo uso para o público; modo piloto para as sessões do grupo']},
+  front:   {n:'02', y:420,  h:400, t:'Na tela', s:'página do chat, no navegador', repo:'interface/estatico/', st:['HTML, CSS e JavaScript puros, sem build','fetch com leitura do stream de eventos','DM Sans e Bricolage Grotesque, paleta da Dona Checa','Nada guardado no navegador: termo e pergunta de confiança ficam só na memória da página']},
+  api:     {n:'03', y:840,  h:600, t:'No servidor', s:'FastAPI, Python 3.14', repo:'interface/', st:['Python 3.14.6, FastAPI e Uvicorn, um processo só','Pydantic: corpo do pedido','StreamingResponse com text/event-stream','threading: uma verificação por vez, com prazo','Configuração só por variável de ambiente']},
+  linha:   {n:'04', y:1460, h:520, t:'Linha da verificação', s:'sete estações, com saídas antecipadas', repo:'bancada/pipeline.py', st:['Uma função, executar, usada pelo chat e pela bancada','Rastro por etapa: onde parou e por quê','Estações em coral chamam o modelo de linguagem']},
+  bastidor:{n:'05', y:2000, h:580, t:'Bastidores', s:'o que as estações usam', repo:'prototipo/', st:['Gerador: deepseek-v4-pro pela API, ou gemma4:12b-it-qat no Ollama','Busca léxica: rank-bm25 (BM25 Okapi), construída em memória','Busca densa: sentence-transformers com intfloat/multilingual-e5-base, PyTorch','Fusão linear com α = 0,9, produto escalar em NumPy, sem banco vetorial','Leitura de links: httpx com guarda SSRF e trafilatura','Testes: pytest, 861 passando']},
+  ext:     {n:'06', y:2600, h:300, t:'Lá fora', s:'serviços externos', dashed:true, st:['API DeepSeek: geração no modo uso','Ollama local: geração no modo piloto','Sites de notícia: páginas dos links colados','Hugging Face Hub: pesos do e5-base','Agências de checagem: origem do acervo']},
+  dados:   {n:'07', y:2920, h:440, t:'Dados e avaliação', s:'como o acervo e os números foram feitos', repo:'datasets/ · tratamento/ · bancada/', st:['pandas e jsonschema na construção do índice','tratamento/: integridade, vereditos e frescor dos datasets','Jupyter: EDA e aferição da recuperação','bancada/: 35 casos com gravação e replay','prototipo/avaliacao/: instrumento das sessões com pessoas']},
+  infra:   {n:'08', y:3380, h:400, t:'Infraestrutura', s:'da demo ao portfólio', repo:'.github/ · openspec/', st:['MacBook Air M4 com Python 3.14.6 e Ollama (Metal)','GitHub: repositório, pull requests e tag da demo','GitHub Actions e GitHub Pages: portfólio em MkDocs','OpenSpec: spec antes de código','Hospedagem pública: em avaliação']},
+};
+
+const I = {
+  pessoa:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+  tela:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/>',
+  rota:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+  seg:'<rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  regra:'<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6h4l3 4M8.5 18h4l3-4"/>',
+  comp:'<circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/>',
+  llm:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>',
+  banco:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+  dados:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',
+  infra:'<rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/>',
+  externo:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  plano:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/>',
+};
+
+// Grade: colunas de 280 px a cada 320 px a partir de x = 300 (faixas 05 a 08) ou 420 (faixas 01 a 03).
+// Estações da linha: centros em 680, 1120, 1560, 2000, 2440, 2880 e 3320.
+const CARDS = [
+// 01 Quem usa
+{id:'p-pessoa',k:'pessoa',z:'pessoas',x:420,y:110,w:330,eb:'Pessoa',t:'Quem recebeu a mensagem',far:'Pessoa',
+ tx:'Cola a mensagem ou o link que chegou no WhatsApp e recebe veredito, critério e fonte.',ch:['sem login','termo v3'],
+ faz:'Abre a página, aceita ou recusa o termo, cola o que recebeu e acompanha a Dona Checa lendo. Recebe quatro blocos curtos e pode abrir «Ver fontes e detalhes» para conferir agência, data e link.',
+ entra:['Resposta em quatro blocos','Fontes com agência, data e link'],sai:['Mensagem ou link','Escolha no termo de consentimento'],
+ pq:['Veredito nunca nu: vem com o critério e com a fonte, que a pessoa pode conferir.','A métrica principal é o ganho de discernimento: a pessoa acertar depois, sem a ferramenta.'],
+ cod:['openspec/project.md · revisão de 10/09/2026']},
+{id:'p-piloto',k:'pessoa',z:'pessoas',x:1100,y:110,w:330,eb:'Pessoa',t:'Participante do piloto',far:'Piloto',
+ tx:'Usa o chat no modo piloto, numa sessão conduzida pelo grupo.',ch:['modo piloto','2 pessoas, 08/10'],
+ faz:'No modo piloto, a pergunta de confiança some da página e o rodapé indica a sessão. O gerador padrão é o local. As respostas da sessão vão para o instrumento de avaliação, não para o servidor do chat.',
+ entra:['Estímulos do piloto'],sai:['Respostas registradas no instrumento'],
+ pq:['A sessão mede discernimento e transferência sem a ferramenta.','n = 2 e sem linha de base: valida o instrumento, não o efeito.'],
+ cod:['interface/config.py · piloto','prototipo/avaliacao/']},
+{id:'p-grupo',k:'pessoa',z:'pessoas',x:3120,y:110,w:330,eb:'Pessoa',t:'Grupo 04',
+ tx:'Sobe a demo, roda a bancada e decide o que muda, sempre por change no OpenSpec.',ch:['bancada','OpenSpec'],
+ faz:'Antes da apresentação, faz checkout da tag da demo, aquece o índice e segue o roteiro. Cada mudança de comportamento começa num change com spec, design e tasks.',
+ sai:['Changes, código e rodadas da bancada'],
+ pq:['Spec antes de implementação: divergência se resolve atualizando o change, nunca ajustando a spec ao que já foi feito.'],
+ cod:['CLAUDE.md · Metodologia','docs/showcase/roteiro-demo.md']},
+
+// 02 Na tela
+{id:'f-termo',k:'tela',z:'front',x:420,y:480,w:280,eb:'Componente',t:'Termo de consentimento',far:'Termo',
+ tx:'Vem antes do campo quando o gerador é remoto. A escolha fica só na página e vai em cada pedido.',ch:['versão 3','LGPD'],
+ faz:'Explica que o texto vai à API da DeepSeek, já sem e-mail, CPF e telefone. A pessoa aceita, recusa ou, se o servidor oferecer, usa a alternativa local. Sem escolha, o campo fica bloqueado.',
+ entra:['Texto e versão do termo, injetados pelo servidor'],sai:['consentimento: "3" ou "recusado"'],
+ pq:['Nada vai ao serviço externo sem aceite da versão atual.','A escolha não é guardada no navegador.'],
+ cod:['interface/estatico/chat.js · termo','docs/interface/parecer-termo-lgpd.md']},
+{id:'f-pagina',k:'tela',z:'front',x:760,y:480,w:280,eb:'Tela',t:'Página do chat',far:'Página',
+ tx:'Abertura, campo «Cole aqui o que você recebeu» e conversa em bolhas.',ch:['index.html','chat.js'],
+ faz:'O servidor injeta na página a configuração, os textos da persona, a pergunta de confiança e o termo. O envio vai por POST, com o texto no corpo, e a página lê a resposta em streaming.',
+ entra:['Página com configuração injetada'],sai:['POST /verificar com texto e consentimento'],
+ pq:['Sem build e sem framework: a página é servida como está.','Texto no corpo, nunca na URL, para não aparecer em log de acesso.'],
+ cod:['interface/estatico/index.html','interface/estatico/chat.js']},
+{id:'f-andamento',k:'tela',z:'front',x:1100,y:480,w:280,eb:'Componente',t:'Andamento ao vivo',far:'Andamento',
+ tx:'Cada evento muda a frase: «Dona Checa está lendo…», «Abrindo o link…», conferindo.',ch:['eventos SSE'],
+ faz:'Lê os eventos data: um a um. fronteira chega primeiro; andamento anuncia a etapa seguinte; o último evento é resposta, aviso ou erro. Erro mostra «Tentar de novo».',
+ entra:['Eventos JSON, um por linha'],sai:['Bolha da Dona Checa atualizada'],
+ pq:['A verificação leva de 10 a 20 segundos: mostrar a etapa evita a sensação de travamento.'],
+ cod:['interface/estatico/chat.js · tratar']},
+{id:'f-confianca',k:'tela',z:'front',x:1440,y:480,w:280,eb:'Componente',t:'Pergunta de confiança',far:'Confiança',
+ tx:'Enquanto confere, a Dona Checa pergunta quanto a pessoa confia na mensagem. Só no modo uso.',ch:['só no navegador'],
+ faz:'Aparece junto do bordão, antes da resposta, e some em pedido de conduta. A resposta fica na memória da página: não vai ao servidor nem ao armazenamento do navegador.',
+ pq:['Convida a pessoa a pensar no próprio julgamento, sem coletar dado.'],
+ cod:['interface/estatico/chat.js · conferindo','prototipo/identidade/']},
+{id:'f-resposta',k:'tela',z:'front',x:1780,y:480,w:280,eb:'Componente',t:'Resposta em quatro blocos',far:'Resposta',
+ tx:'Veredito, o que se sabe, por que engana, o que observar. «Ver fontes e detalhes» abre agência, data e link.',ch:['até 120 palavras'],
+ faz:'Sem evidência, os blocos mudam: o que foi procurado, por que isso não quer dizer que é falso, o que conferir e onde procurar. Quando o texto veio de um link, o cartão «Li esta página» vem antes das fontes.',
+ entra:['Evento resposta: forma, texto, detalhe, origem'],sai:['Resposta na tela'],
+ pq:['A pessoa vê o critério e a fonte e pode discordar.','«Evidência insuficiente» é um dos quatro rótulos, não um erro.'],
+ cod:['prototipo/resposta/estrutura.py · COM, SEM','interface/estatico/chat.js']},
+{id:'f-fronteira',k:'tela',z:'front',x:2120,y:480,w:280,eb:'Componente',t:'Telas de fronteira',far:'Fronteira',
+ tx:'Urgência: SAMU 192 e UPA. Sofrimento psíquico: CVV 188. Conduta médica: orientação profissional.',ch:['sem a voz da persona'],
+ faz:'Quando a fronteira encerra o fluxo, o único evento é a resposta padrão. Pedido de conduta ou diagnóstico segue o fluxo e recebe um redirecionamento junto da resposta.',
+ pq:['Urgência e CVV não usam a voz da persona: a orientação precisa ser direta.','Acolher antes de recusar, no texto de conduta.'],
+ cod:['openspec/changes/mvp-copiloto-verificacao/specs/fronteira-orientacao-saude/spec.md']},
+{id:'f-identidade',k:'dados',z:'front',x:2460,y:480,w:280,eb:'Identidade',t:'Persona e paleta',far:'Identidade',
+ tx:'Logo, paleta e voz da Dona Checa. Os textos fixos são lidos das specs.',ch:['#0F5E63','4,5:1'],
+ faz:'Verde-azulado, coral, âmbar, creme e tinta. Coral só em elemento gráfico, porque texto sobre coral não passa no contraste de 4,5:1. Bordão: «Peraí, de onde veio isso? Vamos olhar juntos, meu bem.»',
+ cod:['docs/identidade/paleta.md','prototipo/identidade/']},
+
+// 03 No servidor
+{id:'a-get',k:'rota',z:'api',x:420,y:900,w:280,eb:'Rotas',t:'GET / e GET /saude',far:'GET / e /saude',
+ tx:'/ entrega a página com a configuração injetada. /saude responde 503 até o índice carregar.',ch:['no-store','sem OpenAPI'],
+ faz:'GET / monta o index.html com configuração, textos, pergunta de confiança e termo, com Cache-Control: no-store. GET /saude responde {"pronto": true} com 200 depois da carga do índice, e 503 antes. A documentação automática do FastAPI fica desligada.',
+ entra:['Pedido do navegador'],sai:['Página','Estado da carga'],
+ cod:['interface/app.py · _pagina, saude']},
+{id:'a-verificar',k:'rota',z:'api',x:760,y:900,w:280,eb:'Rota',t:'POST /verificar',
+ tx:'Texto no corpo. Resposta em streaming, um evento JSON por linha data:.',ch:['text/event-stream','422 se vazio'],
+ faz:'Recebe {texto, consentimento}, valida que o texto não está vazio e abre um StreamingResponse. O fluxo roda numa thread e empurra eventos numa fila assíncrona.',
+ entra:['Texto e consentimento (JSON)'],sai:['Eventos fronteira, andamento e o final'],
+ cod:['interface/app.py · Pedido, verificar']},
+{id:'a-consent',k:'seg',z:'api',x:1100,y:900,w:280,eb:'Privacidade',t:'Consentimento e minimização',far:'Consentimento',
+ tx:'Sem o termo v3: 403 e nada vai ao gerador. Com aceite: e-mail, CPF e telefone viram marcadores.',ch:['403','minimizar.py'],
+ faz:'Com o gerador remoto, o pedido precisa trazer consentimento "3". Com aceite, o texto passa por minimizar antes de ir à DeepSeek. Com recusa e alternativa local ligada, usa o Ollama com o texto original. Com o gerador local, não há termo nem minimização.',
+ entra:['Consentimento do pedido'],sai:['Gerador escolhido para este pedido','Texto minimizado'],
+ pq:['O que sai da máquina é só o necessário para checar.','Nomes ficam: são parte da alegação.'],
+ cod:['interface/app.py · gerador_do_pedido','prototipo/entrada/minimizar.py']},
+{id:'a-fila',k:'regra',z:'api',x:1440,y:900,w:280,eb:'Regra',t:'Uma verificação por vez',far:'Fila',
+ flow:['pedido','espera a vez','fluxo em thread','resposta*'],
+ faz:'Um semáforo deixa uma verificação por vez. O prazo total é de 300 s; passado o prazo, a página recebe erro e a thread termina sozinha, segurando a vez até acabar.',
+ pq:['O gerador e o índice não foram feitos para pedidos em paralelo; para a demo, previsível vale mais que vazão.'],
+ fora:['Fila de vários pedidos ao mesmo tempo: fica para a hospedagem pública.'],
+ cod:['interface/app.py · Semaphore(1), wait_for']},
+{id:'a-eventos',k:'regra',z:'api',x:1780,y:900,w:280,eb:'Regra',t:'Eventos para a página',far:'Eventos',
+ flow:['fronteira','andamento × N','resposta*','aviso','erro'],
+ faz:'fronteira chega primeiro, exceto quando ela encerra o fluxo. andamento anuncia cada etapa. O final é um só: resposta, aviso com a causa (leitura, conduta, sem alegação) ou erro.',
+ pq:['Um evento final por verificação: a página sabe quando parar de ler.'],
+ cod:['interface/fluxo.py · verificar']},
+{id:'a-log',k:'seg',z:'api',x:2120,y:900,w:280,eb:'Segurança',t:'Log sem conteúdo',far:'Log',
+ tx:'O log registra só o tipo da exceção. O texto da pessoa e as URLs não entram.',ch:['logging'],
+ pq:['Mensagem de saúde é dado sensível: o log não precisa dela para depurar.'],
+ cod:['interface/app.py','prototipo/entrada/rede.py']},
+{id:'a-config',k:'seg',z:'api',x:1100,y:1150,w:280,eb:'Configuração',t:'Só por ambiente',far:'Configuração',
+ tbl:[['Modo','<code>DONA_CHECA_MODO</code> <i>uso ou piloto</i>'],['Gerador','<code>DONA_CHECA_GERADOR</code>'],['Chave','<code>DEEPSEEK_API_KEY</code> <i>fora do repr</i>'],['Rede','<code>DONA_CHECA_HOST</code> <i>127.0.0.1</i>']],
+ faz:'O modo não tem padrão: sem ele, o servidor não sobe. Com o gerador deepseek, a chave é obrigatória e não aparece em log nem em erro. O prazo de cada verificação vem de DONA_CHECA_TEMPO_MAX, 300 s por padrão.',
+ pq:['Host padrão local: o servidor não fica exposto na rede por engano.','O servidor recusa subir com o termo ainda sem o contato do grupo.'],
+ cod:['interface/config.py','interface/__main__.py']},
+{id:'a-textos',k:'dados',z:'api',x:1780,y:1150,w:280,eb:'Dados',t:'Textos lidos das specs',far:'Textos das specs',
+ tx:'Abertura, bordão, fronteira e interface vêm de openspec/changes/*/specs, em execução.',ch:['spec > código'],
+ faz:'fluxo.py, fronteira.py, leitura.py e identidade/ leem os blocos «Texto» das specs. Arquivar um change muda o caminho, por isso o arquivamento ficou congelado até a apresentação.',
+ pq:['O texto aprovado na spec é o que vai para a tela, sem cópia no código.'],
+ cod:['interface/fluxo.py · SPEC, SOBREPOSICAO','prototipo/identidade/__init__.py']},
+
+// 04 Linha da verificação
+{id:'c-fluxo',k:'comp',z:'linha',x:300,y:1510,w:240,eb:'Partida',t:'Um fluxo, dois usos',far:'Fluxo',
+ tx:'bancada/pipeline.executar roda as sete estações. O chat e a bancada chamam a mesma função.',ch:['rastro por etapa'],
+ faz:'Registra parâmetros, cada etapa, onde parou e por quê. Erro numa etapa fica no rastro e encerra ali, para o defeito aparecer onde nasceu. Modelo, índice e rede são injetados: a bancada troca por versões gravadas.',
+ entra:['Texto da pessoa'],sai:['Rastro com a resposta'],
+ pq:['O que a bancada mede é o que a pessoa recebe.'],
+ cod:['bancada/pipeline.py · executar, ETAPAS']},
+{id:'s1',k:'etapa',llm:true,n:1,z:'linha',x:555,y:1510,w:250,eb:'Estação 1 · modelo',t:'Fronteira',
+ tx:'Regras em PT-BR primeiro, depois o modelo.',
+ faz:'Lê só o que a pessoa escreveu, sem o link. As regras pegam risco imediato e sofrimento psíquico sem chamar o modelo. Conduta, diagnóstico e pergunta geral seguem o fluxo e recebem redirecionamento.',
+ pq:['Saúde tem casos em que checar é o passo errado.'],
+ cod:['prototipo/verificacao/fronteira.py · classificar']},
+{id:'s2',k:'etapa',n:2,z:'linha',x:995,y:1510,w:250,eb:'Estação 2',t:'Leitura do link',
+ tx:'Link e menos de 30 palavras da pessoa: lê a página, até 800 palavras.',
+ faz:'Com texto longo, a mensagem é verificada e o link só fica como origem; se nela não houver alegação, a página é lida depois.',
+ pq:['Quem cola só o link quer saber da página; quem escreve muito quer saber do que escreveu.'],
+ cod:['bancada/pipeline.py · PALAVRAS_TEXTO_CURTO','prototipo/entrada/leitura.py']},
+{id:'s3',k:'etapa',llm:true,n:3,z:'linha',x:1435,y:1510,w:250,eb:'Estação 3 · modelo',t:'Extração',
+ tx:'O modelo lista as alegações; o código escolhe a de maior risco.',
+ faz:'Separa alegação de opinião. Sem alegação verificável de saúde, o fluxo para e a página recebe o aviso.',
+ pq:['Uma alegação por resposta: a pessoa aprende a checar uma coisa de cada vez.'],
+ cod:['prototipo/verificacao/extracao.py']},
+{id:'s4',k:'etapa',llm:true,n:4,z:'linha',x:1875,y:1510,w:250,eb:'Estação 4 · modelo',t:'Decomposição',
+ tx:'Fatos, evidência, opiniões e conclusão. Se falhar, segue sem ela.',
+ faz:'Alimenta o bloco 2, que separa o que é fato do que é opinião. Duas falhas seguidas viram «omitida», não erro.',
+ cod:['prototipo/verificacao/decomposicao.py']},
+{id:'s5',k:'etapa',n:5,z:'linha',x:2315,y:1510,w:250,eb:'Estação 5',t:'Recuperação',
+ tx:'Busca híbrida: os 5 melhores trechos, português antes de inglês.',
+ faz:'Usa a alegação escolhida como consulta. Se nenhum trecho em pt-BR passar de 0,55, devolve a primeira camada não vazia com coberto = não.',
+ cod:['bancada/pipeline.py · _recuperar','prototipo/rag/hibrida.py']},
+{id:'s6',k:'etapa',llm:true,n:6,z:'linha',x:2755,y:1510,w:250,eb:'Estação 6 · modelo',t:'Guarda',
+ tx:'Só classifica com trecho ≥ 0,55 e citável.',
+ faz:'O modelo devolve rótulo, critério e os ids dos trechos. Veredito que cita trecho inexistente é rebaixado. FACTCK.BR entra como referência, nunca como trecho citado.',
+ pq:['Veredito não sai da memória do modelo: sai de uma checagem que a pessoa pode abrir.'],
+ cod:['prototipo/verificacao/guarda.py','prototipo/verificacao/classificacao.py']},
+{id:'s7',k:'etapa',llm:true,n:7,z:'linha',x:3195,y:1510,w:250,eb:'Estação 7 · modelo',t:'Resposta',
+ tx:'Quatro blocos; a abertura do veredito é escrita pelo código.',
+ faz:'Blocos 1 e 2 vêm como pares frase e trecho. Sem âncora depois de uma nova tentativa, o veredito cai para evidência insuficiente e a resposta é refeita. A conferência de sustentação tira frase sem base.',
+ cod:['prototipo/resposta/estrutura.py','prototipo/resposta/conferencia.py']},
+{id:'x-fronteira',k:'saida',z:'linha',x:420,y:1850,w:230,t:'Resposta padrão',tx:'Urgência ou sofrimento: SAMU 192, UPA ou CVV 188.',
+ faz:'O fluxo termina aqui. A página recebe só o texto padrão da fronteira, sem bordão nem pergunta de confiança.',cod:['bancada/pipeline.py · bypass']},
+{id:'x-leitura',k:'saida',z:'linha',x:860,y:1850,w:230,t:'Aviso de leitura',tx:'Página fechada, vídeo, vazia ou não abriu.',
+ faz:'Falha na leitura vira aviso com a causa. Vídeo e WhatsApp são reconhecidos antes de buscar.',cod:['prototipo/entrada/leitura.py','prototipo/entrada/link.py']},
+{id:'x-alegacao',k:'saida',z:'linha',x:1300,y:1850,w:230,t:'Sem alegação',tx:'Nada de saúde para verificar.',
+ faz:'Opinião pura ou assunto fora de saúde encerra com o aviso «sem alegação verificável de saúde».',cod:['bancada/pipeline.py']},
+{id:'x-insuficiente',k:'saida',z:'linha',x:2620,y:1850,w:230,t:'Evidência insuficiente',tx:'Sem trecho forte: segue para a resposta, sem veredito.',
+ faz:'Não é erro: a resposta muda de forma e diz o que foi procurado, por que isso não quer dizer que é falso e onde conferir. O modelo não é chamado para classificar.',
+ pq:['Fora do acervo, a Dona Checa não chuta.'],cod:['prototipo/verificacao/guarda.py','prototipo/resposta/estrutura.py · SEM']},
+
+// 05 Bastidores
+{id:'c-leitura',k:'comp',z:'bastidor',x:980,y:2060,w:280,eb:'Componente',t:'Leitura segura de links',far:'Leitura segura',
+ tx:'Só páginas públicas: resolve o DNS, recusa IP privado e conecta ao IP validado.',ch:['SSRF','2 MB','10 s'],
+ faz:'http e https, portas padrão, sem credencial na URL, até 5 redirecionamentos revalidados. Corpo até 2 MB, também depois de descomprimir. O texto da página vai ao modelo entre marcadores, como conteúdo e não como instrução.',
+ pq:['Um link colado não pode fazer o servidor acessar a rede interna.','Página lida não dá ordens ao modelo.'],
+ cod:['prototipo/entrada/rede.py · BackendSeguro','prototipo/entrada/leitura.py · citar']},
+{id:'c-modelo',k:'llm',z:'bastidor',x:1640,y:2060,w:300,eb:'Modelo de linguagem',t:'Gerador',
+ tx:'deepseek-v4-pro pela API no modo uso; gemma4:12b-it-qat no Ollama no modo piloto.',ch:['JSON','temperatura 0,2','sem treino'],
+ faz:'Todas as estações com modelo usam o mesmo gerador injetado. Saída sempre em JSON, até 1.200 tokens. A DeepSeek tenta de novo uma vez em 429, 500, 502, 503 ou resposta vazia; prazo de 60 s.',
+ pq:['Nenhum modelo treinado para dar veredito: o dataset é acervo para citar, não alvo de classificador.','Com o Gemma local, a mediana era de 102,4 s por mensagem; com a API, 10,9 s.'],
+ num:['Rodada da demo: 117 chamadas, cerca de US$ 0,06 a 0,12'],
+ cod:['prototipo/verificacao/modelo.py · ChatDeepSeek, chat_ollama']},
+{id:'c-recuperador',k:'comp',z:'bastidor',x:2300,y:2060,w:280,eb:'Componente',t:'Recuperador híbrido',far:'Recuperador',
+ tbl:[['Léxico','BM25 Okapi <i>mantém «não»</i>'],['Denso','e5-base <i>produto escalar</i>'],['Fusão','α = 0,9'],['Idioma','pt-BR antes de en']],
+ faz:'Cada braço é normalizado contra a própria distribuição da consulta (p50 a p99) antes da fusão α·denso + (1−α)·léxico. Fica um fragmento por checagem entre os 200 melhores. Depois do veredito, junta até 3 fragmentos vizinhos de cada checagem citada.',
+ pq:['Palavras acham termos exatos; vetores acham paráfrases.','α = 0,9 saiu de varredura, e vale para o e5-base: trocar o embedding obriga a refazer.'],
+ num:['Aferição com 20 consultas: Recall@5 1,00, MRR 0,897','BM25 sozinho: MRR 0,725'],
+ cod:['prototipo/rag/hibrida.py · ALFA_PADRAO, recuperar, expandir']},
+{id:'c-conferencias',k:'comp',z:'bastidor',x:3180,y:2060,w:280,eb:'Conferências em código',t:'Antes de sair',far:'Conferências',
+ tx:'Mito sempre marcado, técnica do catálogo, frase sem base removida, teto de 120 palavras.',ch:['ancoragem','mito','catálogo'],
+ faz:'A conferência de sustentação faz uma chamada extra só na forma com evidência. Se ela falhar, a resposta segue como estava.',
+ num:['Rodada da demo: tirou frase sem base em 6 casos'],
+ cod:['prototipo/resposta/ancoragem.py','prototipo/resposta/mito.py','prototipo/resposta/catalogo.py']},
+{id:'c-indice',k:'banco',z:'bastidor',x:2300,y:2330,w:280,eb:'Armazenamento',t:'Índice em memória',far:'Índice',
+ tbl:[['Fragmentos','23.655 <i>57 MB</i>'],['Checagens','6.279 <i>23 MB</i>'],['Vetores','23.655 × 768 <i>69 MB</i>']],
+ faz:'Carregado uma vez, numa thread, quando o servidor sobe. Sem banco vetorial. O BM25 é montado em memória a cada carga. Se a matriz e os fragmentos não tiverem o mesmo tamanho, a carga para.',
+ num:['Pico medido no M4: cerca de 1,5 GB depois da primeira consulta'],
+ cod:['prototipo/rag/__main__.py · carregar','prototipo/indice/manifesto.json']},
+{id:'c-e5',k:'comp',z:'bastidor',x:2660,y:2330,w:280,eb:'Modelo pré-treinado',t:'Embedding e5-base',far:'e5-base',
+ tx:'Prefixos query: e passage:. Carrega na primeira consulta.',ch:['768 dimensões'],
+ faz:'intfloat/multilingual-e5-base. Os vetores das checagens foram calculados offline; em execução, só a consulta é codificada. Sem cache, o modelo é baixado do Hugging Face Hub, cerca de 1 GB. Roda em mps, cuda ou cpu.',
+ fora:['Baixar o modelo na construção da imagem, para a hospedagem pública não depender da rede.'],
+ cod:['prototipo/rag/densa.py']},
+
+// 06 Lá fora
+{id:'e-agencias',k:'externo',z:'ext',x:300,y:2660,w:280,eb:'Externo',t:'Agências de checagem',far:'Agências',
+ tx:'Lupa, Boatos.org, Aos Fatos, Fato ou Fake, Estadão Verifica, Comprova e Pública.',ch:['checagens publicadas']},
+{id:'e-sites',k:'externo',z:'ext',x:980,y:2660,w:280,eb:'Externo',t:'Sites de notícia',
+ tx:'Páginas dos links colados. Lidas sem cookie, como DonaChecaBot.',ch:['só HTML']},
+{id:'e-ollama',k:'externo',z:'ext',x:1320,y:2660,w:280,eb:'Externo · local',t:'Ollama',
+ tx:'Roda o Gemma na própria máquina, com Metal no M4.',ch:['localhost:11434']},
+{id:'e-deepseek',k:'externo',z:'ext',x:1660,y:2660,w:280,eb:'Externo',t:'API DeepSeek',
+ tx:'Gera no modo uso. Recebe só o texto minimizado e com consentimento.',ch:['HTTPS']},
+{id:'e-hf',k:'externo',z:'ext',x:2660,y:2660,w:280,eb:'Externo',t:'Hugging Face Hub',
+ tx:'Pesos do e5-base, na primeira consulta sem cache.',ch:['cerca de 1 GB']},
+
+// 07 Dados e avaliação
+{id:'d-factcenter',k:'dados',z:'dados',x:300,y:2980,w:280,eb:'Dataset',t:'FactCenter · saúde',far:'FactCenter',
+ tx:'4.063 checagens de saúde, de 2013 a 2021. Texto citável.',ch:['CC BY 4.0'],
+ faz:'Recorte de saúde da Central de Fatos, gerado na EDA. Vira 5.089 unidades e 22.463 fragmentos.',
+ cod:['datasets/derivados/factcenter_subset_saude.csv','exploracao/eda_datasets.ipynb']},
+{id:'d-factckbr',k:'dados',z:'dados',x:620,y:2980,w:280,eb:'Dataset',t:'FACTCK.BR',
+ tx:'984 checagens de 2016 a 2019. Perdeu acentos: entra só como metadado.',ch:['nunca citado'],
+ faz:'Falha no portão de integridade de texto, por isso fica com apto_citacao = falso. Aparece nas fontes com agência, data e link, sem trecho.',
+ cod:['datasets/01_nucleo_metodologico/factckbr/','prototipo/rag/corpus.py']},
+{id:'d-portoes',k:'dados',z:'dados',x:940,y:2980,w:280,eb:'Curadoria',t:'Portões de integridade',far:'Portões',
+ tx:'Integridade do texto, vereditos normalizados e frescor.',ch:['tratamento/','174 em quarentena'],
+ cod:['tratamento/','prototipo/rag/corpus.py']},
+{id:'d-construir',k:'dados',z:'dados',x:1260,y:2980,w:280,eb:'Construção',t:'Unidades e fragmentos',far:'Construção',
+ tx:'Alegação + veredito + justificativa, em fragmentos de 1.100 caracteres.',ch:['prototipo.rag construir'],
+ faz:'Fragmentos com 150 caracteres de sobreposição e o cabeçalho da checagem repetido em cada um. Tudo é validado contra o esquema antes de calcular os vetores com prefixo passage:.',
+ entra:['Registros aprovados'],sai:['unidades.jsonl, fragmentos.jsonl, densa.npy'],
+ cod:['prototipo/rag/unidades.py','prototipo/indice/esquema_indexacao.json']},
+{id:'d-manifesto',k:'dados',z:'dados',x:1580,y:2980,w:280,eb:'Registro',t:'Manifesto do índice',far:'Manifesto',
+ tx:'5.047 registros lidos, 6.279 unidades, 23.655 fragmentos.',ch:['manifesto.json'],
+ cod:['prototipo/indice/manifesto.json']},
+{id:'d-afericao',k:'dados',z:'dados',x:1900,y:2980,w:280,eb:'Notebook',t:'Aferição da recuperação',far:'Aferição',
+ tx:'20 consultas reais, literais e reformuladas. Varredura de α.',ch:['Recall@5','MRR'],
+ num:['Híbrida: R@1 0,85, R@5 1,00, MRR 0,897','Densa: MRR 0,877 · BM25: MRR 0,725'],
+ cod:['exploracao/avaliacao_modelo.ipynb','prototipo/rag/afericao.py']},
+{id:'d-casos',k:'dados',z:'dados',x:2220,y:2980,w:280,eb:'Bancada',t:'Casos esperados',far:'Casos',
+ tx:'O esperado por etapa: fronteira, alegação, checagem no topo, rótulo, forma, leitura.',ch:['casos.json'],
+ faz:'Cobrem link, fichas da forense, verdadeiro contra-intuitivo, fronteira, conduta, pergunta e pauta fora do acervo. Falha eliminatória reprova a rodada.',
+ cod:['bancada/casos.json','bancada/avaliacao.py']},
+{id:'d-gravacao',k:'dados',z:'dados',x:2540,y:2980,w:280,eb:'Bancada',t:'Gravação e replay',far:'Replay',
+ tx:'Chamadas ao modelo e à rede gravadas por hash. Rodar de novo não gasta API.',ch:['--offline'],
+ faz:'Mudou o prompt, muda o hash, e o replay falha: a rodada precisa ser gravada de novo.',
+ cod:['bancada/gravacao.py']},
+{id:'d-piloto',k:'dados',z:'dados',x:2860,y:2980,w:280,eb:'Com pessoas',t:'Piloto',
+ tx:'Duas pessoas em 08/10. Discernimento 4 de 4; transferência 4 de 4.',ch:['n = 2'],
+ pq:['Valida o instrumento, não o efeito.'],fora:['Coleta com 20 a 30 pessoas, com linha de base e item-armadilha.'],
+ cod:['prototipo/avaliacao/','docs/act/prototipo-avaliacao.md']},
+{id:'d-relatorio',k:'dados',z:'dados',x:3180,y:2980,w:280,eb:'Documentos',t:'Rodada da demo',far:'Resultados',
+ tx:'29 de 30 casos, sem falha eliminatória. Mediana de 13,8 s.',ch:['20261013-104226'],
+ num:['Por etapa: fronteira 7/7, extração 36/36, recuperação 10/10, guarda 12/12, resposta 39/40, leitura 10/10','10 de 10 respostas com evidência trazem o link da checagem','US$ 0,002 a 0,004 por mensagem'],
+ cod:['docs/act/prototipo-avaliacao.md']},
+
+// 08 Infraestrutura
+{id:'i-openspec',k:'infra',z:'infra',x:300,y:3440,w:280,eb:'Método',t:'OpenSpec',
+ tx:'Spec antes de código: proposta, design, specs e tasks para cada change.',ch:['validate --strict'],
+ pq:['Precedência: spec > tasks > código.'],cod:['openspec/project.md','openspec/changes/']},
+{id:'i-testes',k:'infra',z:'infra',x:620,y:3440,w:280,eb:'Testes',t:'pytest',
+ tx:'861 testes passando, 2 pulados. Modelo, índice e rede simulados.',ch:['offline']},
+{id:'i-repo',k:'infra',z:'infra',x:940,y:3440,w:280,eb:'GitHub',t:'Repositório e PRs',
+ tx:'Um branch por change, pull request para a main, issue por task.',ch:['grupo04-challenge01']},
+{id:'i-ci',k:'infra',z:'infra',x:1260,y:3440,w:280,eb:'Automação',t:'GitHub Actions',
+ tx:'A cada push na main, constrói o portfólio com MkDocs Material.',ch:['mkdocs gh-deploy'],
+ cod:['.github/workflows/deploy.yml']},
+{id:'i-pages',k:'infra',z:'infra',x:1580,y:3440,w:280,eb:'Hospedagem estática',t:'GitHub Pages',
+ tx:'Portfólio de pesquisa, diagramas Mermaid e este mapa.',ch:['site/'],
+ cod:['mkdocs.yml']},
+{id:'i-tag',k:'infra',z:'infra',x:1900,y:3440,w:280,eb:'Versão',t:'Tag showcase-demo',
+ tx:'A demo roda do commit ensaiado da main, nunca de branch.',ch:['git checkout'],
+ cod:['openspec/changes/add-portfolio-showcase/design.md · D5']},
+{id:'i-mac',k:'infra',z:'infra',x:2220,y:3440,w:280,eb:'Máquina da demo',t:'MacBook Air M4',
+ tx:'python -m interface em 127.0.0.1:8000, Python 3.14.6, Ollama com Metal.',ch:['DONA_CHECA_MODO=uso'],
+ faz:'Antes da apresentação: checkout da tag, índice gerado, aquecimento com uma consulta para baixar o e5 e carregar os vetores.',
+ cod:['docs/showcase/roteiro-demo.md','docs/interface/chat-web.md']},
+{id:'i-segredo',k:'infra',z:'infra',x:2540,y:3440,w:280,eb:'Fora do git',t:'Chave e índice',
+ tx:'A chave fica no ambiente. Índice e vetores são gerados na máquina.',ch:['*.npy','*.jsonl'],
+ pq:['Nada de segredo no repositório.','Os 150 MB do índice ficam fora do git; o manifesto registra como refazer.'],
+ cod:['.gitignore','.env.example']},
+{id:'i-roteiro',k:'infra',z:'infra',x:2860,y:3440,w:280,eb:'Plano B',t:'Roteiro e vídeo',
+ tx:'Preparação, aquecimento, três casos e vídeo gravado no ensaio.',ch:['10 minutos'],
+ cod:['docs/showcase/roteiro-demo.md']},
+{id:'i-publico',k:'plano',z:'infra',x:3180,y:3440,w:280,eb:'Planejado',t:'Hospedagem pública',far:'Hospedagem',
+ tx:'Mesma pilha numa nuvem, na porta 80, com o índice baixado na subida.',ch:['não implantado'],
+ faz:'Opção em estudo: Shard Cloud. O plano de 2 GB fica no limite do pico medido; o de 4 GB aceita Docker.',
+ fora:['Fila para vários visitantes ao mesmo tempo.','Modelo e5 dentro da imagem.']},
+];
+
+const C = (side, off) => ({side, off});
+const EST = C('c', 55);
+const EDGES = [
+ {a:'p-pessoa',b:'f-termo',k:'acao',l:'aceita o termo'},
+ {a:'p-piloto',b:'f-andamento',k:'acao',l:'usa no modo piloto',lw:90},
+ {a:'f-termo',b:'f-pagina',k:'interno'},
+ {a:'f-pagina',b:'f-andamento',k:'interno'},
+ {a:'f-andamento',b:'f-confianca',k:'interno',l:'enquanto confere',lw:80},
+ {a:'f-andamento',b:'f-resposta',k:'interno',s:'t',t:'t',via:[[1240,446],[1920,446]],lp:[1580,446]},
+ {a:'f-andamento',b:'f-fronteira',k:'interno',s:'t',t:'t',via:[[1270,432],[2260,432]],lp:[2090,432]},
+ {a:'a-get',b:'f-pagina',k:'http',l:'página',lw:60},
+ {a:'f-pagina',b:'a-verificar',k:'http',l:'texto e consentimento',lw:110},
+ {a:'a-eventos',b:'f-andamento',k:'http',l:'eventos SSE',lw:80,s:'t',t:'b',via:[[1920,830],[1240,830]],lp:[1580,830]},
+ {a:'a-verificar',b:'a-consent',k:'interno'},
+ {a:'a-config',b:'a-consent',k:'dados',l:'gerador e chave',lw:80},
+ {a:'a-consent',b:'a-fila',k:'interno'},
+ {a:'a-fila',b:'a-eventos',k:'interno'},
+ {a:'a-textos',b:'a-eventos',k:'dados',l:'textos',lw:60},
+ {a:'a-fila',b:'c-fluxo',k:'http',l:'verificar em thread',lw:130,s:'b',t:'t',via:[[1580,1450],[420,1450]],lp:[960,1450]},
+ {a:'c-fluxo',b:'s1',k:'trilho',s:C('r',55),t:EST,via:[]},
+ {a:'s1',b:'s2',k:'trilho',s:EST,t:EST,via:[]},{a:'s2',b:'s3',k:'trilho',s:EST,t:EST,via:[]},{a:'s3',b:'s4',k:'trilho',s:EST,t:EST,via:[]},
+ {a:'s4',b:'s5',k:'trilho',s:EST,t:EST,via:[]},{a:'s5',b:'s6',k:'trilho',s:EST,t:EST,via:[]},{a:'s6',b:'s7',k:'trilho',s:EST,t:EST,via:[]},
+ {a:'s1',b:'x-fronteira',k:'ramal',s:EST,t:'t',via:[]},
+ {a:'s2',b:'x-leitura',k:'ramal',s:EST,t:'t',via:[]},
+ {a:'s3',b:'x-alegacao',k:'ramal',s:EST,t:'t',via:[]},
+ {a:'s6',b:'x-insuficiente',k:'ramal',s:EST,t:'t',via:[]},
+ {a:'x-insuficiente',b:'s7',k:'interno',l:'forma sem evidência',lw:90},
+ {a:'s1',b:'c-modelo',k:'llm'},{a:'s3',b:'c-modelo',k:'llm'},{a:'s4',b:'c-modelo',k:'llm'},
+ {a:'s6',b:'c-modelo',k:'llm'},{a:'s7',b:'c-modelo',k:'llm'},
+ {a:'s2',b:'c-leitura',k:'interno',l:'lê a página',lw:70},
+ {a:'s5',b:'c-recuperador',k:'interno',l:'recuperar(alegação, k = 5)',lw:110},
+ {a:'s7',b:'c-conferencias',k:'interno'},
+ {a:'c-indice',b:'c-recuperador',k:'dados'},
+ {a:'c-e5',b:'c-recuperador',k:'interno',l:'vetor da consulta',lw:80},
+ {a:'c-modelo',b:'e-deepseek',k:'http',l:'texto minimizado',lw:90},
+ {a:'c-modelo',b:'e-ollama',k:'opcional',l:'modo piloto',lw:70},
+ {a:'c-leitura',b:'e-sites',k:'http',l:'GET com guarda SSRF',lw:90},
+ {a:'e-hf',b:'c-e5',k:'build',l:'pesos, 1ª consulta',lw:90},
+ {a:'e-agencias',b:'d-factcenter',k:'dados',l:'checagens publicadas',lw:100},
+ {a:'d-factcenter',b:'d-portoes',k:'dados',l:'registros',lw:70,s:'b',t:'b',via:[[440,3290],[1080,3290]],lp:[760,3290]},
+ {a:'d-factckbr',b:'d-portoes',k:'dados'},
+ {a:'d-portoes',b:'d-construir',k:'dados'},
+ {a:'d-construir',b:'d-manifesto',k:'dados'},
+ {a:'d-construir',b:'c-indice',k:'build',l:'índice gerado offline',lw:150,s:'t',t:'b',via:[[1400,2910],[2440,2910]],lp:[1980,2910]},
+ {a:'d-afericao',b:'c-recuperador',k:'dados',l:'α = 0,9',lw:70,s:'t',t:C('l',80),via:[[2040,2950],[2240,2950],[2240,2140]],lp:[2240,2620]},
+ {a:'d-casos',b:'d-gravacao',k:'dados'},
+ {a:'d-gravacao',b:'d-relatorio',k:'dados',l:'rodada da demo',lw:120,s:'b',t:'b',via:[[2680,3305],[3320,3305]],lp:[3000,3305]},
+ {a:'d-piloto',b:'d-relatorio',k:'dados'},
+ {a:'i-openspec',b:'i-testes',k:'interno',l:'tasks com teste',lw:70},
+ {a:'i-repo',b:'i-ci',k:'build',l:'push',lw:50},
+ {a:'i-ci',b:'i-pages',k:'build',l:'gh-deploy',lw:70},
+ {a:'i-repo',b:'i-tag',k:'build',l:'tag no commit ensaiado',lw:160,s:'b',t:'b',via:[[1080,3700],[2040,3700]],lp:[1560,3700]},
+ {a:'i-tag',b:'i-mac',k:'build',l:'checkout',lw:70},
+ {a:'i-segredo',b:'i-mac',k:'build',l:'chave e índice',lw:70},
+ {a:'i-mac',b:'i-publico',k:'opcional',l:'mesma pilha, planejado',lw:170,s:'t',t:'t',via:[[2360,3410],[3320,3410]],lp:[2840,3410]},
+];
+
+const TOURS = [
+ {t:'Uma mensagem, do WhatsApp à resposta', steps:[
+  {c:['p-pessoa','f-termo','f-pagina'], tx:'Você abre a página, aceita o termo e cola a mensagem ou o link que recebeu. Sem conta, meu bem.'},
+  {c:['f-pagina','a-verificar','a-consent','a-config'], tx:'O texto vai no corpo do pedido, com a versão do termo. Sem aceite, 403. Com aceite, e-mail, CPF e telefone viram marcadores.'},
+  {c:['a-consent','a-fila','c-fluxo'], tx:'Uma verificação por vez, com prazo de 300 s. O fluxo roda numa thread e eu começo a linha.'},
+  {c:['c-fluxo','s1','s2','s3','s4','s5','s6','s7'], tx:'Sete estações, da fronteira à resposta. O fluxo «Na linha da verificação» para em cada uma.'},
+  {c:['a-eventos','f-andamento','a-textos'], tx:'A cada estação, mando um evento para a página: você me vê lendo e conferindo.'},
+  {c:['f-andamento','f-confianca'], tx:'Enquanto confiro, pergunto quanto você confia na mensagem. Sua resposta fica só na página.'},
+  {c:['f-andamento','f-resposta','p-pessoa'], tx:'Quatro blocos, até 120 palavras. Em «Ver fontes e detalhes» você confere agência, data e link.'},
+ ]},
+ {t:'Na linha da verificação', steps:[
+  {c:['s1','c-modelo','x-fronteira'], tx:'Estação 1, fronteira: regras em português primeiro. Urgência e sofrimento saem pelo ramal, com SAMU 192 ou CVV 188.'},
+  {c:['s2','c-leitura','e-sites','x-leitura'], tx:'Estação 2: se você só colou o link, leio a página com cuidado, até 800 palavras. Página fechada vira aviso.'},
+  {c:['s3','c-modelo','x-alegacao'], tx:'Estação 3: o modelo lista as alegações de saúde e o código escolhe a de maior risco.'},
+  {c:['s4','c-modelo'], tx:'Estação 4: separo fato, evidência e opinião. Se falhar, sigo sem isso.'},
+  {c:['s5','c-recuperador','c-indice','c-e5'], tx:'Estação 5: BM25 e e5-base, fundidos com α = 0,9, sobre 23.655 fragmentos. Os 5 melhores, em português antes.'},
+  {c:['s6','c-modelo','x-insuficiente'], tx:'Estação 6: sem trecho ≥ 0,55 e citável, o rótulo é «evidência insuficiente», sem chamar o modelo.'},
+  {c:['s7','c-modelo','c-conferencias'], tx:'Estação 7: a abertura do veredito é escrita pelo código, os blocos são ancorados em trechos e tudo é conferido antes de sair.'},
+ ]},
+ {t:'Veredito nunca nu', steps:[
+  {c:['s5','c-recuperador'], tx:'Tudo começa numa checagem publicada por agência brasileira, não na memória do modelo.'},
+  {c:['s6','d-factckbr'], tx:'Só trecho com escore ≥ 0,55 e apto a citação sustenta veredito. FACTCK.BR, sem acentos, nunca é citado.'},
+  {c:['s6','c-modelo','x-insuficiente'], tx:'O modelo devolve rótulo, critério e ids. Id inventado rebaixa para evidência insuficiente.'},
+  {c:['s7','c-conferencias'], tx:'Sem âncora nos blocos 1 e 2 depois de uma nova tentativa, o veredito cai e a resposta é refeita.'},
+  {c:['f-resposta','p-pessoa'], tx:'Você vê veredito, critério e fonte, e pode discordar de mim. Sucesso é você acertar depois, sem a ferramenta.'},
+ ]},
+ {t:'Privacidade e segurança', steps:[
+  {c:['f-termo','a-consent'], tx:'Com gerador remoto, nada sai sem o aceite da versão 3 do termo.'},
+  {c:['a-consent','c-modelo','e-deepseek'], tx:'O que vai à DeepSeek é o texto minimizado: sem e-mail, CPF e telefone.'},
+  {c:['c-leitura','e-sites'], tx:'Link colado não alcança a rede interna: IP público validado, redirecionamentos conferidos, corpo até 2 MB.'},
+  {c:['a-log','a-config','i-segredo'], tx:'Log sem o seu texto, chave só no ambiente, servidor local por padrão.'},
+  {c:['f-confianca'], tx:'A pergunta de confiança e a escolha no termo não são guardadas no navegador.'},
+ ]},
+ {t:'Dados e avaliação', steps:[
+  {c:['e-agencias','d-factcenter','d-factckbr'], tx:'Meu acervo vem de checagens publicadas: FactCenter com texto citável e FACTCK.BR só como metadado.'},
+  {c:['d-portoes','d-construir','d-manifesto'], tx:'Portões de integridade, unidades e fragmentos validados contra o esquema. O manifesto registra contagens e custo.'},
+  {c:['d-construir','c-indice'], tx:'O índice é gerado offline e carregado inteiro em memória quando o servidor sobe.'},
+  {c:['d-afericao','c-recuperador'], tx:'A aferição com 20 consultas escolheu α = 0,9: Recall@5 1,00 e MRR 0,897.'},
+  {c:['d-casos','d-gravacao','d-relatorio'], tx:'A bancada roda o mesmo fluxo do chat e grava as chamadas. Rodada da demo: 29 de 30 casos.'},
+  {c:['p-piloto','d-piloto'], tx:'Piloto com duas pessoas: valida o instrumento. A próxima coleta precisa de linha de base.'},
+ ]},
+ {t:'Do código à apresentação', steps:[
+  {c:['i-openspec','i-testes','i-repo'], tx:'Cada mudança nasce num change do OpenSpec e entra por pull request, com testes.'},
+  {c:['i-repo','i-ci','i-pages'], tx:'A cada push na main, o GitHub Actions publica o portfólio no GitHub Pages.'},
+  {c:['i-repo','i-tag','i-mac'], tx:'A demo roda da tag showcase-demo, no MacBook M4.'},
+  {c:['i-segredo','i-mac','p-grupo'], tx:'Chave no ambiente e índice gerado na máquina. O grupo me aquece antes de apresentar.'},
+  {c:['i-roteiro'], tx:'Plano B: vídeo gravado no ensaio.'},
+  {c:['i-publico','i-mac'], tx:'Próximo passo: a mesma pilha numa hospedagem pública.'},
+ ]},
+];
+
+const DEC = [
+ {g:'Produto',t:'Veredito nunca nu',tx:'Todo veredito vem com o critério que o sustenta e a fonte, auditável pela pessoa.',c:['s6','f-resposta']},
+ {g:'Produto',t:'Discernimento acima de acurácia',tx:'A métrica principal é a pessoa acertar depois, sem a ferramenta.',c:['p-pessoa','d-piloto']},
+ {g:'Produto',t:'Evidência insuficiente é resposta',tx:'Fora do acervo, a Dona Checa diz o que procurou e onde conferir, em vez de chutar.',c:['x-insuficiente','f-resposta']},
+ {g:'Produto',t:'Fronteira de saúde',tx:'Urgência, sofrimento psíquico e conduta médica saem do caminho de checagem.',c:['s1','x-fronteira','f-fronteira']},
+ {g:'Produto',t:'Uma alegação por resposta',tx:'O código escolhe a alegação de maior risco; a resposta fica curta.',c:['s3']},
+ {g:'IA',t:'Nenhum classificador treinado',tx:'O dataset é acervo para citar, nunca alvo de treino de veredito.',c:['c-modelo','d-factcenter']},
+ {g:'IA',t:'RAG híbrido com α = 0,9',tx:'BM25 acha termos exatos; e5 acha paráfrases. α saiu da aferição.',c:['c-recuperador','d-afericao']},
+ {g:'IA',t:'Limiar de evidência 0,55',tx:'Abaixo dele, o modelo nem é chamado para classificar.',c:['s6','x-insuficiente']},
+ {g:'IA',t:'Código escreve o veredito',tx:'A abertura do bloco 1 vem do código; o modelo não muda o rótulo.',c:['s7']},
+ {g:'IA',t:'Conferência de sustentação',tx:'Frase sem base nos trechos sai antes da resposta chegar à pessoa.',c:['c-conferencias','s7']},
+ {g:'IA',t:'DeepSeek em vez de Gemma local',tx:'De 102,4 s para cerca de 11 s de mediana, com termo e minimização.',c:['c-modelo','e-deepseek','e-ollama']},
+ {g:'Dados',t:'FACTCK.BR só como metadado',tx:'O texto perdeu acentos: aparece com agência, data e link, nunca como trecho.',c:['d-factckbr','d-portoes']},
+ {g:'Dados',t:'Índice em memória, sem banco vetorial',tx:'23.655 vetores cabem em 69 MB; produto escalar exato em NumPy.',c:['c-indice']},
+ {g:'Dados',t:'Bancada com replay',tx:'O mesmo fluxo do chat, com chamadas gravadas: medir não gasta API.',c:['d-gravacao','c-fluxo']},
+ {g:'Arquitetura',t:'Um processo, sem build',tx:'FastAPI serve a página e roda o fluxo; a página é HTML puro.',c:['a-get','f-pagina']},
+ {g:'Arquitetura',t:'Streaming de eventos',tx:'A pessoa vê a etapa em curso durante os 10 a 20 segundos.',c:['a-eventos','f-andamento']},
+ {g:'Arquitetura',t:'Uma verificação por vez',tx:'Previsível para a demo; vazão fica para a hospedagem pública.',c:['a-fila']},
+ {g:'Arquitetura',t:'Textos lidos das specs',tx:'O texto aprovado na spec é o que aparece na tela.',c:['a-textos']},
+ {g:'Segurança',t:'Consentimento antes de sair',tx:'Termo versionado; sem aceite, 403 e nada vai ao gerador.',c:['f-termo','a-consent']},
+ {g:'Segurança',t:'Minimização',tx:'E-mail, CPF e telefone viram marcadores antes da API externa.',c:['a-consent']},
+ {g:'Segurança',t:'Leitura contra SSRF',tx:'DNS resolvido uma vez e conexão só a IP público validado.',c:['c-leitura']},
+ {g:'Segurança',t:'Nada guardado',tx:'Log sem conteúdo; pergunta de confiança e termo só na memória da página.',c:['a-log','f-confianca']},
+ {g:'Infra',t:'Demo fixada por tag',tx:'Roda do commit ensaiado da main, com roteiro e vídeo de plano B.',c:['i-tag','i-roteiro']},
+ {g:'Infra',t:'Spec antes de código',tx:'OpenSpec em todas as fases: proposta, design, specs e tasks.',c:['i-openspec']},
+];
+
+const EDGE_KINDS = [
+ ['trilho','Linha da verificação'],['ramal','Ramal de saída antecipada'],['acao','Ação de uma pessoa'],['http','Pedido HTTP ou chamada entre camadas'],
+ ['dados','Arquivo ou dados'],['llm','Chamada ao modelo de linguagem'],['build','Construção, deploy ou versão'],['opcional','Opcional ou planejado'],['interno','Chamada interna do código'],['hot','Destaque do fluxo atual'],
+];
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const byId = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stage = $('#stage'), vp = $('#vp'), world = $('#world'), svg = $('#edges');
+const drawer = $('#drawer'), decs = $('#decs'), guide = $('#guide'), legend = $('#legend'), side = $('#side');
+const NS = 'http://www.w3.org/2000/svg';
+const clampK = k => Math.min(2.2, Math.max(.08, k));
+const state = {sel:null, tour:null, touched:false};
+const NOARROW = new Set(['trilho', 'ramal']);
+const arrow = k => k === 'interno' || k === 'opcional' ? 'ah-muted' : k === 'dados' ? 'ah-teal' : k === 'llm' ? 'ah-hot' : 'ah-ink';
+world.style.width = svg.style.width = W + 'px';
+world.style.height = svg.style.height = H + 'px';
+
+/* ---------- faixas e cards ---------- */
+const laneHeads = [];
+Object.entries(ZONES).forEach(([id, z], i) => {
+  z.x = 20; z.w = W - 40;
+  const d = document.createElement('div');
+  d.className = 'lane' + (i % 2 ? ' alt' : '') + (z.dashed ? ' dashed' : '');
+  d.style.cssText = `left:${z.x}px;top:${z.y}px;width:${z.w}px;height:${z.h}px`;
+  world.insertBefore(d, svg);
+  const lb = document.createElement('button');
+  lb.type = 'button'; lb.className = 'lhead';
+  lb.style.cssText = `left:${z.x + 30}px;top:${z.y + 28}px`;
+  lb.innerHTML = `<span class="ln">${z.n}</span><b>${z.t}</b><small>${z.s}</small><i>stack${z.repo ? ' · ' + z.repo : ''}</i>`;
+  lb.setAttribute('aria-label', `${z.t}: ver as ferramentas usadas`);
+  lb.addEventListener('click', () => openZone(id));
+  laneHeads.push(lb);
+  const nb = document.createElement('button');
+  nb.type = 'button'; nb.dataset.lane = id;
+  nb.innerHTML = `<span class="n">${z.n}</span><span>${z.t}<small>${z.s}</small></span>`;
+  nb.addEventListener('click', () => { closeSide(); flyTo(fitBox(laneBox(z), 20, 1.1)); });
+  $('#navLanes').appendChild(nb);
+});
+
+function face(c) {
+  const ic = I[c.k] ? `<svg viewBox="0 0 24 24" aria-hidden="true">${I[c.k]}</svg>` : '';
+  let h;
+  if (c.k === 'etapa') {
+    h = `<span class="stop" aria-hidden="true"><b>${c.n}</b></span><span class="sbox"><span class="eb">${c.eb}</span><span class="ttl">${c.t}</span><span class="tx">${c.tx}</span></span>`;
+  } else if (c.k === 'pessoa') {
+    h = `<span class="av" aria-hidden="true"><svg viewBox="0 0 24 24">${I.pessoa}</svg></span><span class="pb2"><span class="eb">${c.eb}</span><span class="ttl">${c.t}</span><span class="tx">${c.tx}</span>${c.ch ? `<span class="chips">${c.ch.map(x => `<span class="chip">${x}</span>`).join('')}</span>` : ''}</span>`;
+  } else if (c.k === 'saida') {
+    h = `<span class="x" aria-hidden="true">✕</span><span class="sb"><span class="ttl">${c.t}</span><span class="tx">${c.tx}</span></span>`;
+  } else {
+    h = `<span class="eb">${ic}${c.eb}</span><span class="ttl">${c.t}</span>`;
+    if (c.tx) h += `<span class="tx">${c.tx}</span>`;
+    if (c.tbl) h += `<span class="tbl">${c.tbl.map(r => `<b>${r[0]}</b><span>${r[1]}</span>`).join('')}</span>`;
+    if (c.flow) h += `<span class="flow">${c.flow.map(s => `<span class="st${s.endsWith('*') ? ' pub' : ''}">${s.replace('*', '')}</span>`).join('<span class="fa" aria-hidden="true">›</span>')}</span>`;
+    if (c.ch) h += `<span class="chips">${c.ch.map(x => `<span class="chip">${x}</span>`).join('')}</span>`;
+  }
+  return h + `<span class="farl" aria-hidden="true">${c.far || c.t}</span>`;
+}
+for (const c of CARDS) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = `card k-${c.k}${c.llm ? ' llm' : ''}`; b.dataset.id = c.id;
+  b.style.cssText = `left:${c.x}px;top:${c.y}px;width:${c.w}px`;
+  b.innerHTML = face(c);
+  b.setAttribute('aria-label', `${c.t}: ${c.eb || 'saída antecipada'}. Abrir detalhes.`);
+  b.addEventListener('click', () => openCard(c.id));
+  world.appendChild(b); c.el = b;
+}
+const labelLayer = document.createElement('div'); world.appendChild(labelLayer);
+for (const lb of laneHeads) world.appendChild(lb);
+
+/* ---------- setas ---------- */
+const N = {l:[-1,0], r:[1,0], t:[0,-1], b:[0,1]};
+function measure() { for (const c of CARDS) { c.w = c.el.offsetWidth; c.h = c.el.offsetHeight; } }
+const ctr = c => [c.x + c.w / 2, c.y + c.h / 2];
+function sidesFor(e) {
+  if (typeof e.s === 'string' && typeof e.t === 'string') return [e.s, e.t];
+  const a = byId[e.a], b = byId[e.b];
+  if (b.y >= a.y + a.h) return ['b', 't'];
+  if (b.y + b.h <= a.y) return ['t', 'b'];
+  if (b.x >= a.x + a.w) return ['r', 'l'];
+  return ['l', 'r'];
+}
+function onSide(c, side, f) {
+  if (side === 'l') return [c.x, c.y + c.h * f];
+  if (side === 'r') return [c.x + c.w, c.y + c.h * f];
+  if (side === 't') return [c.x + c.w * f, c.y];
+  return [c.x + c.w * f, c.y + c.h];
+}
+function anchorSpec(c, spec) {
+  if (typeof spec === 'string') return {p: onSide(c, spec, .5), n: N[spec]};
+  const s = spec.side;
+  if (s === 'c') return {p: [c.x + c.w / 2, c.y + spec.off], n: [0, 0]};
+  const p = (s === 'l' || s === 'r') ? [s === 'l' ? c.x : c.x + c.w, c.y + spec.off] : [c.x + spec.off, s === 't' ? c.y : c.y + c.h];
+  return {p, n: N[s]};
+}
+const cub = (p0, c1, c2, p3, t) => { const u = 1 - t; return [0, 1].map(i => u*u*u*p0[i] + 3*u*u*t*c1[i] + 3*u*t*t*c2[i] + t*t*t*p3[i]); };
+function rounded(pts, r = 18) {
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [a, p, b] = [pts[i - 1], pts[i], pts[i + 1]];
+    const la = Math.hypot(a[0] - p[0], a[1] - p[1]), lb = Math.hypot(b[0] - p[0], b[1] - p[1]);
+    const rr = Math.min(r, la / 2, lb / 2);
+    const q1 = [p[0] + (a[0] - p[0]) / la * rr, p[1] + (a[1] - p[1]) / la * rr];
+    const q2 = [p[0] + (b[0] - p[0]) / lb * rr, p[1] + (b[1] - p[1]) / lb * rr];
+    d += ` L${q1[0]},${q1[1]} Q${p[0]},${p[1]} ${q2[0]},${q2[1]}`;
+  }
+  const z = pts[pts.length - 1];
+  return d + ` L${z[0]},${z[1]}`;
+}
+function layoutEdges() {
+  const slots = {};
+  for (const e of EDGES) {
+    if (e.via) continue;
+    const [sa, sb] = sidesFor(e); e.sa = sa; e.sb = sb;
+    (slots[e.a + ':' + sa] ||= []).push({e, end:'a', o: ctr(byId[e.b])});
+    (slots[e.b + ':' + sb] ||= []).push({e, end:'b', o: ctr(byId[e.a])});
+  }
+  for (const [key, list] of Object.entries(slots)) {
+    const [id, side] = key.split(':'), c = byId[id], ax = (side === 'l' || side === 'r') ? 1 : 0;
+    list.sort((p, q) => p.o[ax] - q.o[ax]);
+    list.forEach((it, i) => {
+      const f = list.length === 1 ? .5 : .22 + .56 * i / (list.length - 1);
+      it.e[it.end === 'a' ? 'pa' : 'pb'] = onSide(c, side, f);
+    });
+  }
+  for (const e of EDGES) {
+    const a = byId[e.a], b = byId[e.b];
+    let d, lp;
+    if (e.via) {
+      const A = anchorSpec(a, e.s), B = anchorSpec(b, e.t);
+      const end = [B.p[0] + B.n[0] * 4, B.p[1] + B.n[1] * 4];
+      const pts = e.via.map(([x, y], i) => i === 0 && (e.s === 't' || e.s === 'b') ? [A.p[0], y] : [x, y]);
+      if (pts.length && (e.t === 't' || e.t === 'b')) pts[pts.length - 1][0] = end[0];
+      d = rounded([A.p, ...pts, end]);
+      lp = e.lp || [(A.p[0] + end[0]) / 2, (A.p[1] + end[1]) / 2];
+    } else {
+      const p0 = e.pa, n0 = N[e.sa], n3 = N[e.sb];
+      const p3 = [e.pb[0] + n3[0] * 4, e.pb[1] + n3[1] * 4];
+      const dx = Math.abs(p3[0] - p0[0]), dy = Math.abs(p3[1] - p0[1]);
+      const k0 = n0[0] ? Math.max(26, dx * .5) : Math.max(26, dy * .5);
+      const k3 = n3[0] ? Math.max(26, dx * .5) : Math.max(26, dy * .5);
+      const c1 = [p0[0] + n0[0] * k0, p0[1] + n0[1] * k0], c2 = [p3[0] + n3[0] * k3, p3[1] + n3[1] * k3];
+      d = `M${p0[0]},${p0[1]} C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p3[0]},${p3[1]}`;
+      lp = cub(p0, c1, c2, p3, e.lt ?? .5);
+    }
+    if (!e.p) {
+      e.p = document.createElementNS(NS, 'path');
+      e.p.setAttribute('class', `edge e-${e.k}`);
+      if (NOARROW.has(e.k)) svg.insertBefore(e.p, svg.querySelector("defs").nextSibling); else svg.appendChild(e.p);
+      if (e.l) {
+        e.lab = document.createElement('div');
+        e.lab.className = 'elabel';
+        if (e.lw) e.lab.style.setProperty('--lw', e.lw + 'px');
+        e.lab.textContent = e.l; labelLayer.appendChild(e.lab);
+      }
+    }
+    e.p.setAttribute('d', d);
+    markEdge(e, e.p.classList.contains('hot'));
+    if (e.lab) { e.lab.style.left = lp[0] + 'px'; e.lab.style.top = lp[1] + 'px'; }
+  }
+}
+function markEdge(e, hot) {
+  if (NOARROW.has(e.k)) { e.p.removeAttribute('marker-end'); return; }
+  e.p.setAttribute('marker-end', `url(#${hot ? 'ah-hot' : arrow(e.k)})`);
+}
+
+/* ---------- destaque ---------- */
+function highlight(set, sel) {
+  for (const c of CARDS) {
+    c.el.classList.toggle('dim', !!set && !set.has(c.id));
+    c.el.classList.toggle('sel', sel === c.id);
+  }
+  for (const e of EDGES) {
+    const hot = !!set && (sel ? (e.a === sel || e.b === sel) : (set.has(e.a) && set.has(e.b)));
+    e.p.classList.toggle('hot', hot); e.p.classList.toggle('dim', !!set && !hot); markEdge(e, hot);
+    if (e.lab) { e.lab.classList.toggle('hot', hot); e.lab.classList.toggle('dim', !!set && !hot); }
+  }
+}
+const neighbors = id => [...new Set(EDGES.flatMap(e => e.a === id ? [e.b] : e.b === id ? [e.a] : []))];
+
+/* ---------- câmera ---------- */
+const cam = {x:0, y:0, k:.3};
+let anim = 0;
+function apply() {
+  world.style.transform = `translate(${cam.x}px,${cam.y}px) scale(${cam.k})`;
+  world.classList.toggle('far', cam.k < .5);
+  $('#zVal').textContent = Math.round(cam.k * 100) + '%';
+}
+function flyTo(t, ms = 600) {
+  cancelAnimationFrame(anim);
+  if (reduce || !ms) { Object.assign(cam, t); apply(); return; }
+  const s = {...cam}, t0 = performance.now();
+  const ease = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+  const step = now => {
+    const u = Math.min(1, (now - t0) / ms), q = ease(u);
+    cam.x = s.x + (t.x - s.x) * q; cam.y = s.y + (t.y - s.y) * q; cam.k = s.k + (t.k - s.k) * q; apply();
+    if (u < 1) anim = requestAnimationFrame(step);
+  };
+  anim = requestAnimationFrame(step);
+}
+const wide = () => stage.clientWidth > 700;
+function area() {
+  let x0 = 0, x1 = stage.clientWidth, y1 = stage.clientHeight;
+  if (!drawer.hidden) { if (wide()) x1 -= drawer.offsetWidth; else y1 -= drawer.offsetHeight; }
+  if (!decs.hidden && wide()) x0 += decs.offsetWidth;
+  if (state.tour) y1 -= guide.offsetHeight + 30;
+  return {x:x0, y:0, w:Math.max(80, x1 - x0), h:Math.max(80, y1)};
+}
+function fitBox(b, pad = 48, kmax = 1.15) {
+  const a = area();
+  const k = clampK(Math.min(kmax, (a.w - 2 * pad) / b.w, (a.h - 2 * pad) / b.h));
+  return {k, x: a.x + (a.w - b.w * k) / 2 - b.x * k, y: a.y + (a.h - b.h * k) / 2 - b.y * k};
+}
+function boxOf(ids) {
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  for (const id of ids) { const c = byId[id]; x0 = Math.min(x0, c.x); y0 = Math.min(y0, c.y); x1 = Math.max(x1, c.x + c.w); y1 = Math.max(y1, c.y + c.h); }
+  return {x:x0, y:y0, w:x1 - x0, h:y1 - y0};
+}
+const laneBox = z => ({x:z.x, y:z.y, w:z.w, h:z.h});
+const overview = (ms) => flyTo(fitBox({x:0, y:20, w:W, h:H - 20}, 16, 1), ms);
+function zoomAt(px, py, f) {
+  const k = clampK(cam.k * f);
+  cam.x = px - (px - cam.x) * (k / cam.k); cam.y = py - (py - cam.y) * (k / cam.k); cam.k = k; apply();
+}
+function zoomBtn(f) { const a = area(); cancelAnimationFrame(anim); zoomAt(a.x + a.w / 2, a.y + a.h / 2, f); }
+function centerOn(c) {
+  const a = area(), k = Math.min(1.1, Math.max(cam.k, .9));
+  flyTo({k, x: a.x + a.w / 2 - (c.x + c.w / 2) * k, y: a.y + a.h / 2 - (c.y + c.h / 2) * k});
+}
+
+/* ---------- interação ---------- */
+const ptrs = new Map(), drag = {moved:false, sx:0, sy:0, cx:0, cy:0, pinch:null};
+vp.addEventListener('pointerdown', e => {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  cancelAnimationFrame(anim); poke();
+  if (ptrs.size === 1) { drag.moved = false; drag.sx = e.clientX; drag.sy = e.clientY; drag.cx = cam.x; drag.cy = cam.y; }
+  else if (ptrs.size === 2) {
+    const [p, q] = [...ptrs.values()], r = vp.getBoundingClientRect();
+    const mx = (p.x + q.x) / 2 - r.left, my = (p.y + q.y) / 2 - r.top;
+    drag.pinch = {d: Math.hypot(p.x - q.x, p.y - q.y), k: cam.k, wx: (mx - cam.x) / cam.k, wy: (my - cam.y) / cam.k};
+    drag.moved = true;
+  }
+});
+vp.addEventListener('pointermove', e => {
+  if (!ptrs.has(e.pointerId)) return;
+  if (e.pointerType === 'mouse' && !e.buttons) { up(e); return; }
+  ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (ptrs.size >= 2 && drag.pinch) {
+    const [p, q] = [...ptrs.values()], r = vp.getBoundingClientRect();
+    const k = clampK(drag.pinch.k * Math.hypot(p.x - q.x, p.y - q.y) / drag.pinch.d);
+    const mx = (p.x + q.x) / 2 - r.left, my = (p.y + q.y) / 2 - r.top;
+    cam.k = k; cam.x = mx - drag.pinch.wx * k; cam.y = my - drag.pinch.wy * k; apply(); return;
+  }
+  const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+  if (!drag.moved && Math.hypot(dx, dy) > 5) { drag.moved = true; try { vp.setPointerCapture(e.pointerId); } catch (_) {} vp.classList.add('grabbing'); }
+  if (drag.moved) { cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply(); }
+});
+function up(e) {
+  ptrs.delete(e.pointerId);
+  if (ptrs.size < 2) drag.pinch = null;
+  if (ptrs.size === 1) { const p = [...ptrs.values()][0]; drag.sx = p.x; drag.sy = p.y; drag.cx = cam.x; drag.cy = cam.y; }
+  if (!ptrs.size) vp.classList.remove('grabbing');
+}
+vp.addEventListener('pointerup', up); vp.addEventListener('pointercancel', up);
+vp.addEventListener('click', e => {
+  if (drag.moved) { e.stopPropagation(); e.preventDefault(); drag.moved = false; return; }
+  if (!e.target.closest('.card,.lhead')) clearSel();
+}, true);
+vp.addEventListener('wheel', e => {
+  e.preventDefault(); poke(); cancelAnimationFrame(anim);
+  const r = vp.getBoundingClientRect();
+  if (e.shiftKey && !e.ctrlKey) { cam.x -= (e.deltaY || e.deltaX); apply(); return; }
+  const dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
+  zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-dy * (e.ctrlKey ? .01 : .0016)));
+}, {passive:false});
+
+addEventListener('keydown', e => {
+  poke();
+  if (e.target.closest && e.target.closest('input,textarea')) return;
+  const k = e.key;
+  if (state.tour && (k === 'ArrowRight' || k === 'PageDown')) { stepTour(1); e.preventDefault(); }
+  else if (state.tour && (k === 'ArrowLeft' || k === 'PageUp')) { stepTour(-1); e.preventDefault(); }
+  else if (k === '+' || k === '=') zoomBtn(1.25);
+  else if (k === '-' || k === '_') zoomBtn(.8);
+  else if (k === '0') overview();
+  else if (k === 'Escape') esc();
+  else if (!state.tour && k.startsWith('Arrow') && !e.target.closest('.panel,#guide,.side')) {
+    const d = 80; cam.x += k === 'ArrowLeft' ? d : k === 'ArrowRight' ? -d : 0; cam.y += k === 'ArrowUp' ? d : k === 'ArrowDown' ? -d : 0; apply(); e.preventDefault();
+  }
+});
+function esc() {
+  if (side.classList.contains('open')) closeSide();
+  else if (!drawer.hidden) closeDrawer();
+  else if (!decs.hidden) toggleDecs(false);
+  else if (state.tour) endTour();
+  else clearSel();
+}
+
+/* ---------- ficha de detalhes ---------- */
+const sec = (h, body) => body ? `<div class="sec"><h3>${h}</h3>${body}</div>` : '';
+const ul = (xs, cls = '') => xs && xs.length ? `<ul class="${cls}">${xs.map(x => `<li>${x}</li>`).join('')}</ul>` : '';
+function openCard(id) {
+  const c = byId[id]; if (!c) return;
+  state.sel = id;
+  if (!state.tour) highlight(new Set([id, ...neighbors(id)]), id);
+  else c.el.classList.add('sel');
+  const z = ZONES[c.z];
+  const ins = EDGES.filter(e => e.b === id), outs = EDGES.filter(e => e.a === id);
+  const lk = (e, dir) => { const o = byId[dir === '→' ? e.b : e.a]; return `<button class="lk" type="button" data-go="${o.id}"><span class="dir" aria-hidden="true">${dir}</span><span><b>${o.t}</b>${e.l ? `<small>${e.l}</small>` : ''}</span></button>`; };
+  const decsHere = DEC.filter(d => d.c.includes(id));
+  $('#drawerKind').textContent = `${z.n} · ${z.t}`;
+  $('#drawerBody').innerHTML = `
+    <p class="d-eb">${c.eb || 'Saída antecipada'}</p>
+    <h2>${c.t}</h2>
+    ${c.tx ? `<p class="lead">${c.tx}</p>` : ''}
+    ${c.tbl ? `<div class="sec"><div class="tbl">${c.tbl.map(r => `<b>${r[0]}</b><span>${r[1]}</span>`).join('')}</div></div>` : ''}
+    ${sec('Como funciona', c.faz && `<p>${c.faz}</p>`)}
+    ${(c.entra || c.sai) ? `<div class="sec io">${c.entra ? `<div><h3>Entra</h3>${ul(c.entra)}</div>` : '<div><h3>Entra</h3><ul><li>—</li></ul></div>'}${c.sai ? `<div><h3>Sai</h3>${ul(c.sai)}</div>` : '<div><h3>Sai</h3><ul><li>—</li></ul></div>'}</div>` : ''}
+    ${sec('Por que assim', ul(c.pq))}
+    ${sec('Números', ul(c.num, 'num'))}
+    ${sec('O que ficou de fora ou falta', ul(c.fora))}
+    ${(ins.length || outs.length) ? sec('Ligações', `<div class="links">${ins.map(e => lk(e, '←')).join('')}${outs.map(e => lk(e, '→')).join('')}</div>`) : ''}
+    ${decsHere.length ? sec('Decisões ligadas', `<div class="links">${decsHere.map(d => `<button class="lk" type="button" data-dec="${DEC.indexOf(d)}"><span class="dir" aria-hidden="true">◆</span><span><b>${d.t}</b><small>${d.g}</small></span></button>`).join('')}</div>`) : ''}
+    ${c.cod ? sec('No repositório', `<div class="codes">${c.cod.map(x => `<code>${x}</code>`).join('')}</div>`) : ''}`;
+  showDrawer();
+  if (!state.tour) centerOn(c);
+}
+function openDecision(i) {
+  const d = DEC[i]; state.sel = null;
+  if (!state.tour) highlight(new Set(d.c));
+  $('#drawerKind').textContent = 'Decisão';
+  $('#drawerBody').innerHTML = `
+    <p class="d-eb"><span class="tag">${d.g}</span></p>
+    <h2>${d.t}</h2><p class="lead">${d.tx}</p>
+    ${sec('Onde aparece no mapa', `<div class="links">${d.c.map(id => `<button class="lk" type="button" data-go="${id}"><span class="dir" aria-hidden="true">→</span><span><b>${byId[id].t}</b><small>${ZONES[byId[id].z].t}</small></span></button>`).join('')}</div>`)}`;
+  showDrawer();
+  if (!state.tour) flyTo(fitBox(boxOf(d.c), 70, 1));
+}
+function openZone(id) {
+  const z = ZONES[id], ids = CARDS.filter(c => c.z === id).map(c => c.id);
+  state.sel = null;
+  if (!state.tour) highlight(new Set(ids));
+  $('#drawerKind').textContent = `${z.n} · Stack`;
+  $('#drawerBody').innerHTML = `
+    <p class="d-eb">${z.repo || 'faixa do mapa'}</p>
+    <h2>${z.t}</h2><p class="lead">${z.s}</p>
+    ${sec('Ferramentas', ul(z.st))}
+    ${sec('Nesta faixa', `<div class="links">${ids.map(c => `<button class="lk" type="button" data-go="${c}"><span class="dir" aria-hidden="true">→</span><span><b>${byId[c].t}</b><small>${byId[c].eb || 'Saída antecipada'}</small></span></button>`).join('')}</div>`)}`;
+  showDrawer();
+  if (!state.tour) flyTo(fitBox(laneBox(z), 20, 1.1));
+}
+function showDrawer() { drawer.hidden = false; drawer.scrollTop = 0; }
+function closeDrawer() { drawer.hidden = true; if (!state.tour) clearSel(); else for (const c of CARDS) c.el.classList.remove('sel'); }
+function clearSel() { state.sel = null; if (!state.tour) highlight(null); }
+drawer.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'), dc = e.target.closest('[data-dec]');
+  if (g) openCard(g.dataset.go); else if (dc) openDecision(+dc.dataset.dec);
+});
+
+/* ---------- decisões ---------- */
+$('#nDecs').textContent = `(${DEC.length})`;
+const groups = [...new Set(DEC.map(d => d.g))];
+$('#decsBody').innerHTML = `<p class="lead">As escolhas que moldaram a Dona Checa. Clique numa decisão para ver onde ela aparece.</p>` +
+  groups.map(g => `<div class="dgroup"><h3>${g}</h3>${DEC.map((d, i) => d.g === g ? `<button class="ditem" type="button" data-dec="${i}"><b>${d.t}</b><span>${d.tx}</span></button>` : '').join('')}</div>`).join('');
+$('#decsBody').addEventListener('click', e => { const b = e.target.closest('[data-dec]'); if (!b) return; if (!wide()) toggleDecs(false); openDecision(+b.dataset.dec); });
+function toggleDecs(on) { decs.hidden = !on; $('#bDecs').setAttribute('aria-pressed', String(on)); }
+$('#bDecs').addEventListener('click', () => { closeSide(); toggleDecs(decs.hidden); });
+document.addEventListener('click', e => { const c = e.target.closest('[data-close]'); if (!c) return; if (c.dataset.close === 'drawer') closeDrawer(); else toggleDecs(false); });
+
+/* ---------- fluxos narrados ---------- */
+TOURS.forEach((t, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.dataset.tour = i;
+  b.innerHTML = `<span class="n">${String(i + 1).padStart(2, '0')}</span><span>${t.t}<small>${t.steps.length} passos</small></span>`;
+  b.addEventListener('click', () => { closeSide(); startTour(i); });
+  $('#navTours').appendChild(b);
+});
+function renderGuide() {
+  document.querySelectorAll('#navTours button').forEach(b => b.setAttribute('aria-current', String(!!state.tour && +b.dataset.tour === state.tour.t)));
+  if (!state.tour) { guide.hidden = true; guide.innerHTML = ''; return; }
+  const t = TOURS[state.tour.t], i = state.tour.i, s = t.steps[i], last = i === t.steps.length - 1;
+  guide.hidden = false;
+  guide.innerHTML = `<svg class="gav" viewBox="0 0 200 200" aria-hidden="true"><use href="#logo"/></svg>
+    <div class="bubble"><div class="bh"><b>Dona Checa explica · ${t.t}</b><span>${i + 1} de ${t.steps.length}</span></div>
+    <p class="cap">${s.tx}</p>
+    <div class="ctl"><button class="gb" type="button" data-t="prev" ${i === 0 ? 'disabled' : ''}>← Voltar</button>
+    <span class="bar2" aria-hidden="true"><i style="width:${(i + 1) / t.steps.length * 100}%"></i></span>
+    <button class="gb primary" type="button" data-t="next">${last ? 'Concluir' : 'Seguir →'}</button>
+    <button class="gb link" type="button" data-t="end">Sair</button></div></div>`;
+}
+guide.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.t === 'prev') stepTour(-1);
+  else if (b.dataset.t === 'next') stepTour(1);
+  else if (b.dataset.t === 'end') endTour();
+});
+function startTour(t) { state.tour = {t, i:0}; drawer.hidden = true; goStep(); }
+function goStep(ms) {
+  const s = TOURS[state.tour.t].steps[state.tour.i];
+  highlight(new Set(s.c));
+  renderGuide();
+  flyTo(fitBox(boxOf(s.c), 64, 1.1), ms);
+}
+function stepTour(d) {
+  const t = TOURS[state.tour.t], i = state.tour.i + d;
+  if (i >= t.steps.length) { endTour(); return; }
+  if (i < 0) return;
+  state.tour.i = i; goStep();
+}
+function endTour() { state.tour = null; highlight(null); drawer.hidden = true; renderGuide(); overview(); }
+
+/* ---------- legenda ---------- */
+$('#lgEdges').innerHTML = EDGE_KINDS.map(([k, t]) => `<svg viewBox="0 0 44 14" aria-hidden="true"><path class="edge ${k === 'hot' ? 'hot' : 'e-' + k}" d="M4,7 L36,7" ${NOARROW.has(k) ? '' : `marker-end="url(#${k === 'hot' ? 'ah-hot' : arrow(k)})"`}/></svg><span>${t}</span>`).join('');
+function toggleLegend(on) { legend.hidden = !on; $('#bLeg').setAttribute('aria-pressed', String(on)); }
+$('#bLeg').addEventListener('click', () => { closeSide(); toggleLegend(legend.hidden); });
+
+/* ---------- barra lateral ---------- */
+$('#zIn').addEventListener('click', () => zoomBtn(1.25));
+$('#zOut').addEventListener('click', () => zoomBtn(.8));
+$('#bFit').addEventListener('click', () => { closeSide(); overview(); });
+const menu = $('#bMenu');
+menu.addEventListener('click', () => { const on = !side.classList.contains('open'); side.classList.toggle('open', on); menu.setAttribute('aria-expanded', String(on)); });
+function closeSide() { side.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }
+const full = $('#bFull');
+if (document.fullscreenEnabled) {
+  full.hidden = false;
+  full.addEventListener('click', () => {
+    const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    if (p && p.catch) p.catch(() => {});
+  });
+  document.addEventListener('fullscreenchange', () => { full.textContent = document.fullscreenElement ? 'Sair da tela cheia' : 'Tela cheia'; });
+}
+
+/* ---------- inatividade: volta à visão geral ---------- */
+let idle = 0;
+function poke() { clearTimeout(idle); idle = setTimeout(resetAll, 240000); }
+['pointerdown', 'wheel', 'keydown'].forEach(t => addEventListener(t, () => { state.touched = true; }, {passive:true, capture:true}));
+function resetAll() { state.tour = null; toggleLegend(false); drawer.hidden = true; toggleDecs(false); highlight(null); renderGuide(); overview(); }
+['pointerdown', 'wheel'].forEach(t => addEventListener(t, poke, {passive:true}));
+
+/* ---------- início ---------- */
+let ready = false;
+function relayout() { measure(); layoutEdges(); }
+function init() { relayout(); renderGuide(); overview(0); poke(); ready = true; }
+let lastSize = '';
+new ResizeObserver(() => {
+  const w = stage.clientWidth, h = stage.clientHeight, size = w + 'x' + h;
+  if (!ready || !w || !h || size === lastSize) return;
+  lastSize = size;
+  if (state.tour) goStep(0);
+  else if (!state.touched) overview(0);
+  else apply();
+}).observe(stage);
+init();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { relayout(); if (!state.touched) overview(0); });
+})();
+</script>
+</body>
+</html>
