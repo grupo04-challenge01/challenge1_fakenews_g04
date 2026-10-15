@@ -72,3 +72,6 @@
 - [ ] 7.6 Tabela da entrega final, link do repositório e link do vídeo no
       `README.md` (D9)
 - [x] 7.7 Páginas novas na nav do `mkdocs.yml`
+- [x] 7.8 Escrever `docs/showcase/roteiro-apresentacao.md`: apresentação com
+      o produto e o mapa, sem slides, na ordem da coordenação (D15)
+- [ ] 7.9 Ensaiar o roteiro da apresentação três vezes, cronometrado

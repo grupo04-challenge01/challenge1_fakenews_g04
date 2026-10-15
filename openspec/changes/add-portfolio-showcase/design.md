@@ -161,3 +161,13 @@ B do roteiro.
 - [Relatório técnico diverge do portfólio] → D11: o portfólio vence.
 - [`0.0.0.0` expõe o servidor na rede da sala] → só no estande, sem chave de
   API em tela, e o servidor é desligado ao fim.
+
+### D15. Apresentação com o produto e o mapa, sem slides
+
+Na devolutiva de 15/10, o mentor pediu menos texto e mais diagramas. A
+apresentação deixa os slides e alterna entre duas telas: o chat da Dona Checa
+e o mapa da arquitetura (`docs/mapa/arquitetura.html`). A ordem da
+coordenação continua: problema e solução no chat, IA no mapa, demonstração no
+chat, resultados no mapa. O roteiro fixa fala, tela, tempo e dono de cada
+bloco, com pontos de controle de tempo. O conteúdo dos slides de D12 fica como
+reserva.
