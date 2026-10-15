@@ -77,6 +77,7 @@ nav:
       - Roteiro do vídeo: showcase/roteiro-video.md
       - Reflexão (rascunho): showcase/reflexao.md
       - Organização e papéis: showcase/organizacao.md
+  - Arquitetura: arquitetura.md
   - Requisitos: requisitos.md
   - Estado do projeto: estado.md
   - Tasks pendentes: pendencias.md
@@ -86,5 +87,10 @@ markdown_extensions:
   - md_in_html
   - tables
   - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true

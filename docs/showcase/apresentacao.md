@@ -59,28 +59,51 @@ não entra no slide.
 
 ## 4. A solução
 
-- A pessoa cola a mensagem ou o link que recebeu. Não precisa de conta.
-- A resposta tem quatro blocos, até 120 palavras: veredito, critério,
-  o que é fato e o que é opinião, e a fonte.
-- Quatro rótulos possíveis, e um deles é «evidência insuficiente».
-- Pedido de conduta médica ou urgência sai do caminho normal e vai para
-  orientação profissional.
-- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md#o-que-ela-faz).
+```mermaid
+flowchart LR
+    p([Pessoa cola<br/>mensagem ou link]):::pessoa --> dc[Dona Checa]:::nosso
+    ac[(6.279 checagens de<br/>agências brasileiras)]:::dado --> dc
+    dc --> b1[1 · Veredito]:::nosso
+    dc --> b2[2 · O que se sabe]:::nosso
+    dc --> b3[3 · Por que engana]:::nosso
+    dc --> b4[4 · O que observar]:::nosso
+    b1 & b2 --> f([Agência, data e link<br/>da checagem]):::pessoa
+    dc -. "urgência ou conduta médica" .-> o([Orientação profissional]):::saida
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
+
+- Sem conta. Até 120 palavras, e um dos quatro rótulos é «evidência
+  insuficiente».
+- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md#o-que-ela-faz);
+  [Arquitetura, contexto](../arquitetura.md#1-contexto).
 
 ## 5. Como a IA trabalha
 
-- Sete etapas: fronteira, leitura, extração, decomposição, recuperação,
-  guarda, resposta.
-- **RAG híbrido** sobre 6.279 checagens de agências brasileiras (23.655
-  fragmentos): BM25 + `multilingual-e5-base`, fusão com α = 0,9.
-- Gerador: `deepseek-v4-pro`, instruído por prompt. **Nenhum modelo treinado
-  para dar veredito.**
-- **Guarda:** sem trecho que cubra a alegação, o rótulo é «evidência
-  insuficiente». Veredito não sai da memória do modelo.
-- Antes de sair, a resposta passa por quatro conferências em código: técnica
-  do catálogo, mito sempre marcado, frase sem base removida, teto de 120
-  palavras.
-- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md#o-fluxo);
+```mermaid
+flowchart LR
+    F[Fronteira]:::llm --> L[Leitura<br/>do link]:::nosso --> X[Extração]:::llm --> D[Decomposição]:::llm
+    D --> R[Recuperação<br/>BM25 + e5 · α 0,9]:::nosso --> G{"Guarda<br/>trecho ≥ 0,55?"}:::llm
+    G -- sim --> V[Veredito<br/>+ critério + fonte]:::llm
+    G -- não --> I[Evidência<br/>insuficiente]:::saida
+    idx[(23.655 fragmentos)]:::dado --> R
+    V --> C[Conferência<br/>em código]:::nosso
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
+
+- Rosa: chamada ao `deepseek-v4-pro`. **Nenhum modelo treinado para dar
+  veredito**; ele não sai da memória do modelo.
+- Fonte: [Arquitetura, fluxo](../arquitetura.md#3-fluxo-das-sete-etapas) e
+  [guarda](../arquitetura.md#6-guarda-e-resposta-veredito-nunca-nu);
   [Relatório técnico](../act/relatorio-tecnico.md), seção 3.
 
 ## 6. Demo ao vivo
@@ -93,14 +116,23 @@ não entra no slide.
 
 ## 7. Resultados técnicos
 
-- **Recuperação:** a checagem certa aparece entre as 5 primeiras em 20 de 20
-  consultas reais (Recall@5 1,00, MRR 0,897).
-- **Bancada ponta a ponta:** 29 de 30 casos, sem falha eliminatória. A falha
-  (F06) é de forma.
-- 10 de 10 respostas com evidência trazem o link da checagem.
-- Verificação completa em **13,8 s** de mediana, contra 22 min à mão; de
-  US$ 0,002 a 0,004 por mensagem.
-- Fonte: rodada `20261013-104226`, [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo).
+```mermaid
+flowchart LR
+    F["Fronteira<br/>7/7"]:::nosso --> X["Extração<br/>36/36"]:::nosso --> R["Recuperação<br/>10/10<br/>Recall@5 1,00"]:::nosso --> G["Guarda<br/>12/12"]:::nosso --> S["Resposta<br/>39/40"]:::nosso
+    L["Leitura de link<br/>10/10"]:::nosso --> X
+    S --> T(["29 de 30 casos · 13,8 s de mediana<br/>contra 22 min à mão"]):::pessoa
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
+
+- 10 de 10 respostas com evidência trazem o link da checagem; de US$ 0,002 a
+  0,004 por mensagem. A falha (F06) é de forma.
+- Fonte: rodada `20261013-104226`, [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo);
+  MRR 0,897 em [Protótipo e avaliação](../act/prototipo-avaliacao.md#recuperacao).
 
 ## 8. Com pessoas, e o que ela não faz
 
