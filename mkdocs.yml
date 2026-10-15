@@ -73,7 +73,7 @@ nav:
       - Parecer sobre o termo (LGPD): interface/parecer-termo-lgpd.md
   - Showcase:
       - Roteiro da demo: showcase/roteiro-demo.md
-      - Mapa da arquitetura: arquitetura/index.html
+      - Mapa da arquitetura: mapa/arquitetura.html
       - Apresentação: showcase/apresentacao.md
       - Roteiro do vídeo: showcase/roteiro-video.md
       - Reflexão (rascunho): showcase/reflexao.md

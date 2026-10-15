@@ -77,9 +77,9 @@ lacunas em três:
 - `docs/interface/chat-web.md`: latência e custo das rodadas atuais.
 - Limitações da avaliação completadas em `docs/pendencias.md`.
 - **NOVO** slides da apresentação e texto de reflexão no portfólio.
-- **NOVO** `docs/arquitetura/index.html`: mapa navegável da arquitetura da
-  Dona Checa, publicado pelo mesmo deploy em `arquitetura/`, como página
-  autônoma, com entrada na nav do Showcase (D15).
+- `mkdocs.yml`: entrada «Mapa da arquitetura» na nav do Showcase, apontando
+  para `docs/mapa/arquitetura.html`, publicado por
+  `add-arquitetura-diagramas` (D15).
 - `docs/showcase/apresentacao.md` cortado para caber em 10 minutos, na ordem
   pedida pela coordenação (D12).
 - **NOVO** `docs/showcase/organizacao.md`: como o grupo se organizou, fases,

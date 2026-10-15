@@ -75,12 +75,9 @@
 
 ## 8. Mapa da arquitetura
 
-- [x] 8.1 Publicar o mapa em `docs/arquitetura/index.html` e corrigir no
-      comentário do arquivo a referência ao change, que citava um
-      `add-arquitetura-diagramas` inexistente (D9)
-- [x] 8.2 Tirar dos cards os caminhos que não existem na `main`:
-      `docs/act/relatorio-tecnico.md`, `docs/showcase/organizacao.md` e
-      `docs/showcase/roteiro-video.md` (D9)
-- [x] 8.3 Incluir a entrada do mapa na nav do Showcase em `mkdocs.yml`
-- [x] 8.4 `mkdocs build --strict` sem `WARNING`, `arquitetura/index.html`
-      presente no site construído e todo caminho citado existindo na `main`
+- [x] 8.1 Incluir a entrada «Mapa da arquitetura» na nav do Showcase,
+      apontando para `docs/mapa/arquitetura.html` (D15)
+- [x] 8.2 Remover `docs/arquitetura/index.html`, cópia do mapa que colidia
+      com a página gerada por `docs/arquitetura.md` (D15)
+- [x] 8.3 `mkdocs build --strict` sem `WARNING`; no site construído,
+      `arquitetura/` é a página de diagramas e `mapa/arquitetura.html` é o mapa
