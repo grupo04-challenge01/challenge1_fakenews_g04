@@ -90,24 +90,23 @@ entregáveis finais, dizer como subir a demo e onde estão os changes.
 #### Scenario: Avaliador abre o repositório
 - **WHEN** alguém abre a página inicial do repositório
 - **THEN** encontra o link do portfólio e o caminho de cada entregável final
+- **AND** encontra o link do próprio repositório no GitHub
 
-### Requirement: Mapa da arquitetura publicado
+### Requirement: Mapa da arquitetura na nav
 
-O portfólio SHALL publicar o mapa da arquitetura em
-`docs/arquitetura/index.html`, servido como página autônoma no endereço
-`arquitetura/` do site e alcançável pela nav. Todo caminho de arquivo citado
-nos cards do mapa MUST existir na `main`.
+A nav do Showcase SHALL ter a entrada «Mapa da arquitetura», apontando para o
+mapa publicado em `docs/mapa/arquitetura.html` pelo change
+`add-arquitetura-diagramas`. Arquivo estático em `docs/` MUST NOT ocupar o
+endereço gerado por uma página Markdown.
 
 #### Scenario: Acesso pelo portfólio
-- **WHEN** o leitor escolhe a entrada do mapa na nav do portfólio
-- **THEN** abre o mapa no endereço `arquitetura/`
+- **WHEN** o leitor escolhe «Mapa da arquitetura» na nav do portfólio
+- **THEN** abre o mapa em `mapa/arquitetura.html`
 - **AND** a página não traz o cabeçalho nem o menu do tema
 
-#### Scenario: Caminho citado num card
-- **GIVEN** um card do mapa que cita um arquivo do repositório
-- **WHEN** alguém procura esse caminho na `main`
-- **THEN** o arquivo existe
-- **AND** encontra o link do próprio repositório no GitHub
+#### Scenario: Página de diagramas preservada
+- **WHEN** o leitor abre o endereço `arquitetura/` do site
+- **THEN** encontra a página de diagramas gerada por `docs/arquitetura.md`
 
 ### Requirement: Entrega final mapeada
 

@@ -146,26 +146,22 @@ A mídia de destino é decisão do grupo. Se for o celular, o servidor sobe com
 local; o ensaio da 3.3 inclui esse acesso. Rede da sala instável cai no plano
 B do roteiro.
 
-### D15. Mapa da arquitetura como página autônoma no mesmo site
+### D15. Mapa da arquitetura na nav, sem cópia
 
-O mapa da arquitetura é um HTML autocontido, com CSS e JS no próprio arquivo e
-só as fontes vindas do Google Fonts. O layout é de tela inteira, com navegação
-própria. Ele fica em `docs/arquitetura/index.html`. O MkDocs copia arquivos que
-não são Markdown sem passar pelo tema, então o mesmo `deploy.yml` publica o
-mapa em `<site>/arquitetura/`, sem o cabeçalho nem o menu do Material. A nav
-do Showcase ganha uma entrada que aponta para ele.
+O mapa navegável da arquitetura pertence ao change `add-arquitetura-diagramas`,
+que o publica em `docs/mapa/arquitetura.html` e o liga a partir de
+`docs/arquitetura.md`. O MkDocs copia o HTML sem passar pelo tema, então o
+mapa abre como página autônoma, em tela cheia. Este change só acrescenta a
+entrada «Mapa da arquitetura» na nav do Showcase, apontando para esse arquivo.
 
-Cada card do mapa cita os arquivos de onde saiu. O mapa só é publicado quando
-todo caminho citado existe na `main`. Citação de arquivo inexistente sai do
-card, em vez de ficar à espera de uma página que ninguém assumiu.
+O PR #219 tinha publicado uma cópia do mesmo mapa em
+`docs/arquitetura/index.html`. Esse endereço colide com o da página
+`docs/arquitetura.md`, que o MkDocs gera em `arquitetura/index.html`. A página
+sobrescrevia a cópia, e a entrada da nav abria os diagramas em vez do mapa. A
+cópia foi removida: um arquivo, um change dono.
 
-Alternativas descartadas:
-
-- Repositório ou GitHub Pages separado: duplica deploy e endereço sem ganho.
-- Página `.md` com `iframe`: herda a largura do tema e perde a tela cheia do
-  mapa.
-- Commit direto no branch `gh-pages`: o `mkdocs gh-deploy --force` reescreve
-  o branch a cada push, e o arquivo sumiria.
+Alternativa descartada: manter a cópia em outro caminho. Duas cópias do mesmo
+mapa divergem na primeira correção feita em só uma delas.
 
 ## Risks / Trade-offs
 
@@ -177,8 +173,8 @@ Alternativas descartadas:
   e D6 também vão para `docs/pendencias.md` e são combinados com o grupo.
 - [A rodada da tag falha num caso do roteiro] → o roteiro troca o caso por
   outro que passou na mesma rodada, sem mudar a regra para o caso passar.
-- [O mapa envelhece em relação ao código] → cada card cita o arquivo de
-  origem, e a verificação da seção 7 confere que todo caminho citado existe.
+- [Arquivo estático no mesmo endereço de uma página `.md`] → a verificação
+  da seção 8 abre `arquitetura/` e `mapa/arquitetura.html` no site construído.
 - [Vídeo grava antes do corte do deck e conta outra história] → o roteiro do
   vídeo sai do mesmo conteúdo da apresentação de 10 minutos.
 - [Relatório técnico diverge do portfólio] → D11: o portfólio vence.
