@@ -66,6 +66,7 @@ nav:
       - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Fase Act:
       - Protótipo e avaliação: act/prototipo-avaliacao.md
+      - Relatório técnico: act/relatorio-tecnico.md
       - Identidade da Dona Checa: identidade/paleta.md
       - Chat web da Dona Checa: interface/chat-web.md
       - Revisão do termo (LGPD): interface/revisao-termo-lgpd.md
