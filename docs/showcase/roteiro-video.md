@@ -2,97 +2,148 @@
 
 Vídeo explicativo de até 5 minutos, publicado no YouTube, com os cinco
 integrantes. Change `add-portfolio-showcase`, decisão D13, tasks 7.4 e 7.5.
-Os números seguem a mesma regra dos slides: só os que estão na
-[rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo) ou nas páginas
-do portfólio.
-
-!!! note "Divisão proposta"
-    Cada trecho ficou com quem foi dono do assunto no projeto
-    ([Organização e papéis](organizacao.md)). O grupo pode trocar as falas,
-    desde que todos falem e a soma fique em até 5 minutos.
+Parte do rascunho do Breno de 15/10, reescrito para soar como conversa e
+conferido contra o portfólio. Os números seguem a mesma regra dos slides: só os
+que estão na [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo) ou
+nas páginas do portfólio.
 
 | # | Tópico da coordenação | Quem fala | Tempo | Acumulado |
 | --- | --- | --- | --- | --- |
-| 1 | Contexto e problema | Breno | 0:50 | 0:50 |
-| 2 | Produto e solução | Wingrid | 0:50 | 1:40 |
-| 3 | Aplicação e técnicas de IA | Vitor | 1:05 | 2:45 |
-| 4 | Principais desafios | Samara | 0:55 | 3:40 |
-| 5 | Conclusão e resultados | Jhessica | 1:00 | 4:40 |
+| 1 | Contexto e problema | Wingrid | 0:55 | 0:55 |
+| 2 | Produto e solução | Vitor | 1:00 | 1:55 |
+| 3 | Aplicação e técnicas de IA | Samara | 1:00 | 2:55 |
+| 4 | Principais desafios | Jhessica | 0:55 | 3:50 |
+| 5 | Resultados e conclusão | Breno | 1:00 | 4:50 |
 
-Folga de 20 s para abertura e transições. Cerca de 130 palavras por minuto:
-cada fala abaixo foi escrita para caber no tempo lido sem pressa.
+Folga de 10 s para as transições. Cada fala tem entre 115 e 135 palavras, o
+que cabe em um minuto falado sem pressa.
 
-## 1. Contexto e problema — Breno (0:50)
+!!! tip "Como gravar a fala"
+    O texto é um guia, não um teleprompter. Leia duas vezes, depois grave
+    falando com as suas palavras, como se explicasse para alguém da família.
+    O que não pode mudar são os números e os nomes: esses estão conferidos.
 
-**Tela:** rosto de quem fala; depois, um print de mensagem de saúde falsa no
-WhatsApp.
+## 1. Contexto e problema — Wingrid (0:55)
 
-> Somos o grupo 04 do Challenge 1, e este é o nosso projeto, a Dona Checa.
-> Todo dia chega no WhatsApp da família alguma mensagem de saúde: um chá que
-> cura câncer, uma vacina que altera o DNA. Quem recebe decide em segundos se
-> acredita e se repassa. Para checar direito, a gente cronometrou seis casos
-> reais: a mediana foi de 22 minutos por mensagem, e o pior caso levou 43.
-> Ninguém faz isso para cada mensagem. A pergunta do desafio era: como a IA
-> pode ajudar as pessoas a avaliar se uma informação é confiável, sem
-> substituir o pensamento crítico delas?
+**Tela:** Wingrid na câmera. Em «vacina da febre amarela», print do
+[caso 01](../forense/caso-01-febre-amarela.md); em «suco de inhame», do
+[caso 02](../forense/caso-02-inhame.md). No fim, a tela inicial da Dona Checa
+(`figma-dona-checa/png/desktop/01-inicial.png`).
 
-## 2. Produto e solução — Wingrid (0:50)
+> Oi! A gente é o grupo 04, e este é o nosso projeto: a Dona Checa.
+>
+> Sabe aquela mensagem que chega no grupo da família dizendo que a vacina da
+> febre amarela mata metade de quem toma? Ou que suco de inhame cura a
+> dengue? Quem recebe tem poucos segundos para decidir se acredita e se
+> repassa.
+>
+> A gente quis saber quanto custa checar isso direito. Pegamos seis casos
+> reais e cronometramos: na mediana, 22 minutos por mensagem. O pior levou
+> 43. Ninguém faz isso no dia a dia.
+>
+> E quando existe uma ferramenta, ela costuma dar só um selo: «falso».
+> Sem motivo, sem fonte. E a pessoa não aprende nada para o próximo boato.
+>
+> Então a nossa pergunta foi: como a IA pode ajudar a pessoa a avaliar uma
+> informação, sem pensar no lugar dela?
 
-**Tela:** gravação do chat: termo aceito, mensagem colada, resposta em quatro
-blocos, «Ver fontes e detalhes» aberto.
+## 2. Produto e solução — Vitor (1:00)
 
-> A Dona Checa é um chat. A pessoa cola a mensagem ou o link que recebeu, sem
-> criar conta. Ela responde em quatro blocos curtos: o veredito, o critério
-> que sustenta o veredito, o que é fato e o que é opinião na mensagem, e a
-> fonte. A nossa regra é: veredito nunca nu. Todo «falso» ou «verdadeiro» vem
-> com o motivo e com o link da checagem de uma agência brasileira, que a
-> pessoa pode abrir e conferir. E quando não temos checagem que cubra a
-> alegação, ela diz «evidência insuficiente» em vez de chutar.
+**Tela:** gravação do chat: termo aceito, caso 1 do
+[roteiro da demo](roteiro-demo.md#casos) colado, andamento ao vivo, resposta
+em quatro blocos e «Ver fontes e detalhes» aberto. No fim, o caso 4, com
+«evidência insuficiente». Sem gravação, usar as telas `03`, `04` e `10` de
+`figma-dona-checa/png/desktop/`.
 
-## 3. Aplicação e técnicas de IA — Vitor (1:05)
+> A Dona Checa é um chat. Você cola a mensagem ou o link que recebeu, sem
+> criar conta.
+>
+> Antes, ela pede o seu consentimento, porque o texto vai para um modelo de
+> linguagem externo. E o servidor tira e-mail, CPF e telefone antes de
+> mandar.
+>
+> Aí ela responde em quatro blocos curtos: o veredito, o que se sabe sobre o
+> assunto, por que aquela mensagem engana e o que observar da próxima vez.
+>
+> A nossa regra é: veredito nunca nu. Se ela diz «falso», mostra o critério
+> e o link da checagem de uma agência brasileira, como a Lupa ou o Aos Fatos.
+> Você abre, confere e pode até discordar.
+>
+> E quando não existe checagem sobre aquilo, ela diz «evidência
+> insuficiente», em vez de chutar.
 
-**Tela:** diagrama das sete etapas; depois, a tabela de recuperação.
+## 3. Aplicação e técnicas de IA — Samara (1:00)
 
-> Por trás do chat há sete etapas. Primeiro, uma fronteira separa pedido de
-> conduta médica e urgência, que vai direto para orientação profissional.
-> Depois, um modelo de linguagem acha a alegação de saúde e separa fato de
-> opinião. A busca é um RAG híbrido: BM25 com um modelo de embeddings
-> multilíngue, sobre mais de seis mil checagens de agências brasileiras. Uma
-> guarda em código impede veredito sem trecho que o sustente, e a resposta
-> passa por quatro conferências antes de sair. Uma decisão importante: não
-> treinamos nenhum classificador de veredito. Ele seria opaco e ficaria
-> velho. Com RAG, cada resposta aponta a checagem que a sustenta.
+**Tela:** o [mapa da arquitetura](../mapa/arquitetura.html), fluxo guiado
+«Na linha da verificação», avançando com `→` a cada estação citada.
 
-## 4. Principais desafios — Samara (0:55)
+> Por trás do chat, tem uma linha com sete etapas.
+>
+> A primeira é uma fronteira de saúde. Se alguém escreve «minha mãe está com
+> dor no peito agora», a Dona Checa não checa nada: manda ligar para o SAMU.
+>
+> Depois, um modelo de linguagem acha a alegação de saúde na mensagem e
+> separa o que é fato do que é opinião.
+>
+> Aí vem a busca, um RAG híbrido. Juntamos a busca por palavras, o BM25, que
+> acha nomes exatos de vacina e remédio, com a busca por significado, o
+> modelo multilingual-e5, que entende o jeito como as pessoas escrevem. Tudo
+> sobre mais de seis mil checagens de agências brasileiras.
+>
+> E tem uma guarda: se nenhuma checagem cobre a alegação, o modelo nem dá
+> veredito. A gente não treinou classificador nenhum.
 
-**Tela:** exemplo de texto com acento corrompido; depois, gráfico de latência
-local contra API.
+## 4. Principais desafios — Jhessica (0:55)
 
-> O primeiro desafio foram os dados. Duas das bases públicas tinham o texto
-> estragado: uma perdeu as letras maiúsculas acentuadas, a outra foi
-> lematizada. Auditamos tudo, e só uma base ficou citável. O segundo foi a
-> segurança: numa sonda, o modelo disse «falso» antes de avisar que parar a
-> quimioterapia é perigoso. Por isso a fronteira clínica virou uma etapa
-> própria. O terceiro foi a latência: o modelo local levava cerca de 100
-> segundos por mensagem. Passamos para uma API, com termo de consentimento e
-> remoção de dados pessoais antes do envio.
+**Tela:** um trecho do FACTCK.BR sem acentos e o exemplo lematizado da
+[página de tratamento](../investigate/tratamento-datasets.md); depois, o card
+«Gerador» do mapa, com 102,4 s contra 10,9 s.
 
-## 5. Conclusão e resultados — Jhessica (1:00)
+> Tivemos três desafios grandes.
+>
+> O primeiro foram os dados. Bases públicas conhecidas vieram estragadas: uma
+> perdeu as maiúsculas com acento, outra veio com as palavras reduzidas, tipo
+> «o governar equador anunciar preparar cova». Não dá para citar isso.
+> Auditamos tudo, e só uma base ficou boa para citar.
+>
+> O segundo foi segurança. Num teste, perguntamos se uma mãe com câncer podia
+> trocar a quimioterapia por um chá. O modelo abriu com «falso» e só no final
+> falou em médico. Por isso a fronteira de saúde virou a primeira etapa.
+>
+> O terceiro foi o tempo. Rodando local, cada mensagem levava uns 100
+> segundos. Passamos para a API da DeepSeek, com termo de consentimento, e
+> caiu para uns 11.
 
-**Tela:** tabela da rodada da demo; depois, o grupo todo e os links.
+## 5. Resultados e conclusão — Breno (1:00)
 
-> Nos resultados, a busca acha a checagem certa entre as cinco primeiras em
-> 20 de 20 consultas reais. Na bancada de ponta a ponta, 29 de 30 casos
-> passaram, sem nenhuma falha grave. A verificação completa leva cerca de 14
-> segundos, contra 22 minutos à mão, a menos de um centavo de dólar por
-> mensagem. Testamos com duas pessoas: elas acertaram tudo, com e sem a
-> ferramenta. Com duas pessoas isso valida o método, não prova o efeito. O
-> próximo passo é testar com 20 a 30. A Dona Checa não pensa pela pessoa: ela
-> mostra o critério e a fonte, para a pessoa decidir. Obrigado!
+**Tela:** mapa, faixa 07, card «Rodada da demo» aberto; depois, o grupo
+todo, com o link do repositório e do portfólio.
+
+> E funciona? Medimos de três jeitos.
+>
+> Na busca: em 20 consultas reais, a checagem certa apareceu entre as cinco
+> primeiras em todas.
+>
+> No fluxo completo: montamos 30 casos de teste, com o esperado em cada
+> etapa. Na última rodada, 29 passaram, e todas as respostas com veredito
+> trouxeram o link da checagem. Cada verificação leva uns 14 segundos,
+> contra aqueles 22 minutos, e custa menos de meio centavo de dólar.
+>
+> E com pessoas: num piloto com duas pessoas, as duas acertaram tudo,
+> inclusive depois, sem a ferramenta. Com duas pessoas, isso valida o método;
+> ainda não prova o efeito. O próximo passo é testar com 20 a 30.
+>
+> A Dona Checa não pensa por você. Ela mostra o critério e a fonte, para
+> você decidir. Valeu!
 
 ## Gravação e publicação
 
-- Cada integrante grava a própria fala; a edição junta na ordem acima.
+- Cada integrante grava a própria fala, de preferência na horizontal, em
+  lugar silencioso e com o rosto iluminado de frente.
+- As telas de cada trecho entram por cima da fala, na edição. Quem edita
+  junta na ordem da tabela.
+- Legendas: gerar no YouTube e corrigir os termos técnicos (BM25, e5,
+  DeepSeek, SAMU).
 - Conferir a duração final: até 5:00.
 - Publicar no YouTube como «Não listado» ou «Público», conforme a
   coordenação pedir.
