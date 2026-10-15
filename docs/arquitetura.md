@@ -77,6 +77,7 @@ flowchart TB
     end
 
     subgraph disco["Disco · prototipo/indice/"]
+        direction LR
         frag[("fragmentos.jsonl<br/>23.655 fragmentos · 57 MB")]:::dado
         unid[("unidades.jsonl<br/>6.279 checagens · 23 MB")]:::dado
         densa[("densa.npy<br/>23.655 × 768 float32 · 69 MB")]:::dado
@@ -86,8 +87,8 @@ flowchart TB
     ollama["Ollama · localhost:11434"]:::externo
 
     pessoa --> pagina
-    pagina -- "POST /verificar<br/>texto no corpo + versão do termo" --> api
-    api -- "eventos data: JSON" --> pagina
+    pagina -- "POST /verificar" --> api
+    api -- "eventos SSE" --> pagina
     api --> fluxo
     fluxo --> rec
     fluxo --> textos
