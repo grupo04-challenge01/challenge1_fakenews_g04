@@ -35,6 +35,24 @@ riscos que o portfólio sozinho não resolve:
   anteriores às rodadas de 09/10 em diante;
 - a apresentação e a reflexão não tinham task.
 
+Em 15/10 saíram as orientações da coordenação para a apresentação final de
+16/10. Elas pedem quatro coisas, e a revisão contra o repositório achou
+lacunas em três:
+
+- **vídeo explicativo** de até 5 minutos no YouTube, com todos os integrantes,
+  cobrindo contexto e problema, produto, IA, desafios e resultados. Não havia
+  roteiro nem task;
+- **entrega final versionada** com datasets, requisitos, EDA, Guiding
+  Questions, organização e papéis, modelo de IA com relatório técnico,
+  descrição final do produto, código e README com link do repositório.
+  Faltavam no repositório a organização e os papéis, o relatório técnico (que
+  existia só como HTML fora do git) e o link do próprio repositório no README;
+- **estande** com o produto funcionando na mídia de destino, com pelo menos
+  dois integrantes. A demo só tinha sido preparada para `127.0.0.1`;
+- **apresentação para a banca** de no máximo 10 minutos, na ordem problema →
+  solução → IA → demonstração → resultados. O conteúdo dos slides estava
+  pensado para cerca de 15 minutos.
+
 ## What Changes
 
 - `docs/estado.md`: resumo do estado em 13/10, tabela dos 16 changes e
@@ -59,6 +77,18 @@ riscos que o portfólio sozinho não resolve:
 - `docs/interface/chat-web.md`: latência e custo das rodadas atuais.
 - Limitações da avaliação completadas em `docs/pendencias.md`.
 - **NOVO** slides da apresentação e texto de reflexão no portfólio.
+- `docs/showcase/apresentacao.md` cortado para caber em 10 minutos, na ordem
+  pedida pela coordenação (D12).
+- **NOVO** `docs/showcase/organizacao.md`: como o grupo se organizou, fases,
+  cadência e papéis de cada integrante (D10).
+- **NOVO** `docs/act/relatorio-tecnico.md`: o relatório técnico consolidado,
+  convertido do HTML v3 e com os números conferidos contra o portfólio (D11).
+- **NOVO** `docs/showcase/roteiro-video.md`: roteiro do vídeo de até 5 minutos
+  com a fala de cada integrante (D13).
+- `README.md`: link do repositório, link do vídeo e tabela que mapeia cada
+  item da entrega final ao artefato (D9).
+- `docs/showcase/roteiro-demo.md`: preparação do estande na mídia de destino
+  (D14).
 
 ## Capabilities
 
@@ -90,5 +120,8 @@ Nenhuma.
   de critério quando a saída do modelo não é JSON, `.env.example` e nome das
   agências na exibição. Pede um change `fix-*` próprio.
 - Desbloquear `add-cobertura-alegacao-ampla`.
+- Deploy público da demo. O estande usa a máquina do grupo, com
+  `DONA_CHECA_HOST=0.0.0.0` quando a mídia for o celular na rede local; o
+  servidor já suporta isso sem mudar código.
 - Corrigir `NAO_LIGADO` em `bancada/pipeline.py`, que ainda lista a 1.6 como
   desligada. É código e pede change próprio.

@@ -66,6 +66,7 @@ nav:
       - Ampliação do corpus: investigate/ampliacao-corpus.md
   - Fase Act:
       - Protótipo e avaliação: act/prototipo-avaliacao.md
+      - Relatório técnico: act/relatorio-tecnico.md
       - Identidade da Dona Checa: identidade/paleta.md
       - Chat web da Dona Checa: interface/chat-web.md
       - Revisão do termo (LGPD): interface/revisao-termo-lgpd.md
@@ -73,7 +74,10 @@ nav:
   - Showcase:
       - Roteiro da demo: showcase/roteiro-demo.md
       - Apresentação: showcase/apresentacao.md
+      - Roteiro do vídeo: showcase/roteiro-video.md
       - Reflexão (rascunho): showcase/reflexao.md
+      - Organização e papéis: showcase/organizacao.md
+  - Arquitetura: arquitetura.md
   - Requisitos: requisitos.md
   - Estado do projeto: estado.md
   - Tasks pendentes: pendencias.md
@@ -83,5 +87,10 @@ markdown_extensions:
   - md_in_html
   - tables
   - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true
