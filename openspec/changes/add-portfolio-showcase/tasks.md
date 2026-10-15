@@ -60,7 +60,7 @@
 
 ## 7. Entrega final da coordenação
 
-- [ ] 7.1 Escrever `docs/showcase/organizacao.md` com fases, cadência, backlog
+- [x] 7.1 Escrever `docs/showcase/organizacao.md` com fases, cadência, backlog
       e papéis confirmados pelo grupo (D10)
 - [ ] 7.2 Converter o relatório técnico v3 para `docs/act/relatorio-tecnico.md`
       e conferir os números contra o portfólio (D11)
