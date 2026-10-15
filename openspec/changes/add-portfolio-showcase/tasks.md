@@ -56,3 +56,15 @@
 - [ ] 6.1 Contagens do site conferidas de novo contra os `tasks.md` da `main`
 - [ ] 6.2 `mkdocs build` sem `WARNING`
 - [ ] 6.3 `openspec validate add-portfolio-showcase --strict`
+
+## 7. Mapa da arquitetura
+
+- [x] 7.1 Publicar o mapa em `docs/arquitetura/index.html` e corrigir no
+      comentário do arquivo a referência ao change, que citava um
+      `add-arquitetura-diagramas` inexistente (D9)
+- [x] 7.2 Tirar dos cards os caminhos que não existem na `main`:
+      `docs/act/relatorio-tecnico.md`, `docs/showcase/organizacao.md` e
+      `docs/showcase/roteiro-video.md` (D9)
+- [x] 7.3 Incluir a entrada do mapa na nav do Showcase em `mkdocs.yml`
+- [x] 7.4 `mkdocs build --strict` sem `WARNING`, `arquitetura/index.html`
+      presente no site construído e todo caminho citado existindo na `main`

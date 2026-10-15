@@ -59,6 +59,9 @@ riscos que o portfólio sozinho não resolve:
 - `docs/interface/chat-web.md`: latência e custo das rodadas atuais.
 - Limitações da avaliação completadas em `docs/pendencias.md`.
 - **NOVO** slides da apresentação e texto de reflexão no portfólio.
+- **NOVO** `docs/arquitetura/index.html`: mapa navegável da arquitetura da
+  Dona Checa, publicado pelo mesmo deploy em `arquitetura/`, como página
+  autônoma, com entrada na nav do Showcase (D9).
 
 ## Capabilities
 
