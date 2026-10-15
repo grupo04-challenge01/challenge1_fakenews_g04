@@ -74,7 +74,8 @@ nav:
   - Showcase:
       - Roteiro da demo: showcase/roteiro-demo.md
       - Mapa da arquitetura: mapa/arquitetura.html
-      - Apresentação: showcase/apresentacao.md
+      - Roteiro da apresentação: showcase/roteiro-apresentacao.md
+      - Apresentação (slides, reserva): showcase/apresentacao.md
       - Roteiro do vídeo: showcase/roteiro-video.md
       - Reflexão (rascunho): showcase/reflexao.md
       - Organização e papéis: showcase/organizacao.md

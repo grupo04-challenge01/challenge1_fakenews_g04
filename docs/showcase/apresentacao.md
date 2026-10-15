@@ -6,6 +6,11 @@ e 7.3. Todo número sai da [rodada da demo](../act/prototipo-avaliacao.md#rodada
 ou das páginas do portfólio, citadas em cada slide. Número que não está lá
 não entra no slide.
 
+!!! warning "Formato trocado em 15/10"
+    A apresentação passou a ser feita com o produto e o mapa da arquitetura,
+    sem slides: ver [Roteiro da apresentação](roteiro-apresentacao.md). Esta
+    página fica como reserva e como fonte da tabela de perguntas.
+
 !!! note "Duração: 10 minutos, com a demo"
     Nove slides na ordem pedida pela coordenação: problema → solução → IA →
     demonstração → resultados. O tempo de cada slide soma 9 min 30 s e deixa
