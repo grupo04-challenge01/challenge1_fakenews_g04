@@ -52,9 +52,12 @@ Além dos diagramas Mermaid, o portfólio ganha `docs/mapa/arquitetura.html`.
 saídas e motivos, seguir fluxos guiados e abrir a lista de decisões. O MkDocs
 copia o arquivo como está, e o GitHub Pages o publica junto com o site.
 
-A estrutura de interação (câmera, setas, fluxos guiados e painel de decisões)
-foi adaptada do mapa de arquitetura do grupo 5 (FOMO + VeritAI), com crédito
-no rodapé da página. Conteúdo, logo, paleta e fontes são da Dona Checa.
+O layout é próprio: oito faixas horizontais (quem usa, tela, servidor, linha
+da verificação, bastidores, lá fora, dados e infraestrutura), as sete etapas
+desenhadas como estações de uma linha de metrô com ramais de saída
+antecipada, navegação numa barra lateral e fluxos guiados narrados pela Dona
+Checa num balão de conversa. O motor de câmera, setas e destaque partiu do
+mapa do grupo 5 (FOMO + VeritAI), com crédito na página.
 
 Os dados ficam numa lista de cards e setas no próprio HTML, sem build e sem
 dependência externa além das fontes do Google Fonts.
