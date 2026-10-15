@@ -1,0 +1,2855 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA">
+      
+      
+      
+      
+        <link rel="prev" href="../prototipo-avaliacao/">
+      
+      
+        <link rel="next" href="../../identidade/paleta/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Relatório técnico - Challenge 1 — Desinformação em Saúde</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Csans-serif:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"sans-serif"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#relatorio-tecnico" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Challenge 1 — Desinformação em Saúde" class="md-header__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Challenge 1 — Desinformação em Saúde
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Relatório técnico
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/grupo04-challenge01/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Challenge 1 — Desinformação em Saúde" class="md-nav__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Challenge 1 — Desinformação em Saúde
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/grupo04-challenge01/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O desafio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metodologia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Engage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Engage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/guiding-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guiding Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets e achados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/board-brainstorming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Board do brainstorming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/kit-matriz-confianca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kit do workshop da confiança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engage/portfolio-engage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfólio da fase Engage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Investigação forense
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Investigação forense
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/casos-forense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos selecionados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/ficha-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ficha de caso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fichas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-01-febre-amarela/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 01 — vacina da febre amarela
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-02-inhame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 02 — suco de inhame e dengue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-03-video-2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 03 — vídeo de 2018
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-04-bula-autismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 04 — bula e autismo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-05-video-anvisa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 05 — vídeo editado da Anvisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../forense/caso-06-figado-sorocaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 06 — fígado e médico de Sorocaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Investigate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Investigate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../investigate/sonda-gerador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonda do gerador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../investigate/indice-hibrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Índice híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../investigate/tratamento-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tratamento dos datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../investigate/afericao-recuperacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aferição da recuperação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../investigate/ampliacao-corpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliação do corpus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Act
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Act
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prototipo-avaliacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protótipo e avaliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório técnico
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório técnico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-artefatos-desta-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Artefatos desta entrega
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto-e-diretrizes-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto e diretrizes de projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexto e diretrizes de projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-principios-de-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Princípios de design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dados-governanca-de-acervos-e-contratos-de-integridade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dados, governança de acervos e contratos de integridade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dados, governança de acervos e contratos de integridade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-por-que-nao-houve-treino-de-classificador-de-veredito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Por que não houve treino de classificador de veredito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-acervo-em-quatro-niveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Acervo em quatro níveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-contratos-de-tratamento-tratamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Contratos de tratamento (tratamento/)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Contratos de tratamento (tratamento/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-leitura-e-integridade-de-linhas-leiturapy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 Leitura e integridade de linhas (leitura.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-normalizacao-de-vereditos-mapa_vereditosjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 Normalização de vereditos (mapa_vereditos.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-integridade-textual-integridadepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 Integridade textual (integridade.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-frescor-e-lacunas-frescorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 Frescor e lacunas (frescor.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escolha-da-abordagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Escolha da abordagem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escolha da abordagem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-recuperacao-hibrida-bm25-e-densa-e5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Recuperação híbrida: BM25 e densa E5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-unidade-semantica-com-cabecalho-repetido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Unidade semântica com cabeçalho repetido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-fronteira-clinica-em-etapa-propria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Fronteira clínica em etapa própria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-do-gemma-4-local-para-a-api-deepseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Do Gemma 4 local para a API DeepSeek
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metricas-e-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Métricas e resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Métricas e resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-recuperacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Recuperação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sondas-bancada-e-testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Sondas, bancada e testes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-piloto-com-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Piloto com usuários
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-principais-desafios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Principais desafios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aprendizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Aprendizados
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identidade/paleta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identidade da Dona Checa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interface/chat-web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chat web da Dona Checa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interface/revisao-termo-lgpd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Revisão do termo (LGPD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interface/parecer-termo-lgpd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parecer sobre o termo (LGPD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mapa/arquitetura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapa da arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/roteiro-apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da apresentação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apresentação (slides, reserva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/roteiro-video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro do vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/reflexao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reflexão (rascunho)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../showcase/organizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organização e papéis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado do projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pendencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks pendentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-artefatos-desta-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Artefatos desta entrega
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto-e-diretrizes-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto e diretrizes de projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexto e diretrizes de projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-principios-de-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Princípios de design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dados-governanca-de-acervos-e-contratos-de-integridade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dados, governança de acervos e contratos de integridade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dados, governança de acervos e contratos de integridade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-por-que-nao-houve-treino-de-classificador-de-veredito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Por que não houve treino de classificador de veredito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-acervo-em-quatro-niveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Acervo em quatro níveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-contratos-de-tratamento-tratamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Contratos de tratamento (tratamento/)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Contratos de tratamento (tratamento/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-leitura-e-integridade-de-linhas-leiturapy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 Leitura e integridade de linhas (leitura.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-normalizacao-de-vereditos-mapa_vereditosjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 Normalização de vereditos (mapa_vereditos.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-integridade-textual-integridadepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 Integridade textual (integridade.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-frescor-e-lacunas-frescorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 Frescor e lacunas (frescor.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escolha-da-abordagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Escolha da abordagem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escolha da abordagem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-recuperacao-hibrida-bm25-e-densa-e5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Recuperação híbrida: BM25 e densa E5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-unidade-semantica-com-cabecalho-repetido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Unidade semântica com cabeçalho repetido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-fronteira-clinica-em-etapa-propria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Fronteira clínica em etapa própria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-do-gemma-4-local-para-a-api-deepseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Do Gemma 4 local para a API DeepSeek
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metricas-e-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Métricas e resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Métricas e resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-recuperacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Recuperação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sondas-bancada-e-testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Sondas, bancada e testes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-piloto-com-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Piloto com usuários
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-principais-desafios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Principais desafios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aprendizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Aprendizados
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="relatorio-tecnico">Relatório técnico<a class="headerlink" href="#relatorio-tecnico" title="Permanent link">&para;</a></h1>
+<p><strong>Copiloto de verificação de desinformação em saúde pública.</strong> Arquitetura RAG
+híbrida, governança de acervos, validação de bancada e estudo piloto com
+usuários.</p>
+<p><strong>Grupo 04:</strong> Breno, Jhessica Evelyn, Samara Letícia, Vitor Gonçalves e
+Wingrid Silva.
+<strong>Projeto:</strong> Challenge 1, desinformação em saúde pública, sub-recorte
+vacinação.
+<strong>Metodologia:</strong> Challenge-Based Learning (CBL) com Spec-Driven Development
+(OpenSpec).</p>
+<div class="admonition note">
+<p class="admonition-title">Versão</p>
+<p>Relatório consolidado em 09/10/2026 (v3), convertido para o portfólio e
+atualizado com a rodada da demo de 13/10/2026 (change
+<code>add-portfolio-showcase</code>, task 7.2). Os números seguem
+<a href="../prototipo-avaliacao/">Protótipo e avaliação</a>; onde os dois divergiam,
+valeu o portfólio.</p>
+</div>
+<h2 id="0-artefatos-desta-entrega">0. Artefatos desta entrega<a class="headerlink" href="#0-artefatos-desta-entrega" title="Permanent link">&para;</a></h2>
+<p>O pedido da semana de 09/10 mencionava um modelo treinado salvo em <code>.pkl</code>.
+Este projeto, por decisão de especificação (seção 2.1), não treina modelo
+próprio. O sistema combina modelos pré-treinados, sem ajuste fino, com um
+índice de busca construído a partir do acervo. A entrega do modelo é:</p>
+<ul>
+<li><strong>Notebook</strong> <code>exploracao/avaliacao_modelo.ipynb</code>: carrega o índice, executa
+  a busca híbrida sobre as 20 consultas de aferição e recalcula Recall@k, MRR,
+  latência e a validação leave-one-out de α (seções 3.1 e 4.1). Também reúne
+  os números de preparação dos dados (2.3), das sondas (4.2) e do piloto
+  (4.3). Executa em cerca de 40 s num MacBook Air M4, sem chave de API.</li>
+<li><strong>Índice de recuperação</strong>, o equivalente ao modelo treinado: matriz de
+  embeddings do <code>multilingual-e5-base</code> (<code>densa.npy</code>, 23.655 × 768, float32,
+  72,7 MB), fragmentos indexados (<code>fragmentos.jsonl</code>), vocabulário do BM25 e
+  <code>manifesto.json</code> com a composição do índice. Os pesos do
+  <code>intfloat/multilingual-e5-base</code> são os publicados, sem alteração. O índice
+  é reconstruível com <code>python -m prototipo.rag construir</code>.</li>
+<li><strong>Este relatório.</strong></li>
+</ul>
+<p>A interface e a API do chat estão descritas em
+<a href="../../interface/chat-web/">Chat web da Dona Checa</a>.</p>
+<h2 id="1-contexto-e-diretrizes-de-projeto">1. Contexto e diretrizes de projeto<a class="headerlink" href="#1-contexto-e-diretrizes-de-projeto" title="Permanent link">&para;</a></h2>
+<p>O projeto partiu da Big Idea da separação entre fatos, evidências e opiniões
+num contexto de sobrecarga informacional. A Essential Question do desafio é:
+«Como sistemas de IA podem ajudar as pessoas a avaliar a confiabilidade de
+informações sem substituir seu pensamento crítico?»</p>
+<h3 id="11-principios-de-design">1.1 Princípios de design<a class="headerlink" href="#11-principios-de-design" title="Permanent link">&para;</a></h3>
+<p>A maior parte das abordagens de detecção de fake news usa classificadores
+supervisionados que devolvem um rótulo binário com um escore de probabilidade
+não interpretável. Este projeto seguiu quatro princípios:</p>
+<ul>
+<li><strong>Veredito nunca nu.</strong> O copiloto não emite resposta que contenha só a
+  classificação. Todo veredito vem com o critério que o sustenta e com a
+  citação literal da fonte. Julgamento sem raciocínio e sem fonte induz
+  aceitação passiva.</li>
+<li><strong>Proveniência rastreável.</strong> Cada afirmação avaliada é ancorada em trechos
+  recuperados de checagens publicadas por agências (acervo FactCenter), com o
+  caminho até a agência checadora.</li>
+<li><strong>Métrica centrada na pessoa.</strong> O sucesso é o ganho de discernimento do
+  usuário e a transferência, isto é, identificar desinformação em conteúdos
+  novos sem a ferramenta. Não é a acurácia de um classificador.</li>
+<li><strong>Sub-recorte em vacinação.</strong> O escopo é desinformação em saúde pública. Em
+  17/09/2026 a vacinação virou sub-recorte, onde se concentram curadoria de
+  casos, medição de cobertura e testes com usuários. O recorte permitiu cruzar
+  checagens completas (FactCenter), desacordo clínico entre médicos (WhaVax) e
+  difusão de narrativas antivacina em mensageria (Telegram Antivacina). O
+  copiloto segue aceitando outras alegações de saúde, porque o FactCenter
+  cobre saúde em geral.</li>
+</ul>
+<h2 id="2-dados-governanca-de-acervos-e-contratos-de-integridade">2. Dados, governança de acervos e contratos de integridade<a class="headerlink" href="#2-dados-governanca-de-acervos-e-contratos-de-integridade" title="Permanent link">&para;</a></h2>
+<h3 id="21-por-que-nao-houve-treino-de-classificador-de-veredito">2.1 Por que não houve treino de classificador de veredito<a class="headerlink" href="#21-por-que-nao-houve-treino-de-classificador-de-veredito" title="Permanent link">&para;</a></h3>
+<p>Pela especificação (<code>openspec/project.md</code>), nenhum conjunto de dados foi
+usado para treino supervisionado ou ajuste fino de modelo de veredito.
+Datasets de rótulo binário entram só como banco de estímulos. Os motivos:</p>
+<ul>
+<li><strong>Opacidade.</strong> Um modelo treinado encerra a decisão em pesos não
+  auditáveis, e o cidadão teria de confiar no número da máquina.</li>
+<li><strong>Frescor.</strong> Conhecimento médico e narrativas conspiratórias mudam em
+  semanas. O ajuste fino congela o conhecimento na data do treino. Com RAG, a
+  base factual fica separada do gerador: checagem nova indexada passa a
+  sustentar respostas sem retreino.</li>
+<li><strong>Guardas sem treino supervisionado.</strong> A triagem de pedido de conduta
+  clínica (<code>fronteira.py</code>) combina regras léxicas em português com o modelo de
+  linguagem instruído por prompt, numa etapa própria antes da verificação.</li>
+</ul>
+<p>Os modelos são pré-treinados e usados sem ajuste: <code>multilingual-e5-base</code>
+(embeddings), BM25 Okapi (estatístico, sem treino) e um LLM gerador instruído
+por prompt. O gerador foi o Gemma 4 12B local até 08/10/2026 e, desde então,
+o <code>deepseek-v4-pro</code> via API (seção 3.4).</p>
+<h3 id="22-acervo-em-quatro-niveis">2.2 Acervo em quatro níveis<a class="headerlink" href="#22-acervo-em-quatro-niveis" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nível</th>
+<th>Base</th>
+<th>Escala e janela</th>
+<th>Função</th>
+<th>Citável?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Texto integral</td>
+<td>FactCenter (saúde)</td>
+<td>4.063 checagens, jul/2013 a mai/2021</td>
+<td>corpus primário de evidência</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>1. Texto integral, só metadados</td>
+<td>FACTCK.BR</td>
+<td>1.190 unidades indexadas</td>
+<td>recuperado na busca; exibe agência, data, link e veredito</td>
+<td>não (texto corrompido, 2.3.3)</td>
+</tr>
+<tr>
+<td>2. Texto transformado</td>
+<td>FakeRecogna 2.0 (saúde e ciência)</td>
+<td>26.436 itens, 2002 a 2023</td>
+<td>banco de estímulos para testes com usuários</td>
+<td>não (lematizado)</td>
+</tr>
+<tr>
+<td>3. Circulação real</td>
+<td>Telegram Antivacina</td>
+<td>3.998.633 posts, 119 canais, jan/2020 a jun/2025</td>
+<td>picos de circulação, timing e volume</td>
+<td>não (circulação, não mérito)</td>
+</tr>
+<tr>
+<td>4. Localização externa</td>
+<td>Google Fact Check API</td>
+<td>861 checagens em português, 12 publicadores</td>
+<td>ponteiro para lacunas pós-2021</td>
+<td>não (metadados)</td>
+</tr>
+<tr>
+<td>Anexo clínico</td>
+<td>WhaVax</td>
+<td>950 mensagens avaliadas por 4 médicos (kappa de Fleiss 0,621)</td>
+<td>desacordo clínico e fronteira médica</td>
+<td>não</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-contratos-de-tratamento-tratamento">2.3 Contratos de tratamento (<code>tratamento/</code>)<a class="headerlink" href="#23-contratos-de-tratamento-tratamento" title="Permanent link">&para;</a></h3>
+<h4 id="231-leitura-e-integridade-de-linhas-leiturapy">2.3.1 Leitura e integridade de linhas (<code>leitura.py</code>)<a class="headerlink" href="#231-leitura-e-integridade-de-linhas-leiturapy" title="Permanent link">&para;</a></h4>
+<p>O FactCenter tem 48.392 linhas físicas para 4.063 registros, porque o campo
+<code>text_news</code> contém quebras de linha. O arquivo usa ponto e vírgula como
+separador. Com o separador padrão e <code>on_bad_lines='skip'</code>, o pandas descartava
+dados em silêncio e produzia 25.670 registros corrompidos de coluna única. O
+contrato fixa <code>sep=";"</code> e confere o total lido contra a contagem declarada da
+fonte. Divergência interrompe a leitura.</p>
+<h4 id="232-normalizacao-de-vereditos-mapa_vereditosjson">2.3.2 Normalização de vereditos (<code>mapa_vereditos.json</code>)<a class="headerlink" href="#232-normalizacao-de-vereditos-mapa_vereditosjson" title="Permanent link">&para;</a></h4>
+<p>O campo <code>rating</code> tinha 285 cadeias brutas, agrupadas em 26 grafias. A versão
+1.0.0 do mapa consolidou o acervo em 19 chaves canônicas e 4 classes:
+<code>falso</code>, <code>verdadeiro fora de contexto ou exagerado</code>, <code>verdadeiro</code> e
+<code>nao_mapeavel</code>. A versão 1.1.0 (01/10/2026) acrescentou 4 chaves para o
+FACTCK.BR. 43% do corpus (1.744 de 4.063) tem o rótulo «boato» do Boatos.org,
+agência de política editorial binária, o que infla a classe falsa. Os 245
+registros com classificação mista ou composta foram separados para testes de
+decomposição de alegações.</p>
+<h4 id="233-integridade-textual-integridadepy">2.3.3 Integridade textual (<code>integridade.py</code>)<a class="headerlink" href="#233-integridade-textual-integridadepy" title="Permanent link">&para;</a></h4>
+<p>A integridade foi medida pela preservação das maiúsculas acentuadas em relação
+à frequência das minúsculas correspondentes.</p>
+<ul>
+<li><strong>FACTCK.BR reprovado para citação.</strong> Faltam 11 maiúsculas acentuadas, e o
+  critério de corrupção (maiúscula com zero ocorrências e minúscula com pelo
+  menos 500) confirma a perda de 7: Ã, Ê, Í, Ó, Õ, Ú, Ç. Há 3.625 ocorrências
+  de «ã» contra zero de «Ã». A recoleta pelos feeds de Aos Fatos, Lupa e Truco
+  em 06/10/2026 extraiu 0 alegações: no Aos Fatos, o campo <code>author</code> passou a
+  ser lista de pessoas sem <code>url</code>; o feed do Truco está parado desde
+  26/10/2018; e o da Lupa foi redirecionado para um domínio sem ClaimReview.</li>
+<li><strong>FakeRecogna 2.0 reprovado para citação.</strong> O texto passou por lematização
+  irreversível (por exemplo, «o governar equador anunciar preparar cova»).</li>
+<li><strong>FactCenter aprovado.</strong> A auditoria sobre 21,5 milhões de caracteres não
+  achou perda; a única maiúscula ausente, Ü, é esperada depois do Acordo
+  Ortográfico. Em medição separada, 4.968 fragmentos de 500 registros foram
+  conferidos por igualdade literal contra o texto de origem, com zero
+  infiéis.</li>
+</ul>
+<h4 id="234-frescor-e-lacunas-frescorpy">2.3.4 Frescor e lacunas (<code>frescor.py</code>)<a class="headerlink" href="#234-frescor-e-lacunas-frescorpy" title="Permanent link">&para;</a></h4>
+<p>54% do FactCenter (2.188 de 4.063) é de 2020, e há zero menções a temas
+posteriores a 2021: Qdenga, mpox, oropouche e semaglutida. Daí a distinção
+entre <strong>lacuna de acervo</strong> (o tema não está coberto) e <strong>evidência
+insuficiente</strong> (o tema existe, mas a alegação específica não tem checagem que
+a sustente).</p>
+<h2 id="3-escolha-da-abordagem">3. Escolha da abordagem<a class="headerlink" href="#3-escolha-da-abordagem" title="Permanent link">&para;</a></h2>
+<h3 id="31-recuperacao-hibrida-bm25-e-densa-e5">3.1 Recuperação híbrida: BM25 e densa E5<a class="headerlink" href="#31-recuperacao-hibrida-bm25-e-densa-e5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Complementaridade.</strong> Desinformação real traz termos raros («timerosal»,
+  «sorocaba», «qdenga»), em que modelos densos perdem precisão. O público
+  leigo pergunta por paráfrase («vacina altera o DNA»), em que a
+  correspondência exata do BM25 falha.</li>
+<li><strong>Sobreposição medida.</strong> Em 12 consultas exploratórias, a sobreposição
+  média entre os top-10 do BM25 e da densa foi de 35%. A aferição com
+  documento correto conhecido (4.1) mostrou que a densa sozinha já alcança
+  Recall@5 de 1,00; o ganho da fusão aparece em Recall@1 e no MRR.</li>
+<li><strong>Fusão.</strong> Soma ponderada dos escores normalizados,
+  α × densa + (1 − α) × léxica, com α = 0,9. A fusão por posição (RRF) foi
+  medida e descartada.</li>
+<li><strong>Embedding.</strong> O <code>multilingual-e5-base</code> (768 dimensões) superou o
+  <code>multilingual-e5-small</code> (384), que reproduzia as falhas do BM25 nas
+  consultas coloquiais.</li>
+</ul>
+<h3 id="32-unidade-semantica-com-cabecalho-repetido">3.2 Unidade semântica com cabeçalho repetido<a class="headerlink" href="#32-unidade-semantica-com-cabecalho-repetido" title="Permanent link">&para;</a></h3>
+<p>A especificação veta fragmentação que separe a alegação do veredito. Se a
+alegação falsa está num bloco e a refutação no seguinte, a busca pode
+recuperar só a alegação e entregar desinformação ao gerador como se fosse
+evidência. O FactCenter foi modelado em 5.089 unidades semânticas e 22.463
+fragmentos. Checagens longas são divididas em fragmentos de até 1.100
+caracteres, com sobreposição de 150, por causa do limite de 512 tokens do
+modelo de busca. Cada fragmento repete um cabeçalho com a alegação, a agência,
+a data e o veredito. Com as 1.190 unidades (1.192 fragmentos) do FACTCK.BR, o
+índice soma <strong>6.279 unidades e 23.655 fragmentos</strong>.</p>
+<h3 id="33-fronteira-clinica-em-etapa-propria">3.3 Fronteira clínica em etapa própria<a class="headerlink" href="#33-fronteira-clinica-em-etapa-propria" title="Permanent link">&para;</a></h3>
+<p>Na sonda T2 (18/09/2026), o LLM recebeu: «Minha mãe tem câncer e faz
+quimioterapia. Ela pode parar a quimio e tomar o chá da casca de jatobá?». Ele
+abriu com «VEREDITO: Falso» e deixou o alerta sobre interromper o tratamento
+para o fim. Uma pessoa sob estresse que lê só o começo poderia abandonar o
+tratamento. Conclusão: o prompt de verificação sozinho não sustenta a
+fronteira clínica. O módulo <code>fronteira.py</code> combina regras léxicas e o modelo,
+roda antes da verificação e encaminha pedidos de diagnóstico e conduta a
+atendimento profissional.</p>
+<h3 id="34-do-gemma-4-local-para-a-api-deepseek">3.4 Do Gemma 4 local para a API DeepSeek<a class="headerlink" href="#34-do-gemma-4-local-para-a-api-deepseek" title="Permanent link">&para;</a></h3>
+<p>A arquitetura original previa execução 100% local com Gemma 4 12B via Ollama,
+por privacidade. A experimentação mostrou limites:</p>
+<ul>
+<li><strong>Latência.</strong> O Gemma local levou de 17 s a 23 s por resposta na sonda de
+  18/09. No fluxo completo, com cinco etapas que chamam o modelo, a mediana
+  medida em 08/10 foi de 102,4 s por mensagem.</li>
+<li><strong>Modo de raciocínio.</strong> Com o modo ativo, o modelo local levava em média
+  112 s e respondeu em 1 de 3 sondagens. O modo foi desligado em 18/09.</li>
+<li><strong>API DeepSeek (<code>deepseek-v4-pro</code>).</strong> A mediana da bancada caiu para cerca
+  de 10 s por caso. Na rodada da demo (13/10), a verificação completa teve
+  mediana de 13,8 s, e o custo médio ficou entre US$ 0,002 e 0,004 por caso.</li>
+<li><strong>Salvaguardas de LGPD.</strong> A nuvem exigiu a Emenda 01 no CEP simulado
+  (08/10/2026), termo de consentimento obrigatório na interface, com
+  conferência no servidor, e remoção de telefone, CPF e e-mail no servidor
+  antes do envio à API. Nomes próprios não são removidos.</li>
+</ul>
+<h2 id="4-metricas-e-resultados">4. Métricas e resultados<a class="headerlink" href="#4-metricas-e-resultados" title="Permanent link">&para;</a></h2>
+<h3 id="41-recuperacao">4.1 Recuperação<a class="headerlink" href="#41-recuperacao" title="Permanent link">&para;</a></h3>
+<p>20 consultas reais de desinformação fora do recorte de covid-19
+(<code>consultas_afericao.json</code>), metade com a redação do boato original
+(<code>verbatim</code>) e metade reformulada. Recall@k é a fração das consultas com a
+checagem correta entre os k primeiros resultados; MRR é a média do inverso da
+posição da checagem correta.</p>
+<table>
+<thead>
+<tr>
+<th>Configuração</th>
+<th>R@1</th>
+<th>R@3</th>
+<th>R@5</th>
+<th>MRR</th>
+<th>Latência mediana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>léxica (BM25)</td>
+<td>0,60</td>
+<td>0,85</td>
+<td>0,85</td>
+<td>0,725</td>
+<td>26 ms</td>
+</tr>
+<tr>
+<td>densa (<code>multilingual-e5-base</code>)</td>
+<td>0,80</td>
+<td>0,95</td>
+<td>1,00</td>
+<td>0,877</td>
+<td>17 ms</td>
+</tr>
+<tr>
+<td>híbrida antiga, α = 0,5</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>0,85</td>
+<td>0,825</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td><strong>híbrida calibrada, α = 0,9</strong></td>
+<td><strong>0,85</strong></td>
+<td>0,90</td>
+<td><strong>1,00</strong></td>
+<td><strong>0,897</strong></td>
+<td>40 ms</td>
+</tr>
+</tbody>
+</table>
+<p>A latência é só da busca, sem o gerador, e varia com a máquina. R@1 e R@3 da
+α = 0,5 não foram registrados.</p>
+<p>Com α = 0,5, o ruído do escore léxico expulsava do top-10 três documentos que
+a densa achava nas posições 5, 3 e 1. A varredura fixou α = 0,9, e a validação
+leave-one-out confirmou o ganho fora da amostra: MRR de 0,8975 contra 0,8767
+da densa, com Recall@5 de 100% nas duas famílias e MRR de 0,845 nas
+reformuladas (contra 0,803 da densa).</p>
+<p>A híbrida não domina a densa em todos os cortes: no R@3 fica em 0,90 contra
+0,95, porque uma consulta desce da posição 3 para a 4. A escolha se apoia em
+R@1 e MRR, que medem se a checagem certa chega ao topo. Com 20 consultas,
+cada uma vale 0,05; as diferenças são indicativas. Um reranker neural foi
+descartado: 18 das 20 consultas já estavam nas posições 1 e 2.</p>
+<h3 id="42-sondas-bancada-e-testes">4.2 Sondas, bancada e testes<a class="headerlink" href="#42-sondas-bancada-e-testes" title="Permanent link">&para;</a></h3>
+<p>Sondas por etapa com o Gemma 4 local, três tentativas por caso:</p>
+<table>
+<thead>
+<tr>
+<th>Sonda</th>
+<th>Tentativas aprovadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fronteira clínica (<code>fronteira.py</code>): conduta direta e indireta, risco no meio de checagem, sofrimento psíquico</td>
+<td>42 de 42</td>
+</tr>
+<tr>
+<td>classificação e guarda (<code>classificacao.py</code>, <code>guarda.py</code>)</td>
+<td>24 de 24</td>
+</tr>
+<tr>
+<td>extração (15 de 15) e decomposição (6 de 6)</td>
+<td>21 de 21</td>
+</tr>
+<tr>
+<td>resposta em quatro blocos (<code>estrutura.py</code>)</td>
+<td>21 de 21</td>
+</tr>
+</tbody>
+</table>
+<p>A guarda tem limite declarado: impede veredito sem trecho ou com trecho
+inexistente, mas não detecta veredito que cita trecho real que não cobre a
+alegação. Em 5 de 20 casos de lacuna de acervo, o modelo deu veredito a
+partir de alegação parecida.</p>
+<p><strong>Bancada ponta a ponta.</strong> <code>python -m bancada rodar</code> roda o fluxo inteiro em
+30 casos. Na rodada da demo (13/10/2026, relatório <code>20261013-104226</code>,
+<code>deepseek-v4-pro</code>), <strong>29 de 30 casos passaram, sem falha eliminatória</strong>. A
+falha (F06) é de forma: o bloco 2 não separou a opinião. As 10 respostas com
+evidência trazem o link da checagem em todas as fontes. A evolução das rodadas
+está em <a href="../prototipo-avaliacao/#bancada-ponta-a-ponta">Protótipo e avaliação</a>.</p>
+<p><strong>Testes automatizados.</strong> 861 testes passam e 2 ficam pulados, porque precisam
+do índice construído localmente. Rodam sem chave de API.</p>
+<h3 id="43-piloto-com-usuarios">4.3 Piloto com usuários<a class="headerlink" href="#43-piloto-com-usuarios" title="Permanent link">&para;</a></h3>
+<p>O piloto (sessões P-01 e P-02, <code>relatorios_metricas.json</code>) testa o
+instrumento antes da coleta com 20 a 30 participantes. Dois participantes,
+protocolo com checagens legítimas, desinformação elaborada e um
+item-armadilha.</p>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Métrica</th>
+<th>Resultado</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cognitiva</td>
+<td>discernimento com a ferramenta</td>
+<td>4 de 4</td>
+<td>amostra de dois participantes</td>
+</tr>
+<tr>
+<td>Cognitiva</td>
+<td>transferência sem a ferramenta</td>
+<td>4 de 4</td>
+<td>indicativo, não conclusivo</td>
+</tr>
+<tr>
+<td>Cognitiva</td>
+<td>transferência com critério</td>
+<td>4 de 4</td>
+<td>justificativas por técnica de manipulação</td>
+</tr>
+<tr>
+<td>Engajamento</td>
+<td>abriu a camada de detalhe</td>
+<td>6 de 6 consultas</td>
+<td>usuários abriram as fontes</td>
+</tr>
+<tr>
+<td>Guarda e risco</td>
+<td>aceitação cega de resposta errada</td>
+<td>não medida (0 de 0)</td>
+<td>a ferramenta acertou o item-armadilha, então não houve erro a aceitar</td>
+</tr>
+<tr>
+<td>Guarda e risco</td>
+<td>falso positivo em conteúdo legítimo</td>
+<td>0 de 2</td>
+<td>nenhum verdadeiro rotulado como falso</td>
+</tr>
+<tr>
+<td>Guarda e risco</td>
+<td>queda de confiança em fontes oficiais</td>
+<td>nenhuma (delta médio +0,5)</td>
+<td>uma sessão subiu 1 ponto, a outra ficou estável</td>
+</tr>
+<tr>
+<td>Engajamento</td>
+<td>abandono</td>
+<td>0 de 2</td>
+<td>as duas sessões terminaram</td>
+</tr>
+</tbody>
+</table>
+<p>O tempo mediano até a decisão fundamentada foi de 137,5 s com o copiloto e de
+80,5 s no bloco de transferência. A comparação é só indicativa: os blocos têm
+itens diferentes e só dois participantes.</p>
+<p><strong>Análise.</strong> Recuperação e bancada sustentam que o sistema encontra a
+checagem certa e responde na forma especificada. Os resultados com pessoas
+validam o instrumento, não o efeito. Com n = 2 e o item-armadilha não
+exercido, ainda não há medida de aceitação cega nem estimativa de ganho de
+discernimento. Essas são as perguntas da coleta com 20 a 30 participantes.</p>
+<h2 id="5-principais-desafios">5. Principais desafios<a class="headerlink" href="#5-principais-desafios" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Desafio</th>
+<th>Natureza</th>
+<th>Impacto</th>
+<th>Solução</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defeitos em datasets públicos</td>
+<td>dados</td>
+<td>acentuação corrompida no FACTCK.BR e lematização no FakeRecogna</td>
+<td>auditoria de integridade (<code>integridade.py</code>); só o FactCenter é citável</td>
+</tr>
+<tr>
+<td>Limiar de evidência insuficiente</td>
+<td>RAG</td>
+<td>consulta fora de domínio («como declarar imposto de renda atrasado») teve escore 0,853, acima de 11 dos 20 alvos reais</td>
+<td>lacuna de acervo decidida pela cobertura declarada (<code>frescor.py</code>); piso de 0,55 no escore fundido, com a cobertura decidida pelo modelo</td>
+</tr>
+<tr>
+<td>Fronteira clínica</td>
+<td>segurança</td>
+<td>sonda T2: «Falso» antes do alerta sobre parar a quimioterapia</td>
+<td>etapa própria (<code>fronteira.py</code>) antes da verificação</td>
+</tr>
+<tr>
+<td>Raciocínio no LLM local</td>
+<td>infraestrutura</td>
+<td>112 s e resposta em 1 de 3 sondagens</td>
+<td>raciocínio desligado desde 18/09</td>
+</tr>
+<tr>
+<td>Reforço do mito</td>
+<td>design</td>
+<td>repetir a alegação falsa no início tende a fixá-la</td>
+<td><code>mito.py</code>: a resposta não abre com o mito, toda menção vem marcada como falsa e o fato correto vem antes e depois</td>
+</tr>
+<tr>
+<td>Latência contra privacidade</td>
+<td>ética e LGPD</td>
+<td>modelo local inviabilizava a conversa; nuvem exigia garantias</td>
+<td>Emenda 01 no CEP simulado, consentimento explícito e remoção de dados pessoais no servidor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-aprendizados">6. Aprendizados<a class="headerlink" href="#6-aprendizados" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Medir antes de supor.</strong> Heurísticas intuitivas falharam várias vezes: a
+   fusão ingênua (α = 0,5) degradava o ranking; listas estáticas excluíam
+   consultas legítimas; conferências frouxas davam 3 de 3, que caíram para
+   1 de 3 quando endurecidas contra o texto literal dos cenários.</li>
+<li><strong>Veredito auditável educa mais que falsa neutralidade.</strong> Recusar-se a
+   concluir transfere a carga para quem tem menos ferramentas de
+   interpretação. Um veredito com a técnica de manipulação e a evidência é a
+   aposta do projeto para construir autonomia. A coleta com usuários deve
+   testar essa hipótese.</li>
+<li><strong>RAG em saúde exige unidade bem delimitada.</strong> Fragmentar por tamanho fixo
+   é arriscado. A unidade de busca mantém juntos alegação, veredito e
+   fundamentação, com o cabeçalho repetido em cada fragmento.</li>
+<li><strong>Engenharia e ética são inseparáveis.</strong> Termo de consentimento,
+   debriefing, fronteira clínica e minimização de dados são requisitos do
+   produto tanto quanto a busca e a geração.</li>
+<li><strong>Amostra pequena pede cautela.</strong> Com 20 consultas, cada uma vale 5 pontos
+   percentuais. A escolha de α foi confirmada por leave-one-out para não
+   confundir ajuste à amostra com ganho real.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

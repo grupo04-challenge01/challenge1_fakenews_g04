@@ -1,0 +1,2353 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfólio de pesquisa do grupo 04 — Challenge 1 da residência em IA">
+      
+      
+      
+      
+        <link rel="prev" href="../showcase/organizacao/">
+      
+      
+        <link rel="next" href="../requisitos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Arquitetura - Challenge 1 — Desinformação em Saúde</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Csans-serif:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"sans-serif"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arquitetura" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Challenge 1 — Desinformação em Saúde" class="md-header__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Challenge 1 — Desinformação em Saúde
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitetura
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/grupo04-challenge01/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Challenge 1 — Desinformação em Saúde" class="md-nav__button md-logo" aria-label="Challenge 1 — Desinformação em Saúde" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Challenge 1 — Desinformação em Saúde
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/grupo04-challenge01/challenge1_fakenews_g04" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    challenge1_fakenews_g04
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visao-geral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O desafio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metodologia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Engage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Engage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/guiding-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guiding Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets e achados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/board-brainstorming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Board do brainstorming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/kit-matriz-confianca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kit do workshop da confiança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engage/portfolio-engage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfólio da fase Engage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Investigação forense
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Investigação forense
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/casos-forense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Casos selecionados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/ficha-de-caso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ficha de caso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fichas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-01-febre-amarela/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 01 — vacina da febre amarela
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-02-inhame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 02 — suco de inhame e dengue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-03-video-2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 03 — vídeo de 2018
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-04-bula-autismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 04 — bula e autismo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-05-video-anvisa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 05 — vídeo editado da Anvisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forense/caso-06-figado-sorocaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 06 — fígado e médico de Sorocaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Investigate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Investigate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/sonda-gerador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonda do gerador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/indice-hibrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Índice híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/tratamento-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tratamento dos datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/afericao-recuperacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aferição da recuperação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../investigate/ampliacao-corpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliação do corpus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fase Act
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fase Act
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act/prototipo-avaliacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protótipo e avaliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act/relatorio-tecnico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório técnico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identidade/paleta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identidade da Dona Checa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/chat-web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chat web da Dona Checa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/revisao-termo-lgpd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Revisão do termo (LGPD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/parecer-termo-lgpd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parecer sobre o termo (LGPD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Showcase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapa/arquitetura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapa da arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/roteiro-apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da apresentação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/apresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apresentação (slides, reserva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/roteiro-video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro do vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/reflexao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reflexão (rascunho)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../showcase/organizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organização e papéis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conteineres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Contêineres
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fluxo-das-sete-etapas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fluxo das sete etapas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sequencia-de-uma-verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sequência de uma verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-recuperacao-hibrida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Recuperação híbrida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-guarda-e-resposta-veredito-nunca-nu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Guarda e resposta: veredito nunca nu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pipeline-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pipeline de dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Implantação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pacotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Pacotes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado do projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pendencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks pendentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conteineres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Contêineres
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fluxo-das-sete-etapas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fluxo das sete etapas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sequencia-de-uma-verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sequência de uma verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-recuperacao-hibrida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Recuperação híbrida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-guarda-e-resposta-veredito-nunca-nu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Guarda e resposta: veredito nunca nu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pipeline-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pipeline de dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-avaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Avaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-implantacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Implantação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pacotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Pacotes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="arquitetura">Arquitetura<a class="headerlink" href="#arquitetura" title="Permanent link">&para;</a></h1>
+<p>Arquitetura da Dona Checa em diagramas, do contexto ao código. Cada diagrama
+cita os arquivos de onde saiu; número ou limiar que aparece nele está no
+código citado. Change <code>add-arquitetura-diagramas</code>. Estado do código em
+15/10/2026.</p>
+<div class="admonition tip">
+<p class="admonition-title">Mapa interativo</p>
+<p>Para navegar pela arquitetura inteira, com fluxos guiados e as decisões
+de projeto, abra o <a href="../mapa/arquitetura.html">mapa da Dona Checa</a>. Arraste
+para mover, role para aproximar e clique em qualquer card.</p>
+</div>
+<p>Legenda de cores usada em todos os diagramas:</p>
+<pre class="mermaid"><code>flowchart LR
+    P([Pessoa]):::pessoa
+    S[Componente nosso]:::nosso
+    L[Chamada ao modelo de linguagem]:::llm
+    E[Sistema externo]:::externo
+    D[(Dado ou índice)]:::dado
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<h2 id="1-contexto">1. Contexto<a class="headerlink" href="#1-contexto" title="Permanent link">&para;</a></h2>
+<p>Quem usa a Dona Checa e com quais sistemas ela conversa (nível 1 do modelo
+C4).</p>
+<pre class="mermaid"><code>flowchart LR
+    pessoa([Pessoa que recebeu&lt;br/&gt;mensagem de saúde]):::pessoa
+    dona[Dona Checa&lt;br/&gt;copiloto de verificação]:::nosso
+    deepseek[API DeepSeek&lt;br/&gt;deepseek-v4-pro]:::externo
+    ollama[Ollama local&lt;br/&gt;gemma4:12b-it-qat]:::externo
+    sites[Sites de notícia&lt;br/&gt;link colado pela pessoa]:::externo
+    hub[Hugging Face Hub&lt;br/&gt;multilingual-e5-base]:::externo
+    agencias[Agências de checagem&lt;br/&gt;Lupa, Boatos.org, Aos Fatos,&lt;br/&gt;Fato ou Fake, Estadão Verifica,&lt;br/&gt;Comprova, Pública]:::externo
+    corpus[(FactCenter e FACTCK.BR&lt;br/&gt;checagens publicadas)]:::dado
+
+    pessoa -- "mensagem ou link" --&gt; dona
+    dona -- "veredito + critério + fonte" --&gt; pessoa
+    dona -- "texto minimizado, com consentimento" --&gt; deepseek
+    dona -. "modo piloto ou recusa do termo" .-&gt; ollama
+    dona -- "busca a página, guarda contra SSRF" --&gt; sites
+    dona -. "baixa o modelo na 1ª consulta" .-&gt; hub
+    agencias -- "publicam" --&gt; corpus
+    corpus -- "índice construído offline" --&gt; dona
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Origem: <code>interface/config.py</code>, <code>prototipo/verificacao/modelo.py</code>,
+<code>prototipo/entrada/rede.py</code>, <code>prototipo/rag/densa.py</code>,
+<code>prototipo/resposta/agencias.py</code>.</p>
+<h2 id="2-conteineres">2. Contêineres<a class="headerlink" href="#2-conteineres" title="Permanent link">&para;</a></h2>
+<p>O que roda e onde (nível 2 do C4). Um único processo Python serve a página e
+roda o fluxo; o índice fica inteiro em memória, sem banco vetorial.</p>
+<pre class="mermaid"><code>flowchart TB
+    pessoa([Pessoa]):::pessoa
+
+    subgraph nav["Navegador"]
+        pagina["Página do chat&lt;br/&gt;HTML, CSS e JS puros, sem build&lt;br/&gt;interface/estatico/"]:::nosso
+    end
+
+    subgraph proc["Processo Python único · uvicorn · python -m interface"]
+        api["FastAPI&lt;br/&gt;GET / · GET /saude · POST /verificar&lt;br/&gt;streaming SSE · 1 verificação por vez · 300 s"]:::nosso
+        fluxo["Fluxo do copiloto&lt;br/&gt;bancada/pipeline.py · 7 etapas"]:::nosso
+        rec["Recuperador híbrido em memória&lt;br/&gt;BM25 + e5 · prototipo/rag/"]:::nosso
+        textos["Textos da persona e da interface&lt;br/&gt;lidos das specs do OpenSpec"]:::dado
+    end
+
+    subgraph disco["Disco · prototipo/indice/"]
+        direction LR
+        frag[("fragmentos.jsonl&lt;br/&gt;23.655 fragmentos · 57 MB")]:::dado
+        unid[("unidades.jsonl&lt;br/&gt;6.279 checagens · 23 MB")]:::dado
+        densa[("densa.npy&lt;br/&gt;23.655 × 768 float32 · 69 MB")]:::dado
+    end
+
+    deepseek["API DeepSeek"]:::externo
+    ollama["Ollama · localhost:11434"]:::externo
+
+    pessoa --&gt; pagina
+    pagina -- "POST /verificar" --&gt; api
+    api -- "eventos SSE" --&gt; pagina
+    api --&gt; fluxo
+    fluxo --&gt; rec
+    fluxo --&gt; textos
+    rec -- "carga única em thread&lt;br/&gt;/saude = 503 até terminar" --&gt; disco
+    fluxo -- "modo uso" --&gt; deepseek
+    fluxo -. "modo piloto" .-&gt; ollama
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Origem: <code>interface/app.py</code>, <code>interface/__main__.py</code>, <code>interface/fluxo.py</code>,
+<code>prototipo/rag/__main__.py</code> (<code>carregar</code>), <code>prototipo/indice/manifesto.json</code>.</p>
+<h2 id="3-fluxo-das-sete-etapas">3. Fluxo das sete etapas<a class="headerlink" href="#3-fluxo-das-sete-etapas" title="Permanent link">&para;</a></h2>
+<p>O caminho de uma mensagem. Em rosa, as etapas que chamam o modelo de
+linguagem. Cada losango é uma saída antecipada: o fluxo para ali e a página
+recebe o motivo.</p>
+<pre class="mermaid"><code>flowchart TD
+    entrada([Mensagem ou link]):::pessoa --&gt; separar["Separa links do texto&lt;br/&gt;entrada/link.py"]:::nosso
+    separar --&gt; F["1 · Fronteira&lt;br/&gt;regras PT-BR, depois modelo"]:::llm
+    F --&gt; Fq{"Urgência ou&lt;br/&gt;sofrimento psíquico?"}
+    Fq -- sim --&gt; Fsai([Resposta padrão&lt;br/&gt;de orientação]):::saida
+    Fq -- "conduta ou diagnóstico" --&gt; Fred["Anexa redirecionamento&lt;br/&gt;e segue"]:::nosso
+    Fq -- não --&gt; Lq
+    Fred --&gt; Lq{"Link e menos de&lt;br/&gt;30 palavras da pessoa?"}
+    Lq -- sim --&gt; L["2 · Leitura da página&lt;br/&gt;trafilatura · até 800 palavras"]:::nosso
+    Lq -- não --&gt; X
+    L --&gt; Lf{"Página abriu?"}
+    Lf -- "não: fechada, vídeo,&lt;br/&gt;vazia, não abriu" --&gt; Lsai([Aviso com a causa]):::saida
+    Lf -- sim --&gt; X["3 · Extração&lt;br/&gt;escolhe a alegação de saúde&lt;br/&gt;de maior risco"]:::llm
+    X --&gt; Xq{"Alegação&lt;br/&gt;verificável?"}
+    Xq -- não --&gt; Xsai([Aviso: sem alegação&lt;br/&gt;verificável de saúde]):::saida
+    Xq -- sim --&gt; D["4 · Decomposição&lt;br/&gt;fato, evidência, opinião"]:::llm
+    D --&gt; R["5 · Recuperação híbrida&lt;br/&gt;top 5 checagens"]:::nosso
+    R --&gt; G["6 · Guarda&lt;br/&gt;classifica só com trecho citável"]:::llm
+    G --&gt; RS["7 · Resposta em 4 blocos&lt;br/&gt;+ conferência de sustentação"]:::llm
+    RS --&gt; fim([Veredito + critério + fonte]):::pessoa
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937</code></pre>
+<p>Origem: <code>bancada/pipeline.py</code> (<code>executar</code>, <code>ETAPAS</code>, <code>PALAVRAS_TEXTO_CURTO</code>),
+<code>prototipo/verificacao/fronteira.py</code>, <code>prototipo/entrada/leitura.py</code>,
+<code>prototipo/verificacao/extracao.py</code>.</p>
+<h2 id="4-sequencia-de-uma-verificacao">4. Sequência de uma verificação<a class="headerlink" href="#4-sequencia-de-uma-verificacao" title="Permanent link">&para;</a></h2>
+<p>O que acontece entre o clique em «Verificar» e a resposta na tela. A página
+recebe um evento por etapa, então a pessoa vê o andamento.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    actor P as Pessoa
+    participant N as Página
+    participant A as FastAPI
+    participant F as Fluxo
+    participant R as Recuperador
+    participant M as DeepSeek
+
+    P-&gt;&gt;N: cola a mensagem e aceita o termo v3
+    N-&gt;&gt;A: POST /verificar {texto, consentimento: "3"}
+    alt termo ausente ou versão antiga
+        A--&gt;&gt;N: 403 {"erro": "consentimento"}
+    else termo aceito
+        A-&gt;&gt;A: minimizar: e-mail, CPF e telefone viram marcadores
+        A-&gt;&gt;A: semáforo: 1 verificação por vez
+        A-&gt;&gt;F: verificar em thread, prazo de 300 s
+        F-&gt;&gt;M: fronteira
+        F--&gt;&gt;N: data: {tipo: fronteira}
+        F--&gt;&gt;N: data: {tipo: andamento, etapa: extracao}
+        F-&gt;&gt;M: extração e decomposição
+        F--&gt;&gt;N: data: {tipo: andamento, etapa: recuperacao}
+        F-&gt;&gt;R: recuperar(alegação, k=5)
+        R--&gt;&gt;F: trechos com escore
+        F-&gt;&gt;M: guarda: rótulo + critério + ids dos trechos
+        F-&gt;&gt;M: resposta em 4 blocos + conferência
+        F--&gt;&gt;N: data: {tipo: resposta, texto, detalhe, origem}
+    end
+    N--&gt;&gt;P: 4 blocos + «Ver fontes e detalhes»</code></pre>
+<p>Origem: <code>interface/app.py</code> (<code>gerador_do_pedido</code>, <code>Semaphore(1)</code>,
+<code>TERMO_VERSAO</code>), <code>interface/fluxo.py</code> (<code>verificar</code>),
+<code>prototipo/entrada/minimizar.py</code>.</p>
+<h2 id="5-recuperacao-hibrida">5. Recuperação híbrida<a class="headerlink" href="#5-recuperacao-hibrida" title="Permanent link">&para;</a></h2>
+<p>Como a alegação vira as cinco checagens que a guarda vai ler. Dois braços
+pontuam em paralelo; cada escore é normalizado contra a própria distribuição
+da consulta antes da fusão.</p>
+<pre class="mermaid"><code>flowchart LR
+    q([Alegação extraída]):::pessoa
+    q --&gt; lex["BM25 Okapi&lt;br/&gt;sem acento · mantém «não»"]:::nosso
+    q --&gt; den["e5-base&lt;br/&gt;prefixo query: · vetor normalizado"]:::nosso
+    den --&gt; prod["Produto escalar contra&lt;br/&gt;densa.npy 23.655 × 768"]:::nosso
+    lex --&gt; nl["Normaliza&lt;br/&gt;p50 a p99 da consulta"]:::nosso
+    prod --&gt; nd["Normaliza&lt;br/&gt;p50 a p99 da consulta"]:::nosso
+    nl -- "× 0,1" --&gt; fus["Fusão&lt;br/&gt;α·denso + 1−α·léxico&lt;br/&gt;α = 0,9"]:::nosso
+    nd -- "× 0,9" --&gt; fus
+    fus --&gt; uni["1 fragmento por checagem&lt;br/&gt;entre os 200 melhores"]:::nosso
+    uni --&gt; idi{"Algum trecho pt-BR&lt;br/&gt;com escore ≥ 0,55?"}
+    idi -- sim --&gt; top["Top 5 em pt-BR&lt;br/&gt;coberto = sim"]:::dado
+    idi -- "não: tenta en" --&gt; nc["Top 5 da 1ª camada&lt;br/&gt;não vazia · coberto = não"]:::dado
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Na aferição com 20 consultas reais, a fusão teve Recall@5 de 1,00 e MRR de
+0,897, contra 0,725 de MRR do BM25 sozinho.</p>
+<p>Origem: <code>prototipo/rag/hibrida.py</code> (<code>ALFA_PADRAO</code>, <code>LIMIAR_EVIDENCIA</code>,
+<code>PRIORIDADE_IDIOMA</code>, <code>recuperar</code>), <code>prototipo/rag/lexica.py</code>,
+<code>prototipo/rag/densa.py</code>; números em
+<a href="../act/prototipo-avaliacao/">Protótipo e avaliação</a>.</p>
+<h2 id="6-guarda-e-resposta-veredito-nunca-nu">6. Guarda e resposta: veredito nunca nu<a class="headerlink" href="#6-guarda-e-resposta-veredito-nunca-nu" title="Permanent link">&para;</a></h2>
+<p>Onde o código impede veredito sem fonte. O modelo propõe o rótulo; o código
+decide se ele sobrevive.</p>
+<pre class="mermaid"><code>flowchart TD
+    t([Trechos recuperados]):::dado --&gt; c1{"Algum trecho com&lt;br/&gt;escore ≥ 0,55 e&lt;br/&gt;apto a citação?"}
+    c1 -- não --&gt; ins["Rótulo: evidência insuficiente&lt;br/&gt;sem chamar o modelo"]:::nosso
+    c1 -- sim --&gt; cls["Classificação&lt;br/&gt;rótulo + critério + ids dos trechos"]:::llm
+    cls --&gt; c2{"Ids citados existem&lt;br/&gt;entre os trechos?"}
+    c2 -- não --&gt; ins
+    c2 -- sim --&gt; ver["Veredito com critério:&lt;br/&gt;falso · verdadeiro ·&lt;br/&gt;fora de contexto ou exagerado"]:::nosso
+    ver --&gt; gen["Gera 4 blocos&lt;br/&gt;abertura do bloco 1 escrita pelo código"]:::llm
+    ins --&gt; sem["4 blocos da forma sem evidência&lt;br/&gt;o que foi procurado e onde conferir"]:::llm
+    gen --&gt; anc{"Blocos 1 e 2 ancorados&lt;br/&gt;em trecho? 1 nova tentativa"}
+    anc -- não --&gt; sem
+    anc -- sim --&gt; conf["Conferência de sustentação&lt;br/&gt;remove frase sem base"]:::llm
+    conf --&gt; chk["Checagens em código:&lt;br/&gt;mito marcado · técnica do catálogo ·&lt;br/&gt;até 120 palavras"]:::nosso
+    chk --&gt; out([Resposta + agência, data e link&lt;br/&gt;da checagem citada]):::pessoa
+    sem --&gt; out2([Resposta sem veredito]):::pessoa
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Os quatro blocos com evidência: <strong>veredito</strong>, <strong>o que se sabe</strong>, <strong>por que
+essa mensagem engana</strong> e <strong>o que observar da próxima vez</strong>.</p>
+<p>Origem: <code>prototipo/verificacao/guarda.py</code>,
+<code>prototipo/verificacao/classificacao.py</code>, <code>prototipo/resposta/estrutura.py</code>
+(<code>COM</code>, <code>SEM</code>, <code>ABERTURA</code>), <code>prototipo/resposta/conferencia.py</code>,
+<code>prototipo/resposta/ancoragem.py</code>, <code>prototipo/resposta/mito.py</code>.</p>
+<h2 id="7-pipeline-de-dados">7. Pipeline de dados<a class="headerlink" href="#7-pipeline-de-dados" title="Permanent link">&para;</a></h2>
+<p>Como as checagens publicadas viram o índice. Roda offline, uma vez, com
+<code>python -m prototipo.rag construir</code>.</p>
+<pre class="mermaid"><code>flowchart LR
+    fc[("FactCenter · saúde&lt;br/&gt;4.063 checagens&lt;br/&gt;2013 a 2021 · CC BY 4.0")]:::dado
+    fk[("FACTCK.BR&lt;br/&gt;984 checagens&lt;br/&gt;2016 a 2019")]:::dado
+    fc &amp; fk --&gt; gate["Portões de integridade&lt;br/&gt;FACTCK.BR perdeu acentos:&lt;br/&gt;só metadado, nunca citado"]:::nosso
+    gate --&gt; un["Unidades&lt;br/&gt;alegação + veredito + justificativa&lt;br/&gt;6.279 unidades"]:::nosso
+    gate --&gt; qua[("quarentena.jsonl&lt;br/&gt;174 registros")]:::dado
+    un --&gt; fr["Fragmentos&lt;br/&gt;1.100 caracteres, 150 de sobreposição&lt;br/&gt;cabeçalho repetido em cada um"]:::nosso
+    fr --&gt; esq["Validação contra&lt;br/&gt;esquema_indexacao.json"]:::nosso
+    esq --&gt; j1[("unidades.jsonl&lt;br/&gt;fragmentos.jsonl")]:::dado
+    esq --&gt; emb["e5-base · prefixo passage:"]:::nosso
+    emb --&gt; j2[("densa.npy")]:::dado
+    j1 &amp; j2 --&gt; man[("manifesto.json&lt;br/&gt;contagens e custo")]:::dado
+
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Nenhum modelo é treinado: o dataset é acervo para citar, não alvo de
+classificador.</p>
+<p>Origem: <code>prototipo/rag/__main__.py</code> (<code>construir</code>), <code>prototipo/rag/corpus.py</code>,
+<code>prototipo/rag/unidades.py</code>, <code>prototipo/indice/manifesto.json</code>.</p>
+<h2 id="8-avaliacao">8. Avaliação<a class="headerlink" href="#8-avaliacao" title="Permanent link">&para;</a></h2>
+<p>Como o grupo mede sem gastar API a cada teste. A bancada grava as chamadas ao
+modelo e à rede e as repete offline; a mesma função <code>executar</code> serve a bancada
+e o chat.</p>
+<pre class="mermaid"><code>flowchart LR
+    casos[("bancada/casos.json&lt;br/&gt;35 casos com esperado por etapa")]:::dado
+    casos --&gt; exe["bancada/pipeline.executar&lt;br/&gt;o mesmo fluxo do chat"]:::nosso
+    exe &lt;--&gt; grav["Gravação&lt;br/&gt;chamada indexada por hash"]:::nosso
+    grav &lt;-. "rodada ao vivo" .-&gt; api["DeepSeek"]:::externo
+    grav &lt;--&gt; dir[("bancada/gravacoes/&lt;br/&gt;replay offline")]:::dado
+    exe --&gt; av["Avaliação por etapa&lt;br/&gt;fronteira · alegação · checagem no topo ·&lt;br/&gt;rótulo · forma · leitura"]:::nosso
+    av --&gt; rel["Rodada da demo, 13/10&lt;br/&gt;29 de 30 casos · mediana 13,8 s"]:::dado
+    pil([Piloto com 2 pessoas&lt;br/&gt;prototipo/avaliacao/]):::pessoa --&gt; disc["Ganho de discernimento&lt;br/&gt;métrica primária"]:::dado
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Origem: <code>bancada/gravacao.py</code>, <code>bancada/avaliacao.py</code>, <code>bancada/casos.json</code>;
+números em <a href="../act/prototipo-avaliacao/#rodada-da-demo">Protótipo e avaliação</a>.</p>
+<h2 id="9-implantacao">9. Implantação<a class="headerlink" href="#9-implantacao" title="Permanent link">&para;</a></h2>
+<p>Estado em 15/10/2026: o chat roda na máquina de quem apresenta, e só o
+portfólio é publicado. A hospedagem pública do chat é tratada em change
+próprio.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph gh["GitHub"]
+        repo["Repositório&lt;br/&gt;grupo04-challenge01"]:::nosso
+        ci["Actions: deploy mkdocs&lt;br/&gt;a cada push na main"]:::nosso
+        pages["GitHub Pages&lt;br/&gt;portfólio de pesquisa"]:::nosso
+    end
+    subgraph mac["MacBook Air M4 · Python 3.14.6"]
+        srv["python -m interface&lt;br/&gt;127.0.0.1:8000"]:::nosso
+        idx[("prototipo/indice/&lt;br/&gt;gerado localmente,&lt;br/&gt;fora do git")]:::dado
+        env[("DEEPSEEK_API_KEY&lt;br/&gt;variável de ambiente")]:::dado
+        olla["Ollama · Metal"]:::externo
+    end
+    repo --&gt; ci --&gt; pages
+    repo -- "git checkout showcase-demo" --&gt; srv
+    idx --&gt; srv
+    env --&gt; srv
+    srv -.-&gt; olla
+    srv -- HTTPS --&gt; ds["API DeepSeek"]:::externo
+    banca([Banca e visitantes]):::pessoa --&gt; pages
+    banca -- "navegador da máquina" --&gt; srv
+
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Origem: <code>.github/workflows/deploy.yml</code>, <code>interface/config.py</code>
+(<code>DONA_CHECA_HOST</code>), <code>.gitignore</code>.</p>
+<h2 id="10-pacotes">10. Pacotes<a class="headerlink" href="#10-pacotes" title="Permanent link">&para;</a></h2>
+<p>Quem importa quem. O fluxo em <code>bancada/</code> é o centro: o chat e a bancada usam
+a mesma função.</p>
+<pre class="mermaid"><code>flowchart TD
+    interface["interface/&lt;br/&gt;servidor, config, eventos"]:::nosso --&gt; bancada["bancada/&lt;br/&gt;pipeline.executar"]:::nosso
+    bancada --&gt; verif["prototipo/verificacao/&lt;br/&gt;fronteira, extração, decomposição,&lt;br/&gt;classificação, guarda, modelo"]:::nosso
+    bancada --&gt; entrada["prototipo/entrada/&lt;br/&gt;link, rede, leitura, minimizar"]:::nosso
+    bancada --&gt; rag["prototipo/rag/&lt;br/&gt;léxica, densa, híbrida, construção"]:::nosso
+    bancada --&gt; resp["prototipo/resposta/&lt;br/&gt;estrutura, ancoragem, conferência,&lt;br/&gt;mito, catálogo"]:::nosso
+    interface --&gt; entrada
+    resp --&gt; ident["prototipo/identidade/&lt;br/&gt;textos da persona"]:::nosso
+    verif &amp; ident &amp; interface &amp; entrada --&gt; specs[("openspec/changes/*/specs/&lt;br/&gt;textos lidos em execução")]:::dado
+    rag --&gt; indice[("prototipo/indice/")]:::dado
+    rag -. "só na construção" .-&gt; trat["tratamento/&lt;br/&gt;integridade dos datasets"]:::nosso
+    trat --&gt; ds[("datasets/")]:::dado
+
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937</code></pre>
+<p>Origem: imports de <code>interface/app.py</code>, <code>interface/fluxo.py</code>,
+<code>bancada/pipeline.py</code>, <code>prototipo/rag/corpus.py</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

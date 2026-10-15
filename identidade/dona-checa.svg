@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-labelledby="t">
+<title id="t">Dona Checa</title>
+<circle cx="100" cy="100" r="100" fill="#0F5E63"/>
+<g transform="translate(14 14) scale(0.86)">
+<path d="M38 200 Q44 170 100 166 Q156 170 162 200 Z" fill="#F2A93B"/>
+<circle cx="100" cy="30" r="22" fill="#16292B"/>
+<path d="M80 20 L124 42" stroke="#F2A93B" stroke-width="4" stroke-linecap="round"/>
+<circle cx="124" cy="42" r="4" fill="#F2A93B"/>
+<ellipse cx="100" cy="96" rx="64" ry="60" fill="#16292B"/>
+<ellipse cx="100" cy="112" rx="48" ry="54" fill="#FFD3B0"/>
+<path d="M52 96 Q58 50 100 48 Q142 50 148 96 Q134 66 100 64 Q70 66 52 96 Z" fill="#16292B"/>
+<circle cx="53" cy="140" r="5" fill="#FFFFFF" stroke="#1C2B2E" stroke-width="2"/>
+<circle cx="147" cy="140" r="5" fill="#FFFFFF" stroke="#1C2B2E" stroke-width="2"/>
+<circle cx="72" cy="144" r="7" fill="#F2A93B" fill-opacity="0.4"/>
+<circle cx="128" cy="144" r="7" fill="#F2A93B" fill-opacity="0.4"/>
+<path d="M68 90 Q80 84 92 90" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M108 82 Q121 69 135 79" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="81" cy="102" r="4.5" fill="#1C2B2E"/>
+<circle cx="121" cy="100" r="4.5" fill="#1C2B2E"/>
+<path d="M60 128 Q46 164 62 196" stroke="#F2A93B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="0.1 6"/>
+<path d="M140 128 Q154 164 138 196" stroke="#F2A93B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="0.1 6"/>
+<path d="M60 116 L50 106 L68 113 Z" fill="#1C2B2E"/>
+<path d="M140 116 L150 106 L132 113 Z" fill="#1C2B2E"/>
+<rect x="60" y="113" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+<rect x="104" y="113" width="36" height="24" rx="10" fill="#FFFFFF" fill-opacity="0.55" stroke="#1C2B2E" stroke-width="5"/>
+<path d="M96 123 Q100 118 104 123" stroke="#1C2B2E" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M90 153 Q101 159 112 150" stroke="#1C2B2E" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+</g>
+</svg>
