@@ -1,15 +1,28 @@
 # Apresentação — conteúdo dos slides
 
-Conteúdo da apresentação de 16/10/2026, slide por slide, para o grupo montar
-no editor de slides. Change `add-portfolio-showcase`, task 5.1. Todo número
-sai da [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo) ou das
-páginas do portfólio, citadas em cada slide. Número que não está lá não entra
-no slide.
+Conteúdo da apresentação para a banca em 16/10/2026, slide por slide, para o
+grupo montar no editor de slides. Change `add-portfolio-showcase`, tasks 5.1
+e 7.3. Todo número sai da [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo)
+ou das páginas do portfólio, citadas em cada slide. Número que não está lá
+não entra no slide.
 
-!!! note "Duração"
-    Quatorze slides, pensados para cerca de 15 minutos com a demo ao vivo
-    (slide 9). Ajustar ao tempo que a banca der: os slides 6 e 12 são os
-    primeiros a cortar.
+!!! note "Duração: 10 minutos, com a demo"
+    Nove slides na ordem pedida pela coordenação: problema → solução → IA →
+    demonstração → resultados. O tempo de cada slide soma 9 min 30 s e deixa
+    30 s de folga. Se o ensaio estourar, o slide 8 cai para uma frase, e a
+    demo fica com dois casos.
+
+| # | Slide | Tempo | Acumulado |
+| --- | --- | --- | --- |
+| 1 | Dona Checa | 0:15 | 0:15 |
+| 2 | O problema | 1:00 | 1:15 |
+| 3 | A tese: veredito nunca nu | 0:45 | 2:00 |
+| 4 | A solução | 0:45 | 2:45 |
+| 5 | Como a IA trabalha | 1:15 | 4:00 |
+| 6 | Demo ao vivo | 3:00 | 7:00 |
+| 7 | Resultados técnicos | 1:00 | 8:00 |
+| 8 | Com pessoas, e o que ela não faz | 1:00 | 9:00 |
+| 9 | Valor e próximos passos | 0:30 | 9:30 |
 
 ---
 
@@ -21,113 +34,135 @@ no slide.
 
 ## 2. O problema
 
-- **Big Idea:** em um mundo com excesso de informação, como distinguir fatos,
-  evidências e opiniões.
+- Mensagens de saúde falsas chegam pelo WhatsApp da família, e quem recebe
+  decide em segundos.
+- Checar com rigor custa caro: nos seis casos forenses, **mediana de 22 min**
+  por mensagem, de 10 a 43 min.
 - **Essential Question:** como a IA pode ajudar as pessoas a avaliar a
   confiabilidade de informações **sem substituir o pensamento crítico**.
-- Recorte: desinformação em saúde pública; sub-recorte, vacinação
-  (decidido em 17/09).
-- Fonte: [O desafio](../visao-geral.md), `openspec/project.md`.
+- Recorte: desinformação em saúde pública; sub-recorte, vacinação.
+- Fonte: [portfólio do Engage](../engage/portfolio-engage.md), seção 4;
+  [O desafio](../visao-geral.md).
 
-## 3. A virada de 10/09: veredito permitido, nunca nu
+## 3. A tese: veredito nunca nu
 
-- Antes: «o sistema não emite veredito». Regra nossa, não do enunciado.
-- Ela confundia *não substituir o julgamento* com *não oferecer um
-  julgamento*. E segurar a conclusão aumenta o atrito num problema de excesso.
-- Depois: o veredito vem sempre com o critério que o sustenta e com a fonte,
-  que a pessoa pode conferir e da qual pode discordar.
-- Fonte: `openspec/project.md`, nota de revisão de 10/09/2026.
+- Um selo «falso» sem motivo não ensina nada, e a pessoa cai no próximo
+  boato.
+- Esconder a conclusão também não ajuda: devolve o trabalho de 22 minutos
+  para quem não tem tempo.
+- A Dona Checa dá o veredito **com o critério e com a fonte**, que a pessoa
+  pode conferir e da qual pode discordar.
+- Sucesso não é acurácia de classificador. É o **ganho de discernimento**: a
+  pessoa acertar depois, sem a ferramenta.
+- Fonte: `openspec/project.md`, nota de revisão de 10/09/2026;
+  [Início](../index.md).
 
-## 4. O que conta como sucesso
+## 4. A solução
 
-- Não é a acurácia do classificador.
-- É o **ganho de discernimento**: o acerto da pessoa depois, sem a ferramenta
-  (transferência).
-- Dataset de rótulo binário serve de banco de estímulos, nunca de alvo de
-  treino.
-- Fonte: [Início](../index.md).
+```mermaid
+flowchart LR
+    p([Pessoa cola<br/>mensagem ou link]):::pessoa --> dc[Dona Checa]:::nosso
+    ac[(6.279 checagens de<br/>agências brasileiras)]:::dado --> dc
+    dc --> b1[1 · Veredito]:::nosso
+    dc --> b2[2 · O que se sabe]:::nosso
+    dc --> b3[3 · Por que engana]:::nosso
+    dc --> b4[4 · O que observar]:::nosso
+    b1 & b2 --> f([Agência, data e link<br/>da checagem]):::pessoa
+    dc -. "urgência ou conduta médica" .-> o([Orientação profissional]):::saida
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
 
-## 5. Como investigamos
+- Sem conta. Até 120 palavras, e um dos quatro rótulos é «evidência
+  insuficiente».
+- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md#o-que-ela-faz);
+  [Arquitetura, contexto](../arquitetura.md#1-contexto).
 
-- Engage: seis casos forenses de vacinação, três tipos de manipulação
-  ([casos](../forense/casos-forense.md)).
-- Matriz de confiança, versão 1: falsa autoridade, recontextualização de
-  mídia, distorção de documento real, enquadramento conspiratório
-  ([matriz](../engage/kit-matriz-confianca.md)).
-- Investigate: acervo de checagens, índice híbrido, aferição da recuperação.
+## 5. Como a IA trabalha
 
-## 6. O acervo
+```mermaid
+flowchart LR
+    F[Fronteira]:::llm --> L[Leitura<br/>do link]:::nosso --> X[Extração]:::llm --> D[Decomposição]:::llm
+    D --> R[Recuperação<br/>BM25 + e5 · α 0,9]:::nosso --> G{"Guarda<br/>trecho ≥ 0,55?"}:::llm
+    G -- sim --> V[Veredito<br/>+ critério + fonte]:::llm
+    G -- não --> I[Evidência<br/>insuficiente]:::saida
+    idx[(23.655 fragmentos)]:::dado --> R
+    V --> C[Conferência<br/>em código]:::nosso
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
 
-- 6.279 unidades e 23.655 fragmentos de checagens de agências brasileiras.
-- Checagens com texto integral de julho de 2013 a maio de 2021; um índice de
-  checagens recentes aponta as mais novas.
-- Recuperação híbrida: recall@5 1,00 e MRR 0,897 em 20 consultas reais.
-- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md).
+- Rosa: chamada ao `deepseek-v4-pro`. **Nenhum modelo treinado para dar
+  veredito**; ele não sai da memória do modelo.
+- Fonte: [Arquitetura, fluxo](../arquitetura.md#3-fluxo-das-sete-etapas) e
+  [guarda](../arquitetura.md#6-guarda-e-resposta-veredito-nunca-nu);
+  [Relatório técnico](../act/relatorio-tecnico.md), seção 3.
 
-## 7. Como a Dona Checa responde
+## 6. Demo ao vivo
 
-- Sete etapas: fronteira, leitura, extração, decomposição, recuperação,
-  guarda, resposta.
-- **Guarda:** sem trecho que cubra a alegação, o rótulo é «evidência
-  insuficiente». Veredito não sai do conhecimento do modelo.
-- Resposta em quatro blocos, até 120 palavras, cada frase ancorada num trecho.
-- Fonte: [Protótipo e avaliação](../act/prototipo-avaliacao.md#o-fluxo).
-
-## 8. Quatro conferências antes de a resposta sair
-
-- Técnica de manipulação nomeada pertence ao catálogo de sete.
-- A alegação falsa nunca aparece sem a marca de falsa.
-- Frase sem base no trecho sai da resposta.
-- Acima de 120 palavras, o fim dos blocos é cortado.
-
-## 9. Demo ao vivo
-
-- Cinco casos do [roteiro](roteiro-demo.md): veredito com fonte, verdadeiro
-  contra-intuitivo, opinião separada, sem evidência, fronteira de saúde.
-- Abrir «Ver fontes e detalhes» em cada veredito.
+- Três casos do [roteiro](roteiro-demo.md), na ordem: 1 (veredito com fonte),
+  4 (sem evidência, sem veredito) e 5 (fronteira de saúde).
+- No caso 1, abrir «Ver fontes e detalhes» e mostrar agência, data e link.
+- Se sobrar tempo: caso 2 (verdadeiro contra-intuitivo).
 - Plano B: vídeo gravado no ensaio.
 
-## 10. Bancada ponta a ponta
+## 7. Resultados técnicos
 
-- **29 de 30** casos, sem falha eliminatória.
-- Veredito com fonte: 10 de 10 respostas com evidência, todas com link.
-- Verificação completa: mediana de 13,8 s; custo de US$ 0,002 a 0,004 por
-  mensagem.
-- A falha (F06) é de forma: o bloco 2 não separou a opinião.
-- Fonte: rodada `20261013-104226`, [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo).
+```mermaid
+flowchart LR
+    F["Fronteira<br/>7/7"]:::nosso --> X["Extração<br/>36/36"]:::nosso --> R["Recuperação<br/>10/10<br/>Recall@5 1,00"]:::nosso --> G["Guarda<br/>12/12"]:::nosso --> S["Resposta<br/>39/40"]:::nosso
+    L["Leitura de link<br/>10/10"]:::nosso --> X
+    S --> T(["29 de 30 casos · 13,8 s de mediana<br/>contra 22 min à mão"]):::pessoa
+    classDef pessoa fill:#fde68a,stroke:#92400e,color:#1f2937
+    classDef nosso fill:#dbeafe,stroke:#1e40af,color:#1f2937
+    classDef llm fill:#fce7f3,stroke:#9d174d,color:#1f2937
+    classDef externo fill:#e5e7eb,stroke:#374151,color:#1f2937,stroke-dasharray:4 3
+    classDef dado fill:#dcfce7,stroke:#166534,color:#1f2937
+    classDef saida fill:#fee2e2,stroke:#991b1b,color:#1f2937
+```
 
-## 11. Com pessoas: o piloto
+- 10 de 10 respostas com evidência trazem o link da checagem; de US$ 0,002 a
+  0,004 por mensagem. A falha (F06) é de forma.
+- Fonte: rodada `20261013-104226`, [rodada da demo](../act/prototipo-avaliacao.md#rodada-da-demo);
+  MRR 0,897 em [Protótipo e avaliação](../act/prototipo-avaliacao.md#recuperacao).
 
-- Duas pessoas, em 08/10. Discernimento 4 de 4, transferência 4 de 4,
-  transferência com critério 4 de 4.
-- **n = 2, sem linha de base:** valida o instrumento e o roteiro, não o
-  efeito.
-- O item-armadilha não foi exercido: a aceitação cega ficou em 0 de 0.
-- Fonte: [Com pessoas](../act/prototipo-avaliacao.md#com-pessoas) e
-  [limitações da avaliação](../pendencias.md#limitacoes-da-avaliacao).
+## 8. Com pessoas, e o que ela não faz
 
-## 12. O caso jacaré
-
-- «Vacina de covid transforma pessoas em jacaré» recebe «evidência
-  insuficiente». Não há checagem da versão jacaré, só da alegação mãe, sobre
-  o DNA.
-- Tentamos aceitar veredito por implicação. Gemma e DeepSeek negaram jacaré ⇒
-  DNA em todas as variantes testadas.
-- O grupo manteve a regra conservadora e não mudou a spec para o caso passar.
-- Fonte: `add-cobertura-alegacao-ampla`, branch fora da `main`.
-
-## 13. O que ela não faz
-
+- Piloto com duas pessoas em 08/10: discernimento 4 de 4, transferência sem a
+  ferramenta 4 de 4.
+- **n = 2, sem linha de base:** valida o instrumento, não o efeito.
 - Pauta fora do acervo (mpox, oropouche, Qdenga): responde «evidência
-  insuficiente».
-- Fontes oficiais ainda fora do fluxo.
-- Protocolo de ética simulado para fins acadêmicos.
-- Fonte: [limitações](../pendencias.md#limitacoes-conhecidas-do-prototipo).
+  insuficiente» em vez de chutar.
+- Fonte: [Com pessoas](../act/prototipo-avaliacao.md#com-pessoas) e
+  [limitações](../pendencias.md#limitacoes-conhecidas-do-prototipo).
 
-## 14. Os quatro entregáveis e próximos passos
+## 9. Valor e próximos passos
 
-- Portfólio, matriz de confiança, protótipo, esta apresentação e a
-  [reflexão](reflexao.md).
-- Próximo passo de pesquisa: a coleta com 20 a 30 pessoas, com a armadilha
-  decidida e linha de base.
-- Repositório e portfólio: link e QR code.
+- Valor: transforma 22 minutos de checagem em segundos, **sem tirar da pessoa
+  o julgamento**: ela vê o critério e a fonte.
+- Próximo passo: coleta com 20 a 30 pessoas, com linha de base e
+  item-armadilha, e acervo atualizado depois de 2021.
+- Repositório, portfólio e vídeo: links e QR code.
+
+---
+
+## Fora do deck, pronto para perguntas
+
+O que saiu dos 14 slides anteriores vira resposta preparada.
+
+| Pergunta provável | Resposta | Fonte |
+| --- | --- | --- |
+| Por que não treinaram um classificador? | Seria opaco e congelaria o conhecimento na data do treino; com RAG, checagem nova vale sem retreino | [Relatório técnico](../act/relatorio-tecnico.md), seção 2.1 |
+| Por que não rodar local? | Gemma 4 local levava 102,4 s de mediana por mensagem | [Relatório técnico](../act/relatorio-tecnico.md), seção 3.4 |
+| E a privacidade, com API externa? | Termo de consentimento, remoção de telefone, CPF e e-mail no servidor; CEP simulado | [Relatório técnico](../act/relatorio-tecnico.md), seção 3.4 |
+| Como investigaram o problema? | Seis casos forenses de vacinação e matriz de confiança v1 | [casos](../forense/casos-forense.md), [matriz](../engage/kit-matriz-confianca.md) |
+| E se a mensagem exagera uma alegação já checada? | Caso jacaré: «vacina transforma em jacaré» recebe «evidência insuficiente». Gemma e DeepSeek negaram a implicação jacaré ⇒ DNA, e o grupo manteve a regra conservadora | `add-cobertura-alegacao-ampla`, [pendências](../pendencias.md) |
+| Quando mudaram de ideia sobre o veredito? | Em 10/09: «não emitir veredito» era regra nossa, não do enunciado | `openspec/project.md` |

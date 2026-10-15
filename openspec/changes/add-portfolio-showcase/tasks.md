@@ -26,8 +26,9 @@
       do arquivamento até a apresentação (D5, D6)
 - [x] 3.2 Escrever o roteiro de demo com preparação, aquecimento, casos e
       plano B (D7)
-- [ ] 3.3 Ensaiar a demo cronometrada a partir de um checkout limpo e gravar o
-      vídeo de backup
+- [ ] 3.3 Ensaiar a demo cronometrada a partir de um checkout limpo, incluindo
+      o acesso pela mídia de destino do estande (D14), e gravar o vídeo de
+      backup
 - [ ] 3.4 Criar a tag `showcase-demo` no commit ensaiado da `main` (D5)
 
 ## 4. Documentação
@@ -47,7 +48,7 @@
 ## 5. Apresentação e reflexão
 
 - [ ] 5.1 Slides da apresentação, com números só da tabela da 4.1 e das
-      páginas do portfólio
+      páginas do portfólio, em até 10 minutos com a demo (D12)
 - [ ] 5.2 Texto de reflexão no portfólio: a revisão de 10/09, o caso jacaré e
       os limites da avaliação
 
@@ -57,14 +58,29 @@
 - [ ] 6.2 `mkdocs build` sem `WARNING`
 - [ ] 6.3 `openspec validate add-portfolio-showcase --strict`
 
-## 7. Mapa da arquitetura
+## 7. Entrega final da coordenação
 
-- [x] 7.1 Publicar o mapa em `docs/arquitetura/index.html` e corrigir no
+- [x] 7.1 Escrever `docs/showcase/organizacao.md` com fases, cadência, backlog
+      e papéis confirmados pelo grupo (D10)
+- [x] 7.2 Converter o relatório técnico v3 para `docs/act/relatorio-tecnico.md`
+      e conferir os números contra o portfólio (D11)
+- [x] 7.3 Cortar `docs/showcase/apresentacao.md` para no máximo 9 slides, na
+      ordem problema → solução → IA → demo → resultados (D12)
+- [x] 7.4 Escrever `docs/showcase/roteiro-video.md` com fala, tempo e
+      integrante de cada trecho (D13)
+- [ ] 7.5 Gravar o vídeo e publicar no YouTube
+- [ ] 7.6 Tabela da entrega final, link do repositório e link do vídeo no
+      `README.md` (D9)
+- [x] 7.7 Páginas novas na nav do `mkdocs.yml`
+
+## 8. Mapa da arquitetura
+
+- [x] 8.1 Publicar o mapa em `docs/arquitetura/index.html` e corrigir no
       comentário do arquivo a referência ao change, que citava um
       `add-arquitetura-diagramas` inexistente (D9)
-- [x] 7.2 Tirar dos cards os caminhos que não existem na `main`:
+- [x] 8.2 Tirar dos cards os caminhos que não existem na `main`:
       `docs/act/relatorio-tecnico.md`, `docs/showcase/organizacao.md` e
       `docs/showcase/roteiro-video.md` (D9)
-- [x] 7.3 Incluir a entrada do mapa na nav do Showcase em `mkdocs.yml`
-- [x] 7.4 `mkdocs build --strict` sem `WARNING`, `arquitetura/index.html`
+- [x] 8.3 Incluir a entrada do mapa na nav do Showcase em `mkdocs.yml`
+- [x] 8.4 `mkdocs build --strict` sem `WARNING`, `arquitetura/index.html`
       presente no site construído e todo caminho citado existindo na `main`

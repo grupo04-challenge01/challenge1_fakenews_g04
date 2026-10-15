@@ -107,3 +107,57 @@ nos cards do mapa MUST existir na `main`.
 - **GIVEN** um card do mapa que cita um arquivo do repositório
 - **WHEN** alguém procura esse caminho na `main`
 - **THEN** o arquivo existe
+- **AND** encontra o link do próprio repositório no GitHub
+
+### Requirement: Entrega final mapeada
+
+O `README.md` SHALL ter uma tabela com cada item da entrega final pedida pela
+coordenação: datasets, requisitos funcionais e não funcionais, EDA, Guiding
+Questions, organização e papéis, modelo de IA com relatório técnico, descrição
+final do produto, código, link do repositório e link do vídeo. Cada linha
+MUST apontar para um artefato versionado ou declarar o item como pendente.
+
+#### Scenario: Banca confere a entrega
+- **WHEN** alguém procura um item da entrega final no `README.md`
+- **THEN** encontra o caminho do artefato no repositório
+
+### Requirement: Organização e papéis
+
+O portfólio SHALL descrever como o grupo se organizou: fases, cadência,
+backlog e papéis de cada integrante. A descrição MUST NOT declarar cerimônia
+ou papel que o grupo não confirmou.
+
+#### Scenario: Leitura da organização
+- **WHEN** o leitor abre `docs/showcase/organizacao.md`
+- **THEN** encontra cada integrante com o seu papel
+- **AND** encontra como o trabalho foi dividido em fases e changes
+
+### Requirement: Relatório técnico versionado
+
+O relatório técnico do modelo de IA SHALL estar versionado no portfólio. Os
+números do relatório MUST coincidir com `docs/act/prototipo-avaliacao.md`.
+
+#### Scenario: Número do relatório
+- **WHEN** o leitor compara um número do relatório técnico com a página do
+  protótipo
+- **THEN** os dois são iguais
+
+### Requirement: Apresentação dentro do tempo
+
+O conteúdo da apresentação SHALL caber em 10 minutos com a demonstração, na
+ordem problema, solução, IA, demonstração e resultados.
+
+#### Scenario: Ensaio cronometrado
+- **WHEN** o grupo ensaia a apresentação com a demo
+- **THEN** o ensaio termina em até 10 minutos
+
+### Requirement: Vídeo explicativo
+
+O grupo SHALL publicar no YouTube um vídeo de até 5 minutos sobre contexto e
+problema, produto, IA, desafios e resultados. Todos os integrantes MUST
+participar.
+
+#### Scenario: Roteiro do vídeo
+- **WHEN** o leitor abre `docs/showcase/roteiro-video.md`
+- **THEN** encontra os cinco tópicos com tempo e integrante
+- **AND** a soma dos tempos é no máximo 5 minutos

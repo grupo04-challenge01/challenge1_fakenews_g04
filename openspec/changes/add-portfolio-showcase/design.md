@@ -104,7 +104,49 @@ O roteiro fixa:
 tabela no portfólio, com data e hora da rodada, gerador, casos aprovados,
 acerto por etapa, latência e custo. O JSON bruto segue fora do git.
 
-### D9. Mapa da arquitetura como página autônoma no mesmo site
+### D9. Entrega final mapeada no README
+
+A coordenação lista oito itens para a entrega final. O `README.md` ganha uma
+tabela com um item por linha e o caminho do artefato, mais o link do
+repositório e o link do vídeo. Item sem artefato fica na tabela como
+«pendente», em vez de sumir.
+
+### D10. Organização declarada como foi, não como Scrum de manual
+
+O grupo trabalhou por fases do CBL com Spec-Driven Development: um change por
+trabalho, PR revisado, tasks com dono. `docs/showcase/organizacao.md` descreve
+isso e mapeia para o vocabulário Scrum que a coordenação usa (sprint, backlog,
+papéis), sem inventar cerimônia que não aconteceu. Os nomes e papéis vêm do
+grupo; o documento não atribui papel a ninguém por inferência.
+
+### D11. Relatório técnico em Markdown no portfólio
+
+O relatório consolidado v3 existe só como HTML fora do repositório. Ele vira
+`docs/act/relatorio-tecnico.md`, na nav do site. Todo número do relatório
+MUST bater com `docs/act/prototipo-avaliacao.md`; onde divergir, vale o
+portfólio e o relatório é corrigido.
+
+### D12. Apresentação em 10 minutos
+
+O limite da banca é 10 minutos, com demonstração. O conteúdo dos slides cai
+de 14 para no máximo 9 slides, na ordem problema → solução → IA → demonstração
+→ resultados. O que sai do deck (virada de 10/09, acervo em detalhe, caso
+jacaré) vira resposta preparada para perguntas.
+
+### D13. Vídeo com roteiro dividido por integrante
+
+O vídeo tem até 5 minutos e cobre os cinco tópicos da coordenação. O roteiro
+fixa a fala, o tempo e a tela de cada trecho, e cada integrante fala em pelo
+menos um. Os números do vídeo seguem a mesma regra dos slides (D8).
+
+### D14. Estande na mídia de destino
+
+A mídia de destino é decisão do grupo. Se for o celular, o servidor sobe com
+`DONA_CHECA_HOST=0.0.0.0` na máquina do estande e o celular acessa pela rede
+local; o ensaio da 3.3 inclui esse acesso. Rede da sala instável cai no plano
+B do roteiro.
+
+### D15. Mapa da arquitetura como página autônoma no mesmo site
 
 O mapa da arquitetura é um HTML autocontido, com CSS e JS no próprio arquivo e
 só as fontes vindas do Google Fonts. O layout é de tela inteira, com navegação
@@ -137,3 +179,8 @@ Alternativas descartadas:
   outro que passou na mesma rodada, sem mudar a regra para o caso passar.
 - [O mapa envelhece em relação ao código] → cada card cita o arquivo de
   origem, e a verificação da seção 7 confere que todo caminho citado existe.
+- [Vídeo grava antes do corte do deck e conta outra história] → o roteiro do
+  vídeo sai do mesmo conteúdo da apresentação de 10 minutos.
+- [Relatório técnico diverge do portfólio] → D11: o portfólio vence.
+- [`0.0.0.0` expõe o servidor na rede da sala] → só no estande, sem chave de
+  API em tela, e o servidor é desligado ao fim.
